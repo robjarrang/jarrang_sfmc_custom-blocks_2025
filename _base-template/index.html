@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Base Template Block</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <style>
+        /* Standard base styles - consistent across all modules */
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.checkbox-label{cursor:pointer;user-select:none;font-size:14px;color:#333}.disabled-field{opacity:0.5;pointer-events:none}.toggle-container{display:flex;align-items:center;gap:10px;margin-bottom:15px}.toggle-switch{position:relative;display:inline-block;width:48px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:.3s;border-radius:24px}.toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked + .toggle-slider{background-color:#0074d9}input:checked + .toggle-slider:before{transform:translateX(24px)}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.option-button svg{display:block;margin:0 auto;fill:currentColor}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:80px;padding:12px}.limited-toolbar .ql-editor{min-height:40px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+
+        /* Optional: Compact layout styles for font-size controls */
+        .style-controls-wrapper{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:15px}.style-control-group .field-label{margin-bottom:5px}.style-control-group .field-input{width:80px;padding:6px 8px}.style-control-group .option-selector{width:110px}
+
+        /* Optional: Checklist/List item styles */
+        .items-container{display:flex;flex-direction:column;gap:15px;contain:layout}.item{background-color:#fafafa;padding:15px;border:1px solid #ddd;border-radius:6px;position:relative;contain:layout style paint}.item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.item-title{font-weight:bold;font-size:16px;margin:0}.item-controls{display:flex;gap:8px}.item-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.item-control-btn:hover{color:#0074d9}.item-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-item-btn{margin-top:20px}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Base Template Block</h2>
+
+        <div class="error-banner" id="errorBanner"></div>
+
+        <!-- General Settings -->
+        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+            <div class="section-title">General Settings</div>
+            
+            <!-- Example: Background Color Selector -->
+            <div class="field-group">
+                <label class="field-label">Background Colour</label>
+                <div class="option-selector" id="backgroundColorSelector">
+                    <div class="option-button selected" data-value="red">Red</div>
+                    <div class="option-button" data-value="black">Black</div>
+                </div>
+            </div>
+
+            <!-- Example: Text Input -->
+            <div class="field-group">
+                <label for="exampleText" class="field-label">Example Text Field</label>
+                <input type="text" id="exampleText" class="field-input" placeholder="Enter text...">
+            </div>
+
+            <!-- Example: URL Input with validation -->
+            <div class="field-group">
+                <label for="exampleUrl" class="field-label">Example URL</label>
+                <input type="url" id="exampleUrl" class="field-input" placeholder="https://example.com">
+                <div class="field-error" id="exampleUrlError">Please enter a valid URL (http:// or https://)</div>
+            </div>
+
+            <!-- Example: Toggle -->
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="exampleToggle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <label for="exampleToggle" class="checkbox-label">Show Example Feature</label>
+            </div>
+        </div>
+
+        <!-- Content Settings -->
+        <div class="section-divider">
+            <div class="section-title">Content Settings</div>
+            
+            <!-- Example: Rich Text Editor -->
+            <div class="field-group">
+                <label class="field-label">Main Content</label>
+                <div id="mainEditor" class="quill-container"></div>
+                <!-- Optional: Font size control -->
+                <div class="style-controls-wrapper">
+                    <div class="style-control-group">
+                        <label class="field-label">Font Size (px)</label>
+                        <input type="number" id="mainFontSize" class="field-input" min="12" max="48" step="4" value="16">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example: Number Input -->
+            <div class="field-group">
+                <label for="exampleNumber" class="field-label">Example Number (px)</label>
+                <input type="number" id="exampleNumber" class="field-input" min="0" max="100" step="4" value="20">
+            </div>
+        </div>
+
+        <!-- Optional: List/Checklist Section -->
+        <!-- Uncomment if your module needs dynamic list items -->
+        <!--
+        <div class="section-divider">
+            <div class="section-title">Dynamic Items</div>
+            <div id="itemsContainer" class="items-container"></div>
+            <button id="addItemBtn" class="btn add-item-btn">Add New Item</button>
+        </div>
+        -->
+    </div>
+
+    <!-- Optional: Template for dynamic list items -->
+    <!--
+    <template id="itemTemplate">
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Item</h3>
+                <div class="item-controls">
+                    <button class="item-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="item-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="item-control-btn remove-btn" title="Remove Item">×</button>
+                </div>
+            </div>
+            <div class="quill-container limited-toolbar"></div>
+        </div>
+    </template>
+    -->
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        // =====================================================================
+        // MODULE CONFIGURATION
+        // =====================================================================
+        const moduleConfig = {
+            name: 'Base Template Block',
+            fields: {
+                // Text fields
+                exampleText: { type: 'text', defaultValue: 'Example Text', maxLength: 100 },
+                
+                // URL fields (with validator)
+                exampleUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/', validator: 'url' },
+                
+                // Boolean/Toggle fields
+                exampleToggle: { type: 'boolean', defaultValue: true },
+                
+                // Rich text fields
+                mainContent: { type: 'richtext', defaultValue: 'Enter your content here...', maxLength: 500 },
+                
+                // Number fields
+                mainFontSize: { type: 'number', defaultValue: 16 },
+                exampleNumber: { type: 'number', defaultValue: 20 },
+                
+                // Selection fields
+                backgroundColor: { type: 'text', defaultValue: 'red' },
+                
+                // List fields (if using dynamic items)
+                // items: {
+                //     type: 'list',
+                //     defaultValue: [
+                //         { id: crypto.randomUUID(), text: '<strong>Item One</strong>' },
+                //         { id: crypto.randomUUID(), text: '<strong>Item Two</strong>' }
+                //     ]
+                // }
+            },
+            debounceDelay: 300,
+            maxRetries: 3
+        };
+
+        // =====================================================================
+        // STATE MANAGEMENT
+        // =====================================================================
+        const state = {
+            sdk: null,
+            editors: {},
+            blockData: {},
+            isLoading: false,
+            isInitialized: false,
+            eventListeners: [],
+            retryCount: 0
+        };
+
+        const elements = {};
+        let rafId = null;
+
+        // Advanced memory management for editors
+        const editorMetadata = new WeakMap();
+        const cleanupRegistry = new FinalizationRegistry((heldValue) => {
+            console.log('Cleanup registry triggered for editor:', heldValue);
+        });
+
+        // =====================================================================
+        // UTILITY FUNCTIONS
+        // =====================================================================
+        const utils = {
+            /**
+             * Debounce function to limit execution rate
+             */
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func.apply(this, args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            /**
+             * Validate URL format
+             */
+            isValidUrl(string) {
+                if (!string || string.trim() === '') return true;
+                try {
+                    const url = new URL(string);
+                    return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch (_) {
+                    return false;
+                }
+            },
+
+            /**
+             * Basic HTML sanitization (legacy support)
+             */
+            sanitizeHtml(html) {
+                if (!html) return '';
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                temp.querySelectorAll('script, style').forEach(el => el.remove());
+                
+                // Style links for email
+                temp.querySelectorAll('a').forEach(link => {
+                    if (!link.style.color) link.style.color = '#ffffff';
+                    if (!link.style.textDecoration) link.style.textDecoration = 'underline';
+                    if (!link.getAttribute('href')) link.setAttribute('href', '#');
+                });
+                
+                const allElements = temp.getElementsByTagName('*');
+                for (let el of allElements) {
+                    for (let attr of el.attributes) {
+                        if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
+                    }
+                }
+                return temp.innerHTML.replace(/<p>/g, '').replace(/<\/p>/g, '');
+            },
+
+            /**
+             * Display error message to user
+             */
+            showError(message, permanent = false) {
+                if (elements.errorBanner) {
+                    elements.errorBanner.textContent = message;
+                    elements.errorBanner.classList.add('show');
+                    if (!permanent) setTimeout(() => elements.errorBanner.classList.remove('show'), 5000);
+                }
+                console.error(`${moduleConfig.name} Error:`, message);
+            },
+
+            /**
+             * Get field value with fallback to default
+             */
+            getFieldValue(fieldName) {
+                const value = state.blockData[fieldName];
+                const fieldConfig = moduleConfig.fields[fieldName];
+                if (value !== undefined && value !== null) {
+                    return fieldConfig.type === 'number' ? parseFloat(value) : value;
+                }
+                return fieldConfig.defaultValue;
+            },
+
+            /**
+             * Create a checklist/list item editor with line break support
+             */
+            createChecklistEditor(container, id, content = '') {
+                const editor = new Quill(container, {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [['bold', { 'script': 'super' }], ['link']],
+                        clipboard: {
+                            matchVisual: false,
+                            matchers: [
+                                [Node.TEXT_NODE, function(node, delta) {
+                                    if (typeof node.data === 'string') {
+                                        const text = node.data.replace(/\u00A0/g, ' ').replace(/&nbsp;/g, ' ');
+                                        return new (window.Quill.import('delta'))().insert(text);
+                                    }
+                                    return delta;
+                                }]
+                            ]
+                        }
+                    },
+                    formats: ['bold', 'script', 'link'],
+                    placeholder: 'List item text...'
+                });
+
+                const metadata = {
+                    id,
+                    created: Date.now(),
+                    container,
+                    hasContent: Boolean(content && content.trim())
+                };
+
+                editorMetadata.set(editor, metadata);
+                cleanupRegistry.register(editor, id);
+
+                if (content && content.trim()) {
+                    editor.setContents([]);
+                    editor.clipboard.dangerouslyPasteHTML(content);
+                }
+
+                return editor;
+            },
+
+            /**
+             * Clean up an editor instance
+             */
+            cleanupEditor(id) {
+                const editor = state.editors[id];
+                if (editor) {
+                    const metadata = editorMetadata.get(editor);
+                    if (editor.off) {
+                        editor.off('text-change');
+                    }
+                    console.log('Cleaning up editor:', { id, metadata });
+                    delete state.editors[id];
+                }
+            },
+
+            /**
+             * Track event listeners for cleanup
+             */
+            addEventListenerTracked(element, event, handler) {
+                element.addEventListener(event, handler);
+                state.eventListeners.push({ element, event, handler });
+            }
+        };
+
+        // =====================================================================
+        // DOM ELEMENT CACHING
+        // =====================================================================
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.backgroundColorSelector = document.getElementById('backgroundColorSelector');
+            elements.exampleText = document.getElementById('exampleText');
+            elements.exampleUrl = document.getElementById('exampleUrl');
+            elements.exampleUrlError = document.getElementById('exampleUrlError');
+            elements.exampleToggle = document.getElementById('exampleToggle');
+            elements.mainEditor = document.getElementById('mainEditor');
+            elements.mainFontSize = document.getElementById('mainFontSize');
+            elements.exampleNumber = document.getElementById('exampleNumber');
+            
+            // Uncomment if using dynamic items
+            // elements.itemsContainer = document.getElementById('itemsContainer');
+            // elements.addItemBtn = document.getElementById('addItemBtn');
+            // elements.itemTemplate = document.getElementById('itemTemplate');
+        }
+
+        // =====================================================================
+        // LOADING STATE MANAGEMENT
+        // =====================================================================
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            if (elements.mainContainer && elements.loadingOverlay) {
+                elements.mainContainer.classList.toggle('loading', loading);
+                elements.loadingOverlay.classList.toggle('show', loading);
+            }
+        }
+
+        // =====================================================================
+        // EDITOR INITIALIZATION
+        // =====================================================================
+        async function initializeEditors() {
+            if (!window.Quill) throw new Error('Quill library not loaded');
+            if (!window.QuillConfigManager) throw new Error('QuillConfigManager not loaded');
+
+            try {
+                // Initialize main content editor
+                state.editors.mainContent = await QuillConfigManager.initializeEditor(
+                    elements.mainEditor,
+                    'description',
+                    {
+                        placeholder: 'Enter your content...',
+                        maxLength: moduleConfig.fields.mainContent.maxLength
+                    }
+                );
+
+                // Set up change handler
+                const updateHandler = QuillConfigManager.createUpdateHandler((delta, oldDelta, source) => {
+                    const content = QuillConfigManager.getCleanContent(state.editors.mainContent, true);
+                    updateData('mainContent', content);
+                }, moduleConfig.debounceDelay);
+
+                state.editors.mainContent.on('text-change', updateHandler);
+
+            } catch (error) {
+                throw new Error(`Failed to initialize editors: ${error.message}`);
+            }
+        }
+
+        // =====================================================================
+        // CONTENT PROCESSING
+        // =====================================================================
+        function processRichText(html) {
+            return QuillConfigManager.sanitizeForEmail(html || '');
+        }
+
+        // =====================================================================
+        // DATA MANAGEMENT
+        // =====================================================================
+        function updateData(field, value) {
+            if (state.blockData[field] != value) {
+                state.blockData[field] = value;
+                refreshPreview();
+            }
+        }
+
+        const debouncedUpdateData = utils.debounce(updateData, moduleConfig.debounceDelay);
+
+        // =====================================================================
+        // TEMPLATE GENERATION
+        // =====================================================================
+        function generateTemplate() {
+            // Get all field values
+            const backgroundColor = utils.getFieldValue('backgroundColor');
+            const bgColorHex = backgroundColor === 'red' ? '#DB011C' : '#000000';
+            const exampleText = utils.getFieldValue('exampleText');
+            const mainContent = processRichText(utils.getFieldValue('mainContent'));
+            const mainFontSize = utils.getFieldValue('mainFontSize');
+            const exampleNumber = utils.getFieldValue('exampleNumber');
+            
+            // Build your HTML template here
+            // This is a simple example - customize based on your needs
+            return `<!-- START .base-template -->
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: ${bgColorHex}; width: 620px;">
+    <tr>
+        <td class="side" style="width: 20px;">&nbsp;</td>
+        <td align="center" class="content-inner" style="width: 580px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;">
+                <tr>
+                    <td align="left" class="block" style="width: 100%;">
+                        <table border="0" cellpadding="0" cellspacing="0" class="sect" style="width: 100%;">
+                            <tr><td><div style="clear: both; display: block; font-size: 28px; height: 28px; line-height: 28px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>
+                            <tr>
+                                <td class="mobile-text-left" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: ${mainFontSize}px; font-weight: normal; line-height: ${mainFontSize + 8}px; margin: 0; text-align: left;">
+                                    ${mainContent}
+                                </td>
+                            </tr>
+                            <tr><td><div style="clear: both; display: block; font-size: ${exampleNumber}px; height: ${exampleNumber}px; line-height: ${exampleNumber}px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td class="side" style="width: 20px;">&nbsp;</td>
+    </tr>
+</table>
+<!-- END .base-template -->`;
+        }
+
+        // =====================================================================
+        // PREVIEW REFRESH
+        // =====================================================================
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try {
+                    const html = generateTemplate();
+                    state.sdk.setContent(html);
+                    if (state.sdk.setData) {
+                        state.sdk.setData({ ...state.blockData, content: html });
+                    }
+                } catch (error) {
+                    utils.showError(`Preview update failed: ${error.message}`);
+                }
+            });
+        }
+
+        // =====================================================================
+        // URL VALIDATION
+        // =====================================================================
+        function validateUrlInput(input, errorElement) {
+            const value = input.value.trim();
+            const isValid = !value || utils.isValidUrl(value);
+            input.classList.toggle('error', !isValid);
+            if (errorElement) errorElement.style.display = isValid ? 'none' : 'block';
+            return isValid;
+        }
+
+        // =====================================================================
+        // EVENT HANDLERS
+        // =====================================================================
+        function initializeEventHandlers() {
+            state.eventListeners = [];
+
+            // Option Selector (e.g., background color)
+            function setupOptionSelector(selectorElement, dataKey) {
+                if (!selectorElement) return;
+                selectorElement.querySelectorAll('.option-button').forEach(option => {
+                    const handler = (e) => {
+                        const button = e.currentTarget;
+                        updateData(dataKey, button.dataset.value);
+                        selectorElement.querySelectorAll('.option-button').forEach(o => o.classList.remove('selected'));
+                        button.classList.add('selected');
+                    };
+                    option.addEventListener('click', handler);
+                    state.eventListeners.push({ element: option, event: 'click', handler });
+                });
+            }
+
+            setupOptionSelector(elements.backgroundColorSelector, 'backgroundColor');
+
+            // Text Input Handler
+            function setupTextInput(inputElement, dataKey, maxLength = null) {
+                const handler = (e) => {
+                    let value = e.target.value;
+                    if (maxLength) value = value.substring(0, maxLength);
+                    e.target.value = value;
+                    debouncedUpdateData(dataKey, value.trim());
+                };
+                inputElement.addEventListener('input', handler);
+                state.eventListeners.push({ element: inputElement, event: 'input', handler });
+            }
+
+            if (elements.exampleText) {
+                setupTextInput(elements.exampleText, 'exampleText', moduleConfig.fields.exampleText.maxLength);
+            }
+
+            // URL Input Handler
+            function setupUrlInput(inputElement, dataKey, errorElement) {
+                const inputHandler = (e) => {
+                    if (validateUrlInput(inputElement, errorElement)) {
+                        debouncedUpdateData(dataKey, e.target.value.trim());
+                    }
+                };
+                const blurHandler = () => validateUrlInput(inputElement, errorElement);
+                
+                inputElement.addEventListener('input', inputHandler);
+                inputElement.addEventListener('blur', blurHandler);
+                state.eventListeners.push({ element: inputElement, event: 'input', handler: inputHandler });
+                state.eventListeners.push({ element: inputElement, event: 'blur', handler: blurHandler });
+            }
+
+            if (elements.exampleUrl) {
+                setupUrlInput(elements.exampleUrl, 'exampleUrl', elements.exampleUrlError);
+            }
+
+            // Toggle Handler
+            function setupToggle(toggleElement, dataKey) {
+                const handler = (e) => {
+                    updateData(dataKey, e.target.checked);
+                };
+                toggleElement.addEventListener('change', handler);
+                state.eventListeners.push({ element: toggleElement, event: 'change', handler });
+            }
+
+            if (elements.exampleToggle) {
+                setupToggle(elements.exampleToggle, 'exampleToggle');
+            }
+
+            // Number Input Handler
+            function setupNumberInput(inputElement, dataKey) {
+                const step = 4;
+                const correctValueOnBlur = (e) => {
+                    const input = e.target;
+                    let value = parseInt(input.value, 10);
+                    const min = parseInt(input.min, 10);
+                    const max = parseInt(input.max, 10);
+                    if (isNaN(value)) value = moduleConfig.fields[dataKey].defaultValue;
+                    value = Math.max(min, Math.min(value, max));
+                    const correctedValue = Math.round(value / step) * step;
+                    input.value = correctedValue;
+                    updateData(dataKey, correctedValue);
+                };
+                const liveUpdateOnInput = (e) => {
+                    const value = parseInt(e.target.value, 10);
+                    if (!isNaN(value)) debouncedUpdateData(dataKey, value);
+                };
+                inputElement.addEventListener('input', liveUpdateOnInput);
+                inputElement.addEventListener('blur', correctValueOnBlur);
+                state.eventListeners.push({ element: inputElement, event: 'input', handler: liveUpdateOnInput });
+                state.eventListeners.push({ element: inputElement, event: 'blur', handler: correctValueOnBlur });
+            }
+
+            if (elements.mainFontSize) {
+                setupNumberInput(elements.mainFontSize, 'mainFontSize');
+            }
+            if (elements.exampleNumber) {
+                setupNumberInput(elements.exampleNumber, 'exampleNumber');
+            }
+
+            // ========================================
+            // OPTIONAL: Dynamic List Item Management
+            // ========================================
+            // Uncomment if your module needs dynamic list items
+            /*
+            const itemActions = {
+                '.remove-btn': (item, index, items) => {
+                    items.splice(index, 1);
+                    if (item.id) utils.cleanupEditor(item.id);
+                    return true;
+                },
+                '.move-up-btn': (item, index, items) => {
+                    if (index > 0) {
+                        [items[index], items[index - 1]] = [items[index - 1], items[index]];
+                        return true;
+                    }
+                    return false;
+                },
+                '.move-down-btn': (item, index, items) => {
+                    if (index < items.length - 1) {
+                        [items[index], items[index + 1]] = [items[index + 1], items[index]];
+                        return true;
+                    }
+                    return false;
+                }
+            };
+
+            function createDelegatedHandler(fieldName, actionMap) {
+                return (event) => {
+                    if (event.target.closest('#addItemBtn')) {
+                        const currentItems = utils.getFieldValue(fieldName);
+                        const newItems = [...currentItems, { id: crypto.randomUUID(), text: '<strong>New Item</strong>' }];
+                        state.blockData[fieldName] = newItems;
+                        renderItemsUI();
+                        updateDataFromUI();
+                        return;
+                    }
+
+                    const itemEl = event.target.closest('.item');
+                    if (!itemEl) return;
+
+                    const id = itemEl.dataset.id;
+                    const currentItems = state.blockData[fieldName];
+                    const itemIndex = currentItems.findIndex(i => i.id === id);
+
+                    if (itemIndex === -1) return;
+
+                    const item = currentItems[itemIndex];
+
+                    for (const [selector, action] of Object.entries(actionMap)) {
+                        if (event.target.closest(selector)) {
+                            if (action(item, itemIndex, currentItems)) {
+                                renderItemsUI();
+                                updateDataFromUI();
+                            }
+                            break;
+                        }
+                    }
+                };
+            }
+
+            const listHandler = createDelegatedHandler('items', itemActions);
+            utils.addEventListenerTracked(elements.addItemBtn, 'click', listHandler);
+            utils.addEventListenerTracked(elements.itemsContainer, 'click', listHandler);
+            */
+        }
+
+        // =====================================================================
+        // OPTIONAL: DYNAMIC LIST ITEM RENDERING
+        // =====================================================================
+        // Uncomment if your module needs dynamic list items
+        /*
+        function renderItemsUI() {
+            const items = utils.getFieldValue('items');
+
+            const currentIds = new Set(items.map(i => i.id));
+            Object.keys(state.editors).forEach(id => {
+                if (!currentIds.has(id) && !['mainContent'].includes(id)) {
+                    utils.cleanupEditor(id);
+                }
+            });
+
+            const fragment = document.createDocumentFragment();
+
+            items.forEach((item, index) => {
+                const itemFragment = elements.itemTemplate.content.cloneNode(true);
+                const itemEl = itemFragment.querySelector('.item');
+                const editorDiv = itemFragment.querySelector('.quill-container');
+
+                itemEl.dataset.id = item.id;
+                itemEl.querySelector('.item-title').textContent = `Item ${index + 1}`;
+
+                if (index === 0) itemEl.querySelector('.move-up-btn').disabled = true;
+                if (index === items.length - 1) itemEl.querySelector('.move-down-btn').disabled = true;
+
+                fragment.appendChild(itemFragment);
+
+                const editor = utils.createChecklistEditor(editorDiv, item.id, item.text);
+                editor.on('text-change', debouncedUpdateDataFromUI);
+                state.editors[item.id] = editor;
+            });
+
+            elements.itemsContainer.replaceChildren();
+            elements.itemsContainer.appendChild(fragment);
+        }
+
+        function updateDataFromUI() {
+            const newItems = [];
+            document.querySelectorAll('#itemsContainer .item').forEach(itemEl => {
+                const id = itemEl.dataset.id;
+                const editor = state.editors[id];
+                if (editor) {
+                    const content = editor.getSemanticHTML ? 
+                        editor.getSemanticHTML() : 
+                        editor.root.innerHTML;
+                    newItems.push({ id: id, text: QuillConfigManager.sanitizeForEmail(content) });
+                }
+            });
+            state.blockData.items = newItems;
+            refreshPreview();
+        }
+
+        const debouncedUpdateDataFromUI = utils.debounce(updateDataFromUI, moduleConfig.debounceDelay);
+        */
+
+        // =====================================================================
+        // DATA LOADING
+        // =====================================================================
+        function loadData() {
+            if (!state.sdk || !state.sdk.getData) return utils.showError('SDK not available');
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    state.blockData = {};
+                    Object.keys(moduleConfig.fields).forEach(key => {
+                        state.blockData[key] = (data && data.hasOwnProperty(key)) ?
+                            (moduleConfig.fields[key].type === 'richtext' ? utils.sanitizeHtml(data[key]) : data[key]) :
+                            moduleConfig.fields[key].defaultValue;
+                    });
+
+                    // Update UI with loaded data
+                    function setSelectorState(selectorElement, dataKey) {
+                        const value = utils.getFieldValue(dataKey);
+                        if (selectorElement) {
+                            selectorElement.querySelectorAll('.option-button').forEach(o =>
+                                o.classList.toggle('selected', o.dataset.value === value)
+                            );
+                        }
+                    }
+
+                    setSelectorState(elements.backgroundColorSelector, 'backgroundColor');
+
+                    // Update form inputs
+                    if (elements.exampleText) elements.exampleText.value = utils.getFieldValue('exampleText');
+                    if (elements.exampleUrl) elements.exampleUrl.value = utils.getFieldValue('exampleUrl');
+                    if (elements.exampleToggle) elements.exampleToggle.checked = utils.getFieldValue('exampleToggle');
+                    if (elements.mainFontSize) elements.mainFontSize.value = utils.getFieldValue('mainFontSize');
+                    if (elements.exampleNumber) elements.exampleNumber.value = utils.getFieldValue('exampleNumber');
+
+                    // Update Quill editors
+                    Object.keys(state.editors).forEach(key => {
+                        if (state.editors[key]) {
+                            const content = utils.getFieldValue(key);
+                            try {
+                                state.editors[key].setContents([]);
+                                if (content && content.trim()) {
+                                    state.editors[key].clipboard.dangerouslyPasteHTML(content);
+                                }
+                            } catch (error) {
+                                console.warn(`Using fallback method for editor ${key}:`, error);
+                                state.editors[key].root.innerHTML = content || '';
+                            }
+                        }
+                    });
+
+                    // Uncomment if using dynamic items
+                    // renderItemsUI();
+
+                    refreshPreview();
+                    state.retryCount = 0;
+                } catch (error) {
+                    utils.showError(`Failed to load data: ${error.message}`);
+                    Object.keys(moduleConfig.fields).forEach(key => {
+                        state.blockData[key] = moduleConfig.fields[key].defaultValue;
+                    });
+                    refreshPreview();
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+        }
+
+        // =====================================================================
+        // CLEANUP
+        // =====================================================================
+        function cleanup() {
+            Object.keys(state.editors).forEach(editorId => {
+                utils.cleanupEditor(editorId);
+            });
+
+            state.eventListeners.forEach(({ element, event, handler }) => {
+                if (element && element.removeEventListener) element.removeEventListener(event, handler);
+            });
+            state.eventListeners = [];
+
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            console.log('Base template cleanup completed');
+        }
+
+        // =====================================================================
+        // INITIALIZATION
+        // =====================================================================
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                if (!window.Quill) throw new Error('Quill not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                
+                cacheElements();
+                initializeEditors();
+                initializeEventHandlers();
+                loadData();
+
+                window.addEventListener('beforeunload', cleanup);
+                document.addEventListener('visibilitychange', () => {
+                    if (!document.hidden && state.isInitialized) loadData();
+                });
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialisation failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) {
+                    state.retryCount++;
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount);
+                } else {
+                    utils.showError('Failed to initialise after multiple attempts. Please refresh.', true);
+                }
+                setLoadingState(false);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeWithRetry);
+        } else {
+            initializeWithRetry();
+        }
+    </script>
+</body>
+</html>

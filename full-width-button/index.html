@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Full Width Button Block</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.toggle-container{display:flex;align-items:center;gap:10px;margin-bottom:15px}.toggle-switch{position:relative;display:inline-block;width:48px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:.3s;border-radius:24px}.toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked + .toggle-slider{background-color:#0074d9}input:checked + .toggle-slider:before{transform:translateX(24px)}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:40px;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-tool-btn{background:none;border:1px solid #ddd;border-radius:4px;padding:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+        .config-tool-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-tool-btn svg{width:20px;height:20px;fill:#555}
+        .config-tool-btn:hover svg{fill:#0074d9}
+        .config-tool-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-tool-btn.success svg{fill:#28a745}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-tool-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Full Width Button</h2>
+
+        <div class="error-banner" id="errorBanner"></div>
+
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </button>
+        </div>
+
+        <!-- General Settings -->
+        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+            <div class="section-title">General Settings</div>
+            <div class="field-group">
+                <label class="field-label">Background Colour</label>
+                <div class="option-selector" id="backgroundColorSelector">
+                    <div class="option-button selected" data-value="red">Red</div>
+                    <div class="option-button" data-value="black">Black</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button Settings -->
+        <div class="section-divider">
+            <div class="section-title">Button Settings</div>
+            <div class="field-group">
+                <label class="field-label">Button Text</label>
+                <div id="buttonTextEditor" class="quill-container limited-toolbar"></div>
+            </div>
+            <div class="field-group">
+                <label for="buttonUrl" class="field-label">Button Link URL</label>
+                <input type="url" id="buttonUrl" class="field-input" placeholder="https://www.milwaukeetool.eu/">
+                <div class="field-error" id="buttonUrlError">Please enter a valid URL.</div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Button Alignment</label>
+                <div class="option-selector" id="buttonAlignmentSelector">
+                    <div class="option-button selected" data-value="center">Center</div>
+                    <div class="option-button" data-value="left">Left</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spacing Settings -->
+        <div class="section-divider">
+            <div class="section-title">Spacing Settings</div>
+            <div class="toggle-container"><label class="toggle-switch"><input type="checkbox" id="showTopSpacer" checked><span class="toggle-slider"></span></label><label for="showTopSpacer" class="checkbox-label">Show Top Spacer</label></div>
+            <div class="toggle-container"><label class="toggle-switch"><input type="checkbox" id="showBottomSpacer" checked><span class="toggle-slider"></span></label><label for="showBottomSpacer" class="checkbox-label">Show Bottom Spacer</label></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        // Module configuration
+        const moduleConfig = {
+            name: 'Full Width Button',
+            fields: {
+                backgroundColor: { type: 'text', defaultValue: 'red' },
+                buttonText: { type: 'richtext', defaultValue: 'Phasellus a mauris', maxLength: 50 },
+                buttonUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/', validator: 'url' },
+                buttonAlignment: { type: 'text', defaultValue: 'center' },
+                showTopSpacer: { type: 'boolean', defaultValue: true },
+                showBottomSpacer: { type: 'boolean', defaultValue: true }
+            },
+            debounceDelay: 300,
+            maxRetries: 3
+        };
+
+        const state = { 
+            sdk: null, 
+            editors: {}, 
+            blockData: {}, 
+            isLoading: false, 
+            isInitialized: false, 
+            eventListeners: [], 
+            retryCount: 0 
+        };
+        const elements = {};
+        let rafId = null;
+
+        const utils = {
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => { clearTimeout(timeout); func.apply(this, args); };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+            isValidUrl(string) {
+                if (!string || string.trim() === '') return true;
+                try {
+                    const url = new URL(string);
+                    return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch (_) { return false; }
+            },
+            sanitizeHtml(html) {
+                if (!html) return '';
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                temp.querySelectorAll('script, style').forEach(el => el.remove());
+                const allElements = temp.getElementsByTagName('*');
+                for (let el of allElements) {
+                    for (let attr of el.attributes) {
+                        if (attr.name.startsWith('on')) el.removeAttribute(attr.name);
+                    }
+                }
+                return temp.innerHTML;
+            },
+            showError(message, permanent = false) {
+                const errorBanner = elements.errorBanner;
+                if (errorBanner) {
+                    errorBanner.textContent = message;
+                    errorBanner.classList.add('show');
+                    if (!permanent) setTimeout(() => errorBanner.classList.remove('show'), 5000);
+                }
+                console.error(`${moduleConfig.name} Error:`, message);
+            },
+            getFieldValue(fieldName) {
+                return state.blockData[fieldName] !== undefined ? state.blockData[fieldName] : moduleConfig.fields[fieldName].defaultValue;
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.backgroundColorSelector = document.getElementById('backgroundColorSelector');
+            elements.buttonTextEditor = document.getElementById('buttonTextEditor');
+            elements.buttonUrl = document.getElementById('buttonUrl');
+            elements.buttonUrlError = document.getElementById('buttonUrlError');
+            elements.buttonAlignmentSelector = document.getElementById('buttonAlignmentSelector');
+            elements.showTopSpacer = document.getElementById('showTopSpacer');
+            elements.showBottomSpacer = document.getElementById('showBottomSpacer');
+        }
+
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            if (elements.mainContainer && elements.loadingOverlay) {
+                elements.mainContainer.classList.toggle('loading', loading);
+                elements.loadingOverlay.classList.toggle('show', loading);
+            }
+        }
+
+        async function initializeEditors() {
+            try {
+                state.editors.buttonText = await QuillConfigManager.initializeEditor(
+                    elements.buttonTextEditor, 
+                    'button', 
+                    {
+                        placeholder: 'Enter button text...',
+                        maxLength: moduleConfig.fields.buttonText.maxLength
+                    }
+                );
+
+                const updateHandler = QuillConfigManager.createUpdateHandler((delta, oldDelta, source) => {
+                    const content = QuillConfigManager.getCleanContent(state.editors.buttonText, true);
+                    updateData('buttonText', content);
+                }, moduleConfig.debounceDelay);
+
+                state.editors.buttonText.on('text-change', updateHandler);
+            } catch (error) {
+                throw new Error(`Failed to initialize editor: ${error.message}`);
+            }
+        }
+
+        function processRichText(html) {
+            return QuillConfigManager.sanitizeForEmail(html || '');
+        }
+
+        function updateData(field, value) {
+            if (state.blockData[field] !== value) {
+                state.blockData[field] = value;
+                refreshPreview();
+            }
+        }
+
+        const debouncedUpdateData = utils.debounce(updateData, moduleConfig.debounceDelay);
+
+        function generateTemplate() {
+            const backgroundColor = utils.getFieldValue('backgroundColor');
+            const bgColorHex = backgroundColor === 'red' ? '#DB011C' : '#000000';
+            const buttonAlign = utils.getFieldValue('buttonAlignment');
+            const buttonUrl = utils.getFieldValue('buttonUrl');
+            const processedButtonText = processRichText(utils.getFieldValue('buttonText'));
+            const showTopSpacer = utils.getFieldValue('showTopSpacer');
+            const showBottomSpacer = utils.getFieldValue('showBottomSpacer');
+
+            let buttonTableStyle, buttonClass;
+
+            if (backgroundColor === 'black') {
+                // White bordered button for black background, matching Product Feature style
+                buttonClass = 'button-2-white';
+                buttonTableStyle = `background-color: transparent; border: 2px solid #ffffff; border-collapse: separate; border-radius: 4px !important;`;
+            } else {
+                // Black solid button for red background
+                buttonClass = 'button-1-black';
+                buttonTableStyle = `background-color: #000000; border-radius: 4px !important;`;
+            }
+
+            const buttonLinkStyle = `color: #ffffff; text-decoration: none;`;
+            const buttonCellStyle = `color: #ffffff; border-radius: 4px !important; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: bold; line-height: 28px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 20px; text-align: center; text-transform: uppercase; width: 100%;`;
+
+            const topSpacerHtml = showTopSpacer ? 
+                `<tr><td><div style="clear: both; display: block; font-size: 20px; height: 20px; line-height: 20px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>` : 
+                '';
+            
+            const bottomSpacerHtml = showBottomSpacer ? 
+                `<tr><td><div style="clear: both; display: block; font-size: 28px; height: 28px; line-height: 28px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>` : 
+                '';
+
+            return `<!-- START .fw-button --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: ${bgColorHex}; width: 620px;">
+                <tr>
+                    <td class="side" style="width: 20px;">&nbsp;</td>
+                    <td align="center" class="content-inner" style="width: 580px;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;">
+                            <tr>
+                                <td align="left" class="block" style="width: 100%;">
+                                    <table border="0" cellpadding="0" cellspacing="0" class="sect" style="width: 100%;">
+                                        ${topSpacerHtml}
+                                        <tr>
+                                            <td>
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;">
+                                                    <tr>
+                                                        <td align="${buttonAlign}" class="block" style="width: 100%;" valign="middle">
+                                                            <table border="0" cellpadding="0" cellspacing="0" class="${buttonClass}" role="presentation" style="${buttonTableStyle}">
+                                                                <tr>
+                                                                    <td align="center" style="${buttonCellStyle}">
+                                                                        <a href="${buttonUrl}" style="${buttonLinkStyle}" target="_blank">${processedButtonText}</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        ${bottomSpacerHtml}
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="side" style="width: 20px;">&nbsp;</td>
+                </tr>
+            </table><!-- END .fw-button -->`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try {
+                    const html = generateTemplate();
+
+                    // Updates the view in the editor
+                    state.sdk.setContent(html);
+
+                    // **THE FIX IS HERE:** Saves the data for persistence and for the Preview tab.
+                    // The key MUST be 'content', not 'html'.
+                    if (state.sdk.setData) {
+                        state.sdk.setData({ ...state.blockData, content: html });
+                    }
+                } catch (error) {
+                    utils.showError(`Preview update failed: ${error.message}`);
+                }
+            });
+        }
+
+        function validateUrlInput(input, errorElement) {
+            const value = input.value.trim();
+            const isValid = !value || utils.isValidUrl(value);
+            input.classList.toggle('error', !isValid);
+            if(errorElement) errorElement.style.display = isValid ? 'none' : 'block';
+            return isValid;
+        }
+
+        function initializeEventHandlers() {
+            state.eventListeners = [];
+
+            // Option selectors
+            function setupOptionSelector(selectorElement, dataKey) {
+                if (!selectorElement) return;
+                selectorElement.querySelectorAll('.option-button').forEach(option => {
+                    const handler = (e) => {
+                        const selectedValue = e.target.dataset.value;
+                        updateData(dataKey, selectedValue);
+                        selectorElement.querySelectorAll('.option-button').forEach(o => o.classList.remove('selected'));
+                        e.target.classList.add('selected');
+                    };
+                    option.addEventListener('click', handler);
+                    state.eventListeners.push({ element: option, event: 'click', handler });
+                });
+            }
+
+            setupOptionSelector(elements.backgroundColorSelector, 'backgroundColor');
+            setupOptionSelector(elements.buttonAlignmentSelector, 'buttonAlignment');
+
+            // Spacer toggle handlers
+            const topSpacerHandler = (e) => { updateData('showTopSpacer', e.target.checked); };
+            const bottomSpacerHandler = (e) => { updateData('showBottomSpacer', e.target.checked); };
+            elements.showTopSpacer.addEventListener('change', topSpacerHandler);
+            elements.showBottomSpacer.addEventListener('change', bottomSpacerHandler);
+            state.eventListeners.push({ element: elements.showTopSpacer, event: 'change', handler: topSpacerHandler });
+            state.eventListeners.push({ element: elements.showBottomSpacer, event: 'change', handler: bottomSpacerHandler });
+
+            // Button URL input
+            const urlHandler = (e) => {
+                if (validateUrlInput(elements.buttonUrl, elements.buttonUrlError)) {
+                    debouncedUpdateData('buttonUrl', e.target.value.trim());
+                }
+            };
+            const urlBlurHandler = () => validateUrlInput(elements.buttonUrl, elements.buttonUrlError);
+            elements.buttonUrl.addEventListener('input', urlHandler);
+            elements.buttonUrl.addEventListener('blur', urlBlurHandler);
+            state.eventListeners.push({ element: elements.buttonUrl, event: 'input', handler: urlHandler });
+            state.eventListeners.push({ element: elements.buttonUrl, event: 'blur', handler: urlBlurHandler });
+
+            // Copy/paste configuration handlers
+            const copyHandler = () => copyConfiguration();
+            const pasteHandler = () => pasteConfiguration();
+            document.getElementById('copyConfigBtn').addEventListener('click', copyHandler);
+            document.getElementById('pasteConfigBtn').addEventListener('click', pasteHandler);
+            state.eventListeners.push({ element: document.getElementById('copyConfigBtn'), event: 'click', handler: copyHandler });
+            state.eventListeners.push({ element: document.getElementById('pasteConfigBtn'), event: 'click', handler: pasteHandler });
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                module: moduleConfig.name,
+                version: '1.0',
+                data: state.blockData
+            };
+
+            const configString = JSON.stringify(configData, null, 2);
+            
+            // Create temporary textarea for copying
+            const textarea = document.createElement('textarea');
+            textarea.value = configString;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const btn = document.getElementById('copyConfigBtn');
+                const originalHTML = btn.innerHTML;
+                
+                // Show success state with checkmark
+                btn.classList.add('success');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" style="fill:#28a745;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                
+                setTimeout(() => {
+                    btn.classList.add('fade-out');
+                    setTimeout(() => {
+                        btn.classList.remove('success', 'fade-out');
+                        btn.innerHTML = originalHTML;
+                    }, 500);
+                }, 1500);
+                
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                utils.showError('Failed to copy configuration to clipboard');
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const textarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            
+            let pasteListener, keydownListener, clickListener, cancelListener;
+            
+            const cleanup = () => {
+                modal.classList.remove('show');
+                textarea.value = '';
+                textarea.blur();
+                
+                if (pasteListener) textarea.removeEventListener('paste', pasteListener);
+                if (keydownListener) document.removeEventListener('keydown', keydownListener);
+                if (clickListener) modal.removeEventListener('click', clickListener);
+                if (cancelListener) cancelBtn.removeEventListener('click', cancelListener);
+            };
+            
+            // Handle paste event
+            pasteListener = (e) => {
+                e.preventDefault();
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                
+                try {
+                    const configData = JSON.parse(pastedText);
+                    
+                    if (!configData.module || configData.module !== moduleConfig.name) {
+                        utils.showError(`Invalid configuration. This appears to be from "${configData.module || 'Unknown'}" but this is a ${moduleConfig.name}.`);
+                        cleanup();
+                        return;
+                    }
+                    
+                    if (!configData.data) {
+                        utils.showError('Invalid configuration format: missing data');
+                        cleanup();
+                        return;
+                    }
+                    
+                    state.blockData = configData.data;
+                    
+                    // Update UI
+                    elements.backgroundColorSelector.querySelectorAll('.option-button').forEach(btn => {
+                        btn.classList.toggle('selected', btn.dataset.value === state.blockData.backgroundColor);
+                    });
+                    elements.buttonAlignmentSelector.querySelectorAll('.option-button').forEach(btn => {
+                        btn.classList.toggle('selected', btn.dataset.value === state.blockData.buttonAlignment);
+                    });
+                    elements.showTopSpacer.checked = state.blockData.showTopSpacer;
+                    elements.showBottomSpacer.checked = state.blockData.showBottomSpacer;
+                    elements.buttonUrl.value = state.blockData.buttonUrl || '';
+                    
+                    // Update Quill editor
+                    if (state.editors.buttonText && state.blockData.buttonText) {
+                        state.editors.buttonText.root.innerHTML = state.blockData.buttonText;
+                    }
+                    
+                    updateDataFromUI();
+                    
+                    cleanup();
+                    
+                    // Visual feedback
+                    const btn = document.getElementById('pasteConfigBtn');
+                    const originalHTML = btn.innerHTML;
+                    
+                    btn.classList.add('success');
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" style="fill:#28a745;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        btn.classList.add('fade-out');
+                        setTimeout(() => {
+                            btn.classList.remove('success', 'fade-out');
+                            btn.innerHTML = originalHTML;
+                        }, 500);
+                    }, 1500);
+                    
+                } catch (err) {
+                    console.error('Paste error:', err);
+                    utils.showError('Failed to paste configuration. Please ensure you copied valid configuration data.');
+                    cleanup();
+                }
+            };
+            
+            // Handle keyboard shortcuts
+            keydownListener = (e) => {
+                if (e.key === 'Escape') {
+                    cleanup();
+                } else if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Paste event will be handled by the paste listener
+                    // This just ensures the textarea is focused
+                }
+            };
+            
+            // Handle click outside modal
+            clickListener = (e) => {
+                if (e.target === modal) {
+                    cleanup();
+                }
+            };
+            
+            // Handle cancel button
+            cancelListener = () => {
+                cleanup();
+            };
+            
+            // Add event listeners
+            textarea.addEventListener('paste', pasteListener);
+            document.addEventListener('keydown', keydownListener);
+            modal.addEventListener('click', clickListener);
+            cancelBtn.addEventListener('click', cancelListener);
+            
+            // Show modal and focus textarea
+            modal.classList.add('show');
+            setTimeout(() => textarea.focus(), 100);
+        }
+
+        function updateDataFromUI() {
+            // Update all fields and refresh preview
+            state.blockData.backgroundColor = elements.backgroundColorSelector.querySelector('.option-button.selected')?.dataset.value || moduleConfig.fields.backgroundColor.defaultValue;
+            state.blockData.buttonAlignment = elements.buttonAlignmentSelector.querySelector('.option-button.selected')?.dataset.value || moduleConfig.fields.buttonAlignment.defaultValue;
+            state.blockData.showTopSpacer = elements.showTopSpacer.checked;
+            state.blockData.showBottomSpacer = elements.showBottomSpacer.checked;
+            state.blockData.buttonUrl = elements.buttonUrl.value.trim();
+            if (state.editors.buttonText) {
+                state.blockData.buttonText = state.editors.buttonText.root.innerHTML;
+            }
+            refreshPreview();
+        }
+
+        function loadData() {
+            if (!state.sdk || !state.sdk.getData) return utils.showError('SDK not available');
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    state.blockData = {};
+                    if (data && Object.keys(data).length > 0) {
+                        Object.keys(moduleConfig.fields).forEach(key => {
+                            if (data.hasOwnProperty(key)) {
+                                state.blockData[key] = moduleConfig.fields[key].type === 'richtext' ? utils.sanitizeHtml(data[key]) : data[key];
+                            }
+                        });
+                    }
+
+                    // Populate UI
+                    function setSelectorState(selectorElement, dataKey) {
+                        const value = utils.getFieldValue(dataKey);
+                        selectorElement.querySelectorAll('.option-button').forEach(o => {
+                            o.classList.toggle('selected', o.dataset.value === value);
+                        });
+                    }
+
+                    setSelectorState(elements.backgroundColorSelector, 'backgroundColor');
+                    setSelectorState(elements.buttonAlignmentSelector, 'buttonAlignment');
+
+                    if (elements.buttonUrl) elements.buttonUrl.value = utils.getFieldValue('buttonUrl');
+                    
+                    // Set spacer toggle states
+                    elements.showTopSpacer.checked = utils.getFieldValue('showTopSpacer');
+                    elements.showBottomSpacer.checked = utils.getFieldValue('showBottomSpacer');
+
+                    // Updated for Quill 2.0 - use clipboard.dangerouslyPasteHTML for setting HTML content
+                    if (state.editors.buttonText) {
+                        const content = utils.getFieldValue('buttonText');
+                        try {
+                            // Clear existing content first
+                            state.editors.buttonText.setContents([]);
+                            // Use the new clipboard API to paste HTML content
+                            if (content && content.trim()) {
+                                state.editors.buttonText.clipboard.dangerouslyPasteHTML(content);
+                            }
+                        } catch (error) {
+                            // Fallback to root innerHTML for compatibility
+                            console.warn(`Using fallback method for buttonText editor:`, error);
+                            state.editors.buttonText.root.innerHTML = content || '';
+                        }
+                    }
+
+                    refreshPreview();
+                    state.retryCount = 0;
+                } catch (error) {
+                    utils.showError(`Failed to load data: ${error.message}`);
+                    Object.keys(moduleConfig.fields).forEach(key => { 
+                        state.blockData[key] = moduleConfig.fields[key].defaultValue; 
+                    });
+                    refreshPreview();
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+        }
+
+        function cleanup() {
+            QuillConfigManager.cleanup(Object.values(state.editors));
+            state.eventListeners.forEach(({ element, event, handler }) => {
+                if (element && element.removeEventListener) element.removeEventListener(event, handler);
+            });
+            state.eventListeners = [];
+        }
+
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                if (!window.Quill) throw new Error('Quill not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEditors();
+                initializeEventHandlers();
+                loadData();
+
+                window.addEventListener('beforeunload', cleanup);
+                document.addEventListener('visibilitychange', () => {
+                    if (!document.hidden && state.isInitialized) loadData();
+                });
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialisation failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) {
+                    state.retryCount++;
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount);
+                } else {
+                    utils.showError('Failed to initialise after multiple attempts. Please refresh.', true);
+                }
+                setLoadingState(false);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeWithRetry);
+        } else {
+            initializeWithRetry();
+        }
+    </script>
+
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+</body>
+</html>

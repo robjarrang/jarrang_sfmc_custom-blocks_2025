@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Product Feature Block</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.checkbox-label{cursor:pointer;user-select:none;font-size:14px;color:#333}.disabled-field{opacity:0.5;pointer-events:none}.toggle-container{display:flex;align-items:center;gap:10px;margin-bottom:15px}.toggle-switch{position:relative;display:inline-block;width:48px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:.3s;border-radius:24px}.toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked + .toggle-slider{background-color:#0074d9}input:checked + .toggle-slider:before{transform:translateX(24px)}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:60px;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+
+        /* -- NEW STYLES FOR FONT-SIZE CONTROL -- */
+        .field-group-inline { display: flex; align-items: center; justify-content: space-between; margin-top: 15px; margin-bottom: 10px; }
+        .field-group-inline .field-label { margin-bottom: 0; }
+        .field-group-inline .field-input { width: 80px; }
+
+        /* -- CONTENT TYPE SELECTOR -- */
+        .option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}
+
+        /* -- CHECKLIST STYLES -- */
+        .items-container{display:flex;flex-direction:column;gap:15px;contain:layout}
+        .item{background-color:#fafafa;padding:15px;border:1px solid #ddd;border-radius:6px;position:relative;contain:layout style paint}
+        .item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+        .item-title{font-weight:bold;font-size:16px;margin:0}
+        .item-controls{display:flex;gap:8px}
+        .item-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}
+        .item-control-btn:hover{color:#0074d9}
+        .item-control-btn:disabled{color:#ccc;cursor:not-allowed}
+        .btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-item-btn{margin-top:20px}
+
+        /* Copy/Paste Configuration */
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-tool-btn{background:none;border:1px solid #ddd;border-radius:4px;padding:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+        .config-tool-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-tool-btn svg{width:20px;height:20px;fill:#555}
+        .config-tool-btn:hover svg{fill:#0074d9}
+        .config-tool-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-tool-btn.success svg{fill:#28a745}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-tool-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Product Feature</h2>
+
+        <div class="error-banner" id="errorBanner"></div>
+
+        <!-- Copy/Paste Tools -->
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </button>
+        </div>
+
+        <!-- Product Settings -->
+        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+            <div class="section-title">Product Settings</div>
+            <div class="field-group">
+                <label for="productImage" class="field-label">Product Image URL</label>
+                <input type="url" id="productImage" class="field-input" placeholder="https://example.com/product-image.jpg">
+                <div class="field-error" id="productImageError">Please enter a valid image URL (http:// or https://)</div>
+            </div>
+            <div class="field-group">
+                <label for="productImageAlt" class="field-label">Product Image Alt Text</label>
+                <input type="text" id="productImageAlt" class="field-input" placeholder="Product name or description">
+            </div>
+            <div class="field-group">
+                <label for="productUrl" class="field-label">Product Link URL</label>
+                <input type="url" id="productUrl" class="field-input" placeholder="https://www.milwaukeetool.eu/product-page">
+                <div class="field-error" id="productUrlError">Please enter a valid URL (http:// or https://)</div>
+            </div>
+        </div>
+
+        <!-- Content Settings -->
+        <div class="section-divider">
+            <div class="section-title">Product Information</div>
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="showSubtitle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <label for="showSubtitle" class="checkbox-label">Show Subtitle</label>
+            </div>
+            <div class="field-group" id="subtitleGroup">
+                <label for="subtitle" class="field-label">Subtitle</label>
+                <input type="text" id="subtitle" class="field-input" placeholder="M12 FHAC16-502X">
+                 <!-- NEW: Subtitle Font Size Control -->
+                <div class="field-group-inline">
+                    <label for="subtitleFontSize" class="field-label">Subtitle Font Size (px)</label>
+                    <input type="number" id="subtitleFontSize" class="field-input" min="12" max="28" step="4">
+                </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Product Title</label>
+                <div id="productTitleEditor" class="quill-container limited-toolbar"></div>
+                 <!-- NEW: Product Title Font Size Control -->
+                <div class="field-group-inline">
+                    <label for="productTitleFontSize" class="field-label">Title Font Size (px)</label>
+                    <input type="number" id="productTitleFontSize" class="field-input" min="16" max="48" step="4">
+                </div>
+            </div>
+
+            <!-- Content Type Selection -->
+            <div class="field-group">
+                <label class="field-label">Additional Content Type</label>
+                <div class="option-selector" id="contentTypeSelector">
+                    <div class="option-button selected" data-value="none">None</div>
+                    <div class="option-button" data-value="checklist">Checklist</div>
+                </div>
+            </div>
+
+            <!-- Checklist Content -->
+            <div class="field-group" id="checklistGroup" style="display: none;">
+                <label class="field-label">Checklist Items</label>
+                <div id="itemsContainer" class="items-container"></div>
+                <button id="addItemBtn" class="btn add-item-btn">Add New Item</button>
+            </div>
+        </div>
+
+        <!-- Button Settings -->
+        <div class="section-divider">
+            <div class="section-title">Button Settings</div>
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="showButton" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+                <label for="showButton" class="checkbox-label">Show Button</label>
+            </div>
+            <div id="buttonFieldsGroup">
+                <div class="field-group">
+                    <label for="buttonTextEditor" class="field-label">Button Text</label>
+                    <div id="buttonTextEditor" class="quill-container limited-toolbar"></div>
+                </div>
+                <div class="field-group">
+                    <label for="buttonUrl" class="field-label">Button Link URL</label>
+                    <input type="url" id="buttonUrl" class="field-input" placeholder="https://www.milwaukeetool.eu/">
+                    <div class="field-error" id="buttonUrlError">Please enter a valid URL (http:// or https://)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paste Modal -->
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+    <template id="itemTemplate">
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Item</h3>
+                <div class="item-controls">
+                    <button class="item-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="item-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="item-control-btn remove-btn" title="Remove Item">×</button>
+                </div>
+            </div>
+            <div class="quill-container limited-toolbar"></div>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        // Module configuration
+        const moduleConfig = {
+            name: 'Product Feature',
+            fields: {
+                productImage: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/94f338b3-df31-41a4-abf8-7cf8d84d5f91.png', validator: 'url' },
+                productImageAlt: { type: 'text', defaultValue: 'Product Image', maxLength: 200 },
+                productUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/', validator: 'url' },
+                showSubtitle: { type: 'boolean', defaultValue: true },
+                subtitle: { type: 'text', defaultValue: 'M12 FHAC16-502X', maxLength: 50 },
+                subtitleFontSize: { type: 'number', defaultValue: 16 }, // NEW
+                productTitle: { type: 'richtext', defaultValue: 'M12™ FUEL COMPACT 16 MM SDS-PLUS HAMMER', maxLength: 200 },
+                productTitleFontSize: { type: 'number', defaultValue: 24 }, // NEW
+                contentType: { type: 'text', defaultValue: 'none' },
+                checklistItems: {
+                    type: 'list',
+                    defaultValue: [
+                        { id: crypto.randomUUID(), text: '<strong>Key Feature One</strong>' },
+                        { id: crypto.randomUUID(), text: '<strong>Key Feature Two</strong>' },
+                        { id: crypto.randomUUID(), text: '<strong>Key Feature Three</strong>' }
+                    ]
+                },
+                showButton: { type: 'boolean', defaultValue: true },
+                buttonText: { type: 'text', defaultValue: 'Learn More', maxLength: 50 },
+                buttonUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/', validator: 'url' }
+            },
+            debounceDelay: 300,
+            maxRetries: 3
+        };
+
+        const state = { 
+            sdk: null, 
+            editors: {}, 
+            blockData: {}, 
+            isLoading: false, 
+            isInitialized: false, 
+            eventListeners: [], 
+            retryCount: 0 
+        };
+        const elements = {};
+        let rafId = null;
+
+        const utils = {
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => { clearTimeout(timeout); func.apply(this, args); };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+            isValidUrl(string) {
+                if (!string || string.trim() === '') return true;
+                try {
+                    const url = new URL(string);
+                    return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch (_) { return false; }
+            },
+            sanitizeHtml(html) {
+                if (!html) return '';
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                temp.querySelectorAll('script, style').forEach(el => el.remove());
+                const allElements = temp.getElementsByTagName('*');
+                for (let el of allElements) { 
+                    for (let attr of el.attributes) { 
+                        if (attr.name.startsWith('on')) el.removeAttribute(attr.name); 
+                    } 
+                }
+                return temp.innerHTML;
+            },
+            showError(message, permanent = false) {
+                const errorBanner = elements.errorBanner;
+                if (errorBanner) {
+                    errorBanner.textContent = message;
+                    errorBanner.classList.add('show');
+                    if (!permanent) setTimeout(() => errorBanner.classList.remove('show'), 5000);
+                }
+                console.error('Product Feature Error:', message);
+            },
+            getFieldValue(fieldName) {
+                const value = state.blockData[fieldName];
+                const fieldConfig = moduleConfig.fields[fieldName];
+                if (value !== undefined && value !== null) {
+                    return fieldConfig.type === 'number' ? parseFloat(value) : value;
+                }
+                return fieldConfig.defaultValue;
+            },
+            createChecklistEditor(container, id, content = '') {
+                // Create editor with line break support for checklist items
+                const editor = new Quill(container, {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [
+                            ['bold', 'italic'],
+                            ['link']
+                        ],
+                        clipboard: { 
+                            matchVisual: false,
+                            // Preserve line breaks in clipboard
+                            matchers: [
+                                // Convert non-breaking spaces to regular spaces
+                                [Node.TEXT_NODE, function(node, delta) {
+                                    if (typeof node.data === 'string') {
+                                        const text = node.data.replace(/\u00A0/g, ' ').replace(/&nbsp;/g, ' ');
+                                        return new (window.Quill.import('delta'))().insert(text);
+                                    }
+                                    return delta;
+                                }]
+                            ]
+                        }
+                    },
+                    placeholder: 'List item text...'
+                });
+
+                // Set content if provided
+                if (content && content.trim()) {
+                    try {
+                        editor.clipboard.dangerouslyPasteHTML(0, content);
+                    } catch (error) {
+                        console.warn('Error setting checklist editor content:', error);
+                        editor.setText(content);
+                    }
+                }
+
+                return editor;
+            },
+            addEventListenerTracked(element, event, handler) {
+                element.addEventListener(event, handler);
+                state.eventListeners.push({ element, event, handler });
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.productImage = document.getElementById('productImage');
+            elements.productImageError = document.getElementById('productImageError');
+            elements.productImageAlt = document.getElementById('productImageAlt');
+            elements.productUrl = document.getElementById('productUrl');
+            elements.productUrlError = document.getElementById('productUrlError');
+            elements.showSubtitle = document.getElementById('showSubtitle');
+            elements.subtitle = document.getElementById('subtitle');
+            elements.subtitleGroup = document.getElementById('subtitleGroup');
+            elements.subtitleFontSize = document.getElementById('subtitleFontSize'); // NEW
+            elements.productTitleEditor = document.getElementById('productTitleEditor');
+            elements.productTitleFontSize = document.getElementById('productTitleFontSize'); // NEW
+            elements.contentTypeSelector = document.getElementById('contentTypeSelector');
+            elements.checklistGroup = document.getElementById('checklistGroup');
+            elements.itemsContainer = document.getElementById('itemsContainer');
+            elements.addItemBtn = document.getElementById('addItemBtn');
+            elements.itemTemplate = document.getElementById('itemTemplate');
+            elements.showButton = document.getElementById('showButton');
+            elements.buttonFieldsGroup = document.getElementById('buttonFieldsGroup');
+            elements.buttonTextEditor = document.getElementById('buttonTextEditor');
+            elements.buttonUrl = document.getElementById('buttonUrl');
+            elements.buttonUrlError = document.getElementById('buttonUrlError');
+        }
+
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            if (elements.mainContainer && elements.loadingOverlay) {
+                elements.mainContainer.classList.toggle('loading', loading);
+                elements.loadingOverlay.classList.toggle('show', loading);
+            }
+        }
+
+        async function initializeEditors() {
+            try {
+                state.editors.productTitle = await QuillConfigManager.initializeEditor(
+                    elements.productTitleEditor, 
+                    'title', 
+                    {
+                        placeholder: 'Enter product title...',
+                        maxLength: moduleConfig.fields.productTitle.maxLength
+                    }
+                );
+
+                const productTitleUpdateHandler = QuillConfigManager.createUpdateHandler((delta, oldDelta, source) => {
+                    const content = QuillConfigManager.getCleanContent(state.editors.productTitle, true);
+                    updateData('productTitle', content);
+                }, moduleConfig.debounceDelay);
+
+                state.editors.productTitle.on('text-change', productTitleUpdateHandler);
+
+                state.editors.buttonText = await QuillConfigManager.initializeEditor(
+                    elements.buttonTextEditor, 
+                    'button', 
+                    {
+                        placeholder: 'Enter button text...',
+                        maxLength: moduleConfig.fields.buttonText.maxLength
+                    }
+                );
+
+                const buttonTextUpdateHandler = QuillConfigManager.createUpdateHandler((delta, oldDelta, source) => {
+                    const content = QuillConfigManager.getCleanContent(state.editors.buttonText, true);
+                    updateData('buttonText', content);
+                }, moduleConfig.debounceDelay);
+
+                state.editors.buttonText.on('text-change', buttonTextUpdateHandler);
+            } catch (error) { 
+                throw new Error(`Failed to initialize editors: ${error.message}`); 
+            }
+        }
+
+        function processRichText(html) {
+            return QuillConfigManager.sanitizeForEmail(html || '');
+        }
+
+        function updateData(field, value) {
+            if (state.blockData[field] != value) {
+                state.blockData[field] = value;
+                refreshPreview();
+            }
+        }
+
+        const debouncedUpdateData = utils.debounce(updateData, moduleConfig.debounceDelay);
+
+        function updateDataFromUI() {
+            const contentType = utils.getFieldValue('contentType');
+            
+            // Update checklist items if in checklist mode
+            if (contentType === 'checklist') {
+                const items = utils.getFieldValue('checklistItems');
+                const updatedItems = items.map(item => {
+                    const editor = state.editors[item.id];
+                    if (editor) {
+                        return { ...item, text: QuillConfigManager.getCleanContent(editor, true) };
+                    }
+                    return item;
+                });
+                state.blockData.checklistItems = updatedItems;
+            }
+
+            refreshPreview();
+        }
+
+        const debouncedUpdateDataFromUI = utils.debounce(updateDataFromUI, moduleConfig.debounceDelay);
+
+        function renderItemsUI() {
+            const items = utils.getFieldValue('checklistItems');
+
+            // Clean up existing editors first
+            const currentIds = new Set(items.map(i => i.id));
+            Object.keys(state.editors).forEach(id => {
+                if (id.startsWith('item-') && !currentIds.has(id.replace('item-', ''))) {
+                    if (state.editors[id] && state.editors[id].off) {
+                        state.editors[id].off('text-change');
+                    }
+                    delete state.editors[id];
+                }
+            });
+
+            // Use DocumentFragment for batch DOM operations
+            const fragment = document.createDocumentFragment();
+
+            items.forEach((item, index) => {
+                const itemElement = elements.itemTemplate.content.cloneNode(true);
+                const itemDiv = itemElement.querySelector('.item');
+                itemDiv.dataset.itemId = item.id;
+                itemDiv.dataset.itemIndex = index;
+
+                const titleElement = itemElement.querySelector('.item-title');
+                titleElement.textContent = `Item ${index + 1}`;
+
+                const editorContainer = itemElement.querySelector('.quill-container');
+                const editor = utils.createChecklistEditor(editorContainer, `item-${item.id}`, item.text);
+                
+                // Set up change handler
+                const updateHandler = utils.debounce(() => {
+                    debouncedUpdateDataFromUI();
+                }, moduleConfig.debounceDelay);
+                
+                editor.on('text-change', updateHandler);
+                state.editors[item.id] = editor;
+
+                fragment.appendChild(itemElement);
+            });
+
+            // Single DOM update
+            elements.itemsContainer.replaceChildren();
+            elements.itemsContainer.appendChild(fragment);
+        }
+
+        function generateTemplate() {
+            const productImage = utils.getFieldValue('productImage');
+            const productImageAlt = utils.getFieldValue('productImageAlt');
+            const productUrl = utils.getFieldValue('productUrl');
+            const showSubtitle = utils.getFieldValue('showSubtitle');
+            const subtitle = utils.getFieldValue('subtitle');
+            const subtitleSize = utils.getFieldValue('subtitleFontSize'); // UPDATED
+            const subtitleLineHeight = subtitleSize + 12; // UPDATED
+            const processedTitle = processRichText(utils.getFieldValue('productTitle'));
+            const titleSize = utils.getFieldValue('productTitleFontSize'); // UPDATED
+            const titleLineHeight = titleSize + 8; // UPDATED
+            const contentType = utils.getFieldValue('contentType');
+            const showButton = utils.getFieldValue('showButton');
+            const buttonText = utils.getFieldValue('buttonText');
+            const buttonUrl = utils.getFieldValue('buttonUrl');
+
+            const subtitleHtml = showSubtitle ? `<!-- Subtitle --><p class="mobile-text-center" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; margin: 0; text-align: center; font-size: ${subtitleSize}px; line-height: ${subtitleLineHeight}px; mso-hyphenate: none; hyphens: none;">${subtitle}</p>` : '';
+            
+            // Generate checklist content if selected
+            let checklistHtml = '';
+            if (contentType === 'checklist') {
+                const items = utils.getFieldValue('checklistItems');
+                const itemRowsHtml = items.map(item => `
+                    <tr>
+                       <td valign="top" style="padding-bottom: 8px;">
+                        <img alt="Checkmark" src="https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/73ad311a-bf28-4d11-b80d-d0da32b9d2b2.png" style="display: block; height: auto; outline: none; text-decoration: none;" width="20"></td>
+                       <td valign="top" style="width: 12px; padding-bottom: 8px;">&nbsp;</td>
+                       <td class="mobile-text-center" valign="top" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: normal; line-height: 24px; margin: 0; mso-line-height-rule: exactly; text-align: left; padding-bottom: 8px;">
+                        ${processRichText(item.text)}
+                       </td>
+                    </tr>
+                `).join('');
+                
+                checklistHtml = `<!-- Checklist --><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: 15px auto; display: inline-table; width: 100%;">${itemRowsHtml}</table>`;
+            }
+
+            // Simple logic: if there's a button or checklist, use natural h2 margin for spacing. If no button/checklist, add bottom margin.
+            const titleMargin = (showButton || contentType === 'checklist') ? '' : '0 0 20px 0';
+            const titleMarginStyle = titleMargin ? ` margin: ${titleMargin};` : '';
+            const buttonHtml = showButton ? `<!-- Button --><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;"><tr><td align="center" class="block" style="padding: 0; width: 100%;" valign="top"><table border="0" cellpadding="0" cellspacing="0" class="button-2-white" role="presentation" style="background-color: transparent; border: 2px solid #ffffff; border-collapse: separate; border-radius: 4px !important;"><tr><td align="center" style="border-radius: 4px !important; color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: bold; line-height: 28px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 20px; text-align: center; text-transform: uppercase; width: 100%;"><a href="${buttonUrl}" style="color: #ffffff; text-decoration: none;" target="_blank">${buttonText}</a></td></tr></table></td></tr></table>` : '';
+            
+            // Always include both top and bottom spacing to match original
+            const topSpacing = `<div style="clear: both; display: block; font-size: 20px; height: 20px; line-height: 20px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div>`;
+            const bottomSpacing = `<div style="font-size: 20px; line-height: 20px;">&nbsp;</div>`;
+
+            return `<!-- START .product-feature --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: #DB011C; width: 620px;"><tr><td class="side" style="width: 20px;">&nbsp;</td><td align="center" class="content-inner" style="width: 580px;"><table align="center" bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="background-color: #000000; padding: 10px; width: 100%;" width="100%"><tr><td class="block"><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="background-color: #000000; width: 100%;" width="100%"><tr><td class="block" style="padding: 0;"><!-- Product Image --><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;" width="100%"><tr><td><div><a href="${productUrl}" target="_blank"><img align="top" alt="${productImageAlt}" class="fill" src="${productImage}" style="border: none; display: block; height: auto; outline: none; text-decoration: none;" width="580"></a></div></td></tr></table><!-- Product Info --><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="padding: 15px 20px 30px; width: 100%;" width="100%"><tr><td>${topSpacing}</td></tr><tr><td align="center" class="block mobile-text-center" style="color: #ffffff; padding: 0 20px; text-align: center;">${subtitleHtml}<!-- Product Title --><h2 class="mobile-text-center" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_93 Blk E', sans-serif, 'Open-Sans'; text-align: center; font-size: ${titleSize}px; line-height: ${titleLineHeight}px;${titleMarginStyle} mso-hyphenate: none; hyphens: none;">${processedTitle}</h2>${checklistHtml}${buttonHtml}${bottomSpacing}</td></tr></table></td></tr></table></td></tr></table></td><td class="side" style="width: 20px;">&nbsp;</td></tr></table><!-- END .product-feature -->`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try {
+                    const html = generateTemplate();
+                    state.sdk.setContent(html);
+                    if (typeof state.sdk.setData === 'function') {
+                        state.sdk.setData({ ...state.blockData, content: html });
+                    }
+                } catch (error) { 
+                    utils.showError(`Preview update failed: ${error.message}`); 
+                }
+            });
+        }
+
+        function validateUrlInput(input, errorElement) {
+            const value = input.value.trim();
+            const isValid = !value || utils.isValidUrl(value);
+            input.classList.toggle('error', !isValid);
+            if (errorElement) errorElement.style.display = isValid ? 'none' : 'block';
+            return isValid;
+        }
+
+        function initializeEventHandlers() {
+            state.eventListeners = []; // Clear previous listeners
+
+            // Reusable input handler
+            function setupInputHandler(element, dataKey, maxLength, isUrl = false, errorElement = null) {
+                const handler = (e) => {
+                    let value = e.target.value;
+                    if (maxLength) value = value.substring(0, maxLength);
+                    e.target.value = value;
+                    if (isUrl && !validateUrlInput(element, errorElement)) return;
+                    debouncedUpdateData(dataKey, value.trim());
+                };
+                const blurHandler = isUrl ? () => validateUrlInput(element, errorElement) : null;
+                element.addEventListener('input', handler);
+                if(isUrl && blurHandler) element.addEventListener('blur', blurHandler);
+                state.eventListeners.push({ element, event: 'input', handler });
+                if(blurHandler) state.eventListeners.push({ element, event: 'blur', handler: blurHandler });
+            }
+
+            setupInputHandler(elements.productImage, 'productImage', null, true, elements.productImageError);
+            setupInputHandler(elements.productImageAlt, 'productImageAlt', moduleConfig.fields.productImageAlt.maxLength);
+            setupInputHandler(elements.productUrl, 'productUrl', null, true, elements.productUrlError);
+            setupInputHandler(elements.subtitle, 'subtitle', moduleConfig.fields.subtitle.maxLength);
+            setupInputHandler(elements.buttonUrl, 'buttonUrl', null, true, elements.buttonUrlError);
+
+            // Toggle handlers
+            function setupToggleHandler(toggleEl, groupEl, dataKey) {
+                const handler = (e) => {
+                    const isChecked = e.target.checked;
+                    updateData(dataKey, isChecked);
+                    groupEl.classList.toggle('disabled-field', !isChecked);
+                };
+                toggleEl.addEventListener('change', handler);
+                state.eventListeners.push({ element: toggleEl, event: 'change', handler });
+            }
+
+            setupToggleHandler(elements.showSubtitle, elements.subtitleGroup, 'showSubtitle');
+            setupToggleHandler(elements.showButton, elements.buttonFieldsGroup, 'showButton');
+
+            // Content Type Selector
+            function setupContentTypeSelector() {
+                const contentTypeHandler = (e) => {
+                    if (e.target.classList.contains('option-button')) {
+                        const value = e.target.dataset.value;
+                        
+                        // Update UI
+                        elements.contentTypeSelector.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
+                        e.target.classList.add('selected');
+                        
+                        // Show/hide checklist group
+                        elements.checklistGroup.style.display = value === 'checklist' ? 'block' : 'none';
+                        
+                        // If switching to checklist mode and items don't exist, render them
+                        if (value === 'checklist') {
+                            renderItemsUI();
+                        }
+                        
+                        updateData('contentType', value);
+                    }
+                };
+                elements.contentTypeSelector.addEventListener('click', contentTypeHandler);
+                state.eventListeners.push({ element: elements.contentTypeSelector, event: 'click', handler: contentTypeHandler });
+            }
+
+            setupContentTypeSelector();
+
+            // Checklist Management
+            const itemActions = {
+                '.remove-btn': (item, index, items, context) => {
+                    if (items.length > 1) {
+                        items.splice(index, 1);
+                        updateData('checklistItems', items);
+                        renderItemsUI();
+                    }
+                    return true;
+                },
+                '.move-up-btn': (item, index, items) => {
+                    if (index > 0) {
+                        [items[index - 1], items[index]] = [items[index], items[index - 1]];
+                        updateData('checklistItems', items);
+                        renderItemsUI();
+                    }
+                    return false;
+                },
+                '.move-down-btn': (item, index, items) => {
+                    if (index < items.length - 1) {
+                        [items[index], items[index + 1]] = [items[index + 1], items[index]];
+                        updateData('checklistItems', items);
+                        renderItemsUI();
+                    }
+                    return false;
+                }
+            };
+
+            function createDelegatedHandler(fieldName, actionMap) {
+                return (event) => {
+                    const target = event.target;
+                    const isAddBtn = target.id === 'addItemBtn';
+                    
+                    if (isAddBtn) {
+                        const items = [...utils.getFieldValue(fieldName)];
+                        items.push({ id: crypto.randomUUID(), text: '<strong>New Item</strong>' });
+                        updateData(fieldName, items);
+                        renderItemsUI();
+                        return;
+                    }
+
+                    // Handle item actions
+                    const itemElement = target.closest('.item');
+                    if (!itemElement) return;
+
+                    const itemId = itemElement.dataset.itemId;
+                    const itemIndex = parseInt(itemElement.dataset.itemIndex);
+                    const items = [...utils.getFieldValue(fieldName)];
+                    const item = items[itemIndex];
+
+                    if (!item) return;
+
+                    for (const [selector, action] of Object.entries(actionMap)) {
+                        if (target.matches(selector)) {
+                            action(item, itemIndex, items, { itemId, itemElement });
+                            break;
+                        }
+                    }
+                };
+            }
+
+            const checklistHandler = createDelegatedHandler('checklistItems', itemActions);
+            utils.addEventListenerTracked(elements.addItemBtn, 'click', checklistHandler);
+            utils.addEventListenerTracked(elements.itemsContainer, 'click', checklistHandler);
+
+            // --- START: ROBUST NUMBER INPUT HANDLER ---
+            function setupNumberInput(inputElement, dataKey) {
+                const step = 4;
+                const correctValueOnBlur = (e) => {
+                    const input = e.target;
+                    let value = parseInt(input.value, 10);
+                    const min = parseInt(input.min, 10);
+                    const max = parseInt(input.max, 10);
+                    if (isNaN(value)) value = moduleConfig.fields[dataKey].defaultValue;
+                    value = Math.max(min, Math.min(value, max));
+                    const correctedValue = Math.round(value / step) * step;
+                    input.value = correctedValue;
+                    updateData(dataKey, correctedValue);
+                };
+                const liveUpdateOnInput = (e) => {
+                    const value = parseInt(e.target.value, 10);
+                    if (!isNaN(value)) debouncedUpdateData(dataKey, value);
+                };
+                inputElement.addEventListener('input', liveUpdateOnInput);
+                inputElement.addEventListener('blur', correctValueOnBlur);
+                state.eventListeners.push({ element: inputElement, event: 'input', handler: liveUpdateOnInput });
+                state.eventListeners.push({ element: inputElement, event: 'blur', handler: correctValueOnBlur });
+            }
+
+            setupNumberInput(elements.subtitleFontSize, 'subtitleFontSize');
+            setupNumberInput(elements.productTitleFontSize, 'productTitleFontSize');
+            // --- END: ROBUST NUMBER INPUT HANDLER ---
+
+            // Copy/Paste configuration buttons
+            const copyConfigBtn = document.getElementById('copyConfigBtn');
+            const pasteConfigBtn = document.getElementById('pasteConfigBtn');
+            
+            if (copyConfigBtn) {
+                const copyHandler = () => copyConfiguration();
+                copyConfigBtn.addEventListener('click', copyHandler);
+                state.eventListeners.push({ element: copyConfigBtn, event: 'click', handler: copyHandler });
+            }
+            
+            if (pasteConfigBtn) {
+                const pasteHandler = () => pasteConfiguration();
+                pasteConfigBtn.addEventListener('click', pasteHandler);
+                state.eventListeners.push({ element: pasteConfigBtn, event: 'click', handler: pasteHandler });
+            }
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                version: '1.0',
+                module: moduleConfig.name,
+                timestamp: new Date().toISOString(),
+                data: state.blockData
+            };
+            
+            const copyBtn = document.getElementById('copyConfigBtn');
+            const jsonString = JSON.stringify(configData, null, 2);
+            
+            // Fallback method using textarea (works in iframes)
+            const textarea = document.createElement('textarea');
+            textarea.value = jsonString;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                if (successful) {
+                    // Visual feedback - green check
+                    copyBtn.classList.add('success');
+                    copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.add('fade-out');
+                        setTimeout(() => {
+                            copyBtn.classList.remove('success', 'fade-out');
+                            copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+                        }, 500);
+                    }, 1500);
+                    
+                    console.log('Block configuration copied to clipboard');
+                } else {
+                    throw new Error('Copy command failed');
+                }
+            } catch (err) {
+                document.body.removeChild(textarea);
+                utils.showError(`Failed to copy: ${err.message}`);
+                console.error('Copy error:', err);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const hiddenTextarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            const pasteBtn = document.getElementById('pasteConfigBtn');
+            const hintBox = document.getElementById('pasteModalHint');
+            const defaultHintText = 'The block will automatically update with the pasted settings';
+            
+            // Show modal
+            modal.classList.add('show');
+            hintBox.classList.remove('error');
+            hintBox.textContent = defaultHintText;
+            
+            // Focus hidden textarea to capture paste
+            setTimeout(() => {
+                hiddenTextarea.value = '';
+                hiddenTextarea.focus();
+            }, 100);
+            
+            // Close modal function
+            const closeModal = () => {
+                modal.classList.remove('show');
+                hiddenTextarea.value = '';
+                hiddenTextarea.blur();
+                hintBox.classList.remove('error');
+                hintBox.textContent = defaultHintText;
+            };
+            
+            // Close on background click
+            const handleBackgroundClick = (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            modal.addEventListener('click', handleBackgroundClick);
+            
+            // Close on Cancel
+            const handleCancel = () => {
+                closeModal();
+                cleanup();
+            };
+            cancelBtn.addEventListener('click', handleCancel);
+            
+            // Close on Escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
+            
+            // Cleanup function
+            const cleanup = () => {
+                document.removeEventListener('keydown', handleEscape);
+                document.removeEventListener('keydown', handlePaste);
+                cancelBtn.removeEventListener('click', handleCancel);
+                modal.removeEventListener('click', handleBackgroundClick);
+            };
+            
+            // Handle paste event
+            const handlePaste = (e) => {
+                // Only process if Ctrl/Cmd+V
+                if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Reset hint to default on new paste attempt
+                    hintBox.classList.remove('error');
+                    hintBox.textContent = defaultHintText;
+                    
+                    // Small delay to let paste complete
+                    setTimeout(() => {
+                        const text = hiddenTextarea.value.trim();
+                        
+                        if (!text) {
+                            hintBox.textContent = 'No configuration found in clipboard. Please copy a block configuration first.';
+                            hintBox.classList.add('error');
+                            return;
+                        }
+                        
+                        try {
+                            const importData = JSON.parse(text);
+                            
+                            // Validation checks
+                            if (!importData.data) {
+                                throw new Error('Invalid configuration format: missing data');
+                            }
+                            
+                            if (!importData.module) {
+                                throw new Error('Invalid configuration format: missing module name');
+                            }
+                            
+                            if (importData.module !== moduleConfig.name) {
+                                throw new Error(`Configuration mismatch: This is for "${importData.module}", but you're using "${moduleConfig.name}"`);
+                            }
+                            
+                            if (!importData.version) {
+                                throw new Error('Invalid configuration format: missing version');
+                            }
+                            
+                            // Validate that imported data has valid fields
+                            const validFields = Object.keys(moduleConfig.fields);
+                            const importedFields = Object.keys(importData.data);
+                            const hasValidFields = importedFields.some(field => validFields.includes(field));
+                            
+                            if (!hasValidFields) {
+                                throw new Error('Configuration contains no valid fields for this module');
+                            }
+                            
+                            // Merge imported data (only valid fields)
+                            validFields.forEach(key => {
+                                if (importData.data.hasOwnProperty(key)) {
+                                    let value = importData.data[key];
+                                    
+                                    // Ensure array fields have proper IDs
+                                    if (Array.isArray(value)) {
+                                        value = value.map(item => ({
+                                            ...item,
+                                            id: item.id || crypto.randomUUID()
+                                        }));
+                                    }
+                                    
+                                    state.blockData[key] = value;
+                                }
+                            });
+                            
+                            // Reload UI with imported data
+                            updateUIFromData();
+                            
+                            // Rebuild checklist items if in checklist mode
+                            const contentType = utils.getFieldValue('contentType');
+                            if (contentType === 'checklist') {
+                                renderItemsUI();
+                            }
+                            
+                            // Refresh the preview
+                            refreshPreview();
+                            
+                            // Close modal
+                            closeModal();
+                            cleanup();
+                            
+                            // Visual feedback - green check
+                            pasteBtn.classList.add('success');
+                            pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                            
+                            setTimeout(() => {
+                                pasteBtn.classList.add('fade-out');
+                                setTimeout(() => {
+                                    pasteBtn.classList.remove('success', 'fade-out');
+                                    pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>';
+                                }, 500);
+                            }, 1500);
+                            
+                            console.log('Block configuration pasted successfully');
+                            
+                        } catch (error) {
+                            // Show user-friendly error message in hint box
+                            let errorMsg = 'Failed to paste configuration';
+                            if (error.message.includes('mismatch')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('Invalid configuration')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('JSON')) {
+                                errorMsg = 'Clipboard does not contain valid block configuration. Please copy a block configuration first.';
+                            } else {
+                                errorMsg = error.message || 'An error occurred while pasting';
+                            }
+                            
+                            hintBox.textContent = errorMsg;
+                            hintBox.classList.add('error');
+                            console.error('Paste configuration error:', error);
+                        }
+                    }, 50);
+                }
+            };
+            
+            document.addEventListener('keydown', handlePaste);
+        }
+
+        function updateUIFromData() {
+            // Update text inputs
+            if (elements.productImage) elements.productImage.value = utils.getFieldValue('productImage');
+            if (elements.productImageAlt) elements.productImageAlt.value = utils.getFieldValue('productImageAlt');
+            if (elements.productUrl) elements.productUrl.value = utils.getFieldValue('productUrl');
+            if (elements.subtitle) elements.subtitle.value = utils.getFieldValue('subtitle');
+            if (elements.subtitleFontSize) elements.subtitleFontSize.value = utils.getFieldValue('subtitleFontSize');
+            if (elements.productTitleFontSize) elements.productTitleFontSize.value = utils.getFieldValue('productTitleFontSize');
+            if (elements.buttonUrl) elements.buttonUrl.value = utils.getFieldValue('buttonUrl');
+
+            // Update Quill editors
+            if (state.editors.productTitle) {
+                const content = utils.getFieldValue('productTitle');
+                try {
+                    state.editors.productTitle.setContents([]);
+                    if (content && content.trim()) {
+                        state.editors.productTitle.clipboard.dangerouslyPasteHTML(content);
+                    }
+                } catch (error) {
+                    console.warn(`Using fallback method for productTitle editor:`, error);
+                    state.editors.productTitle.root.innerHTML = content || '';
+                }
+            }
+
+            if (state.editors.buttonText) {
+                const content = utils.getFieldValue('buttonText');
+                try {
+                    state.editors.buttonText.setContents([]);
+                    if (content && content.trim()) {
+                        state.editors.buttonText.clipboard.dangerouslyPasteHTML(content);
+                    }
+                } catch (error) {
+                    console.warn(`Using fallback method for buttonText editor:`, error);
+                    state.editors.buttonText.root.innerHTML = content || '';
+                }
+            }
+
+            // Update toggles
+            const showSubtitle = utils.getFieldValue('showSubtitle');
+            if (elements.showSubtitle) elements.showSubtitle.checked = showSubtitle;
+            if (elements.subtitleGroup) elements.subtitleGroup.classList.toggle('disabled-field', !showSubtitle);
+
+            const showButton = utils.getFieldValue('showButton');
+            if (elements.showButton) elements.showButton.checked = showButton;
+            if (elements.buttonFieldsGroup) elements.buttonFieldsGroup.classList.toggle('disabled-field', !showButton);
+
+            // Update content type selector
+            const contentType = utils.getFieldValue('contentType');
+            if (elements.contentTypeSelector) {
+                elements.contentTypeSelector.querySelectorAll('.option-button').forEach(btn => {
+                    btn.classList.toggle('selected', btn.dataset.value === contentType);
+                });
+            }
+            if (elements.checklistGroup) {
+                elements.checklistGroup.style.display = contentType === 'checklist' ? 'block' : 'none';
+            }
+        }
+
+        function loadData() {
+            if (!state.sdk || typeof state.sdk.getData !== 'function') {
+                return utils.showError('SDK not available');
+            }
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    state.blockData = {}; // Reset block data
+                    const fields = moduleConfig.fields;
+                    Object.keys(fields).forEach(key => {
+                        if (data && data.hasOwnProperty(key)) {
+                            state.blockData[key] = (fields[key].type === 'richtext') ? utils.sanitizeHtml(data[key]) : data[key];
+                        } else {
+                            state.blockData[key] = fields[key].defaultValue;
+                        }
+                    });
+
+                    // Use centralized UI update function
+                    updateUIFromData();
+
+                    // Render checklist items if in checklist mode
+                    const contentType = utils.getFieldValue('contentType');
+                    if (contentType === 'checklist') {
+                        renderItemsUI();
+                    }
+
+                    refreshPreview();
+                    state.retryCount = 0;
+                } catch (error) {
+                    utils.showError(`Failed to load data: ${error.message}`);
+                    Object.keys(moduleConfig.fields).forEach(key => state.blockData[key] = moduleConfig.fields[key].defaultValue);
+                    refreshPreview();
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+        }
+
+        function cleanup() {
+            // Updated cleanup for Quill 2.0
+            Object.keys(state.editors).forEach(editorId => {
+                if (state.editors[editorId] && state.editors[editorId].off) {
+                    state.editors[editorId].off('text-change');
+                }
+            });
+            state.eventListeners.forEach(({ element, event, handler }) => {
+                if (element && typeof element.removeEventListener === 'function') element.removeEventListener(event, handler);
+            });
+            state.eventListeners = [];
+        }
+
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                if (!window.Quill) throw new Error('Quill not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEditors();
+                initializeEventHandlers();
+                loadData();
+
+                window.addEventListener('beforeunload', cleanup);
+                document.addEventListener('visibilitychange', () => { 
+                    if (!document.hidden && state.isInitialized) loadData(); 
+                });
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialisation failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) {
+                    state.retryCount++;
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount);
+                } else {
+                    utils.showError('Failed to initialise after multiple attempts. Please refresh.', true);
+                }
+                setLoadingState(false);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeWithRetry);
+        } else {
+            initializeWithRetry();
+        }
+    </script>
+</body>
+</html>

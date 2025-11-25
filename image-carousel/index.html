@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Carousel Block</title>
+    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.section-divider{margin-top:30px;padding-top:20px;border-top:2px solid #eee}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px;border-bottom:2px solid #eee;padding-bottom:10px}.slides-container{display:flex;flex-direction:column;gap:15px}.slide-item{background-color:#fafafa;padding:20px;border:1px solid #ddd;border-radius:6px;position:relative}.slide-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.slide-title{font-weight:bold;font-size:16px;margin:0}.slide-controls{display:flex;gap:8px}.slide-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.slide-control-btn:hover{color:#0074d9}.slide-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-slide-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-btn{width:36px;height:36px;background:none;border:1px solid #ddd;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s ease}
+        .config-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-btn svg{width:20px;height:20px;stroke:#666}
+        .config-btn:hover svg{stroke:#0074d9}
+        .config-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-btn.success svg{fill:#28a745;stroke:none}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Image Carousel</h2>
+        <div class="error-banner" id="errorBanner"></div>
+        
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-btn" title="Paste Configuration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+            </button>
+        </div>
+
+        <div class="section-title">Slides</div>
+        <div id="slidesContainer" class="slides-container">
+            <!-- Slides will be dynamically inserted here -->
+        </div>
+        <button id="addSlideBtn" class="btn add-slide-btn">Add New Slide</button>
+
+        <div class="section-divider">
+             <div class="section-title" style="border-bottom:none; margin-bottom:0;">Fallback Image Settings</div>
+             <p style="font-size:12px; color:#666; margin-top:0; margin-bottom:15px;">Optional: Provide a specific image for email clients that don't support carousels. If left blank, the first slide will be used as the fallback.</p>
+             <div class="field-group">
+                <label for="fallbackImageUrl" class="field-label">Fallback Image URL</label>
+                <input type="url" id="fallbackImageUrl" class="field-input" placeholder="https://example.com/fallback-image.jpg">
+                <div class="field-error">Please enter a valid image URL.</div>
+            </div>
+            <div class="field-group">
+                <label for="fallbackLinkUrl" class="field-label">Fallback Link URL</label>
+                <input type="url" id="fallbackLinkUrl" class="field-input" placeholder="https://example.com/fallback-link">
+                <div class="field-error">Please enter a valid link URL.</div>
+            </div>
+            <div class="field-group">
+                <label for="fallbackAltText" class="field-label">Fallback Image Alt Text</label>
+                <input type="text" id="fallbackAltText" class="field-input" placeholder="Fallback image description">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Template for a single slide's UI -->
+    <template id="slideTemplate">
+        <div class="slide-item">
+            <div class="slide-header">
+                <h3 class="slide-title">Slide</h3>
+                <div class="slide-controls">
+                    <button class="slide-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="slide-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="slide-control-btn remove-btn" title="Remove Slide">×</button>
+                </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Image URL (620x350px)</label>
+                <input type="url" class="field-input" data-field="imageUrl" placeholder="https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/389ec28a-05d0-4898-b1e5-c511bf933683.gif">
+                <div class="field-error">Please enter a valid image URL.</div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Link URL</label>
+                <input type="url" class="field-input" data-field="linkUrl" placeholder="https://www.milwaukeetool.eu/">
+                <div class="field-error">Please enter a valid link URL.</div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Image Alt Text</label>
+                <input type="text" class="field-input" data-field="altText" placeholder="Descriptive text for accessibility">
+            </div>
+        </div>
+    </template>
+
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: 'Interactive Carousel',
+            fields: {
+                slides: {
+                    type: 'list',
+                    defaultValue: [
+                        { id: crypto.randomUUID(), imageUrl: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/8f8fcb7d-5b28-4a32-9317-622cdc709a95.gif', linkUrl: 'https://www.milwaukeetool.eu/', altText: 'Slide 1 Alt Text' },
+                        { id: crypto.randomUUID(), imageUrl: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/f4acdc16-1cff-4bbd-96f0-be46ad46f0dd.gif', linkUrl: 'https://www.milwaukeetool.eu/', altText: 'Slide 2 Alt Text' }
+                    ]
+                },
+                fallbackImageUrl: { type: 'url', defaultValue: '' },
+                fallbackLinkUrl: { type: 'url', defaultValue: '' },
+                fallbackAltText: { type: 'text', defaultValue: '' }
+            },
+            debounceDelay: 400,
+            maxRetries: 3
+        };
+
+        const state = { sdk: null, blockData: {}, isLoading: false, isInitialized: false, retryCount: 0, eventListeners: [] };
+        const elements = {};
+        let rafId = null;
+
+        // Advanced memory management
+        const slideMetadata = new WeakMap();
+        const cleanupRegistry = new FinalizationRegistry((heldValue) => {
+            console.log('Cleanup registry triggered for slide:', heldValue);
+        });
+
+        const utils = {
+            debounce(func, wait) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => func.apply(this, a), wait); }; },
+            isValidUrl(s) { if (!s || s.trim() === '') return true; try { const u = new URL(s); return u.protocol === 'http:' || u.protocol === 'https:'; } catch (e) { return false; } },
+            showError(msg, p = false) { console.error(msg); if(elements.errorBanner) { elements.errorBanner.textContent=msg; elements.errorBanner.classList.add('show'); if(!p) setTimeout(()=>elements.errorBanner.classList.remove('show'),5000); } },
+            getFieldValue(f) { const v = state.blockData[f]; return v !== undefined ? v : moduleConfig.fields[f].defaultValue; },
+
+            addEventListenerTracked(element, event, handler) {
+                element.addEventListener(event, handler);
+                state.eventListeners.push({ element, event, handler });
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.slidesContainer = document.getElementById('slidesContainer');
+            elements.addSlideBtn = document.getElementById('addSlideBtn');
+            elements.slideTemplate = document.getElementById('slideTemplate');
+            elements.fallbackImageUrl = document.getElementById('fallbackImageUrl');
+            elements.fallbackLinkUrl = document.getElementById('fallbackLinkUrl');
+            elements.fallbackAltText = document.getElementById('fallbackAltText');
+            elements.fallbackImageUrlError = elements.fallbackImageUrl.nextElementSibling;
+            elements.fallbackLinkUrlError = elements.fallbackLinkUrl.nextElementSibling;
+        }
+
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            elements.mainContainer.classList.toggle('loading', loading);
+            elements.loadingOverlay.classList.toggle('show', loading);
+        }
+
+        function updateDataFromUI() {
+            // Use DocumentFragment for efficient DOM operations and modern array methods
+            const newSlides = Array.from(
+                elements.slidesContainer.querySelectorAll('.slide-item'),
+                slideEl => {
+                    const id = slideEl.dataset.id;
+                    const imageUrl = slideEl.querySelector('[data-field="imageUrl"]').value;
+                    const linkUrl = slideEl.querySelector('[data-field="linkUrl"]').value;
+                    const altText = slideEl.querySelector('[data-field="altText"]').value;
+                    return { id, imageUrl, linkUrl, altText };
+                }
+            );
+
+            state.blockData.slides = newSlides;
+            state.blockData.fallbackImageUrl = elements.fallbackImageUrl.value;
+            state.blockData.fallbackLinkUrl = elements.fallbackLinkUrl.value;
+            state.blockData.fallbackAltText = elements.fallbackAltText.value;
+            refreshPreview();
+        }
+
+        const debouncedUpdateDataFromUI = utils.debounce(updateDataFromUI, moduleConfig.debounceDelay);
+
+        function renderSlidesUI() {
+            const slides = utils.getFieldValue('slides');
+
+            if (!slides || slides.length === 0) {
+                elements.slidesContainer.replaceChildren();
+                return;
+            }
+
+            // Use DocumentFragment for batch DOM operations
+            const fragment = document.createDocumentFragment();
+
+            slides.forEach((slide, index) => {
+                const slideFragment = elements.slideTemplate.content.cloneNode(true);
+                const slideEl = slideFragment.querySelector('.slide-item');
+                slideEl.dataset.id = slide.id;
+                slideEl.querySelector('.slide-title').textContent = `Slide ${index + 1}`;
+                slideEl.querySelector('[data-field="imageUrl"]').value = slide.imageUrl || '';
+                slideEl.querySelector('[data-field="linkUrl"]').value = slide.linkUrl || '';
+                slideEl.querySelector('[data-field="altText"]').value = slide.altText || '';
+
+                if(index === 0) slideEl.querySelector('.move-up-btn').disabled = true;
+                if(index === slides.length - 1) slideEl.querySelector('.move-down-btn').disabled = true;
+
+                fragment.appendChild(slideFragment);
+
+                // Track slide metadata
+                const metadata = { id: slide.id, index, element: slideEl };
+                slideMetadata.set(slideEl, metadata);
+                cleanupRegistry.register(slideEl, slide.id);
+            });
+
+            // Single DOM update
+            elements.slidesContainer.replaceChildren();
+            elements.slidesContainer.appendChild(fragment);
+        }
+
+        // Optimized Event Delegation with Action Maps
+        const slideActions = {
+            '.remove-btn': (slide, index, slides) => {
+                slides.splice(index, 1);
+                return true;
+            },
+            '.move-up-btn': (slide, index, slides) => {
+                if (index > 0) {
+                    [slides[index], slides[index - 1]] = [slides[index - 1], slides[index]];
+                    return true;
+                }
+                return false;
+            },
+            '.move-down-btn': (slide, index, slides) => {
+                if (index < slides.length - 1) {
+                    [slides[index], slides[index + 1]] = [slides[index + 1], slides[index]];
+                    return true;
+                }
+                return false;
+            },
+            '.duplicate-btn': (slide, index, slides) => {
+                const newSlide = { ...slide, id: crypto.randomUUID() };
+                slides.splice(index + 1, 0, newSlide);
+                return true;
+            }
+        };
+
+        function createDelegatedHandler(fieldName, actionMap) {
+            return (event) => {
+                // Handle add button clicks
+                if (event.target.closest('#addSlideBtn')) {
+                    const currentSlides = utils.getFieldValue(fieldName);
+                    const newSlides = [...currentSlides, { id: crypto.randomUUID(), imageUrl: '', linkUrl: '', altText: '' }];
+                    state.blockData[fieldName] = newSlides;
+                    renderSlidesUI();
+                    updateDataFromUI();
+                    return;
+                }
+
+                // Find the closest slide element
+                const slideEl = event.target.closest('.slide-item');
+                if (!slideEl) return;
+
+                const id = slideEl.dataset.id;
+                const currentSlides = state.blockData[fieldName];
+                const slideIndex = currentSlides.findIndex(s => s.id === id);
+
+                if (slideIndex === -1) return;
+
+                const slide = currentSlides[slideIndex];
+                let actionExecuted = false;
+
+                // Execute action using action map
+                for (const [selector, action] of Object.entries(actionMap)) {
+                    if (event.target.closest(selector)) {
+                        const result = action(slide, slideIndex, currentSlides);
+
+                        if (result) {
+                            actionExecuted = true;
+                            renderSlidesUI();
+                            updateDataFromUI();
+                        }
+                        break;
+                    }
+                }
+
+                if (!actionExecuted) {
+                    console.log('No matching action found for selector');
+                }
+            };
+        }
+
+        function initializeEventHandlers() {
+            // Use tracked event listeners
+            utils.addEventListenerTracked(elements.mainContainer, 'input', (e) => {
+                if(e.target.classList.contains('field-input')) {
+                    const input = e.target;
+                    const errorEl = input.nextElementSibling;
+                    if(input.type === 'url') {
+                        const isValid = utils.isValidUrl(input.value);
+                        input.classList.toggle('error', !isValid);
+                        if(errorEl) errorEl.style.display = isValid ? 'none' : 'block';
+                        if(!isValid) return;
+                    }
+                    debouncedUpdateDataFromUI();
+                }
+            });
+
+            // Optimized event delegation for slide items
+            const slideHandler = createDelegatedHandler('slides', slideActions);
+
+            utils.addEventListenerTracked(elements.addSlideBtn, 'click', slideHandler);
+            utils.addEventListenerTracked(elements.slidesContainer, 'click', slideHandler);
+
+            // Copy/Paste configuration buttons
+            const copyConfigBtn = document.getElementById('copyConfigBtn');
+            const pasteConfigBtn = document.getElementById('pasteConfigBtn');
+            
+            if (copyConfigBtn) {
+                copyConfigBtn.addEventListener('click', () => copyConfiguration());
+            }
+            
+            if (pasteConfigBtn) {
+                pasteConfigBtn.addEventListener('click', () => pasteConfiguration());
+            }
+        }
+
+        function updateUIFromData() {
+            // Ensure slides have IDs
+            if (state.blockData.slides) {
+                state.blockData.slides.forEach(s => { if (!s.id) s.id = crypto.randomUUID(); });
+            }
+
+            // Update fallback fields
+            elements.fallbackImageUrl.value = state.blockData.fallbackImageUrl || '';
+            elements.fallbackLinkUrl.value = state.blockData.fallbackLinkUrl || '';
+            elements.fallbackAltText.value = state.blockData.fallbackAltText || '';
+
+            // Render slides UI
+            renderSlidesUI();
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                version: '1.0',
+                module: moduleConfig.name,
+                timestamp: new Date().toISOString(),
+                data: state.blockData
+            };
+            
+            const copyBtn = document.getElementById('copyConfigBtn');
+            const jsonString = JSON.stringify(configData, null, 2);
+            
+            // Fallback method using textarea (works in iframes)
+            const textarea = document.createElement('textarea');
+            textarea.value = jsonString;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                if (successful) {
+                    // Visual feedback - green check
+                    copyBtn.classList.add('success');
+                    copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.add('fade-out');
+                        setTimeout(() => {
+                            copyBtn.classList.remove('success', 'fade-out');
+                            copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+                        }, 500);
+                    }, 1500);
+                    
+                    console.log('Block configuration copied to clipboard');
+                } else {
+                    throw new Error('Copy command failed');
+                }
+            } catch (err) {
+                document.body.removeChild(textarea);
+                utils.showError(`Failed to copy: ${err.message}`);
+                console.error('Copy error:', err);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const hiddenTextarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            const pasteBtn = document.getElementById('pasteConfigBtn');
+            const hintBox = document.getElementById('pasteModalHint');
+            const defaultHintText = 'The block will automatically update with the pasted settings';
+            
+            // Show modal
+            modal.classList.add('show');
+            hintBox.classList.remove('error');
+            hintBox.textContent = defaultHintText;
+            
+            // Focus hidden textarea to capture paste
+            setTimeout(() => {
+                hiddenTextarea.value = '';
+                hiddenTextarea.focus();
+            }, 100);
+            
+            // Close modal function
+            const closeModal = () => {
+                modal.classList.remove('show');
+                hiddenTextarea.value = '';
+                hiddenTextarea.blur();
+                hintBox.classList.remove('error');
+                hintBox.textContent = defaultHintText;
+            };
+            
+            // Close on background click
+            const handleBackgroundClick = (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            modal.addEventListener('click', handleBackgroundClick);
+            
+            // Close on Cancel
+            const handleCancel = () => {
+                closeModal();
+                cleanup();
+            };
+            cancelBtn.addEventListener('click', handleCancel);
+            
+            // Close on Escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
+            
+            // Cleanup function
+            const cleanup = () => {
+                document.removeEventListener('keydown', handleEscape);
+                document.removeEventListener('keydown', handlePaste);
+                cancelBtn.removeEventListener('click', handleCancel);
+                modal.removeEventListener('click', handleBackgroundClick);
+            };
+            
+            // Handle paste event
+            const handlePaste = (e) => {
+                // Only process if Ctrl/Cmd+V
+                if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Reset hint to default on new paste attempt
+                    hintBox.classList.remove('error');
+                    hintBox.textContent = defaultHintText;
+                    
+                    // Small delay to let paste complete
+                    setTimeout(() => {
+                        const text = hiddenTextarea.value.trim();
+                        
+                        if (!text) {
+                            hintBox.textContent = 'No configuration found in clipboard. Please copy a block configuration first.';
+                            hintBox.classList.add('error');
+                            return;
+                        }
+                        
+                        try {
+                            const importData = JSON.parse(text);
+                            
+                            // Validation checks
+                            if (!importData.data) {
+                                throw new Error('Invalid configuration format: missing data');
+                            }
+                            
+                            if (!importData.module) {
+                                throw new Error('Invalid configuration format: missing module name');
+                            }
+                            
+                            if (importData.module !== moduleConfig.name) {
+                                throw new Error(`Configuration mismatch: This is for "${importData.module}", but you're using "${moduleConfig.name}"`);
+                            }
+                            
+                            if (!importData.version) {
+                                throw new Error('Invalid configuration format: missing version');
+                            }
+                            
+                            // Validate that imported data has valid fields
+                            const validFields = Object.keys(moduleConfig.fields);
+                            const importedFields = Object.keys(importData.data);
+                            const hasValidFields = importedFields.some(field => validFields.includes(field));
+                            
+                            if (!hasValidFields) {
+                                throw new Error('Configuration contains no valid fields for this module');
+                            }
+                            
+                            // Merge imported data (only valid fields)
+                            validFields.forEach(key => {
+                                if (importData.data.hasOwnProperty(key)) {
+                                    let value = importData.data[key];
+                                    
+                                    // Ensure slides array has proper IDs
+                                    if (key === 'slides' && Array.isArray(value)) {
+                                        value = value.map(slide => ({
+                                            ...slide,
+                                            id: slide.id || crypto.randomUUID()
+                                        }));
+                                    }
+                                    
+                                    state.blockData[key] = value;
+                                }
+                            });
+                            
+                            // Reload UI with imported data
+                            updateUIFromData();
+                            
+                            // Refresh the preview
+                            refreshPreview();
+                            
+                            // Close modal
+                            closeModal();
+                            cleanup();
+                            
+                            // Visual feedback - green check
+                            pasteBtn.classList.add('success');
+                            pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                            
+                            setTimeout(() => {
+                                pasteBtn.classList.add('fade-out');
+                                setTimeout(() => {
+                                    pasteBtn.classList.remove('success', 'fade-out');
+                                    pasteBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>';
+                                }, 500);
+                            }, 1500);
+                            
+                            console.log('Block configuration pasted successfully');
+                            
+                        } catch (error) {
+                            // Show user-friendly error message in hint box
+                            let errorMsg = 'Failed to paste configuration';
+                            if (error.message.includes('mismatch')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('Invalid configuration')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('JSON')) {
+                                errorMsg = 'Clipboard does not contain valid block configuration. Please copy a block configuration first.';
+                            } else {
+                                errorMsg = error.message || 'An error occurred while pasting';
+                            }
+                            
+                            hintBox.textContent = errorMsg;
+                            hintBox.classList.add('error');
+                            console.error('Paste configuration error:', error);
+                        }
+                    }, 50);
+                }
+            };
+            
+            document.addEventListener('keydown', handlePaste);
+        }
+
+        function generateTemplate() {
+            const slides = utils.getFieldValue('slides');
+            if (!slides || slides.length === 0) {
+                return '<table align="center" style="width:620px; height:350px; background-color:#ccc;"><tr><td style="text-align:center;font-family:Arial,sans-serif;">Add slides to build your carousel.</td></tr></table>';
+            }
+
+            let fallbackImageUrl = utils.getFieldValue('fallbackImageUrl');
+            let fallbackLinkUrl = utils.getFieldValue('fallbackLinkUrl');
+            let fallbackAltText = utils.getFieldValue('fallbackAltText');
+
+            // Fallback logic remains the same: default to the first slide if fields are empty
+            if (!fallbackImageUrl && slides.length > 0) {
+                const firstSlide = slides[0];
+                fallbackImageUrl = firstSlide.imageUrl || '';
+                fallbackLinkUrl = firstSlide.linkUrl || '#';
+                fallbackAltText = firstSlide.altText || '';
+            }
+
+            const slideCount = slides.length;
+            const carouselSlidesWidth = slideCount * 100;
+            // FIX 1: Use the raw calculation for better precision, matching AMPscript's output more closely.
+            const carouselSlideWidth = 100 / slideCount; 
+
+            const radioInputs = slides.map((s, i) => `<input type="radio" name="carousel" id="slide${i + 1}" ${i === 0 ? 'checked="checked"' : ''} style="display: none !important; mso-hide: all !important;">`).join('\n        ');
+            const slideDivs = slides.map(s => `<div class="carousel-slide"><a href="${s.linkUrl || '#'}" target="_blank"><img src="${s.imageUrl || ''}" alt="${s.altText || ''}" width="620" height="350" style="display: block; width: 100%; height: 100%;"></a></div>`).join('\n            ');
+            const arrowLabels = Array.from({length: slideCount}, (_, i) => `<label for="slide${i + 1}" class="arrow-left"></label>\n            <label for="slide${i + 1}" class="arrow-right"></label>`).join('\n          ');
+            const dotLabels = Array.from({length: slideCount}, (_, i) => `<label for="slide${i + 1}"></label>`).join('\n            ');
+
+            const dynamicCSS = slides.map((s, i) => {
+                const slideNum = i + 1;
+                const transformX = i * carouselSlideWidth;
+                const prevSlide = slideNum - 1;
+                const nextSlide = slideNum + 1;
+                return `
+      #slide${slideNum}:checked ~ .carousel-container .carousel-slides {
+        transform: translateX(-${transformX}%);
+        -webkit-transform: translateX(-${transformX}%);
+      }
+      ${slideNum > 1 ? `
+      #slide${slideNum}:checked ~ .carousel-container .arrow-controls .arrow-left[for="slide${prevSlide}"] { display: block; }` : ''}
+      ${slideNum < slideCount ? `
+      #slide${slideNum}:checked ~ .carousel-container .arrow-controls .arrow-right[for="slide${nextSlide}"] { display: block; }` : ''}
+
+      #slide${slideNum}:checked ~ .carousel-container .progress-dots label[for="slide${slideNum}"] {
+        /* FIX 2: Corrected the active dot color to match the original. */
+        background-color: #DB011C;
+        border-color: rgba(0, 0, 0, 0.5);
+      }
+    `;
+            }).join('');
+
+            return `
+<!--[if !mso]><!-->
+<style type="text/css">
+/* Reset styles */
+body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+/* Hide radio buttons */
+input[type="radio"] {
+    display: none !important;
+    mso-hide: all !important;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 580px) {
+    .content-outer {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* Interactive carousel styles for supporting clients */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    /* Hide fallback content */
+    .fallback {
+        display: none !important;
+    }
+    
+    /* Show carousel */
+    .carousel-wrapper {
+        display: block !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+        width: 620px;
+        height: 350px;
+    }
+    
+    /* Carousel slides container */
+    .carousel-slides {
+        position: relative;
+        width: ${carouselSlidesWidth}%;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    }
+    
+    /* Individual slides */
+    .carousel-slide {
+        float: left;
+        width: ${carouselSlideWidth}%;
+        height: 100%;
+    }
+    
+    .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* Arrow controls */
+    .arrow-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        margin-top: -25px;
+        pointer-events: none;
+    }
+    
+    .arrow-controls label {
+        display: none;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        pointer-events: all;
+        transition: background-color 0.3s;
+    }
+    
+    .arrow-controls label:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    /* Arrow icons */
+    .arrow-controls label:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        margin: -6px 0 0 -4px;
+        border-top: 3px solid #ffffff;
+        border-right: 3px solid #ffffff;
+    }
+    
+    .arrow-left {
+        left: 20px;
+    }
+    
+    .arrow-left:before {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+    }
+    
+    .arrow-right {
+        right: 20px;
+    }
+    
+    .arrow-right:before {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        margin-left: -8px !important;
+    }
+    
+    /* Progress dots */
+    .progress-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+    
+    .progress-dots label {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #000000;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+    }
+    
+    .progress-dots label:hover {
+        background-color: #333333;
+    }
+    
+    /* --- DYNAMIC CSS GENERATED BY JAVASCRIPT --- */
+    ${dynamicCSS}
+    /* --- END DYNAMIC CSS --- */
+
+    @media only screen and (max-width: 620px) {
+        .carousel-container {
+            width: 100% !important;
+            height: auto !important;
+        }
+        
+        .carousel-container img {
+            height: auto !important;
+        }
+    }
+}
+
+/* Hide carousel from problematic clients */
+#MessageViewBody .fallback, body.MsgBody .fallback { display: block !important; }
+#MessageViewBody .carousel-wrapper, body.MsgBody .carousel-wrapper { display: none !important; }
+
+/* Outlook.com specific targeting */
+[class~="x_carousel-wrapper"] { display: none !important; }
+[class~="x_fallback"] { display: block !important; }
+
+/* FIX 3: Added the missing Yahoo-specific media query. */
+@media screen yahoo {
+    .fallback { display: block !important; max-height: none !important; }
+    .carousel-wrapper { display: none !important; max-height: 0 !important; overflow: hidden !important; }
+}
+</style>
+<!--<![endif]-->
+<!-- Separate style block for Outlook.com \\0 hack -->
+<style type="text/css">
+.carousel-wrapper\\0 { display: none !important; }
+.fallback\\0 { display: block !important; }
+</style>
+
+<!-- Full Width Image Carousel -->
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="width: 620px;">
+  <tr>
+    <td align="center" style="padding: 0;" valign="top">
+      
+      <!-- Interactive Carousel with Arrows -->
+      <!--[if !mso]><!-->
+      <div class="carousel-wrapper" style="display: none; max-height: 0; overflow: hidden;">
+        
+        <!-- Radio buttons for slide control (DYNAMIC) -->
+        ${radioInputs}
+
+        <div class="carousel-container">
+          <div class="carousel-slides">
+            
+            <!-- Slides (DYNAMIC) -->
+            ${slideDivs}
+
+          </div>
+          
+          <!-- Arrow Controls (DYNAMIC) -->
+          <div class="arrow-controls">
+            ${arrowLabels}
+          </div>
+          
+          <!-- Progress Dots (DYNAMIC) -->
+          <div class="progress-dots">
+            ${dotLabels}
+          </div>
+
+        </div>
+      </div>
+      <!--<![endif]-->
+      
+      <!-- Fallback Content (Shown by default) - Single Hero Image -->
+      <div class="fallback">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+          <tr>
+            <td align="center" style="padding: 0;">
+              <a href="${fallbackLinkUrl}" target="_blank">
+                <img src="${fallbackImageUrl}" alt="${fallbackAltText}" width="620" height="350" style="display: block; width: 100%; max-width: 620px; height: auto;">
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </td>
+
+  </tr>
+</table>`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try {
+                    const html = generateTemplate();
+                    state.sdk.setContent(html);
+
+                    // Save the data for persistence and for the Preview tab
+                    if (state.sdk.setData) {
+                        state.sdk.setData({ ...state.blockData, content: html });
+                    }
+                } catch (error) {
+                    utils.showError(`Preview update failed: ${error.message}`);
+                }
+            });
+        }
+
+        function loadData() {
+            if (!state.sdk) return utils.showError('SDK not available');
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    // When loading, prioritize the structured 'slides' data over saved 'content'
+                    state.blockData.slides = (data && data.slides && data.slides.length > 0) ? data.slides : utils.getFieldValue('slides');
+                    state.blockData.fallbackImageUrl = data?.fallbackImageUrl || '';
+                    state.blockData.fallbackLinkUrl = data?.fallbackLinkUrl || '';
+                    state.blockData.fallbackAltText = data?.fallbackAltText || '';
+
+                    updateUIFromData();
+                    refreshPreview();
+                    state.retryCount = 0;
+                } catch (error) {
+                    utils.showError(`Failed to load data: ${error.message}`);
+                    state.blockData = {}; // Reset to defaults on error
+                    renderSlidesUI();
+                    refreshPreview();
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+        }
+
+        // Enhanced cleanup function with memory management
+        function cleanup() {
+            // Clean up event listeners
+            state.eventListeners.forEach(({ element, event, handler }) => { 
+                if (element && element.removeEventListener) element.removeEventListener(event, handler); 
+            }); 
+            state.eventListeners = [];
+
+            // Cancel any pending RAF
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            // Clear slide metadata
+            slideMetadata.clear();
+
+            console.log('Image Carousel cleanup completed');
+        }
+
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEventHandlers();
+                loadData();
+
+                // Add cleanup on page unload
+                window.addEventListener('beforeunload', cleanup);
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialization failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) {
+                    state.retryCount++;
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount);
+                } else {
+                    utils.showError('Failed to initialize after multiple attempts. Please refresh.', true);
+                }
+                setLoadingState(false);
+            }
+        }
+
+        document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initializeWithRetry) : initializeWithRetry();
+    </script>
+</body>
+</html>

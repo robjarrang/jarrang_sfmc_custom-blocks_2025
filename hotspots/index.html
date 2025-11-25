@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Hotspots Block</title>
+    <style>
+        body{margin:0;padding:0;font-family:Arial,sans-serif;background-color:#ffffff}.container{max-width:800px;margin:0 auto;background:white;padding:20px;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box}.section-title{font-size:18px;font-weight:bold;color:#333;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #eee}.items-container{display:flex;flex-direction:column;gap:15px;max-height:400px;overflow-y:auto;padding-right:10px}.item{background-color:#fafafa;padding:15px;border:2px solid #ddd;border-radius:6px;position:relative;cursor:pointer;transition:border-color .2s, background-color .2s}.item.selected{border-color:#0074d9;background-color:#f0f8ff}.item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.item-title{font-weight:bold;font-size:16px;margin:0}.item-controls{display:flex;gap:8px}.item-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.item-control-btn:hover{color:#0074d9}.item-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-item-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-tool-btn{background:none;border:1px solid #ddd;border-radius:4px;padding:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+        .config-tool-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-tool-btn svg{width:20px;height:20px;fill:#555}
+        .config-tool-btn:hover svg{fill:#0074d9}
+        .config-tool-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-tool-btn.success svg{fill:#28a745}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-tool-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+        /* Visual Editor Styles */
+        #visualEditorWrapper{margin-top:20px}#visualEditor{position:relative;cursor:crosshair;background-color:#f0f0f0;border:1px solid #ccc;min-height:200px}#previewImage{display:block;width:100%;height:auto}#visualEditor .hotspot-marker{position:absolute;width:24px;height:24px;background-image:url('https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/ba4b84d2-b601-42a6-a8e3-e2f32eb1100c.png');background-size:cover;transform:translate(-50%, -50%);border-radius:50%;box-shadow:0 0 0 3px rgba(255,0,0,0.7);cursor:pointer}#visualEditor .hotspot-marker.selected{box-shadow:0 0 0 3px rgba(0,116,217,1);z-index:10}
+        /* Keyboard controls hint */
+        .keyboard-hint{background:#e3f2fd;border:1px solid #90caf9;border-radius:4px;padding:10px 12px;margin-bottom:15px;font-size:13px;color:#1976d2;display:none;align-items:center;gap:8px}.keyboard-hint.show{display:flex}.keyboard-hint svg{width:16px;height:16px;fill:#1976d2;flex-shrink:0}.keyboard-hint-text{line-height:1.4}
+        /* Tooltip Position Selector Styles */
+        .position-selector{display:grid;grid-template-columns:repeat(3, 1fr);gap:5px;width:100px;margin-top:5px}.position-button{width:30px;height:30px;border:1px solid #ccc;border-radius:4px;background-color:#fff;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}.position-button:hover{background-color:#e9e9e9}.position-button.selected{background-color:#0074d9;border-color:#005a9e}.position-button .dot{width:6px;height:6px;background-color:#333;border-radius:50%}.position-button.selected .dot{background-color:#fff}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Hotspots Module</h2>
+
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </button>
+        </div>
+
+        <div class="section-title">Global Settings</div>
+        <div class="field-group"><label for="backgroundImageUrl" class="field-label">Interactive Background Image URL</label><input type="url" id="backgroundImageUrl" class="field-input"></div>
+        <div class="field-group"><label for="fallbackImageUrl" class="field-label">Fallback Image URL</label><input type="url" id="fallbackImageUrl" class="field-input"></div>
+        <div class="field-group"><label for="fallbackLinkUrl" class="field-label">Fallback Image Link URL</label><input type="url" id="fallbackLinkUrl" class="field-input"></div>
+
+        <div class="section-title">Visual Editor</div>
+        <div class="keyboard-hint" id="keyboardHint">
+            <svg viewBox="0 0 24 24"><path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/></svg>
+            <span class="keyboard-hint-text"><strong>Tip:</strong> Use arrow keys to fine-tune hotspot position. Hold <strong>Shift</strong> for larger movements.</span>
+        </div>
+        <p style="font-size:13px; color:#666; margin-top:-10px; margin-bottom:15px;">Select a hotspot from the list below, then click on the image to set its position.</p>
+        <div id="visualEditorWrapper"><div id="visualEditor"><img id="previewImage" src="" alt="Image Preview"></div></div>
+
+        <!-- THE FIX: The "Add New Hotspot" button has been moved here -->
+        <button id="addItemBtn" class="btn add-item-btn">Add New Hotspot</button>
+
+        <div class="section-title" style="margin-top: 20px;">Hotspots</div>
+        <div id="itemsContainer" class="items-container"></div>
+    </div>
+
+    <!-- Template for a single hotspot item's UI -->
+    <template id="itemTemplate">
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Hotspot</h3>
+                <div class="item-controls">
+                    <button class="item-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="item-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="item-control-btn remove-btn" title="Remove Item">×</button>
+                </div>
+            </div>
+            <div class="field-group"><label class="field-label">Tooltip Text</label><input type="text" class="field-input" data-field="text"></div>
+            <div class="field-group"><label class="field-label">Font Size (px)</label><input type="number" class="field-input" data-field="fontSize" min="10" max="40" value="20"></div>
+            <div class="field-group" style="margin-bottom:0;"><label class="field-label">Tooltip Position</label>
+                <div class="position-selector">
+                    <button class="position-button" data-position="top-left"><div class="dot"></div></button>
+                    <button class="position-button" data-position="top"><div class="dot"></div></button>
+                    <button class="position-button" data-position="top-right"><div class="dot"></div></button>
+                    <button class="position-button" data-position="left"><div class="dot"></div></button>
+                    <button class="position-button" data-position="center"><div class="dot"></div></button>
+                    <button class="position-button" data-position="right"><div class="dot"></div></button>
+                    <button class="position-button" data-position="bottom-left"><div class="dot"></div></button>
+                    <button class="position-button" data-position="bottom"><div class="dot"></div></button>
+                    <button class="position-button" data-position="bottom-right"><div class="dot"></div></button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: 'Hotspots',
+            fields: {
+                backgroundImageUrl: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/723acaf7-6e04-48f7-9bf6-cce69ec81b2f.png' },
+                fallbackImageUrl: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/723acaf7-6e04-48f7-9bf6-cce69ec81b2f.png' },
+                fallbackLinkUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/' },
+                hotspots: {
+                    type: 'list',
+                    defaultValue: [
+                        { text: 'Mechanical Clutch', posX: 35, posY: 18, tooltipPosition: 'right', fontSize: 20 },
+                        { text: 'REDLINK™ Intelligence', posX: 57, posY: 70, tooltipPosition: 'top-left', fontSize: 20 },
+                    ]
+                }
+            },
+            debounceDelay: 400
+        };
+
+        const state = { sdk: null, blockData: {}, selectedHotspotId: null };
+        const elements = {};
+        let rafId = null;
+        const utils = {
+            debounce(func, wait) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => func.apply(this, a), wait); }; },
+            getFieldValue(f) { return state.blockData[f] !== undefined ? state.blockData[f] : moduleConfig.fields[f].defaultValue; }
+        };
+
+        function cacheElements() {
+            Object.assign(elements, {
+                mainContainer: document.getElementById('mainContainer'),
+                loadingOverlay: document.getElementById('loadingOverlay'),
+                backgroundImageUrl: document.getElementById('backgroundImageUrl'),
+                fallbackImageUrl: document.getElementById('fallbackImageUrl'),
+                fallbackLinkUrl: document.getElementById('fallbackLinkUrl'),
+                visualEditor: document.getElementById('visualEditor'),
+                previewImage: document.getElementById('previewImage'),
+                itemsContainer: document.getElementById('itemsContainer'),
+                addItemBtn: document.getElementById('addItemBtn'),
+                itemTemplate: document.getElementById('itemTemplate'),
+                keyboardHint: document.getElementById('keyboardHint')
+            });
+        }
+
+        function setLoadingState(loading) {
+            if (elements.mainContainer) {
+                elements.mainContainer.classList.toggle('loading', loading);
+                elements.loadingOverlay.classList.toggle('show', loading);
+            }
+        }
+
+        const updateStateFromUI = utils.debounce(() => {
+            state.blockData.backgroundImageUrl = elements.backgroundImageUrl.value;
+            state.blockData.fallbackImageUrl = elements.fallbackImageUrl.value;
+            state.blockData.fallbackLinkUrl = elements.fallbackLinkUrl.value;
+            refreshPreview();
+        }, moduleConfig.debounceDelay);
+
+        function updateUI() {
+            elements.backgroundImageUrl.value = utils.getFieldValue('backgroundImageUrl');
+            elements.fallbackImageUrl.value = utils.getFieldValue('fallbackImageUrl');
+            elements.fallbackLinkUrl.value = utils.getFieldValue('fallbackLinkUrl');
+            elements.previewImage.src = utils.getFieldValue('backgroundImageUrl');
+
+            // Show/hide keyboard hint based on selection
+            if (elements.keyboardHint) {
+                elements.keyboardHint.classList.toggle('show', state.selectedHotspotId !== null);
+            }
+
+            elements.itemsContainer.replaceChildren();
+            const hotspots = utils.getFieldValue('hotspots');
+            hotspots.forEach((hotspot, index) => {
+                const fragment = elements.itemTemplate.content.cloneNode(true);
+                const el = fragment.querySelector('.item');
+                el.dataset.id = hotspot.id;
+                el.classList.toggle('selected', hotspot.id === state.selectedHotspotId);
+                el.querySelector('.item-title').textContent = `Hotspot ${index + 1}`;
+                el.querySelector('[data-field="text"]').value = hotspot.text;
+                el.querySelector('[data-field="fontSize"]').value = hotspot.fontSize || 20;
+
+                const posButton = el.querySelector(`.position-button[data-position="${hotspot.tooltipPosition}"]`);
+                if (posButton) posButton.classList.add('selected');
+
+                el.querySelector('.move-up-btn').disabled = (index === 0);
+                el.querySelector('.move-down-btn').disabled = (hotspots.length === 1 || index === hotspots.length - 1);
+
+                elements.itemsContainer.appendChild(fragment);
+            });
+
+            elements.visualEditor.querySelectorAll('.hotspot-marker').forEach(m => m.remove());
+            hotspots.forEach(hotspot => {
+                const marker = document.createElement('div');
+                marker.className = 'hotspot-marker';
+                marker.dataset.id = hotspot.id;
+                marker.style.left = `${hotspot.posX}%`;
+                marker.style.top = `${hotspot.posY}%`;
+                marker.classList.toggle('selected', hotspot.id === state.selectedHotspotId);
+                elements.visualEditor.appendChild(marker);
+            });
+        }
+
+        function getTooltipCss(position) {
+            switch (position) {
+                case 'top-left':     return 'left: 0; top: 0; transform: translate(-100%, -100%) translateY(-10px) translateX(-10px);';
+                case 'top':          return 'left: 50%; top: 0; transform: translate(-50%, -100%) translateY(-10px);';
+                case 'top-right':    return 'left: 100%; top: 0; transform: translate(0, -100%) translateY(-10px) translateX(10px);';
+                case 'left':         return 'left: 0; top: 50%; transform: translate(-100%, -50%) translateX(-10px);';
+                case 'right':        return 'left: 100%; top: 50%; transform: translate(0, -50%) translateX(10px);';
+                case 'bottom-left':  return 'left: 0; top: 100%; transform: translate(-100%, 0) translateY(10px) translateX(-10px);';
+                case 'bottom':       return 'left: 50%; top: 100%; transform: translate(-50%, 0) translateY(10px);';
+                case 'bottom-right': return 'left: 100%; top: 100%; transform: translate(0, 0) translateY(10px) translateX(10px);';
+                case 'center':
+                default:             return 'left: 50%; top: 50%; transform: translate(-50%, -50%);';
+            }
+        }
+
+        function generateTemplate() {
+        const bgImg = utils.getFieldValue('backgroundImageUrl');
+        const fallbackImg = utils.getFieldValue('fallbackImageUrl');
+        const fallbackLink = utils.getFieldValue('fallbackLinkUrl');
+        const hotspots = utils.getFieldValue('hotspots');
+
+        const interactiveHotspots = hotspots.map((h, i) => `
+            <div class="hot-tool-wrapper" style="position:absolute; left:${h.posX}%; top:${h.posY}%; transform:translate(-50%, -50%); z-index:${i+1};">
+            <img alt="" border="0" height="36" src="https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/ba4b84d2-b601-42a6-a8e3-e2f32eb1100c.png" style="display:block; width:36px; height:36px;" width="36">
+            <div class="tooltip-wrapper" style="position:absolute; width:200px; z-index:99; background-color:rgba(0,0,0,0.8); display:none; max-height:0; opacity:0; overflow:hidden; padding:10px; text-align:center; transition:all .3s ease; border-radius:4px; ${getTooltipCss(h.tooltipPosition)}">
+                <span style="color:#ffffff; font-family:'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size:${h.fontSize || 20}px; font-weight:bold; line-height:${(h.fontSize || 20) + 6}px; text-transform:uppercase;">${h.text}</span>
+            </div>
+            </div>
+        `).join('');
+
+        const fallbackItems = hotspots.map(h => `
+            <tr>
+            <td valign="top" style="padding-bottom:8px; width:20px;">
+                <img alt="" src="https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/06914a54-6462-4ecd-a8bf-74c46518351d.png" style="display:block; height:auto;" width="20">
+            </td>
+            <td style="width:12px; padding-bottom:8px;">&nbsp;</td>
+            <td style="color:#ffffff; font-family:'Helvetica-Neue', sans-serif, 'Open-Sans'; font-size:16px; line-height:24px; text-align:left;">${h.text}</td>
+            </tr>
+        `).join('');
+
+        return `
+        <style type="text/css">
+            /* Reveal interactivity in clients that honour styles */
+            .hot-tool-wrapper:hover .tooltip-wrapper{display:block !important; max-height:200px !important; opacity:1 !important;}
+            @media screen and (min-width:581px){
+            .hotspots-interactive{display:block !important; max-height:none !important; overflow:visible !important;}
+            .hotspots-fallback{display:none !important; max-height:0 !important; overflow:hidden !important;}
+            }
+            @media screen and (max-width:580px){
+            .hotspots-interactive{display:none !important; max-height:0 !important; overflow:hidden !important;}
+            .hotspots-fallback{display:block !important; max-height:none !important; overflow:visible !important;}
+            }
+            /* Outlook Mac and Outlook Android - force fallback */
+            #converted-body .hotspots-interactive {
+            display: none !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            }
+            #converted-body .hotspots-fallback {
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            }
+            /* Outlook.com (webmail) - force fallback */
+            [class~="x_hotspots-interactive"] {
+            display: none !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            }
+            [class~="x_hotspots-fallback"] {
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            }
+
+            /* Outlook Mac & Outlook Android apps - force fallback */
+            #converted-body .hotspots-interactive {
+            display: none !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            }
+            #converted-body .hotspots-fallback {
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            }
+
+            /* Legacy Hotmail/Outlook.com wrapper - belt and braces */
+            .ExternalClass .hotspots-interactive {
+            display: none !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            }
+            .ExternalClass .hotspots-fallback {
+            display: block !important;
+            max-height: none !important;
+            overflow: visible !important;
+            }
+        </style>
+
+        <!--[if !mso]><!-->
+        <div class="hotspots-interactive"
+            style="display:none; max-height:0; overflow:hidden; mso-hide:all; background-color:#DB011C;">
+            <div style="position:relative; max-width:620px; margin:0 auto;">
+            <!-- use an IMG so the base visual doesn’t rely on CSS backgrounds -->
+            <img src="${bgImg}" alt="" width="620" style="display:block; width:100%; height:auto; border:0;">
+            ${interactiveHotspots}
+            </div>
+        </div>
+        <!--<![endif]-->
+
+                <div class="hotspots-fallback" style="display:block; max-height:none; overflow:visible;">
+            <!-- Fallback using proven Milwaukee pattern -->
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color:#DB011C; width:620px;">
+              <tr>
+                <td class="side" style="width:20px;">&nbsp;</td>
+                <td align="center" class="content-inner" style="width:580px;" valign="top">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;">
+                    <tr>
+                      <td align="center" class="block" style="width:100%;" valign="top">
+                        <a href="${fallbackLink}" target="_blank" style="text-decoration:none; color:#000001;">
+                          <img align="top" alt="" src="${fallbackImg}" style="border:none; display:block; height:auto; outline:none; text-decoration:none; width:100%; max-width:580px;" width="580">
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0 20px;">
+                        <div style="font-size:20px; height:20px; line-height:20px;">&nbsp;</div>
+                        <table role="presentation" border="0" cellspacing="0" cellpadding="0" style="width:100%; border-collapse:collapse;">
+                          ${fallbackItems}
+                        </table>
+                        <div style="font-size:20px; height:20px; line-height:20px;">&nbsp;</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="side" style="width:20px;">&nbsp;</td>
+              </tr>
+            </table>
+        </div>`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (!state.sdk) return;
+                try {
+                    state.sdk.setContent(generateTemplate());
+                    state.sdk.setData({ ...state.blockData });
+                } catch (error) { console.error(`Preview update failed: ${error.message}`); }
+            });
+        }
+
+        function initializeEventHandlers() {
+            // Keyboard navigation for fine-tuning hotspot positions
+            function handleKeyboardMovement(e) {
+                // Only handle arrow keys when a hotspot is selected
+                if (!state.selectedHotspotId) return;
+                
+                // Check if the key is an arrow key
+                if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+                
+                // Don't interfere with typing in input fields
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                
+                e.preventDefault(); // Prevent page scrolling
+                
+                const hotspot = state.blockData.hotspots.find(h => h.id === state.selectedHotspotId);
+                if (!hotspot) return;
+                
+                // Calculate movement increment
+                // Shift key = 1% movement (larger)
+                // No modifier = 0.1% movement (micro adjustment)
+                const increment = e.shiftKey ? 1 : 0.1;
+                
+                // Update position based on arrow key
+                switch (e.key) {
+                    case 'ArrowUp':
+                        hotspot.posY = Math.max(0, parseFloat((hotspot.posY - increment).toFixed(2)));
+                        break;
+                    case 'ArrowDown':
+                        hotspot.posY = Math.min(100, parseFloat((hotspot.posY + increment).toFixed(2)));
+                        break;
+                    case 'ArrowLeft':
+                        hotspot.posX = Math.max(0, parseFloat((hotspot.posX - increment).toFixed(2)));
+                        break;
+                    case 'ArrowRight':
+                        hotspot.posX = Math.min(100, parseFloat((hotspot.posX + increment).toFixed(2)));
+                        break;
+                }
+                
+                // Update UI and preview
+                updateUI();
+                refreshPreview();
+            }
+            
+            // Add keyboard event listener to document
+            document.addEventListener('keydown', handleKeyboardMovement);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Optimized Event Delegation with Action Maps
+            const hotspotActions = {
+                '.remove-btn': (hotspot, index, hotspots) => {
+                    const newHotspots = hotspots.filter(h => h.id !== hotspot.id);
+                    state.blockData.hotspots = newHotspots;
+                    if (state.selectedHotspotId === hotspot.id) {
+                        state.selectedHotspotId = newHotspots.length > 0 ? newHotspots[0].id : null;
+                    }
+                    return true;
+                },
+                '.move-up-btn': (hotspot, index, hotspots) => {
+                    if (index > 0) {
+                        [hotspots[index], hotspots[index - 1]] = [hotspots[index - 1], hotspots[index]];
+                        return true;
+                    }
+                    return false;
+                },
+                '.move-down-btn': (hotspot, index, hotspots) => {
+                    if (index < hotspots.length - 1) {
+                        [hotspots[index], hotspots[index + 1]] = [hotspots[index + 1], hotspots[index]];
+                        return true;
+                    }
+                    return false;
+                },
+                '.position-button': (hotspot, index, hotspots, context) => {
+                    hotspot.tooltipPosition = context.target.dataset.position;
+                    return true;
+                }
+            };
+
+            function createHotspotDelegatedHandler(actionMap) {
+                return (event) => {
+                    // Handle add button clicks
+                    if (event.target.closest('#addItemBtn')) {
+                        const newHotspot = { 
+                            id: crypto.randomUUID(), 
+                            text: 'New Hotspot', 
+                            posX: 50, 
+                            posY: 50, 
+                            tooltipPosition: 'top',
+                            fontSize: 20
+                        };
+                        state.blockData.hotspots.push(newHotspot);
+                        state.selectedHotspotId = newHotspot.id;
+                        updateUI();
+                        refreshPreview();
+                        return;
+                    }
+
+                    // Find the closest item element
+                    const itemEl = event.target.closest('.item');
+                    if (!itemEl) return;
+
+                    const id = itemEl.dataset.id;
+                    const hotspots = state.blockData.hotspots;
+                    const hotspotIndex = hotspots.findIndex(h => h.id === id);
+
+                    if (hotspotIndex === -1) return;
+
+                    const hotspot = hotspots[hotspotIndex];
+                    const controlButton = event.target.closest('.item-control-btn, .position-button');
+
+                    if (controlButton) {
+                        event.stopPropagation();
+                        let actionExecuted = false;
+
+                        // Execute action using action map
+                        for (const [selector, action] of Object.entries(actionMap)) {
+                            if (controlButton.matches(selector)) {
+                                const context = { target: event.target };
+                                const result = action(hotspot, hotspotIndex, hotspots, context);
+
+                                if (result) {
+                                    actionExecuted = true;
+                                    updateUI();
+                                    refreshPreview();
+                                }
+                                break;
+                            }
+                        }
+
+                        if (!actionExecuted) {
+                            console.log('No matching action found for selector');
+                        }
+                        return;
+                    }
+
+                    // Handle item selection
+                    if (state.selectedHotspotId !== id) {
+                        state.selectedHotspotId = id;
+                        updateUI();
+                    }
+                };
+            }
+
+            // Initialize event handlers after function declaration
+            [elements.backgroundImageUrl, elements.fallbackImageUrl, elements.fallbackLinkUrl].forEach(input => {
+                input.addEventListener('input', updateStateFromUI);
+            });
+
+            elements.addItemBtn.addEventListener('click', createHotspotDelegatedHandler(hotspotActions));
+
+            elements.visualEditor.addEventListener('click', (e) => {
+                const targetIsMarker = e.target.classList.contains('hotspot-marker');
+                if (targetIsMarker) {
+                    state.selectedHotspotId = e.target.dataset.id;
+                    updateUI();
+                    return;
+                }
+                if (!state.selectedHotspotId) {
+                    alert('Please select a hotspot from the list below before placing it.');
+                    return;
+                }
+                const rect = elements.previewImage.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const hotspot = state.blockData.hotspots.find(h => h.id === state.selectedHotspotId);
+                if (hotspot) {
+                    hotspot.posX = parseFloat(((x / rect.width) * 100).toFixed(2));
+                    hotspot.posY = parseFloat(((y / rect.height) * 100).toFixed(2));
+                    updateUI();
+                    refreshPreview();
+                }
+            });
+
+            elements.itemsContainer.addEventListener('click', createHotspotDelegatedHandler(hotspotActions));
+
+            elements.itemsContainer.addEventListener('input', utils.debounce((e) => {
+                const itemEl = e.target.closest('.item');
+                if (!itemEl) return;
+                const id = itemEl.dataset.id;
+                const hotspot = state.blockData.hotspots.find(h => h.id === id);
+                if(hotspot) {
+                    if (e.target.dataset.field === 'text') {
+                        hotspot.text = e.target.value;
+                    } else if (e.target.dataset.field === 'fontSize') {
+                        hotspot.fontSize = parseInt(e.target.value) || 20;
+                    }
+                    refreshPreview();
+                }
+            }, moduleConfig.debounceDelay));
+
+            // Copy/paste configuration handlers
+            document.getElementById('copyConfigBtn').addEventListener('click', copyConfiguration);
+            document.getElementById('pasteConfigBtn').addEventListener('click', pasteConfiguration);
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                module: moduleConfig.name,
+                version: '1.0',
+                data: state.blockData
+            };
+
+            const configString = JSON.stringify(configData, null, 2);
+            
+            // Create temporary textarea for copying
+            const textarea = document.createElement('textarea');
+            textarea.value = configString;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const btn = document.getElementById('copyConfigBtn');
+                const originalHTML = btn.innerHTML;
+                
+                // Show success state with checkmark
+                btn.classList.add('success');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" style="fill:#28a745;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                
+                setTimeout(() => {
+                    btn.classList.add('fade-out');
+                    setTimeout(() => {
+                        btn.classList.remove('success', 'fade-out');
+                        btn.innerHTML = originalHTML;
+                    }, 500);
+                }, 1500);
+                
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy configuration to clipboard');
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const textarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            
+            let pasteListener, keydownListener, clickListener, cancelListener;
+            
+            const cleanup = () => {
+                modal.classList.remove('show');
+                textarea.value = '';
+                textarea.blur();
+                
+                if (pasteListener) textarea.removeEventListener('paste', pasteListener);
+                if (keydownListener) document.removeEventListener('keydown', keydownListener);
+                if (clickListener) modal.removeEventListener('click', clickListener);
+                if (cancelListener) cancelBtn.removeEventListener('click', cancelListener);
+            };
+            
+            // Handle paste event
+            pasteListener = (e) => {
+                e.preventDefault();
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                
+                try {
+                    const configData = JSON.parse(pastedText);
+                    
+                    if (!configData.module || configData.module !== moduleConfig.name) {
+                        alert(`Invalid configuration. This appears to be from "${configData.module || 'Unknown'}" but this is a ${moduleConfig.name}.`);
+                        cleanup();
+                        return;
+                    }
+                    
+                    if (!configData.data) {
+                        alert('Invalid configuration format: missing data');
+                        cleanup();
+                        return;
+                    }
+                    
+                    // Ensure hotspots have IDs
+                    if (configData.data.hotspots && Array.isArray(configData.data.hotspots)) {
+                        configData.data.hotspots.forEach(hotspot => {
+                            if (!hotspot.id) hotspot.id = crypto.randomUUID();
+                        });
+                    }
+                    
+                    state.blockData = configData.data;
+                    
+                    // Update UI
+                    elements.backgroundImageUrl.value = state.blockData.backgroundImageUrl || '';
+                    elements.fallbackImageUrl.value = state.blockData.fallbackImageUrl || '';
+                    elements.fallbackLinkUrl.value = state.blockData.fallbackLinkUrl || '';
+                    
+                    // Select first hotspot if available
+                    if (state.blockData.hotspots && state.blockData.hotspots.length > 0) {
+                        state.selectedHotspotId = state.blockData.hotspots[0].id;
+                    } else {
+                        state.selectedHotspotId = null;
+                    }
+                    
+                    updateUI();
+                    refreshPreview();
+                    
+                    cleanup();
+                    
+                    // Visual feedback
+                    const btn = document.getElementById('pasteConfigBtn');
+                    const originalHTML = btn.innerHTML;
+                    
+                    btn.classList.add('success');
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" style="fill:#28a745;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        btn.classList.add('fade-out');
+                        setTimeout(() => {
+                            btn.classList.remove('success', 'fade-out');
+                            btn.innerHTML = originalHTML;
+                        }, 500);
+                    }, 1500);
+                    
+                } catch (err) {
+                    console.error('Paste error:', err);
+                    alert('Failed to paste configuration. Please ensure you copied valid configuration data.');
+                    cleanup();
+                }
+            };
+            
+            // Handle keyboard shortcuts
+            keydownListener = (e) => {
+                if (e.key === 'Escape') {
+                    cleanup();
+                } else if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Paste event will be handled by the paste listener
+                    // This just ensures the textarea is focused
+                }
+            };
+            
+            // Handle click outside modal
+            clickListener = (e) => {
+                if (e.target === modal) {
+                    cleanup();
+                }
+            };
+            
+            // Handle cancel button
+            cancelListener = () => {
+                cleanup();
+            };
+            
+            // Add event listeners
+            textarea.addEventListener('paste', pasteListener);
+            document.addEventListener('keydown', keydownListener);
+            modal.addEventListener('click', clickListener);
+            cancelBtn.addEventListener('click', cancelListener);
+            
+            // Show modal and focus textarea
+            modal.classList.add('show');
+            setTimeout(() => textarea.focus(), 100);
+        }
+
+        function loadData() {
+            setLoadingState(true);
+            state.sdk.getData((data) => {
+                const newBlockData = {};
+                Object.keys(moduleConfig.fields).forEach(key => {
+                    const savedValue = data && data[key];
+                    if (savedValue !== undefined) {
+                        newBlockData[key] = savedValue;
+                    } else {
+                        const defaultValue = moduleConfig.fields[key].defaultValue;
+                        newBlockData[key] = Array.isArray(defaultValue) ? defaultValue.map(item => ({ ...item, id: crypto.randomUUID() })) : defaultValue;
+                    }
+                });
+                state.blockData = newBlockData;
+
+                if(state.blockData.hotspots) {
+                    state.blockData.hotspots.forEach(h => { if(!h.id) h.id = crypto.randomUUID(); });
+                }
+
+                if (!state.selectedHotspotId && state.blockData.hotspots && state.blockData.hotspots.length > 0) {
+                    state.selectedHotspotId = state.blockData.hotspots[0].id;
+                }
+
+                updateUI();
+                refreshPreview();
+                setLoadingState(false);
+            });
+        }
+
+        function initialize() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEventHandlers();
+                loadData();
+            } catch (error) {
+                console.error(`Initialization failed: ${error.message}`);
+                setLoadingState(false);
+            }
+        }
+
+        document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initialize) : initialize();
+    </script>
+
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+</body>
+</html>

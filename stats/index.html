@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Stats Block</title>
+    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.option-button svg { display: block; margin: 0 auto; fill: currentColor; }.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.stats-container{display:flex;flex-direction:column;gap:15px}.stat-item{background-color:#fafafa;padding:20px;border:1px solid #ddd;border-radius:6px;position:relative}.stat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.stat-title{font-weight:bold;font-size:16px}.stat-controls{display:flex;gap:8px}.stat-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.stat-control-btn:hover{color:#0074d9}.stat-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-stat-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+
+        /* Copy/Paste Configuration */
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-tool-btn{background:none;border:1px solid #ddd;border-radius:4px;padding:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+        .config-tool-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-tool-btn svg{width:20px;height:20px;fill:#555}
+        .config-tool-btn:hover svg{fill:#0074d9}
+        .config-tool-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-tool-btn.success svg{fill:#28a745}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-tool-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Stats Block Settings</h2>
+
+        <!-- Copy/Paste Tools -->
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </button>
+        </div>
+
+        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+            <div class="section-title">General Settings</div>
+            <div class="field-group">
+                <label class="field-label">Layout</label>
+                <div class="option-selector" id="layoutSelector">
+                    <div class="option-button selected" data-value="left" title="Image on Left">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 18h6V6H4v12zm8 0h8V6h-8v12zM4 4h16v2H4V4z"/></svg>
+                    </div>
+                    <div class="option-button" data-value="right" title="Image on Right">
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M14 18h6V6h-6v12zM4 18h8V6H4v12zM4 4h16v2H4V4z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Background Colour</label>
+                <div class="option-selector" id="backgroundColorSelector">
+                    <div class="option-button selected" data-value="red">Red</div>
+                    <div class="option-button" data-value="black">Black</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <div class="section-title">Left Column Image</div>
+            <div class="field-group">
+                <label class="field-label">Image URL</label>
+                <input type="url" class="field-input" id="imageUrl" placeholder="https://example.com/image.jpg">
+            </div>
+            <div class="field-group">
+                <label class="field-label">Image Link URL</label>
+                <input type="url" class="field-input" id="imageLink" placeholder="https://example.com/link">
+            </div>
+            <div class="field-group">
+                <label class="field-label">Image Alt Text</label>
+                <input type="text" class="field-input" id="imageAlt" placeholder="Descriptive text">
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <div class="section-title">Right Column Stats</div>
+            <div class="field-group">
+                <label class="field-label">Space Between Stats (px)</label>
+                <input type="number" class="field-input" id="statSpacing" min="0" max="60" step="4" value="20">
+            </div>
+            <div id="statsContainer" class="stats-container"></div>
+            <button id="addStatBtn" class="btn add-stat-btn">Add Stat</button>
+        </div>
+    </div>
+
+    <template id="statTemplate">
+        <div class="stat-item">
+            <div class="stat-header">
+                <h3 class="stat-title">Stat</h3>
+                <div class="stat-controls">
+                    <button class="stat-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="stat-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="stat-control-btn remove-btn" title="Remove Stat">×</button>
+                </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Title</label>
+                <input type="text" class="field-input" data-field="title" placeholder="TITLE">
+            </div>
+            <div class="field-group">
+                <label class="field-label">Subtitle</label>
+                <input type="text" class="field-input" data-field="subtitle" placeholder="SUBTITLE">
+            </div>
+            <div class="field-group">
+                <label class="field-label">Title Font Size (px)</label>
+                <input type="number" class="field-input" data-field="fontSize" min="12" max="48" value="24">
+            </div>
+        </div>
+    </template>
+
+    <!-- Paste Modal -->
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
+    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: 'Stats Block',
+            fields: {
+                layout: { type: 'text', defaultValue: 'left' },
+                backgroundColor: { type: 'text', defaultValue: '#DB011C' },
+                imageUrl: { type: 'url', defaultValue: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/b0ad428e-4153-4e4c-a68f-1d3f81fa0f1e.jpg' },
+                imageLink: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/' },
+                imageAlt: { type: 'text', defaultValue: 'Milwaukee Tool Product', maxLength: 150 },
+                statSpacing: { type: 'number', defaultValue: 20 },
+                stats: { type: 'list', defaultValue: [
+                    { title: 'TITLE', subtitle: 'SUBTITLE', fontSize: 24 },
+                    { title: 'TITLE', subtitle: 'SUBTITLE', fontSize: 24 },
+                    { title: 'TITLE', subtitle: 'SUBTITLE', fontSize: 24 }
+                ]}
+            },
+            debounceDelay: 300,
+            maxRetries: 3
+        };
+
+        // --- Config and State ---
+        const PRESET_COLORS = { RED: '#DB011C', BLACK: '#000000' };
+        const state = { sdk: null, dom: null, blockData: {}, isLoading: false, isInitialized: false, eventListeners: [] };
+        const elements = {};
+        const utils = {
+            debounce(func, wait) { let timeout; return function(...args) { const later = () => { clearTimeout(timeout); func.apply(this, args); }; clearTimeout(timeout); timeout = setTimeout(later, wait); }; },
+            getFieldValue(f) { const v = state.blockData[f]; const c = moduleConfig.fields[f]; return (v !== undefined && v !== null) ? (c.type === 'number' ? parseFloat(v) : v) : c.defaultValue; }
+        };
+
+        // --- DOM and Template Generation ---
+        function parseToDOM(html) {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return doc.body.firstChild;
+        }
+
+        function generateInitialTemplate(d) {
+            const layout = utils.getFieldValue('layout');
+            const backgroundColor = utils.getFieldValue('backgroundColor');
+            const imageUrl = utils.getFieldValue('imageUrl');
+            const imageLink = utils.getFieldValue('imageLink');
+            const imageAlt = utils.getFieldValue('imageAlt');
+            const stats = utils.getFieldValue('stats');
+            const statSpacing = utils.getFieldValue('statSpacing');
+
+            const statsHtml = stats.map((stat, index) => {
+                const isLast = index === stats.length - 1;
+                const fontSize = stat.fontSize || 24;
+                const lineHeight = fontSize + 8;
+                const statRow = '<tr><td class="mobile-text-center" style="text-align: center;">' +
+                    '<div style="color: #ffffff; font-family: \'Helvetica Neue LT W05_93 Blk E\', Arial, sans-serif, \'Open-Sans\'; font-size: ' + fontSize + 'px; font-weight: bold; line-height: ' + lineHeight + 'px; margin: 0; padding-bottom: 0px !important; text-transform: uppercase;">' + stat.title + '</div>' +
+                    '<div style="font-size: 16px; line-height: 22px; font-weight: normal; color: #ffffff; font-family: \'Helvetica Neue LT W05_55 Roman\', sans-serif, \'Open-Sans\';">' + stat.subtitle + '</div>' +
+                    '</td></tr>';
+                const spacer = !isLast ? '<tr><td><div style="clear: both; display: block; font-size: ' + statSpacing + 'px; height: ' + statSpacing + 'px; line-height: ' + statSpacing + 'px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>' : '';
+                return statRow + spacer;
+            }).join('');
+
+            const imageCell = '<td align="center" class="block" dir="ltr" style="width: 290px;" valign="middle">' +
+                '<div><a href="' + imageLink + '" target="_blank">' +
+                '<img align="top" alt="' + imageAlt + '" class="fill no-hover" src="' + imageUrl + '" style="border: none; display: block; height: auto; outline: none; text-decoration: none;" width="290">' +
+                '</a></div></td>';
+            
+            const statsCell = '<td class="block" dir="ltr" style="width: 290px; padding: 0 12px;" valign="middle">' +
+                '<table border="0" cellpadding="0" cellspacing="0" class="sect" style="width: 100%;">' +
+                '<tr><td><div style="clear: both; display: block; font-size: 8px; height: 8px; line-height: 8px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>' +
+                statsHtml +
+                '<tr><td><div style="clear: both; display: block; font-size: 16px; height: 16px; line-height: 16px; margin: 0px; mso-line-height-rule: exactly; padding: 0px;">&nbsp;</div></td></tr>' +
+                '</table></td>';
+
+            // For mobile compatibility, image always comes first in HTML source order
+            // RTL direction on desktop will visually swap them for "right" layout
+            const tableDirection = layout === 'right' ? 'dir="rtl"' : '';
+            const mainContent = imageCell + statsCell;
+            
+            return '<!-- START .stats-image-block -->' +
+                '<table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: ' + backgroundColor + '; width: 620px;">' +
+                '<tr><td style="background-color: ' + backgroundColor + '; width: 20px;" valign="middle">' +
+                '<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">' +
+                '<tr><td style="width: 20px;">&nbsp;</td></tr></table></td>' +
+                '<td align="center" class="content-inner" style="background-color: ' + backgroundColor + '; width: 580px;" valign="middle">' +
+                '<table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" ' + tableDirection + ' role="presentation" style="width: 100%;">' +
+                '<tr>' + mainContent + '</tr></table></td>' +
+                '<td style="background-color: ' + backgroundColor + '; width: 20px;" valign="middle">' +
+                '<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">' +
+                '<tr><td style="width: 20px;">&nbsp;</td></tr></table></td></tr></table>' +
+                '<!-- END .stats-image-block -->';
+        }
+
+        function updateData(field, value) {
+            if (JSON.stringify(state.blockData[field]) !== JSON.stringify(value)) {
+                state.blockData[field] = value;
+                refreshPreview();
+            }
+        }
+
+        const debouncedUpdateData = utils.debounce(updateData, moduleConfig.debounceDelay);
+
+        function refreshPreview() {
+            if (!state.sdk || !state.sdk.setContent) return;
+            const template = generateInitialTemplate();
+            state.sdk.setContent(template);
+            if (state.sdk.setData) {
+                state.sdk.setData({ ...state.blockData, content: template });
+            }
+        }
+
+        function renderStatsUI() {
+            const stats = utils.getFieldValue('stats');
+            elements.statsContainer.replaceChildren();
+
+            const fragment = document.createDocumentFragment();
+
+            stats.forEach((stat, index) => {
+                const itemFragment = elements.statTemplate.content.cloneNode(true);
+                const itemEl = itemFragment.querySelector('.stat-item');
+                itemEl.dataset.index = index;
+                itemEl.querySelector('.stat-title').textContent = `Stat ${index + 1}`;
+                itemEl.querySelector('[data-field="title"]').value = stat.title;
+                itemEl.querySelector('[data-field="subtitle"]').value = stat.subtitle;
+                itemEl.querySelector('[data-field="fontSize"]').value = stat.fontSize || 24;
+                itemEl.querySelector('.move-up-btn').disabled = (index === 0);
+                itemEl.querySelector('.move-down-btn').disabled = (index === stats.length - 1);
+                fragment.appendChild(itemFragment);
+            });
+
+            elements.statsContainer.appendChild(fragment);
+        }
+
+        function updateUIFromData() {
+            const setSelectorState = (el, key) => {
+                const value = utils.getFieldValue(key);
+                Array.from(el.querySelectorAll('.option-button')).forEach(btn => {
+                    btn.classList.toggle('selected', btn.dataset.value === value);
+                });
+            };
+
+            setSelectorState(elements.layoutSelector, 'layout');
+            
+            // Handle background color mapping
+            const bgColor = utils.getFieldValue('backgroundColor');
+            const colorValue = bgColor === PRESET_COLORS.RED ? 'red' : 'black';
+            Array.from(elements.backgroundColorSelector.querySelectorAll('.option-button')).forEach(btn => {
+                btn.classList.toggle('selected', btn.dataset.value === colorValue);
+            });
+
+            // Update form fields
+            elements.imageUrl.value = utils.getFieldValue('imageUrl');
+            elements.imageLink.value = utils.getFieldValue('imageLink');
+            elements.imageAlt.value = utils.getFieldValue('imageAlt');
+            elements.statSpacing.value = utils.getFieldValue('statSpacing');
+
+            // Render stats
+            renderStatsUI();
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                version: '1.0',
+                module: moduleConfig.name,
+                timestamp: new Date().toISOString(),
+                data: state.blockData
+            };
+            
+            const copyBtn = document.getElementById('copyConfigBtn');
+            const jsonString = JSON.stringify(configData, null, 2);
+            
+            // Fallback method using textarea (works in iframes)
+            const textarea = document.createElement('textarea');
+            textarea.value = jsonString;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                if (successful) {
+                    // Visual feedback - green check
+                    copyBtn.classList.add('success');
+                    copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.add('fade-out');
+                        setTimeout(() => {
+                            copyBtn.classList.remove('success', 'fade-out');
+                            copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+                        }, 500);
+                    }, 1500);
+                    
+                    console.log('Block configuration copied to clipboard');
+                } else {
+                    throw new Error('Copy command failed');
+                }
+            } catch (err) {
+                document.body.removeChild(textarea);
+                utils.showError(`Failed to copy: ${err.message}`);
+                console.error('Copy error:', err);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const hiddenTextarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            const pasteBtn = document.getElementById('pasteConfigBtn');
+            const hintBox = document.getElementById('pasteModalHint');
+            const defaultHintText = 'The block will automatically update with the pasted settings';
+            
+            // Show modal
+            modal.classList.add('show');
+            hintBox.classList.remove('error');
+            hintBox.textContent = defaultHintText;
+            
+            // Focus hidden textarea to capture paste
+            setTimeout(() => {
+                hiddenTextarea.value = '';
+                hiddenTextarea.focus();
+            }, 100);
+            
+            // Close modal function
+            const closeModal = () => {
+                modal.classList.remove('show');
+                hiddenTextarea.value = '';
+                hiddenTextarea.blur();
+                hintBox.classList.remove('error');
+                hintBox.textContent = defaultHintText;
+            };
+            
+            // Close on background click
+            const handleBackgroundClick = (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            modal.addEventListener('click', handleBackgroundClick);
+            
+            // Close on Cancel
+            const handleCancel = () => {
+                closeModal();
+                cleanup();
+            };
+            cancelBtn.addEventListener('click', handleCancel);
+            
+            // Close on Escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
+            
+            // Cleanup function
+            const cleanup = () => {
+                document.removeEventListener('keydown', handleEscape);
+                document.removeEventListener('keydown', handlePaste);
+                cancelBtn.removeEventListener('click', handleCancel);
+                modal.removeEventListener('click', handleBackgroundClick);
+            };
+            
+            // Handle paste event
+            const handlePaste = (e) => {
+                // Only process if Ctrl/Cmd+V
+                if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Reset hint to default on new paste attempt
+                    hintBox.classList.remove('error');
+                    hintBox.textContent = defaultHintText;
+                    
+                    // Small delay to let paste complete
+                    setTimeout(() => {
+                        const text = hiddenTextarea.value.trim();
+                        
+                        if (!text) {
+                            hintBox.textContent = 'No configuration found in clipboard. Please copy a block configuration first.';
+                            hintBox.classList.add('error');
+                            return;
+                        }
+                        
+                        try {
+                            const importData = JSON.parse(text);
+                            
+                            // Validation checks
+                            if (!importData.data) {
+                                throw new Error('Invalid configuration format: missing data');
+                            }
+                            
+                            if (!importData.module) {
+                                throw new Error('Invalid configuration format: missing module name');
+                            }
+                            
+                            if (importData.module !== moduleConfig.name) {
+                                throw new Error(`Configuration mismatch: This is for "${importData.module}", but you're using "${moduleConfig.name}"`);
+                            }
+                            
+                            if (!importData.version) {
+                                throw new Error('Invalid configuration format: missing version');
+                            }
+                            
+                            // Validate that imported data has valid fields
+                            const validFields = Object.keys(moduleConfig.fields);
+                            const importedFields = Object.keys(importData.data);
+                            const hasValidFields = importedFields.some(field => validFields.includes(field));
+                            
+                            if (!hasValidFields) {
+                                throw new Error('Configuration contains no valid fields for this module');
+                            }
+                            
+                            // Merge imported data (only valid fields)
+                            validFields.forEach(key => {
+                                if (importData.data.hasOwnProperty(key)) {
+                                    state.blockData[key] = importData.data[key];
+                                }
+                            });
+                            
+                            // Reload UI with imported data
+                            updateUIFromData();
+                            
+                            // Render stats
+                            renderStatsUI();
+                            
+                            // Refresh the preview
+                            refreshPreview();
+                            
+                            // Close modal
+                            closeModal();
+                            cleanup();
+                            
+                            // Visual feedback - green check
+                            pasteBtn.classList.add('success');
+                            pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                            
+                            setTimeout(() => {
+                                pasteBtn.classList.add('fade-out');
+                                setTimeout(() => {
+                                    pasteBtn.classList.remove('success', 'fade-out');
+                                    pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>';
+                                }, 500);
+                            }, 1500);
+                            
+                            console.log('Block configuration pasted successfully');
+                            
+                        } catch (error) {
+                            // Show user-friendly error message in hint box
+                            let errorMsg = 'Failed to paste configuration';
+                            if (error.message.includes('mismatch')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('Invalid configuration')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('JSON')) {
+                                errorMsg = 'Clipboard does not contain valid block configuration. Please copy a block configuration first.';
+                            } else {
+                                errorMsg = error.message || 'An error occurred while pasting';
+                            }
+                            
+                            hintBox.textContent = errorMsg;
+                            hintBox.classList.add('error');
+                            console.error('Paste configuration error:', error);
+                        }
+                    }, 50);
+                }
+            };
+            
+            document.addEventListener('keydown', handlePaste);
+        }
+
+        function loadData() {
+            if (!state.sdk || !state.sdk.getData) return;
+            state.sdk.getData((data) => {
+                state.blockData = data || {};
+                // Ensure we have default values
+                Object.keys(moduleConfig.fields).forEach(key => {
+                    if (state.blockData[key] === undefined) {
+                        state.blockData[key] = moduleConfig.fields[key].defaultValue;
+                    }
+                });
+                updateUIFromData();
+                refreshPreview();
+            });
+        }
+
+        // --- SDK Interaction ---
+        function updateBlock() {
+            if (!state.dom) return;
+            state.sdk.setContent(state.dom.outerHTML);
+        }
+        const debouncedUpdateBlock = utils.debounce(() => {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                updateBlock();
+            });
+        }, 500);
+
+        // --- Initialization and Event Handlers ---
+        function cacheElements() {
+            for (const id of ['mainContainer', 'loadingOverlay', 'layoutSelector', 'backgroundColorSelector', 'imageUrl', 'imageLink', 'imageAlt', 'statSpacing', 'statsContainer', 'addStatBtn', 'statTemplate']) {
+                elements[id] = document.getElementById(id);
+            }
+        }
+
+        function initializeEventHandlers() {
+            state.eventListeners.forEach(({ element, event, handler }) => element.removeEventListener(event, handler));
+            state.eventListeners = [];
+            const addListener = (el, event, handler) => { if (el) { el.addEventListener(event, handler); state.eventListeners.push({ element: el, event, handler }); }};
+
+            const setupOptionSelector = (el, key, callback) => {
+                Array.from(el.querySelectorAll('.option-button')).forEach(opt => 
+                    addListener(opt, 'click', e => { 
+                        const btn = e.currentTarget; 
+                        const value = btn.dataset.value; 
+                        updateData(key, value); 
+                        Array.from(el.querySelectorAll('.selected')).forEach(o => o.classList.remove('selected')); 
+                        btn.classList.add('selected'); 
+                        if(callback) callback(value); 
+                    })
+                );
+            };
+
+            const setupTextInput = (el, key) => {
+                addListener(el, 'input', e => {
+                    debouncedUpdateData(key, e.target.value.trim());
+                });
+            };
+
+            // Setup selectors
+            setupOptionSelector(elements.layoutSelector, 'layout');
+            setupOptionSelector(elements.backgroundColorSelector, 'backgroundColor', (value) => {
+                updateData('backgroundColor', value === 'red' ? PRESET_COLORS.RED : PRESET_COLORS.BLACK);
+            });
+
+            // Setup text inputs
+            setupTextInput(elements.imageUrl, 'imageUrl');
+            setupTextInput(elements.imageLink, 'imageLink');
+            setupTextInput(elements.imageAlt, 'imageAlt');
+
+            // Setup number input for stat spacing
+            addListener(elements.statSpacing, 'input', e => {
+                const value = parseInt(e.target.value, 10);
+                if (!isNaN(value)) {
+                    debouncedUpdateData('statSpacing', value);
+                }
+            });
+            addListener(elements.statSpacing, 'blur', e => {
+                const step = 4;
+                let value = parseInt(e.target.value, 10);
+                const min = parseInt(e.target.min, 10), max = parseInt(e.target.max, 10);
+                if (isNaN(value)) {
+                    value = moduleConfig.fields.statSpacing.defaultValue;
+                }
+                value = Math.max(min, Math.min(value, max));
+                const correctedValue = Math.round(value / step) * step;
+                e.target.value = correctedValue;
+                updateData('statSpacing', correctedValue);
+            });
+
+            // Add Stat Button
+            addListener(elements.addStatBtn, 'click', () => {
+                const currentStats = utils.getFieldValue('stats');
+                const newStats = [...currentStats, { title: 'TITLE', subtitle: 'SUBTITLE', fontSize: 24 }];
+                updateData('stats', newStats);
+                renderStatsUI();
+            });
+
+            // Stats management
+            const statActions = {
+                '.remove-btn': (itemEl, index) => {
+                    const currentStats = utils.getFieldValue('stats');
+                    if (currentStats.length > 1) {
+                        const newStats = currentStats.filter((_, i) => i !== index);
+                        updateData('stats', newStats);
+                        renderStatsUI();
+                    }
+                    return true;
+                },
+                '.move-up-btn': (itemEl, index) => {
+                    if (index === 0) return false;
+                    const currentStats = utils.getFieldValue('stats');
+                    const newStats = [...currentStats];
+                    [newStats[index - 1], newStats[index]] = [newStats[index], newStats[index - 1]];
+                    updateData('stats', newStats);
+                    renderStatsUI();
+                    return true;
+                },
+                '.move-down-btn': (itemEl, index) => {
+                    const currentStats = utils.getFieldValue('stats');
+                    if (index >= currentStats.length - 1) return false;
+                    const newStats = [...currentStats];
+                    [newStats[index], newStats[index + 1]] = [newStats[index + 1], newStats[index]];
+                    updateData('stats', newStats);
+                    renderStatsUI();
+                    return true;
+                }
+            };
+
+            function createStatDelegatedHandler(actionMap) {
+                return (event) => {
+                    const btn = event.target.closest('.stat-control-btn');
+                    if (!btn) return;
+
+                    const itemEl = btn.closest('.stat-item');
+                    const index = parseInt(itemEl.dataset.index, 10);
+
+                    for (const [selector, action] of Object.entries(actionMap)) {
+                        if (btn.matches(selector)) {
+                            action(itemEl, index);
+                            break;
+                        }
+                    }
+                };
+            }
+
+            // Handle stat input changes
+            addListener(elements.statsContainer, 'input', e => {
+                if (e.target.matches('[data-field]')) {
+                    const itemEl = e.target.closest('.stat-item');
+                    const index = parseInt(itemEl.dataset.index, 10);
+                    const field = e.target.dataset.field;
+                    const currentStats = utils.getFieldValue('stats');
+                    const newStats = [...currentStats];
+                    let value = e.target.value;
+                    if (field === 'fontSize') {
+                        value = parseInt(value) || 24;
+                    }
+                    newStats[index] = { ...newStats[index], [field]: value };
+                    debouncedUpdateData('stats', newStats);
+                }
+            });
+
+            addListener(elements.statsContainer, 'click', createStatDelegatedHandler(statActions));
+
+            // Copy/Paste configuration buttons
+            const copyConfigBtn = document.getElementById('copyConfigBtn');
+            const pasteConfigBtn = document.getElementById('pasteConfigBtn');
+            
+            if (copyConfigBtn) {
+                const copyHandler = () => copyConfiguration();
+                addListener(copyConfigBtn, 'click', copyHandler);
+            }
+            
+            if (pasteConfigBtn) {
+                const pasteHandler = () => pasteConfiguration();
+                addListener(pasteConfigBtn, 'click', pasteHandler);
+            }
+        }
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.layoutSelector = document.getElementById('layoutSelector');
+            elements.backgroundColorSelector = document.getElementById('backgroundColorSelector');
+            elements.imageUrl = document.getElementById('imageUrl');
+            elements.imageLink = document.getElementById('imageLink');
+            elements.imageAlt = document.getElementById('imageAlt');
+            elements.statSpacing = document.getElementById('statSpacing');
+            elements.statsContainer = document.getElementById('statsContainer');
+            elements.addStatBtn = document.getElementById('addStatBtn');
+            elements.statTemplate = document.getElementById('statTemplate');
+        }
+
+        function initialize() {
+            cacheElements();
+            state.sdk = new window.sfdc.BlockSDK({ 
+                tabs: ['htmlblock'] 
+            });
+            initializeEventHandlers();
+            loadData();
+        }
+
+        document.addEventListener('DOMContentLoaded', initialize);
+    </script>
+</body>
+</html>
