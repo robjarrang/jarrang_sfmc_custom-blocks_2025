@@ -14,12 +14,100 @@
     buttonUrl: { title: 'Button Link URL', type: 'URL', enabled: true }
 } %}
 {% set module = { title: 'Product Feature', fields: fields } %}
+{% import "../_shared/form-macros.njk" as form %}
 <!--
     UI FIELD MANIFEST: {{ module.title }}
     {% for key, field in fields %}
     - {{ key }} → {{ field.title }} ({{ field.type }}) [{% if field.enabled %}enabled{% else %}disabled{% endif %}]
     {% endfor %}
 -->
+{% set product_settings %}
+    {{ form.input_field({
+        id: 'productImage',
+        label: module.fields.productImage.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/product-image.jpg',
+        error: { id: 'productImageError', text: 'Please enter a valid image URL (http:// or https://)' }
+    }) }}
+    {{ form.input_field({
+        id: 'productImageAlt',
+        label: module.fields.productImageAlt.title,
+        inputType: 'text',
+        placeholder: 'Product name or description'
+    }) }}
+    {{ form.input_field({
+        id: 'productUrl',
+        label: module.fields.productUrl.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/product-page',
+        error: { id: 'productUrlError', text: 'Please enter a valid URL (http:// or https://)' }
+    }) }}
+{% endset %}
+
+{% set product_information %}
+    {{ form.toggle({ id: 'showSubtitle', label: module.fields.showSubtitle.title, checked: true }) }}
+    <div id="subtitleGroup">
+        {{ form.input_field({
+            id: 'subtitle',
+            label: module.fields.subtitle.title,
+            inputType: 'text',
+            placeholder: 'M12 FHAC16-502X'
+        }) }}
+        {{ form.input_field({
+            id: 'subtitleFontSize',
+            label: module.fields.subtitleFontSize.title ~ ' (px)',
+            inputType: 'number',
+            min: 12,
+            max: 28,
+            step: 4,
+            groupClass: 'field-group-inline'
+        }) }}
+    </div>
+    {{ form.rich_text({
+        label: module.fields.productTitle.title,
+        editorId: 'productTitleEditor',
+        toolbarLimited: true,
+        inline: [{
+            id: 'productTitleFontSize',
+            label: module.fields.productTitleFontSize.title ~ ' (px)',
+            min: 16,
+            max: 48,
+            step: 4
+        }]
+    }) }}
+    {{ form.option_selector({
+        id: 'contentTypeSelector',
+        label: module.fields.contentType.title,
+        options: [
+            { value: 'none', label: 'None', selected: true },
+            { value: 'checklist', label: 'Checklist' }
+        ]
+    }) }}
+    {{ form.list_editor({
+        groupId: 'checklistGroup',
+        wrapperStyle: 'display: none;',
+        label: module.fields.checklistItems.title,
+        containerId: 'itemsContainer',
+        addButton: { id: 'addItemBtn', class: 'btn add-item-btn', text: 'Add New Item' }
+    }) }}
+{% endset %}
+
+{% set button_settings %}
+    {{ form.toggle({ id: 'showButton', label: module.fields.showButton.title, checked: true }) }}
+    {{ form.rich_text({
+        label: module.fields.buttonText.title,
+        editorId: 'buttonTextEditor',
+        toolbarLimited: true
+    }) }}
+    {{ form.input_field({
+        id: 'buttonUrl',
+        label: module.fields.buttonUrl.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/product-page',
+        error: { id: 'buttonUrlError', text: 'Please enter a valid URL (http:// or https://)' }
+    }) }}
+{% endset %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +125,6 @@
 
         <div class="error-banner" id="errorBanner"></div>
 
-        <!-- Copy/Paste Tools -->
         <div class="config-tools">
             <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
                 <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
@@ -47,96 +134,11 @@
             </button>
         </div>
 
-        <!-- Product Settings -->
-        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
-            <div class="section-title">Product Settings</div>
-            <div class="field-group">
-                <label for="productImage" class="field-label">{{ module.fields.productImage.title }}</label>
-                <input type="url" id="productImage" class="field-input" placeholder="https://example.com/product-image.jpg">
-                <div class="field-error" id="productImageError">Please enter a valid image URL (http:// or https://)</div>
-            </div>
-            <div class="field-group">
-                <label for="productImageAlt" class="field-label">{{ module.fields.productImageAlt.title }}</label>
-                <input type="text" id="productImageAlt" class="field-input" placeholder="Product name or description">
-            </div>
-            <div class="field-group">
-                <label for="productUrl" class="field-label">{{ module.fields.productUrl.title }}</label>
-                <input type="url" id="productUrl" class="field-input" placeholder="https://example.com/product-page">
-                <div class="field-error" id="productUrlError">Please enter a valid URL (http:// or https://)</div>
-            </div>
-        </div>
-
-        <!-- Content Settings -->
-        <div class="section-divider">
-            <div class="section-title">Product Information</div>
-            <div class="toggle-container">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="showSubtitle" checked>
-                    <span class="toggle-slider"></span>
-                </label>
-                <label for="showSubtitle" class="checkbox-label">{{ module.fields.showSubtitle.title }}</label>
-            </div>
-            <div class="field-group" id="subtitleGroup">
-                <label for="subtitle" class="field-label">{{ module.fields.subtitle.title }}</label>
-                <input type="text" id="subtitle" class="field-input" placeholder="M12 FHAC16-502X">
-                 <!-- NEW: Subtitle Font Size Control -->
-                <div class="field-group-inline">
-                    <label for="subtitleFontSize" class="field-label">{{ module.fields.subtitleFontSize.title }} (px)</label>
-                    <input type="number" id="subtitleFontSize" class="field-input" min="12" max="28" step="4">
-                </div>
-            </div>
-            <div class="field-group">
-                <label class="field-label">{{ module.fields.productTitle.title }}</label>
-                <div id="productTitleEditor" class="quill-container limited-toolbar"></div>
-                 <!-- NEW: Product Title Font Size Control -->
-                <div class="field-group-inline">
-                    <label for="productTitleFontSize" class="field-label">{{ module.fields.productTitleFontSize.title }} (px)</label>
-                    <input type="number" id="productTitleFontSize" class="field-input" min="16" max="48" step="4">
-                </div>
-            </div>
-
-            <!-- Content Type Selection -->
-            <div class="field-group">
-                <label class="field-label">{{ module.fields.contentType.title }}</label>
-                <div class="option-selector" id="contentTypeSelector">
-                    <div class="option-button selected" data-value="none">None</div>
-                    <div class="option-button" data-value="checklist">Checklist</div>
-                </div>
-            </div>
-
-            <!-- Checklist Content -->
-            <div class="field-group" id="checklistGroup" style="display: none;">
-                <label class="field-label">{{ module.fields.checklistItems.title }}</label>
-                <div id="itemsContainer" class="items-container"></div>
-                <button id="addItemBtn" class="btn add-item-btn">Add New Item</button>
-            </div>
-        </div>
-
-        <!-- Button Settings -->
-        <div class="section-divider">
-            <div class="section-title">Button Settings</div>
-            <div class="toggle-container">
-                <label class="toggle-switch">
-                    <input type="checkbox" id="showButton" checked>
-                    <span class="toggle-slider"></span>
-                </label>
-                <label for="showButton" class="checkbox-label">{{ module.fields.showButton.title }}</label>
-            </div>
-            <div id="buttonFieldsGroup">
-                <div class="field-group">
-                    <label for="buttonTextEditor" class="field-label">{{ module.fields.buttonText.title }}</label>
-                    <div id="buttonTextEditor" class="quill-container limited-toolbar"></div>
-                </div>
-                <div class="field-group">
-                    <label for="buttonUrl" class="field-label">{{ module.fields.buttonUrl.title }}</label>
-                    <input type="url" id="buttonUrl" class="field-input" placeholder="https://example.com/">
-                    <div class="field-error" id="buttonUrlError">Please enter a valid URL (http:// or https://)</div>
-                </div>
-            </div>
-        </div>
+        {{ form.section('Product Settings', product_settings, { first: true }) }}
+        {{ form.section('Product Information', product_information) }}
+        {{ form.section('Button Settings', button_settings) }}
     </div>
 
-    <!-- Paste Modal -->
     <div id="pasteModal" class="paste-modal">
         <div class="paste-modal-content">
             <div class="paste-modal-icon">
@@ -151,20 +153,6 @@
         </div>
     </div>
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
-
-    <template id="itemTemplate">
-        <div class="item">
-            <div class="item-header">
-                <h3 class="item-title">Item</h3>
-                <div class="item-controls">
-                    <button class="item-control-btn move-up-btn" title="Move Up">▲</button>
-                    <button class="item-control-btn move-down-btn" title="Move Down">▼</button>
-                    <button class="item-control-btn remove-btn" title="Remove Item">×</button>
-                </div>
-            </div>
-            <div class="quill-container limited-toolbar"></div>
-        </div>
-    </template>
 
     {% include "../_shared/product-feature-scripts.njk" %}
 

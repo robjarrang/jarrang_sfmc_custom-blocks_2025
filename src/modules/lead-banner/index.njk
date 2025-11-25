@@ -16,12 +16,151 @@
     contentUrl: { title: 'Content Link URL', type: 'URL', enabled: true }
 } %}
 {% set module = { title: 'Lead Banner', fields: fields } %}
+{% import "../_shared/form-macros.njk" as form %}
 <!--
     UI FIELD MANIFEST: {{ module.title }}
     {% for key, field in fields %}
     - {{ key }} → {{ field.title }} ({{ field.type }}) [{% if field.enabled %}enabled{% else %}disabled{% endif %}]
     {% endfor %}
 -->
+{% set banner_settings %}
+    {{ form.input_field({
+        id: 'backgroundImage',
+        label: module.fields.backgroundImage.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/image.jpg',
+        error: { id: 'backgroundImageError', text: 'Please enter a valid image URL.' }
+    }) }}
+{% endset %}
+
+{% set text_options %}
+    {{ form.option_selector({
+        id: 'contentTypeSelector',
+        label: module.fields.contentType.title,
+        options: [
+            { value: 'imageswap', label: 'Image Swap', selected: true },
+            { value: 'text', label: 'Text' },
+            { value: 'image', label: 'Image Title' }
+        ]
+    }) }}
+    {{ form.option_selector({
+        id: 'verticalAlignSelector',
+        label: module.fields.verticalAlign.title,
+        options: [
+            { value: 'top', label: 'Top' },
+            { value: 'middle', label: 'Middle', selected: true },
+            { value: 'bottom', label: 'Bottom' }
+        ]
+    }) }}
+    {{ form.option_selector({
+        id: 'textAlignSelector',
+        label: module.fields.textAlign.title,
+        options: [
+            { value: 'left', label: '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm0-4h10v-2H4v2zm0-4h16v-2H4v2zM4 5v2h10V5H4z"/></svg>' },
+            { value: 'center', label: '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm4-4h8v-2H8v2zm-4-4h16v-2H4v2zm4-4h8V5H8v2z"/></svg>', selected: true },
+            { value: 'right', label: '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm6-4h10v-2H10v2zM4 9h16V7H4v2zm6-4h10V3H10v2z"/></svg>' }
+        ]
+    }) }}
+{% endset %}
+
+{% set text_content %}
+<div id="textContent">
+    {{ form.rich_text({
+        label: module.fields.title.title,
+        editorId: 'titleEditor',
+        toolbarLimited: true,
+        inline: [{
+            id: 'titleFontSize',
+            label: module.fields.titleFontSize.title ~ ' (px)',
+            min: 20,
+            max: 60,
+            step: 4
+        }]
+    }) }}
+    {{ form.rich_text({
+        label: module.fields.subtitle.title,
+        editorId: 'subtitleEditor',
+        inline: [{
+            id: 'subtitleFontSize',
+            label: module.fields.subtitleFontSize.title ~ ' (px)',
+            min: 12,
+            max: 32,
+            step: 4
+        }]
+    }) }}
+</div>
+{% endset %}
+
+{% set image_content %}
+<div id="imageContent" style="display: none;">
+    {{ form.input_field({
+        id: 'titleImage',
+        label: module.fields.titleImage.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/title-image.png',
+        error: { id: 'titleImageError', text: 'Please enter a valid image URL.' }
+    }) }}
+    {{ form.input_field({
+        id: 'titleImageAlt',
+        label: module.fields.titleImageAlt.title,
+        placeholder: 'Descriptive text for the image',
+        inputType: 'text'
+    }) }}
+    {{ form.input_field({
+        id: 'titleImageWidth',
+        label: module.fields.titleImageWidth.title ~ ' (px)',
+        inputType: 'number',
+        min: 100,
+        max: 500,
+        step: 10
+    }) }}
+</div>
+{% endset %}
+
+{% set image_swap_content %}
+<div id="imageSwapContent" style="display: none;">
+    {{ form.input_field({
+        id: 'heroDesktopImage',
+        label: module.fields.heroDesktopImage.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/desktop-hero.jpg',
+        error: { id: 'heroDesktopImageError', text: 'Please enter a valid image URL.' }
+    }) }}
+    {{ form.input_field({
+        id: 'heroMobileImage',
+        label: module.fields.heroMobileImage.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/mobile-hero.jpg',
+        error: { id: 'heroMobileImageError', text: 'Please enter a valid image URL.' }
+    }) }}
+    {{ form.input_field({
+        id: 'heroAlt',
+        label: module.fields.heroAlt.title,
+        inputType: 'text',
+        placeholder: 'Descriptive text for the hero images'
+    }) }}
+</div>
+{% endset %}
+
+{% set content_footer %}
+    {{ form.input_field({
+        id: 'contentUrl',
+        label: module.fields.contentUrl.title,
+        inputType: 'url',
+        placeholder: 'https://example.com/',
+        error: { id: 'contentUrlError', text: 'Please enter a valid URL.' }
+    }) }}
+{% endset %}
+
+{% set content_section %}
+    {{ text_options }}
+    <div class="section-divider" style="margin:20px 0; padding-top:15px;"></div>
+    {{ text_content }}
+    {{ image_content }}
+    {{ image_swap_content }}
+    {{ content_footer }}
+{% endset %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +174,7 @@
     <div class="container" id="mainContainer">
         <h2 style="margin-top: 0; color: #333;">{{ module.title }}</h2>
         <div class="error-banner" id="errorBanner"></div>
-        
+
         <div class="config-tools">
             <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -44,42 +183,13 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
             </button>
         </div>
-        
+
         <div class="help-banner">
             <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
         </div>
 
-        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
-            <div class="section-title">Banner Settings</div>
-            <div class="field-group" id="backgroundImageGroup"><label for="backgroundImage" class="field-label">{{ module.fields.backgroundImage.title }}</label><input type="url" id="backgroundImage" class="field-input" placeholder="https://example.com/image.jpg"><div class="field-error" id="backgroundImageError">Please enter a valid image URL.</div></div>
-        </div>
-
-        <div class="section-divider">
-            <div class="section-title">Content</div>
-            <div class="field-group"><label class="field-label">{{ module.fields.contentType.title }}</label><div class="option-selector" id="contentTypeSelector"><div class="option-button selected" data-value="imageswap">Image Swap</div><div class="option-button" data-value="text">Text</div><div class="option-button" data-value="image">Image Title</div></div></div>
-            <div class="field-group" id="verticalAlignGroup"><label class="field-label">{{ module.fields.verticalAlign.title }}</label><div class="option-selector" id="verticalAlignSelector"><div class="option-button" data-value="top">Top</div><div class="option-button selected" data-value="middle">Middle</div><div class="option-button" data-value="bottom">Bottom</div></div></div>
-            <div class="field-group" id="textAlignGroup"><label class="field-label">{{ module.fields.textAlign.title }}</label><div class="option-selector" id="textAlignSelector"><div class="option-button" data-value="left"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm0-4h10v-2H4v2zm0-4h16v-2H4v2zM4 5v2h10V5H4z"/></svg></div><div class="option-button selected" data-value="center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm4-4h8v-2H8v2zm-4-4h16v-2H4v2zm4-4h8V5H8v2z"/></svg></div><div class="option-button" data-value="right"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm6-4h10v-2H10v2zM4 9h16V7H4v2zm6-4h10V3H10v2z"/></svg></div></div></div>
-            <div class="section-divider" style="margin:20px 0; padding-top:15px;"></div>
-
-            <div id="textContent">
-                <div class="field-group"><label class="field-label">{{ module.fields.title.title }}</label><div id="titleEditor" class="quill-container limited-toolbar"></div><div class="field-group-inline"><label for="titleFontSize" class="field-label">{{ module.fields.titleFontSize.title }} (px)</label><input type="number" id="titleFontSize" class="field-input" min="20" max="60" step="4"></div></div>
-                <div class="field-group"><label class="field-label">{{ module.fields.subtitle.title }}</label><div id="subtitleEditor" class="quill-container"></div><div class="field-group-inline"><label for="subtitleFontSize" class="field-label">{{ module.fields.subtitleFontSize.title }} (px)</label><input type="number" id="subtitleFontSize" class="field-input" min="12" max="32" step="4"></div></div>
-            </div>
-
-            <div id="imageContent" style="display: none;">
-                <div class="field-group"><label for="titleImage" class="field-label">{{ module.fields.titleImage.title }}</label><input type="url" id="titleImage" class="field-input" placeholder="https://example.com/title-image.png"><div class="field-error" id="titleImageError">Please enter a valid image URL.</div></div>
-                <div class="field-group"><label for="titleImageAlt" class="field-label">{{ module.fields.titleImageAlt.title }}</label><input type="text" id="titleImageAlt" class="field-input" placeholder="Descriptive text for the image" maxlength="100"></div>
-                <div class="field-group-inline"><label for="titleImageWidth" class="field-label">{{ module.fields.titleImageWidth.title }} (px)</label><input type="number" id="titleImageWidth" class="field-input" min="100" max="500" step="10"></div>
-            </div>
-
-            <div id="imageSwapContent" style="display: none;">
-                <div class="field-group"><label for="heroDesktopImage" class="field-label">{{ module.fields.heroDesktopImage.title }}</label><input type="url" id="heroDesktopImage" class="field-input" placeholder="https://example.com/desktop-hero.jpg"><div class="field-error" id="heroDesktopImageError">Please enter a valid image URL.</div></div>
-                <div class="field-group"><label for="heroMobileImage" class="field-label">{{ module.fields.heroMobileImage.title }}</label><input type="url" id="heroMobileImage" class="field-input" placeholder="https://example.com/mobile-hero.jpg"><div class="field-error" id="heroMobileImageError">Please enter a valid image URL.</div></div>
-                <div class="field-group"><label for="heroAlt" class="field-label">{{ module.fields.heroAlt.title }}</label><input type="text" id="heroAlt" class="field-input" placeholder="Descriptive text for the hero images" maxlength="100"></div>
-            </div>
-
-            <div class="field-group"><label for="contentUrl" class="field-label">{{ module.fields.contentUrl.title }}</label><input type="url" id="contentUrl" class="field-input" placeholder="https://example.com/"><div class="field-error" id="contentUrlError">Please enter a valid URL.</div></div>
-        </div>
+        {{ form.section('Banner Settings', banner_settings, { first: true }) }}
+        {{ form.section('Content', content_section) }}
     </div>
 
     <div id="pasteModal" class="paste-modal">

@@ -1,0 +1,154 @@
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
+<script>
+    'use strict';
+
+    const moduleConfig = {
+        name: 'Spacer',
+        fields: {
+            backgroundColor: { type: 'text', defaultValue: 'black' },
+            spacerHeight: { type: 'number', defaultValue: 40 }
+        },
+        debounceDelay: 200
+    };
+
+    const state = { sdk: null, blockData: {} };
+    const elements = {};
+    let rafId = null;
+
+    const utils = {
+        debounce(func, wait) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => func.apply(this, a), wait); }; },
+        getFieldValue(fieldName) { return state.blockData[fieldName] !== undefined ? state.blockData[fieldName] : moduleConfig.fields[fieldName].defaultValue; }
+    };
+
+    function cacheElements() {
+        elements.mainContainer = document.getElementById('mainContainer');
+        elements.loadingOverlay = document.getElementById('loadingOverlay');
+        elements.backgroundColorSelector = document.getElementById('backgroundColorSelector');
+        elements.spacerHeight = document.getElementById('spacerHeight');
+        elements.spacerHeightValue = document.getElementById('spacerHeightValue');
+    }
+
+    function setLoadingState(loading) {
+        elements.mainContainer.classList.toggle('loading', loading);
+        elements.loadingOverlay.classList.toggle('show', loading);
+    }
+
+    const updateStateFromUI = utils.debounce(() => {
+        state.blockData.backgroundColor = elements.backgroundColorSelector.querySelector('.selected')?.dataset.value || 'black';
+        state.blockData.spacerHeight = parseInt(elements.spacerHeight.value, 10);
+        refreshPreview();
+    }, moduleConfig.debounceDelay);
+
+    function updateUIFromState() {
+        const bgColor = utils.getFieldValue('backgroundColor');
+        const height = utils.getFieldValue('spacerHeight');
+
+        elements.backgroundColorSelector.querySelectorAll('.option-button').forEach(o => {
+            o.classList.toggle('selected', o.dataset.value === bgColor);
+        });
+        elements.spacerHeight.value = height;
+        elements.spacerHeightValue.textContent = `${height}px`;
+    }
+
+    function generateTemplate() {
+        const backgroundColorValue = utils.getFieldValue('backgroundColor');
+        const spacerHeightValue = utils.getFieldValue('spacerHeight');
+
+        const bgColor = backgroundColorValue === 'red' ? '#DB011C' : '#000000';
+        const height = `${spacerHeightValue}px`;
+
+        return `<!-- START .fw-spacer --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: ${bgColor}; width: 620px;\">\n            <tr>\n                <td>\n                    <div style=\"clear: both; display: block; font-size: ${height}; height: ${height}; line-height: ${height}; margin: 0px; mso-line-height-rule: exactly; padding: 0px;\"> </div>\n                </td>\n            </tr>\n        </table><!-- END .fw-spacer -->`;
+    }
+
+    function parseContentForState(html) {
+        if (!html) return null;
+
+        const heightMatch = html.match(/height:\s*(\d+)(px)?/);
+        const colorMatch = html.match(/background-color:\s*([^;]+)/);
+
+        if (!heightMatch || !colorMatch) return null;
+
+        const spacerHeight = parseInt(heightMatch[1], 10);
+        const bgColorHex = colorMatch[1].trim().toUpperCase();
+
+        const backgroundColor = (bgColorHex === '#DB011C') ? 'red' : 'black';
+
+        return { backgroundColor, spacerHeight };
+    }
+
+    function refreshPreview() {
+        if (rafId) cancelAnimationFrame(rafId);
+
+        rafId = requestAnimationFrame(() => {
+            try {
+                const html = generateTemplate();
+                state.sdk.setContent(html);
+                state.sdk.setData({
+                    backgroundColor: state.blockData.backgroundColor,
+                    spacerHeight: state.blockData.spacerHeight
+                });
+            } catch (error) {
+                console.error(`Preview update failed: ${error.message}`);
+            }
+        });
+    }
+
+    function initializeEventHandlers() {
+        elements.backgroundColorSelector.addEventListener('click', e => {
+            if (e.target.classList.contains('option-button')) {
+                elements.backgroundColorSelector.querySelector('.selected')?.classList.remove('selected');
+                e.target.classList.add('selected');
+                updateStateFromUI();
+            }
+        });
+
+        elements.spacerHeight.addEventListener('input', () => {
+            elements.spacerHeightValue.textContent = `${elements.spacerHeight.value}px`;
+            updateStateFromUI();
+        });
+    }
+
+    function loadData() {
+        if (!state.sdk) return console.error('SDK not available');
+        setLoadingState(true);
+
+        state.sdk.getContent((content) => {
+            state.sdk.getData((data) => {
+                const parsedState = parseContentForState(content);
+
+                if (parsedState) {
+                    state.blockData.backgroundColor = parsedState.backgroundColor;
+                    state.blockData.spacerHeight = parsedState.spacerHeight;
+                } else {
+                    state.blockData.backgroundColor = data.backgroundColor || moduleConfig.fields.backgroundColor.defaultValue;
+                    state.blockData.spacerHeight = data.spacerHeight || moduleConfig.fields.spacerHeight.defaultValue;
+
+                    refreshPreview();
+                }
+
+                updateUIFromState();
+                setLoadingState(false);
+            });
+        });
+    }
+
+    function initialize() {
+        try {
+            if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+
+            state.sdk = new window.sfdc.BlockSDK({
+                tabs: ['htmlblock']
+            });
+
+            cacheElements();
+            initializeEventHandlers();
+            loadData();
+        } catch (error) {
+            console.error(`Initialization failed: ${error.message}`);
+            setLoadingState(false);
+        }
+    }
+
+    document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initialize) : initialize();
+</script>
