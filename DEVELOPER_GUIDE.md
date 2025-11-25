@@ -16,15 +16,22 @@ Custom blocks are reusable content components that integrate directly into Sales
 
 ```
 sfmc_custom-blocks_template/
+├── package.json                ← Gulp/Nunjucks build scripts
+├── gulpfile.js                 ← Compiles Nunjucks templates to /[module]/index.html
+├── src/
+│   └── modules/                ← Canonical module sources (Nunjucks)
+│       └── [module-name]/
+│           ├── index.njk       ← Editable template source
+│           └── data.json       ← Optional defaults (title, field values, etc.)
 ├── DEVELOPER_GUIDE.md          ← You are here
-├── _base-template/             ← Starting point for new modules
-│   ├── index.html              ← Module code
+├── _base-template/             ← Generated output for the base module
+│   ├── index.html              ← Build output (do not edit by hand)
 │   ├── README.md               ← Template usage guide
 │   └── icon.png, dragIcon.png  ← Content Builder icons
 ├── shared-assets/              ← Shared utilities
 │   └── quill-config.js         ← Text editor configuration
-└── [module-name]/              ← Individual modules
-    ├── index.html              ← Module code (published to GitHub Pages)
+└── [module-name]/              ← Generated modules (published to GitHub Pages)
+    ├── index.html              ← Build output (do not edit by hand)
     ├── icon.png                ← Module icon in Content Builder
     └── dragIcon.png            ← Drag handle icon
 ```
@@ -55,6 +62,14 @@ This collection contains reusable custom email blocks for Salesforce Marketing C
 - **Salesforce Marketing Cloud BlockSDK** - Integration with Content Builder
 - **Quill 2.0.3** - Rich text editor for formatted content
 - **QuillConfigManager** - Custom configuration manager for email-optimized text editing
+
+### Build Workflow (Nunjucks + Gulp)
+- **Nunjucks templates (`src/modules/*/index.njk`)** - Canonical source for each module
+- **Optional data files (`src/modules/*/data.json`)** - Per-module defaults like titles, field presets, or palette values
+- **Gulp tasks**
+  - `npm run build` → Compiles all templates to `[module]/index.html`
+  - `npm run watch` → Rebuilds on change while editing templates or data files
+  - `npm run clean` → Removes generated `index.html` files so they can be regenerated
 
 ### Shared Utilities
 All modules use centralized utilities located in `shared-assets/`:
@@ -194,19 +209,35 @@ Always test changes in:
 ## Creating New Modules
 
 ### Using the Base Template
-A comprehensive base template is available at `_base-template/` that includes all modern patterns and best practices:
+A comprehensive base template is available at `src/modules/_base-template/` that includes all modern patterns and best practices:
 
-1. **Copy the template:**
+1. **Copy the template source:**
    ```bash
-   cp -r _base-template your-new-module-name
+   cp -r src/modules/_base-template src/modules/your-new-module-name
    ```
 
-2. **Customize the module** - See `_base-template/README.md` for detailed instructions
+2. **Rename the output folder (optional):** if you want the compiled HTML to land in a different folder name, rename the destination directory before publishing or adjust the build output path.
 
-3. **Key files to modify:**
-   - `index.html` - Update moduleConfig, UI elements, and generateTemplate()
-   - `icon.png` - Main icon for Content Builder (update with your design)
-   - `dragIcon.png` - Drag handle icon (update with your design)
+3. **Customize the module**
+   - Edit `index.njk` – update `moduleConfig`, add `data-field` bindings, and paste your production HTML into `emailHtml`
+   - Add defaults in `data.json` (e.g., `{"title": "Hero Banner"}`) so titles and labels are injected without touching code
+   - Keep tokens in your pasted HTML so `applyTemplateTokens()` can replace values automatically:
+     - `{{fieldName}}` for escaped text/number/boolean/URL
+     - `{{{fieldName}}}` for rich text
+     - `{{url:fieldName}}` for URL-only injection
+     - `{{color:fieldName}}` for hex colour values
+
+4. **Build the output:**
+   ```bash
+   npm run build
+   ```
+   The compiled `index.html` will be emitted to `/your-new-module-name/index.html` alongside the module icons.
+
+5. **Key files to modify:**
+   - `src/modules/your-new-module-name/index.njk` - Update moduleConfig, UI elements with `data-field` attributes, and paste your HTML into `emailHtml`
+   - `src/modules/your-new-module-name/data.json` - Optional defaults/titles for templating
+   - `your-new-module-name/icon.png` - Main icon for Content Builder (update with your design)
+   - `your-new-module-name/dragIcon.png` - Drag handle icon (update with your design)
 
 ### Module Checklist
 Before deploying any module:

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lead Banner Block</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:80px;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+        .field-group-inline { display: flex; align-items: center; justify-content: space-between; margin-top: 15px; margin-bottom: 10px; }
+        .field-group-inline .field-label { margin-bottom: 0; }
+        .field-group-inline .field-input { width: 80px; }
+        .option-button svg { display: block; margin: 0 auto; fill: currentColor; }
+        .help-banner { background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%); border: 1px solid #b3d9ff; border-radius: 6px; padding: 12px 16px; margin-bottom: 20px; text-align: center; }
+        .help-banner a { color: #0074d9; text-decoration: none; font-weight: 500; font-size: 14px; transition: color 0.2s ease; }
+        .help-banner a:hover { color: #005bb5; text-decoration: underline; }
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-btn{width:36px;height:36px;background:none;border:1px solid #ddd;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s ease}
+        .config-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-btn svg{width:20px;height:20px;stroke:#666}
+        .config-btn:hover svg{stroke:#0074d9}
+        .config-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-btn.success svg{fill:#28a745;stroke:none}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Lead Banner</h2>
+        <div class="error-banner" id="errorBanner"></div>
+        
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-btn" title="Paste Configuration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+            </button>
+        </div>
+        
+        <div class="help-banner">
+            <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
+        </div>
+
+        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+            <div class="section-title">Banner Settings</div>
+            <div class="field-group" id="backgroundImageGroup"><label for="backgroundImage" class="field-label">Background Image URL</label><input type="url" id="backgroundImage" class="field-input" placeholder="https://example.com/image.jpg"><div class="field-error" id="backgroundImageError">Please enter a valid image URL.</div></div>
+        </div>
+
+        <div class="section-divider">
+            <div class="section-title">Content</div>
+            <div class="field-group"><label class="field-label">Content Type</label><div class="option-selector" id="contentTypeSelector"><div class="option-button selected" data-value="imageswap">Image Swap</div><div class="option-button" data-value="text">Text</div><div class="option-button" data-value="image">Image Title</div></div></div>
+            <div class="field-group" id="verticalAlignGroup"><label class="field-label">Vertical Position</label><div class="option-selector" id="verticalAlignSelector"><div class="option-button" data-value="top">Top</div><div class="option-button selected" data-value="middle">Middle</div><div class="option-button" data-value="bottom">Bottom</div></div></div>
+            <div class="field-group" id="textAlignGroup"><label class="field-label">Horizontal Position</label><div class="option-selector" id="textAlignSelector"><div class="option-button" data-value="left"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm0-4h10v-2H4v2zm0-4h16v-2H4v2zM4 5v2h10V5H4z"/></svg></div><div class="option-button selected" data-value="center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm4-4h8v-2H8v2zm-4-4h16v-2H4v2zm4-4h8V5H8v2z"/></svg></div><div class="option-button" data-value="right"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm6-4h10v-2H10v2zM4 9h16V7H4v2zm6-4h10V3H10v2z"/></svg></div></div></div>
+            <div class="section-divider" style="margin:20px 0; padding-top:15px;"></div>
+
+            <div id="textContent">
+                <div class="field-group"><label class="field-label">Title</label><div id="titleEditor" class="quill-container limited-toolbar"></div><div class="field-group-inline"><label for="titleFontSize" class="field-label">Title Font Size (px)</label><input type="number" id="titleFontSize" class="field-input" min="20" max="60" step="4"></div></div>
+                <div class="field-group"><label class="field-label">Subtitle</label><div id="subtitleEditor" class="quill-container"></div><div class="field-group-inline"><label for="subtitleFontSize" class="field-label">Subtitle Font Size (px)</label><input type="number" id="subtitleFontSize" class="field-input" min="12" max="32" step="4"></div></div>
+            </div>
+
+            <div id="imageContent" style="display: none;">
+                <div class="field-group"><label for="titleImage" class="field-label">Title/Subtitle Image URL (Transparent PNG)</label><input type="url" id="titleImage" class="field-input" placeholder="https://example.com/title-image.png"><div class="field-error" id="titleImageError">Please enter a valid image URL.</div></div>
+                <div class="field-group"><label for="titleImageAlt" class="field-label">Image Alt Text</label><input type="text" id="titleImageAlt" class="field-input" placeholder="Descriptive text for the image" maxlength="100"></div>
+                <div class="field-group-inline"><label for="titleImageWidth" class="field-label">Image Width (px)</label><input type="number" id="titleImageWidth" class="field-input" min="100" max="500" step="10"></div>
+            </div>
+
+            <div id="imageSwapContent" style="display: none;">
+                <div class="field-group"><label for="heroDesktopImage" class="field-label">Desktop Hero Image URL</label><input type="url" id="heroDesktopImage" class="field-input" placeholder="https://example.com/desktop-hero.jpg"><div class="field-error" id="heroDesktopImageError">Please enter a valid image URL.</div></div>
+                <div class="field-group"><label for="heroMobileImage" class="field-label">Mobile Hero Image URL</label><input type="url" id="heroMobileImage" class="field-input" placeholder="https://example.com/mobile-hero.jpg"><div class="field-error" id="heroMobileImageError">Please enter a valid image URL.</div></div>
+                <div class="field-group"><label for="heroAlt" class="field-label">Hero Images Alt Text</label><input type="text" id="heroAlt" class="field-input" placeholder="Descriptive text for the hero images" maxlength="100"></div>
+            </div>
+
+            <div class="field-group"><label for="contentUrl" class="field-label">Content Link URL</label><input type="url" id="contentUrl" class="field-input" placeholder="https://example.com/"><div class="field-error" id="contentUrlError">Please enter a valid URL.</div></div>
+        </div>
+    </div>
+
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: 'Lead Banner',
+            fields: {
+                backgroundImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
+                contentType: { type: 'text', defaultValue: 'imageswap' },
+                verticalAlign: { type: 'text', defaultValue: 'middle' },
+                textAlign: { type: 'text', defaultValue: 'center' },
+                title: { type: 'richtext', defaultValue: 'Title goes here', maxLength: 200 },
+                titleFontSize: { type: 'number', defaultValue: 28 },
+                subtitle: { type: 'richtext', defaultValue: 'Subtitle goes here', maxLength: 300 },
+                subtitleFontSize: { type: 'number', defaultValue: 18 },
+                titleImage: { type: 'url', defaultValue: '', validator: 'url' },
+                titleImageAlt: { type: 'text', defaultValue: '' },
+                titleImageWidth: { type: 'number', defaultValue: 300 },
+                heroDesktopImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
+                heroMobileImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
+                heroAlt: { type: 'text', defaultValue: 'Hero banner' },
+                contentUrl: { type: 'url', defaultValue: 'https://example.com/', validator: 'url' }
+            },
+            debounceDelay: 300, 
+            maxRetries: 3
+        };
+
+        const state = { 
+            sdk: null, 
+            editors: {}, 
+            blockData: {}, 
+            isLoading: false, 
+            isInitialized: false, 
+            eventListeners: [], 
+            retryCount: 0 
+        };
+        const elements = {};
+        let rafId = null;
+
+        // Advanced memory management
+        const editorMetadata = new WeakMap();
+        const cleanupRegistry = new FinalizationRegistry((heldValue) => {
+            console.log('Cleanup registry triggered for editor:', heldValue);
+        });
+
+        const utils = {
+            debounce(func, wait) { 
+                let timeout; 
+                return function(...args) { 
+                    const later = () => { 
+                        clearTimeout(timeout); 
+                        func.apply(this, args); 
+                    }; 
+                    clearTimeout(timeout); 
+                    timeout = setTimeout(later, wait); 
+                }; 
+            },
+            isValidUrl(string) { 
+                if (!string || string.trim() === '') return true; 
+                try { 
+                    const url = new URL(string); 
+                    return url.protocol === 'http:' || url.protocol === 'https:'; 
+                } catch (_) { 
+                    return false; 
+                } 
+            },
+            sanitizeHtml(html) { 
+                if (!html) return ''; 
+                const temp = document.createElement('div'); 
+                temp.innerHTML = html; 
+                temp.querySelectorAll('script, style').forEach(el => el.remove()); 
+                const allElements = temp.getElementsByTagName('*'); 
+                for (let el of allElements) { 
+                    for (let attr of el.attributes) { 
+                        if (attr.name.startsWith('on')) el.removeAttribute(attr.name); 
+                    } 
+                } 
+                return temp.innerHTML; 
+            },
+            showError(m, p = false) { 
+                if (elements.errorBanner) { 
+                    elements.errorBanner.textContent = m; 
+                    elements.errorBanner.classList.add('show'); 
+                    if (!p) setTimeout(() => elements.errorBanner.classList.remove('show'), 5000); 
+                } 
+                console.error('Lead Banner Error:', m); 
+            },
+            getFieldValue(fieldName) { 
+                const value = state.blockData[fieldName]; 
+                const fieldConfig = moduleConfig.fields[fieldName]; 
+                return (value !== undefined && value !== null) ? (fieldConfig.type === 'number' ? parseFloat(value) : value) : fieldConfig.defaultValue; 
+            },
+
+            createEditor(container, id, content = '', config = {}) {
+                // Create editor using shared configuration
+                const editorType = config.type || 'description';
+                const editor = new Quill(container, QuillConfigManager.createConfig(editorType, {
+                    placeholder: config.placeholder || 'Enter text...'
+                }));
+
+                // Track editor metadata
+                const metadata = {
+                    id,
+                    created: Date.now(),
+                    container,
+                    hasContent: Boolean(content && content.trim())
+                };
+
+                editorMetadata.set(editor, metadata);
+                cleanupRegistry.register(editor, id);
+
+                // Set content if provided
+                if (content && content.trim()) {
+                    QuillConfigManager.setContent(editor, content);
+                }
+
+                return editor;
+            },
+
+            cleanupEditor(id) {
+                const editor = state.editors[id];
+                if (editor) {
+                    // Get metadata before cleanup
+                    const metadata = editorMetadata.get(editor);
+
+                    // Clean up event listeners
+                    if (editor.off) {
+                        editor.off('text-change');
+                    }
+
+                    // Log cleanup info
+                    console.log('Cleaning up editor:', {
+                        id,
+                        metadata,
+                        hadListeners: Boolean(editor.off)
+                    });
+
+                    // Remove from state
+                    delete state.editors[id];
+                }
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.backgroundImage = document.getElementById('backgroundImage');
+            elements.backgroundImageError = document.getElementById('backgroundImageError');
+            elements.contentTypeSelector = document.getElementById('contentTypeSelector');
+            elements.verticalAlignSelector = document.getElementById('verticalAlignSelector');
+            elements.textAlignSelector = document.getElementById('textAlignSelector');
+            elements.backgroundImageGroup = document.getElementById('backgroundImageGroup');
+            elements.verticalAlignGroup = document.getElementById('verticalAlignGroup');
+            elements.textAlignGroup = document.getElementById('textAlignGroup');
+            elements.textContent = document.getElementById('textContent');
+            elements.imageContent = document.getElementById('imageContent');
+            elements.imageSwapContent = document.getElementById('imageSwapContent');
+            elements.titleEditor = document.getElementById('titleEditor');
+            elements.titleFontSize = document.getElementById('titleFontSize');
+            elements.subtitleEditor = document.getElementById('subtitleEditor');
+            elements.subtitleFontSize = document.getElementById('subtitleFontSize');
+            elements.titleImage = document.getElementById('titleImage');
+            elements.titleImageError = document.getElementById('titleImageError');
+            elements.titleImageAlt = document.getElementById('titleImageAlt');
+            elements.titleImageWidth = document.getElementById('titleImageWidth');
+            elements.heroDesktopImage = document.getElementById('heroDesktopImage');
+            elements.heroDesktopImageError = document.getElementById('heroDesktopImageError');
+            elements.heroMobileImage = document.getElementById('heroMobileImage');
+            elements.heroMobileImageError = document.getElementById('heroMobileImageError');
+            elements.heroAlt = document.getElementById('heroAlt');
+            elements.contentUrl = document.getElementById('contentUrl');
+            elements.contentUrlError = document.getElementById('contentUrlError');
+        }
+
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            if (elements.mainContainer && elements.loadingOverlay) { 
+                elements.mainContainer.classList.toggle('loading', loading); 
+                elements.loadingOverlay.classList.toggle('show', loading); 
+            }
+        }
+
+        async function initializeEditors() {
+            if (!window.Quill) throw new Error('Quill library not loaded');
+            if (!window.QuillConfigManager) throw new Error('QuillConfigManager not loaded');
+
+            try {
+                // Initialize editors using shared configuration
+                state.editors.title = await QuillConfigManager.initializeEditor(
+                    elements.titleEditor, 
+                    'title', 
+                    {
+                        placeholder: 'Enter title...',
+                        maxLength: moduleConfig.fields.title.maxLength
+                    }
+                );
+
+                state.editors.subtitle = await QuillConfigManager.initializeEditor(
+                    elements.subtitleEditor, 
+                    'description', 
+                    {
+                        placeholder: 'Enter subtitle...',
+                        maxLength: moduleConfig.fields.subtitle.maxLength
+                    }
+                );
+
+                // Set up change handlers for all editors
+                Object.keys(state.editors).forEach(fieldName => {
+                    const editor = state.editors[fieldName];
+                    const updateHandler = QuillConfigManager.createUpdateHandler((delta, oldDelta, source) => {
+                        const content = QuillConfigManager.getCleanContent(editor, true);
+                        updateData(fieldName, utils.sanitizeHtml(content));
+                    }, moduleConfig.debounceDelay);
+
+                    editor.on('text-change', updateHandler);
+                });
+
+            } catch (error) { 
+                throw new Error(`Failed to initialize editors: ${error.message}`); 
+            }
+        }
+
+        function processRichText(html) {
+            return QuillConfigManager.sanitizeForEmail(html || '');
+        }
+
+        function updateData(field, value) {
+            if (state.blockData[field] != value) { 
+                state.blockData[field] = value; 
+                refreshPreview(); 
+            }
+        }
+
+        const debouncedUpdateData = utils.debounce(updateData, moduleConfig.debounceDelay);
+
+        function generateTemplate() {
+            const bgImage = utils.getFieldValue('backgroundImage');
+            const contentUrl = utils.getFieldValue('contentUrl');
+            const contentType = utils.getFieldValue('contentType');
+            const verticalAlign = utils.getFieldValue('verticalAlign');
+            const textAlign = utils.getFieldValue('textAlign');
+            const logoImage = 'https://images.example.com/logo-placeholder.png';
+            const logoUrl = 'https://example.com/';
+            const fallbackColor = '#DB011C';
+
+            // Handle Image Swap mode separately
+            if (contentType === 'imageswap') {
+                const heroDesktopImage = utils.getFieldValue('heroDesktopImage');
+                const heroMobileImage = utils.getFieldValue('heroMobileImage');
+                const heroAlt = utils.getFieldValue('heroAlt');
+                
+                return `<!-- START .leadbanner - Image Swap --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color:${fallbackColor};width:620px;"><tr><td align="center" class="content-inner" style="width:580px;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;" width="620"><!-- Desktop row - hidden on mobile --><tr class="mobile-hide"><td align="center" style="padding:0;"><a href="${contentUrl}" style="text-decoration:none;" target="_blank"><img alt="${heroAlt}" border="0" class="fill" src="${heroDesktopImage}" style="display:block;width:620px;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" width="620"></a></td></tr><!-- Mobile row - revealed on mobile via .swap-content --><tr class="swap-content" style="display:none;max-height:0;overflow:hidden;mso-hide:all;"><td align="center" style="padding:0;"><a href="${contentUrl}" style="text-decoration:none;" target="_blank"><img alt="${heroAlt}" border="0" class="fill" src="${heroMobileImage}" style="display:block;width:100%;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" width="620"></a></td></tr></table></td></tr></table><!-- END .leadbanner - Image Swap -->`;
+            }
+
+            // --- FIX: Dynamic Padding Logic ---
+            let paddingTop = 20, paddingBottom = 20, paddingLeft = 40, paddingRight = 40;
+            if (verticalAlign === 'top') paddingTop = 40;
+            if (verticalAlign === 'bottom') paddingBottom = 40;
+            if (textAlign === 'left') paddingLeft = 60;
+            if (textAlign === 'right') paddingRight = 60;
+            const paddingString = `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`;
+
+            const logoHtml = `<table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;"><tr><td align="left" style="padding:0 0 0 12px;" valign="top"><a href="${logoUrl}" target="_blank"><img alt="Logo" src="${logoImage}" style="border:0;display:block;height:auto;outline:none;text-decoration:none;" width="180"></a></td></tr></table>`;
+
+            let contentHtml = '';
+            
+            if (contentType === 'image') {
+                // Image mode
+                const titleImage = utils.getFieldValue('titleImage');
+                const titleImageAlt = utils.getFieldValue('titleImageAlt');
+                const titleImageWidth = utils.getFieldValue('titleImageWidth');
+                
+                if (titleImage) {
+                    contentHtml = `<img alt="${titleImageAlt}" src="${titleImage}" style="width: ${titleImageWidth}px; max-width: 100%;" width="${titleImageWidth}">`;
+                } else {
+                    contentHtml = '<p style="color:#ffffff;font-family:\'Helvetica Neue LT W05_55 Roman\',sans-serif,\'Open Sans\';font-size:18px;margin:0;padding:0;">Please add an image URL</p>';
+                }
+            } else {
+                // Text mode
+                const processedTitle = processRichText(utils.getFieldValue('title'));
+                const processedSubtitle = processRichText(utils.getFieldValue('subtitle'));
+                const titleSize = utils.getFieldValue('titleFontSize');
+                const subtitleSize = utils.getFieldValue('subtitleFontSize');
+                const titleLineHeight = titleSize + 16;
+                const subtitleLineHeight = subtitleSize + 8;
+                
+                contentHtml = `<h1 class="leadbanner-title" style="color:#ffffff;font-family:'Helvetica Neue LT W05_93 Blk E',sans-serif,'Open Sans';font-size:${titleSize}px;font-weight:bold;line-height:${titleLineHeight}px;margin:0 0 10px 0;padding:0;text-transform:uppercase;"><a href="${contentUrl}" style="color:#ffffff;text-decoration:none;" target="_blank">${processedTitle}</a></h1><p class="leadbanner-subtitle" style="color:#ffffff;font-family:'Helvetica Neue LT W05_55 Roman',sans-serif,'Open Sans';font-size:${subtitleSize}px;font-stretch:condensed;font-weight:normal;line-height:${subtitleLineHeight}px;margin:0;padding:0;text-transform:uppercase;"><a href="${contentUrl}" style="color:#ffffff;text-decoration:none;" target="_blank">${processedSubtitle}</a></p>`;
+            }
+
+            return `<!-- START .leadbanner --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color:${fallbackColor};width:620px;"><tr><td align="center" class="content-inner" style="width:580px;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;" width="620"><tr><td background="${bgImage}" height="484" style="background-position:center center;background-size:cover;background-repeat:no-repeat;" valign="top" width="620"><!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:620px;height:484px;"><v:fill type="frame" src="${bgImage}" color="${fallbackColor}" /><v:textbox inset="0,0,0,0"><![endif]--><div>${logoHtml}<table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" height="340" role="presentation" style="height:280px;width:100%;"><tr><td align="${textAlign}" class="leadbanner-content" height="280" style="padding:${paddingString}; text-align:${textAlign};" valign="${verticalAlign}">${contentType === 'image' ? `<a href="${contentUrl}" target="_blank">` : ''}${contentHtml}${contentType === 'image' ? '</a>' : ''}</td></tr><tr><td class="block" style="width:100%;"><div style="font-size:20px;height:20px;line-height:20px;"></div></td></tr></table></div><!--[if gte mso 9]></v:textbox></v:rect><![endif]--></td></tr></table></td></tr></table><!-- END .leadbanner -->`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try { 
+                    const html = generateTemplate(); 
+                    state.sdk.setContent(html); 
+                    if (typeof state.sdk.setData === 'function') { 
+                        state.sdk.setData({ ...state.blockData, content: html }); 
+                    } 
+                } catch (error) { 
+                    utils.showError(`Preview update failed: ${error.message}`); 
+                }
+            });
+        }
+
+        function validateUrlInput(input, errorElement) { 
+            const value = input.value.trim(); 
+            const isValid = !value || utils.isValidUrl(value); 
+            input.classList.toggle('error', !isValid); 
+            if (errorElement) errorElement.style.display = isValid ? 'none' : 'block'; 
+            return isValid; 
+        }
+
+        function initializeEventHandlers() {
+            state.eventListeners = [];
+
+            function setupUrlInput(inputEl, errorEl, dataKey) {
+                const handler = (e) => { 
+                    if (validateUrlInput(inputEl, errorEl)) { 
+                        debouncedUpdateData(dataKey, e.target.value.trim()); 
+                    } 
+                };
+                const blurHandler = () => validateUrlInput(inputEl, errorEl);
+                inputEl.addEventListener('input', handler);
+                inputEl.addEventListener('blur', blurHandler);
+                state.eventListeners.push({ element: inputEl, event: 'input', handler });
+                state.eventListeners.push({ element: inputEl, event: 'blur', handler: blurHandler });
+            }
+
+            setupUrlInput(elements.backgroundImage, elements.backgroundImageError, 'backgroundImage');
+            setupUrlInput(elements.titleImage, elements.titleImageError, 'titleImage');
+            setupUrlInput(elements.heroDesktopImage, elements.heroDesktopImageError, 'heroDesktopImage');
+            setupUrlInput(elements.heroMobileImage, elements.heroMobileImageError, 'heroMobileImage');
+            setupUrlInput(elements.contentUrl, elements.contentUrlError, 'contentUrl');
+
+            // Text input handlers for alt text fields
+            const altTextHandler = (e) => debouncedUpdateData('titleImageAlt', e.target.value.trim());
+            elements.titleImageAlt.addEventListener('input', altTextHandler);
+            state.eventListeners.push({ element: elements.titleImageAlt, event: 'input', handler: altTextHandler });
+
+            const heroAltHandler = (e) => debouncedUpdateData('heroAlt', e.target.value.trim());
+            elements.heroAlt.addEventListener('input', heroAltHandler);
+            state.eventListeners.push({ element: elements.heroAlt, event: 'input', handler: heroAltHandler });
+
+            function setupNumberInput(inputElement, dataKey) {
+                const step = 4;
+                const correctValueOnBlur = (e) => {
+                    const input = e.target;
+                    let value = parseInt(input.value, 10);
+                    const min = parseInt(input.min, 10), max = parseInt(input.max, 10);
+                    if (isNaN(value)) value = moduleConfig.fields[dataKey].defaultValue;
+                    value = Math.max(min, Math.min(value, max));
+                    const correctedValue = Math.round(value / step) * step;
+                    input.value = correctedValue;
+                    updateData(dataKey, correctedValue);
+                };
+                inputElement.addEventListener('blur', correctValueOnBlur);
+                state.eventListeners.push({ element: inputElement, event: 'blur', handler: correctValueOnBlur });
+            }
+
+            setupNumberInput(elements.titleFontSize, 'titleFontSize');
+            setupNumberInput(elements.subtitleFontSize, 'subtitleFontSize');
+
+            // Special handling for image width (step of 10)
+            const imageWidthHandler = (e) => {
+                const input = e.target;
+                let value = parseInt(input.value, 10);
+                const min = parseInt(input.min, 10), max = parseInt(input.max, 10);
+                if (isNaN(value)) value = moduleConfig.fields.titleImageWidth.defaultValue;
+                value = Math.max(min, Math.min(value, max));
+                const correctedValue = Math.round(value / 10) * 10;
+                input.value = correctedValue;
+                updateData('titleImageWidth', correctedValue);
+            };
+            elements.titleImageWidth.addEventListener('blur', imageWidthHandler);
+            state.eventListeners.push({ element: elements.titleImageWidth, event: 'blur', handler: imageWidthHandler });
+
+            function setupOptionSelector(el, key) { 
+                if (!el) return; 
+                el.querySelectorAll('.option-button').forEach(opt => { 
+                    const handler = (e) => { 
+                        const btn = e.currentTarget; 
+                        updateData(key, btn.dataset.value); 
+                        el.querySelectorAll('.option-button').forEach(o => o.classList.remove('selected')); 
+                        btn.classList.add('selected'); 
+                        
+                        // Handle content type switching
+                        if (key === 'contentType') {
+                            toggleContentType(btn.dataset.value);
+                        }
+                    }; 
+                    opt.addEventListener('click', handler); 
+                    state.eventListeners.push({ element: opt, event: 'click', handler }); 
+                }); 
+            }
+
+            setupOptionSelector(elements.contentTypeSelector, 'contentType');
+            setupOptionSelector(elements.verticalAlignSelector, 'verticalAlign');
+            setupOptionSelector(elements.textAlignSelector, 'textAlign');
+
+            // Copy/Paste configuration buttons
+            const copyConfigBtn = document.getElementById('copyConfigBtn');
+            const pasteConfigBtn = document.getElementById('pasteConfigBtn');
+            
+            if (copyConfigBtn) {
+                copyConfigBtn.addEventListener('click', () => copyConfiguration());
+            }
+            
+            if (pasteConfigBtn) {
+                pasteConfigBtn.addEventListener('click', () => pasteConfiguration());
+            }
+        }
+
+        function updateUIFromData() {
+            elements.backgroundImage.value = utils.getFieldValue('backgroundImage');
+            elements.titleImage.value = utils.getFieldValue('titleImage');
+            elements.titleImageAlt.value = utils.getFieldValue('titleImageAlt');
+            elements.titleImageWidth.value = utils.getFieldValue('titleImageWidth');
+            elements.heroDesktopImage.value = utils.getFieldValue('heroDesktopImage');
+            elements.heroMobileImage.value = utils.getFieldValue('heroMobileImage');
+            elements.heroAlt.value = utils.getFieldValue('heroAlt');
+            elements.contentUrl.value = utils.getFieldValue('contentUrl');
+            elements.titleFontSize.value = utils.getFieldValue('titleFontSize');
+            elements.subtitleFontSize.value = utils.getFieldValue('subtitleFontSize');
+
+            // Update Quill editors
+            Object.keys(state.editors).forEach(key => {
+                if (state.editors[key]) {
+                    const content = utils.getFieldValue(key);
+                    try {
+                        state.editors[key].setContents([]);
+                        if (content && content.trim()) {
+                            state.editors[key].clipboard.dangerouslyPasteHTML(content);
+                        }
+                    } catch (error) {
+                        console.warn(`Using fallback method for editor ${key}:`, error);
+                        state.editors[key].root.innerHTML = content || '';
+                    }
+                }
+            });
+
+            // Update selectors
+            function setSelectorState(el, key) { 
+                const val = utils.getFieldValue(key); 
+                if (el) el.querySelectorAll('.option-button').forEach(o => o.classList.toggle('selected', o.dataset.value === val)); 
+            }
+
+            setSelectorState(elements.contentTypeSelector, 'contentType');
+            setSelectorState(elements.verticalAlignSelector, 'verticalAlign');
+            setSelectorState(elements.textAlignSelector, 'textAlign');
+
+            // Update content type display
+            toggleContentType(utils.getFieldValue('contentType'));
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                version: '1.0',
+                module: moduleConfig.name,
+                timestamp: new Date().toISOString(),
+                data: state.blockData
+            };
+            
+            const copyBtn = document.getElementById('copyConfigBtn');
+            const jsonString = JSON.stringify(configData, null, 2);
+            
+            // Fallback method using textarea (works in iframes)
+            const textarea = document.createElement('textarea');
+            textarea.value = jsonString;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                if (successful) {
+                    // Visual feedback - green check
+                    copyBtn.classList.add('success');
+                    copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.add('fade-out');
+                        setTimeout(() => {
+                            copyBtn.classList.remove('success', 'fade-out');
+                            copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+                        }, 500);
+                    }, 1500);
+                    
+                    console.log('Block configuration copied to clipboard');
+                } else {
+                    throw new Error('Copy command failed');
+                }
+            } catch (err) {
+                document.body.removeChild(textarea);
+                utils.showError(`Failed to copy: ${err.message}`);
+                console.error('Copy error:', err);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const hiddenTextarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            const pasteBtn = document.getElementById('pasteConfigBtn');
+            const hintBox = document.getElementById('pasteModalHint');
+            const defaultHintText = 'The block will automatically update with the pasted settings';
+            
+            // Show modal
+            modal.classList.add('show');
+            hintBox.classList.remove('error');
+            hintBox.textContent = defaultHintText;
+            
+            // Focus hidden textarea to capture paste
+            setTimeout(() => {
+                hiddenTextarea.value = '';
+                hiddenTextarea.focus();
+            }, 100);
+            
+            // Close modal function
+            const closeModal = () => {
+                modal.classList.remove('show');
+                hiddenTextarea.value = '';
+                hiddenTextarea.blur();
+                hintBox.classList.remove('error');
+                hintBox.textContent = defaultHintText;
+            };
+            
+            // Close on background click
+            const handleBackgroundClick = (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            modal.addEventListener('click', handleBackgroundClick);
+            
+            // Close on Cancel
+            const handleCancel = () => {
+                closeModal();
+                cleanup();
+            };
+            cancelBtn.addEventListener('click', handleCancel);
+            
+            // Close on Escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
+            
+            // Cleanup function
+            const cleanup = () => {
+                document.removeEventListener('keydown', handleEscape);
+                document.removeEventListener('keydown', handlePaste);
+                cancelBtn.removeEventListener('click', handleCancel);
+                modal.removeEventListener('click', handleBackgroundClick);
+            };
+            
+            // Handle paste event
+            const handlePaste = (e) => {
+                // Only process if Ctrl/Cmd+V
+                if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Reset hint to default on new paste attempt
+                    hintBox.classList.remove('error');
+                    hintBox.textContent = defaultHintText;
+                    
+                    // Small delay to let paste complete
+                    setTimeout(() => {
+                        const text = hiddenTextarea.value.trim();
+                        
+                        if (!text) {
+                            hintBox.textContent = 'No configuration found in clipboard. Please copy a block configuration first.';
+                            hintBox.classList.add('error');
+                            return;
+                        }
+                        
+                        try {
+                            const importData = JSON.parse(text);
+                            
+                            // Validation checks
+                            if (!importData.data) {
+                                throw new Error('Invalid configuration format: missing data');
+                            }
+                            
+                            if (!importData.module) {
+                                throw new Error('Invalid configuration format: missing module name');
+                            }
+                            
+                            if (importData.module !== moduleConfig.name) {
+                                throw new Error(`Configuration mismatch: This is for "${importData.module}", but you're using "${moduleConfig.name}"`);
+                            }
+                            
+                            if (!importData.version) {
+                                throw new Error('Invalid configuration format: missing version');
+                            }
+                            
+                            // Validate that imported data has valid fields
+                            const validFields = Object.keys(moduleConfig.fields);
+                            const importedFields = Object.keys(importData.data);
+                            const hasValidFields = importedFields.some(field => validFields.includes(field));
+                            
+                            if (!hasValidFields) {
+                                throw new Error('Configuration contains no valid fields for this module');
+                            }
+                            
+                            // Merge imported data (only valid fields)
+                            validFields.forEach(key => {
+                                if (importData.data.hasOwnProperty(key)) {
+                                    state.blockData[key] = importData.data[key];
+                                }
+                            });
+                            
+                            // Reload UI with imported data
+                            updateUIFromData();
+                            
+                            // Refresh the preview
+                            refreshPreview();
+                            
+                            // Close modal
+                            closeModal();
+                            cleanup();
+                            
+                            // Visual feedback - green check
+                            pasteBtn.classList.add('success');
+                            pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                            
+                            setTimeout(() => {
+                                pasteBtn.classList.add('fade-out');
+                                setTimeout(() => {
+                                    pasteBtn.classList.remove('success', 'fade-out');
+                                    pasteBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>';
+                                }, 500);
+                            }, 1500);
+                            
+                            console.log('Block configuration pasted successfully');
+                            
+                        } catch (error) {
+                            // Show user-friendly error message in hint box
+                            let errorMsg = 'Failed to paste configuration';
+                            if (error.message.includes('mismatch')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('Invalid configuration')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('JSON')) {
+                                errorMsg = 'Clipboard does not contain valid block configuration. Please copy a block configuration first.';
+                            } else {
+                                errorMsg = error.message || 'An error occurred while pasting';
+                            }
+                            
+                            hintBox.textContent = errorMsg;
+                            hintBox.classList.add('error');
+                            console.error('Paste configuration error:', error);
+                        }
+                    }, 50);
+                }
+            };
+            
+            document.addEventListener('keydown', handlePaste);
+        }
+
+        function toggleContentType(contentType) {
+            // Hide all content sections first
+            elements.textContent.style.display = 'none';
+            elements.imageContent.style.display = 'none';
+            elements.imageSwapContent.style.display = 'none';
+            
+            // Show/hide UI elements based on content type
+            if (contentType === 'imageswap') {
+                // Image Swap mode - hide background image and positioning controls
+                elements.backgroundImageGroup.style.display = 'none';
+                elements.verticalAlignGroup.style.display = 'none';
+                elements.textAlignGroup.style.display = 'none';
+                elements.imageSwapContent.style.display = 'block';
+            } else {
+                // Text or Image mode - show all controls
+                elements.backgroundImageGroup.style.display = 'block';
+                elements.verticalAlignGroup.style.display = 'block';
+                elements.textAlignGroup.style.display = 'block';
+                
+                if (contentType === 'image') {
+                    elements.imageContent.style.display = 'block';
+                } else {
+                    elements.textContent.style.display = 'block';
+                }
+            }
+        }
+
+        function loadData() {
+            if (!state.sdk || typeof state.sdk.getData !== 'function') return utils.showError('SDK not available');
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    state.blockData = {};
+                    const fields = moduleConfig.fields;
+                    Object.keys(fields).forEach(key => { 
+                        state.blockData[key] = (data && data.hasOwnProperty(key)) ? data[key] : fields[key].defaultValue; 
+                        if (fields[key].type === 'richtext') { 
+                            state.blockData[key] = utils.sanitizeHtml(state.blockData[key]); 
+                        } 
+                    });
+
+                    updateUIFromData();
+                    refreshPreview();
+                    state.retryCount = 0;
+                } catch (error) { 
+                    utils.showError(`Failed to load data: ${error.message}`); 
+                    Object.keys(moduleConfig.fields).forEach(key => state.blockData[key] = moduleConfig.fields[key].defaultValue); 
+                    refreshPreview(); 
+                } finally { 
+                    setLoadingState(false); 
+                }
+            });
+        }
+
+        function cleanup() { 
+            // Enhanced cleanup with memory management
+            Object.keys(state.editors).forEach(editorId => {
+                utils.cleanupEditor(editorId);
+            });
+
+            // Clean up tracked event listeners
+            state.eventListeners.forEach(({ element, event, handler }) => { 
+                if (element && typeof element.removeEventListener === 'function') element.removeEventListener(event, handler); 
+            }); 
+            state.eventListeners = [];
+
+            // Cancel any pending RAF
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            console.log('Lead banner cleanup completed');
+        }
+
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                if (!window.Quill) throw new Error('Quill not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEditors();
+                initializeEventHandlers();
+                loadData();
+
+                window.addEventListener('beforeunload', cleanup);
+                document.addEventListener('visibilitychange', () => { 
+                    if (!document.hidden && state.isInitialized) loadData(); 
+                });
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialisation failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) { 
+                    state.retryCount++; 
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount); 
+                } else { 
+                    utils.showError('Failed to initialise after multiple attempts. Please refresh.', true); 
+                }
+                setLoadingState(false);
+            }
+        }
+
+        if (document.readyState === 'loading') { 
+            document.addEventListener('DOMContentLoaded', initializeWithRetry); 
+        } else { 
+            initializeWithRetry(); 
+        }
+    </script>
+</body>
+</html>

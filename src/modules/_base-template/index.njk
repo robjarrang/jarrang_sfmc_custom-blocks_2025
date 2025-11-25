@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Base Template Block</title>
+    <title>{{ module.title | default('Base Template Block') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="container" id="mainContainer">
-        <h2 style="margin-top: 0; color: #333;">Base Template Block</h2>
+        <h2 style="margin-top: 0; color: #333;">{{ module.title | default('Base Template Block') }}</h2>
 
         <div class="error-banner" id="errorBanner"></div>
 
@@ -122,7 +122,7 @@
         // MODULE CONFIGURATION
         // =====================================================================
         const moduleConfig = {
-            name: 'Base Template Block',
+            name: '{{ module.title | default("Base Template Block") }}',
             fields: {
                 // Text fields
                 exampleText: { type: 'text', defaultValue: 'Example Text', maxLength: 100 },
@@ -464,7 +464,7 @@
                 exampleNumber: utils.getFieldValue('exampleNumber')
             };
 
-            
+            {% raw %}
             // Paste your production-ready email HTML here and use the tokens below to inject values:
             // {{fieldName}}       → Escaped text/number/boolean/url
             // {{{fieldName}}}     → Raw rich text/html (sanitized)
@@ -500,7 +500,7 @@
     </tr>
 </table>
 <!-- END .base-template -->`;
-            
+            {% endraw %}
 
             // Inject values and derived values into the HTML
             return applyTemplateTokens(emailHtml, {

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Accordion Block (Template Style)</title>
+    <!-- Quill.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <!-- Shared styles for mobile responsiveness -->
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
+    <!-- Basic styling for the editor UI -->
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.section-title{font-size:18px;font-weight:bold;color:#333;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #eee}.items-container{display:flex;flex-direction:column;gap:15px}.item{background-color:#fafafa;padding:15px;border:1px solid #ddd;border-radius:6px;position:relative}.item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.item-title{font-weight:bold;font-size:16px;margin:0}.item-controls{display:flex;gap:8px}.item-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.item-control-btn:hover{color:#0074d9}.item-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-item-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        /* Quill-specific styles */
+        .quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:4em;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}
+        .field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}
+        .option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+
+    <div class="container" id="mainContainer">
+        <div class="section-title">General Settings</div>
+        <div class="field-group">
+            <label class="field-label">Background Color</label>
+            <div class="option-selector" id="backgroundColorSelector">
+                <div class="option-button" data-value="red">Red</div>
+                <div class="option-button selected" data-value="black">Black</div>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 30px;">Accordion Items</div>
+        <div id="itemsContainer" class="items-container">
+            <!-- Accordion items will be dynamically inserted here -->
+        </div>
+        <button id="addItemBtn" class="btn add-item-btn">Add New Item</button>
+    </div>
+
+    <!-- Template for a single accordion item's UI -->
+    <template id="itemTemplate">
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Item</h3>
+                <div class="item-controls">
+                    <button class="item-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="item-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="item-control-btn remove-btn" title="Remove Item">×</button>
+                </div>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Title</label>
+                <input type="text" class="field-input" data-field="title" placeholder="ACCORDION ITEM TITLE">
+            </div>
+            <div class="field-group">
+                <label class="field-label">Content</label>
+                <!-- This div will be replaced by the Quill editor -->
+                <div class="quill-container limited-toolbar"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Quill.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: 'Interactive Accordion',
+            fields: {
+                backgroundColor: { type: 'text', defaultValue: 'black' },
+                accordionItems: {
+                    type: 'list',
+                    defaultValue: [
+                        { id: crypto.randomUUID(), title: 'Lorem ipsum dolor sit amet', content: 'Consectetur elit. Integer fermentum scelerisque urna, at lacinia purus sagittis non. <strong>Aenean nisl risus</strong>, consequat eu diam sit amet, consectetur pulvinar nisi.' },
+                        { id: crypto.randomUUID(), title: 'Nunc nec est non mi faucibus', content: "Phasellus a mauris vitae massa dapibus consequat. Duis non pulvinar lorem, ut varius orci. <a href=\"https://example.com/\" target=\"_blank\">Nam et ligula</a> vel justo interdum consectetur." },
+                    ]
+                }
+            },
+            debounceDelay: 500
+        };
+
+        const state = { sdk: null, editors: {}, blockData: {}, eventListeners: [] };
+        const elements = {};
+
+        // Advanced memory management
+        const editorMetadata = new WeakMap();
+        const cleanupRegistry = new FinalizationRegistry((heldValue) => {
+            console.log('Cleanup registry triggered for editor:', heldValue);
+        });
+
+        const utils = {
+            debounce(func, wait) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => func.apply(this, a), wait); }; },
+            getFieldValue(f) { const v = state.blockData[f]; return v !== undefined ? v : moduleConfig.fields[f].defaultValue; },
+            sanitizeHtml(html) {
+                if (!html) return '';
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                temp.querySelectorAll('script, style').forEach(el => el.remove());
+
+                temp.querySelectorAll('a').forEach(link => {
+                    link.style.color = '#ffffff';
+                    link.style.textDecoration = 'underline';
+                    if (!link.getAttribute('href')) link.setAttribute('href', '#');
+                    if (!link.hasAttribute('target')) link.setAttribute('target', '_blank');
+                });
+
+                return temp.innerHTML.replace(/<p><br><\/p>/g, '').replace(/<p>/g, '').replace(/<\/p>/g, '<br>');
+            },
+
+            createEditor(container, id, content = '') {
+                // Create editor using shared configuration
+                const editor = new Quill(container, QuillConfigManager.createConfig('basic', {
+                    placeholder: 'Enter content here...'
+                }));
+
+                // Track editor metadata
+                const metadata = {
+                    id,
+                    created: Date.now(),
+                    container,
+                    hasContent: Boolean(content && content.trim())
+                };
+
+                editorMetadata.set(editor, metadata);
+                cleanupRegistry.register(editor, id);
+
+                // Set content if provided
+                if (content && content.trim()) {
+                    QuillConfigManager.setContent(editor, content);
+                }
+
+                return editor;
+            },
+
+            cleanupEditor(id) {
+                const editor = state.editors[id];
+                if (editor) {
+                    // Get metadata before cleanup
+                    const metadata = editorMetadata.get(editor);
+
+                    // Clean up event listeners
+                    if (editor.off) {
+                        editor.off('text-change');
+                    }
+
+                    // Log cleanup info
+                    console.log('Cleaning up editor:', {
+                        id,
+                        metadata,
+                        hadListeners: Boolean(editor.off)
+                    });
+
+                    // Remove from state
+                    delete state.editors[id];
+                }
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.backgroundColorSelector = document.getElementById('backgroundColorSelector');
+            elements.itemsContainer = document.getElementById('itemsContainer');
+            elements.addItemBtn = document.getElementById('addItemBtn');
+            elements.itemTemplate = document.getElementById('itemTemplate');
+        }
+
+        function setLoadingState(loading) {
+            elements.mainContainer.classList.toggle('loading', loading);
+            elements.loadingOverlay.classList.toggle('show', loading);
+        }
+
+        const updateDataFromUI = utils.debounce(() => {
+            const newItems = [];
+            const itemElements = elements.itemsContainer.querySelectorAll('.item');
+            itemElements.forEach(el => {
+                const id = el.dataset.id;
+                const editor = state.editors[id];
+                if (editor) {
+                    const content = editor.getSemanticHTML ? 
+                        editor.getSemanticHTML() : 
+                        editor.root.innerHTML;
+                    newItems.push({
+                        id: id,
+                        title: el.querySelector('[data-field="title"]').value,
+                        content: utils.sanitizeHtml(content)
+                    });
+                }
+            });
+            state.blockData.accordionItems = newItems;
+            refreshPreview();
+        }, moduleConfig.debounceDelay);
+        let rafId = null;
+        function renderItemsUI() {
+            const items = utils.getFieldValue('accordionItems');
+
+            // Clean up existing editors first
+            const currentIds = new Set(items.map(i => i.id));
+            Object.keys(state.editors).forEach(id => {
+                if (!currentIds.has(id)) {
+                    utils.cleanupEditor(id);
+                }
+            });
+
+            // Use DocumentFragment for batch DOM operations
+            const fragment = document.createDocumentFragment();
+
+            items.forEach((item, index) => {
+                const itemFragment = elements.itemTemplate.content.cloneNode(true);
+                const el = itemFragment.querySelector('.item');
+                const editorDiv = itemFragment.querySelector('.quill-container');
+
+                el.dataset.id = item.id;
+                el.querySelector('.item-title').textContent = `Item ${index + 1}`;
+                el.querySelector('[data-field="title"]').value = item.title || '';
+
+                el.querySelector('.move-up-btn').disabled = (index === 0);
+                el.querySelector('.move-down-btn').disabled = (index === items.length - 1);
+
+                fragment.appendChild(itemFragment);
+
+                // Create editor with memory management
+                const editor = utils.createEditor(editorDiv, item.id, item.content);
+                editor.on('text-change', updateDataFromUI);
+                state.editors[item.id] = editor;
+            });
+
+            // Single DOM update
+            elements.itemsContainer.replaceChildren();
+            elements.itemsContainer.appendChild(fragment);
+        }
+
+        // Optimized Event Delegation with Action Maps
+        const itemActions = {
+            '.remove-btn': (item, index, items, context) => {
+                items.splice(index, 1);
+                if (context.hasQuill && item.id) {
+                    utils.cleanupEditor(item.id);
+                }
+                return true;
+            },
+            '.move-up-btn': (item, index, items) => {
+                if (index > 0) {
+                    [items[index], items[index - 1]] = [items[index - 1], items[index]];
+                    return true;
+                }
+                return false;
+            },
+            '.move-down-btn': (item, index, items) => {
+                if (index < items.length - 1) {
+                    [items[index], items[index + 1]] = [items[index + 1], items[index]];
+                    return true;
+                }
+                return false;
+            },
+            '.duplicate-btn': (item, index, items) => {
+                const newItem = { ...item, id: crypto.randomUUID() };
+                items.splice(index + 1, 0, newItem);
+                return true;
+            }
+        };
+
+        function createDelegatedHandler(fieldName, actionMap) {
+            return (event) => {
+                // Handle add button clicks
+                if (event.target.closest('#addItemBtn')) {
+                    const currentItems = utils.getFieldValue(fieldName);
+                    const newItems = [...currentItems, { id: crypto.randomUUID(), title: 'NEW TITLE', content: 'New content...' }];
+                    state.blockData[fieldName] = newItems;
+                    renderItemsUI();
+                    updateDataFromUI();
+                    return;
+                }
+
+                // Find the closest item element
+                const itemEl = event.target.closest('.item');
+                if (!itemEl) return;
+
+                const id = itemEl.dataset.id;
+                const currentItems = state.blockData[fieldName];
+                const itemIndex = currentItems.findIndex(i => i.id === id);
+
+                if (itemIndex === -1) return;
+
+                const item = currentItems[itemIndex];
+                let actionExecuted = false;
+
+                // Execute action using action map
+                for (const [selector, action] of Object.entries(actionMap)) {
+                    if (event.target.closest(selector)) {
+                        const context = { hasQuill: true, fieldName };
+                        const result = action(item, itemIndex, currentItems, context);
+
+                        if (result) {
+                            actionExecuted = true;
+                            renderItemsUI();
+                            updateDataFromUI();
+                        }
+                        break;
+                    }
+                }
+
+                if (!actionExecuted) {
+                    console.log('No matching action found for selector');
+                }
+            };
+        }
+
+        function initializeEventHandlers() {
+            // Background color selector
+            Array.from(elements.backgroundColorSelector.querySelectorAll('.option-button')).forEach(btn => {
+                btn.addEventListener('click', e => {
+                    const value = e.currentTarget.dataset.value;
+                    state.blockData.backgroundColor = value;
+                    
+                    // Update UI
+                    Array.from(elements.backgroundColorSelector.querySelectorAll('.option-button')).forEach(b => b.classList.remove('selected'));
+                    e.currentTarget.classList.add('selected');
+                    
+                    refreshPreview();
+                });
+                state.eventListeners.push({ element: btn, event: 'click', handler: btn.onclick });
+            });
+
+            // Optimized event delegation for accordion items
+            const accordionHandler = createDelegatedHandler('accordionItems', itemActions);
+
+            elements.addItemBtn.addEventListener('click', accordionHandler);
+            state.eventListeners.push({ element: elements.addItemBtn, event: 'click', handler: accordionHandler });
+
+            elements.itemsContainer.addEventListener('click', accordionHandler);
+            state.eventListeners.push({ element: elements.itemsContainer, event: 'click', handler: accordionHandler });
+
+            elements.itemsContainer.addEventListener('input', e => {
+                if(e.target.matches('[data-field="title"]')) {
+                    updateDataFromUI();
+                }
+            });
+            state.eventListeners.push({ 
+                element: elements.itemsContainer, 
+                event: 'input', 
+                handler: (e) => {
+                    if(e.target.matches('[data-field="title"]')) {
+                        updateDataFromUI();
+                    }
+                }
+            });
+        }
+
+        function generateTemplate() {
+            const items = utils.getFieldValue('accordionItems');
+            const backgroundColor = utils.getFieldValue('backgroundColor') === 'red' ? '#DB011C' : '#000000';
+            
+            if (!items || items.length === 0) {
+                return '<table align="center" style="width:620px; background-color:' + backgroundColor + ';"><tr><td style="padding:20px;text-align:center;font-family:Arial,sans-serif;color:#fff;">Add items to build your accordion.</td></tr></table>';
+            }
+
+            const interactiveItems = items.map((item, i) => `
+          <div class="accordion-item">
+            <input type="checkbox" id="accordion-${i + 1}" name="accordion-group">
+            <label class="accordion-title mobile-text-center" for="accordion-${i + 1}">${item.title}</label>
+            <div class="accordion-content">
+              <div class="accordion-content-inner mobile-text-center">
+                ${item.content}
+              </div>
+            </div>
+          </div>`).join('');
+
+            const fallbackItems = items.map(item => `
+            <tr>
+              <td class="mobile-text-center" style="padding-bottom: 30px;">
+                <h3 class="mobile-text-center" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_93 Blk E', Arial, sans-serif, 'Open-Sans'; font-size: 20px; font-weight: bold; line-height: 28px; margin: 0 0 8px 0; text-transform: uppercase;">
+                  ${item.title}
+                </h3>
+                <div class="mobile-text-center" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: normal; line-height: 28px; margin: 0; mso-line-height-rule: exactly;">
+                  ${utils.sanitizeHtml(item.content)}
+                </div>
+              </td>
+            </tr>`).join('');
+
+            return `<!--[if !mso]><!-->
+<style type="text/css">
+/* Accordion-specific styles only - leveraging existing email template styles */
+input[type="checkbox"] { display: none !important; mso-hide: all !important; }
+
+/* Force white links in accordion content */
+.accordion-content-inner a,
+.accordion-content-inner a:visited,
+.accordion-content-inner a:hover,
+.accordion-content-inner a:active {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .fallback { display: none !important; }
+    .accordion-wrapper { 
+        display: block !important; 
+        max-height: none !important; 
+        overflow: visible !important; 
+        width: 100% !important; 
+        max-width: 580px !important;
+    }
+    .accordion-item { 
+        border-bottom: 1px solid ${backgroundColor}; 
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .accordion-title { 
+        display: block; 
+        cursor: pointer; 
+        padding: 20px 0; 
+        position: relative; 
+        color: #ffffff; 
+        font-family: 'Helvetica Neue LT W05_93 Blk E', Arial, sans-serif; 
+        font-size: 20px; 
+        font-weight: bold; 
+        line-height: 28px; 
+        text-transform: uppercase; 
+        -webkit-tap-highlight-color: transparent;
+        width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .accordion-title::after { 
+        content: '+'; 
+        position: absolute; 
+        right: 0; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        font-size: 28px; 
+        font-weight: bold; 
+        color: #ffffff; 
+        transition: transform 0.3s ease; 
+    }
+    .accordion-content { 
+        max-height: 0; 
+        overflow: hidden; 
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease; 
+        background-color: ${backgroundColor};
+        width: 100%;
+        box-sizing: border-box;
+        opacity: 0;
+    }
+    .accordion-content-inner { 
+        padding: 0; 
+        color: #ffffff; 
+        font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif; 
+        font-size: 16px; 
+        font-weight: normal; 
+        line-height: 28px; 
+        transition: padding 0.25s ease, transform 0.25s ease;
+        width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        transform: translateY(-10px);
+    }
+    input[type="checkbox"]:checked ~ .accordion-title::after { 
+        transform: translateY(-50%) rotate(45deg); 
+    }
+    input[type="checkbox"]:checked ~ .accordion-content { 
+        max-height: 400px; 
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease 0.1s; 
+        opacity: 1;
+    }
+    input[type="checkbox"]:checked ~ .accordion-content .accordion-content-inner { 
+        padding: 0 0 20px 0; 
+        transition: padding 0.3s ease 0.1s, transform 0.3s ease 0.1s; 
+        transform: translateY(0);
+    }
+}
+
+/* Email client specific rules */
+#MessageViewBody .fallback, body.MsgBody .fallback { display: block !important; }
+#MessageViewBody .accordion-wrapper, body.MsgBody .accordion-wrapper { display: none !important; }
+[class~="x_accordion-wrapper"] { display: none !important; }
+[class~="x_fallback"] { display: block !important; }
+.accordion-wrapper\\0 { display: none !important; }
+.fallback\\0 { display: block !important; }
+@media screen yahoo {
+    .fallback { display: block !important; max-height: none !important; }
+    .accordion-wrapper { display: none !important; max-height: 0 !important; overflow: hidden !important; }
+}
+</style>
+<!--<![endif]-->
+<style type="text/css">
+/* Outlook-specific link styling */
+.accordion-wrapper\\0 { display: none !important; }
+.fallback\\0 { display: block !important; }
+
+/* Force white links in fallback content for all email clients */
+.fallback a,
+.fallback a:visited,
+.fallback a:hover,
+.fallback a:active {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* MSO-specific link styling */
+span.MsoHyperlink {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+span.MsoHyperlinkFollowed {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+</style>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: ${backgroundColor}; width: 620px;">
+  <tr>
+    <td class="side" style="width: 20px;">&nbsp;</td>
+    <td align="center" class="content-inner mobile-text-center" style="padding-top: 30px; padding-bottom: 30px; width: 580px;" valign="top">
+      <!--[if !mso]><!-->
+      <div class="accordion-wrapper" style="display: none; max-height: 0; overflow: hidden; width: 100%;">
+        ${interactiveItems}
+      </div>
+      <!--<![endif]-->
+      <div class="fallback">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%;">
+          ${fallbackItems}
+        </table>
+      </div>
+    </td>
+    <td class="side" style="width: 20px;">&nbsp;</td>
+  </tr>
+</table>`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (!state.sdk) return;
+                try {
+                    const html = generateTemplate();
+                    state.sdk.setContent(html);
+                    state.sdk.setData({ ...state.blockData, content: html });
+                } catch (error) {
+                    console.error(`Preview update failed: ${error.message}`);
+                }
+            });
+        }
+
+        // Enhanced cleanup function with memory management
+        function cleanup() {
+            // Enhanced cleanup with memory management
+            Object.keys(state.editors).forEach(editorId => {
+                utils.cleanupEditor(editorId);
+            });
+
+            // Clean up event listeners
+            state.eventListeners.forEach(({ element, event, handler }) => { 
+                if (element && element.removeEventListener) element.removeEventListener(event, handler); 
+            }); 
+            state.eventListeners = [];
+
+            // Cancel any pending RAF
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            console.log('Accordion cleanup completed');
+        }
+
+        function initialize() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not available');
+                if (!window.Quill) throw new Error('Quill.js not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEventHandlers();
+                setLoadingState(true);
+
+                state.sdk.getData((data) => {
+                    // Set backgroundColor
+                    state.blockData.backgroundColor = (data && data.backgroundColor) ? data.backgroundColor : utils.getFieldValue('backgroundColor');
+                    
+                    // Update background color UI
+                    const colorValue = state.blockData.backgroundColor;
+                    Array.from(elements.backgroundColorSelector.querySelectorAll('.option-button')).forEach(btn => {
+                        btn.classList.toggle('selected', btn.dataset.value === colorValue);
+                    });
+
+                    state.blockData.accordionItems = (data && data.accordionItems && data.accordionItems.length > 0) ? data.accordionItems : utils.getFieldValue('accordionItems');
+                    state.blockData.accordionItems.forEach(item => { if (!item.id) item.id = crypto.randomUUID(); });
+                    renderItemsUI();
+                    refreshPreview();
+                    setLoadingState(false);
+                });
+
+                // Add cleanup on page unload
+                window.addEventListener('beforeunload', cleanup);
+            } catch (error) {
+                console.error(`Initialization failed: ${error.message}`);
+                setLoadingState(false);
+            }
+        }
+
+        document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initialize) : initialize();
+    </script>
+</body>
+</html>

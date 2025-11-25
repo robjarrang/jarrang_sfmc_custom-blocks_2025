@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Checklist Block</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
+    <style>
+        body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.color-selector{display:flex;gap:10px}.color-option{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.color-option:hover{border-color:#0074d9;background-color:#f0f8ff}.color-option.selected{border-color:#0074d9;background-color:#0074d9;color:white}.toggle-container{display:flex;align-items:center;gap:10px;margin-bottom:15px}.toggle-switch{position:relative;display:inline-block;width:48px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:.3s;border-radius:24px}.toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked + .toggle-slider{background-color:#0074d9}input:checked + .toggle-slider:before{transform:translateX(24px)}.quill-container{background:white;border:1px solid #ddd;border-radius:4px;contain:layout style paint}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:2em;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.items-container{display:flex;flex-direction:column;gap:15px;contain:layout}
+        .item{background-color:#fafafa;padding:15px;border:1px solid #ddd;border-radius:6px;position:relative;contain:layout style paint}
+        .item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+        .item-title{font-weight:bold;font-size:16px;margin:0}
+        .item-controls{display:flex;gap:8px}
+        .item-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}
+        .item-control-btn:hover{color:#0074d9}
+        .item-control-btn:disabled{color:#ccc;cursor:not-allowed}
+        .btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-item-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
+        .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
+        .config-tool-btn{background:none;border:1px solid #ddd;border-radius:4px;padding:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+        .config-tool-btn:hover{border-color:#0074d9;background-color:#f0f8ff}
+        .config-tool-btn svg{width:20px;height:20px;fill:#555}
+        .config-tool-btn:hover svg{fill:#0074d9}
+        .config-tool-btn.success{background-color:#d4edda;border-color:#28a745}
+        .config-tool-btn.success svg{fill:#28a745}
+        @keyframes fadeSuccess{0%{opacity:1}100%{opacity:0}}
+        .config-tool-btn.fade-out{animation:fadeSuccess 0.5s ease-out forwards}
+        .paste-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:10000;align-items:center;justify-content:center}
+        .paste-modal.show{display:flex}
+        .paste-modal-content{background:white;padding:40px;max-width:400px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:modalSlideIn 0.3s ease-out;text-align:center}
+        @keyframes modalSlideIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+        .paste-modal-icon{width:64px;height:64px;margin:0 auto 20px;background:#f0f8ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+        .paste-modal-icon svg{width:32px;height:32px;fill:#0074d9}
+        .paste-modal-title{font-size:22px;font-weight:bold;color:#333;margin:0 0 12px 0}
+        .paste-modal-instructions{color:#666;font-size:15px;line-height:1.5;margin-bottom:24px}
+        .paste-modal-hint{background:#f9f9f9;padding:12px;border-radius:6px;color:#888;font-size:13px;margin-bottom:24px;transition:all 0.3s ease}
+        .paste-modal-hint.error{background:#fee;border:1px solid #fcc;color:#c00}
+        .paste-modal-footer{display:flex;gap:10px;justify-content:center}
+        .paste-modal-btn{padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:15px;font-weight:bold;transition:all 0.2s;min-width:100px}
+        .paste-modal-btn.primary{background-color:#0074d9;color:white;box-shadow:0 2px 8px rgba(0,116,217,0.3)}
+        .paste-modal-btn.primary:hover{background-color:#005a9e;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,116,217,0.4)}
+        .paste-modal-btn.secondary{background-color:#f0f0f0;color:#666}
+        .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
+        .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">Checklist Settings</h2>
+
+        <div class="error-banner" id="errorBanner"></div>
+
+        <div class="config-tools">
+            <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+            <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </button>
+        </div>
+
+        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+            <div class="section-title">General Settings</div>
+            <div class="field-group">
+                <label class="field-label">Background Colour</label>
+                <div class="color-selector" id="backgroundColorSelector">
+                    <div class="color-option selected" data-color="red">Red</div>
+                    <div class="color-option" data-color="black">Black</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider">
+            <div class="section-title">Checklist Items</div>
+            <div id="itemsContainer" class="items-container"></div>
+            <button id="addItemBtn" class="btn add-item-btn">Add New Item</button>
+        </div>
+
+        <div class="section-divider">
+            <div class="section-title">Spacing Settings</div>
+            <div class="toggle-container"><label class="toggle-switch"><input type="checkbox" id="showTopSpacer" checked><span class="toggle-slider"></span></label><label for="showTopSpacer" class="checkbox-label">Show Top Spacer</label></div>
+            <div class="toggle-container"><label class="toggle-switch"><input type="checkbox" id="showBottomSpacer" checked><span class="toggle-slider"></span></label><label for="showBottomSpacer" class="checkbox-label">Show Bottom Spacer</label></div>
+        </div>
+    </div>
+
+    <template id="itemTemplate">
+        <div class="item">
+            <div class="item-header">
+                <h3 class="item-title">Item</h3>
+                <div class="item-controls">
+                    <button class="item-control-btn move-up-btn" title="Move Up">▲</button>
+                    <button class="item-control-btn move-down-btn" title="Move Down">▼</button>
+                    <button class="item-control-btn remove-btn" title="Remove Item">×</button>
+                </div>
+            </div>
+            <div class="quill-container limited-toolbar"></div>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: 'Checklist Block',
+            fields: {
+                backgroundColor: { type: 'text', defaultValue: 'red' },
+                showTopSpacer: { type: 'boolean', defaultValue: true },
+                showBottomSpacer: { type: 'boolean', defaultValue: true },
+                items: {
+                    type: 'list',
+                    defaultValue: [
+                        { id: crypto.randomUUID(), text: '<strong>Lorem ipsum odor amet</strong>' },
+                        { id: crypto.randomUUID(), text: '<strong>Consectetur adipiscing elit</strong>' },
+                        { id: crypto.randomUUID(), text: '<strong>Donec a diam lectus</strong>' }
+                    ]
+                }
+            },
+            debounceDelay: 400,
+            maxRetries: 3
+        };
+
+        const state = { sdk: null, editors: {}, blockData: {}, isLoading: false, isInitialized: false, retryCount: 0, eventListeners: [] };
+        const elements = {};
+
+        // Advanced memory management
+        const editorMetadata = new WeakMap();
+        const cleanupRegistry = new FinalizationRegistry((heldValue) => {
+            console.log('Cleanup registry triggered for editor:', heldValue);
+        });
+
+        const utils = {
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => { clearTimeout(timeout); func.apply(this, args); };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+            sanitizeHtml(html) {
+                if (!html) return '';
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                temp.querySelectorAll('script, style').forEach(el => el.remove());
+                // Handle Quill's <p> tags and also allow our <sup> and <a> tags through.
+                temp.querySelectorAll('a').forEach(link => {
+                    if (!link.style.color) link.style.color = '#ffffff';
+                    if (!link.style.textDecoration) link.style.textDecoration = 'underline';
+                    if (!link.getAttribute('href')) link.setAttribute('href', '#');
+                });
+                return temp.innerHTML.replace(/<p>/g, '').replace(/<\/p>/g, '');
+            },
+            showError(message, permanent = false) {
+                if(elements.errorBanner) {
+                    elements.errorBanner.textContent = message;
+                    elements.errorBanner.classList.add('show');
+                    if (!permanent) setTimeout(() => elements.errorBanner.classList.remove('show'), 5000);
+                }
+                console.error(`${moduleConfig.name} Error:`, message);
+            },
+            getFieldValue(fieldName) {
+                return state.blockData[fieldName] !== undefined ? state.blockData[fieldName] : moduleConfig.fields[fieldName].defaultValue;
+            },
+
+            createEditor(container, id, content = '') {
+                // Create editor with memory tracking and line break support
+                const editor = new Quill(container, {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [['bold', { 'script': 'super' }], ['link']],
+                        clipboard: { 
+                            matchVisual: false,
+                            // Preserve line breaks in clipboard
+                            matchers: [
+                                // Convert non-breaking spaces to regular spaces
+                                [Node.TEXT_NODE, function(node, delta) {
+                                    if (typeof node.data === 'string') {
+                                        const text = node.data.replace(/\u00A0/g, ' ').replace(/&nbsp;/g, ' ');
+                                        return new (window.Quill.import('delta'))().insert(text);
+                                    }
+                                    return delta;
+                                }]
+                            ]
+                        }
+                    },
+                    formats: ['bold', 'script', 'link'],
+                    placeholder: 'List item text...'
+                });
+
+                // Track editor metadata
+                const metadata = {
+                    id,
+                    created: Date.now(),
+                    container,
+                    hasContent: Boolean(content && content.trim())
+                };
+
+                editorMetadata.set(editor, metadata);
+                cleanupRegistry.register(editor, id);
+
+                // Set content if provided
+                if (content && content.trim()) {
+                    editor.setContents([]);
+                    editor.clipboard.dangerouslyPasteHTML(content);
+                }
+
+                return editor;
+            },
+
+            cleanupEditor(id) {
+                const editor = state.editors[id];
+                if (editor) {
+                    // Get metadata before cleanup
+                    const metadata = editorMetadata.get(editor);
+
+                    // Clean up event listeners
+                    if (editor.off) {
+                        editor.off('text-change');
+                    }
+
+                    // Log cleanup info
+                    console.log('Cleaning up editor:', {
+                        id,
+                        metadata,
+                        hadListeners: Boolean(editor.off)
+                    });
+
+                    // Remove from state
+                    delete state.editors[id];
+                }
+            },
+
+            addEventListenerTracked(element, event, handler) {
+                element.addEventListener(event, handler);
+                state.eventListeners.push({ element, event, handler });
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.backgroundColorSelector = document.getElementById('backgroundColorSelector');
+            elements.showTopSpacer = document.getElementById('showTopSpacer');
+            elements.showBottomSpacer = document.getElementById('showBottomSpacer');
+            elements.itemsContainer = document.getElementById('itemsContainer');
+            elements.addItemBtn = document.getElementById('addItemBtn');
+            elements.itemTemplate = document.getElementById('itemTemplate');
+        }
+
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            if (elements.mainContainer) {
+                elements.mainContainer.classList.toggle('loading', loading);
+                elements.loadingOverlay.classList.toggle('show', loading);
+            }
+        }
+
+        function updateDataFromUI() {
+            const selectedColorEl = elements.backgroundColorSelector.querySelector('.selected');
+            state.blockData.backgroundColor = selectedColorEl ? selectedColorEl.dataset.color : 'red';
+            
+            state.blockData.showTopSpacer = elements.showTopSpacer.checked;
+            state.blockData.showBottomSpacer = elements.showBottomSpacer.checked;
+
+            const newItems = [];
+            document.querySelectorAll('#itemsContainer .item').forEach(itemEl => {
+                const id = itemEl.dataset.id;
+                const editor = state.editors[id];
+                if (editor) {
+                    // Use Quill 2.0 API for getting content
+                    const content = editor.getSemanticHTML ? 
+                        editor.getSemanticHTML() : 
+                        editor.root.innerHTML;
+                    // Use QuillConfigManager to properly preserve line breaks
+                    newItems.push({ id: id, text: QuillConfigManager.sanitizeForEmail(content) });
+                }
+            });
+            state.blockData.items = newItems;
+
+            refreshPreview();
+        }
+
+        const debouncedUpdateDataFromUI = utils.debounce(updateDataFromUI, moduleConfig.debounceDelay);
+        let rafId = null;
+        function generateTemplate() {
+            const bgColor = utils.getFieldValue('backgroundColor') === 'red' ? '#DB011C' : '#000000';
+            const items = utils.getFieldValue('items');
+            const showTopSpacer = utils.getFieldValue('showTopSpacer');
+            const showBottomSpacer = utils.getFieldValue('showBottomSpacer');
+
+            const itemRowsHtml = items.map(item => {
+                // Sanitize the text for email, converting &nbsp; back to regular spaces
+                const sanitizedText = QuillConfigManager.sanitizeForEmail(item.text || '');
+                return `
+                <tr>
+                   <td valign="top" style="padding-bottom: 8px;">
+                    <img alt="Checkmark" src="https://images.example.com/icon-check.png" style="display: block; height: auto; outline: none; text-decoration: none;" width="20"></td>
+                   <td valign="top" style="width: 12px; padding-bottom: 8px;">&nbsp;</td>
+                   <td class="story-intro mobile-text-left" valign="top" style="color: #ffffff; font-family: 'Helvetica-Neue', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: normal; line-height: 24px; margin: 0; mso-line-height-rule: exactly; text-align: left; padding-bottom: 8px;">
+                    ${sanitizedText}
+                   </td>
+                </tr>
+            `;
+            }).join('');
+
+            const topSpacerHtml = showTopSpacer ? 
+                '<tr><td colspan="3"><div style="font-size: 28px; height: 28px; line-height: 28px;">&nbsp;</div></td></tr>' : 
+                '';
+            
+            const bottomSpacerHtml = showBottomSpacer ? 
+                '<tr><td colspan="3"><div style="font-size: 20px; height: 20px; line-height: 20px;">&nbsp;</div></td></tr>' : 
+                '';
+
+            return `<!-- START .checklist --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: ${bgColor}; width: 620px;">
+              <tr>
+               <td class="side" style="width: 20px;">&nbsp;</td>
+               <td align="center" class="content-inner" style="width: 580px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;">
+                  <tr>
+                   <td align="left" class="block" style="width: 100%;">
+                    <table align="left" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%;">
+                      ${topSpacerHtml}
+                      ${itemRowsHtml}
+                      ${bottomSpacerHtml}
+                    </table>
+                   </td>
+                  </tr>
+                </table>
+               </td>
+               <td class="side" style="width: 20px;">&nbsp;</td>
+              </tr>
+            </table><!-- END .checklist -->`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try {
+                    const html = generateTemplate();
+                    state.sdk.setContent(html);
+                    if (state.sdk.setData) {
+                        state.sdk.setData({ ...state.blockData, content: html });
+                    }
+                } catch (error) {
+                    utils.showError(`Preview update failed: ${error.message}`);
+                }
+            });
+        }
+
+        function renderItemsUI() {
+            const items = utils.getFieldValue('items');
+
+            // Clean up existing editors first
+            const currentIds = new Set(items.map(i => i.id));
+            Object.keys(state.editors).forEach(id => {
+                if (!currentIds.has(id)) {
+                    utils.cleanupEditor(id);
+                }
+            });
+
+            // Use DocumentFragment for batch DOM operations
+            const fragment = document.createDocumentFragment();
+            const editorConfigs = []; // Store editor configs to create after DOM attachment
+
+            items.forEach((item, index) => {
+                const itemFragment = elements.itemTemplate.content.cloneNode(true);
+                const itemEl = itemFragment.querySelector('.item');
+                const editorDiv = itemFragment.querySelector('.quill-container');
+
+                itemEl.dataset.id = item.id;
+                itemEl.querySelector('.item-title').textContent = `Item ${index + 1}`;
+
+                if(index === 0) itemEl.querySelector('.move-up-btn').disabled = true;
+                if(index === items.length - 1) itemEl.querySelector('.move-down-btn').disabled = true;
+
+                fragment.appendChild(itemFragment);
+
+                // Store editor config for later creation
+                editorConfigs.push({ editorDiv, id: item.id, text: item.text });
+            });
+
+            // Single DOM update
+            elements.itemsContainer.replaceChildren();
+            elements.itemsContainer.appendChild(fragment);
+
+            // Now create editors after DOM attachment with a small delay to ensure proper rendering
+            requestAnimationFrame(() => {
+                editorConfigs.forEach(({ id, text }) => {
+                    const editorDiv = elements.itemsContainer.querySelector(`[data-id="${id}"] .quill-container`);
+                    if (editorDiv) {
+                        const editor = utils.createEditor(editorDiv, id, text);
+                        editor.on('text-change', debouncedUpdateDataFromUI);
+                        state.editors[id] = editor;
+                    }
+                });
+            });
+        }
+
+        // Optimized Event Delegation with Action Maps
+        const itemActions = {
+            '.remove-btn': (item, index, items, context) => {
+                items.splice(index, 1);
+                if (context.hasQuill && item.id) {
+                    utils.cleanupEditor(item.id);
+                }
+                return true;
+            },
+            '.move-up-btn': (item, index, items) => {
+                if (index > 0) {
+                    [items[index], items[index - 1]] = [items[index - 1], items[index]];
+                    return true;
+                }
+                return false;
+            },
+            '.move-down-btn': (item, index, items) => {
+                if (index < items.length - 1) {
+                    [items[index], items[index + 1]] = [items[index + 1], items[index]];
+                    return true;
+                }
+                return false;
+            },
+            '.duplicate-btn': (item, index, items) => {
+                const newItem = { ...item, id: crypto.randomUUID() };
+                items.splice(index + 1, 0, newItem);
+                return true;
+            }
+        };
+
+        function createDelegatedHandler(fieldName, actionMap) {
+            return (event) => {
+                // Handle add button clicks
+                if (event.target.closest('#addItemBtn')) {
+                    const currentItems = utils.getFieldValue(fieldName);
+                    const newItems = [...currentItems, { id: crypto.randomUUID(), text: '<strong>New Item</strong>' }];
+                    state.blockData[fieldName] = newItems;
+                    renderItemsUI();
+                    updateDataFromUI();
+                    return;
+                }
+
+                // Find the closest item element
+                const itemEl = event.target.closest('.item');
+                if (!itemEl) return;
+
+                const id = itemEl.dataset.id;
+                const currentItems = state.blockData[fieldName];
+                const itemIndex = currentItems.findIndex(i => i.id === id);
+
+                if (itemIndex === -1) return;
+
+                const item = currentItems[itemIndex];
+                let actionExecuted = false;
+
+                // Execute action using action map
+                for (const [selector, action] of Object.entries(actionMap)) {
+                    if (event.target.closest(selector)) {
+                        const context = { hasQuill: true, fieldName };
+                        const result = action(item, itemIndex, currentItems, context);
+
+                        if (result) {
+                            actionExecuted = true;
+                            renderItemsUI();
+                            updateDataFromUI();
+                        }
+                        break;
+                    }
+                }
+
+                if (!actionExecuted) {
+                    console.log('No matching action found for selector');
+                }
+            };
+        }
+
+        function initializeEventHandlers() {
+            utils.addEventListenerTracked(elements.backgroundColorSelector, 'click', (e) => {
+                if (e.target.classList.contains('color-option')) {
+                    elements.backgroundColorSelector.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    updateDataFromUI();
+                }
+            });
+
+            // Add spacer toggle handlers
+            utils.addEventListenerTracked(elements.showTopSpacer, 'change', updateDataFromUI);
+            utils.addEventListenerTracked(elements.showBottomSpacer, 'change', updateDataFromUI);
+
+            // Optimized event delegation for checklist items
+            const checklistHandler = createDelegatedHandler('items', itemActions);
+
+            utils.addEventListenerTracked(elements.addItemBtn, 'click', checklistHandler);
+            utils.addEventListenerTracked(elements.itemsContainer, 'click', checklistHandler);
+
+            // Add copy/paste configuration handlers
+            utils.addEventListenerTracked(document.getElementById('copyConfigBtn'), 'click', copyConfiguration);
+            utils.addEventListenerTracked(document.getElementById('pasteConfigBtn'), 'click', pasteConfiguration);
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                module: moduleConfig.name,
+                version: '1.0',
+                data: state.blockData
+            };
+
+            const configString = JSON.stringify(configData, null, 2);
+            
+            // Create temporary textarea for copying
+            const textarea = document.createElement('textarea');
+            textarea.value = configString;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const btn = document.getElementById('copyConfigBtn');
+                const originalHTML = btn.innerHTML;
+                
+                // Show success state with checkmark
+                btn.classList.add('success');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" style="fill:#28a745;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                
+                setTimeout(() => {
+                    btn.classList.add('fade-out');
+                    setTimeout(() => {
+                        btn.classList.remove('success', 'fade-out');
+                        btn.innerHTML = originalHTML;
+                    }, 500);
+                }, 1500);
+                
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                utils.showError('Failed to copy configuration to clipboard');
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const textarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            
+            let pasteListener, keydownListener, clickListener, cancelListener;
+            
+            const cleanup = () => {
+                modal.classList.remove('show');
+                textarea.value = '';
+                textarea.blur();
+                
+                if (pasteListener) textarea.removeEventListener('paste', pasteListener);
+                if (keydownListener) document.removeEventListener('keydown', keydownListener);
+                if (clickListener) modal.removeEventListener('click', clickListener);
+                if (cancelListener) cancelBtn.removeEventListener('click', cancelListener);
+            };
+            
+            // Handle paste event
+            pasteListener = (e) => {
+                e.preventDefault();
+                const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                
+                try {
+                    const configData = JSON.parse(pastedText);
+                    
+                    if (!configData.module || configData.module !== moduleConfig.name) {
+                        utils.showError(`Invalid configuration. This appears to be from "${configData.module || 'Unknown'}" but this is a ${moduleConfig.name}.`);
+                        cleanup();
+                        return;
+                    }
+                    
+                    if (!configData.data) {
+                        utils.showError('Invalid configuration format: missing data');
+                        cleanup();
+                        return;
+                    }
+                    
+                    // Ensure items have IDs
+                    if (configData.data.items && Array.isArray(configData.data.items)) {
+                        configData.data.items.forEach(item => {
+                            if (!item.id) item.id = crypto.randomUUID();
+                        });
+                    }
+                    
+                    state.blockData = configData.data;
+                    
+                    // Update UI
+                    document.querySelectorAll('.color-option').forEach(o => 
+                        o.classList.toggle('selected', o.dataset.color === state.blockData.backgroundColor)
+                    );
+                    elements.showTopSpacer.checked = state.blockData.showTopSpacer;
+                    elements.showBottomSpacer.checked = state.blockData.showBottomSpacer;
+                    
+                    renderItemsUI();
+                    updateDataFromUI();
+                    
+                    cleanup();
+                    
+                    // Visual feedback
+                    const btn = document.getElementById('pasteConfigBtn');
+                    const originalHTML = btn.innerHTML;
+                    
+                    btn.classList.add('success');
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" style="fill:#28a745;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        btn.classList.add('fade-out');
+                        setTimeout(() => {
+                            btn.classList.remove('success', 'fade-out');
+                            btn.innerHTML = originalHTML;
+                        }, 500);
+                    }, 1500);
+                    
+                } catch (err) {
+                    console.error('Paste error:', err);
+                    utils.showError('Failed to paste configuration. Please ensure you copied valid configuration data.');
+                    cleanup();
+                }
+            };
+            
+            // Handle keyboard shortcuts
+            keydownListener = (e) => {
+                if (e.key === 'Escape') {
+                    cleanup();
+                } else if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Paste event will be handled by the paste listener
+                    // This just ensures the textarea is focused
+                }
+            };
+            
+            // Handle click outside modal
+            clickListener = (e) => {
+                if (e.target === modal) {
+                    cleanup();
+                }
+            };
+            
+            // Handle cancel button
+            cancelListener = () => {
+                cleanup();
+            };
+            
+            // Add event listeners
+            textarea.addEventListener('paste', pasteListener);
+            document.addEventListener('keydown', keydownListener);
+            modal.addEventListener('click', clickListener);
+            cancelBtn.addEventListener('click', cancelListener);
+            
+            // Show modal and focus textarea
+            modal.classList.add('show');
+            setTimeout(() => textarea.focus(), 100);
+        }
+
+        function loadData() {
+            if (!state.sdk) return utils.showError('SDK not available');
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    state.blockData.backgroundColor = (data && data.backgroundColor) ? data.backgroundColor : moduleConfig.fields.backgroundColor.defaultValue;
+                    state.blockData.showTopSpacer = (data && data.hasOwnProperty('showTopSpacer')) ? data.showTopSpacer : moduleConfig.fields.showTopSpacer.defaultValue;
+                    state.blockData.showBottomSpacer = (data && data.hasOwnProperty('showBottomSpacer')) ? data.showBottomSpacer : moduleConfig.fields.showBottomSpacer.defaultValue;
+                    state.blockData.items = (data && data.items && data.items.length > 0) ? data.items : moduleConfig.fields.items.defaultValue;
+                    state.blockData.items.forEach(item => { if (!item.id) item.id = crypto.randomUUID(); });
+
+                    document.querySelectorAll('.color-option').forEach(o => o.classList.toggle('selected', o.dataset.color === state.blockData.backgroundColor));
+                    elements.showTopSpacer.checked = state.blockData.showTopSpacer;
+                    elements.showBottomSpacer.checked = state.blockData.showBottomSpacer;
+                    renderItemsUI();
+                    refreshPreview();
+
+                } catch (error) {
+                    utils.showError(`Failed to load data: ${error.message}`);
+                    state.blockData = {};
+                } finally {
+                    setLoadingState(false);
+                }
+            });
+        }
+
+        // Enhanced cleanup function with memory management
+        function cleanup() {
+            // Enhanced cleanup with memory management
+            Object.keys(state.editors).forEach(editorId => {
+                utils.cleanupEditor(editorId);
+            });
+
+            // Clean up event listeners
+            state.eventListeners.forEach(({ element, event, handler }) => { 
+                if (element && element.removeEventListener) element.removeEventListener(event, handler); 
+            }); 
+            state.eventListeners = [];
+
+            // Cancel any pending RAF
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            console.log('Checklist cleanup completed');
+        }
+
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                if (!window.Quill) throw new Error('Quill not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEventHandlers();
+                loadData();
+
+                // Add cleanup on page unload
+                window.addEventListener('beforeunload', cleanup);
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialization failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) {
+                    state.retryCount++;
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount);
+                } else {
+                    utils.showError('Failed to initialize after multiple attempts. Please refresh.', true);
+                }
+                setLoadingState(false);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeWithRetry);
+        } else {
+            initializeWithRetry();
+        }
+    </script>
+
+    <div id="pasteModal" class="paste-modal">
+        <div class="paste-modal-content">
+            <div class="paste-modal-icon">
+                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+            </div>
+            <h3 class="paste-modal-title">Ready to Paste</h3>
+            <p class="paste-modal-instructions">Press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) to paste your copied block configuration.</p>
+            <div class="paste-modal-hint" id="pasteModalHint">The block will automatically update with the pasted settings</div>
+            <div class="paste-modal-footer">
+                <button id="pasteModalCancel" class="paste-modal-btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+
+</body>
+</html>
