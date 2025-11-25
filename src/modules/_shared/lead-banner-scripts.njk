@@ -1,0 +1,795 @@
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
+    <script src="../shared-assets/quill-config.js"></script>
+    <script>
+        'use strict';
+
+        const moduleConfig = {
+            name: '{{ module.title }}',
+            fields: {
+                backgroundImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg', validator: 'url' },
+                contentType: { type: 'text', defaultValue: 'imageswap' },
+                verticalAlign: { type: 'text', defaultValue: 'middle' },
+                textAlign: { type: 'text', defaultValue: 'center' },
+                title: { type: 'richtext', defaultValue: 'Title goes here', maxLength: 200 },
+                titleFontSize: { type: 'number', defaultValue: 28 },
+                subtitle: { type: 'richtext', defaultValue: 'Subtitle goes here', maxLength: 300 },
+                subtitleFontSize: { type: 'number', defaultValue: 18 },
+                titleImage: { type: 'url', defaultValue: '', validator: 'url' },
+                titleImageAlt: { type: 'text', defaultValue: '' },
+                titleImageWidth: { type: 'number', defaultValue: 300 },
+                heroDesktopImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg', validator: 'url' },
+                heroMobileImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg', validator: 'url' },
+                heroAlt: { type: 'text', defaultValue: 'Hero banner' },
+                contentUrl: { type: 'url', defaultValue: 'https://example.com/', validator: 'url' }
+            },
+            debounceDelay: 300, 
+            maxRetries: 3
+        };
+
+        const state = { 
+            sdk: null, 
+            editors: {}, 
+            blockData: {}, 
+            isLoading: false, 
+            isInitialized: false, 
+            eventListeners: [], 
+            retryCount: 0 
+        };
+        const elements = {};
+        let rafId = null;
+
+        // Advanced memory management
+        const editorMetadata = new WeakMap();
+        const cleanupRegistry = new FinalizationRegistry((heldValue) => {
+            console.log('Cleanup registry triggered for editor:', heldValue);
+        });
+
+        const utils = {
+            debounce(func, wait) { 
+                let timeout; 
+                return function(...args) { 
+                    const later = () => { 
+                        clearTimeout(timeout); 
+                        func.apply(this, args); 
+                    }; 
+                    clearTimeout(timeout); 
+                    timeout = setTimeout(later, wait); 
+                }; 
+            },
+            isValidUrl(string) { 
+                if (!string || string.trim() === '') return true; 
+                try { 
+                    const url = new URL(string); 
+                    return url.protocol === 'http:' || url.protocol === 'https:'; 
+                } catch (_) { 
+                    return false; 
+                } 
+            },
+            sanitizeHtml(html) { 
+                if (!html) return ''; 
+                const temp = document.createElement('div'); 
+                temp.innerHTML = html; 
+                temp.querySelectorAll('script, style').forEach(el => el.remove()); 
+                const allElements = temp.getElementsByTagName('*'); 
+                for (let el of allElements) { 
+                    for (let attr of el.attributes) { 
+                        if (attr.name.startsWith('on')) el.removeAttribute(attr.name); 
+                    } 
+                } 
+                return temp.innerHTML; 
+            },
+            showError(m, p = false) { 
+                if (elements.errorBanner) { 
+                    elements.errorBanner.textContent = m; 
+                    elements.errorBanner.classList.add('show'); 
+                    if (!p) setTimeout(() => elements.errorBanner.classList.remove('show'), 5000); 
+                } 
+                console.error('Lead Banner Error:', m); 
+            },
+            getFieldValue(fieldName) { 
+                const value = state.blockData[fieldName]; 
+                const fieldConfig = moduleConfig.fields[fieldName]; 
+                return (value !== undefined && value !== null) ? (fieldConfig.type === 'number' ? parseFloat(value) : value) : fieldConfig.defaultValue; 
+            },
+
+            createEditor(container, id, content = '', config = {}) {
+                // Create editor using shared configuration
+                const editorType = config.type || 'description';
+                const editor = new Quill(container, QuillConfigManager.createConfig(editorType, {
+                    placeholder: config.placeholder || 'Enter text...'
+                }));
+
+                // Track editor metadata
+                const metadata = {
+                    id,
+                    created: Date.now(),
+                    container,
+                    hasContent: Boolean(content && content.trim())
+                };
+
+                editorMetadata.set(editor, metadata);
+                cleanupRegistry.register(editor, id);
+
+                // Set content if provided
+                if (content && content.trim()) {
+                    QuillConfigManager.setContent(editor, content);
+                }
+
+                return editor;
+            },
+
+            cleanupEditor(id) {
+                const editor = state.editors[id];
+                if (editor) {
+                    // Get metadata before cleanup
+                    const metadata = editorMetadata.get(editor);
+
+                    // Clean up event listeners
+                    if (editor.off) {
+                        editor.off('text-change');
+                    }
+
+                    // Log cleanup info
+                    console.log('Cleaning up editor:', {
+                        id,
+                        metadata,
+                        hadListeners: Boolean(editor.off)
+                    });
+
+                    // Remove from state
+                    delete state.editors[id];
+                }
+            }
+        };
+
+        function cacheElements() {
+            elements.mainContainer = document.getElementById('mainContainer');
+            elements.loadingOverlay = document.getElementById('loadingOverlay');
+            elements.errorBanner = document.getElementById('errorBanner');
+            elements.backgroundImage = document.getElementById('backgroundImage');
+            elements.backgroundImageError = document.getElementById('backgroundImageError');
+            elements.contentTypeSelector = document.getElementById('contentTypeSelector');
+            elements.verticalAlignSelector = document.getElementById('verticalAlignSelector');
+            elements.textAlignSelector = document.getElementById('textAlignSelector');
+            elements.backgroundImageGroup = document.getElementById('backgroundImageGroup');
+            elements.verticalAlignGroup = document.getElementById('verticalAlignGroup');
+            elements.textAlignGroup = document.getElementById('textAlignGroup');
+            elements.textContent = document.getElementById('textContent');
+            elements.imageContent = document.getElementById('imageContent');
+            elements.imageSwapContent = document.getElementById('imageSwapContent');
+            elements.titleEditor = document.getElementById('titleEditor');
+            elements.titleFontSize = document.getElementById('titleFontSize');
+            elements.subtitleEditor = document.getElementById('subtitleEditor');
+            elements.subtitleFontSize = document.getElementById('subtitleFontSize');
+            elements.titleImage = document.getElementById('titleImage');
+            elements.titleImageError = document.getElementById('titleImageError');
+            elements.titleImageAlt = document.getElementById('titleImageAlt');
+            elements.titleImageWidth = document.getElementById('titleImageWidth');
+            elements.heroDesktopImage = document.getElementById('heroDesktopImage');
+            elements.heroDesktopImageError = document.getElementById('heroDesktopImageError');
+            elements.heroMobileImage = document.getElementById('heroMobileImage');
+            elements.heroMobileImageError = document.getElementById('heroMobileImageError');
+            elements.heroAlt = document.getElementById('heroAlt');
+            elements.contentUrl = document.getElementById('contentUrl');
+            elements.contentUrlError = document.getElementById('contentUrlError');
+        }
+
+        function setLoadingState(loading) {
+            state.isLoading = loading;
+            if (elements.mainContainer && elements.loadingOverlay) { 
+                elements.mainContainer.classList.toggle('loading', loading); 
+                elements.loadingOverlay.classList.toggle('show', loading); 
+            }
+        }
+
+        async function initializeEditors() {
+            if (!window.Quill) throw new Error('Quill library not loaded');
+            if (!window.QuillConfigManager) throw new Error('QuillConfigManager not loaded');
+
+            try {
+                // Initialize editors using shared configuration
+                state.editors.title = await QuillConfigManager.initializeEditor(
+                    elements.titleEditor, 
+                    'title', 
+                    {
+                        placeholder: 'Enter title...',
+                        maxLength: moduleConfig.fields.title.maxLength
+                    }
+                );
+
+                state.editors.subtitle = await QuillConfigManager.initializeEditor(
+                    elements.subtitleEditor, 
+                    'description', 
+                    {
+                        placeholder: 'Enter subtitle...',
+                        maxLength: moduleConfig.fields.subtitle.maxLength
+                    }
+                );
+
+                // Set up change handlers for all editors
+                Object.keys(state.editors).forEach(fieldName => {
+                    const editor = state.editors[fieldName];
+                    const updateHandler = QuillConfigManager.createUpdateHandler((delta, oldDelta, source) => {
+                        const content = QuillConfigManager.getCleanContent(editor, true);
+                        updateData(fieldName, utils.sanitizeHtml(content));
+                    }, moduleConfig.debounceDelay);
+
+                    editor.on('text-change', updateHandler);
+                });
+
+            } catch (error) { 
+                throw new Error(`Failed to initialize editors: ${error.message}`); 
+            }
+        }
+
+        function processRichText(html) {
+            return QuillConfigManager.sanitizeForEmail(html || '');
+        }
+
+        function updateData(field, value) {
+            if (state.blockData[field] != value) { 
+                state.blockData[field] = value; 
+                refreshPreview(); 
+            }
+        }
+
+        const debouncedUpdateData = utils.debounce(updateData, moduleConfig.debounceDelay);
+
+        function generateTemplate() {
+            const bgImage = utils.getFieldValue('backgroundImage');
+            const contentUrl = utils.getFieldValue('contentUrl');
+            const contentType = utils.getFieldValue('contentType');
+            const verticalAlign = utils.getFieldValue('verticalAlign');
+            const textAlign = utils.getFieldValue('textAlign');
+            const logoImage = 'https://images.example.com/logo-placeholder.png';
+            const logoUrl = 'https://example.com/';
+            const fallbackColor = '#DB011C';
+
+            // Handle Image Swap mode separately
+            if (contentType === 'imageswap') {
+                const heroDesktopImage = utils.getFieldValue('heroDesktopImage');
+                const heroMobileImage = utils.getFieldValue('heroMobileImage');
+                const heroAlt = utils.getFieldValue('heroAlt');
+                
+                return `<!-- START .leadbanner - Image Swap --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color:${fallbackColor};width:620px;"><tr><td align="center" class="content-inner" style="width:580px;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;" width="620"><!-- Desktop row - hidden on mobile --><tr class="mobile-hide"><td align="center" style="padding:0;"><a href="${contentUrl}" style="text-decoration:none;" target="_blank"><img alt="${heroAlt}" border="0" class="fill" src="${heroDesktopImage}" style="display:block;width:620px;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" width="620"></a></td></tr><!-- Mobile row - revealed on mobile via .swap-content --><tr class="swap-content" style="display:none;max-height:0;overflow:hidden;mso-hide:all;"><td align="center" style="padding:0;"><a href="${contentUrl}" style="text-decoration:none;" target="_blank"><img alt="${heroAlt}" border="0" class="fill" src="${heroMobileImage}" style="display:block;width:100%;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" width="620"></a></td></tr></table></td></tr></table><!-- END .leadbanner - Image Swap -->`;
+            }
+
+            // --- FIX: Dynamic Padding Logic ---
+            let paddingTop = 20, paddingBottom = 20, paddingLeft = 40, paddingRight = 40;
+            if (verticalAlign === 'top') paddingTop = 40;
+            if (verticalAlign === 'bottom') paddingBottom = 40;
+            if (textAlign === 'left') paddingLeft = 60;
+            if (textAlign === 'right') paddingRight = 60;
+            const paddingString = `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`;
+
+            const logoHtml = `<table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;"><tr><td align="left" style="padding:0 0 0 12px;" valign="top"><a href="${logoUrl}" target="_blank"><img alt="Logo" src="${logoImage}" style="border:0;display:block;height:auto;outline:none;text-decoration:none;" width="180"></a></td></tr></table>`;
+
+            let contentHtml = '';
+            
+            if (contentType === 'image') {
+                // Image mode
+                const titleImage = utils.getFieldValue('titleImage');
+                const titleImageAlt = utils.getFieldValue('titleImageAlt');
+                const titleImageWidth = utils.getFieldValue('titleImageWidth');
+                
+                if (titleImage) {
+                    contentHtml = `<img alt="${titleImageAlt}" src="${titleImage}" style="width: ${titleImageWidth}px; max-width: 100%;" width="${titleImageWidth}">`;
+                } else {
+                    contentHtml = '<p style="color:#ffffff;font-family:\'Helvetica Neue LT W05_55 Roman\',sans-serif,\'Open Sans\';font-size:18px;margin:0;padding:0;">Please add an image URL</p>';
+                }
+            } else {
+                // Text mode
+                const processedTitle = processRichText(utils.getFieldValue('title'));
+                const processedSubtitle = processRichText(utils.getFieldValue('subtitle'));
+                const titleSize = utils.getFieldValue('titleFontSize');
+                const subtitleSize = utils.getFieldValue('subtitleFontSize');
+                const titleLineHeight = titleSize + 16;
+                const subtitleLineHeight = subtitleSize + 8;
+                
+                contentHtml = `<h1 class="leadbanner-title" style="color:#ffffff;font-family:'Helvetica Neue LT W05_93 Blk E',sans-serif,'Open Sans';font-size:${titleSize}px;font-weight:bold;line-height:${titleLineHeight}px;margin:0 0 10px 0;padding:0;text-transform:uppercase;"><a href="${contentUrl}" style="color:#ffffff;text-decoration:none;" target="_blank">${processedTitle}</a></h1><p class="leadbanner-subtitle" style="color:#ffffff;font-family:'Helvetica Neue LT W05_55 Roman',sans-serif,'Open Sans';font-size:${subtitleSize}px;font-stretch:condensed;font-weight:normal;line-height:${subtitleLineHeight}px;margin:0;padding:0;text-transform:uppercase;"><a href="${contentUrl}" style="color:#ffffff;text-decoration:none;" target="_blank">${processedSubtitle}</a></p>`;
+            }
+
+            return `<!-- START .leadbanner --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color:${fallbackColor};width:620px;"><tr><td align="center" class="content-inner" style="width:580px;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;" width="620"><tr><td background="${bgImage}" height="484" style="background-position:center center;background-size:cover;background-repeat:no-repeat;" valign="top" width="620"><!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:620px;height:484px;"><v:fill type="frame" src="${bgImage}" color="${fallbackColor}" /><v:textbox inset="0,0,0,0"><![endif]--><div>${logoHtml}<table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" height="340" role="presentation" style="height:280px;width:100%;"><tr><td align="${textAlign}" class="leadbanner-content" height="280" style="padding:${paddingString}; text-align:${textAlign};" valign="${verticalAlign}">${contentType === 'image' ? `<a href="${contentUrl}" target="_blank">` : ''}${contentHtml}${contentType === 'image' ? '</a>' : ''}</td></tr><tr><td class="block" style="width:100%;"><div style="font-size:20px;height:20px;line-height:20px;"></div></td></tr></table></div><!--[if gte mso 9]></v:textbox></v:rect><![endif]--></td></tr></table></td></tr></table><!-- END .leadbanner -->`;
+        }
+
+        function refreshPreview() {
+            if (rafId) cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(() => {
+                if (state.isLoading || !state.sdk) return;
+                try { 
+                    const html = generateTemplate(); 
+                    state.sdk.setContent(html); 
+                    if (typeof state.sdk.setData === 'function') { 
+                        state.sdk.setData({ ...state.blockData, content: html }); 
+                    } 
+                } catch (error) { 
+                    utils.showError(`Preview update failed: ${error.message}`); 
+                }
+            });
+        }
+
+        function validateUrlInput(input, errorElement) { 
+            const value = input.value.trim(); 
+            const isValid = !value || utils.isValidUrl(value); 
+            input.classList.toggle('error', !isValid); 
+            if (errorElement) errorElement.style.display = isValid ? 'none' : 'block'; 
+            return isValid; 
+        }
+
+        function initializeEventHandlers() {
+            state.eventListeners = [];
+
+            function setupUrlInput(inputEl, errorEl, dataKey) {
+                const handler = (e) => { 
+                    if (validateUrlInput(inputEl, errorEl)) { 
+                        debouncedUpdateData(dataKey, e.target.value.trim()); 
+                    } 
+                };
+                const blurHandler = () => validateUrlInput(inputEl, errorEl);
+                inputEl.addEventListener('input', handler);
+                inputEl.addEventListener('blur', blurHandler);
+                state.eventListeners.push({ element: inputEl, event: 'input', handler });
+                state.eventListeners.push({ element: inputEl, event: 'blur', handler: blurHandler });
+            }
+
+            setupUrlInput(elements.backgroundImage, elements.backgroundImageError, 'backgroundImage');
+            setupUrlInput(elements.titleImage, elements.titleImageError, 'titleImage');
+            setupUrlInput(elements.heroDesktopImage, elements.heroDesktopImageError, 'heroDesktopImage');
+            setupUrlInput(elements.heroMobileImage, elements.heroMobileImageError, 'heroMobileImage');
+            setupUrlInput(elements.contentUrl, elements.contentUrlError, 'contentUrl');
+
+            // Text input handlers for alt text fields
+            const altTextHandler = (e) => debouncedUpdateData('titleImageAlt', e.target.value.trim());
+            elements.titleImageAlt.addEventListener('input', altTextHandler);
+            state.eventListeners.push({ element: elements.titleImageAlt, event: 'input', handler: altTextHandler });
+
+            const heroAltHandler = (e) => debouncedUpdateData('heroAlt', e.target.value.trim());
+            elements.heroAlt.addEventListener('input', heroAltHandler);
+            state.eventListeners.push({ element: elements.heroAlt, event: 'input', handler: heroAltHandler });
+
+            function setupNumberInput(inputElement, dataKey) {
+                const step = 4;
+                const correctValueOnBlur = (e) => {
+                    const input = e.target;
+                    let value = parseInt(input.value, 10);
+                    const min = parseInt(input.min, 10), max = parseInt(input.max, 10);
+                    if (isNaN(value)) value = moduleConfig.fields[dataKey].defaultValue;
+                    value = Math.max(min, Math.min(value, max));
+                    const correctedValue = Math.round(value / step) * step;
+                    input.value = correctedValue;
+                    updateData(dataKey, correctedValue);
+                };
+                inputElement.addEventListener('blur', correctValueOnBlur);
+                state.eventListeners.push({ element: inputElement, event: 'blur', handler: correctValueOnBlur });
+            }
+
+            setupNumberInput(elements.titleFontSize, 'titleFontSize');
+            setupNumberInput(elements.subtitleFontSize, 'subtitleFontSize');
+
+            // Special handling for image width (step of 10)
+            const imageWidthHandler = (e) => {
+                const input = e.target;
+                let value = parseInt(input.value, 10);
+                const min = parseInt(input.min, 10), max = parseInt(input.max, 10);
+                if (isNaN(value)) value = moduleConfig.fields.titleImageWidth.defaultValue;
+                value = Math.max(min, Math.min(value, max));
+                const correctedValue = Math.round(value / 10) * 10;
+                input.value = correctedValue;
+                updateData('titleImageWidth', correctedValue);
+            };
+            elements.titleImageWidth.addEventListener('blur', imageWidthHandler);
+            state.eventListeners.push({ element: elements.titleImageWidth, event: 'blur', handler: imageWidthHandler });
+
+            function setupOptionSelector(el, key) { 
+                if (!el) return; 
+                el.querySelectorAll('.option-button').forEach(opt => { 
+                    const handler = (e) => { 
+                        const btn = e.currentTarget; 
+                        updateData(key, btn.dataset.value); 
+                        el.querySelectorAll('.option-button').forEach(o => o.classList.remove('selected')); 
+                        btn.classList.add('selected'); 
+                        
+                        // Handle content type switching
+                        if (key === 'contentType') {
+                            toggleContentType(btn.dataset.value);
+                        }
+                    }; 
+                    opt.addEventListener('click', handler); 
+                    state.eventListeners.push({ element: opt, event: 'click', handler }); 
+                }); 
+            }
+
+            setupOptionSelector(elements.contentTypeSelector, 'contentType');
+            setupOptionSelector(elements.verticalAlignSelector, 'verticalAlign');
+            setupOptionSelector(elements.textAlignSelector, 'textAlign');
+
+            // Copy/Paste configuration buttons
+            const copyConfigBtn = document.getElementById('copyConfigBtn');
+            const pasteConfigBtn = document.getElementById('pasteConfigBtn');
+            
+            if (copyConfigBtn) {
+                copyConfigBtn.addEventListener('click', () => copyConfiguration());
+            }
+            
+            if (pasteConfigBtn) {
+                pasteConfigBtn.addEventListener('click', () => pasteConfiguration());
+            }
+        }
+
+        function updateUIFromData() {
+            elements.backgroundImage.value = utils.getFieldValue('backgroundImage');
+            elements.titleImage.value = utils.getFieldValue('titleImage');
+            elements.titleImageAlt.value = utils.getFieldValue('titleImageAlt');
+            elements.titleImageWidth.value = utils.getFieldValue('titleImageWidth');
+            elements.heroDesktopImage.value = utils.getFieldValue('heroDesktopImage');
+            elements.heroMobileImage.value = utils.getFieldValue('heroMobileImage');
+            elements.heroAlt.value = utils.getFieldValue('heroAlt');
+            elements.contentUrl.value = utils.getFieldValue('contentUrl');
+            elements.titleFontSize.value = utils.getFieldValue('titleFontSize');
+            elements.subtitleFontSize.value = utils.getFieldValue('subtitleFontSize');
+
+            // Update Quill editors
+            Object.keys(state.editors).forEach(key => {
+                if (state.editors[key]) {
+                    const content = utils.getFieldValue(key);
+                    try {
+                        state.editors[key].setContents([]);
+                        if (content && content.trim()) {
+                            state.editors[key].clipboard.dangerouslyPasteHTML(content);
+                        }
+                    } catch (error) {
+                        console.warn(`Using fallback method for editor ${key}:`, error);
+                        state.editors[key].root.innerHTML = content || '';
+                    }
+                }
+            });
+
+            // Update selectors
+            function setSelectorState(el, key) { 
+                const val = utils.getFieldValue(key); 
+                if (el) el.querySelectorAll('.option-button').forEach(o => o.classList.toggle('selected', o.dataset.value === val)); 
+            }
+
+            setSelectorState(elements.contentTypeSelector, 'contentType');
+            setSelectorState(elements.verticalAlignSelector, 'verticalAlign');
+            setSelectorState(elements.textAlignSelector, 'textAlign');
+
+            // Update content type display
+            toggleContentType(utils.getFieldValue('contentType'));
+        }
+
+        function copyConfiguration() {
+            const configData = {
+                version: '1.0',
+                module: moduleConfig.name,
+                timestamp: new Date().toISOString(),
+                data: state.blockData
+            };
+            
+            const copyBtn = document.getElementById('copyConfigBtn');
+            const jsonString = JSON.stringify(configData, null, 2);
+            
+            // Fallback method using textarea (works in iframes)
+            const textarea = document.createElement('textarea');
+            textarea.value = jsonString;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                if (successful) {
+                    // Visual feedback - green check
+                    copyBtn.classList.add('success');
+                    copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                    
+                    setTimeout(() => {
+                        copyBtn.classList.add('fade-out');
+                        setTimeout(() => {
+                            copyBtn.classList.remove('success', 'fade-out');
+                            copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+                        }, 500);
+                    }, 1500);
+                    
+                    console.log('Block configuration copied to clipboard');
+                } else {
+                    throw new Error('Copy command failed');
+                }
+            } catch (err) {
+                document.body.removeChild(textarea);
+                utils.showError(`Failed to copy: ${err.message}`);
+                console.error('Copy error:', err);
+            }
+        }
+
+        function pasteConfiguration() {
+            const modal = document.getElementById('pasteModal');
+            const hiddenTextarea = document.getElementById('pasteHiddenTextarea');
+            const cancelBtn = document.getElementById('pasteModalCancel');
+            const pasteBtn = document.getElementById('pasteConfigBtn');
+            const hintBox = document.getElementById('pasteModalHint');
+            const defaultHintText = 'The block will automatically update with the pasted settings';
+            
+            // Show modal
+            modal.classList.add('show');
+            hintBox.classList.remove('error');
+            hintBox.textContent = defaultHintText;
+            
+            // Focus hidden textarea to capture paste
+            setTimeout(() => {
+                hiddenTextarea.value = '';
+                hiddenTextarea.focus();
+            }, 100);
+            
+            // Close modal function
+            const closeModal = () => {
+                modal.classList.remove('show');
+                hiddenTextarea.value = '';
+                hiddenTextarea.blur();
+                hintBox.classList.remove('error');
+                hintBox.textContent = defaultHintText;
+            };
+            
+            // Close on background click
+            const handleBackgroundClick = (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            modal.addEventListener('click', handleBackgroundClick);
+            
+            // Close on Cancel
+            const handleCancel = () => {
+                closeModal();
+                cleanup();
+            };
+            cancelBtn.addEventListener('click', handleCancel);
+            
+            // Close on Escape key
+            const handleEscape = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    cleanup();
+                }
+            };
+            document.addEventListener('keydown', handleEscape);
+            
+            // Cleanup function
+            const cleanup = () => {
+                document.removeEventListener('keydown', handleEscape);
+                document.removeEventListener('keydown', handlePaste);
+                cancelBtn.removeEventListener('click', handleCancel);
+                modal.removeEventListener('click', handleBackgroundClick);
+            };
+            
+            // Handle paste event
+            const handlePaste = (e) => {
+                // Only process if Ctrl/Cmd+V
+                if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                    // Reset hint to default on new paste attempt
+                    hintBox.classList.remove('error');
+                    hintBox.textContent = defaultHintText;
+                    
+                    // Small delay to let paste complete
+                    setTimeout(() => {
+                        const text = hiddenTextarea.value.trim();
+                        
+                        if (!text) {
+                            hintBox.textContent = 'No configuration found in clipboard. Please copy a block configuration first.';
+                            hintBox.classList.add('error');
+                            return;
+                        }
+                        
+                        try {
+                            const importData = JSON.parse(text);
+                            
+                            // Validation checks
+                            if (!importData.data) {
+                                throw new Error('Invalid configuration format: missing data');
+                            }
+                            
+                            if (!importData.module) {
+                                throw new Error('Invalid configuration format: missing module name');
+                            }
+                            
+                            if (importData.module !== moduleConfig.name) {
+                                throw new Error(`Configuration mismatch: This is for "${importData.module}", but you're using "${moduleConfig.name}"`);
+                            }
+                            
+                            if (!importData.version) {
+                                throw new Error('Invalid configuration format: missing version');
+                            }
+                            
+                            // Validate that imported data has valid fields
+                            const validFields = Object.keys(moduleConfig.fields);
+                            const importedFields = Object.keys(importData.data);
+                            const hasValidFields = importedFields.some(field => validFields.includes(field));
+                            
+                            if (!hasValidFields) {
+                                throw new Error('Configuration contains no valid fields for this module');
+                            }
+                            
+                            // Merge imported data (only valid fields)
+                            validFields.forEach(key => {
+                                if (importData.data.hasOwnProperty(key)) {
+                                    state.blockData[key] = importData.data[key];
+                                }
+                            });
+                            
+                            // Reload UI with imported data
+                            updateUIFromData();
+                            
+                            // Refresh the preview
+                            refreshPreview();
+                            
+                            // Close modal
+                            closeModal();
+                            cleanup();
+                            
+                            // Visual feedback - green check
+                            pasteBtn.classList.add('success');
+                            pasteBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                            
+                            setTimeout(() => {
+                                pasteBtn.classList.add('fade-out');
+                                setTimeout(() => {
+                                    pasteBtn.classList.remove('success', 'fade-out');
+                                    pasteBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>';
+                                }, 500);
+                            }, 1500);
+                            
+                            console.log('Block configuration pasted successfully');
+                            
+                        } catch (error) {
+                            // Show user-friendly error message in hint box
+                            let errorMsg = 'Failed to paste configuration';
+                            if (error.message.includes('mismatch')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('Invalid configuration')) {
+                                errorMsg = error.message;
+                            } else if (error.message.includes('JSON')) {
+                                errorMsg = 'Clipboard does not contain valid block configuration. Please copy a block configuration first.';
+                            } else {
+                                errorMsg = error.message || 'An error occurred while pasting';
+                            }
+                            
+                            hintBox.textContent = errorMsg;
+                            hintBox.classList.add('error');
+                            console.error('Paste configuration error:', error);
+                        }
+                    }, 50);
+                }
+            };
+            
+            document.addEventListener('keydown', handlePaste);
+        }
+
+        function toggleContentType(contentType) {
+            // Hide all content sections first
+            elements.textContent.style.display = 'none';
+            elements.imageContent.style.display = 'none';
+            elements.imageSwapContent.style.display = 'none';
+            
+            // Show/hide UI elements based on content type
+            if (contentType === 'imageswap') {
+                // Image Swap mode - hide background image and positioning controls
+                elements.backgroundImageGroup.style.display = 'none';
+                elements.verticalAlignGroup.style.display = 'none';
+                elements.textAlignGroup.style.display = 'none';
+                elements.imageSwapContent.style.display = 'block';
+            } else {
+                // Text or Image mode - show all controls
+                elements.backgroundImageGroup.style.display = 'block';
+                elements.verticalAlignGroup.style.display = 'block';
+                elements.textAlignGroup.style.display = 'block';
+                
+                if (contentType === 'image') {
+                    elements.imageContent.style.display = 'block';
+                } else {
+                    elements.textContent.style.display = 'block';
+                }
+            }
+        }
+
+        function loadData() {
+            if (!state.sdk || typeof state.sdk.getData !== 'function') return utils.showError('SDK not available');
+            setLoadingState(true);
+
+            state.sdk.getData((data) => {
+                try {
+                    state.blockData = {};
+                    const fields = moduleConfig.fields;
+                    Object.keys(fields).forEach(key => { 
+                        state.blockData[key] = (data && data.hasOwnProperty(key)) ? data[key] : fields[key].defaultValue; 
+                        if (fields[key].type === 'richtext') { 
+                            state.blockData[key] = utils.sanitizeHtml(state.blockData[key]); 
+                        } 
+                    });
+
+                    updateUIFromData();
+                    refreshPreview();
+                    state.retryCount = 0;
+                } catch (error) { 
+                    utils.showError(`Failed to load data: ${error.message}`); 
+                    Object.keys(moduleConfig.fields).forEach(key => state.blockData[key] = moduleConfig.fields[key].defaultValue); 
+                    refreshPreview(); 
+                } finally { 
+                    setLoadingState(false); 
+                }
+            });
+        }
+
+        function cleanup() { 
+            // Enhanced cleanup with memory management
+            Object.keys(state.editors).forEach(editorId => {
+                utils.cleanupEditor(editorId);
+            });
+
+            // Clean up tracked event listeners
+            state.eventListeners.forEach(({ element, event, handler }) => { 
+                if (element && typeof element.removeEventListener === 'function') element.removeEventListener(event, handler); 
+            }); 
+            state.eventListeners = [];
+
+            // Cancel any pending RAF
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            console.log('Lead banner cleanup completed');
+        }
+
+        function initializeWithRetry() {
+            try {
+                if (!window.sfdc || !window.sfdc.BlockSDK) throw new Error('BlockSDK not loaded');
+                if (!window.Quill) throw new Error('Quill not loaded');
+
+                state.sdk = new window.sfdc.BlockSDK({
+                    tabs: ['htmlblock']
+                });
+                cacheElements();
+                initializeEditors();
+                initializeEventHandlers();
+                loadData();
+
+                window.addEventListener('beforeunload', cleanup);
+                document.addEventListener('visibilitychange', () => { 
+                    if (!document.hidden && state.isInitialized) loadData(); 
+                });
+
+                state.isInitialized = true;
+            } catch (error) {
+                utils.showError(`Initialisation failed: ${error.message}`);
+                if (state.retryCount < moduleConfig.maxRetries) { 
+                    state.retryCount++; 
+                    setTimeout(() => initializeWithRetry(), 1000 * state.retryCount); 
+                } else { 
+                    utils.showError('Failed to initialise after multiple attempts. Please refresh.', true); 
+                }
+                setLoadingState(false);
+            }
+        }
+
+        if (document.readyState === 'loading') { 
+            document.addEventListener('DOMContentLoaded', initializeWithRetry); 
+        } else { 
+            initializeWithRetry(); 
+        }
+    </script>
