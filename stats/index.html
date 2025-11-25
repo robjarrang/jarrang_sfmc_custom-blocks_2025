@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Stats Block</title>
-    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.option-button svg { display: block; margin: 0 auto; fill: currentColor; }.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.stats-container{display:flex;flex-direction:column;gap:15px}.stat-item{background-color:#fafafa;padding:20px;border:1px solid #ddd;border-radius:6px;position:relative}.stat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.stat-title{font-weight:bold;font-size:16px}.stat-controls{display:flex;gap:8px}.stat-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.stat-control-btn:hover{color:#0074d9}.stat-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-stat-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
 
@@ -142,8 +142,8 @@
     </div>
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
 
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
     <script>
         'use strict';
 
@@ -152,9 +152,9 @@
             fields: {
                 layout: { type: 'text', defaultValue: 'left' },
                 backgroundColor: { type: 'text', defaultValue: '#DB011C' },
-                imageUrl: { type: 'url', defaultValue: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/b0ad428e-4153-4e4c-a68f-1d3f81fa0f1e.jpg' },
-                imageLink: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/' },
-                imageAlt: { type: 'text', defaultValue: 'Milwaukee Tool Product', maxLength: 150 },
+                imageUrl: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg },
+                imageLink: { type: 'url', defaultValue: 'https://example.com/' },
+                imageAlt: { type: 'text', defaultValue: 'Featured Product', maxLength: 150 },
                 statSpacing: { type: 'number', defaultValue: 20 },
                 stats: { type: 'list', defaultValue: [
                     { title: 'TITLE', subtitle: 'SUBTITLE', fontSize: 24 },

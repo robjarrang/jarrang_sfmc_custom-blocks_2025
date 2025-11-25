@@ -1,6 +1,6 @@
 # Base Template Module
 
-A comprehensive starting point for creating new Milwaukee custom email blocks. This template includes all the best practices, common patterns, and utilities from the existing modules.
+A comprehensive starting point for creating new Salesforce Marketing Cloud custom email blocks. This template includes the best practices, common patterns, and utilities from the existing modules and is ready to be adapted for any client.
 
 > **📘 For general development guidelines, email standards, and shared patterns, see [DEVELOPER_GUIDE.md](../DEVELOPER_GUIDE.md)**
 
@@ -25,7 +25,7 @@ A comprehensive starting point for creating new Milwaukee custom email blocks. T
 - Dynamic list/checklist items (commented, ready to use)
 
 ### Styling
-- Consistent with all Milwaukee modules
+- Consistent across all modules in this template
 - Clean white background (no borders or shadows)
 - Responsive field groups
 - Loading overlay with spinner
@@ -147,9 +147,9 @@ The template includes inline font-size controls. You can:
 ## Common Customizations
 
 ### Change Background Colors
-Update the preset colors in `generateTemplate()`:
+Update the preset colors in `generateTemplate()` to match your target brand:
 ```javascript
-const bgColorHex = backgroundColor === 'red' ? '#DB011C' : '#000000';
+const bgColorHex = backgroundColor === 'primary' ? '#DB011C' : '#000000'; // replace with your palette
 ```
 
 ### Add More Editor Types
@@ -174,8 +174,8 @@ validateCustomField(value) {
 
 ### Quick Reference
 - **Total width:** 620px (20px gutters + 580px content)
-- **Milwaukee Red:** `#DB011C`
-- **Milwaukee Black:** `#000000`
+- **Primary Color:** `#DB011C` (replace with your brand color)
+- **Secondary Color:** `#000000` (replace with your brand color)
 - **Use table-based layouts** for email compatibility
 - **Include mobile responsive classes** for proper mobile rendering
 
@@ -228,12 +228,8 @@ Before deploying a new module:
 - **SFMC Content Builder Block SDK** - Official Salesforce documentation
 
 ### Reference Implementations
-Review existing modules in this repository for working examples:
+Review existing modules in this repository for working examples that you can rebrand for new clients:
 - `full-width-button/` - Simple button with color variants
 - `checklist/` - Dynamic list items with rich text
 - `stats/` - Multiple items with customizable spacing
 - `image-carousel/` - Complex interactive component
-
-## Version History
-
-- **v1.0** (October 2025) - Initial base template created from all existing Milwaukee modules

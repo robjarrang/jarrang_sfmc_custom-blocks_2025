@@ -1,5 +1,5 @@
 /**
- * Shared Quill.js Configuration for Milwaukee Custom Blocks
+ * Shared Quill.js Configuration for SFMC Custom Blocks Template
  * Optimized for email content creation and SFMC compatibility
  */
 

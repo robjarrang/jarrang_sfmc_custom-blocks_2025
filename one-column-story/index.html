@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>1 Column Story Block (Corrected)</title>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.toggle-container{display:flex;align-items:center;gap:10px;margin-bottom:15px}.toggle-switch{position:relative;display:inline-block;width:48px;height:24px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:.3s;border-radius:24px}.toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked + .toggle-slider{background-color:#0074d9}input:checked + .toggle-slider:before{transform:translateX(24px)}.disabled-field{opacity:0.5;pointer-events:none}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:60px;padding:12px}.limited-toolbar .ql-editor{min-height:40px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
         .option-button svg { display: block; margin: 0 auto; fill: currentColor; }
@@ -123,8 +123,8 @@
     
     <template id="itemTemplate"><div class="item"><div class="item-header"><h2 class="item-title">Item</h2><div class="item-controls"><button class="item-control-btn move-up-btn" title="Move Up">▲</button><button class="item-control-btn move-down-btn" title="Move Down">▼</button><button class="item-control-btn remove-btn" title="Remove Item">×</button></div></div><div class="quill-container limited-toolbar" data-lpignore="true"></div></div></template>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
     <script src="../shared-assets/quill-config.js"></script>
     <script>
         'use strict';
@@ -133,9 +133,9 @@
             name: '1 Column Story with Checklist',
             fields: {
                 layout: { type: 'text', defaultValue: 'left' },
-                imageUrl: { type: 'url', defaultValue: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/6af0d75d-71ff-46f5-b96a-689613f8be09.jpg' },
+                imageUrl: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg },
                 imageAlt: { type: 'text', defaultValue: 'Story Image', maxLength: 150 },
-                imageLink: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/' },
+                imageLink: { type: 'url', defaultValue: 'https://example.com/' },
                 title: { type: 'richtext', defaultValue: 'Tempus Euismod Phasellus', maxLength: 100 },
                 titleFontSize: { type: 'number', defaultValue: 20 },
                 titleAlignment: { type: 'text', defaultValue: 'center' },
@@ -146,7 +146,7 @@
                 items: { type: 'list', defaultValue: [{ id: 'item1', text: '<strong>Lorem ipsum odor amet</strong>' }, { id: 'item2', text: '<strong>Consectetur adipiscing elit</strong>' }] },
                 showButton: { type: 'boolean', defaultValue: true },
                 buttonText: { type: 'text', defaultValue: 'Nulla Ut Erat Enim', maxLength: 40 },
-                buttonLink: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/' },
+                buttonLink: { type: 'url', defaultValue: 'https://example.com/' },
                 buttonAlignment: { type: 'text', defaultValue: 'center' }
             },
             debounceDelay: 300,
@@ -354,7 +354,7 @@
                 contentHtml = `<tr><td class="story-intro ${descriptionMobileClass}" style="color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: ${descriptionSize}px; font-weight: normal; line-height: ${descriptionLineHeight}px; margin: 0; text-align: ${descriptionAlign};">${description}</td></tr>`;
             } else {
                 const items = utils.getFieldValue('items');
-                const itemRowsHtml = items.map(item => `<tr><td valign="middle" style="width: 20px;"><img alt="Checkmark" src="https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/73ad311a-bf28-4d11-b80d-d0da32b9d2b2.png" style="display: block; height: auto; outline: none; text-decoration: none;" width="20"></td><td valign="middle" style="width: 12px;">&nbsp;</td><td class="story-intro mobile-text-left" valign="middle" style="color: #ffffff; font-family: 'Helvetica-Neue', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: normal; line-height: 18px; margin: 0; mso-line-height-rule: exactly; text-align: left;">${processRichText(item.text)}</td></tr>`).join('');
+                const itemRowsHtml = items.map(item => `<tr><td valign="middle" style="width: 20px;"><img alt="Checkmark" src="https://images.example.com/icon-check.png" style="display: block; height: auto; outline: none; text-decoration: none;" width="20"></td><td valign="middle" style="width: 12px;">&nbsp;</td><td class="story-intro mobile-text-left" valign="middle" style="color: #ffffff; font-family: 'Helvetica-Neue', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: normal; line-height: 18px; margin: 0; mso-line-height-rule: exactly; text-align: left;">${processRichText(item.text)}</td></tr>`).join('');
                 contentHtml = `<tr><td style="padding: 0;"><table align="left" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">${itemRowsHtml}</table></td></tr>`;
             }
             const textContentTable = `<table border="0" cellpadding="0" cellspacing="0" class="sect color-bg-1" style="background-color: ${bgColor}; width: 100%;"><tr><td class="mobile-hide" height="40" style="margin: 0; padding: 0;">&nbsp;</td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;"><tr><td style="padding: 20px;" valign="top"><table border="0" cellpadding="0" cellspacing="0" class="sect" style="width: 100%;"><tr><td class="mobile-hide"><div style="font-size: 20px; height: 20px; line-height: 20px;">&nbsp;</div></td></tr><tr><td class="${titleMobileClass}" style="text-align: ${titleAlign};"><h2 style="color: #ffffff; font-family: 'Helvetica Neue LT W05_93 Blk E', Arial, sans-serif, 'Open-Sans'; font-size: ${titleSize}px; font-weight: bold; line-height: ${titleLineHeight}px; margin: 0; text-transform: uppercase;">${title}</h2></td></tr><tr><td><div style="font-size: 4px; height: 4px; line-height: 4px;">&nbsp;</div></td></tr>${contentHtml}<tr><td><div style="font-size: 16px; height: 16px; line-height: 16px;">&nbsp;</div></td></tr>${showButton ? `<tr><td><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width: 100%;"><tr><td align="${buttonAlign}" class="block" style="width: 100%;" valign="top"><table border="0" cellpadding="0" cellspacing="0" class="button-2-white" role="presentation" style="background-color: transparent; border: 2px solid #ffffff; border-collapse: separate; border-radius: 4px !important;"><tr><td align="center" style="border-radius: 4px !important; color: #ffffff; font-family: 'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size: 16px; font-weight: bold; line-height: 28px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 20px; text-transform: uppercase;"><a href="${buttonLink}" style="color: #ffffff; text-decoration: none;" target="_blank">${buttonText}</a></td></tr></table></td></tr></table></td></tr>` : ''}</table></td></tr></table>`;
