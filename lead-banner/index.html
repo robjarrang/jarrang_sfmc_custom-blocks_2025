@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Lead Banner Block</title>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:80px;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
         .field-group-inline { display: flex; align-items: center; justify-content: space-between; margin-top: 15px; margin-bottom: 10px; }
@@ -59,7 +59,7 @@
         </div>
         
         <div class="help-banner">
-            <a href="https://milwaukee-overlay.vercel.app/" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
+            <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
         </div>
 
         <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
@@ -91,7 +91,7 @@
                 <div class="field-group"><label for="heroAlt" class="field-label">Hero Images Alt Text</label><input type="text" id="heroAlt" class="field-input" placeholder="Descriptive text for the hero images" maxlength="100"></div>
             </div>
 
-            <div class="field-group"><label for="contentUrl" class="field-label">Content Link URL</label><input type="url" id="contentUrl" class="field-input" placeholder="https://www.milwaukeetool.eu/"><div class="field-error" id="contentUrlError">Please enter a valid URL.</div></div>
+            <div class="field-group"><label for="contentUrl" class="field-label">Content Link URL</label><input type="url" id="contentUrl" class="field-input" placeholder="https://example.com/"><div class="field-error" id="contentUrlError">Please enter a valid URL.</div></div>
         </div>
     </div>
 
@@ -111,8 +111,8 @@
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
     <script src="../shared-assets/quill-config.js"></script>
     <script>
         'use strict';
@@ -120,7 +120,7 @@
         const moduleConfig = {
             name: 'Lead Banner',
             fields: {
-                backgroundImage: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/56a309bc-df67-4b80-a64c-cd19ed07769c.jpg', validator: 'url' },
+                backgroundImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
                 contentType: { type: 'text', defaultValue: 'imageswap' },
                 verticalAlign: { type: 'text', defaultValue: 'middle' },
                 textAlign: { type: 'text', defaultValue: 'center' },
@@ -131,10 +131,10 @@
                 titleImage: { type: 'url', defaultValue: '', validator: 'url' },
                 titleImageAlt: { type: 'text', defaultValue: '' },
                 titleImageWidth: { type: 'number', defaultValue: 300 },
-                heroDesktopImage: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/3c5efc32-d086-4f3b-b1bb-93d57835d55a.jpg', validator: 'url' },
-                heroMobileImage: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/7ca5ce3c-68d6-43bd-bbea-33125fa0c950.jpg', validator: 'url' },
+                heroDesktopImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
+                heroMobileImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
                 heroAlt: { type: 'text', defaultValue: 'Hero banner' },
-                contentUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/', validator: 'url' }
+                contentUrl: { type: 'url', defaultValue: 'https://example.com/', validator: 'url' }
             },
             debounceDelay: 300, 
             maxRetries: 3
@@ -355,8 +355,8 @@
             const contentType = utils.getFieldValue('contentType');
             const verticalAlign = utils.getFieldValue('verticalAlign');
             const textAlign = utils.getFieldValue('textAlign');
-            const logoImage = 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/a3a77919-71b9-4b9d-b1ad-90f327487e3f.png';
-            const logoUrl = 'https://%%CountryCode%%.milwaukeetool.eu/';
+            const logoImage = 'https://images.example.com/logo-placeholder.png';
+            const logoUrl = 'https://example.com/';
             const fallbackColor = '#DB011C';
 
             // Handle Image Swap mode separately

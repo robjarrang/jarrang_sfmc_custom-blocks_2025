@@ -1,4 +1,4 @@
-# Milwaukee Custom Blocks - Developer Guide
+# SFMC Custom Blocks Template - Developer Guide
 
 ## What Are Custom Blocks?
 
@@ -15,7 +15,7 @@ Custom blocks are reusable content components that integrate directly into Sales
 ### Project Structure
 
 ```
-milwaukee_custom-blocks_2025/
+sfmc_custom-blocks_template/
 ├── DEVELOPER_GUIDE.md          ← You are here
 ├── _base-template/             ← Starting point for new modules
 │   ├── index.html              ← Module code
@@ -33,7 +33,7 @@ milwaukee_custom-blocks_2025/
 
 When this repository is published to GitHub Pages:
 - Each module's `index.html` is accessible via a URL like:  
-  `https://[username].github.io/milwaukee_custom-blocks_2025/[module-name]/`
+  `https://[username].github.io/sfmc_custom-blocks_template/[module-name]/`
 - This URL is used as the Custom Block endpoint in SFMC
 - Updates to the repository automatically update the live blocks
 - Marketers always get the latest version when dragging blocks into emails
@@ -47,7 +47,7 @@ This collection includes various block types:
 - **Layout Components** - Spacers, banners, accordions, event lists
 
 ## Overview
-This collection contains custom email blocks for Salesforce Marketing Cloud Content Builder, designed specifically for Milwaukee Tool's email campaigns. Each block follows a consistent structure and uses shared utilities to ensure maintainability and ease of modification.
+This collection contains reusable custom email blocks for Salesforce Marketing Cloud Content Builder. Each block follows a consistent structure and uses shared utilities to ensure maintainability and ease of modification for any brand.
 
 ## Technology Stack
 
@@ -157,13 +157,12 @@ All blocks use 620px total width:
 - 580px content area  
 - 20px right gutter
 
-#### Brand Colors
-- Primary Red: `#DB011C` (Milwaukee brand red)
-- Secondary Black: `#000000` or `#313131`
-
-#### Typography
-- Headers: `'Helvetica Neue LT W05_93 Blk E', Arial, sans-serif`
-- Body: `'Helvetica Neue LT W05_55 Roman', sans-serif`
+#### Brand Colors & Typography
+Replace the sample palette and fonts with values that match your client:
+- Primary Color: `#DB011C` (replace with your brand color)
+- Secondary Color: `#000000` or `#313131` (replace with your brand color)
+- Headers: `'Helvetica Neue LT W05_93 Blk E', Arial, sans-serif` (or your brand headers)
+- Body: `'Helvetica Neue LT W05_55 Roman', sans-serif` (or your brand body font)
 
 ## Modifying Email Output
 
@@ -239,7 +238,7 @@ Before deploying any module:
 
 ### Code Organization
 1. **Keep accessibility in mind** - use proper alt text and semantic markup
-2. **Follow Milwaukee brand guidelines** - for colors, fonts, and styling
+2. **Follow the target brand guidelines** - align colors, fonts, and styling with the client
 3. **Track event listeners** - Store references for proper cleanup
 4. **Use WeakMap for editor references** - Prevents memory leaks
 5. **Implement retry logic** - For BlockSDK initialization failures
@@ -253,6 +252,6 @@ Before deploying any module:
 ## Support
 For questions about these blocks or email development best practices:
 - See `_base-template/README.md` for template-specific guidance
-- Consult Milwaukee Tool brand guidelines
+- Consult the appropriate brand guidelines for your client
 - Review existing module implementations for patterns
 - Check `shared-assets/quill-config.js` for text editing utilities

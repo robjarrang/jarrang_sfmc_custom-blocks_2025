@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Interactive Carousel Block</title>
-    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.section-divider{margin-top:30px;padding-top:20px;border-top:2px solid #eee}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px;border-bottom:2px solid #eee;padding-bottom:10px}.slides-container{display:flex;flex-direction:column;gap:15px}.slide-item{background-color:#fafafa;padding:20px;border:1px solid #ddd;border-radius:6px;position:relative}.slide-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.slide-title{font-weight:bold;font-size:16px;margin:0}.slide-controls{display:flex;gap:8px}.slide-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.slide-control-btn:hover{color:#0074d9}.slide-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-slide-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
         .config-tools{position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:100}
@@ -90,12 +90,12 @@
             </div>
             <div class="field-group">
                 <label class="field-label">Image URL (620x350px)</label>
-                <input type="url" class="field-input" data-field="imageUrl" placeholder="https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/389ec28a-05d0-4898-b1e5-c511bf933683.gif">
+                <input type="url" class="field-input" data-field="imageUrl" placeholder="https://images.example.com/placeholder.jpg">
                 <div class="field-error">Please enter a valid image URL.</div>
             </div>
             <div class="field-group">
                 <label class="field-label">Link URL</label>
-                <input type="url" class="field-input" data-field="linkUrl" placeholder="https://www.milwaukeetool.eu/">
+                <input type="url" class="field-input" data-field="linkUrl" placeholder="https://example.com/">
                 <div class="field-error">Please enter a valid link URL.</div>
             </div>
             <div class="field-group">
@@ -120,8 +120,8 @@
     </div>
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
 
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
     <script>
         'use strict';
 
@@ -131,8 +131,8 @@
                 slides: {
                     type: 'list',
                     defaultValue: [
-                        { id: crypto.randomUUID(), imageUrl: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/8f8fcb7d-5b28-4a32-9317-622cdc709a95.gif', linkUrl: 'https://www.milwaukeetool.eu/', altText: 'Slide 1 Alt Text' },
-                        { id: crypto.randomUUID(), imageUrl: 'https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/f4acdc16-1cff-4bbd-96f0-be46ad46f0dd.gif', linkUrl: 'https://www.milwaukeetool.eu/', altText: 'Slide 2 Alt Text' }
+                        { id: crypto.randomUUID(), imageUrl: 'https://images.example.com/placeholder.jpg linkUrl: 'https://example.com/', altText: 'Slide 1 Alt Text' },
+                        { id: crypto.randomUUID(), imageUrl: 'https://images.example.com/placeholder.jpg linkUrl: 'https://example.com/', altText: 'Slide 2 Alt Text' }
                     ]
                 },
                 fallbackImageUrl: { type: 'url', defaultValue: '' },

@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Interactive Accordion Block (Milwaukee Style)</title>
+    <title>Interactive Accordion Block (Template Style)</title>
     <!-- Quill.js CSS -->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
     <!-- Shared styles for mobile responsiveness -->
-    <link rel="stylesheet" href="https://cloud.mail.milwaukeetool.eu/customblock-styles">
+    <link rel="stylesheet" href="https://example.com/customblock-styles">
     <!-- Basic styling for the editor UI -->
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:15px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.section-title{font-size:18px;font-weight:bold;color:#333;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #eee}.items-container{display:flex;flex-direction:column;gap:15px}.item{background-color:#fafafa;padding:15px;border:1px solid #ddd;border-radius:6px;position:relative}.item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.item-title{font-weight:bold;font-size:16px;margin:0}.item-controls{display:flex;gap:8px}.item-control-btn{background:none;border:none;cursor:pointer;padding:5px;font-size:18px;line-height:1;color:#555;transition:color .2s}.item-control-btn:hover{color:#0074d9}.item-control-btn:disabled{color:#ccc;cursor:not-allowed}.btn{display:inline-block;padding:10px 15px;background-color:#0074d9;color:white;text-decoration:none;border-radius:4px;border:none;cursor:pointer;font-size:14px;font-weight:bold;transition:background-color .2s}.btn:hover{background-color:#005a9e}.add-item-btn{margin-top:20px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
@@ -61,8 +61,8 @@
 
     <!-- Quill.js script -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
     <script src="../shared-assets/quill-config.js"></script>
     <script>
         'use strict';
@@ -75,7 +75,7 @@
                     type: 'list',
                     defaultValue: [
                         { id: crypto.randomUUID(), title: 'Lorem ipsum dolor sit amet', content: 'Consectetur elit. Integer fermentum scelerisque urna, at lacinia purus sagittis non. <strong>Aenean nisl risus</strong>, consequat eu diam sit amet, consectetur pulvinar nisi.' },
-                        { id: crypto.randomUUID(), title: 'Nunc nec est non mi faucibus', content: "Phasellus a mauris vitae massa dapibus consequat. Duis non pulvinar lorem, ut varius orci. <a href=\"https://www.milwaukeetool.eu\" target=\"_blank\">Nam et ligula</a> vel justo interdum consectetur." },
+                        { id: crypto.randomUUID(), title: 'Nunc nec est non mi faucibus', content: "Phasellus a mauris vitae massa dapibus consequat. Duis non pulvinar lorem, ut varius orci. <a href=\"https://example.com/\" target=\"_blank\">Nam et ligula</a> vel justo interdum consectetur." },
                     ]
                 }
             },

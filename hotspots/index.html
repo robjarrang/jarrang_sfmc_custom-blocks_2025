@@ -32,7 +32,7 @@
         .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
         .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
         /* Visual Editor Styles */
-        #visualEditorWrapper{margin-top:20px}#visualEditor{position:relative;cursor:crosshair;background-color:#f0f0f0;border:1px solid #ccc;min-height:200px}#previewImage{display:block;width:100%;height:auto}#visualEditor .hotspot-marker{position:absolute;width:24px;height:24px;background-image:url('https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/ba4b84d2-b601-42a6-a8e3-e2f32eb1100c.png');background-size:cover;transform:translate(-50%, -50%);border-radius:50%;box-shadow:0 0 0 3px rgba(255,0,0,0.7);cursor:pointer}#visualEditor .hotspot-marker.selected{box-shadow:0 0 0 3px rgba(0,116,217,1);z-index:10}
+        #visualEditorWrapper{margin-top:20px}#visualEditor{position:relative;cursor:crosshair;background-color:#f0f0f0;border:1px solid #ccc;min-height:200px}#previewImage{display:block;width:100%;height:auto}#visualEditor .hotspot-marker{position:absolute;width:24px;height:24px;background-image:url('https://images.example.com/placeholder.jpg -50%);border-radius:50%;box-shadow:0 0 0 3px rgba(255,0,0,0.7);cursor:pointer}#visualEditor .hotspot-marker.selected{box-shadow:0 0 0 3px rgba(0,116,217,1);z-index:10}
         /* Keyboard controls hint */
         .keyboard-hint{background:#e3f2fd;border:1px solid #90caf9;border-radius:4px;padding:10px 12px;margin-bottom:15px;font-size:13px;color:#1976d2;display:none;align-items:center;gap:8px}.keyboard-hint.show{display:flex}.keyboard-hint svg{width:16px;height:16px;fill:#1976d2;flex-shrink:0}.keyboard-hint-text{line-height:1.4}
         /* Tooltip Position Selector Styles */
@@ -103,17 +103,17 @@
         </div>
     </template>
 
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-base"></script>
-    <script src="https://cloud.mail.milwaukeetool.eu/customblock-blocksdk"></script>
+    <script src="https://example.com/customblock-base"></script>
+    <script src="https://example.com/customblock-blocksdk"></script>
     <script>
         'use strict';
 
         const moduleConfig = {
             name: 'Hotspots',
             fields: {
-                backgroundImageUrl: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/723acaf7-6e04-48f7-9bf6-cce69ec81b2f.png' },
-                fallbackImageUrl: { type: 'url', defaultValue: 'https://image.s50.sfmc-content.com/lib/fe301171756404787c1679/m/1/723acaf7-6e04-48f7-9bf6-cce69ec81b2f.png' },
-                fallbackLinkUrl: { type: 'url', defaultValue: 'https://www.milwaukeetool.eu/' },
+                backgroundImageUrl: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg },
+                fallbackImageUrl: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg },
+                fallbackLinkUrl: { type: 'url', defaultValue: 'https://example.com/' },
                 hotspots: {
                     type: 'list',
                     defaultValue: [
@@ -229,7 +229,7 @@
 
         const interactiveHotspots = hotspots.map((h, i) => `
             <div class="hot-tool-wrapper" style="position:absolute; left:${h.posX}%; top:${h.posY}%; transform:translate(-50%, -50%); z-index:${i+1};">
-            <img alt="" border="0" height="36" src="https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/ba4b84d2-b601-42a6-a8e3-e2f32eb1100c.png" style="display:block; width:36px; height:36px;" width="36">
+            <img alt="" border="0" height="36" src="https://images.example.com/placeholder.jpg" style="display:block; width:36px; height:36px;" width="36">
             <div class="tooltip-wrapper" style="position:absolute; width:200px; z-index:99; background-color:rgba(0,0,0,0.8); display:none; max-height:0; opacity:0; overflow:hidden; padding:10px; text-align:center; transition:all .3s ease; border-radius:4px; ${getTooltipCss(h.tooltipPosition)}">
                 <span style="color:#ffffff; font-family:'Helvetica Neue LT W05_55 Roman', sans-serif, 'Open-Sans'; font-size:${h.fontSize || 20}px; font-weight:bold; line-height:${(h.fontSize || 20) + 6}px; text-transform:uppercase;">${h.text}</span>
             </div>
@@ -239,7 +239,7 @@
         const fallbackItems = hotspots.map(h => `
             <tr>
             <td valign="top" style="padding-bottom:8px; width:20px;">
-                <img alt="" src="https://image.mail.milwaukeetool.eu/lib/fe2f11717564047a761c78/m/1/06914a54-6462-4ecd-a8bf-74c46518351d.png" style="display:block; height:auto;" width="20">
+                <img alt="" src="https://images.example.com/placeholder.jpg" style="display:block; height:auto;" width="20">
             </td>
             <td style="width:12px; padding-bottom:8px;">&nbsp;</td>
             <td style="color:#ffffff; font-family:'Helvetica-Neue', sans-serif, 'Open-Sans'; font-size:16px; line-height:24px; text-align:left;">${h.text}</td>
@@ -318,7 +318,7 @@
         <!--<![endif]-->
 
                 <div class="hotspots-fallback" style="display:block; max-height:none; overflow:visible;">
-            <!-- Fallback using proven Milwaukee pattern -->
+            <!-- Fallback using proven template pattern -->
             <table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color:#DB011C; width:620px;">
               <tr>
                 <td class="side" style="width:20px;">&nbsp;</td>

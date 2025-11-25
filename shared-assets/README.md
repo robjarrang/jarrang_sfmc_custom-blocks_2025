@@ -1,7 +1,7 @@
 # Optimized Quill.js Configuration Guide
 
 ## Overview
-The shared `QuillConfigManager` provides a centralized, optimized way to handle Quill.js editors across all Milwaukee custom blocks. This approach reduces code duplication, improves performance, and ensures consistency.
+The shared `QuillConfigManager` provides a centralized, optimized way to handle Quill.js editors across all custom blocks in this template. This approach reduces code duplication, improves performance, and ensures consistency across different client implementations.
 
 ## Key Benefits
 
