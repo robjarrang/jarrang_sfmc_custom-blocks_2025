@@ -1,12 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Spacer Block</title>
-    <link rel="stylesheet" href="https://example.com/customblock-styles">
+    
+        <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.option-selector{display:flex;gap:10px;margin-bottom:15px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.slider-group{display:flex;align-items:center;gap:15px}.slider-input{flex-grow:1;cursor:pointer}.slider-value{font-size:14px;font-weight:bold;color:#333;background-color:#f0f0f0;padding:4px 8px;border-radius:4px;min-width:50px;text-align:center}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
     </style>
+
+
 </head>
 <body>
     <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
@@ -14,28 +18,30 @@
     <div class="container" id="mainContainer">
         <h2 style="margin-top: 0; color: #333;">Spacer Settings</h2>
         <div class="error-banner" id="errorBanner"></div>
-
-        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
-            <div class="section-title">Customisation</div>
-            <div class="field-group">
-                <label class="field-label">Background Colour</label>
-                <div class="option-selector" id="backgroundColorSelector">
-                    <div class="option-button" data-value="black">Black</div>
-                    <div class="option-button" data-value="red">Red</div>
-                </div>
+        
+    <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+        <div class="section-title">Customisation</div>
+        <div class="field-group">
+            <label class="field-label">Background Colour</label>
+            <div class="option-selector" id="backgroundColorSelector">
+                <div class="option-button" data-value="black">Black</div>
+                <div class="option-button" data-value="red">Red</div>
             </div>
+        </div>
 
-            <div class="field-group">
-                <label for="spacerHeight" class="field-label">Spacer Height</label>
-                <div class="slider-group">
-                    <input type="range" id="spacerHeight" class="slider-input" min="8" max="120" step="8">
-                    <span id="spacerHeightValue" class="slider-value"></span>
-                </div>
+        <div class="field-group">
+            <label for="spacerHeight" class="field-label">Spacer Height</label>
+            <div class="slider-group">
+                <input type="range" id="spacerHeight" class="slider-input" min="8" max="120" step="8">
+                <span id="spacerHeightValue" class="slider-value"></span>
             </div>
         </div>
     </div>
 
-    <script src="https://example.com/customblock-base"></script>
+    </div>
+
+    
+        <script src="https://example.com/customblock-base"></script>
     <script src="https://example.com/customblock-blocksdk"></script>
 <script>
     'use strict';
@@ -95,20 +101,9 @@
         const bgColor = backgroundColorValue === 'red' ? '#DB011C' : '#000000';
         const height = `${spacerHeightValue}px`;
 
-        return `<!-- START .fw-spacer --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-outer" role="presentation" style="background-color: ${bgColor}; width: 620px;">
-            <tr>
-                <td>
-                    <div style="clear: both; display: block; font-size: ${height}; height: ${height}; line-height: ${height}; margin: 0px; mso-line-height-rule: exactly; padding: 0px;"> </div>
-                </td>
-            </tr>
-        </table><!-- END .fw-spacer -->`;
+        return `<!-- START .fw-spacer --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: ${bgColor}; width: 620px;\">\n            <tr>\n                <td>\n                    <div style=\"clear: both; display: block; font-size: ${height}; height: ${height}; line-height: ${height}; margin: 0px; mso-line-height-rule: exactly; padding: 0px;\"> </div>\n                </td>\n            </tr>\n        </table><!-- END .fw-spacer -->`;
     }
 
-    /**
-     * Parses HTML content to extract state. This keeps the UI in sync with the HTML tab.
-     * @param {string} html The block's HTML content.
-     * @returns {object|null} An object with `backgroundColor` and `spacerHeight` or null if parsing fails.
-     */
     function parseContentForState(html) {
         if (!html) return null;
 
@@ -125,9 +120,6 @@
         return { backgroundColor, spacerHeight };
     }
 
-    /**
-     * UPDATED: Now only sets content and data. This is called when the UI is changed by the user.
-     */
     function refreshPreview() {
         if (rafId) cancelAnimationFrame(rafId);
 
@@ -135,7 +127,6 @@
             try {
                 const html = generateTemplate();
                 state.sdk.setContent(html);
-                // CRITICAL: ONLY set the state data, not the content itself.
                 state.sdk.setData({
                     backgroundColor: state.blockData.backgroundColor,
                     spacerHeight: state.blockData.spacerHeight
@@ -161,29 +152,21 @@
         });
     }
 
-    /**
-     * REWRITTEN: The new logic to properly sync state from content.
-     */
     function loadData() {
         if (!state.sdk) return console.error('SDK not available');
         setLoadingState(true);
 
-        // This function now uses sdk.getContent and sdk.getData to create one unified state.
         state.sdk.getContent((content) => {
             state.sdk.getData((data) => {
-                // CRITICAL: The HTML content is the source of truth.
                 const parsedState = parseContentForState(content);
 
                 if (parsedState) {
-                    // If HTML is valid, use it to set the state.
                     state.blockData.backgroundColor = parsedState.backgroundColor;
                     state.blockData.spacerHeight = parsedState.spacerHeight;
                 } else {
-                    // Fallback to saved data if parsing fails (e.g., new or empty block).
                     state.blockData.backgroundColor = data.backgroundColor || moduleConfig.fields.backgroundColor.defaultValue;
                     state.blockData.spacerHeight = data.spacerHeight || moduleConfig.fields.spacerHeight.defaultValue;
 
-                    // Since there was no valid content, generate it now. This happens for new blocks.
                     refreshPreview();
                 }
 
@@ -212,5 +195,7 @@
 
     document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initialize) : initialize();
 </script>
+
+
 </body>
 </html>

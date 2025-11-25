@@ -9,40 +9,33 @@
     - {{ key }} → {{ field.title }} ({{ field.type }}) [{% if field.enabled %}enabled{% else %}disabled{% endif %}]
     {% endfor %}
 -->
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>{{ module.title }} Block</title>
-    {% include "../_shared/spacer-head.njk" %}
-</head>
-<body>
-    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+{% extends "_shared/module-shell.njk" %}
 
-    <div class="container" id="mainContainer">
-        <h2 style="margin-top: 0; color: #333;">{{ module.title }} Settings</h2>
-        <div class="error-banner" id="errorBanner"></div>
+{% block head %}
+    {% include "_shared/spacer-head.njk" %}
+{% endblock %}
 
-        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
-            <div class="section-title">Customisation</div>
-            <div class="field-group">
-                <label class="field-label">Background Colour</label>
-                <div class="option-selector" id="backgroundColorSelector">
-                    <div class="option-button" data-value="black">Black</div>
-                    <div class="option-button" data-value="red">Red</div>
-                </div>
+{% block body %}
+    <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+        <div class="section-title">Customisation</div>
+        <div class="field-group">
+            <label class="field-label">Background Colour</label>
+            <div class="option-selector" id="backgroundColorSelector">
+                <div class="option-button" data-value="black">Black</div>
+                <div class="option-button" data-value="red">Red</div>
             </div>
+        </div>
 
-            <div class="field-group">
-                <label for="spacerHeight" class="field-label">Spacer Height</label>
-                <div class="slider-group">
-                    <input type="range" id="spacerHeight" class="slider-input" min="8" max="120" step="8">
-                    <span id="spacerHeightValue" class="slider-value"></span>
-                </div>
+        <div class="field-group">
+            <label for="spacerHeight" class="field-label">Spacer Height</label>
+            <div class="slider-group">
+                <input type="range" id="spacerHeight" class="slider-input" min="8" max="120" step="8">
+                <span id="spacerHeightValue" class="slider-value"></span>
             </div>
         </div>
     </div>
+{% endblock %}
 
-    {% include "../_shared/spacer-scripts.njk" %}
-</body>
-</html>
+{% block scripts %}
+    {% include "_shared/spacer-scripts.njk" %}
+{% endblock %}

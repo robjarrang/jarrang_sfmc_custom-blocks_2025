@@ -1,3 +1,6 @@
+{% extends "_shared/module-shell.njk" %}
+{% import "_shared/form-macros.njk" as form %}
+
 {% set fields = {
     productImage: { title: 'Product Image URL', type: 'Image URL', enabled: true },
     productImageAlt: { title: 'Product Image Alt Text', type: 'Simple text', enabled: true },
@@ -14,13 +17,13 @@
     buttonUrl: { title: 'Button Link URL', type: 'URL', enabled: true }
 } %}
 {% set module = { title: 'Product Feature', fields: fields } %}
-{% import "../_shared/form-macros.njk" as form %}
 <!--
     UI FIELD MANIFEST: {{ module.title }}
     {% for key, field in fields %}
     - {{ key }} → {{ field.title }} ({{ field.type }}) [{% if field.enabled %}enabled{% else %}disabled{% endif %}]
     {% endfor %}
 -->
+
 {% set product_settings %}
     {{ form.input_field({
         id: 'productImage',
@@ -39,30 +42,34 @@
         id: 'productUrl',
         label: module.fields.productUrl.title,
         inputType: 'url',
-        placeholder: 'https://example.com/product-page',
+        placeholder: 'https://example.com/product',
         error: { id: 'productUrlError', text: 'Please enter a valid URL (http:// or https://)' }
     }) }}
 {% endset %}
 
 {% set product_information %}
-    {{ form.toggle({ id: 'showSubtitle', label: module.fields.showSubtitle.title, checked: true }) }}
-    <div id="subtitleGroup">
-        {{ form.input_field({
-            id: 'subtitle',
-            label: module.fields.subtitle.title,
-            inputType: 'text',
-            placeholder: 'M12 FHAC16-502X'
-        }) }}
-        {{ form.input_field({
-            id: 'subtitleFontSize',
-            label: module.fields.subtitleFontSize.title ~ ' (px)',
-            inputType: 'number',
-            min: 12,
-            max: 28,
-            step: 4,
-            groupClass: 'field-group-inline'
-        }) }}
-    </div>
+    {{ form.toggle({
+        id: 'showSubtitle',
+        label: module.fields.showSubtitle.title,
+        checked: true,
+        tooltip: 'Turn off if you want a title-only card'
+    }) }}
+    {{ form.input_field({
+        id: 'subtitle',
+        label: module.fields.subtitle.title,
+        inputType: 'text',
+        placeholder: 'Short supporting copy',
+        helper: 'Only visible when the subtitle toggle is enabled'
+    }) }}
+    {{ form.number({
+        id: 'subtitleFontSize',
+        label: module.fields.subtitleFontSize.title ~ ' (px)',
+        min: 12,
+        max: 32,
+        step: 2,
+        value: 16
+    }) }}
+
     {{ form.rich_text({
         label: module.fields.productTitle.title,
         editorId: 'productTitleEditor',
@@ -70,74 +77,73 @@
         inline: [{
             id: 'productTitleFontSize',
             label: module.fields.productTitleFontSize.title ~ ' (px)',
-            min: 16,
+            min: 20,
             max: 48,
-            step: 4
+            step: 2,
+            value: 24
         }]
     }) }}
+
     {{ form.option_selector({
         id: 'contentTypeSelector',
         label: module.fields.contentType.title,
         options: [
-            { value: 'none', label: 'None', selected: true },
-            { value: 'checklist', label: 'Checklist' }
+            { value: 'checklist', label: 'Checklist', selected: true },
+            { value: 'paragraph', label: 'Paragraph' }
         ]
     }) }}
-    {{ form.list_editor({
-        groupId: 'checklistGroup',
-        wrapperStyle: 'display: none;',
+
+    {{ form.checklist_editor({
+        id: 'checklistItems',
         label: module.fields.checklistItems.title,
-        containerId: 'itemsContainer',
-        addButton: { id: 'addItemBtn', class: 'btn add-item-btn', text: 'Add New Item' }
+        addLabel: 'Add Checklist Item',
+        placeholder: 'Enter checklist item text',
+        defaultItems: [
+            { text: '<strong>Fully responsive layouts</strong>' },
+            { text: '<strong>Optimised for Salesforce Marketing Cloud</strong>' },
+            { text: '<strong>Supports image and text variants</strong>' }
+        ]
     }) }}
 {% endset %}
 
 {% set button_settings %}
-    {{ form.toggle({ id: 'showButton', label: module.fields.showButton.title, checked: true }) }}
+    {{ form.toggle({
+        id: 'showButton',
+        label: module.fields.showButton.title,
+        checked: true
+    }) }}
     {{ form.rich_text({
         label: module.fields.buttonText.title,
         editorId: 'buttonTextEditor',
-        toolbarLimited: true
+        toolbarLimited: true,
+        placeholder: 'Shop now'
     }) }}
     {{ form.input_field({
         id: 'buttonUrl',
         label: module.fields.buttonUrl.title,
         inputType: 'url',
-        placeholder: 'https://example.com/product-page',
+        placeholder: 'https://example.com/product',
         error: { id: 'buttonUrlError', text: 'Please enter a valid URL (http:// or https://)' }
     }) }}
 {% endset %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>{{ module.title }} Block</title>
-    {% include "../_shared/product-feature-head.njk" %}
-</head>
-<body>
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
+{% block head %}
+    {% include "_shared/product-feature-head.njk" %}
+{% endblock %}
+
+{% block body %}
+    <div class="config-tools">
+        <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        </button>
+        <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
+            <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+        </button>
     </div>
 
-    <div class="container" id="mainContainer">
-        <h2 style="margin-top: 0; color: #333;">{{ module.title }}</h2>
-
-        <div class="error-banner" id="errorBanner"></div>
-
-        <div class="config-tools">
-            <button id="copyConfigBtn" class="config-tool-btn" title="Copy block configuration to clipboard">
-                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-            </button>
-            <button id="pasteConfigBtn" class="config-tool-btn" title="Paste block configuration from clipboard">
-                <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
-            </button>
-        </div>
-
-        {{ form.section('Product Settings', product_settings, { first: true }) }}
-        {{ form.section('Product Information', product_information) }}
-        {{ form.section('Button Settings', button_settings) }}
-    </div>
+    {{ form.section('Product Settings', product_settings, { first: true }) }}
+    {{ form.section('Product Information', product_information) }}
+    {{ form.section('Button Settings', button_settings) }}
 
     <div id="pasteModal" class="paste-modal">
         <div class="paste-modal-content">
@@ -153,8 +159,8 @@
         </div>
     </div>
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+{% endblock %}
 
-    {% include "../_shared/product-feature-scripts.njk" %}
-
-</body>
-</html>
+{% block scripts %}
+    {% include "_shared/product-feature-scripts.njk" %}
+{% endblock %}

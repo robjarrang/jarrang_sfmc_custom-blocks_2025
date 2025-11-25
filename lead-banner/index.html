@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Lead Banner Block</title>
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="https://example.com/customblock-styles">
     <style>
         body{margin:0;padding:10px;font-family:Arial,sans-serif;background-color:white}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:8px;;transition:opacity 0.3s ease}.container.loading{opacity:0.6;pointer-events:none}.field-group{margin-bottom:20px}.field-label{display:block;margin-bottom:5px;font-weight:bold;color:#333;font-size:14px}.field-input{width:100%;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box;transition:border-color 0.3s ease}.field-input:focus{outline:none;border-color:#0074d9;box-shadow:0 0 0 2px rgba(0,116,217,0.2)}.field-input.error{border-color:#ff0000}.field-error{color:#ff0000;font-size:12px;margin-top:4px;display:none}.field-input.error + .field-error{display:block}.option-selector{display:flex;gap:10px}.option-button{flex:1;padding:8px;text-align:center;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:all .2s ease}.option-button:hover{border-color:#0074d9;background-color:#f0f8ff}.option-button.selected{border-color:#0074d9;background-color:#0074d9;color:white}.quill-container{background:white;border:1px solid #ddd;border-radius:4px}.ql-toolbar{border:none;border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.ql-container{border:none;border-radius:0 0 4px 4px;font-size:14px}.ql-editor{min-height:80px;padding:12px}.limited-toolbar .ql-toolbar{padding:5px}.limited-toolbar .ql-toolbar button{width:24px;height:24px}.section-divider{margin:30px 0;border-top:2px solid #eee;padding-top:20px}.section-title{font-size:16px;font-weight:bold;color:#333;margin-bottom:15px}.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;z-index:9999}.loading-overlay.show{display:flex}.loading-spinner{border:3px solid #f3f3f3;border-top:3px solid #0074d9;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.error-banner{background-color:#fee;border:1px solid #fcc;color:#c00;padding:10px;margin-bottom:20px;border-radius:4px;display:none}.error-banner.show{display:block}
@@ -41,59 +43,252 @@
         .paste-modal-btn.secondary:hover{background-color:#e0e0e0}
         .paste-hidden-textarea{position:absolute;left:-9999px;opacity:0}
     </style>
+
+
 </head>
 <body>
     <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
 
     <div class="container" id="mainContainer">
-        <h2 style="margin-top: 0; color: #333;">Lead Banner</h2>
+        <h2 style="margin-top: 0; color: #333;">Lead Banner Settings</h2>
         <div class="error-banner" id="errorBanner"></div>
         
-        <div class="config-tools">
-            <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </button>
-            <button id="pasteConfigBtn" class="config-btn" title="Paste Configuration">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-            </button>
-        </div>
-        
-        <div class="help-banner">
-            <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
-        </div>
-
-        <div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
-            <div class="section-title">Banner Settings</div>
-            <div class="field-group" id="backgroundImageGroup"><label for="backgroundImage" class="field-label">Background Image URL</label><input type="url" id="backgroundImage" class="field-input" placeholder="https://example.com/image.jpg"><div class="field-error" id="backgroundImageError">Please enter a valid image URL.</div></div>
-        </div>
-
-        <div class="section-divider">
-            <div class="section-title">Content</div>
-            <div class="field-group"><label class="field-label">Content Type</label><div class="option-selector" id="contentTypeSelector"><div class="option-button selected" data-value="imageswap">Image Swap</div><div class="option-button" data-value="text">Text</div><div class="option-button" data-value="image">Image Title</div></div></div>
-            <div class="field-group" id="verticalAlignGroup"><label class="field-label">Vertical Position</label><div class="option-selector" id="verticalAlignSelector"><div class="option-button" data-value="top">Top</div><div class="option-button selected" data-value="middle">Middle</div><div class="option-button" data-value="bottom">Bottom</div></div></div>
-            <div class="field-group" id="textAlignGroup"><label class="field-label">Horizontal Position</label><div class="option-selector" id="textAlignSelector"><div class="option-button" data-value="left"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm0-4h10v-2H4v2zm0-4h16v-2H4v2zM4 5v2h10V5H4z"/></svg></div><div class="option-button selected" data-value="center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm4-4h8v-2H8v2zm-4-4h16v-2H4v2zm4-4h8V5H8v2z"/></svg></div><div class="option-button" data-value="right"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm6-4h10v-2H10v2zM4 9h16V7H4v2zm6-4h10V3H10v2z"/></svg></div></div></div>
-            <div class="section-divider" style="margin:20px 0; padding-top:15px;"></div>
-
-            <div id="textContent">
-                <div class="field-group"><label class="field-label">Title</label><div id="titleEditor" class="quill-container limited-toolbar"></div><div class="field-group-inline"><label for="titleFontSize" class="field-label">Title Font Size (px)</label><input type="number" id="titleFontSize" class="field-input" min="20" max="60" step="4"></div></div>
-                <div class="field-group"><label class="field-label">Subtitle</label><div id="subtitleEditor" class="quill-container"></div><div class="field-group-inline"><label for="subtitleFontSize" class="field-label">Subtitle Font Size (px)</label><input type="number" id="subtitleFontSize" class="field-input" min="12" max="32" step="4"></div></div>
-            </div>
-
-            <div id="imageContent" style="display: none;">
-                <div class="field-group"><label for="titleImage" class="field-label">Title/Subtitle Image URL (Transparent PNG)</label><input type="url" id="titleImage" class="field-input" placeholder="https://example.com/title-image.png"><div class="field-error" id="titleImageError">Please enter a valid image URL.</div></div>
-                <div class="field-group"><label for="titleImageAlt" class="field-label">Image Alt Text</label><input type="text" id="titleImageAlt" class="field-input" placeholder="Descriptive text for the image" maxlength="100"></div>
-                <div class="field-group-inline"><label for="titleImageWidth" class="field-label">Image Width (px)</label><input type="number" id="titleImageWidth" class="field-input" min="100" max="500" step="10"></div>
-            </div>
-
-            <div id="imageSwapContent" style="display: none;">
-                <div class="field-group"><label for="heroDesktopImage" class="field-label">Desktop Hero Image URL</label><input type="url" id="heroDesktopImage" class="field-input" placeholder="https://example.com/desktop-hero.jpg"><div class="field-error" id="heroDesktopImageError">Please enter a valid image URL.</div></div>
-                <div class="field-group"><label for="heroMobileImage" class="field-label">Mobile Hero Image URL</label><input type="url" id="heroMobileImage" class="field-input" placeholder="https://example.com/mobile-hero.jpg"><div class="field-error" id="heroMobileImageError">Please enter a valid image URL.</div></div>
-                <div class="field-group"><label for="heroAlt" class="field-label">Hero Images Alt Text</label><input type="text" id="heroAlt" class="field-input" placeholder="Descriptive text for the hero images" maxlength="100"></div>
-            </div>
-
-            <div class="field-group"><label for="contentUrl" class="field-label">Content Link URL</label><input type="url" id="contentUrl" class="field-input" placeholder="https://example.com/"><div class="field-error" id="contentUrlError">Please enter a valid URL.</div></div>
-        </div>
+    <div class="config-tools">
+        <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button id="pasteConfigBtn" class="config-btn" title="Paste Configuration">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+        </button>
     </div>
+
+    <div class="help-banner">
+        <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
+    </div>
+
+    
+<div class="section-divider" style="margin-top:0; padding-top:0; border-top:none;">
+    <div class="section-title">Banner Settings</div>
+    
+    
+<div class="field-group" id="backgroundImageGroup">
+    <label for="backgroundImage" class="field-label">Background Image URL</label>
+    <input type="url" id="backgroundImage" class="field-input"
+        placeholder="https://example.com/image.jpg"
+        
+        
+        
+    >
+    
+        <div class="field-error" id="backgroundImageError">Please enter a valid image URL.</div>
+    
+</div>
+
+
+</div>
+
+    
+<div class="section-divider">
+    <div class="section-title">Content</div>
+    
+    
+    
+<div class="field-group">
+    <label class="field-label">Content Type</label>
+    <div class="option-selector" id="contentTypeSelector">
+        
+            <div class="option-button selected" data-value="imageswap">Image Swap</div>
+        
+            <div class="option-button" data-value="text">Text</div>
+        
+            <div class="option-button" data-value="image">Image Title</div>
+        
+    </div>
+</div>
+
+    
+<div class="field-group">
+    <label class="field-label">Vertical Position</label>
+    <div class="option-selector" id="verticalAlignSelector">
+        
+            <div class="option-button" data-value="top">Top</div>
+        
+            <div class="option-button selected" data-value="middle">Middle</div>
+        
+            <div class="option-button" data-value="bottom">Bottom</div>
+        
+    </div>
+</div>
+
+    
+<div class="field-group">
+    <label class="field-label">Horizontal Position</label>
+    <div class="option-selector" id="textAlignSelector">
+        
+            <div class="option-button" data-value="left"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm0-4h10v-2H4v2zm0-4h16v-2H4v2zM4 5v2h10V5H4z"/></svg></div>
+        
+            <div class="option-button selected" data-value="center"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm4-4h8v-2H8v2zm-4-4h16v-2H4v2zm4-4h8V5H8v2z"/></svg></div>
+        
+            <div class="option-button" data-value="right"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 19h16v-2H4v2zm6-4h10v-2H10v2zM4 9h16V7H4v2zm6-4h10V3H10v2z"/></svg></div>
+        
+    </div>
+</div>
+
+
+    
+<div id="textContent">
+    
+<div class="field-group">
+    <label class="field-label">Title</label>
+    <div id="titleEditor" class="quill-container limited-toolbar"></div>
+    
+        
+            <div class="field-group-inline">
+                <label for="titleFontSize" class="field-label">Title Font Size (px)</label>
+                <input type="number" id="titleFontSize" class="field-input"
+                    min="20"
+                    max="60"
+                    step="4"
+                >
+            </div>
+        
+    
+</div>
+
+    
+<div class="field-group">
+    <label class="field-label">Subtitle</label>
+    <div id="subtitleEditor" class="quill-container limited-toolbar"></div>
+    
+        
+            <div class="field-group-inline">
+                <label for="subtitleFontSize" class="field-label">Subtitle Font Size (px)</label>
+                <input type="number" id="subtitleFontSize" class="field-input"
+                    min="14"
+                    max="40"
+                    step="2"
+                >
+            </div>
+        
+    
+</div>
+
+</div>
+
+    
+<div id="imageContent">
+    
+<div class="field-group" id="titleImageGroup">
+    <label for="titleImage" class="field-label">Title Image URL</label>
+    <input type="url" id="titleImage" class="field-input"
+        placeholder="https://example.com/title-image.jpg"
+        
+        
+        
+    >
+    
+        <div class="field-error" id="titleImageError">Please enter a valid image URL.</div>
+    
+</div>
+
+    
+<div class="field-group" id="titleImageAltGroup">
+    <label for="titleImageAlt" class="field-label">Title Image Alt Text</label>
+    <input type="text" id="titleImageAlt" class="field-input"
+        placeholder="Describe the title image for screen readers"
+        
+        
+        
+    >
+    
+</div>
+
+    
+<div class="field-group" id="titleImageWidthGroup">
+    <label for="titleImageWidth" class="field-label">Title Image Width (px)</label>
+    <input type="number" id="titleImageWidth" class="field-input"
+        placeholder="Optional width override"
+        
+        
+        
+    >
+    
+</div>
+
+</div>
+
+    
+<div id="imageSwapContent" class="hidden">
+    
+<div class="field-group" id="heroDesktopImageGroup">
+    <label for="heroDesktopImage" class="field-label">Desktop Hero Image URL</label>
+    <input type="url" id="heroDesktopImage" class="field-input"
+        placeholder="https://example.com/hero-desktop.jpg"
+        
+        
+        
+    >
+    
+        <div class="field-error" id="heroDesktopImageError">Please enter a valid image URL.</div>
+    
+</div>
+
+    
+<div class="field-group" id="heroMobileImageGroup">
+    <label for="heroMobileImage" class="field-label">Mobile Hero Image URL</label>
+    <input type="url" id="heroMobileImage" class="field-input"
+        placeholder="https://example.com/hero-mobile.jpg"
+        
+        
+        
+    >
+    
+        <div class="field-error" id="heroMobileImageError">Please enter a valid image URL.</div>
+    
+</div>
+
+    
+<div class="field-group" id="heroAltGroup">
+    <label for="heroAlt" class="field-label">Hero Image Alt Text</label>
+    <input type="text" id="heroAlt" class="field-input"
+        placeholder="Describe the hero image for screen readers"
+        
+        
+        
+    >
+    
+</div>
+
+    
+<div class="field-group" id="contentUrlGroup">
+    <label for="contentUrl" class="field-label">Content Link URL</label>
+    <input type="url" id="contentUrl" class="field-input"
+        placeholder="https://example.com/content"
+        
+        
+        
+    >
+    
+        <div class="field-error" id="contentUrlError">Please enter a valid URL.</div>
+    
+</div>
+
+</div>
+
+    
+
+<div class="section-footer">
+    
+        <div class="section-footnote section-footnote--info">Content displays text by default</div>
+    
+        <div class="section-footnote section-footnote--info">Use Image Swap to control mobile/desktop hero imagery</div>
+    
+</div>
+
+
+
+</div>
+
 
     <div id="pasteModal" class="paste-modal">
         <div class="paste-modal-content">
@@ -110,7 +305,10 @@
     </div>
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
 
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    </div>
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src="https://example.com/customblock-base"></script>
     <script src="https://example.com/customblock-blocksdk"></script>
     <script src="../shared-assets/quill-config.js"></script>
@@ -120,7 +318,7 @@
         const moduleConfig = {
             name: 'Lead Banner',
             fields: {
-                backgroundImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
+                backgroundImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg', validator: 'url' },
                 contentType: { type: 'text', defaultValue: 'imageswap' },
                 verticalAlign: { type: 'text', defaultValue: 'middle' },
                 textAlign: { type: 'text', defaultValue: 'center' },
@@ -131,8 +329,8 @@
                 titleImage: { type: 'url', defaultValue: '', validator: 'url' },
                 titleImageAlt: { type: 'text', defaultValue: '' },
                 titleImageWidth: { type: 'number', defaultValue: 300 },
-                heroDesktopImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
-                heroMobileImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg validator: 'url' },
+                heroDesktopImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg', validator: 'url' },
+                heroMobileImage: { type: 'url', defaultValue: 'https://images.example.com/placeholder.jpg', validator: 'url' },
                 heroAlt: { type: 'text', defaultValue: 'Hero banner' },
                 contentUrl: { type: 'url', defaultValue: 'https://example.com/', validator: 'url' }
             },
@@ -905,5 +1103,7 @@
             initializeWithRetry(); 
         }
     </script>
+
+
 </body>
 </html>

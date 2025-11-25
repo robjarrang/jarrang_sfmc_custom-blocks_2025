@@ -1,3 +1,6 @@
+{% extends "_shared/module-shell.njk" %}
+{% import "_shared/form-macros.njk" as form %}
+
 {% set fields = {
     backgroundImage: { title: 'Background Image URL', type: 'Image URL', enabled: true },
     contentType: { title: 'Content Type', type: 'Simple text (selector)', enabled: true },
@@ -16,13 +19,13 @@
     contentUrl: { title: 'Content Link URL', type: 'URL', enabled: true }
 } %}
 {% set module = { title: 'Lead Banner', fields: fields } %}
-{% import "../_shared/form-macros.njk" as form %}
 <!--
     UI FIELD MANIFEST: {{ module.title }}
     {% for key, field in fields %}
     - {{ key }} → {{ field.title }} ({{ field.type }}) [{% if field.enabled %}enabled{% else %}disabled{% endif %}]
     {% endfor %}
 -->
+
 {% set banner_settings %}
     {{ form.input_field({
         id: 'backgroundImage',
@@ -80,117 +83,107 @@
     {{ form.rich_text({
         label: module.fields.subtitle.title,
         editorId: 'subtitleEditor',
+        toolbarLimited: true,
         inline: [{
             id: 'subtitleFontSize',
             label: module.fields.subtitleFontSize.title ~ ' (px)',
-            min: 12,
-            max: 32,
-            step: 4
+            min: 14,
+            max: 40,
+            step: 2
         }]
     }) }}
 </div>
 {% endset %}
 
 {% set image_content %}
-<div id="imageContent" style="display: none;">
+<div id="imageContent">
     {{ form.input_field({
         id: 'titleImage',
         label: module.fields.titleImage.title,
         inputType: 'url',
-        placeholder: 'https://example.com/title-image.png',
+        placeholder: 'https://example.com/title-image.jpg',
         error: { id: 'titleImageError', text: 'Please enter a valid image URL.' }
     }) }}
     {{ form.input_field({
         id: 'titleImageAlt',
         label: module.fields.titleImageAlt.title,
-        placeholder: 'Descriptive text for the image',
-        inputType: 'text'
+        inputType: 'text',
+        placeholder: 'Describe the title image for screen readers'
     }) }}
     {{ form.input_field({
         id: 'titleImageWidth',
         label: module.fields.titleImageWidth.title ~ ' (px)',
         inputType: 'number',
-        min: 100,
-        max: 500,
-        step: 10
+        placeholder: 'Optional width override'
     }) }}
 </div>
 {% endset %}
 
-{% set image_swap_content %}
-<div id="imageSwapContent" style="display: none;">
+{% set hero_fields %}
+<div id="imageSwapContent" class="hidden">
     {{ form.input_field({
         id: 'heroDesktopImage',
         label: module.fields.heroDesktopImage.title,
         inputType: 'url',
-        placeholder: 'https://example.com/desktop-hero.jpg',
+        placeholder: 'https://example.com/hero-desktop.jpg',
         error: { id: 'heroDesktopImageError', text: 'Please enter a valid image URL.' }
     }) }}
     {{ form.input_field({
         id: 'heroMobileImage',
         label: module.fields.heroMobileImage.title,
         inputType: 'url',
-        placeholder: 'https://example.com/mobile-hero.jpg',
+        placeholder: 'https://example.com/hero-mobile.jpg',
         error: { id: 'heroMobileImageError', text: 'Please enter a valid image URL.' }
     }) }}
     {{ form.input_field({
         id: 'heroAlt',
         label: module.fields.heroAlt.title,
         inputType: 'text',
-        placeholder: 'Descriptive text for the hero images'
+        placeholder: 'Describe the hero image for screen readers'
     }) }}
-</div>
-{% endset %}
-
-{% set content_footer %}
     {{ form.input_field({
         id: 'contentUrl',
         label: module.fields.contentUrl.title,
         inputType: 'url',
-        placeholder: 'https://example.com/',
+        placeholder: 'https://example.com/content',
         error: { id: 'contentUrlError', text: 'Please enter a valid URL.' }
     }) }}
+</div>
 {% endset %}
 
 {% set content_section %}
     {{ text_options }}
-    <div class="section-divider" style="margin:20px 0; padding-top:15px;"></div>
     {{ text_content }}
     {{ image_content }}
-    {{ image_swap_content }}
-    {{ content_footer }}
+    {{ hero_fields }}
+    {{ form.section_footer({
+        items: [
+            { label: 'Content displays text by default', status: 'info' },
+            { label: 'Use Image Swap to control mobile/desktop hero imagery', status: 'info' }
+        ]
+    }) }}
 {% endset %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>{{ module.title }} Block</title>
-    {% include "../_shared/lead-banner-head.njk" %}
-</head>
-<body>
-    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+{% block head %}
+    {% include "_shared/lead-banner-head.njk" %}
+{% endblock %}
 
-    <div class="container" id="mainContainer">
-        <h2 style="margin-top: 0; color: #333;">{{ module.title }}</h2>
-        <div class="error-banner" id="errorBanner"></div>
-
-        <div class="config-tools">
-            <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </button>
-            <button id="pasteConfigBtn" class="config-btn" title="Paste Configuration">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-            </button>
-        </div>
-
-        <div class="help-banner">
-            <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
-        </div>
-
-        {{ form.section('Banner Settings', banner_settings, { first: true }) }}
-        {{ form.section('Content', content_section) }}
+{% block body %}
+    <div class="config-tools">
+        <button id="copyConfigBtn" class="config-btn" title="Copy Configuration">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button id="pasteConfigBtn" class="config-btn" title="Paste Configuration">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+        </button>
     </div>
+
+    <div class="help-banner">
+        <a href="https://example.com/image-overlay-tool" target="_blank" rel="noopener noreferrer">Click here to open the Image Overlay Tool →</a>
+    </div>
+
+    {{ form.section('Banner Settings', banner_settings, { first: true }) }}
+    {{ form.section('Content', content_section) }}
 
     <div id="pasteModal" class="paste-modal">
         <div class="paste-modal-content">
@@ -206,8 +199,8 @@
         </div>
     </div>
     <textarea id="pasteHiddenTextarea" class="paste-hidden-textarea"></textarea>
+{% endblock %}
 
-    {% include "../_shared/lead-banner-scripts.njk" %}
-
-</body>
-</html>
+{% block scripts %}
+    {% include "_shared/lead-banner-scripts.njk" %}
+{% endblock %}

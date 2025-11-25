@@ -1,0 +1,20 @@
+{% set module = module or { title: 'Module' } %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ module.title }} Block</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay"><div class="loading-spinner"></div></div>
+
+    <div class="container" id="mainContainer">
+        <h2 style="margin-top: 0; color: #333;">{{ module.title }} Settings</h2>
+        <div class="error-banner" id="errorBanner"></div>
+        {% block body %}{% endblock %}
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
