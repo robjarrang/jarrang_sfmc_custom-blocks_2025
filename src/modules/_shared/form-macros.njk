@@ -1,0 +1,69 @@
+{% macro section(title, content, opts={}) %}
+<div class="section-divider"{% if opts.first %} style="margin-top:0; padding-top:0; border-top:none;"{% endif %}>
+    <div class="section-title">{{ title }}</div>
+    {{ content | safe }}
+</div>
+{% endmacro %}
+
+{% macro input_field(field) %}
+<div class="{{ field.groupClass | default('field-group') }}" id="{{ field.groupId | default(field.id ~ 'Group') }}"{% if field.wrapperStyle %} style="{{ field.wrapperStyle }}"{% endif %}>
+    <label for="{{ field.id }}" class="field-label">{{ field.label }}</label>
+    <input type="{{ field.inputType | default('text') }}" id="{{ field.id }}" class="{{ field.inputClass | default('field-input') }}"
+        {% if field.placeholder %}placeholder="{{ field.placeholder }}"{% endif %}
+        {% if field.min is defined %}min="{{ field.min }}"{% endif %}
+        {% if field.max is defined %}max="{{ field.max }}"{% endif %}
+        {% if field.step is defined %}step="{{ field.step }}"{% endif %}
+    >
+    {% if field.error %}
+        <div class="field-error" id="{{ field.error.id }}">{{ field.error.text }}</div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro toggle(field) %}
+<div class="toggle-container">
+    <label class="toggle-switch">
+        <input type="checkbox" id="{{ field.id }}"{% if field.checked %} checked{% endif %}>
+        <span class="toggle-slider"></span>
+    </label>
+    <label for="{{ field.id }}" class="checkbox-label">{{ field.label }}</label>
+</div>
+{% endmacro %}
+
+{% macro option_selector(field) %}
+<div class="{{ field.groupClass | default('field-group') }}"{% if field.groupId %} id="{{ field.groupId }}"{% endif %}>
+    <label class="field-label">{{ field.label }}</label>
+    <div class="{{ field.selectorClass | default('option-selector') }}" id="{{ field.id }}">
+        {% for option in field.options %}
+            <div class="option-button{% if option.selected %} selected{% endif %}" data-value="{{ option.value }}">{{ option.label | safe }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}
+
+{% macro rich_text(field) %}
+<div class="{{ field.groupClass | default('field-group') }}"{% if field.groupId %} id="{{ field.groupId }}"{% endif %}>
+    <label class="field-label">{{ field.label }}</label>
+    <div id="{{ field.editorId }}" class="{{ field.editorClass | default('quill-container') }}{% if field.toolbarLimited %} limited-toolbar{% endif %}"></div>
+    {% if field.inline %}
+        {% for inlineField in field.inline %}
+            <div class="{{ inlineField.groupClass | default('field-group-inline') }}">
+                <label for="{{ inlineField.id }}" class="field-label">{{ inlineField.label }}</label>
+                <input type="{{ inlineField.inputType | default('number') }}" id="{{ inlineField.id }}" class="{{ inlineField.inputClass | default('field-input') }}"
+                    {% if inlineField.min is defined %}min="{{ inlineField.min }}"{% endif %}
+                    {% if inlineField.max is defined %}max="{{ inlineField.max }}"{% endif %}
+                    {% if inlineField.step is defined %}step="{{ inlineField.step }}"{% endif %}
+                >
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro list_editor(field) %}
+<div class="{{ field.groupClass | default('field-group') }}" id="{{ field.groupId | default('') }}"{% if field.wrapperStyle %} style="{{ field.wrapperStyle }}"{% endif %}>
+    <label class="field-label">{{ field.label }}</label>
+    <div id="{{ field.containerId }}" class="{{ field.containerClass | default('items-container') }}"></div>
+    <button id="{{ field.addButton.id }}" class="{{ field.addButton.class }}">{{ field.addButton.text }}</button>
+</div>
+{% endmacro %}
