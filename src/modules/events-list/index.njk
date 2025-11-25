@@ -84,6 +84,46 @@
     <script>
         'use strict';
 
+        const DEFAULT_EVENT_TEMPLATE = {
+            imageUrl: "https://images.example.com/placeholder.jpg",
+            title: "New Event",
+            date: "TBC",
+            location: "TBC",
+            buttonText: "Learn More",
+            buttonUrl: "https://example.com/"
+        };
+
+        const DEFAULT_EVENT_SEEDS = [
+            {
+                imageUrl: "https://images.example.com/placeholder.jpg",
+                title: "EXECUTIVE HIRE SHOW",
+                date: "3rd February",
+                location: "CBS Arena, Phoenix Way, Foleshill, Coventry CV6 6GE",
+                buttonText: "Phasellus a mauris",
+                buttonUrl: "https://example.com/"
+            },
+            {
+                imageUrl: "https://images.example.com/placeholder.jpg",
+                title: "DOE SHOW",
+                date: "4th - 6th February",
+                location: "Ernest Doe Head Office, Ulting, Maldon CM9 6QH",
+                buttonText: "Phasellus a mauris",
+                buttonUrl: "https://example.com/"
+            }
+        ];
+
+        function createEventData(overrides = {}) {
+            return {
+                ...DEFAULT_EVENT_TEMPLATE,
+                ...overrides,
+                id: overrides.id ?? crypto.randomUUID()
+            };
+        }
+
+        function getDefaultEvents() {
+            return DEFAULT_EVENT_SEEDS.map(createEventData);
+        }
+
         const moduleConfig = {
             name: 'Events List Block',
             fields: {
@@ -91,10 +131,7 @@
                 showButtons: { type: 'boolean', defaultValue: true },
                 events: {
                     type: 'list',
-                    defaultValue: [
-                        { id: crypto.randomUUID(), imageUrl: "https://images.example.com/placeholder.jpg", title: "EXECUTIVE HIRE SHOW", date: "3rd February", location: "CBS Arena, Phoenix Way, Foleshill, Coventry CV6 6GE", buttonText: "Phasellus a mauris", buttonUrl: "https://example.com/"},
-                        { id: crypto.randomUUID(), imageUrl: "https://images.example.com/placeholder.jpg", title: "DOE SHOW", date: "4th - 6th February", location: "Ernest Doe Head Office, Ulting, Maldon CM9 6QH", buttonText: "Phasellus a mauris", buttonUrl: "https://example.com/"}
-                    ]
+                    defaultValue: getDefaultEvents()
                 }
             },
             debounceDelay: 400,
@@ -105,11 +142,17 @@
         const elements = {};
         let rafId = null;
 
+        function getDefaultFieldValue(fieldName) {
+            return fieldName === 'events'
+                ? getDefaultEvents()
+                : moduleConfig.fields[fieldName].defaultValue;
+        }
+
         const utils = {
             debounce(func, wait) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => func.apply(this, a), wait); }; },
             isValidUrl(s) { if (!s || s.trim() === '') return true; try { new URL(s); return true; } catch (e) { return false; } },
             showError(msg, p = false) { console.error(msg); if(elements.errorBanner) { elements.errorBanner.textContent=msg; elements.errorBanner.classList.add('show'); if(!p) setTimeout(()=>elements.errorBanner.classList.remove('show'),5000); } },
-            getFieldValue(f) { return state.blockData[f] !== undefined ? state.blockData[f] : moduleConfig.fields[f].defaultValue; },
+            getFieldValue(f) { return state.blockData[f] !== undefined ? state.blockData[f] : getDefaultFieldValue(f); },
 
             addEventListenerTracked(element, event, handler) {
                 element.addEventListener(event, handler);
@@ -259,20 +302,11 @@
             }
         };
 
-        function createDelegatedHandler(fieldName, actionMap) {
+        function createDelegatedHandler(actionMap) {
             return (event) => {
                 // Handle add button clicks
                 if (event.target.closest('#addEventBtn')) {
-                    const newEvent = { 
-                        id: crypto.randomUUID(), 
-                        imageUrl: "https://images.example.com/placeholder.jpg", 
-                        title: "New Event", 
-                        date: "TBC", 
-                        location: "TBC", 
-                        buttonText: "Learn More", 
-                        buttonUrl: "https://example.com/" 
-                    };
-                    state.blockData.events.push(newEvent);
+                    state.blockData.events.push(createEventData());
                     renderEventsUI();
                     updateDataFromUI();
                     return;
@@ -323,7 +357,7 @@
             utils.addEventListenerTracked(elements.showButtonsToggle, 'change', updateDataFromUI);
 
             // Optimized event delegation for events
-            const eventsHandler = createDelegatedHandler('events', eventActions);
+            const eventsHandler = createDelegatedHandler(eventActions);
 
             utils.addEventListenerTracked(elements.addEventBtn, 'click', eventsHandler);
             utils.addEventListenerTracked(elements.eventsContainer, 'click', eventsHandler);
@@ -351,13 +385,13 @@
                 try {
                     const newBlockData = {};
                     Object.keys(moduleConfig.fields).forEach(key => {
-                        newBlockData[key] = (data && data[key] !== undefined) ? data[key] : moduleConfig.fields[key].defaultValue;
+                        newBlockData[key] = (data && data[key] !== undefined) ? data[key] : getDefaultFieldValue(key);
                     });
 
-                    if(newBlockData.events) {
-                        newBlockData.events.forEach(event => { if (!event.id) event.id = crypto.randomUUID(); });
-                    }
-                    state.blockData = newBlockData;
+                    state.blockData = {
+                        ...newBlockData,
+                        events: (newBlockData.events || []).map(createEventData)
+                    };
 
                     document.querySelectorAll('.color-option').forEach(o => o.classList.toggle('selected', o.dataset.color === state.blockData.backgroundColor));
                     elements.showButtonsToggle.checked = state.blockData.showButtons;
@@ -366,11 +400,11 @@
                     utils.showError(`Failed to load data: ${error.message}`);
                     // Fallback to defaults if data processing fails
                     Object.keys(moduleConfig.fields).forEach(key => {
-                        state.blockData[key] = moduleConfig.fields[key].defaultValue;
+                        state.blockData[key] = getDefaultFieldValue(key);
                     });
+                    state.blockData.events = state.blockData.events.map(createEventData);
                     renderEventsUI();
                 } finally {
-                    // **THE FIX IS HERE:** Unset loading state BEFORE refreshing the preview.
                     setLoadingState(false);
                     refreshPreview();
                 }
