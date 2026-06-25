@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Colour Switch</title>
+</head>
+<body>
+<textarea id="html" style="width:100%;height:90vh;"><!-- Colour Switch module source is generated from this custom block. Use @thumbnailStyle = "swatches" for colour circles or "images" for image thumbnails. -->
+%%[
+/* ============================================================
+   COLOUR / THUMBNAIL IMAGE SWAP MODULE SETTINGS
+   Edit values in this section only.
+   ============================================================ */
+set @moduleName = "bolt-100-colour-swap-01"
+set @numberOfColourOptions = 8
+set @coloursPerRow = 4
+
+/* Choose swatches for coloured circles, or images for image thumbnails. */
+set @thumbnailStyle = "swatches"
+
+set @productPageLink = "https://www.milwaukeetool.eu/en-eu/bolt-100/bolt-100/"
+set @buttonLink = ""
+set @buttonText = "View product"
+set @backgroundColour = "black"
+set @fallbackImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478122--Hero_1.png"
+set @fallbackImageAltText = "BOLT 100 white safety helmet"
+
+/* Option 1 */
+set @colourOneImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478122--Hero_1.png"
+set @colourOneThumbnailImage = ""
+set @colourOneSwatchColour = "#ffffff"
+set @colourOneAltText = "BOLT 100 white safety helmet"
+set @colourOneLabel = "White"
+set @colourOneLink = "https://www.milwaukeetool.eu/en-eu/bolt-100/bolt-100/?variant=1012572"
+
+/* Option 2 */
+set @colourTwoImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478913--Hero_1.png"
+set @colourTwoThumbnailImage = ""
+set @colourTwoSwatchColour = "#ffdd00"
+set @colourTwoAltText = "BOLT 100 yellow safety helmet"
+set @colourTwoLabel = "Yellow"
+set @colourTwoLink = ""
+
+/* Option 3 */
+set @colourThreeImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478914--Hero_1.png"
+set @colourThreeThumbnailImage = ""
+set @colourThreeSwatchColour = "#0057b8"
+set @colourThreeAltText = "BOLT 100 blue safety helmet"
+set @colourThreeLabel = "Blue"
+set @colourThreeLink = ""
+
+/* Option 4 */
+set @colourFourImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478915--Hero_1.png"
+set @colourFourThumbnailImage = ""
+set @colourFourSwatchColour = "#00843d"
+set @colourFourAltText = "BOLT 100 green safety helmet"
+set @colourFourLabel = "Green"
+set @colourFourLink = ""
+
+/* Option 5 */
+set @colourFiveImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478916--Hero_1.png"
+set @colourFiveThumbnailImage = ""
+set @colourFiveSwatchColour = "#db011c"
+set @colourFiveAltText = "BOLT 100 red safety helmet"
+set @colourFiveLabel = "Red"
+set @colourFiveLink = ""
+
+/* Option 6 */
+set @colourSixImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932478917--Hero_1.png"
+set @colourSixThumbnailImage = ""
+set @colourSixSwatchColour = "#000000"
+set @colourSixAltText = "BOLT 100 black safety helmet"
+set @colourSixLabel = "Black"
+set @colourSixLink = ""
+
+/* Option 7 */
+set @colourSevenImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932480663--Hero_1.png"
+set @colourSevenThumbnailImage = ""
+set @colourSevenSwatchColour = "#ff8200"
+set @colourSevenAltText = "BOLT 100 orange safety helmet"
+set @colourSevenLabel = "Orange"
+set @colourSevenLink = ""
+
+/* Option 8 */
+set @colourEightImage = "https://static.milwaukeetool.eu/remote.axd/milwaukee-media-images.s3.amazonaws.com/hi/4932480664--Hero_1.png"
+set @colourEightThumbnailImage = ""
+set @colourEightSwatchColour = "#d7ff00"
+set @colourEightAltText = "BOLT 100 high visibility yellow safety helmet"
+set @colourEightLabel = "High visibility yellow"
+set @colourEightLink = ""
+
+/* Option 9 */
+set @colourNineImage = @colourOneImage
+set @colourNineThumbnailImage = ""
+set @colourNineSwatchColour = "#cccccc"
+set @colourNineAltText = "BOLT 100 placeholder option 9"
+set @colourNineLabel = "Option 9"
+set @colourNineLink = ""
+
+/* Option 10 */
+set @colourTenImage = @colourOneImage
+set @colourTenThumbnailImage = ""
+set @colourTenSwatchColour = "#999999"
+set @colourTenAltText = "BOLT 100 placeholder option 10"
+set @colourTenLabel = "Option 10"
+set @colourTenLink = ""
+
+/* ============================================================
+   MODULE LOGIC
+   No edits needed below this line.
+   ============================================================ */
+set @moduleName = Replace(Lowercase(Trim(@moduleName)), " ", "-")
+set @moduleClass = Concat("mwk-", @moduleName, "-interactive")
+set @thumbnailStyle = Lowercase(Trim(@thumbnailStyle))
+if @thumbnailStyle != "images" then set @thumbnailStyle = "swatches" endif
+if Empty(@numberOfColourOptions) then set @numberOfColourOptions = 1 endif
+if @numberOfColourOptions < 1 then set @numberOfColourOptions = 1 elseif @numberOfColourOptions > 10 then set @numberOfColourOptions = 10 endif
+if Empty(@coloursPerRow) then set @coloursPerRow = 4 endif
+if @coloursPerRow < 1 then set @coloursPerRow = 1 elseif @coloursPerRow > 5 then set @coloursPerRow = 5 endif
+set @backgroundColour = Lowercase(Trim(@backgroundColour))
+if @backgroundColour == "red" then set @backgroundColourHex = "#B50018" set @selectedRingColour = "#ffffff" elseif @backgroundColour == "white" then set @backgroundColourHex = "#ffffff" set @selectedRingColour = "#000000" else set @backgroundColourHex = "#000000" set @selectedRingColour = "#ffffff" endif
+if @backgroundColour == "black" then set @buttonClass = "button-2-white button-mobile-center" set @buttonTableStyle = "background-color: transparent; border: 2px solid #ffffff; border-collapse: separate; border-radius: 4px !important;" set @buttonTextColour = "#ffffff" else set @buttonClass = "button-1-black button-mobile-center" set @buttonTableStyle = "background-color: #000000; border-radius: 4px !important;" set @buttonTextColour = "#ffffff" endif
+set @buttonLink = Trim(@buttonLink)
+if Empty(@buttonLink) then set @buttonFinalLink = @productPageLink else set @buttonFinalLink = @buttonLink endif
+
+set @optionImages = Concat(@colourOneImage,"|",@colourTwoImage,"|",@colourThreeImage,"|",@colourFourImage,"|",@colourFiveImage,"|",@colourSixImage,"|",@colourSevenImage,"|",@colourEightImage,"|",@colourNineImage,"|",@colourTenImage)
+set @optionThumbnailImages = Concat(Iif(Empty(Trim(@colourOneThumbnailImage)),@colourOneImage,@colourOneThumbnailImage),"|",Iif(Empty(Trim(@colourTwoThumbnailImage)),@colourTwoImage,@colourTwoThumbnailImage),"|",Iif(Empty(Trim(@colourThreeThumbnailImage)),@colourThreeImage,@colourThreeThumbnailImage),"|",Iif(Empty(Trim(@colourFourThumbnailImage)),@colourFourImage,@colourFourThumbnailImage),"|",Iif(Empty(Trim(@colourFiveThumbnailImage)),@colourFiveImage,@colourFiveThumbnailImage),"|",Iif(Empty(Trim(@colourSixThumbnailImage)),@colourSixImage,@colourSixThumbnailImage),"|",Iif(Empty(Trim(@colourSevenThumbnailImage)),@colourSevenImage,@colourSevenThumbnailImage),"|",Iif(Empty(Trim(@colourEightThumbnailImage)),@colourEightImage,@colourEightThumbnailImage),"|",Iif(Empty(Trim(@colourNineThumbnailImage)),@colourNineImage,@colourNineThumbnailImage),"|",Iif(Empty(Trim(@colourTenThumbnailImage)),@colourTenImage,@colourTenThumbnailImage))
+set @optionSwatchColours = Concat(@colourOneSwatchColour,"|",@colourTwoSwatchColour,"|",@colourThreeSwatchColour,"|",@colourFourSwatchColour,"|",@colourFiveSwatchColour,"|",@colourSixSwatchColour,"|",@colourSevenSwatchColour,"|",@colourEightSwatchColour,"|",@colourNineSwatchColour,"|",@colourTenSwatchColour)
+set @optionAltTexts = Concat(@colourOneAltText,"|",@colourTwoAltText,"|",@colourThreeAltText,"|",@colourFourAltText,"|",@colourFiveAltText,"|",@colourSixAltText,"|",@colourSevenAltText,"|",@colourEightAltText,"|",@colourNineAltText,"|",@colourTenAltText)
+set @optionLabels = Concat(@colourOneLabel,"|",@colourTwoLabel,"|",@colourThreeLabel,"|",@colourFourLabel,"|",@colourFiveLabel,"|",@colourSixLabel,"|",@colourSevenLabel,"|",@colourEightLabel,"|",@colourNineLabel,"|",@colourTenLabel)
+set @optionLinks = Concat(Iif(Empty(Trim(@colourOneLink)),@productPageLink,@colourOneLink),"|",Iif(Empty(Trim(@colourTwoLink)),@productPageLink,@colourTwoLink),"|",Iif(Empty(Trim(@colourThreeLink)),@productPageLink,@colourThreeLink),"|",Iif(Empty(Trim(@colourFourLink)),@productPageLink,@colourFourLink),"|",Iif(Empty(Trim(@colourFiveLink)),@productPageLink,@colourFiveLink),"|",Iif(Empty(Trim(@colourSixLink)),@productPageLink,@colourSixLink),"|",Iif(Empty(Trim(@colourSevenLink)),@productPageLink,@colourSevenLink),"|",Iif(Empty(Trim(@colourEightLink)),@productPageLink,@colourEightLink),"|",Iif(Empty(Trim(@colourNineLink)),@productPageLink,@colourNineLink),"|",Iif(Empty(Trim(@colourTenLink)),@productPageLink,@colourTenLink))
+set @optionImageRows = BuildRowsetFromString(@optionImages, "|")
+set @optionThumbnailImageRows = BuildRowsetFromString(@optionThumbnailImages, "|")
+set @optionSwatchColourRows = BuildRowsetFromString(@optionSwatchColours, "|")
+set @optionAltTextRows = BuildRowsetFromString(@optionAltTexts, "|")
+set @optionLabelRows = BuildRowsetFromString(@optionLabels, "|")
+set @optionLinkRows = BuildRowsetFromString(@optionLinks, "|")
+set @imageWidth = "580"
+]%%
+<style type="text/css">
+.mwk-colour-swap-fallback{display:table;width:620px}.mwk-colour-swap-interactive{display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;width:620px}.mwk-colour-swap-input{display:none;mso-hide:all}.mwk-colour-swap-panel{display:none;max-height:0;overflow:hidden}.mwk-colour-swap-panel-1{display:block;max-height:none;overflow:visible}.mwk-colour-swap-thumb{border:2px solid transparent;border-collapse:separate!important;border-radius:%%[ if @thumbnailStyle == "images" then ]%%4px%%[ else ]%%50%%%[ endif ]%%;cursor:pointer;height:58px;width:58px}.mwk-colour-swap-thumb-cell{font-size:0;height:54px;line-height:0;mso-line-height-rule:exactly;padding:0;text-align:center;width:54px}.mwk-colour-swap-thumb-img{border:none;display:block;height:auto;margin:0 auto;outline:none;text-decoration:none;width:54px}.mwk-colour-swap-swatch{border-radius:50%;display:block;font-size:0;height:42px;line-height:42px;margin:6px auto;width:42px}
+@media screen and (-webkit-min-device-pixel-ratio:0){.mwk-colour-swap-fallback{display:none!important;max-height:0!important;max-width:0!important;overflow:hidden!important;visibility:hidden!important}.mwk-colour-swap-interactive{display:table!important;max-height:none!important;max-width:inherit!important;overflow:visible!important;visibility:inherit!important}input.mwk-colour-swap-input{display:none!important}.mwk-colour-swap-panel{display:none!important;max-height:0!important;overflow:hidden!important}#%%=v(@moduleName)=%%-colour-option-1:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-1,#%%=v(@moduleName)=%%-colour-option-2:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-2,#%%=v(@moduleName)=%%-colour-option-3:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-3,#%%=v(@moduleName)=%%-colour-option-4:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-4,#%%=v(@moduleName)=%%-colour-option-5:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-5,#%%=v(@moduleName)=%%-colour-option-6:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-6,#%%=v(@moduleName)=%%-colour-option-7:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-7,#%%=v(@moduleName)=%%-colour-option-8:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-8,#%%=v(@moduleName)=%%-colour-option-9:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-9,#%%=v(@moduleName)=%%-colour-option-10:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-panel-10{display:block!important;max-height:none!important;overflow:visible!important}#%%=v(@moduleName)=%%-colour-option-1:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-1,#%%=v(@moduleName)=%%-colour-option-2:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-2,#%%=v(@moduleName)=%%-colour-option-3:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-3,#%%=v(@moduleName)=%%-colour-option-4:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-4,#%%=v(@moduleName)=%%-colour-option-5:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-5,#%%=v(@moduleName)=%%-colour-option-6:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-6,#%%=v(@moduleName)=%%-colour-option-7:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-7,#%%=v(@moduleName)=%%-colour-option-8:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-8,#%%=v(@moduleName)=%%-colour-option-9:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-9,#%%=v(@moduleName)=%%-colour-option-10:checked~.%%=v(@moduleClass)=%% .mwk-colour-swap-thumb-10{border-color:%%=v(@selectedRingColour)=%%!important}}
+#converted-body .mwk-colour-swap-fallback,body[data-outlook-cycle] .mwk-colour-swap-fallback,[class~="x_mwk-colour-swap-fallback"],u+.body .mwk-colour-swap-fallback{display:table!important;visibility:inherit!important}#converted-body .mwk-colour-swap-interactive,body[data-outlook-cycle] .mwk-colour-swap-interactive,[class~="x_mwk-colour-swap-interactive"],u+.body .mwk-colour-swap-interactive{display:none!important;overflow:hidden!important;width:0!important;max-height:0!important;max-width:0!important;line-height:0!important;visibility:hidden!important}@media yahoo{.mwk-colour-swap-fallback{display:table!important;max-height:none!important;overflow:visible!important;visibility:inherit!important}.mwk-colour-swap-interactive{display:none!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important}}@media only screen and (max-width:580px){.mwk-colour-swap-thumb{height:52px!important;width:52px!important}.mwk-colour-swap-thumb-cell{height:48px!important;width:48px!important}.mwk-colour-swap-thumb-img{width:48px!important}.mwk-colour-swap-swatch{height:38px!important;line-height:38px!important;margin:5px auto!important;width:38px!important}}
+</style>
+<style type="text/css">.mwk-colour-swap-interactive\0{display:none!important;overflow:hidden!important;width:0!important;height:0!important;max-height:0!important;max-width:0!important;line-height:0!important;visibility:hidden!important}.mwk-colour-swap-fallback\0{display:table!important;width:100%!important;max-height:inherit!important;max-width:inherit!important;overflow:visible!important;visibility:inherit!important}</style>
+<!-- START .mwk-colour-swap-product -->
+<table role="presentation" class="content-outer mwk-colour-swap-fallback yahooshow" align="center" border="0" cellspacing="0" cellpadding="0" style="background-color:%%=v(@backgroundColourHex)=%%;width:620px;"><tr><td class="side" style="width:20px;">&nbsp;</td><td class="content-inner" valign="top" align="center" style="width:580px;"><table role="presentation" class="sect" align="center" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tr><td><div style="font-size:24px;height:24px;line-height:24px;">&nbsp;</div></td></tr><tr><td class="block" valign="top" align="center" style="width:100%;"><a href="%%=RedirectTo(@productPageLink)=%%" target="_blank"><img class="fill" src="%%=v(@fallbackImage)=%%" alt="%%=v(@fallbackImageAltText)=%%" width="%%=v(@imageWidth)=%%" style="border:none;display:block;height:auto;outline:none;text-decoration:none;"></a></td></tr><tr><td><div style="font-size:18px;height:18px;line-height:18px;">&nbsp;</div></td></tr><tr><td><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;"><tr><td align="center" class="block" style="width:100%;" valign="middle"><table border="0" cellpadding="0" cellspacing="0" class="%%=v(@buttonClass)=%%" role="presentation" style="%%=v(@buttonTableStyle)=%%"><tr><td align="center" style="color:%%=v(@buttonTextColour)=%%;font-family:'Helvetica Neue LT W05_55 Roman',sans-serif,'Open-Sans';font-size:16px;font-weight:bold;line-height:28px;mso-line-height-rule:exactly;mso-text-raise:2px;padding:12px 20px;text-align:center;text-transform:uppercase;width:100%;border-radius:4px!important;"><a href="%%=RedirectTo(@buttonFinalLink)=%%" style="color:%%=v(@buttonTextColour)=%%;text-decoration:none;" target="_blank">%%=v(@buttonText)=%%</a></td></tr></table></td></tr></table></td></tr><tr><td><div style="font-size:24px;height:24px;line-height:24px;">&nbsp;</div></td></tr></table></td><td class="side" style="width:20px;">&nbsp;</td></tr></table>
+<!--[if !mso]><! -->
+%%[ for @i = 1 to @numberOfColourOptions do ]%%<input class="mwk-colour-swap-input" type="radio" id="%%=v(@moduleName)=%%-colour-option-%%=v(@i)=%%" name="%%=v(@moduleName)=%%" %%[ if @i == 1 then ]%%checked%%[ endif ]%% style="display:none;mso-hide:all;">%%[ next @i ]%%
+<table role="presentation" class="content-outer mwk-colour-swap-interactive %%=v(@moduleClass)=%% yahoohide" align="center" border="0" cellspacing="0" cellpadding="0" style="background-color:%%=v(@backgroundColourHex)=%%;width:620px;display:none;max-height:0;max-width:0;overflow:hidden;mso-hide:all;"><tr><td class="side" style="width:20px;">&nbsp;</td><td class="content-inner" valign="top" align="center" style="width:580px;"><table role="presentation" class="sect" align="center" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tr><td><div style="font-size:24px;height:24px;line-height:24px;">&nbsp;</div></td></tr><tr><td class="block" valign="top" align="center" style="width:100%;">%%[ for @i = 1 to @numberOfColourOptions do set @panelImage = Field(Row(@optionImageRows,@i),1) set @panelAltText = Field(Row(@optionAltTextRows,@i),1) set @panelLink = Field(Row(@optionLinkRows,@i),1) if @i == 1 then set @panelStyle = "display:block;" else set @panelStyle = "display:none;max-height:0;overflow:hidden;" endif ]%%<div class="mwk-colour-swap-panel mwk-colour-swap-panel-%%=v(@i)=%%" style="%%=v(@panelStyle)=%%"><a href="%%=RedirectTo(@panelLink)=%%" target="_blank"><img class="fill" src="%%=v(@panelImage)=%%" alt="%%=v(@panelAltText)=%%" width="%%=v(@imageWidth)=%%" style="border:none;display:block;height:auto;outline:none;text-decoration:none;"></a></div>%%[ next @i ]%%</td></tr><tr><td><div style="font-size:18px;height:18px;line-height:18px;">&nbsp;</div></td></tr><tr><td align="center" style="font-size:0;line-height:0;">%%[ for @i = 1 to @numberOfColourOptions do set @rowStartCheck = Mod(Subtract(@i,1),@coloursPerRow) set @rowEndCheck = Mod(@i,@coloursPerRow) set @thumbImage = Field(Row(@optionThumbnailImageRows,@i),1) set @thumbColour = Field(Row(@optionSwatchColourRows,@i),1) set @thumbLabel = Field(Row(@optionLabelRows,@i),1) if @rowStartCheck == 0 then ]%%<table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0"><tr>%%[ endif ]%%<td align="center" valign="middle" style="padding:0 4px;font-size:0;line-height:0;"><label for="%%=v(@moduleName)=%%-colour-option-%%=v(@i)=%%" title="%%=v(@thumbLabel)=%%" style="cursor:pointer;display:block;"><table role="presentation" class="mwk-colour-swap-thumb mwk-colour-swap-thumb-%%=v(@i)=%%" align="center" border="0" cellspacing="0" cellpadding="0" width="58" height="58" style="border:2px solid transparent;border-collapse:separate!important;border-radius:%%[ if @thumbnailStyle == "images" then ]%%4px%%[ else ]%%50% %%[ endif ]%%;cursor:pointer;height:58px;width:58px;"><tr><td class="mwk-colour-swap-thumb-cell" align="center" valign="middle" width="54" height="54" style="font-size:0;height:54px;line-height:0;mso-line-height-rule:exactly;padding:0;text-align:center;width:54px;">%%[ if @thumbnailStyle == "images" then ]%%<img class="mwk-colour-swap-thumb-img" src="%%=v(@thumbImage)=%%" alt="%%=v(@thumbLabel)=%%" width="54" style="border:none;display:block;height:auto;margin:0 auto;outline:none;text-decoration:none;width:54px;">%%[ else ]%%<span class="mwk-colour-swap-swatch" style="background-color:%%=v(@thumbColour)=%%;border:1px solid rgba(0,0,0,0.2);border-radius:50%;display:block;font-size:0;height:42px;line-height:42px;margin:6px auto;width:42px;">&nbsp;</span>%%[ endif ]%%</td></tr></table></label></td>%%[ if @rowEndCheck == 0 or @i == @numberOfColourOptions then ]%%</tr></table>%%[ if @i < @numberOfColourOptions then ]%%<div style="font-size:8px;height:8px;line-height:8px;">&nbsp;</div>%%[ endif ]%%%%[ endif ]%%%%[ next @i ]%%</td></tr><tr><td><div style="font-size:20px;height:20px;line-height:20px;">&nbsp;</div></td></tr><tr><td><table align="center" border="0" cellpadding="0" cellspacing="0" class="sect" role="presentation" style="width:100%;"><tr><td align="center" class="block" style="width:100%;" valign="middle"><table border="0" cellpadding="0" cellspacing="0" class="%%=v(@buttonClass)=%%" role="presentation" style="%%=v(@buttonTableStyle)=%%"><tr><td align="center" style="color:%%=v(@buttonTextColour)=%%;font-family:'Helvetica Neue LT W05_55 Roman',sans-serif,'Open-Sans';font-size:16px;font-weight:bold;line-height:28px;mso-line-height-rule:exactly;mso-text-raise:2px;padding:12px 20px;text-align:center;text-transform:uppercase;width:100%;border-radius:4px!important;"><a href="%%=RedirectTo(@buttonFinalLink)=%%" style="color:%%=v(@buttonTextColour)=%%;text-decoration:none;" target="_blank">%%=v(@buttonText)=%%</a></td></tr></table></td></tr></table></td></tr><tr><td><div style="font-size:24px;height:24px;line-height:24px;">&nbsp;</div></td></tr></table></td><td class="side" style="width:20px;">&nbsp;</td></tr></table>
+<!-- <![endif]-->
+<!-- END .mwk-colour-swap-product --></textarea>
+<script>
+(function() {
+  const html = document.getElementById('html').value;
+  if (window.customBlockSdk) {
+    window.customBlockSdk.setContent(html);
+  }
+})();
+</script>
+</body>
+</html>
