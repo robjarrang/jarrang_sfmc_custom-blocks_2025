@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 npm-debug.log*
 .env
+
+# Short-term PR workaround: do not commit generated colour-switch binary assets
+/colour-switch/icon.png
+/colour-switch/dragIcon.png
