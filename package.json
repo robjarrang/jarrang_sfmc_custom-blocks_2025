@@ -1,29 +1,22 @@
 {
-  "name": "sfmc-custom-blocks-template",
-  "version": "1.1.0",
-  "description": "Nunjucks + Gulp pipeline for generating SFMC custom block HTML modules",
-  "main": "index.js",
+  "name": "jarrang-sfmc-block-studio",
+  "version": "2.0.0",
+  "description": "Block Studio workflow for creating and exporting SFMC custom block packages",
+  "private": true,
   "type": "commonjs",
   "scripts": {
-    "build": "gulp build",
-    "watch": "gulp watch",
-    "clean": "gulp clean"
+    "build": "python3 block-studio/build.py",
+    "test": "node block-studio/tests/core.test.cjs",
+    "studio:build": "python3 block-studio/build.py",
+    "studio:test": "node block-studio/tests/core.test.cjs"
   },
   "keywords": [
     "sfmc",
     "custom-blocks",
-    "nunjucks",
-    "gulp",
+    "block-studio",
+    "content-builder",
     "email"
   ],
   "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "del": "^7.1.0",
-    "gulp": "^5.0.0",
-    "gulp-data": "^1.3.1",
-    "gulp-nunjucks-render": "^2.2.3",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.0.0"
-  }
+  "license": "MIT"
 }
