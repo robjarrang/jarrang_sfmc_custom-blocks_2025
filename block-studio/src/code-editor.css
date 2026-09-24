@@ -1,0 +1,256 @@
+.code-host.source-view {
+  padding: 0;
+  white-space: normal;
+  max-height: none;
+  background: white;
+  font: inherit;
+}
+.code-surface {
+  border: 1px solid #d6d9e6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  color: #080043;
+  white-space: normal;
+}
+.code-tools,
+.code-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 9px;
+  background: #f5f6fb;
+  border-bottom: 1px solid #d6d9e6;
+}
+.code-surface button {
+  font:
+    12px/1.4 'Neue Montreal',
+    Arial,
+    sans-serif;
+  padding: 6px 9px;
+  border: 1px solid #d6d9e6;
+  border-radius: 4px;
+  background: white;
+  color: #080043;
+  min-height: 30px;
+}
+.code-surface button:hover {
+  background: #eff2fa;
+}
+.code-surface button:focus-visible,
+.code-surface input:focus-visible {
+  outline: 2px solid #080043;
+  outline-offset: 1px;
+}
+.code-surface input:not([type='checkbox']) {
+  width: auto;
+  max-width: 100%;
+  font: 12px/1.5 monospace;
+  padding: 5px 7px;
+  border: 1px solid #d6d9e6;
+  border-radius: 4px;
+  background: white;
+  color: #080043;
+}
+.code-tools input {
+  max-width: 75px !important;
+}
+.code-search input[type='search'],
+.code-search input[type='text'] {
+  flex: 1;
+  min-width: 120px;
+}
+.code-search label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 11px;
+  margin: 0;
+  font-weight: 400;
+}
+.code-search input[type='checkbox'] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+.code-stage {
+  display: grid;
+  grid-template-columns: 65px minmax(0, 1fr);
+  height: 450px;
+  min-height: 260px;
+}
+.quick-code-grid .code-stage {
+  height: 52vh;
+  min-height: 260px;
+}
+.code-gutter {
+  overflow: hidden;
+  background: #f5f6fb;
+  border-right: 1px solid #e0e3ef;
+  padding: 12px 4px 12px 0;
+  user-select: none;
+}
+.code-gutter-line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 21px;
+  gap: 3px;
+  font: 11px/21px monospace;
+  color: #66677c;
+  padding-right: 22px;
+  position: relative;
+}
+.code-gutter-line button {
+  position: absolute;
+  right: 0;
+  min-height: 0;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+.code-layers {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+.code-surface .code-input,
+.code-surface .code-paint {
+  position: absolute;
+  inset: 0;
+  margin: 0 !important;
+  padding: 12px !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+  font:
+    12px/21px Consolas,
+    Monaco,
+    monospace !important;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  text-indent: 0;
+  word-spacing: normal;
+  direction: ltr;
+  letter-spacing: normal !important;
+  tab-size: 2;
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+  word-break: normal;
+  resize: none !important;
+  text-align: left;
+}
+.code-surface .code-input {
+  z-index: 2;
+  background: transparent !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  caret-color: #080043;
+  overflow: auto;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.code-surface .code-input:focus-visible {
+  box-shadow: inset 0 0 0 2px #080043 !important;
+}
+.code-input::selection {
+  background: #59dbca66;
+  color: transparent;
+}
+.code-surface .code-paint {
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  background: #fff;
+  color: #353549;
+}
+.syntax-tag {
+  color: #174c99;
+}
+.syntax-attribute {
+  color: #775115;
+}
+.syntax-value {
+  color: #196540;
+}
+.syntax-comment {
+  color: #666c75;
+}
+.syntax-logic,
+.syntax-expression {
+  color: #793d92;
+}
+.syntax-personalisation {
+  color: #974125;
+}
+.code-field {
+  box-shadow: inset 0 -2px #59b6a8;
+}
+.code-field-active {
+  background: #d8f5ed;
+  box-shadow: inset 0 -2px #080043;
+}
+.code-loop {
+  background: #59dbca12;
+}
+.code-pair {
+  background: #d8e5ff !important;
+  outline: 1px solid #4862a0;
+  border-radius: 2px;
+}
+.code-found {
+  background: #fff0a3;
+}
+.code-fold-marker {
+  background: #e5e8f3;
+  color: #5c6076;
+  border-radius: 3px;
+}
+.code-status {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #5c6076;
+  padding: 8px 12px;
+  border-top: 1px solid #d6d9e6;
+  min-height: 33px;
+  background: #fff;
+  overflow-wrap: anywhere;
+}
+@media (forced-colors: active) {
+  .code-surface .code-input {
+    color: CanvasText !important;
+    -webkit-text-fill-color: CanvasText;
+    background: Canvas !important;
+  }
+  .code-paint {
+    display: none;
+  }
+}
+
+.code-loop.code-field-active {
+  background: #d8f5ed;
+}
+.code-loop-boundary {
+  background: #d9f2ed;
+  box-shadow: inset 0 -2px #259d8c;
+}
+
+/* Decoration must never change glyph metrics or establish a second scroll position. */
+.code-paint-content {
+  font: inherit;
+  white-space: inherit;
+  min-width: max-content;
+}
+.code-paint-content > span {
+  font: inherit;
+  letter-spacing: inherit;
+  vertical-align: baseline;
+}

@@ -12,21 +12,32 @@ Block Studio is a local, browser-based converter. It analyses a module fragment,
 block-studio/
   Open-Block-Studio.html    Self-contained application for day-to-day use
   index.html                Folder-based application entry during development
-  build.py                  Rebuilds embedded assets and Open-Block-Studio.html
+  build.py                  Rebuilds embedded assets, Open-Block-Studio.html and docs/studio/index.html
+  package.json              Block Studio's own scripts (test, format, format:check, test:browser)
   README.md                 Studio workflow and scope
+  TOWER-WORKFLOW.md         Single-repository, multiple-client Git/Tower publishing workflow
+  CODE-REVIEW.md            Debt remediation notes and generated-file guidance
   VALIDATION.md             Completed validation and remaining live-test work
   src/
     app.js                  Studio interface, project workflow and previews
     core.js                 Parser, source mappings, rendering and validation
-    exporter.js             ZIP export, icons and publishing guide generation
-    export-assets.js        Generated export dependency bundle
-    runtime.js              Generated client editor runtime
-    runtime.css             Generated client editor styles
-    studio.css              Studio interface styles
-  tests/
-    core.test.cjs           Source preservation and validation tests
-    browser.test.cjs        Playwright workflow test
-  vendor/                   Bundled JSZip and Salesforce Block SDK assets
+    workspace.js            Clients/templates workspace, repository settings and project persistence
+    preview.js              Configure/test preview bridge shared across steps
+    quick-edit.js            Quick HTML fix workflow for existing modules
+    repeat-builder.js        Repeatable content and conditional section builder
+    code-editor.js / code-editor.css   Shared HTML code view (tag matching, folding, search)
+    block-icons.js           Generated block icon/dragIcon assets
+    exporter.js              ZIP export, icons and publishing guide generation
+    export-assets.js         Generated export dependency bundle
+    runtime.js                Generated client editor runtime
+    runtime.css               Generated client editor styles
+    studio.css                 Studio interface styles
+  tests/                     Core, workspace, preview, code-editor and browser workflow tests
+  scripts/
+    validate.cjs             Node test-runner entry point (npm test), runs every tests/*.cjs suite
+  docs/                      Pre-built GitHub Pages site (Deploy from a branch → /docs)
+  projects/                  Editable .jarrang.json template projects
+  vendor/                    Bundled JSZip, Bootstrap Icons and Salesforce Block SDK assets
 
 README.md                   Repository overview and command summary
 package.json                Root Block Studio scripts only
@@ -43,8 +54,9 @@ npm run build
 npm test
 ```
 
-- `npm run build` runs `python3 block-studio/build.py`, rebuilding `block-studio/src/export-assets.js` and `block-studio/Open-Block-Studio.html`.
-- `npm test` runs `node block-studio/tests/core.test.cjs`.
+- `npm run build` runs `python3 block-studio/build.py`, rebuilding `block-studio/src/export-assets.js`, `block-studio/Open-Block-Studio.html` and `block-studio/docs/studio/index.html`.
+- `npm test` runs `node block-studio/tests/core.test.cjs`, a subset covering source preservation and validation.
+- For the full suite (workspace, preview, code editor, browser regressions and formatting checks) run `npm test`, `npm run format:check` and `npm run test:browser` inside `block-studio/`, where its own `package.json` defines those scripts.
 
 ## Creating New Blocks
 
@@ -108,6 +120,7 @@ Block Studio speeds up conversion, but it does not replace developer review. Bef
 
 - [README.md](README.md) - root project overview and command summary
 - [block-studio/README.md](block-studio/README.md) - Studio user workflow and publishing model
+- [block-studio/TOWER-WORKFLOW.md](block-studio/TOWER-WORKFLOW.md) - Git/Tower branch-publishing workflow for multiple clients and templates
 - [block-studio/VALIDATION.md](block-studio/VALIDATION.md) - completed tests and remaining live validation
 - Salesforce Block SDK documentation: https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/develop-block-widget.html
 - GitHub Pages documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site

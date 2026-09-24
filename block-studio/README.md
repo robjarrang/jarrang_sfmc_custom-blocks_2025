@@ -1,6 +1,28 @@
-# Jarrang Block Studio 1.7.0
+# Jarrang Block Studio 1.17.0
 
 Convert coded email modules into independent SFMC custom blocks. This update simplifies field setup with a guided Add field flow, suggested module locations and an interactive preview of the client’s control. Conditional templates and repeatable content remain supported. Each module remains its own draggable block. The app exports static files for GitHub Pages branch publishing; it does not publish or install them.
+
+## Clients and templates
+
+Use **Clients & templates** to switch between separately saved drafts. Choose **New template**, select or enter a client and name the template. The sidebar always shows the active client and template. Existing projects can be imported; a matching template requires confirmation before replacement. Original single-project browser data is retained when migrated on the same browser origin.
+
+Use **Template settings** to name an unassigned project or rename a template. Publishing folders are fixed after assignment, so renaming does not change SFMC URLs. Client assignment is then fixed; create a new template to work for another client. A template represents a set of modules, not an automatically assembled full email.
+
+**Repository settings** holds one Pages site URL for all templates in this browser. Use the site URL including the repository path, without `/docs` or `/studio`. A blank URL produces clearly illustrative `your-team` endpoints until you configure it.
+
+## Tower workflow
+
+The repository package is ready for **Deploy from a branch → /docs**. It includes the central application at `docs/studio/index.html`, a landing page and `.nojekyll`. See **TOWER-WORKFLOW.md** for setup and updates.
+
+1. Pull the latest repository changes in Tower.
+2. Import the desired template JSON from `projects/` into Studio, or create a new template.
+3. Edit and review its modules. Use **Download editable project** for an editable JSON backup, or **Download template package** for the complete publishing package.
+4. Merge the exported `docs/` and `projects/` contents into your local repository, preserving other files. On macOS, do not replace the whole destination folder.
+5. Review changes in Tower, commit and push.
+
+Template exports write only their own catalogue and module folders, plus content-versioned runtime assets. Module-only exports do not replace the template catalogue. Both include the complete editable project, including draft modules, outside `/docs`. Browser drafts are local, not team synchronisation; import the latest committed JSON before editing on another device.
+
+Updating Studio does not change published blocks. Re-export deliberately to use new runtime code, and preserve older endpoints and assets for existing SFMC content.
 
 ## Jarrang branding
 
@@ -14,8 +36,29 @@ Open **Open-Block-Studio.html** in a desktop browser. No installation or server 
 2. Review the suggested fields. Choose **Explore an example** for an additional sample with a colour, a dropdown, title/CTA switches and a repeatable bullet list.
 3. Configure fields and rules using the options below.
 4. Select **Try the editor** and test content, conditional branches and item counts. Trial values do not replace starting values.
-5. Review the export and choose repository root or `/docs`. Download one module or export all reviewed modules together.
-6. Use **Save project** to keep an editable `.jarrang.json` file. Browser storage is only a convenience.
+5. Review the export destination. Download one module or export all reviewed modules in the template together.
+6. Use **Download editable project** to keep an editable `.jarrang.json` file. Browser storage is only a convenience.
+
+## HTML editor
+
+The mapping HTML view, rendered HTML output and Edit HTML dialogue share the same code component.
+
+- Tags, attributes, values, comments, template expressions and AMPscript have distinct syntax colours.
+- Place the cursor in an opening or closing tag to highlight its partner. **Matching tag** jumps between the linked tags. Conditions and loops also highlight their branches and closing statements, including conditions inside attributes.
+- Line numbers show the original source locations. Enter a number beside **Go** to navigate directly.
+- **Find**, or Ctrl/Cmd+F while the code has focus, searches literal text. Match case is optional. Previous and Next navigate results. In Edit HTML, Replace and Replace all use the quick-edit field protections. A failed replace-all leaves the entire draft unchanged.
+- Gutter arrows fold multi-line elements, comments and template blocks. Folding is a viewing aid: expand all before editing, copying or selecting code for a new field. Hidden markup is never discarded.
+- Underlined code identifies connected fields; clicking it selects the corresponding field. Selected fields have stronger highlights. Loop boundaries remain marked and the status line identifies the repeating field.
+
+There is no automatic formatting. Saving preserves the source structure and existing line endings. Outlook conditional comments and personalisation remain source text. Tag matching is a navigation aid, not email HTML validation.
+
+## Quick HTML fixes
+
+After a module has been analysed, use **Edit HTML** beside its name from any workflow step. Make small CSS or surrounding markup corrections, select **Refresh preview**, then **Apply HTML fix**. The editor retains field identities, labels, defaults, options, rich-text settings and review status. Source offsets are adjusted without rediscovering fields. Cancel leaves the module unchanged and asks before discarding edits.
+
+Connected field values are protected, including rich-text HTML stored within a field. Use Edit field for those changes. Large pasted replacements spanning connected values are rejected; make smaller edits around them. Template expressions and AMPscript must remain unchanged. Use the existing Template code flow for intentional logic/schema changes, which may rebuild mappings.
+
+Applying a fix returns to the same workflow step. Check the result and re-acknowledge source dependencies before re-exporting the module. The fix does not change its ID, folder or release. Exported updates do not automatically rewrite HTML already saved in SFMC email instances; verify affected content there.
 
 ## Add and edit fields
 
@@ -95,13 +138,13 @@ Applying changed Template code rebuilds source mappings. Named controls survive;
 
 ## Publishing
 
-The module export includes `PUBLISHING.md`. Extract its contents into a repository. In GitHub Pages, choose **Deploy from a branch**, the branch and **/(root)** or **/docs**. Exported modules need no build command or custom Actions workflow. Keep the publishing folder's `.nojekyll` file.
+Exports contain instructions under `projects/<client>/<template>-PUBLISHING.md`. Publish the `/docs` folder of your chosen branch. Every module has its own `index.html`, `icon.png`, `dragIcon.png` and endpoint at `/clients/<client>/<template>/modules/<module>/`.
 
-Every module has its own `index.html`, `icon.png`, `dragIcon.png` and SFMC endpoint. Shared static dependencies do not create a master SFMC block. All runtime dependencies are included locally. Shared assets use a versioned folder; retain older folders and module endpoints when adding new releases.
+Shared dependencies live under `docs/shared-assets/runtime-<content-hash>/`. Keep existing runtime folders and module endpoints. No master SFMC block, backend, GitHub credentials or custom Actions workflow is introduced.
 
 ## Current limits
 
-This is a working beta. Automated browser and SDK simulations pass, but it has not been installed in a live SFMC account or certified in email clients.
+This is a working beta. Automated logic, export and DOM/SDK simulation checks pass. The new workspace UI has not been verified visually in a live browser, installed in a live SFMC account or certified in email clients.
 
 - Import module fragments, not full email documents or executable HTML.
 - Preview-only master-template CSS is not inserted into email output. Supply required CSS in the actual email template.
@@ -121,11 +164,15 @@ Plain HTML, CSS and JavaScript, with no backend. Run `python3 build.py` after ch
 - `src/rich-editor.js`: selected-text formatting, colour and link editing with fixed link appearance.
 - `src/field-catalog.js`: type choices and suggested source locations.
 - `src/field-editor.js`: guided field creation, progressive settings, linked locations and client preview.
-- `src/app.js`: studio workflow and source/template editing.
+- `src/app.js`: Studio workflow and application state.
+- `src/preview.js`: preview rendering, sanitisation and sandbox message handling.
+- `src/code-editor.js`: shared source editor, syntax highlighting and navigation.
+- `src/quick-edit.js`: transactional HTML changes that preserve mappings.
+- `src/workspace.js`: isolated template drafts, client naming, import conflicts and repository settings.
 - `src/exporter.js`: static ZIPs and publishing instructions.
 - `src/runtime.js`: Salesforce Block SDK integration and persisted field values.
 
-Run `node --test tests/core.test.cjs tests/logic.test.cjs`. Browser suites are `tests/browser.test.cjs`, `tests/logic-browser.test.cjs` `tests/field-ux.test.cjs` and `tests/richtext-browser.test.cjs`; they use Playwright and JSZip, optionally resolved through `PLAYWRIGHT_MODULE` and `JSZIP_MODULE`. Set `CHROMIUM_EXECUTABLE` if needed. See [VALIDATION.md](VALIDATION.md).
+Run `node scripts/validate.cjs` for JavaScript syntax checks and all non-browser test suites. This discovers new non-browser suites automatically and exits unsuccessfully if any check fails. Browser suites are `tests/browser.test.cjs`, `tests/logic-browser.test.cjs` `tests/field-ux.test.cjs` and `tests/richtext-browser.test.cjs`; they use Playwright and JSZip, optionally resolved through `PLAYWRIGHT_MODULE` and `JSZIP_MODULE`. Set `CHROMIUM_EXECUTABLE` if needed. See [VALIDATION.md](VALIDATION.md).
 
 Salesforce Block SDK and JSZip licences are included in `vendor`. The SDK is unmodified.
 
@@ -139,3 +186,85 @@ Drag the six-dot handle on the left of a field to place it before or after anoth
 
 ### Editor colours
 In Try the editor, open Editor colours to set per-module accent, form background, text/borders and field background colours. The live form previews the exported styling. Settings are saved in projects and copied with modules. Reset restores Jarrang styling. Text contrast below 4.5:1 blocks export. These settings style only the custom block form, not the SFMC application or email output.
+
+See [CODE-REVIEW.md](CODE-REVIEW.md) for module boundaries, generated-file rules and remaining technical debt.
+
+## Maintainable source
+
+Use `npm ci` for the pinned development formatter, then `npm run format:check` or `npm run format`. Generated assets and vendor code are excluded. Run `npm test` and `npm run build` before distributing. No npm dependencies are needed to use the exported app.
+
+The current browser interaction suite is `npm run test:browser` (requires Playwright). It has been prepared but not executed here. The four older browser suites are historical, not current release evidence. See CODE-REVIEW.md for the specific remediation and outstanding validation.
+
+## Build and test workspace (1.11.0)
+
+The workflow is Import HTML → Build & test → Export. Build & test provides Configure fields and Test client controls modes beside one shared preview. Switching modes retains the loaded iframe and temporary test values. HTML shows mapped source when configuring and rendered output when testing. Desktop/Mobile/HTML selection is retained across modes.
+
+Configure shows module starting content with selectable field highlights. Test shows temporary client values without authoring highlights. Restore starting values clears temporary values; exports always use authored starting content. Saving a field clears only its own test value, and reordering preserves test values. Changing modules starts fresh test values. Review export marks fields reviewed and opens the export checks; switching to Test alone does not mark them reviewed.
+
+The browser regression suite now includes mode switching and value preservation. It remains unexecuted in this environment; current automated verification uses DOM simulations.
+
+## Draft, test and download status (1.11.0)
+
+The persistent draft bar describes browser storage only and stays visible on narrow screens. Download editable project creates a portable JSON file; Save template settings changes the project name/client settings locally. Test values are temporary and excluded from both JSON and ZIP downloads.
+
+Download module package and Download template package produce publishing ZIPs. A persistent, dismissible receipt identifies the requested filename and the next Tower steps. It says Download started because the app cannot verify that the user completed the browser download. It never marks a package published or installed. Existing save-failure warnings remain visible when a file download is requested.
+
+## Integrated repeating groups (1.11.0)
+
+Select a mapped field in the visual preview or field list, then choose **Make repeating**. Confirm the complete item boundary in the highlighted preview. The selected item becomes one starting row; same-type siblings stay outside the group and require explicit acknowledgement. Saving the group commits the conversion; cancelling either dialog leaves the module unchanged.
+
+Item fields appear beneath their group in the main field list. Select a child to open its settings directly. Starting items support add, duplicate, reorder and remove. The Rules disclosure contains minimum and maximum item counts; a zero-item list removes repeated markup but retains its surrounding layout. Use Test client controls in the same workspace to try the result.
+
+Automatic conversion requires mapped content in a static item. Existing template logic and mappings shared outside the boundary require the advanced code tools. Additional item fields still require a matching template reference. Existing siblings are not automatically merged.
+
+## HTML repeat selection and dialog safeguards (1.11.1)
+
+In the HTML workspace, click inside the item and use **Make repeating** in the code toolbar. Choose a complete enclosing element, review the outlined preview and exact HTML, then continue to the group editor. Partial selections are expanded to a containing element rather than requiring precise tag-to-tag dragging. Siblings are preserved with explicit acknowledgement.
+
+Field tabs handle navigation locally. Publishing ZIP downloads are blocked while any dialog is open. The reported Advanced-tab download could not be reproduced in the available DOM simulation, so this is a defensive safeguard rather than a confirmed root-cause fix.
+
+## Make a group non-repeatable (1.12.0)
+
+Open the group’s **Edit field** dialog. Under **Set up → Content behaviour**, choose **Single item**. Review the client-control preview, choose a starting item if there are several, acknowledge removal of the other items, then choose **Save as single item**. Switching back to Repeating items before saving keeps the group intact. Its child fields become ordinary editable template fields in the same list position. Their settings and the chosen item's values are retained. Other starting rows are removed; temporary test values are reset. An empty group uses the child-field defaults to create one item. Cancel leaves the module unchanged.
+
+Automatic conversion supports one directly connected loop. Shared references, nested loops and loop counters require template-code changes and are blocked with an explanation. This operation retains template connections rather than recreating source-offset mappings.
+
+## Conversion regression fixes (1.12.2)
+
+Single items containing connected field references can be made repeating again from either HTML or visual field selection. Values, field settings and supported template filters survive repeated conversions. Mixed source mappings and template references are supported. Custom statements, unknown expressions, disabled fields and connections shared outside the selected section are blocked with a specific explanation. Failed conversions leave the module unchanged. Preview selection now resolves reused loop aliases within the correct scope.
+
+## Template editor colours (1.13.0)
+
+Open **Template settings → Editor colours for all modules**, or use **Edit template colours** from Test client controls. The saved palette applies to all existing and new modules and to both single-module and full-template exports. It changes SFMC form styling, not email HTML. Settings are staged until Save template settings.
+
+Existing module palettes remain active until template settings are saved. Choose an existing module’s palette as the starting point, then save to apply it across the suite and remove module overrides. Resetting to Jarrang colours applies to the whole template. Download a full template package to update every already-published module through Tower and GitHub Pages.
+
+## Setup and maintenance tasks (1.14.0)
+
+New modules start with the guided Import HTML flow. After analysis, module task actions provide Edit HTML & CSS, Configure fields, Test controls and Export. Edit HTML & CSS opens the transactional source editor, preserving field definitions. Apply changes returns to the workspace; Apply and review export opens package review without publishing.
+
+The read-only code views are named Field connections (configuration source) and Generated HTML (temporary test output). Both offer a direct route to the same source editor; Field connections transfers the current cursor/selection. Original import and template context remain available under Advanced tools.
+
+Design rationale: explicit task names and contextual guidance reduce reliance on remembering similar-looking controls, following Nielsen Norman Group’s recognition-over-recall and consistency guidance: https://www.nngroup.com/articles/recognition-and-recall/ and https://www.nngroup.com/articles/ten-usability-heuristics/. These principles informed the design; this release is not a completed usability study.
+
+## Consolidated HTML workspace (1.15.0)
+
+**HTML & CSS** is now the editable source view within Build & test. The top Edit HTML & CSS shortcut opens that same view. Source editing and field selection share one editor instance, alongside the existing preview, with a stacked layout on narrower screens. The separate quick-edit dialog and its preview iframe have been removed. Generated HTML remains read-only test output.
+
+Changes update the preview after a short pause and are applied explicitly using Apply changes or Apply and review export. Discard changes restores the saved source. Connected values and template expressions remain protected by the existing edit validator. Apply or discard code changes before changing field definitions.
+
+Unapplied code drafts survive module switches within the current session, are labelled in the module list, and block project/package downloads until resolved. They are not saved across page reloads; closing the page warns about them. Applied changes use the existing browser-save flow. Test controls use the saved module until code changes are applied.
+
+## Code-only HTML view (1.15.1)
+
+HTML & CSS and Generated HTML use the full preview-panel width for code. Switch to Desktop or Mobile to see the existing preview. Switching views preserves the editor draft and does not recreate the preview iframe.
+
+## Simplified workspace (1.16.0)
+
+One module navigation provides Fields, HTML & CSS, Test and Export. Fields and Test return to the last visual viewport; source editing remains code-only. Add field and a More tools disclosure sit with the field list. Module actions contains Duplicate and Delete. Clients & templates is the single template-switching entry, and New module is the single creation entry. Import guidance is optional under How it works. Code changes use Apply changes or Discard changes, followed by Export when ready. Existing safeguards for protected field values, pending drafts and export remain in place.
+
+## Custom block icons (1.17.0)
+
+Export includes a background colour picker, six bundled Bootstrap Icons (Image, Text, List, Grid, Video, Button/CTA) and a live PNG preview. Foreground switches between black and white for contrast. Existing modules retain the original labelled icon until another is selected; new modules default to Grid. Settings persist in editable projects and apply to both individual and full-template exports. Icons work offline; no icon CDN is used. Bootstrap Icons 1.13.1 is MIT licensed, with its notice included in the Studio and publishing packages.
+
+Salesforce requires `icon.png` and `dragIcon.png` alongside the widget's `index.html`: https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/develop-block-widget.html . This page does not prescribe dimensions. Studio retains its existing 60×60 block PNG and 120×120 drag PNG; these sizes are Studio defaults, not a claimed Salesforce mandate. Confirm the appearance in your SFMC account before release.

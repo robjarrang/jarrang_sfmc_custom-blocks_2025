@@ -1,56 +1,228 @@
-const fs=require('node:fs/promises'),path=require('node:path'),os=require('node:os'),assert=require('node:assert/strict');
-const {pathToFileURL}=require('node:url'),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),JSZip=require(process.env.JSZIP_MODULE||'jszip');
-const ROOT=path.resolve(__dirname,'..');
-(async()=>{
-  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE});
-  const context=await browser.newContext({viewport:{width:1500,height:1050},acceptDownloads:true}),page=await context.newPage(),errors=[];
-  page.on('pageerror',e=>errors.push(e.message));const scratch=await fs.mkdtemp(path.join(os.tmpdir(),'studio-logic-qa-'));
-  try{
-    await page.goto(pathToFileURL(path.join(ROOT,'Open-Block-Studio.html')).href);await page.locator('#analyse').click();await page.locator('#show-map-source').click();await page.locator('.advanced-tools > summary').click();
-    await page.locator('#mapping-source').evaluate(el=>{const at=el.textContent.indexOf('#203e33'),r=document.createRange();r.setStart(el.firstChild,at);r.setEnd(el.firstChild,at+7);window.getSelection().removeAllRanges();window.getSelection().addRange(r);});
-    await page.locator('#add-manual-field').click();const dialog=page.locator('.field-dialog');assert.equal(await dialog.getByLabel('Control type').inputValue(),'colour');
-    await dialog.getByLabel('Field name',{exact:true}).fill('Background colour');await dialog.getByLabel('Starting colour',{exact:true}).fill('#abcdef');
-    await dialog.getByRole('tab',{name:'Where it applies'}).click();await dialog.getByText('Select a location in the code',{exact:true}).click();
-    await dialog.getByLabel('Source location selector').evaluate(el=>{const at=el.value.lastIndexOf('#203e33');el.setSelectionRange(at,at+7);});await dialog.getByRole('button',{name:'Link selected location'}).click();
-    await page.screenshot({path:path.join(scratch,'manual-field.png'),fullPage:true});await dialog.getByRole('button',{name:'Save field',exact:true}).click();
-    const colour=(await page.evaluate(()=>BlockStudio.getProject().modules[0])).fields.at(-1);
-    const output=await page.evaluate(()=>BlockCore.render(BlockStudio.getProject().modules[0]));assert.equal((output.match(/#abcdef/g)||[]).length,2);
-    await page.locator('#edit-field-details').click();await dialog.getByLabel('Control type').selectOption('select');await dialog.getByLabel('Option 1 label').fill('Light');await dialog.getByLabel('Option 1 value').fill('#ffffff');await dialog.getByRole('button',{name:'+ Add choice',exact:true}).click();await dialog.getByLabel('Option 2 label').fill('Dark');await dialog.getByLabel('Option 2 value').fill('#112233');await dialog.getByRole('button',{name:'Save field',exact:true}).click();
-    await page.locator('#confirm-fields').click();await page.locator('#trial-'+colour.id).selectOption('#112233');assert.equal(((await page.locator('#trial-source').textContent()).match(/#112233/g)||[]).length,2);
-    await page.locator('[data-step="1"]').click();await page.locator('#logic-example').click();await page.locator('#confirm-fields').click();
-    const m=(await page.evaluate(()=>BlockStudio.getProject())).modules.at(-1),find=key=>m.fields.find(f=>f.key===key),list=find('bullets');
-    await page.locator('#trial-'+find('show_title').id).uncheck();assert.ok(!(await page.locator('#trial-source').textContent()).includes('<h2>'));
-    await page.locator('#trial-'+find('show_cta').id).uncheck();assert.ok(!(await page.locator('#trial-source').textContent()).includes('<a '));
-    await page.locator('#trial-'+find('layout').id).selectOption('compact');assert.ok((await page.locator('#trial-source').textContent()).includes('A quick look'));
-    await page.locator('#trial-'+list.id+' .add-repeat-item').click();await page.locator('#trial-'+list.id+'-2-text').fill('Third benefit');await page.getByRole('button',{name:'Move up item 3',exact:true}).click();
-    const html=await page.locator('#trial-source').textContent();assert.ok(html.indexOf('Third benefit')<html.indexOf('Another reason'));
-    await page.screenshot({path:path.join(scratch,'logic-editor.png'),fullPage:true});await page.locator('#review-export').click();await page.locator('#acknowledge-review').check();
-    const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#download-module').click()]);const target=path.join(scratch,'logic-module.zip');await download.saveAs(target);const zip=await JSZip.loadAsync(await fs.readFile(target));
-    for(const file of ['logic.js','controls.js','controls.css'])assert.ok(zip.file('shared-assets/block-studio-1.6.0/'+file));
-    const saved=JSON.parse(await zip.file('block-studio.jarrang.json').async('string'));assert.equal(saved.modules[0].fields.find(f=>f.key==='bullets').defaultValue.length,2);
-    await page.reload();assert.equal((await page.evaluate(()=>BlockStudio.getProject())).modules.at(-1).fields.find(f=>f.key==='layout').options.length,2);
-    console.log('PASS: manual CSS mapping, linked locations, defaults, dropdown labels/values, conditions, repeaters, ordering and root export');
-    const host=await context.newPage();host.on('pageerror',e=>errors.push(e.message));const origin='https://mc.test.exacttarget.com',blocks='https://blocks.test';
-    await host.route(origin+'/**',route=>route.fulfill({contentType:'text/html',body:`<script>
+// Historical suite: contains pre-workspace selectors. Not a current release gate.
+const fs = require('node:fs/promises'),
+  path = require('node:path'),
+  os = require('node:os'),
+  assert = require('node:assert/strict');
+const { pathToFileURL } = require('node:url'),
+  { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright'),
+  JSZip = require(process.env.JSZIP_MODULE || 'jszip');
+const ROOT = path.resolve(__dirname, '..');
+(async () => {
+  const browser = await chromium.launch({
+    headless: true,
+    executablePath: process.env.CHROMIUM_EXECUTABLE,
+  });
+  const context = await browser.newContext({
+      viewport: { width: 1500, height: 1050 },
+      acceptDownloads: true,
+    }),
+    page = await context.newPage(),
+    errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  const scratch = await fs.mkdtemp(path.join(os.tmpdir(), 'studio-logic-qa-'));
+  try {
+    await page.goto(pathToFileURL(path.join(ROOT, 'Open-Block-Studio.html')).href);
+    await page.locator('#analyse').click();
+    await page.locator('#show-map-source').click();
+    await page.locator('.advanced-tools > summary').click();
+    await page.locator('#mapping-source').evaluate((el) => {
+      const at = el.textContent.indexOf('#203e33'),
+        r = document.createRange();
+      r.setStart(el.firstChild, at);
+      r.setEnd(el.firstChild, at + 7);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+    });
+    await page.locator('#add-manual-field').click();
+    const dialog = page.locator('.field-dialog');
+    assert.equal(await dialog.getByLabel('Control type').inputValue(), 'colour');
+    await dialog.getByLabel('Field name', { exact: true }).fill('Background colour');
+    await dialog.getByLabel('Starting colour', { exact: true }).fill('#abcdef');
+    await dialog.getByRole('tab', { name: 'Where it applies' }).click();
+    await dialog.getByText('Select a location in the code', { exact: true }).click();
+    await dialog.getByLabel('Source location selector').evaluate((el) => {
+      const at = el.value.lastIndexOf('#203e33');
+      el.setSelectionRange(at, at + 7);
+    });
+    await dialog.getByRole('button', { name: 'Link selected location' }).click();
+    await page.screenshot({
+      path: path.join(scratch, 'manual-field.png'),
+      fullPage: true,
+    });
+    await dialog.getByRole('button', { name: 'Save field', exact: true }).click();
+    const colour = (await page.evaluate(() => BlockStudio.getProject().modules[0])).fields.at(-1);
+    const output = await page.evaluate(() => BlockCore.render(BlockStudio.getProject().modules[0]));
+    assert.equal((output.match(/#abcdef/g) || []).length, 2);
+    await page.locator('#edit-field-details').click();
+    await dialog.getByLabel('Control type').selectOption('select');
+    await dialog.getByLabel('Option 1 label').fill('Light');
+    await dialog.getByLabel('Option 1 value').fill('#ffffff');
+    await dialog.getByRole('button', { name: '+ Add choice', exact: true }).click();
+    await dialog.getByLabel('Option 2 label').fill('Dark');
+    await dialog.getByLabel('Option 2 value').fill('#112233');
+    await dialog.getByRole('button', { name: 'Save field', exact: true }).click();
+    await page.locator('#confirm-fields').click();
+    await page.locator('#trial-' + colour.id).selectOption('#112233');
+    assert.equal(
+      ((await page.locator('#trial-source').textContent()).match(/#112233/g) || []).length,
+      2,
+    );
+    await page.locator('[data-step="1"]').click();
+    await page.locator('#logic-example').click();
+    await page.locator('#confirm-fields').click();
+    const m = (await page.evaluate(() => BlockStudio.getProject())).modules.at(-1),
+      find = (key) => m.fields.find((f) => f.key === key),
+      list = find('bullets');
+    await page.locator('#trial-' + find('show_title').id).uncheck();
+    assert.ok(!(await page.locator('#trial-source').textContent()).includes('<h2>'));
+    await page.locator('#trial-' + find('show_cta').id).uncheck();
+    assert.ok(!(await page.locator('#trial-source').textContent()).includes('<a '));
+    await page.locator('#trial-' + find('layout').id).selectOption('compact');
+    assert.ok((await page.locator('#trial-source').textContent()).includes('A quick look'));
+    await page.locator('#trial-' + list.id + ' .add-repeat-item').click();
+    await page.locator('#trial-' + list.id + '-2-text').fill('Third benefit');
+    await page.getByRole('button', { name: 'Move up item 3', exact: true }).click();
+    const html = await page.locator('#trial-source').textContent();
+    assert.ok(html.indexOf('Third benefit') < html.indexOf('Another reason'));
+    await page.screenshot({
+      path: path.join(scratch, 'logic-editor.png'),
+      fullPage: true,
+    });
+    await page.locator('#review-export').click();
+    await page.locator('#acknowledge-review').check();
+    const [download] = await Promise.all([
+      page.waitForEvent('download'),
+      page.locator('#download-module').click(),
+    ]);
+    const target = path.join(scratch, 'logic-module.zip');
+    await download.saveAs(target);
+    const zip = await JSZip.loadAsync(await fs.readFile(target));
+    for (const file of ['logic.js', 'controls.js', 'controls.css'])
+      assert.ok(zip.file('shared-assets/block-studio-1.6.0/' + file));
+    const saved = JSON.parse(await zip.file('block-studio.jarrang.json').async('string'));
+    assert.equal(saved.modules[0].fields.find((f) => f.key === 'bullets').defaultValue.length, 2);
+    await page.reload();
+    assert.equal(
+      (await page.evaluate(() => BlockStudio.getProject())).modules
+        .at(-1)
+        .fields.find((f) => f.key === 'layout').options.length,
+      2,
+    );
+    console.log(
+      'PASS: manual CSS mapping, linked locations, defaults, dropdown labels/values, conditions, repeaters, ordering and root export',
+    );
+    const host = await context.newPage();
+    host.on('pageerror', (e) => errors.push(e.message));
+    const origin = 'https://mc.test.exacttarget.com',
+      blocks = 'https://blocks.test';
+    await host.route(origin + '/**', (route) =>
+      route.fulfill({
+        contentType: 'text/html',
+        body: `<script>
       window.saved={};window.content='';window.addEventListener('message',e=>{if(e.origin!=='${blocks}')return;const d=e.data;let payload;if(d.method==='handShake'){e.source.postMessage({method:'handShake',origin:location.origin},e.origin);return;}if(d.method==='getData')payload=saved;if(d.method==='getContent')payload=content;if(d.method==='setContent')payload=content=d.payload;if(d.method==='setData')payload=saved=d.payload;setTimeout(()=>e.source.postMessage({id:d.id,payload},e.origin),15);});
-    </script><iframe src="${blocks}/repository/${m.slug}/" style="width:700px;height:1500px"></iframe>`}));
-    await host.route(blocks+'/**',async route=>{let name=new URL(route.request().url()).pathname.replace(/^\/repository\//,'');if(name.endsWith('/'))name+='index.html';const file=zip.file(name);if(!file)return route.fulfill({status:404,body:'Missing asset'});await route.fulfill({body:await file.async('nodebuffer'),contentType:name.endsWith('.js')?'application/javascript':name.endsWith('.css')?'text/css':'text/html'});});
-    await host.goto(origin+'/test');await host.waitForFunction(()=>!!saved.studio);const frame=host.frameLocator('iframe');
-    await frame.locator('#'+list.id+' .add-repeat-item').click();await frame.locator('#'+list.id+'-2-text').fill('Saved third item');
-    await host.waitForFunction(id=>saved.studio.values[id]?.[2]?.text==='Saved third item',list.id);
-    await frame.locator('#'+find('show_cta').id).uncheck();await host.waitForFunction(id=>!content.includes('<a ')&&saved.studio.values[id]==='hidden',find('show_cta').id);assert.ok(!(await host.evaluate(()=>content)).includes('{%'));
-    await host.evaluate(()=>{document.querySelector('iframe').src+='?reopen=1';});await frame.locator('#'+list.id+'-2-text').waitFor();assert.equal(await frame.locator('#'+list.id+'-2-text').inputValue(),'Saved third item');assert.equal(await frame.locator('#'+find('show_cta').id).isChecked(),false);
-    const snapshot=await host.evaluate(()=>JSON.stringify(saved));await frame.locator('#'+find('layout').id).selectOption('compact');await host.waitForFunction(()=>content.includes('A quick look'));assert.ok(snapshot.includes('Saved third item'));
-    const guidedContext=await browser.newContext(),guided=await guidedContext.newPage();guided.on('pageerror',e=>errors.push(e.message));
-    await guided.goto(pathToFileURL(path.join(ROOT,'Open-Block-Studio.html')).href);
-    await guided.locator('#source-html').fill('<ul><li>First benefit</li></ul><p>Fixed footer</p>');await guided.locator('#analyse').click();await guided.locator('#show-map-source').click();await guided.locator('.advanced-tools > summary').click();
-    await guided.locator('#mapping-source').evaluate(el=>{const start=el.textContent.indexOf('<li>'),end=el.textContent.indexOf('</li>')+5,r=document.createRange();r.setStart(el.firstChild,start);r.setEnd(el.firstChild,end);window.getSelection().removeAllRanges();window.getSelection().addRange(r);});
-    await guided.locator('#repeat-selection').click();await guided.locator('.field-dialog').getByRole('button',{name:'Save field',exact:true}).click();
-    const repeated=(await guided.evaluate(()=>BlockStudio.getProject())).modules[0],items=repeated.fields.find(f=>f.type==='list');assert.ok(items);assert.equal(items.defaultValue.length,1);
-    await guided.locator('#confirm-fields').click();await guided.locator('#trial-'+items.id+' .add-repeat-item').click();assert.equal(((await guided.locator('#trial-source').textContent()).match(/<li>/g)||[]).length,2);
-    await guided.locator('[data-step="1"]').click();await guided.locator('#template-code').click();await guided.locator('#template-source').fill('{% if '+items.key+'.size > 0 %}'+repeated.source+'{% else %}<p>Empty</p>{% endif %}');await guided.locator('#template-save').click();
-    await guided.locator('.template-dialog').waitFor({state:'detached'});assert.ok((await guided.evaluate(()=>BlockCore.render(BlockStudio.getProject().modules[0]))).includes('<li>First benefit</li>'));
-    await guidedContext.close();console.log('PASS: guided repeat selection and applying template code');
-    assert.deepEqual(errors,[]);console.log('PASS: exported SDK list editing, conditional output, dropdown branch and save/reopen');console.log('QA files:',scratch);
-  }finally{await browser.close();}
-})().catch(e=>{console.error(e);process.exitCode=1;});
+    </script><iframe src="${blocks}/repository/${m.slug}/" style="width:700px;height:1500px"></iframe>`,
+      }),
+    );
+    await host.route(blocks + '/**', async (route) => {
+      let name = new URL(route.request().url()).pathname.replace(/^\/repository\//, '');
+      if (name.endsWith('/')) name += 'index.html';
+      const file = zip.file(name);
+      if (!file) return route.fulfill({ status: 404, body: 'Missing asset' });
+      await route.fulfill({
+        body: await file.async('nodebuffer'),
+        contentType: name.endsWith('.js')
+          ? 'application/javascript'
+          : name.endsWith('.css')
+            ? 'text/css'
+            : 'text/html',
+      });
+    });
+    await host.goto(origin + '/test');
+    await host.waitForFunction(() => !!saved.studio);
+    const frame = host.frameLocator('iframe');
+    await frame.locator('#' + list.id + ' .add-repeat-item').click();
+    await frame.locator('#' + list.id + '-2-text').fill('Saved third item');
+    await host.waitForFunction(
+      (id) => saved.studio.values[id]?.[2]?.text === 'Saved third item',
+      list.id,
+    );
+    await frame.locator('#' + find('show_cta').id).uncheck();
+    await host.waitForFunction(
+      (id) => !content.includes('<a ') && saved.studio.values[id] === 'hidden',
+      find('show_cta').id,
+    );
+    assert.ok(!(await host.evaluate(() => content)).includes('{%'));
+    await host.evaluate(() => {
+      document.querySelector('iframe').src += '?reopen=1';
+    });
+    await frame.locator('#' + list.id + '-2-text').waitFor();
+    assert.equal(await frame.locator('#' + list.id + '-2-text').inputValue(), 'Saved third item');
+    assert.equal(await frame.locator('#' + find('show_cta').id).isChecked(), false);
+    const snapshot = await host.evaluate(() => JSON.stringify(saved));
+    await frame.locator('#' + find('layout').id).selectOption('compact');
+    await host.waitForFunction(() => content.includes('A quick look'));
+    assert.ok(snapshot.includes('Saved third item'));
+    const guidedContext = await browser.newContext(),
+      guided = await guidedContext.newPage();
+    guided.on('pageerror', (e) => errors.push(e.message));
+    await guided.goto(pathToFileURL(path.join(ROOT, 'Open-Block-Studio.html')).href);
+    await guided.locator('#source-html').fill('<ul><li>First benefit</li></ul><p>Fixed footer</p>');
+    await guided.locator('#analyse').click();
+    await guided.locator('#show-map-source').click();
+    await guided.locator('.advanced-tools > summary').click();
+    await guided.locator('#mapping-source').evaluate((el) => {
+      const start = el.textContent.indexOf('<li>'),
+        end = el.textContent.indexOf('</li>') + 5,
+        r = document.createRange();
+      r.setStart(el.firstChild, start);
+      r.setEnd(el.firstChild, end);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+    });
+    await guided.locator('#repeat-selection').click();
+    await guided
+      .locator('.field-dialog')
+      .getByRole('button', { name: 'Save field', exact: true })
+      .click();
+    const repeated = (await guided.evaluate(() => BlockStudio.getProject())).modules[0],
+      items = repeated.fields.find((f) => f.type === 'list');
+    assert.ok(items);
+    assert.equal(items.defaultValue.length, 1);
+    await guided.locator('#confirm-fields').click();
+    await guided.locator('#trial-' + items.id + ' .add-repeat-item').click();
+    assert.equal(
+      ((await guided.locator('#trial-source').textContent()).match(/<li>/g) || []).length,
+      2,
+    );
+    await guided.locator('[data-step="1"]').click();
+    await guided.locator('#template-code').click();
+    await guided
+      .locator('#template-source')
+      .fill(
+        '{% if ' +
+          items.key +
+          '.size > 0 %}' +
+          repeated.source +
+          '{% else %}<p>Empty</p>{% endif %}',
+      );
+    await guided.locator('#template-save').click();
+    await guided.locator('.template-dialog').waitFor({ state: 'detached' });
+    assert.ok(
+      (await guided.evaluate(() => BlockCore.render(BlockStudio.getProject().modules[0]))).includes(
+        '<li>First benefit</li>',
+      ),
+    );
+    await guidedContext.close();
+    console.log('PASS: guided repeat selection and applying template code');
+    assert.deepEqual(errors, []);
+    console.log(
+      'PASS: exported SDK list editing, conditional output, dropdown branch and save/reopen',
+    );
+    console.log('QA files:', scratch);
+  } finally {
+    await browser.close();
+  }
+})().catch((e) => {
+  console.error(e);
+  process.exitCode = 1;
+});

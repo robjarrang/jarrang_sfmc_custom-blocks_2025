@@ -1,43 +1,279 @@
-const fs=require('node:fs/promises'),path=require('node:path'),os=require('node:os'),assert=require('node:assert/strict');
-const {pathToFileURL}=require('node:url'),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),JSZip=require(process.env.JSZIP_MODULE||'jszip');
-const ROOT=path.resolve(__dirname,'..');
-async function selectText(editor,text){await editor.evaluate((el,text)=>{const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[];let n,total=0;while(n=walker.nextNode()){nodes.push({n,start:total,end:total+n.length});total+=n.length;}const start=el.textContent.indexOf(text);if(start<0)throw Error('Missing selected text: '+text);const a=nodes.find(v=>v.end>start),b=nodes.find(v=>v.end>=start+text.length),r=document.createRange();r.setStart(a.n,start-a.start);r.setEnd(b.n,start+text.length-b.start);el.focus();const s=getSelection();s.removeAllRanges();s.addRange(r);},text);}
-(async()=>{
- const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE}),context=await browser.newContext({viewport:{width:1440,height:1050},acceptDownloads:true}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));const scratch=await fs.mkdtemp(path.join(os.tmpdir(),'richtext-qa-'));
- try{
-  await page.goto(pathToFileURL(path.join(ROOT,'Open-Block-Studio.html')).href);await page.locator('#source-html').fill('<p style="font:16px Arial;color:#333333;">Energy 2 and a colourful word. Visit our website.</p>');await page.locator('#analyse').click();await page.locator('#edit-field-details').click();const dialog=page.locator('.field-dialog');await dialog.getByLabel('Control type').selectOption('richtext');await dialog.getByLabel('Field name',{exact:true}).fill('Body copy');
-  let editor=dialog.locator('.starting-richtext [contenteditable]'),group=dialog.locator('.starting-richtext');
-  await selectText(editor,'2');await group.getByRole('button',{name:'Superscript',exact:true}).click();assert.equal(await editor.locator('sup').textContent(),'2');
-  await selectText(editor,'colourful');await group.getByRole('button',{name:'Text colour',exact:true}).click();await group.getByLabel('Text colour hex').fill('#dd3300');await group.getByRole('button',{name:'Apply colour',exact:true}).click();assert.ok((await editor.innerHTML()).includes('color:#dd3300;'));
-  await selectText(editor,'our website');await group.getByRole('button',{name:'Add or edit link',exact:true}).click();await group.getByLabel('Link destination').fill('javascript:alert(1)');await group.getByRole('button',{name:'Insert link',exact:true}).click();assert.ok((await group.locator('.rich-action-panel .field-error').textContent()).includes('complete web'));await group.getByLabel('Link destination').fill('https://example.com/start?x=1&y=2');await group.getByRole('button',{name:'Insert link',exact:true}).click();assert.equal(await editor.locator('a').textContent(),'our website');
-  await dialog.getByText('Link appearance · locked for clients',{exact:true}).click();await dialog.getByLabel('Link colour',{exact:true}).selectOption('custom');await dialog.getByLabel('Link hex colour').fill('#000000');await dialog.getByLabel('Link weight',{exact:true}).selectOption('bold');
-  assert.equal(await editor.locator('a').getAttribute('style'),'color:#000000;text-decoration:underline;font-weight:bold;');
-  await page.screenshot({path:path.join(scratch,'developer-link-settings.png'),fullPage:true});await dialog.getByRole('button',{name:'Save field',exact:true}).click();
-  const m=(await page.evaluate(()=>BlockStudio.getProject())).modules[0],f=m.fields.find(f=>f.label==='Body copy');assert.equal(f.linkStyle.weight,'bold');
-  await page.locator('#confirm-fields').click();editor=page.locator('#trial-'+f.id);group=page.locator('#trial-fields .trial-field').filter({has:editor});
-  await selectText(editor,'our website');await group.getByRole('button',{name:'Text colour',exact:true}).click();assert.ok((await group.locator('.rich-message').textContent()).includes('fixed'));assert.equal(await group.locator('.rich-action-panel').isVisible(),false);await group.getByRole('button',{name:'Bold',exact:true}).click();assert.ok((await group.locator('.rich-message').textContent()).includes('fixed'));assert.equal(await page.locator('#trial-fields .link-style-settings').count(),0);
-  await group.getByRole('button',{name:'Add or edit link',exact:true}).click();await group.getByLabel('Link destination').fill('https://example.com/changed');await group.getByRole('button',{name:'Update link',exact:true}).click();assert.equal(await editor.locator('a').getAttribute('href'),'https://example.com/changed');
-  await selectText(editor,'our website');await group.getByRole('button',{name:'Remove link',exact:true}).click();assert.equal(await editor.locator('a').count(),0);assert.ok((await editor.textContent()).includes('our website'));
-  await selectText(editor,'our website');await group.getByRole('button',{name:'Add or edit link',exact:true}).click();await group.getByLabel('Link destination').fill('https://example.com/restored');await group.getByRole('button',{name:'Insert link',exact:true}).click();
-  assert.ok((await page.locator('#trial-source').textContent()).includes('font-weight:bold;'));await page.screenshot({path:path.join(scratch,'client-formatted-text.png'),fullPage:true});
-  // Field policy is enforced against tampered input, ancestor styles and nested overrides.
-  const checks=await page.evaluate(()=>{
-    const C=BlockCore,field={id:'copy',key:'copy',label:'Copy',type:'richtext',binding:'template',enabled:true,targets:[],defaultValue:'',linkStyle:{colour:'#000000',decoration:'none',weight:'normal'}};
-    const raw='<u><b><span style="color:#ff0000">Before <a href="https://example.com" style="color:red"><strong><span style="color:#00ff00">link</span></strong></a> after</span></b></u><script>alert(1)</script><a href="javascript:alert(1)">bad</a>';
-    const clean=C.cleanRich(raw,field),doc=new DOMParser().parseFromString(clean,'text/html'),a=doc.querySelector('a');
-    const first={...field,key:'first',id:'first',defaultValue:'<a href="https://example.com/a">A</a>',linkStyle:{colour:'#123456',decoration:'none',weight:'normal'}};
-    const child={...field,id:'body',key:'body',linkStyle:{colour:'#654321',decoration:'underline',weight:'bold'}},list={id:'items',key:'items',label:'Items',type:'list',binding:'template',targets:[],enabled:true,minItems:0,maxItems:5,itemFields:[child],defaultValue:[{body:'<a href="https://example.com/b">B</a>'}]};
-    const output=C.render({source:'{{ first | richtext }}{% for item in items %}{{ item.body | richtext }}{% endfor %}',templateMode:true,fields:[first,list]});
-    const repeated=new DOMParser().parseFromString(output,'text/html');
-    return {clean,style:a.getAttribute('style'),parent:a.parentElement.tagName,inner:a.innerHTML,styles:[...repeated.querySelectorAll('a')].map(a=>a.getAttribute('style')),infer:C.infer('<p>Read <span style="color:#123456">this</span> and <a href="https://example.com">visit us</a>.</p>').fields.map(f=>f.type),idempotent:clean===C.cleanRich(clean,field)};
-  });
-  assert.equal(checks.style,'color:#000000;text-decoration:none;font-weight:normal;');assert.equal(checks.parent,'BODY');assert.equal(checks.inner,'link');assert.ok(!checks.clean.includes('<script'));assert.ok(!checks.clean.includes('javascript:'));assert.equal(checks.idempotent,true);assert.deepEqual(checks.infer,['richtext']);assert.deepEqual(checks.styles,['color:#123456;text-decoration:none;font-weight:normal;','color:#654321;text-decoration:underline;font-weight:bold;']);
-  await page.locator('#review-export').click();await page.locator('#acknowledge-review').check();const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#download-module').click()]);const file=path.join(scratch,'module.zip');await download.saveAs(file);const zip=await JSZip.loadAsync(await fs.readFile(file));assert.ok(zip.file('shared-assets/block-studio-1.6.0/rich-editor.js'));
-  const host=await context.newPage(),origin='https://mc.test.exacttarget.com',blocks='https://blocks.test';host.on('pageerror',e=>errors.push(e.message));
-  await host.route(origin+'/**',route=>route.fulfill({contentType:'text/html',body:`<script>window.saved={};window.content='';addEventListener('message',e=>{if(e.origin!=='${blocks}')return;const d=e.data;let payload;if(d.method==='handShake'){e.source.postMessage({method:'handShake',origin:location.origin},e.origin);return;}if(d.method==='getData')payload=saved;if(d.method==='getContent')payload=content;if(d.method==='setData')payload=saved=d.payload;if(d.method==='setContent')payload=content=d.payload;setTimeout(()=>e.source.postMessage({id:d.id,payload},e.origin),15);});</script><iframe src="${blocks}/${m.slug}/" style="width:700px;height:1000px"></iframe>`}));
-  await host.route(blocks+'/**',async route=>{let name=new URL(route.request().url()).pathname.slice(1);if(name.endsWith('/'))name+='index.html';const file=zip.file(name);if(!file)return route.fulfill({status:404,body:'Not found'});await route.fulfill({body:await file.async('nodebuffer'),contentType:name.endsWith('.js')?'application/javascript':name.endsWith('.css')?'text/css':'text/html'});});
-  await host.goto(origin+'/test');await host.waitForFunction(()=>!!saved.studio);const frame=host.frameLocator('iframe');editor=frame.locator('#'+f.id);group=frame.locator('.trial-field').filter({has:editor});await selectText(editor,'our website');await group.getByRole('button',{name:'Add or edit link'}).click();await group.getByLabel('Link destination').fill('https://example.com/saved');await group.getByRole('button',{name:'Update link'}).click();await host.waitForFunction(id=>saved.studio.values[id].includes('https://example.com/saved'),f.id);assert.ok((await host.evaluate(()=>content)).includes('color:#000000;text-decoration:underline;font-weight:bold;'));
-  await host.evaluate(()=>document.querySelector('iframe').src+='?reopen');await editor.waitFor();assert.equal(await editor.locator('a').getAttribute('href'),'https://example.com/saved');assert.equal(await editor.locator('a').getAttribute('style'),'color:#000000;text-decoration:underline;font-weight:bold;');assert.equal(await editor.locator('sup').textContent(),'2');assert.ok((await editor.innerHTML()).includes('#dd3300'));assert.equal(await frame.locator('.link-style-settings').count(),0);
-  assert.deepEqual(errors,[]);console.log('PASS: superscript, word colour, insert/edit/remove link, URL rejection, developer styling, immutable client link appearance, template/list policies, sanitising, ZIP dependencies and SDK save/reopen');console.log('QA files:',scratch);
- }finally{await browser.close();}
-})().catch(e=>{console.error(e);process.exitCode=1;});
+// Historical suite: contains pre-workspace selectors. Not a current release gate.
+const fs = require('node:fs/promises'),
+  path = require('node:path'),
+  os = require('node:os'),
+  assert = require('node:assert/strict');
+const { pathToFileURL } = require('node:url'),
+  { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright'),
+  JSZip = require(process.env.JSZIP_MODULE || 'jszip');
+const ROOT = path.resolve(__dirname, '..');
+async function selectText(editor, text) {
+  await editor.evaluate((el, text) => {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT),
+      nodes = [];
+    let n,
+      total = 0;
+    while ((n = walker.nextNode())) {
+      nodes.push({ n, start: total, end: total + n.length });
+      total += n.length;
+    }
+    const start = el.textContent.indexOf(text);
+    if (start < 0) throw Error('Missing selected text: ' + text);
+    const a = nodes.find((v) => v.end > start),
+      b = nodes.find((v) => v.end >= start + text.length),
+      r = document.createRange();
+    r.setStart(a.n, start - a.start);
+    r.setEnd(b.n, start + text.length - b.start);
+    el.focus();
+    const s = getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+  }, text);
+}
+(async () => {
+  const browser = await chromium.launch({
+      headless: true,
+      executablePath: process.env.CHROMIUM_EXECUTABLE,
+    }),
+    context = await browser.newContext({
+      viewport: { width: 1440, height: 1050 },
+      acceptDownloads: true,
+    }),
+    page = await context.newPage(),
+    errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  const scratch = await fs.mkdtemp(path.join(os.tmpdir(), 'richtext-qa-'));
+  try {
+    await page.goto(pathToFileURL(path.join(ROOT, 'Open-Block-Studio.html')).href);
+    await page
+      .locator('#source-html')
+      .fill(
+        '<p style="font:16px Arial;color:#333333;">Energy 2 and a colourful word. Visit our website.</p>',
+      );
+    await page.locator('#analyse').click();
+    await page.locator('#edit-field-details').click();
+    const dialog = page.locator('.field-dialog');
+    await dialog.getByLabel('Control type').selectOption('richtext');
+    await dialog.getByLabel('Field name', { exact: true }).fill('Body copy');
+    let editor = dialog.locator('.starting-richtext [contenteditable]'),
+      group = dialog.locator('.starting-richtext');
+    await selectText(editor, '2');
+    await group.getByRole('button', { name: 'Superscript', exact: true }).click();
+    assert.equal(await editor.locator('sup').textContent(), '2');
+    await selectText(editor, 'colourful');
+    await group.getByRole('button', { name: 'Text colour', exact: true }).click();
+    await group.getByLabel('Text colour hex').fill('#dd3300');
+    await group.getByRole('button', { name: 'Apply colour', exact: true }).click();
+    assert.ok((await editor.innerHTML()).includes('color:#dd3300;'));
+    await selectText(editor, 'our website');
+    await group.getByRole('button', { name: 'Add or edit link', exact: true }).click();
+    await group.getByLabel('Link destination').fill('javascript:alert(1)');
+    await group.getByRole('button', { name: 'Insert link', exact: true }).click();
+    assert.ok(
+      (await group.locator('.rich-action-panel .field-error').textContent()).includes(
+        'complete web',
+      ),
+    );
+    await group.getByLabel('Link destination').fill('https://example.com/start?x=1&y=2');
+    await group.getByRole('button', { name: 'Insert link', exact: true }).click();
+    assert.equal(await editor.locator('a').textContent(), 'our website');
+    await dialog.getByText('Link appearance · locked for clients', { exact: true }).click();
+    await dialog.getByLabel('Link colour', { exact: true }).selectOption('custom');
+    await dialog.getByLabel('Link hex colour').fill('#000000');
+    await dialog.getByLabel('Link weight', { exact: true }).selectOption('bold');
+    assert.equal(
+      await editor.locator('a').getAttribute('style'),
+      'color:#000000;text-decoration:underline;font-weight:bold;',
+    );
+    await page.screenshot({
+      path: path.join(scratch, 'developer-link-settings.png'),
+      fullPage: true,
+    });
+    await dialog.getByRole('button', { name: 'Save field', exact: true }).click();
+    const m = (await page.evaluate(() => BlockStudio.getProject())).modules[0],
+      f = m.fields.find((f) => f.label === 'Body copy');
+    assert.equal(f.linkStyle.weight, 'bold');
+    await page.locator('#confirm-fields').click();
+    editor = page.locator('#trial-' + f.id);
+    group = page.locator('#trial-fields .trial-field').filter({ has: editor });
+    await selectText(editor, 'our website');
+    await group.getByRole('button', { name: 'Text colour', exact: true }).click();
+    assert.ok((await group.locator('.rich-message').textContent()).includes('fixed'));
+    assert.equal(await group.locator('.rich-action-panel').isVisible(), false);
+    await group.getByRole('button', { name: 'Bold', exact: true }).click();
+    assert.ok((await group.locator('.rich-message').textContent()).includes('fixed'));
+    assert.equal(await page.locator('#trial-fields .link-style-settings').count(), 0);
+    await group.getByRole('button', { name: 'Add or edit link', exact: true }).click();
+    await group.getByLabel('Link destination').fill('https://example.com/changed');
+    await group.getByRole('button', { name: 'Update link', exact: true }).click();
+    assert.equal(await editor.locator('a').getAttribute('href'), 'https://example.com/changed');
+    await selectText(editor, 'our website');
+    await group.getByRole('button', { name: 'Remove link', exact: true }).click();
+    assert.equal(await editor.locator('a').count(), 0);
+    assert.ok((await editor.textContent()).includes('our website'));
+    await selectText(editor, 'our website');
+    await group.getByRole('button', { name: 'Add or edit link', exact: true }).click();
+    await group.getByLabel('Link destination').fill('https://example.com/restored');
+    await group.getByRole('button', { name: 'Insert link', exact: true }).click();
+    assert.ok((await page.locator('#trial-source').textContent()).includes('font-weight:bold;'));
+    await page.screenshot({
+      path: path.join(scratch, 'client-formatted-text.png'),
+      fullPage: true,
+    });
+    // Field policy is enforced against tampered input, ancestor styles and nested overrides.
+    const checks = await page.evaluate(() => {
+      const C = BlockCore,
+        field = {
+          id: 'copy',
+          key: 'copy',
+          label: 'Copy',
+          type: 'richtext',
+          binding: 'template',
+          enabled: true,
+          targets: [],
+          defaultValue: '',
+          linkStyle: {
+            colour: '#000000',
+            decoration: 'none',
+            weight: 'normal',
+          },
+        };
+      const raw =
+        '<u><b><span style="color:#ff0000">Before <a href="https://example.com" style="color:red"><strong><span style="color:#00ff00">link</span></strong></a> after</span></b></u><script>alert(1)</script><a href="javascript:alert(1)">bad</a>';
+      const clean = C.cleanRich(raw, field),
+        doc = new DOMParser().parseFromString(clean, 'text/html'),
+        a = doc.querySelector('a');
+      const first = {
+        ...field,
+        key: 'first',
+        id: 'first',
+        defaultValue: '<a href="https://example.com/a">A</a>',
+        linkStyle: { colour: '#123456', decoration: 'none', weight: 'normal' },
+      };
+      const child = {
+          ...field,
+          id: 'body',
+          key: 'body',
+          linkStyle: {
+            colour: '#654321',
+            decoration: 'underline',
+            weight: 'bold',
+          },
+        },
+        list = {
+          id: 'items',
+          key: 'items',
+          label: 'Items',
+          type: 'list',
+          binding: 'template',
+          targets: [],
+          enabled: true,
+          minItems: 0,
+          maxItems: 5,
+          itemFields: [child],
+          defaultValue: [{ body: '<a href="https://example.com/b">B</a>' }],
+        };
+      const output = C.render({
+        source:
+          '{{ first | richtext }}{% for item in items %}{{ item.body | richtext }}{% endfor %}',
+        templateMode: true,
+        fields: [first, list],
+      });
+      const repeated = new DOMParser().parseFromString(output, 'text/html');
+      return {
+        clean,
+        style: a.getAttribute('style'),
+        parent: a.parentElement.tagName,
+        inner: a.innerHTML,
+        styles: [...repeated.querySelectorAll('a')].map((a) => a.getAttribute('style')),
+        infer: C.infer(
+          '<p>Read <span style="color:#123456">this</span> and <a href="https://example.com">visit us</a>.</p>',
+        ).fields.map((f) => f.type),
+        idempotent: clean === C.cleanRich(clean, field),
+      };
+    });
+    assert.equal(checks.style, 'color:#000000;text-decoration:none;font-weight:normal;');
+    assert.equal(checks.parent, 'BODY');
+    assert.equal(checks.inner, 'link');
+    assert.ok(!checks.clean.includes('<script'));
+    assert.ok(!checks.clean.includes('javascript:'));
+    assert.equal(checks.idempotent, true);
+    assert.deepEqual(checks.infer, ['richtext']);
+    assert.deepEqual(checks.styles, [
+      'color:#123456;text-decoration:none;font-weight:normal;',
+      'color:#654321;text-decoration:underline;font-weight:bold;',
+    ]);
+    await page.locator('#review-export').click();
+    await page.locator('#acknowledge-review').check();
+    const [download] = await Promise.all([
+      page.waitForEvent('download'),
+      page.locator('#download-module').click(),
+    ]);
+    const file = path.join(scratch, 'module.zip');
+    await download.saveAs(file);
+    const zip = await JSZip.loadAsync(await fs.readFile(file));
+    assert.ok(zip.file('shared-assets/block-studio-1.6.0/rich-editor.js'));
+    const host = await context.newPage(),
+      origin = 'https://mc.test.exacttarget.com',
+      blocks = 'https://blocks.test';
+    host.on('pageerror', (e) => errors.push(e.message));
+    await host.route(origin + '/**', (route) =>
+      route.fulfill({
+        contentType: 'text/html',
+        body: `<script>window.saved={};window.content='';addEventListener('message',e=>{if(e.origin!=='${blocks}')return;const d=e.data;let payload;if(d.method==='handShake'){e.source.postMessage({method:'handShake',origin:location.origin},e.origin);return;}if(d.method==='getData')payload=saved;if(d.method==='getContent')payload=content;if(d.method==='setData')payload=saved=d.payload;if(d.method==='setContent')payload=content=d.payload;setTimeout(()=>e.source.postMessage({id:d.id,payload},e.origin),15);});</script><iframe src="${blocks}/${m.slug}/" style="width:700px;height:1000px"></iframe>`,
+      }),
+    );
+    await host.route(blocks + '/**', async (route) => {
+      let name = new URL(route.request().url()).pathname.slice(1);
+      if (name.endsWith('/')) name += 'index.html';
+      const file = zip.file(name);
+      if (!file) return route.fulfill({ status: 404, body: 'Not found' });
+      await route.fulfill({
+        body: await file.async('nodebuffer'),
+        contentType: name.endsWith('.js')
+          ? 'application/javascript'
+          : name.endsWith('.css')
+            ? 'text/css'
+            : 'text/html',
+      });
+    });
+    await host.goto(origin + '/test');
+    await host.waitForFunction(() => !!saved.studio);
+    const frame = host.frameLocator('iframe');
+    editor = frame.locator('#' + f.id);
+    group = frame.locator('.trial-field').filter({ has: editor });
+    await selectText(editor, 'our website');
+    await group.getByRole('button', { name: 'Add or edit link' }).click();
+    await group.getByLabel('Link destination').fill('https://example.com/saved');
+    await group.getByRole('button', { name: 'Update link' }).click();
+    await host.waitForFunction(
+      (id) => saved.studio.values[id].includes('https://example.com/saved'),
+      f.id,
+    );
+    assert.ok(
+      (await host.evaluate(() => content)).includes(
+        'color:#000000;text-decoration:underline;font-weight:bold;',
+      ),
+    );
+    await host.evaluate(() => (document.querySelector('iframe').src += '?reopen'));
+    await editor.waitFor();
+    assert.equal(await editor.locator('a').getAttribute('href'), 'https://example.com/saved');
+    assert.equal(
+      await editor.locator('a').getAttribute('style'),
+      'color:#000000;text-decoration:underline;font-weight:bold;',
+    );
+    assert.equal(await editor.locator('sup').textContent(), '2');
+    assert.ok((await editor.innerHTML()).includes('#dd3300'));
+    assert.equal(await frame.locator('.link-style-settings').count(), 0);
+    assert.deepEqual(errors, []);
+    console.log(
+      'PASS: superscript, word colour, insert/edit/remove link, URL rejection, developer styling, immutable client link appearance, template/list policies, sanitising, ZIP dependencies and SDK save/reopen',
+    );
+    console.log('QA files:', scratch);
+  } finally {
+    await browser.close();
+  }
+})().catch((e) => {
+  console.error(e);
+  process.exitCode = 1;
+});

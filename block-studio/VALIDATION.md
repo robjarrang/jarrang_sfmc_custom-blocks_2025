@@ -1,3 +1,83 @@
+# Current validation - 1.17.0
+
+122 automated tests pass. Added coverage for bundled paths, foreground contrast, invalid selection fallback, preservation of legacy icons, dimensions passed to the PNG canvas, package filenames and icon settings round-trip. UI simulation verifies selection and colour updates. Canvas tests use a recording stub, not a browser rasteriser; live browser PNG rendering and SFMC appearance remain outstanding.
+
+---
+
+# Current validation - 1.16.0
+
+118 automated tests pass. Updated task-routing coverage checks the consolidated navigation, active task state, code-only view, removed duplicate controls and apply-then-export flow. Existing coverage confirms preserved test values, retained code drafts, export guards and single-load previews. Browser regression selectors updated. Live browser usability, responsive layout and SFMC verification remain outstanding.
+
+---
+
+# Current validation - 1.15.1
+
+118 automated tests pass. The existing view-switch regression verifies that HTML hides the preview, Desktop restores it and navigation does not reload the iframe. Live browser verification remains outstanding.
+
+---
+
+# Current validation - 1.15.0
+
+118 automated tests pass. Adapted popup tests to inline editing; retained transactional edit, discard, protected-field, replace-all and unload-warning coverage. Added a module-switch regression confirming retained drafts, shared editor identity, blocked downloads and applying only the intended module. The HTML structure and source syntax were checked and the standalone build regenerated. These are DOM simulations and structural checks, not live browser validation. Live browser and SFMC checks remain outstanding.
+
+---
+
+# Current validation - 1.14.0
+
+117 automated tests pass. Added a task-routing regression covering existing-module navigation, distinct connection/output views, source editing, apply-and-review export and access to original import. Existing transactional edit, protected-field, cancellation and export tests pass. Live browser usability and SFMC checks remain outstanding.
+
+---
+
+# Current validation - 1.13.0
+
+116 automated tests pass, including staged template-colour settings, inheritance by new modules, legacy fallback, reset behaviour, and shared colours in each generated module form and editable project JSON. Syntax and generated build pass. Live browser and SFMC verification remain outstanding.
+
+---
+
+# Current validation - 1.12.2
+
+113 automated tests pass. Six added regressions cover repeated single/repeating conversions, shared references, mixed mappings, disabled fields, template filters and preview loop scope. Source syntax and generated builds pass. Live browser and SFMC checks remain outstanding.
+
+---
+
+# Current validation - 1.12.1
+
+107 automated tests pass. The standalone conversion dialog has been removed. A field-editor regression verifies staged content behaviour and confirmation before discarding rows. Existing conversion tests cover retained values/settings and blocked custom logic. Browser and SFMC verification remain outstanding.
+
+---
+
+# Current validation - 1.12.0
+
+107 automated tests pass. Seven new checks cover single-item conversion, chosen-row defaults, empty groups, blocked custom logic, cancellation, retained rich-text settings, rebased mappings and removal of loop-empty branches. Browser and SFMC verification remain outstanding.
+
+---
+
+# Current validation - 1.11.1
+
+100 automated tests pass. Added checks cover Advanced-panel state, modal ZIP-export blocking, complete enclosing boundaries for cursor/partial selections and CRLF cursor offsets from the HTML toolbar. Syntax checks and standalone build pass. The reported Advanced-tab download has not been reproduced in a live browser; the export guard is defensive. Browser and SFMC verification remain outstanding.
+
+---
+
+# Current validation - 1.11.0
+
+96 automated tests pass, including four new guided-repeat checks for boundary candidates, quoted HTML attributes, cancellation, sibling acknowledgement and source preservation. JavaScript syntax and the standalone build pass. Tests use DOM simulations; live browser usability and SFMC checks remain outstanding because local browser access was denied by security policy.
+
+---
+
+# Remediation validation - 1.9.5
+
+The hand-written sources have consistent formatting. Run `npm run format:check`, `npm test`, and `npm run build` for the repeatable checks. The current browser suite is tests/browser-regressions.cjs, run separately with `npm run test:browser` and Playwright installed or supplied through PLAYWRIGHT_MODULE. It has not been executed in this environment because local browser access was denied by security policy. Historical browser results below are not validation of the present version.
+
+---
+
+# Current validation - 1.9.4
+
+Run `python3 build.py`, then `node scripts/validate.cjs` from the repository root. The latter checks all source JavaScript syntax and runs 87 automated tests across engine, export, runtime and DOM simulation suites. It deliberately excludes the four historical Playwright suites.
+
+The historical browser results below do not validate the current UI. Those suites need updating before being treated as a release gate. Live browser checks for code-editor hit testing, preview resizing/visibility, focus and scroll retention, plus real SFMC integration checks, remain outstanding.
+
+---
+
 # Validation of Block Studio 1.5
 
 Date: 16 September 2026

@@ -1,35 +1,171 @@
-const fs=require('node:fs/promises'),path=require('node:path'),os=require('node:os'),assert=require('node:assert/strict');
-const {pathToFileURL}=require('node:url'),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
-(async()=>{
- const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE}),context=await browser.newContext({viewport:{width:1440,height:1000}}),page=await context.newPage(),errors=[];
- page.on('pageerror',e=>errors.push(e.message));const scratch=await fs.mkdtemp(path.join(os.tmpdir(),'field-ux-qa-'));
- const project=()=>page.evaluate(()=>BlockStudio.getProject());
- const source='<table role="presentation"><tr><td bgcolor="#ffffff" style="background-color:#ffffff;color:#223344;text-align:left;"><h2>A useful heading</h2><ul><li>First benefit</li></ul><a href="https://example.com/">Read more</a></td></tr></table>';
- const modal=()=>page.locator('.ux-field-dialog');
- async function pick(type,search){await page.locator('#add-template-control').click();await page.locator('.field-type-card').filter({has:page.locator('strong',{hasText:new RegExp('^'+type+'$')})}).click();if(search)await page.getByLabel('Find a location').fill(search);}
- try{
-  await page.goto(pathToFileURL(path.resolve(__dirname,'../Open-Block-Studio.html')).href);await page.locator('#source-html').fill(source);await page.locator('#analyse').click();
-  await page.locator('#add-template-control').click();await page.screenshot({path:path.join(scratch,'add-field.png')});await page.locator('.field-picker').getByRole('button',{name:'Cancel',exact:true}).click();
-  await pick('Colour','#ffffff');await page.locator('.location-choice').first().click();await modal().getByLabel('Field name',{exact:true}).fill('Section background');await modal().getByLabel('Starting colour',{exact:true}).fill('#abcdef');
-  assert.equal(await modal().getByLabel('Section background',{exact:true}).inputValue(),'#abcdef');await modal().getByLabel('Section background',{exact:true}).fill('#111111');assert.equal(await modal().getByLabel('Starting colour',{exact:true}).inputValue(),'#abcdef','Preview edits must not overwrite defaults');
-  await modal().getByRole('tab',{name:'Where it applies'}).click();await modal().getByRole('button',{name:'Link',exact:true}).click();assert.equal(await modal().locator('.connected-locations .connection-card').count(),2);
-  await modal().getByRole('tab',{name:'Set up',exact:true}).click();await page.screenshot({path:path.join(scratch,'colour-editor.png')});await modal().getByRole('button',{name:'Save field',exact:true}).click();
-  let m=(await project()).modules[0],colour=m.fields.find(f=>f.label==='Section background');assert.equal(colour.targets.length,2);assert.equal((await page.evaluate(()=>BlockCore.render(BlockStudio.getProject().modules[0]))).match(/#abcdef/g).length,2);
-  // Cancel all definition changes atomically.
-  await page.getByRole('button',{name:'Edit Section background',exact:true}).click();await modal().getByLabel('Field name',{exact:true}).fill('Discarded name');await modal().getByRole('button',{name:'Cancel',exact:true}).click();assert.ok(!(await project()).modules[0].fields.some(f=>f.label==='Discarded name'));
-  await page.getByRole('button',{name:'Edit Section background',exact:true}).click();await modal().getByLabel('Control type').selectOption('select');await modal().getByLabel('Option 1 label').fill('Light');await modal().getByLabel('Option 1 value').fill('#ffffff');await modal().getByRole('button',{name:'+ Add choice',exact:true}).click();await modal().getByLabel('Option 2 label').fill('Dark');await modal().getByLabel('Option 2 value').fill('#112233');await modal().getByLabel('Start with option 2').check();
-  await page.screenshot({path:path.join(scratch,'dropdown-editor.png')});await modal().getByRole('button',{name:'Save field',exact:true}).click();assert.equal((await project()).modules[0].fields.find(f=>f.id===colour.id).defaultValue,'#112233');
-  // An optional section is picked without source selection, retaining its inner text field.
-  await pick('Optional section','Read more');await page.locator('.location-choice').filter({has:page.locator('strong',{hasText:'Button or link'})}).click();await modal().getByLabel('Field name',{exact:true}).fill('Show button');await modal().getByRole('button',{name:'Save field',exact:true}).click();
-  await page.locator('#confirm-fields').click();m=(await project()).modules[0];const toggle=m.fields.find(f=>f.label==='Show button');await page.locator('#trial-'+toggle.id).uncheck();assert.ok(!(await page.locator('#trial-source').textContent()).includes('<a '));await page.locator('[data-step="1"]').click();
-  // Cancelling repeat conversion must not change source or mappings.
-  const before=JSON.stringify((await project()).modules[0]);await pick('Repeating items','First benefit');await page.locator('.location-choice').filter({has:page.locator('strong',{hasText:/^List item$/})}).click();await modal().getByRole('button',{name:'Cancel',exact:true}).click();assert.equal(JSON.stringify((await project()).modules[0]),before);
-  await pick('Repeating items','First benefit');await page.locator('.location-choice').filter({has:page.locator('strong',{hasText:/^List item$/})}).click();await modal().getByLabel('Field name',{exact:true}).fill('Benefits');await modal().locator('.starting-items .add-repeat-item').click();await modal().getByLabel('Maximum items',{exact:true}).fill('2');assert.equal(await modal().locator('.starting-items .add-repeat-item').isDisabled(),true);await modal().getByLabel('Maximum items',{exact:true}).fill('8');assert.equal(await modal().locator('.starting-items .add-repeat-item').isDisabled(),false);await page.screenshot({path:path.join(scratch,'list-editor.png')});await modal().getByRole('button',{name:'Save field',exact:true}).click();
-  m=(await project()).modules[0];const list=m.fields.find(f=>f.type==='list');assert.equal(list.defaultValue.length,2);assert.ok(m.source.includes('{% for item'));await page.locator('#confirm-fields').click();assert.equal(((await page.locator('#trial-source').textContent()).match(/<li>/g)||[]).length,2);
-  await page.locator('[data-step="1"]').click();await page.getByRole('button',{name:'Edit Section background',exact:true}).click();await modal().getByRole('tab',{name:'Set up',exact:true}).focus();await page.keyboard.press('ArrowRight');assert.equal(await modal().getByRole('tab',{name:'Where it applies'}).getAttribute('aria-selected'),'true');
-  await modal().getByRole('tab',{name:'Set up',exact:true}).click();await modal().getByLabel('Field name',{exact:true}).fill('');await modal().getByRole('button',{name:'Save field',exact:true}).click();assert.ok((await modal().getByRole('alert').textContent()).includes('Give the field a label'));await modal().getByLabel('Field name',{exact:true}).fill('Section background');
-  await page.setViewportSize({width:390,height:844});assert.ok(await modal().evaluate(el=>el.scrollWidth<=el.clientWidth+1));await page.screenshot({path:path.join(scratch,'mobile-editor.png')});await modal().getByRole('button',{name:'Cancel',exact:true}).click();assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth));
-  await page.reload();assert.equal((await project()).modules[0].fields.find(f=>f.type==='list').defaultValue.length,2);assert.deepEqual(errors,[]);
-  console.log('PASS: guided colour, linked locations, live preview isolation, dropdown labels/values/default, optional CTA, repeat conversion, cancellation, validation, keyboard tabs, responsive layout and reopen');console.log('QA files:',scratch);
- }finally{await browser.close();}
-})().catch(e=>{console.error(e);process.exitCode=1;});
+// Historical suite: contains pre-workspace selectors. Not a current release gate.
+const fs = require('node:fs/promises'),
+  path = require('node:path'),
+  os = require('node:os'),
+  assert = require('node:assert/strict');
+const { pathToFileURL } = require('node:url'),
+  { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+(async () => {
+  const browser = await chromium.launch({
+      headless: true,
+      executablePath: process.env.CHROMIUM_EXECUTABLE,
+    }),
+    context = await browser.newContext({
+      viewport: { width: 1440, height: 1000 },
+    }),
+    page = await context.newPage(),
+    errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  const scratch = await fs.mkdtemp(path.join(os.tmpdir(), 'field-ux-qa-'));
+  const project = () => page.evaluate(() => BlockStudio.getProject());
+  const source =
+    '<table role="presentation"><tr><td bgcolor="#ffffff" style="background-color:#ffffff;color:#223344;text-align:left;"><h2>A useful heading</h2><ul><li>First benefit</li></ul><a href="https://example.com/">Read more</a></td></tr></table>';
+  const modal = () => page.locator('.ux-field-dialog');
+  async function pick(type, search) {
+    await page.locator('#add-template-control').click();
+    await page
+      .locator('.field-type-card')
+      .filter({
+        has: page.locator('strong', { hasText: new RegExp('^' + type + '$') }),
+      })
+      .click();
+    if (search) await page.getByLabel('Find a location').fill(search);
+  }
+  try {
+    await page.goto(pathToFileURL(path.resolve(__dirname, '../Open-Block-Studio.html')).href);
+    await page.locator('#source-html').fill(source);
+    await page.locator('#analyse').click();
+    await page.locator('#add-template-control').click();
+    await page.screenshot({ path: path.join(scratch, 'add-field.png') });
+    await page
+      .locator('.field-picker')
+      .getByRole('button', { name: 'Cancel', exact: true })
+      .click();
+    await pick('Colour', '#ffffff');
+    await page.locator('.location-choice').first().click();
+    await modal().getByLabel('Field name', { exact: true }).fill('Section background');
+    await modal().getByLabel('Starting colour', { exact: true }).fill('#abcdef');
+    assert.equal(
+      await modal().getByLabel('Section background', { exact: true }).inputValue(),
+      '#abcdef',
+    );
+    await modal().getByLabel('Section background', { exact: true }).fill('#111111');
+    assert.equal(
+      await modal().getByLabel('Starting colour', { exact: true }).inputValue(),
+      '#abcdef',
+      'Preview edits must not overwrite defaults',
+    );
+    await modal().getByRole('tab', { name: 'Where it applies' }).click();
+    await modal().getByRole('button', { name: 'Link', exact: true }).click();
+    assert.equal(await modal().locator('.connected-locations .connection-card').count(), 2);
+    await modal().getByRole('tab', { name: 'Set up', exact: true }).click();
+    await page.screenshot({ path: path.join(scratch, 'colour-editor.png') });
+    await modal().getByRole('button', { name: 'Save field', exact: true }).click();
+    let m = (await project()).modules[0],
+      colour = m.fields.find((f) => f.label === 'Section background');
+    assert.equal(colour.targets.length, 2);
+    assert.equal(
+      (await page.evaluate(() => BlockCore.render(BlockStudio.getProject().modules[0]))).match(
+        /#abcdef/g,
+      ).length,
+      2,
+    );
+    // Cancel all definition changes atomically.
+    await page.getByRole('button', { name: 'Edit Section background', exact: true }).click();
+    await modal().getByLabel('Field name', { exact: true }).fill('Discarded name');
+    await modal().getByRole('button', { name: 'Cancel', exact: true }).click();
+    assert.ok(!(await project()).modules[0].fields.some((f) => f.label === 'Discarded name'));
+    await page.getByRole('button', { name: 'Edit Section background', exact: true }).click();
+    await modal().getByLabel('Control type').selectOption('select');
+    await modal().getByLabel('Option 1 label').fill('Light');
+    await modal().getByLabel('Option 1 value').fill('#ffffff');
+    await modal().getByRole('button', { name: '+ Add choice', exact: true }).click();
+    await modal().getByLabel('Option 2 label').fill('Dark');
+    await modal().getByLabel('Option 2 value').fill('#112233');
+    await modal().getByLabel('Start with option 2').check();
+    await page.screenshot({ path: path.join(scratch, 'dropdown-editor.png') });
+    await modal().getByRole('button', { name: 'Save field', exact: true }).click();
+    assert.equal(
+      (await project()).modules[0].fields.find((f) => f.id === colour.id).defaultValue,
+      '#112233',
+    );
+    // An optional section is picked without source selection, retaining its inner text field.
+    await pick('Optional section', 'Read more');
+    await page
+      .locator('.location-choice')
+      .filter({ has: page.locator('strong', { hasText: 'Button or link' }) })
+      .click();
+    await modal().getByLabel('Field name', { exact: true }).fill('Show button');
+    await modal().getByRole('button', { name: 'Save field', exact: true }).click();
+    await page.locator('#confirm-fields').click();
+    m = (await project()).modules[0];
+    const toggle = m.fields.find((f) => f.label === 'Show button');
+    await page.locator('#trial-' + toggle.id).uncheck();
+    assert.ok(!(await page.locator('#trial-source').textContent()).includes('<a '));
+    await page.locator('[data-step="1"]').click();
+    // Cancelling repeat conversion must not change source or mappings.
+    const before = JSON.stringify((await project()).modules[0]);
+    await pick('Repeating items', 'First benefit');
+    await page
+      .locator('.location-choice')
+      .filter({ has: page.locator('strong', { hasText: /^List item$/ }) })
+      .click();
+    await modal().getByRole('button', { name: 'Cancel', exact: true }).click();
+    assert.equal(JSON.stringify((await project()).modules[0]), before);
+    await pick('Repeating items', 'First benefit');
+    await page
+      .locator('.location-choice')
+      .filter({ has: page.locator('strong', { hasText: /^List item$/ }) })
+      .click();
+    await modal().getByLabel('Field name', { exact: true }).fill('Benefits');
+    await modal().locator('.starting-items .add-repeat-item').click();
+    await modal().getByLabel('Maximum items', { exact: true }).fill('2');
+    assert.equal(await modal().locator('.starting-items .add-repeat-item').isDisabled(), true);
+    await modal().getByLabel('Maximum items', { exact: true }).fill('8');
+    assert.equal(await modal().locator('.starting-items .add-repeat-item').isDisabled(), false);
+    await page.screenshot({ path: path.join(scratch, 'list-editor.png') });
+    await modal().getByRole('button', { name: 'Save field', exact: true }).click();
+    m = (await project()).modules[0];
+    const list = m.fields.find((f) => f.type === 'list');
+    assert.equal(list.defaultValue.length, 2);
+    assert.ok(m.source.includes('{% for item'));
+    await page.locator('#confirm-fields').click();
+    assert.equal(
+      ((await page.locator('#trial-source').textContent()).match(/<li>/g) || []).length,
+      2,
+    );
+    await page.locator('[data-step="1"]').click();
+    await page.getByRole('button', { name: 'Edit Section background', exact: true }).click();
+    await modal().getByRole('tab', { name: 'Set up', exact: true }).focus();
+    await page.keyboard.press('ArrowRight');
+    assert.equal(
+      await modal().getByRole('tab', { name: 'Where it applies' }).getAttribute('aria-selected'),
+      'true',
+    );
+    await modal().getByRole('tab', { name: 'Set up', exact: true }).click();
+    await modal().getByLabel('Field name', { exact: true }).fill('');
+    await modal().getByRole('button', { name: 'Save field', exact: true }).click();
+    assert.ok((await modal().getByRole('alert').textContent()).includes('Give the field a label'));
+    await modal().getByLabel('Field name', { exact: true }).fill('Section background');
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert.ok(await modal().evaluate((el) => el.scrollWidth <= el.clientWidth + 1));
+    await page.screenshot({ path: path.join(scratch, 'mobile-editor.png') });
+    await modal().getByRole('button', { name: 'Cancel', exact: true }).click();
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+    await page.reload();
+    assert.equal(
+      (await project()).modules[0].fields.find((f) => f.type === 'list').defaultValue.length,
+      2,
+    );
+    assert.deepEqual(errors, []);
+    console.log(
+      'PASS: guided colour, linked locations, live preview isolation, dropdown labels/values/default, optional CTA, repeat conversion, cancellation, validation, keyboard tabs, responsive layout and reopen',
+    );
+    console.log('QA files:', scratch);
+  } finally {
+    await browser.close();
+  }
+})().catch((e) => {
+  console.error(e);
+  process.exitCode = 1;
+});

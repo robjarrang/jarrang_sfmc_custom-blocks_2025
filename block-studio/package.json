@@ -1,0 +1,19 @@
+{
+  "name": "jarrang-block-studio",
+  "version": "1.17.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 build.py",
+    "test": "node scripts/validate.cjs",
+    "format": "prettier --write 'src/*.{js,css}' 'tests/*.cjs' 'scripts/*.cjs'",
+    "format:check": "prettier --check 'src/*.{js,css}' 'tests/*.cjs' 'scripts/*.cjs'",
+    "test:browser": "node tests/browser-regressions.cjs"
+  },
+  "devDependencies": {
+    "prettier": "3.9.9"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100
+  }
+}
