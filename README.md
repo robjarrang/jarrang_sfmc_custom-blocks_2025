@@ -10,7 +10,7 @@ The studio runs locally in the browser. It does not need a server, npm install, 
 
 ## Typical Workflow
 
-1. Use **Clients & templates** in Block Studio to choose or create the template you are editing.
+1. Use **Clients & templates** in Block Studio to choose or create the template you're editing.
 2. Import a tested email module fragment, or open an existing module for edits.
 3. Review the suggested editable text, image, alt-text, link, number, and colour fields.
 4. Rename labels, add help text, set validation rules, and disable anything the client should not edit.
