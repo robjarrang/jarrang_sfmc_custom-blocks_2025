@@ -35,13 +35,15 @@ block-studio/
   tests/                     Core, workspace, preview, code-editor and browser workflow tests
   scripts/
     validate.cjs             Node test-runner entry point (npm test), runs every tests/*.cjs suite
-  docs/                      Pre-built GitHub Pages site (Deploy from a branch → /docs)
-  projects/                  Editable .jarrang.json template projects
   vendor/                    Bundled JSZip, Bootstrap Icons and Salesforce Block SDK assets
 
+docs/                        Pre-built GitHub Pages site, at the repository root (Deploy from a branch → /docs)
+projects/                    Editable .jarrang.json template projects, at the repository root
 README.md                   Repository overview and command summary
 package.json                Root Block Studio scripts only
 ```
+
+GitHub Pages' "Deploy from a branch" option only offers `/(root)` or `/docs` relative to the repository root, so the publishing folder cannot live inside `block-studio/`. `build.py` writes `docs/studio/index.html` and `docs/.nojekyll` to the repository root regardless of where it is invoked from.
 
 Exported module folders are downloaded from Block Studio and committed to the selected publishing branch. They are not maintained as source in this repository.
 
@@ -54,7 +56,7 @@ npm run build
 npm test
 ```
 
-- `npm run build` runs `python3 block-studio/build.py`, rebuilding `block-studio/src/export-assets.js`, `block-studio/Open-Block-Studio.html` and `block-studio/docs/studio/index.html`.
+- `npm run build` runs `python3 block-studio/build.py`, rebuilding `block-studio/src/export-assets.js`, `block-studio/Open-Block-Studio.html` and `docs/studio/index.html` at the repository root.
 - `npm test` runs `node block-studio/tests/core.test.cjs`, a subset covering source preservation and validation.
 - For the full suite (workspace, preview, code editor, browser regressions and formatting checks) run `npm test`, `npm run format:check` and `npm run test:browser` inside `block-studio/`, where its own `package.json` defines those scripts.
 

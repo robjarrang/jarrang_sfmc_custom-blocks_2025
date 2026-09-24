@@ -27,9 +27,11 @@ block-studio/src/           Studio parser, UI, exporter, and generated runtime s
 block-studio/vendor/        Bundled third-party dependencies used by the studio/exporter
 block-studio/tests/         Core and browser workflow tests for Block Studio
 block-studio/scripts/       Node test-runner entry point (validate.cjs)
-block-studio/docs/          Pre-built GitHub Pages site (Deploy from a branch → /docs)
-block-studio/projects/      Editable .jarrang.json template projects
+docs/                       Pre-built GitHub Pages site, at the repository root (Deploy from a branch → /docs)
+projects/                   Editable .jarrang.json template projects, at the repository root
 ```
+
+GitHub Pages' "Deploy from a branch" option only offers `/(root)` or `/docs` relative to the repository root, so `docs/` and `projects/` live here rather than inside `block-studio/`. `block-studio/build.py` writes its generated `docs/studio/index.html` and `docs/.nojekyll` to this repository root regardless of where it is run from.
 
 Exported modules are created by Block Studio and committed from the downloaded ZIP. They are not generated from files in this repository.
 
