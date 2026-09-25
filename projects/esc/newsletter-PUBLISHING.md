@@ -27,6 +27,7 @@ This full template export refreshes its catalogue. Removed modules disappear fro
 - Story Card 2 Col: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/story-card-2col/
 - Story Card 3 Col: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/story-card-3col/
 - CTA Banner: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/cta/
+- Image Banner: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/image-banner/
 
 ## Keep existing blocks working
 

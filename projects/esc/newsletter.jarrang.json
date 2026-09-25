@@ -1723,6 +1723,90 @@
       "acknowledged": true,
       "iconColour": "#080043",
       "iconSymbol": "arrow-right-square"
+    },
+    {
+      "id": "660d7a9e-cc82-45df-b674-086c69c96ecc",
+      "name": "Image Banner",
+      "slug": "image-banner",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-image-banner --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-image-banner\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Image banner description\" class=\"fluid\" src=\"https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Image+Banner\" style=\"border: 0; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-image-banner -->",
+      "draftSource": "<!-- START .esc-image-banner --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-image-banner\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Image banner description\" class=\"fluid\" src=\"https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Image+Banner\" style=\"border: 0; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-image-banner -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Banner link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Where the banner links to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 555,
+              "end": 580,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n7",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field2",
+          "label": "Banner image",
+          "type": "image",
+          "defaultValue": "https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Image+Banner",
+          "originalValue": "https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Image+Banner",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Banner image, 580px wide.",
+          "targets": [
+            {
+              "name": "src",
+              "start": 693,
+              "end": 757,
+              "value": "https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Image+Banner",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field3",
+          "label": "Banner image description",
+          "type": "text",
+          "defaultValue": "Image banner description",
+          "originalValue": "Image banner description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "Accessible alt text describing the image.",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 648,
+              "end": 672,
+              "value": "Image banner description",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "image"
     }
   ],
   "settings": {
