@@ -7,9 +7,9 @@
       "id": "1a02146d-c64f-4b9f-829e-f56e266e22ab",
       "name": "Hero Story",
       "slug": "hero-story",
-      "release": "1.0.0",
-      "source": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        <p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         Featured</p><h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1><p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         Intro copy goes here. Keep this short and useful, ideally one or two sentences.</p><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
-      "draftSource": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        <p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         Featured</p><h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1><p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         Intro copy goes here. Keep this short and useful, ideally one or two sentences.</p><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
+      "release": "2.0.0",
+      "source": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        <p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         Featured</p><h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1><p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         Intro copy goes here. Keep this short and useful, ideally one or two sentences.</p><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 16px 0 0;\" valign=\"top\">\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td><td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: %%=v(@ButtonBgColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonBgColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
+      "draftSource": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        <p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         Featured</p><h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1><p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         Intro copy goes here. Keep this short and useful, ideally one or two sentences.</p><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 16px 0 0;\" valign=\"top\">\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td><td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: %%=v(@ButtonBgColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonBgColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
       "contextCss": "",
       "width": 620,
       "fields": [
@@ -26,8 +26,8 @@
           "targets": [
             {
               "name": "href",
-              "start": 873,
-              "end": 898,
+              "start": 728,
+              "end": 753,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n7",
@@ -44,12 +44,12 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Main hero image, 580px wide.",
+          "help": "Hero image, 580px wide.",
           "targets": [
             {
               "name": "src",
-              "start": 1009,
-              "end": 1071,
+              "start": 864,
+              "end": 926,
               "value": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image",
               "quoted": true,
               "nodeId": "n8",
@@ -70,8 +70,8 @@
           "targets": [
             {
               "name": "alt",
-              "start": 966,
-              "end": 988,
+              "start": 821,
+              "end": 843,
               "value": "Hero image description",
               "quoted": true,
               "nodeId": "n8",
@@ -91,8 +91,8 @@
           "help": "Small label shown above the headline, e.g. \"Featured\".",
           "targets": [
             {
-              "start": 1872,
-              "end": 1890,
+              "start": 1700,
+              "end": 1718,
               "nodeId": "n12",
               "kind": "content"
             }
@@ -108,11 +108,11 @@
           "enabled": true,
           "required": true,
           "maxLength": 80,
-          "help": "Main hero headline.",
+          "help": "Hero headline.",
           "targets": [
             {
-              "start": 2142,
-              "end": 2175,
+              "start": 1970,
+              "end": 2003,
               "nodeId": "n13",
               "kind": "content"
             }
@@ -128,11 +128,11 @@
           "enabled": true,
           "required": false,
           "maxLength": 200,
-          "help": "Short supporting copy, one or two sentences.",
+          "help": "Short intro copy shown below the headline.",
           "targets": [
             {
-              "start": 2473,
-              "end": 2562,
+              "start": 2301,
+              "end": 2390,
               "nodeId": "n14",
               "kind": "content"
             }
@@ -141,19 +141,39 @@
         },
         {
           "id": "field7",
-          "label": "Button link",
+          "label": "Show primary button",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the primary button.",
+          "style": "checkbox",
+          "targets": [
+            {
+              "start": 2627,
+              "end": 3703,
+              "nodeId": "n17",
+              "kind": "element"
+            }
+          ]
+        },
+        {
+          "id": "field8",
+          "label": "Primary button link",
           "type": "url",
           "defaultValue": "https://www.escardio.org/",
           "originalValue": "https://www.escardio.org/",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Where the button links to.",
+          "help": "Where the primary button links to.",
           "targets": [
             {
               "name": "href",
-              "start": 3719,
-              "end": 3744,
+              "start": 3556,
+              "end": 3581,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n21",
@@ -162,20 +182,82 @@
           ]
         },
         {
-          "id": "field8",
-          "label": "Button text",
+          "id": "field9",
+          "label": "Primary button text",
           "type": "text",
           "defaultValue": "Button text",
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
           "maxLength": 30,
-          "help": "Call-to-action button label.",
+          "help": "Primary call-to-action button label.",
           "targets": [
             {
-              "start": 3828,
-              "end": 3839,
+              "start": 3665,
+              "end": 3676,
               "nodeId": "n21",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        },
+        {
+          "id": "field10",
+          "label": "Show secondary button",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the secondary (outline) button.",
+          "style": "checkbox",
+          "targets": [
+            {
+              "start": 3703,
+              "end": 4758,
+              "nodeId": "n22",
+              "kind": "element"
+            }
+          ]
+        },
+        {
+          "id": "field11",
+          "label": "Secondary button link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the secondary button links to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 4613,
+              "end": 4638,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n26",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field12",
+          "label": "Secondary button text",
+          "type": "text",
+          "defaultValue": "Button text",
+          "originalValue": "Button text",
+          "enabled": true,
+          "required": true,
+          "maxLength": 30,
+          "help": "Secondary call-to-action button label.",
+          "targets": [
+            {
+              "start": 4720,
+              "end": 4731,
+              "nodeId": "n26",
               "kind": "content"
             }
           ],
@@ -186,7 +268,8 @@
       "reviewed": true,
       "acknowledged": true,
       "iconColour": "#080043",
-      "iconSymbol": "grid"
+      "iconSymbol": "grid",
+      "templateMode": false
     },
     {
       "id": "027fc161-9ca7-419d-a7db-3b58b29d9c2e",
@@ -1120,6 +1203,526 @@
       "acknowledged": true,
       "iconColour": "#080043",
       "iconSymbol": "grid"
+    },
+    {
+      "id": "c4a7e1b2-3d6f-4e9a-8b5c-1f2d6a9e7c30",
+      "name": "Story Card 3 Col",
+      "slug": "story-card-3col",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-news-cards-3col -->\n{% if theme == 'dark' %}\n<table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\" width=\"20\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 20px 0; width: 580px;\" valign=\"top\" width=\"580\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 16px; width: 548px;\" width=\"548\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"block\" style=\"background-color: #ffffff; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card1_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card1_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card1_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_headline }}</h3>{% if card1_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 400; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_description }}</p>{% endif %}{% if card1_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card1_button_link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">{{ card1_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#ffffff\" class=\"gap block\" style=\"background-color: #ffffff; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"block\" style=\"background-color: #ffffff; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card2_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card2_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card2_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_headline }}</h3>{% if card2_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 400; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_description }}</p>{% endif %}{% if card2_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card2_button_link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">{{ card2_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#ffffff\" class=\"gap block\" style=\"background-color: #ffffff; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"block\" style=\"background-color: #ffffff; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card3_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card3_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card3_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_headline }}</h3>{% if card3_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 400; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_description }}</p>{% endif %}{% if card3_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card3_button_link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">{{ card3_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table>\n{% else %}\n<table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\" width=\"20\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 20px 0; width: 580px;\" valign=\"top\" width=\"580\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card dark-bg-card\" role=\"presentation\" style=\"background-color: #f8f8f8; border-collapse: separate; border-radius: 12px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; border-radius: 12px; padding: 16px; width: 548px;\" width=\"548\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#f8f8f8\" class=\"block\" style=\"background-color: #f8f8f8; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card1_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card1_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card1_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_headline }}</h3>{% if card1_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_description }}</p>{% endif %}{% if card1_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card1_button_link }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 20px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ card1_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#f8f8f8\" class=\"gap block\" style=\"background-color: #f8f8f8; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"block\" style=\"background-color: #f8f8f8; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card2_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card2_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card2_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_headline }}</h3>{% if card2_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_description }}</p>{% endif %}{% if card2_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card2_button_link }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 20px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ card2_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#f8f8f8\" class=\"gap block\" style=\"background-color: #f8f8f8; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"block\" style=\"background-color: #f8f8f8; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card3_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card3_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card3_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_headline }}</h3>{% if card3_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_description }}</p>{% endif %}{% if card3_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card3_button_link }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 20px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ card3_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table>\n{% endif %}\n<!-- END .esc-news-cards-3col -->",
+      "draftSource": "<!-- START .esc-news-cards-3col -->\n{% if theme == 'dark' %}\n<table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\" width=\"20\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 20px 0; width: 580px;\" valign=\"top\" width=\"580\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 16px; width: 548px;\" width=\"548\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"block\" style=\"background-color: #ffffff; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card1_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card1_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card1_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_headline }}</h3>{% if card1_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 400; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_description }}</p>{% endif %}{% if card1_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card1_button_link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">{{ card1_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#ffffff\" class=\"gap block\" style=\"background-color: #ffffff; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"block\" style=\"background-color: #ffffff; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card2_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card2_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card2_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_headline }}</h3>{% if card2_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 400; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_description }}</p>{% endif %}{% if card2_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card2_button_link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">{{ card2_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#ffffff\" class=\"gap block\" style=\"background-color: #ffffff; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"block\" style=\"background-color: #ffffff; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card3_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card3_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card3_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_headline }}</h3>{% if card3_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 400; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_description }}</p>{% endif %}{% if card3_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card3_button_link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">{{ card3_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table>\n{% else %}\n<table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\" width=\"20\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 20px 0; width: 580px;\" valign=\"top\" width=\"580\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card dark-bg-card\" role=\"presentation\" style=\"background-color: #f8f8f8; border-collapse: separate; border-radius: 12px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; border-radius: 12px; padding: 16px; width: 548px;\" width=\"548\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#f8f8f8\" class=\"block\" style=\"background-color: #f8f8f8; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card1_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card1_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card1_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_headline }}</h3>{% if card1_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card1_description }}</p>{% endif %}{% if card1_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card1_button_link }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 20px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ card1_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#f8f8f8\" class=\"gap block\" style=\"background-color: #f8f8f8; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"block\" style=\"background-color: #f8f8f8; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card2_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card2_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card2_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_headline }}</h3>{% if card2_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card2_description }}</p>{% endif %}{% if card2_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card2_button_link }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 20px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ card2_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td><td bgcolor=\"#f8f8f8\" class=\"gap block\" style=\"background-color: #f8f8f8; width: 16px;\" valign=\"top\" width=\"16\">\n            &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"block\" style=\"background-color: #f8f8f8; padding: 0; width: 172px;\" valign=\"top\" width=\"172\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; width: 172px;\" valign=\"top\" width=\"172\">\n                <div style=\"display: block; font-size: 0; line-height: 0;\">\n                 <a href=\"{{ card3_image_link }}\" style=\"text-decoration: none;\" target=\"_blank\"><img align=\"top\" alt=\"{{ card3_image_alt }}\" class=\"fluid\" height=\"112\" src=\"{{ card3_image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 172px;\" width=\"172\"> </a></div></td></tr><tr>\n               <td bgcolor=\"#f8f8f8\" style=\"background-color: #f8f8f8; padding: 12px 0 4px; width: 172px;\" valign=\"top\" width=\"172\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_headline }}</h3>{% if card3_show_description %}<p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 8px; mso-line-height-rule: exactly;\">{{ card3_description }}</p>{% endif %}{% if card3_show_cta %}<p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"{{ card3_button_link }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 20px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ card3_button_text }} &rarr;</a></p>{% endif %}</td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table>\n{% endif %}\n<!-- END .esc-news-cards-3col -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "key": "theme",
+          "label": "Theme",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "light",
+          "originalValue": "light",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Choose the light or dark background style for this row of cards.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Light background",
+              "value": "light"
+            },
+            {
+              "label": "Dark background",
+              "value": "dark"
+            }
+          ]
+        },
+        {
+          "id": "field2",
+          "key": "card1_image",
+          "label": "Card 1 image",
+          "type": "image",
+          "binding": "template",
+          "defaultValue": "https://placehold.co/172x112/e8e8e8/666666/png?text=News+1",
+          "originalValue": "https://placehold.co/172x112/e8e8e8/666666/png?text=News+1",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Used for both the light and dark layouts; each layout recolours it automatically.",
+          "targets": []
+        },
+        {
+          "id": "field3",
+          "key": "card1_image_alt",
+          "label": "Card 1 image alt text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "News image description",
+          "originalValue": "News image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "Describe the image for screen readers.",
+          "targets": []
+        },
+        {
+          "id": "field4",
+          "key": "card1_image_link",
+          "label": "Card 1 image link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field5",
+          "key": "card1_headline",
+          "label": "Card 1 headline",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "First compact headline",
+          "originalValue": "First compact headline",
+          "enabled": true,
+          "required": true,
+          "maxLength": 70,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field6",
+          "key": "card1_show_description",
+          "label": "Card 1 show description",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the summary copy.",
+          "targets": []
+        },
+        {
+          "id": "field7",
+          "key": "card1_description",
+          "label": "Card 1 description",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Short summary copy for this item.",
+          "originalValue": "Short summary copy for this item.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field8",
+          "key": "card1_show_cta",
+          "label": "Card 1 show CTA button",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the \"Read more\" link.",
+          "targets": []
+        },
+        {
+          "id": "field9",
+          "key": "card1_button_link",
+          "label": "Card 1 button link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field10",
+          "key": "card1_button_text",
+          "label": "Card 1 button text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Read more",
+          "originalValue": "Read more",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "The arrow after this text is added automatically.",
+          "targets": []
+        },
+        {
+          "id": "field11",
+          "key": "card2_image",
+          "label": "Card 2 image",
+          "type": "image",
+          "binding": "template",
+          "defaultValue": "https://placehold.co/172x112/e8e8e8/666666/png?text=News+2",
+          "originalValue": "https://placehold.co/172x112/e8e8e8/666666/png?text=News+2",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Used for both the light and dark layouts; each layout recolours it automatically.",
+          "targets": []
+        },
+        {
+          "id": "field12",
+          "key": "card2_image_alt",
+          "label": "Card 2 image alt text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "News image description",
+          "originalValue": "News image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "Describe the image for screen readers.",
+          "targets": []
+        },
+        {
+          "id": "field13",
+          "key": "card2_image_link",
+          "label": "Card 2 image link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field14",
+          "key": "card2_headline",
+          "label": "Card 2 headline",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Second compact headline",
+          "originalValue": "Second compact headline",
+          "enabled": true,
+          "required": true,
+          "maxLength": 70,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field15",
+          "key": "card2_show_description",
+          "label": "Card 2 show description",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the summary copy.",
+          "targets": []
+        },
+        {
+          "id": "field16",
+          "key": "card2_description",
+          "label": "Card 2 description",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Short summary copy for this item.",
+          "originalValue": "Short summary copy for this item.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field17",
+          "key": "card2_show_cta",
+          "label": "Card 2 show CTA button",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the \"Read more\" link.",
+          "targets": []
+        },
+        {
+          "id": "field18",
+          "key": "card2_button_link",
+          "label": "Card 2 button link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field19",
+          "key": "card2_button_text",
+          "label": "Card 2 button text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Read more",
+          "originalValue": "Read more",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "The arrow after this text is added automatically.",
+          "targets": []
+        },
+        {
+          "id": "field20",
+          "key": "card3_image",
+          "label": "Card 3 image",
+          "type": "image",
+          "binding": "template",
+          "defaultValue": "https://placehold.co/172x112/e8e8e8/666666/png?text=News+3",
+          "originalValue": "https://placehold.co/172x112/e8e8e8/666666/png?text=News+3",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Used for both the light and dark layouts; each layout recolours it automatically.",
+          "targets": []
+        },
+        {
+          "id": "field21",
+          "key": "card3_image_alt",
+          "label": "Card 3 image alt text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "News image description",
+          "originalValue": "News image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "Describe the image for screen readers.",
+          "targets": []
+        },
+        {
+          "id": "field22",
+          "key": "card3_image_link",
+          "label": "Card 3 image link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field23",
+          "key": "card3_headline",
+          "label": "Card 3 headline",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Third compact headline",
+          "originalValue": "Third compact headline",
+          "enabled": true,
+          "required": true,
+          "maxLength": 70,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field24",
+          "key": "card3_show_description",
+          "label": "Card 3 show description",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the summary copy.",
+          "targets": []
+        },
+        {
+          "id": "field25",
+          "key": "card3_description",
+          "label": "Card 3 description",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Short summary copy for this item.",
+          "originalValue": "Short summary copy for this item.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field26",
+          "key": "card3_show_cta",
+          "label": "Card 3 show CTA button",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the \"Read more\" link.",
+          "targets": []
+        },
+        {
+          "id": "field27",
+          "key": "card3_button_link",
+          "label": "Card 3 button link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "",
+          "targets": []
+        },
+        {
+          "id": "field28",
+          "key": "card3_button_text",
+          "label": "Card 3 button text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Read more",
+          "originalValue": "Read more",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "The arrow after this text is added automatically.",
+          "targets": []
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "f3b8d6a1-5e2c-4a90-8b7d-2c6e9a1f4d80",
+      "name": "CTA Banner",
+      "slug": "cta",
+      "release": "1.0.0",
+      "source": "<!-- START .cta -->\n<table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-cta\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 32px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"text-align: center; width: 100%;\">\n        <h2 style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 30px; margin: 0 0 12px;\">\n         Call-to-action heading</h2><p style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 24px;\">\n         Use this module for a strong final action, registration prompt or member benefit message.</p><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td align=\"center\">\n            <a class=\"esc-btn-white\" href=\"https://www.escardio.org/\" style=\"background-color: #ffffff; border-radius: 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); color: %%=v(@PrimaryColour)=%% !important; display: inline-block; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; mso-padding-alt: 0; padding: 0.875em 1.875em; text-align: center; text-decoration: none; text-transform: uppercase; text-underline-color: #ffffff;\" target=\"_blank\"><!--[if mso]><i style=\"mso-font-width:188%;mso-text-raise:175%\">&#8203;&emsp;</i><span style=\"mso-text-raise:88%; color: %%=v(@PrimaryColour)=%%;\"><![endif]--> <span style=\"color: %%=v(@PrimaryColour)=%%;\">Button text</span> <!--[if mso]></span><i style=\"mso-font-width:188%\">&emsp;&#8203;</i><![endif]--> </a></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; width: 20px;\">\n    &nbsp;</td></tr></table>\n<!-- END .cta -->",
+      "draftSource": "<!-- START .cta -->\n<table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-cta\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 32px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"text-align: center; width: 100%;\">\n        <h2 style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 30px; margin: 0 0 12px;\">\n         Call-to-action heading</h2><p style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 24px;\">\n         Use this module for a strong final action, registration prompt or member benefit message.</p><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td align=\"center\">\n            <a class=\"esc-btn-white\" href=\"https://www.escardio.org/\" style=\"background-color: #ffffff; border-radius: 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); color: %%=v(@PrimaryColour)=%% !important; display: inline-block; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; mso-padding-alt: 0; padding: 0.875em 1.875em; text-align: center; text-decoration: none; text-transform: uppercase; text-underline-color: #ffffff;\" target=\"_blank\"><!--[if mso]><i style=\"mso-font-width:188%;mso-text-raise:175%\">&#8203;&emsp;</i><span style=\"mso-text-raise:88%; color: %%=v(@PrimaryColour)=%%;\"><![endif]--> <span style=\"color: %%=v(@PrimaryColour)=%%;\">Button text</span> <!--[if mso]></span><i style=\"mso-font-width:188%\">&emsp;&#8203;</i><![endif]--> </a></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; width: 20px;\">\n    &nbsp;</td></tr></table>\n<!-- END .cta -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Call-to-action heading",
+          "originalValue": "Call-to-action heading",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "Call-to-action heading.",
+          "targets": [
+            {
+              "start": 957,
+              "end": 989,
+              "nodeId": "n7",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        },
+        {
+          "id": "field2",
+          "label": "Description",
+          "type": "text",
+          "defaultValue": "Use this module for a strong final action, registration prompt or member benefit message.",
+          "originalValue": "Use this module for a strong final action, registration prompt or member benefit message.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 200,
+          "help": "Supporting copy for the call to action.",
+          "targets": [
+            {
+              "start": 1232,
+              "end": 1331,
+              "nodeId": "n8",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        },
+        {
+          "id": "field3",
+          "label": "Button link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the button links to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 1520,
+              "end": 1545,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n12",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field4",
+          "label": "Button text",
+          "type": "text",
+          "defaultValue": "Button text",
+          "originalValue": "Button text",
+          "enabled": true,
+          "required": true,
+          "maxLength": 30,
+          "help": "Call-to-action button label.",
+          "targets": [
+            {
+              "start": 2248,
+              "end": 2259,
+              "nodeId": "n15",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "arrow-right-square"
     }
   ],
   "settings": {

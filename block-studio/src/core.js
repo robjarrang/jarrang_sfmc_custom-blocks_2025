@@ -47,12 +47,21 @@
         const start = masked.indexOf('<', at);
         if (start < 0 || start >= to) break;
         if (masked.startsWith('<!--', start)) {
+          const isConditional = /^<!--\s*\[if\b/i.test(masked.slice(start, start + 40));
+          if (isConditional) {
+            const closeIndex = masked.indexOf('<![endif]-->', start + 4);
+            if (closeIndex >= 0) {
+              scan(start + 4, closeIndex, true);
+              at = closeIndex + '<![endif]-->'.length;
+              continue;
+            }
+          }
           const end = masked.indexOf('-->', start + 4);
           if (end < 0) {
             issues.push('An HTML comment is not closed.');
             break;
           }
-          if (/^<!--\s*\[if/i.test(masked.slice(start, end))) scan(start + 4, end, true);
+          if (isConditional) scan(start + 4, end, true);
           at = end + 3;
           continue;
         }
