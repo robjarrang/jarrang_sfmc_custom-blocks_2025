@@ -524,6 +524,252 @@
       "acknowledged": true,
       "iconColour": "#080043",
       "iconSymbol": "arrow-right-square"
+    },
+    {
+      "id": "b6f0e9a2-4c3d-4a1e-9f7e-2d8c1a5e6b90",
+      "name": "Story Card 1 Col",
+      "slug": "story-card-1col",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-news-card-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 20px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card dark-bg-card\" role=\"presentation\" style=\"background-color: #f8f8f8; border-radius: 12px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Card image description\" class=\"fluid\" src=\"https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Card+Image\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"padding: 24px; width: 100%;\">\n        <p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; text-transform: uppercase;\">\n         Category</p><h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 26px; margin: 0 0 12px;\">\n         Card headline goes here</h3><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 22px; margin: 0 0 18px;\">\n         Card summary copy goes here. Keep this concise and useful.</p><p style=\"margin: 0;\">\n         <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 22px; text-decoration: underline;\" target=\"_blank\">Read more</a></p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-news-card-1col -->",
+      "draftSource": "<!-- START .esc-news-card-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 20px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card dark-bg-card\" role=\"presentation\" style=\"background-color: #f8f8f8; border-radius: 12px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Card image description\" class=\"fluid\" src=\"https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Card+Image\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"padding: 24px; width: 100%;\">\n        <p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; text-transform: uppercase;\">\n         Category</p><h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 26px; margin: 0 0 12px;\">\n         Card headline goes here</h3><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 22px; margin: 0 0 18px;\">\n         Card summary copy goes here. Keep this concise and useful.</p><p style=\"margin: 0;\">\n         <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 22px; text-decoration: underline;\" target=\"_blank\">Read more</a></p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-news-card-1col -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Card image",
+          "type": "image",
+          "defaultValue": "https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Card+Image",
+          "originalValue": "https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Card+Image",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Card image, 580px wide.",
+          "targets": [
+            {
+              "name": "src",
+              "start": 785,
+              "end": 847,
+              "value": "https://placehold.co/580x220/f0f0f0/1a1a1a/png?text=Card+Image",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field2",
+          "label": "Card image description",
+          "type": "text",
+          "defaultValue": "Card image description",
+          "originalValue": "Card image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Accessible alt text describing the image.",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 742,
+              "end": 764,
+              "value": "Card image description",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field3",
+          "label": "Card image link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Where the card image links to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 649,
+              "end": 674,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n7",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field4",
+          "label": "Show category label",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the small label above the headline.",
+          "style": "checkbox",
+          "targets": [
+            {
+              "start": 1037,
+              "end": 1307,
+              "nodeId": "n11",
+              "kind": "element"
+            }
+          ]
+        },
+        {
+          "id": "field5",
+          "label": "Category label",
+          "type": "text",
+          "defaultValue": "Category",
+          "originalValue": "Category",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Small label shown above the headline, e.g. \"Category\".",
+          "targets": [
+            {
+              "start": 1285,
+              "end": 1303,
+              "nodeId": "n11",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field6",
+          "label": "Headline",
+          "type": "text",
+          "defaultValue": "Card headline goes here",
+          "originalValue": "Card headline goes here",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "Card headline.",
+          "targets": [
+            {
+              "start": 1517,
+              "end": 1550,
+              "nodeId": "n12",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field7",
+          "label": "Show description",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the summary copy.",
+          "style": "checkbox",
+          "targets": [
+            {
+              "start": 1555,
+              "end": 1866,
+              "nodeId": "n13",
+              "kind": "element"
+            }
+          ]
+        },
+        {
+          "id": "field8",
+          "label": "Description",
+          "type": "text",
+          "defaultValue": "Card summary copy goes here. Keep this concise and useful.",
+          "originalValue": "Card summary copy goes here. Keep this concise and useful.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 200,
+          "help": "Short summary copy shown below the headline.",
+          "targets": [
+            {
+              "start": 1794,
+              "end": 1862,
+              "nodeId": "n13",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field9",
+          "label": "Show CTA button",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "originalValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the call-to-action link.",
+          "style": "checkbox",
+          "targets": [
+            {
+              "start": 1866,
+              "end": 2247,
+              "nodeId": "n14",
+              "kind": "element"
+            }
+          ]
+        },
+        {
+          "id": "field10",
+          "label": "Button link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the CTA button links to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 1930,
+              "end": 1955,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n15",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field11",
+          "label": "Button text",
+          "type": "text",
+          "defaultValue": "Read more",
+          "originalValue": "Read more",
+          "enabled": true,
+          "required": true,
+          "maxLength": 30,
+          "help": "Call-to-action button label.",
+          "targets": [
+            {
+              "start": 2230,
+              "end": 2239,
+              "nodeId": "n15",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "image"
     }
   ],
   "settings": {
