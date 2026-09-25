@@ -306,6 +306,90 @@
       "iconColour": "#080043",
       "iconSymbol": "grid",
       "templateMode": true
+    },
+    {
+      "id": "740e3073-44d0-4cc3-b835-3b425aae11bf",
+      "name": "Navigation",
+      "slug": "navigation",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-nav --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-nav\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 20px 24px 20px; width: 580px;\" valign=\"top\">\n    <table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"nav-table\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n     \n      <tr>\n       {% for item in nav_links %}<td bgcolor=\"#ffffff\" height=\"16\" style=\"background-color: #ffffff; color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; height: 16px; line-height: 16px; mso-line-height-rule: exactly; padding: 0 18px; text-align: center;\"{% if forloop.index > 3 %} class=\"mobile-hide\"{% endif %}>\n        <a class=\"nav-link\" href=\"{{ item.url }}\" style=\"color: #333333; display: inline-block; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 16px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ item.title }}</a></td>{% if not forloop.last %}<td bgcolor=\"#ffffff\" class=\"nav-divider{% if forloop.index >= 3 %} mobile-hide{% endif %}\" height=\"16\" style=\"background-color: #ffffff; color: #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; height: 16px; line-height: 16px; mso-line-height-rule: exactly; padding: 0; text-align: center;\">\n        |</td>{% endif %}{% endfor %}</tr></table></td></tr></table><!-- END .esc-nav -->",
+      "draftSource": "<!-- START .esc-nav --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-nav\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 20px 24px 20px; width: 580px;\" valign=\"top\">\n    <table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"nav-table\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n     \n      <tr>\n       {% for item in nav_links %}<td bgcolor=\"#ffffff\" height=\"16\" style=\"background-color: #ffffff; color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; height: 16px; line-height: 16px; mso-line-height-rule: exactly; padding: 0 18px; text-align: center;\"{% if forloop.index > 3 %} class=\"mobile-hide\"{% endif %}>\n        <a class=\"nav-link\" href=\"{{ item.url }}\" style=\"color: #333333; display: inline-block; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; line-height: 16px; mso-line-height-rule: exactly; text-decoration: none;\" target=\"_blank\">{{ item.title }}</a></td>{% if not forloop.last %}<td bgcolor=\"#ffffff\" class=\"nav-divider{% if forloop.index >= 3 %} mobile-hide{% endif %}\" height=\"16\" style=\"background-color: #ffffff; color: #e0e0e0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; height: 16px; line-height: 16px; mso-line-height-rule: exactly; padding: 0; text-align: center;\">\n        |</td>{% endif %}{% endfor %}</tr></table></td></tr></table><!-- END .esc-nav -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "control_76yds7sqk56",
+          "key": "nav_links",
+          "label": "Navigation links",
+          "type": "list",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "The row of top navigation links. Add, remove or reorder links.",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": [
+            {
+              "title": "Events",
+              "url": "#events"
+            },
+            {
+              "title": "Journals",
+              "url": "#journals"
+            },
+            {
+              "title": "Guidelines",
+              "url": "#guidelines"
+            },
+            {
+              "title": "Education",
+              "url": "#education"
+            },
+            {
+              "title": "Research",
+              "url": "#research"
+            }
+          ],
+          "itemFields": [
+            {
+              "id": "title",
+              "key": "title",
+              "label": "Link text",
+              "type": "text",
+              "defaultValue": "Events",
+              "originalValue": "Events",
+              "enabled": true,
+              "required": true,
+              "maxLength": 24,
+              "help": "Short label shown in the navigation bar.",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "url",
+              "key": "url",
+              "label": "Link URL",
+              "type": "url",
+              "defaultValue": "#events",
+              "originalValue": "#events",
+              "enabled": true,
+              "required": true,
+              "maxLength": 0,
+              "help": "Where this link goes.",
+              "targets": [],
+              "binding": "template"
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 8
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "list-ul"
     }
   ],
   "settings": {

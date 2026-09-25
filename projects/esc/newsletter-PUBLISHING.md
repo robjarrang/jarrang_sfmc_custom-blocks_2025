@@ -21,6 +21,7 @@ This full template export refreshes its catalogue. Removed modules disappear fro
 
 - Hero Story: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/hero-story/
 - Checklist: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/checklist/
+- Navigation: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/navigation/
 
 ## Keep existing blocks working
 

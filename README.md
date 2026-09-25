@@ -19,6 +19,8 @@ The studio runs locally in the browser. It does not need a server, npm install, 
 7. Commit and push. See [block-studio/TOWER-WORKFLOW.md](block-studio/TOWER-WORKFLOW.md) for the full branch-publishing workflow.
 8. Save the `.jarrang.json` project file so future edits can reuse the exact mappings.
 
+An AI coding agent can also do most of this without the browser UI — see [AGENTS.md](AGENTS.md).
+
 ## Repository Layout
 
 ```text
