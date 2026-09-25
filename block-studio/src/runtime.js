@@ -20,15 +20,78 @@
     status.textContent = message;
     status.className = error ? 'status error' : 'status';
   };
+  // Keep unchanged nodes (especially images) alive while test values change; mirrors the studio's own preview.
+  function reconcile(current, next) {
+    if (current.isEqualNode(next)) return;
+    if (current.nodeType !== next.nodeType || current.nodeName !== next.nodeName) {
+      current.replaceWith(next.cloneNode(true));
+      return;
+    }
+    if (current.nodeType !== 1) {
+      current.nodeValue = next.nodeValue;
+      return;
+    }
+    for (const attr of [...current.attributes]) {
+      if (!next.hasAttribute(attr.name)) current.removeAttribute(attr.name);
+    }
+    for (const attr of [...next.attributes]) {
+      if (current.getAttribute(attr.name) !== attr.value)
+        current.setAttribute(attr.name, attr.value);
+    }
+    const before = [...current.childNodes],
+      after = [...next.childNodes];
+    for (let i = 0; i < Math.max(before.length, after.length); i++) {
+      if (!after[i]) before[i].remove();
+      else if (!before[i]) current.append(after[i].cloneNode(true));
+      else reconcile(before[i], after[i]);
+    }
+  }
+  // Runs inside the sandboxed local-preview iframe; keep dependencies within this function.
+  function previewBridge(updateDOM) {
+    window.addEventListener('message', function (event) {
+      if (event.source !== parent) return;
+      if (event.data?.type !== 'studio-preview-html' || typeof event.data.html !== 'string') return;
+      const next = new DOMParser().parseFromString(event.data.html, 'text/html');
+      next.querySelectorAll('script').forEach((node) => node.remove());
+      const shell = document.body.firstElementChild,
+        nextShell = next.body.firstElementChild;
+      if (shell && nextShell) updateDOM(shell, nextShell);
+    });
+  }
+  let previewHTML = null,
+    previewReady = false;
+  function sendLocalPreview() {
+    if (previewHTML === null) return;
+    document
+      .getElementById('local-preview')
+      ?.contentWindow?.postMessage({ type: 'studio-preview-html', html: previewHTML }, '*');
+  }
   function localPreview(html) {
     const frame = document.getElementById('local-preview');
     if (!frame) return;
+    const wrapped = '<div>' + html + '</div>';
+    if (wrapped === previewHTML) return;
+    const first = previewHTML === null;
+    previewHTML = wrapped;
+    if (!first) {
+      if (previewReady) sendLocalPreview();
+      return;
+    }
     frame.srcdoc =
-      '<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src https: http: data:; style-src \'unsafe-inline\';"><style>body{margin:0;padding:20px;background:#f1f3f5}' +
+      '<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src https: http: data:; style-src \'unsafe-inline\'; script-src \'nonce-bs-local-preview\';"><style>body{margin:0;padding:20px;background:#f1f3f5}' +
       (definition.contextCss || '') +
       '</style></head><body>' +
-      html +
-      '</body></html>';
+      wrapped +
+      '<script nonce="bs-local-preview">(' +
+      previewBridge.toString() +
+      ')(' +
+      reconcile.toString() +
+      ');</' +
+      'script></body></html>';
+    frame.addEventListener('load', () => {
+      previewReady = true;
+      sendLocalPreview();
+    });
   }
   function check() {
     controls.forEach((ref) => {
@@ -229,7 +292,7 @@
     const frame = document.createElement('iframe');
     frame.id = 'local-preview';
     frame.title = 'Email preview';
-    frame.setAttribute('sandbox', '');
+    frame.setAttribute('sandbox', 'allow-scripts');
     document.getElementById('standalone-area').append(frame);
     load({});
   } else {
