@@ -390,6 +390,140 @@
       "acknowledged": true,
       "iconColour": "#080043",
       "iconSymbol": "list-ul"
+    },
+    {
+      "id": "7f3c2a1e-9d4b-4e6a-8c2d-5b1f6a9e3d70",
+      "name": "Table of Contents",
+      "slug": "table-of-contents",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-toc --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-toc\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 20px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect toc-box dark-bg-card\" role=\"presentation\" style=\"background-color: #f8f8f8; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 20px 24px; width: 100%;\">\n        <p class=\"toc-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; margin: 0 0 14px;\">\n         In this issue</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td class=\"toc-col block\" style=\"width: 50%; padding-right: 12px;\" valign=\"top\" width=\"50%\">\n            {% for item in left_items %}<p style=\"margin: 0 0 10px;\">\n             <a class=\"toc-link\" href=\"{{ item.url }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; text-decoration: none;\">&rarr; {{ item.label }}</a></p>{% endfor %}</td><td class=\"toc-col block\" style=\"width: 50%; padding-left: 12px;\" valign=\"top\" width=\"50%\">\n            {% for item in right_items %}<p style=\"margin: 0 0 10px;\">\n             <a class=\"toc-link\" href=\"{{ item.url }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; text-decoration: none;\">&rarr; {{ item.label }}</a></p>{% endfor %}</td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-toc -->",
+      "draftSource": "<!-- START .esc-toc --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-toc\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 20px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect toc-box dark-bg-card\" role=\"presentation\" style=\"background-color: #f8f8f8; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 20px 24px; width: 100%;\">\n        <p class=\"toc-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 14px; font-weight: 700; margin: 0 0 14px;\">\n         In this issue</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td class=\"toc-col block\" style=\"width: 50%; padding-right: 12px;\" valign=\"top\" width=\"50%\">\n            {% for item in left_items %}<p style=\"margin: 0 0 10px;\">\n             <a class=\"toc-link\" href=\"{{ item.url }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; text-decoration: none;\">&rarr; {{ item.label }}</a></p>{% endfor %}</td><td class=\"toc-col block\" style=\"width: 50%; padding-left: 12px;\" valign=\"top\" width=\"50%\">\n            {% for item in right_items %}<p style=\"margin: 0 0 10px;\">\n             <a class=\"toc-link\" href=\"{{ item.url }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 600; text-decoration: none;\">&rarr; {{ item.label }}</a></p>{% endfor %}</td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-toc -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "control_ymlxeepvgi",
+          "key": "left_items",
+          "label": "Left column links",
+          "type": "list",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "Table of contents links shown in this column.",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": [
+            {
+              "label": "Council Highlights",
+              "url": "#highlights"
+            },
+            {
+              "label": "Upcoming Events",
+              "url": "#events"
+            },
+            {
+              "label": "Research Opportunities",
+              "url": "#research"
+            }
+          ],
+          "itemFields": [
+            {
+              "id": "label",
+              "key": "label",
+              "label": "Link text",
+              "type": "text",
+              "defaultValue": "Link text",
+              "originalValue": "Link text",
+              "enabled": true,
+              "required": true,
+              "maxLength": 40,
+              "help": "Shown after the arrow.",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "url",
+              "key": "url",
+              "label": "Link URL",
+              "type": "url",
+              "defaultValue": "#link",
+              "originalValue": "#link",
+              "enabled": true,
+              "required": true,
+              "maxLength": 0,
+              "help": "Where this link goes.",
+              "targets": [],
+              "binding": "template"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 5
+        },
+        {
+          "id": "control_2pgi2fbky7i",
+          "key": "right_items",
+          "label": "Right column links",
+          "type": "list",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "Table of contents links shown in this column.",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": [
+            {
+              "label": "Clinical Science",
+              "url": "#science"
+            },
+            {
+              "label": "Education & Webinars",
+              "url": "#education"
+            },
+            {
+              "label": "Member Benefits",
+              "url": "#benefits"
+            }
+          ],
+          "itemFields": [
+            {
+              "id": "label",
+              "key": "label",
+              "label": "Link text",
+              "type": "text",
+              "defaultValue": "Link text",
+              "originalValue": "Link text",
+              "enabled": true,
+              "required": true,
+              "maxLength": 40,
+              "help": "Shown after the arrow.",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "url",
+              "key": "url",
+              "label": "Link URL",
+              "type": "url",
+              "defaultValue": "#link",
+              "originalValue": "#link",
+              "enabled": true,
+              "required": true,
+              "maxLength": 0,
+              "help": "Where this link goes.",
+              "targets": [],
+              "binding": "template"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 5
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "arrow-right-square"
     }
   ],
   "settings": {
