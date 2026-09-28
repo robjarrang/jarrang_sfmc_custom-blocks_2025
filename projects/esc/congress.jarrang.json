@@ -1,0 +1,1664 @@
+{
+  "format": "jarrang-block-studio",
+  "version": 1,
+  "projectId": "c92e6a47-3d81-4f5b-9e2c-6a8f1d7b3c95",
+  "modules": [
+    {
+      "id": "e4b7c92a-1f6d-4a8e-9c3b-7d5a2f9e1c64",
+      "name": "Attribution",
+      "slug": "attribution",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-attribution --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-attribution\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 24px 0 30px; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#fafafa\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #fafafa; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"padding: 22px 24px; width: 100%;\">\n        <p class=\"attribution-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0 0 8px;\">\n         Organised by %%=v(@BrandName)=%%</p><p class=\"attribution-text dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 16px;\">\n         In collaboration with the European Society of Cardiology.</p><a href=\"%%=RedirectTo(@BrandURL)=%%\" style=\"display: inline-block; line-height: 0;\" target=\"_blank\"><img alt=\"%%=v(@BrandName)=%%\" src=\"%%=v(@LogoURL)=%%\" style=\"border: 0; display: block; height: auto; margin: 0 auto; max-width: 160px; outline: none; text-decoration: none;\" width=\"160\"> </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-attribution -->",
+      "draftSource": "<!-- START .esc-attribution --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-attribution\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 24px 0 30px; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#fafafa\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #fafafa; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"padding: 22px 24px; width: 100%;\">\n        <p class=\"attribution-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0 0 8px;\">\n         Organised by %%=v(@BrandName)=%%</p><p class=\"attribution-text dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0 0 16px;\">\n         In collaboration with the European Society of Cardiology.</p><a href=\"%%=RedirectTo(@BrandURL)=%%\" style=\"display: inline-block; line-height: 0;\" target=\"_blank\"><img alt=\"%%=v(@BrandName)=%%\" src=\"%%=v(@LogoURL)=%%\" style=\"border: 0; display: block; height: auto; margin: 0 auto; max-width: 160px; outline: none; text-decoration: none;\" width=\"160\"> </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-attribution -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Attribution text",
+          "type": "text",
+          "defaultValue": "In collaboration with the European Society of Cardiology.",
+          "originalValue": "In collaboration with the European Society of Cardiology.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "The organiser name and logo come from send personalisation and are not editable here.",
+          "targets": [
+            {
+              "start": 1155,
+              "end": 1222,
+              "nodeId": "n8",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "f2a6d183-7c4e-4b9a-8d5f-3e1a9c6b2f78",
+      "name": "Button Row",
+      "slug": "button-row",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-button-row --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-button-row\" role=\"presentation\" style=\"background-color: #ffffff; text-align: center; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"center\" class=\"content-inner\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" class=\"esc-button-row__cell block\" style=\"padding: 4px 6px;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 10px 20px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Register now</a></td></tr></table></td><td align=\"center\" class=\"esc-button-row__cell block\" style=\"padding: 4px 6px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn-outline\" role=\"presentation\" style=\"background-color: transparent; border: 2px solid %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 8px 18px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; text-decoration: none;\" target=\"_blank\">View programme</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-button-row -->",
+      "draftSource": "<!-- START .esc-button-row --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-button-row\" role=\"presentation\" style=\"background-color: #ffffff; text-align: center; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"center\" class=\"content-inner\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" class=\"esc-button-row__cell block\" style=\"padding: 4px 6px;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 10px 20px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Register now</a></td></tr></table></td><td align=\"center\" class=\"esc-button-row__cell block\" style=\"padding: 4px 6px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn-outline\" role=\"presentation\" style=\"background-color: transparent; border: 2px solid %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 8px 18px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; text-decoration: none;\" target=\"_blank\">View programme</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-button-row -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Primary button link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "href",
+              "start": 1348,
+              "end": 1373,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n10",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field2",
+          "label": "Primary button text",
+          "type": "text",
+          "defaultValue": "Register now",
+          "originalValue": "Register now",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "",
+          "targets": [
+            {
+              "start": 1457,
+              "end": 1469,
+              "nodeId": "n10",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        },
+        {
+          "id": "field3",
+          "label": "Secondary button link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "href",
+              "start": 2271,
+              "end": 2296,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n15",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field4",
+          "label": "Secondary button text",
+          "type": "text",
+          "defaultValue": "View programme",
+          "originalValue": "View programme",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "",
+          "targets": [
+            {
+              "start": 2377,
+              "end": 2391,
+              "nodeId": "n15",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "a3c7e942-6b81-4f5d-9e3a-7c1b6d4f8a52",
+      "name": "Checklist",
+      "slug": "checklist",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-checklist.3-rows --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-checklist\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 30px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <p class=\"dark-invert\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; margin: 0 0 8px; text-transform: uppercase;\">\n         Why attend</p><h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0 0 10px;\">\n         Join the congress and benefit from:</h2><div style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 1px; height: 3px; line-height: 1px; width: 40px;\">\n         &nbsp;</div></td></tr><tr>\n       <td style=\"padding-top: 20px; width: 100%;\">\n        {% for item in items %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"margin-bottom: 12px;\" width=\"100%\">\n         \n          <tr>\n           <td style=\"padding-right: 10px; width: 28px;\" valign=\"top\" width=\"28\">\n            <div style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 50%; color: %%=v(@TextOnPrimaryColour)=%%; font-size: 12px; font-weight: bold; height: 20px; line-height: 20px; text-align: center; width: 20px;\">\n             ✓</div></td><td valign=\"top\">\n            <span class=\"check-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 22px;\">{{ item.check_text }}</span></td></tr></table>{% endfor %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-checklist.3-rows -->",
+      "draftSource": "<!-- START .esc-checklist.3-rows --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-checklist\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 30px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <p class=\"dark-invert\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; margin: 0 0 8px; text-transform: uppercase;\">\n         Why attend</p><h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0 0 10px;\">\n         Join the congress and benefit from:</h2><div style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 1px; height: 3px; line-height: 1px; width: 40px;\">\n         &nbsp;</div></td></tr><tr>\n       <td style=\"padding-top: 20px; width: 100%;\">\n        {% for item in items %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"margin-bottom: 12px;\" width=\"100%\">\n         \n          <tr>\n           <td style=\"padding-right: 10px; width: 28px;\" valign=\"top\" width=\"28\">\n            <div style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 50%; color: %%=v(@TextOnPrimaryColour)=%%; font-size: 12px; font-weight: bold; height: 20px; line-height: 20px; text-align: center; width: 20px;\">\n             ✓</div></td><td valign=\"top\">\n            <span class=\"check-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 22px;\">{{ item.check_text }}</span></td></tr></table>{% endfor %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-checklist.3-rows -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Eyebrow label",
+          "type": "text",
+          "defaultValue": "Why attend",
+          "originalValue": "Why attend",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Small label shown above the heading, e.g. \"Why attend\".",
+          "targets": [
+            {
+              "start": 802,
+              "end": 822,
+              "nodeId": "n7",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Join the congress and benefit from:",
+          "originalValue": "Join the congress and benefit from:",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Section heading.",
+          "targets": [
+            {
+              "start": 1032,
+              "end": 1077,
+              "nodeId": "n8",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "control_56fyaljqu5",
+          "key": "items",
+          "label": "Checklist items",
+          "type": "list",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "Each item shows a checkmark and its text.",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": [
+            {
+              "check_text": "Practical sessions, hands-on learning and live demonstrations. "
+            },
+            {
+              "check_text": "Networking with peers, experts and the wider cardiovascular community. "
+            },
+            {
+              "check_text": "Access to the latest research, clinical updates and expert insights. "
+            }
+          ],
+          "itemFields": [
+            {
+              "label": "Check text",
+              "type": "text",
+              "defaultValue": "Practical sessions, hands-on learning and live demonstrations. ",
+              "originalValue": "Practical sessions, hands-on learning and live demonstrations. ",
+              "enabled": true,
+              "required": false,
+              "maxLength": 0,
+              "help": "One benefit / checklist item.",
+              "targets": [],
+              "id": "check_text",
+              "key": "check_text",
+              "binding": "template"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 8
+        }
+      ],
+      "analysed": true,
+      "reviewed": false,
+      "acknowledged": false,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "d8f1b326-5e94-4a7c-8d1f-9b6a3e2c7f45",
+      "name": "Conversation",
+      "slug": "conversation",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-convo --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-convo\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #f8f8f8; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 28px 28px; width: 100%;\">\n        <p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; margin: 0 0 8px; text-transform: uppercase;\">\n         Join the conversation</p><h3 class=\"convo-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0 0 14px;\">\n         Be part of the congress community</h3><p class=\"convo-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 18px;\">\n         Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding-right: 12px;\" valign=\"middle\">\n            <p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 30px; margin: 0;\">\n             #ESC26</p></td><td valign=\"middle\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 22px; text-decoration: underline;\" target=\"_blank\">View congress updates </a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-convo -->",
+      "draftSource": "<!-- START .esc-convo --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-convo\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #f8f8f8; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 28px 28px; width: 100%;\">\n        <p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; margin: 0 0 8px; text-transform: uppercase;\">\n         Join the conversation</p><h3 class=\"convo-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0 0 14px;\">\n         Be part of the congress community</h3><p class=\"convo-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 18px;\">\n         Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding-right: 12px;\" valign=\"middle\">\n            <p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 30px; margin: 0;\">\n             #ESC26</p></td><td valign=\"middle\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 22px; text-decoration: underline;\" target=\"_blank\">View congress updates </a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-convo -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Eyebrow label",
+          "type": "text",
+          "defaultValue": "Join the conversation",
+          "originalValue": "Join the conversation",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "Small label above the heading.",
+          "targets": [
+            {
+              "start": 853,
+              "end": 884,
+              "nodeId": "n7",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Be part of the congress community",
+          "originalValue": "Be part of the congress community",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "",
+          "targets": [
+            {
+              "start": 1106,
+              "end": 1149,
+              "nodeId": "n8",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field3",
+          "label": "Body copy",
+          "type": "text",
+          "defaultValue": "Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.",
+          "originalValue": "Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 220,
+          "help": "",
+          "targets": [
+            {
+              "start": 1399,
+              "end": 1530,
+              "nodeId": "n9",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field4",
+          "label": "Hashtag",
+          "type": "text",
+          "defaultValue": "#ESC26",
+          "originalValue": "#ESC26",
+          "enabled": true,
+          "required": false,
+          "maxLength": 20,
+          "help": "Shown large next to the link, e.g. \"#ESC26\".",
+          "targets": [
+            {
+              "start": 1897,
+              "end": 1917,
+              "nodeId": "n13",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field5",
+          "label": "Link destination",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "href",
+              "start": 1968,
+              "end": 1993,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n15",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field6",
+          "label": "Link text",
+          "type": "text",
+          "defaultValue": "View congress updates",
+          "originalValue": "View congress updates",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "",
+          "targets": [
+            {
+              "start": 2268,
+              "end": 2290,
+              "nodeId": "n15",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "b6e4c821-3a97-4f5d-8c1b-9e2a7d6f3c58",
+      "name": "Deadlines List",
+      "slug": "deadlines-list",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-deadlines-list.3-rows --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-deadlines-list\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 36px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     <!-- Section label -->\n      <tr>\n       <td style=\"padding-bottom: 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 14px 0 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 42px;\" width=\"42\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"4\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 1px; line-height: 4px; height: 4px;\">\n                &nbsp;</td></tr></table></td><td valign=\"middle\">\n            <p class=\"dark-invert\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; line-height: 14px; margin: 0; text-transform: uppercase;\">\n             KEY DATES</p></td></tr></table></td></tr><!-- Heading --><tr>\n       <td style=\"padding-bottom: 20px;\">\n        <h2 class=\"deadline-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 23px; font-weight: 700; line-height: 29px; margin: 0;\">\n         Don&rsquo;t miss these deadlines</h2></td></tr><!-- Divider --><tr>\n       <td bgcolor=\"#d8d8d8\" height=\"1\" style=\"background-color: #d8d8d8; font-size: 1px; line-height: 1px; height: 1px;\">\n        &nbsp;</td></tr><!-- Deadline 1 -->{% for item in deadlines %}<tr>\n       <td style=\"padding: 0;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n         \n          <tr>\n           <td style=\"padding: 22px 20px 20px 0; width: 118px;\" valign=\"middle\" width=\"118\">\n            <p class=\"dark-invert\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 22px; margin: 0;\">{{ item.date }}</p></td><td style=\"padding: 22px 20px 20px 0;\" valign=\"middle\">\n            <p class=\"deadline-text dark-body\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 22px; margin: 0;\">{{ item.text }}</p></td><td align=\"right\" style=\"padding: 22px 0 20px 10px; width: 76px;\" valign=\"middle\" width=\"76\">\n            <a class=\"dark-invert\" href=\"{{ item.link_url }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 22px; text-decoration: underline;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table></td></tr><!-- Divider --><tr>\n       <td bgcolor=\"#d8d8d8\" height=\"1\" style=\"background-color: #d8d8d8; font-size: 1px; line-height: 1px; height: 1px;\">\n        &nbsp;</td></tr>{% endfor %}<!-- Deadline 2 --></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-deadlines-list.3-rows -->",
+      "draftSource": "<!-- START .esc-deadlines-list.3-rows --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-deadlines-list\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 36px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     <!-- Section label -->\n      <tr>\n       <td style=\"padding-bottom: 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 14px 0 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 42px;\" width=\"42\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"4\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 1px; line-height: 4px; height: 4px;\">\n                &nbsp;</td></tr></table></td><td valign=\"middle\">\n            <p class=\"dark-invert\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; line-height: 14px; margin: 0; text-transform: uppercase;\">\n             KEY DATES</p></td></tr></table></td></tr><!-- Heading --><tr>\n       <td style=\"padding-bottom: 20px;\">\n        <h2 class=\"deadline-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 23px; font-weight: 700; line-height: 29px; margin: 0;\">\n         Don&rsquo;t miss these deadlines</h2></td></tr><!-- Divider --><tr>\n       <td bgcolor=\"#d8d8d8\" height=\"1\" style=\"background-color: #d8d8d8; font-size: 1px; line-height: 1px; height: 1px;\">\n        &nbsp;</td></tr><!-- Deadline 1 -->{% for item in deadlines %}<tr>\n       <td style=\"padding: 0;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n         \n          <tr>\n           <td style=\"padding: 22px 20px 20px 0; width: 118px;\" valign=\"middle\" width=\"118\">\n            <p class=\"dark-invert\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 22px; margin: 0;\">{{ item.date }}</p></td><td style=\"padding: 22px 20px 20px 0;\" valign=\"middle\">\n            <p class=\"deadline-text dark-body\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 22px; margin: 0;\">{{ item.text }}</p></td><td align=\"right\" style=\"padding: 22px 0 20px 10px; width: 76px;\" valign=\"middle\" width=\"76\">\n            <a class=\"dark-invert\" href=\"{{ item.link_url }}\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 22px; text-decoration: underline;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table></td></tr><!-- Divider --><tr>\n       <td bgcolor=\"#d8d8d8\" height=\"1\" style=\"background-color: #d8d8d8; font-size: 1px; line-height: 1px; height: 1px;\">\n        &nbsp;</td></tr>{% endfor %}<!-- Deadline 2 --></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-deadlines-list.3-rows -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Eyebrow label",
+          "type": "text",
+          "defaultValue": "KEY DATES",
+          "originalValue": "KEY DATES",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "Small label above the heading, e.g. \"KEY DATES\".",
+          "targets": [
+            {
+              "start": 1423,
+              "end": 1446,
+              "nodeId": "n14",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Don&rsquo;t miss these deadlines",
+          "originalValue": "Don&rsquo;t miss these deadlines",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "start": 1763,
+              "end": 1805,
+              "nodeId": "n17",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "control_10lwtccf3ad",
+          "key": "deadlines",
+          "label": "Deadlines",
+          "type": "list",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "Each row shows a date, description and link.",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": [
+            {
+              "date": "09 Dec 2025",
+              "text": "Abstract submission deadline",
+              "link_text": "Submit &rsaquo;",
+              "link_url": "https://www.escardio.org/"
+            },
+            {
+              "date": "28 Feb 2026",
+              "text": "Late-Breaking Science submission",
+              "link_text": "Register &rsaquo;",
+              "link_url": "https://www.escardio.org/"
+            },
+            {
+              "date": "15 Mar 2026",
+              "text": "Early registration deadline",
+              "link_text": "Book &rsaquo;",
+              "link_url": "https://www.escardio.org/"
+            }
+          ],
+          "itemFields": [
+            {
+              "id": "date",
+              "key": "date",
+              "label": "Date",
+              "type": "text",
+              "defaultValue": "09 Dec 2025",
+              "originalValue": "09 Dec 2025",
+              "enabled": true,
+              "required": true,
+              "maxLength": 20,
+              "help": "e.g. \"09 Dec 2025\".",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "text",
+              "key": "text",
+              "label": "Deadline text",
+              "type": "text",
+              "defaultValue": "Abstract submission deadline",
+              "originalValue": "Abstract submission deadline",
+              "enabled": true,
+              "required": true,
+              "maxLength": 60,
+              "help": "",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "link_text",
+              "key": "link_text",
+              "label": "Link text",
+              "type": "text",
+              "defaultValue": "Submit &rsaquo;",
+              "originalValue": "Submit &rsaquo;",
+              "enabled": true,
+              "required": false,
+              "maxLength": 30,
+              "help": "",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "link_url",
+              "key": "link_url",
+              "label": "Link URL",
+              "type": "url",
+              "defaultValue": "https://www.escardio.org/",
+              "originalValue": "https://www.escardio.org/",
+              "enabled": true,
+              "required": true,
+              "maxLength": 0,
+              "help": "",
+              "targets": [],
+              "binding": "template"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 6
+        }
+      ],
+      "analysed": true,
+      "reviewed": false,
+      "acknowledged": false,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "c5a8e174-6d3b-4f92-8a5c-1e7d9b4f2a86",
+      "name": "Lead Editorial",
+      "slug": "lead-editorial",
+      "release": "1.0.0",
+      "source": "<!-- %%[\nIF EMPTY(@CongressLeadURL) THEN\n  SET @CongressLeadURL = \"https://www.escardio.org/\"\nENDIF\n\nIF EMPTY(@CongressLeadVisualURL) THEN\n  SET @CongressLeadVisualURL = \"https://placehold.co/520x640/ffffff/AE1022/png?text=Congress\"\nENDIF\n\nIF EMPTY(@CongressLeadMobileVisualURL) THEN\n  SET @CongressLeadMobileVisualURL = \"https://placehold.co/864x600/ffffff/AE1022/png?text=Congress\"\nENDIF\n\nIF EMPTY(@HeaderDarkLogoURL) THEN\n  SET @HeaderDarkLogoURL = @HeaderLogo\nENDIF\n\nIF EMPTY(@HeaderLogoAlt) THEN\n  SET @HeaderLogoAlt = \"ESC\"\nENDIF\n]%% --><!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"360\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 360px;\" width=\"360\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 0 0 0 26px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            28 Aug &ndash; 31 Aug 2026</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                Organised&nbsp;by:</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"%%=v(@HeaderLogoAlt)=%%\" src=\"%%=v(@HeaderDarkLogoURL)=%%\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"right\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: top;\" valign=\"top\" width=\"260\">\n    <a href=\"%%=RedirectTo(@CongressLeadURL)=%%\" style=\"border-radius: 0 20px 0 0; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" height=\"304\" src=\"%%=v(@CongressLeadVisualURL)=%%\" style=\"border: 0; border-radius: 0 20px 0 0; display: block; height: 304px; line-height: 0; max-height: 304px; max-width: 260px; outline: none; text-decoration: none; width: 260px;\" width=\"260\"> <!--[if !mso]><!--> <img alt=\"Congress\" class=\"esc-lead-visual-mobile\" src=\"%%=v(@CongressLeadMobileVisualURL)=%%\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
+      "draftSource": "<!-- %%[\nIF EMPTY(@CongressLeadURL) THEN\n  SET @CongressLeadURL = \"https://www.escardio.org/\"\nENDIF\n\nIF EMPTY(@CongressLeadVisualURL) THEN\n  SET @CongressLeadVisualURL = \"https://placehold.co/520x640/ffffff/AE1022/png?text=Congress\"\nENDIF\n\nIF EMPTY(@CongressLeadMobileVisualURL) THEN\n  SET @CongressLeadMobileVisualURL = \"https://placehold.co/864x600/ffffff/AE1022/png?text=Congress\"\nENDIF\n\nIF EMPTY(@HeaderDarkLogoURL) THEN\n  SET @HeaderDarkLogoURL = @HeaderLogo\nENDIF\n\nIF EMPTY(@HeaderLogoAlt) THEN\n  SET @HeaderLogoAlt = \"ESC\"\nENDIF\n]%% --><!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"360\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 360px;\" width=\"360\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 0 0 0 26px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            28 Aug &ndash; 31 Aug 2026</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                Organised&nbsp;by:</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"%%=v(@HeaderLogoAlt)=%%\" src=\"%%=v(@HeaderDarkLogoURL)=%%\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"right\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: top;\" valign=\"top\" width=\"260\">\n    <a href=\"%%=RedirectTo(@CongressLeadURL)=%%\" style=\"border-radius: 0 20px 0 0; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" height=\"304\" src=\"%%=v(@CongressLeadVisualURL)=%%\" style=\"border: 0; border-radius: 0 20px 0 0; display: block; height: 304px; line-height: 0; max-height: 304px; max-width: 260px; outline: none; text-decoration: none; width: 260px;\" width=\"260\"> <!--[if !mso]><!--> <img alt=\"Congress\" class=\"esc-lead-visual-mobile\" src=\"%%=v(@CongressLeadMobileVisualURL)=%%\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Congress name",
+          "type": "text",
+          "defaultValue": "Congress 2026",
+          "originalValue": "Congress 2026",
+          "enabled": true,
+          "required": true,
+          "maxLength": 60,
+          "help": "",
+          "targets": [
+            {
+              "start": 2453,
+              "end": 2480,
+              "nodeId": "n9",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Congress dates",
+          "type": "text",
+          "defaultValue": "28 Aug &ndash; 31 Aug 2026",
+          "originalValue": "28 Aug &ndash; 31 Aug 2026",
+          "enabled": true,
+          "required": false,
+          "maxLength": 60,
+          "help": "e.g. \"28 Aug &ndash; 31 Aug 2026\".",
+          "targets": [
+            {
+              "start": 2870,
+              "end": 2909,
+              "nodeId": "n11",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field3",
+          "label": "Location",
+          "type": "richtext",
+          "defaultValue": "\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany",
+          "originalValue": "\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany",
+          "enabled": true,
+          "required": false,
+          "maxLength": 100,
+          "help": "Keep the city name bold; edit the rest as plain text.",
+          "targets": [
+            {
+              "start": 3294,
+              "end": 3365,
+              "nodeId": "n13",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        },
+        {
+          "id": "field4",
+          "label": "Organiser label",
+          "type": "text",
+          "defaultValue": "Organised by:",
+          "originalValue": "Organised by:",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "Small label shown before the organiser logo.",
+          "targets": [
+            {
+              "start": 4461,
+              "end": 4496,
+              "nodeId": "n21",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field5",
+          "label": "Visual image alt text",
+          "type": "text",
+          "defaultValue": "Congress",
+          "originalValue": "Congress",
+          "enabled": true,
+          "required": false,
+          "maxLength": 100,
+          "help": "Describes the visual for screen readers. Only affects the desktop image; update the hidden mobile fallback image separately if needed.",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 5478,
+              "end": 5486,
+              "value": "Congress",
+              "quoted": true,
+              "nodeId": "n26",
+              "kind": "attribute"
+            }
+          ]
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "d6b3f8a2-4e17-4c95-8a3d-1f7b6e9c2d84",
+      "name": "Lead Poster",
+      "slug": "lead-poster",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>Onsite</td></tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               <td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                Organised&nbsp;by</td><td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                23 &ndash; 25 Apr 2026</td></tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               <td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                City, Country</td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
+      "draftSource": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>Onsite</td></tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               <td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                Organised&nbsp;by</td><td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                23 &ndash; 25 Apr 2026</td></tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               <td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                City, Country</td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "label": "Format badge",
+          "type": "text",
+          "defaultValue": "Onsite",
+          "originalValue": "Onsite",
+          "enabled": true,
+          "required": false,
+          "maxLength": 20,
+          "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
+          "targets": [
+            {
+              "start": 1791,
+              "end": 1797,
+              "nodeId": "n12",
+              "kind": "content",
+              "originalValue": "Onsite"
+            }
+          ],
+          "id": "field1"
+        },
+        {
+          "id": "field2",
+          "label": "Organiser label",
+          "type": "text",
+          "defaultValue": "Organised by",
+          "originalValue": "Organised by",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "Small label next to the organiser logo.",
+          "targets": [
+            {
+              "start": 2374,
+              "end": 2408,
+              "nodeId": "n17",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field3",
+          "label": "Congress name",
+          "type": "text",
+          "defaultValue": "Congress Name 2026",
+          "originalValue": "Congress Name 2026",
+          "enabled": true,
+          "required": true,
+          "maxLength": 60,
+          "help": "",
+          "targets": [
+            {
+              "start": 3123,
+              "end": 3151,
+              "nodeId": "n23",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field4",
+          "label": "Congress dates",
+          "type": "text",
+          "defaultValue": "23 &ndash; 25 Apr 2026",
+          "originalValue": "23 &ndash; 25 Apr 2026",
+          "enabled": true,
+          "required": false,
+          "maxLength": 60,
+          "help": "",
+          "targets": [
+            {
+              "start": 3866,
+              "end": 3905,
+              "nodeId": "n31",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field5",
+          "label": "Location",
+          "type": "text",
+          "defaultValue": "City, Country",
+          "originalValue": "City, Country",
+          "enabled": true,
+          "required": false,
+          "maxLength": 60,
+          "help": "",
+          "targets": [
+            {
+              "start": 4463,
+              "end": 4493,
+              "nodeId": "n35",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field6",
+          "label": "Poster image link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "href",
+              "start": 5219,
+              "end": 5244,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n42",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field7",
+          "label": "Poster image",
+          "type": "image",
+          "defaultValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+          "originalValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "src",
+              "start": 5498,
+              "end": 5569,
+              "value": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+              "quoted": true,
+              "nodeId": "n46",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field8",
+          "label": "Poster image alt text",
+          "type": "text",
+          "defaultValue": "Congress key visual",
+          "originalValue": "Congress key visual",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 5458,
+              "end": 5477,
+              "value": "Congress key visual",
+              "quoted": true,
+              "nodeId": "n46",
+              "kind": "attribute"
+            }
+          ]
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "image"
+    },
+    {
+      "id": "e91c4a7d-2f68-4b3e-9a1d-8c6f7e2b5d93",
+      "name": "Personal Letter",
+      "slug": "personal-letter",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-personal-letter --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-personal-letter\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 8px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        %%[ IF NOT EMPTY(@LastName) THEN ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,</p> %%[ ELSE ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear colleague,</p> %%[ ENDIF ]%%</td></tr><tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        <p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.</p><p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.</p><p class=\"letter-signoff dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 4px; mso-line-height-rule: exactly;\">\n         Best regards,</p><p class=\"letter-signature dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n         The %%=v(@BrandShortName)=%% Congress Team</p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-personal-letter -->",
+      "draftSource": "<!-- START .esc-personal-letter --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-personal-letter\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 8px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        %%[ IF NOT EMPTY(@LastName) THEN ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,</p> %%[ ELSE ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear colleague,</p> %%[ ENDIF ]%%</td></tr><tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        <p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.</p><p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.</p><p class=\"letter-signoff dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 4px; mso-line-height-rule: exactly;\">\n         Best regards,</p><p class=\"letter-signature dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n         The %%=v(@BrandShortName)=%% Congress Team</p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-personal-letter -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Fallback greeting",
+          "type": "text",
+          "defaultValue": "Dear colleague,",
+          "originalValue": "Dear colleague,",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "Shown only when the subscriber's last name is unknown. The personalised greeting above it (\"Dear [Salutation] [LastName],\") is generated automatically by AMPscript and isn't editable here.",
+          "targets": [
+            {
+              "start": 1259,
+              "end": 1284,
+              "nodeId": "n8",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Body paragraph 1",
+          "type": "text",
+          "defaultValue": "Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.",
+          "originalValue": "Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.",
+          "enabled": true,
+          "required": true,
+          "maxLength": 300,
+          "help": "",
+          "targets": [
+            {
+              "start": 1648,
+              "end": 1851,
+              "nodeId": "n11",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field3",
+          "label": "Body paragraph 2",
+          "type": "text",
+          "defaultValue": "Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.",
+          "originalValue": "Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 300,
+          "help": "",
+          "targets": [
+            {
+              "start": 2132,
+              "end": 2287,
+              "nodeId": "n12",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field4",
+          "label": "Sign-off",
+          "type": "text",
+          "defaultValue": "Best regards,",
+          "originalValue": "Best regards,",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "",
+          "targets": [
+            {
+              "start": 2570,
+              "end": 2593,
+              "nodeId": "n13",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "fonts"
+    },
+    {
+      "id": "f4a8d2e6-7c19-4b5d-9e3a-6f2c1d8b4a75",
+      "name": "Section Header",
+      "slug": "section-header",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-section-header --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-section-header\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"left\" class=\"content-inner\" style=\"padding-top: 6px; width: 580px;\" valign=\"top\">\n    <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\">\n     \n      <tr>\n       <td align=\"left\" class=\"block\" style=\"width: 100%;\">\n        <h2 class=\"section-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0;\">\n         Section heading goes here</h2></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-section-header -->",
+      "draftSource": "<!-- START .esc-section-header --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-section-header\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"left\" class=\"content-inner\" style=\"padding-top: 6px; width: 580px;\" valign=\"top\">\n    <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\">\n     \n      <tr>\n       <td align=\"left\" class=\"block\" style=\"width: 100%;\">\n        <h2 class=\"section-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0;\">\n         Section heading goes here</h2></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-section-header -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Section heading goes here",
+          "originalValue": "Section heading goes here",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "",
+          "targets": [
+            {
+              "start": 791,
+              "end": 826,
+              "nodeId": "n7",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "fonts"
+    },
+    {
+      "id": "a2d7e491-3f68-4c5b-9a1e-7d3c8b2f6e94",
+      "name": "Spotlight",
+      "slug": "spotlight",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-spotlight --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-spotlight\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; font-size: 0; line-height: 0; mso-line-height-rule: exactly; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td height=\"24\" style=\"font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;\">\n        &nbsp;</td></tr><tr>\n       <td style=\"font-size: 0; line-height: 0; mso-line-height-rule: exactly;\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 12px; border-spacing: 0; width: 100%;\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 32px 28px;\" valign=\"top\">\n            <!-- Eyebrow --><table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"16\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 16px; line-height: 0; mso-line-height-rule: exactly;\" valign=\"middle\" width=\"32\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n                 \n                  <tr>\n                   <td bgcolor=\"%%=v(@TextOnPrimaryColour)=%%\" height=\"4\" style=\"background-color: %%=v(@TextOnPrimaryColour)=%%; font-size: 1px; height: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 32px;\" width=\"32\">\n                    &nbsp;</td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"16\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; height: 16px; letter-spacing: 2px; line-height: 16px; mso-line-height-rule: exactly; padding-left: 12px; text-transform: uppercase; white-space: nowrap;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 2px; line-height: 16px; mso-line-height-rule: exactly; text-transform: uppercase;\">2026 Spotlight </span></td></tr></table><!-- Spacer --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse;\" width=\"100%\">\n             \n              <tr>\n               <td height=\"16\" style=\"font-size: 1px; height: 16px; line-height: 16px; mso-line-height-rule: exactly;\">\n                &nbsp;</td></tr></table><!-- Title --><h2 style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 30px; font-weight: 700; letter-spacing: -0.5px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Artificial Intelligence</h2><!-- Spacer --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse;\" width=\"100%\">\n             \n              <tr>\n               <td height=\"12\" style=\"font-size: 1px; height: 12px; line-height: 12px; mso-line-height-rule: exactly;\">\n                &nbsp;</td></tr></table><!-- Copy --><p style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n             Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.</p><!-- CTA Spacer --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse;\" width=\"100%\">\n             \n              <tr>\n               <td height=\"24\" style=\"font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;\">\n                &nbsp;</td></tr></table><!-- Button --><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn-white\" role=\"presentation\" style=\"background-color: #ffffff; border: 0; border-collapse: separate; border-radius: 50px; border-spacing: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 28px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; display: inline-block; text-decoration: none;\" target=\"_blank\">Explore programme</a></td></tr></table></td></tr></table></td></tr><tr>\n       <td height=\"24\" style=\"font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;\">\n        &nbsp;</td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-spotlight -->",
+      "draftSource": "<!-- START .esc-spotlight --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-spotlight\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; font-size: 0; line-height: 0; mso-line-height-rule: exactly; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td height=\"24\" style=\"font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;\">\n        &nbsp;</td></tr><tr>\n       <td style=\"font-size: 0; line-height: 0; mso-line-height-rule: exactly;\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 12px; border-spacing: 0; width: 100%;\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 32px 28px;\" valign=\"top\">\n            <!-- Eyebrow --><table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"16\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 16px; line-height: 0; mso-line-height-rule: exactly;\" valign=\"middle\" width=\"32\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n                 \n                  <tr>\n                   <td bgcolor=\"%%=v(@TextOnPrimaryColour)=%%\" height=\"4\" style=\"background-color: %%=v(@TextOnPrimaryColour)=%%; font-size: 1px; height: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 32px;\" width=\"32\">\n                    &nbsp;</td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"16\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; height: 16px; letter-spacing: 2px; line-height: 16px; mso-line-height-rule: exactly; padding-left: 12px; text-transform: uppercase; white-space: nowrap;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 2px; line-height: 16px; mso-line-height-rule: exactly; text-transform: uppercase;\">2026 Spotlight </span></td></tr></table><!-- Spacer --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse;\" width=\"100%\">\n             \n              <tr>\n               <td height=\"16\" style=\"font-size: 1px; height: 16px; line-height: 16px; mso-line-height-rule: exactly;\">\n                &nbsp;</td></tr></table><!-- Title --><h2 style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 30px; font-weight: 700; letter-spacing: -0.5px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Artificial Intelligence</h2><!-- Spacer --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse;\" width=\"100%\">\n             \n              <tr>\n               <td height=\"12\" style=\"font-size: 1px; height: 12px; line-height: 12px; mso-line-height-rule: exactly;\">\n                &nbsp;</td></tr></table><!-- Copy --><p style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n             Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.</p><!-- CTA Spacer --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse;\" width=\"100%\">\n             \n              <tr>\n               <td height=\"24\" style=\"font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;\">\n                &nbsp;</td></tr></table><!-- Button --><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn-white\" role=\"presentation\" style=\"background-color: #ffffff; border: 0; border-collapse: separate; border-radius: 50px; border-spacing: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 28px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; display: inline-block; text-decoration: none;\" target=\"_blank\">Explore programme</a></td></tr></table></td></tr></table></td></tr><tr>\n       <td height=\"24\" style=\"font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;\">\n        &nbsp;</td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-spotlight -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Eyebrow label",
+          "type": "text",
+          "defaultValue": "2026 Spotlight",
+          "originalValue": "2026 Spotlight",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "",
+          "targets": [
+            {
+              "start": 3305,
+              "end": 3320,
+              "nodeId": "n19",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Artificial Intelligence",
+          "originalValue": "Artificial Intelligence",
+          "enabled": true,
+          "required": true,
+          "maxLength": 60,
+          "help": "",
+          "targets": [
+            {
+              "start": 3942,
+              "end": 3979,
+              "nodeId": "n23",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field3",
+          "label": "Body copy",
+          "type": "text",
+          "defaultValue": "Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.",
+          "originalValue": "Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 300,
+          "help": "",
+          "targets": [
+            {
+              "start": 4604,
+              "end": 4741,
+              "nodeId": "n27",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field4",
+          "label": "Button link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "href",
+              "start": 5862,
+              "end": 5887,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n34",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field5",
+          "label": "Button text",
+          "type": "text",
+          "defaultValue": "Explore programme",
+          "originalValue": "Explore programme",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "",
+          "targets": [
+            {
+              "start": 5991,
+              "end": 6008,
+              "nodeId": "n34",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "b3f9c6d2-8e47-4a1d-9c6e-2b5f8a3d7c19",
+      "name": "Story 1 Col",
+      "slug": "story-1col",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
+      "draftSource": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Story link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the image and the button both link to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 572,
+              "end": 597,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n7",
+              "kind": "attribute"
+            },
+            {
+              "name": "href",
+              "start": 2082,
+              "end": 2107,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n15",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field2",
+          "label": "Story image",
+          "type": "image",
+          "defaultValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+          "originalValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "src",
+              "start": 712,
+              "end": 778,
+              "value": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field3",
+          "label": "Story image alt text",
+          "type": "text",
+          "defaultValue": "Congress image description",
+          "originalValue": "Congress image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 665,
+              "end": 691,
+              "value": "Congress image description",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field4",
+          "label": "Body copy",
+          "type": "text",
+          "defaultValue": "Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.",
+          "originalValue": "Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.",
+          "enabled": true,
+          "required": true,
+          "maxLength": 300,
+          "help": "",
+          "targets": [
+            {
+              "start": 1225,
+              "end": 1398,
+              "nodeId": "n11",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field5",
+          "label": "Button text",
+          "type": "text",
+          "defaultValue": "Learn more",
+          "originalValue": "Learn more",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "",
+          "targets": [
+            {
+              "start": 2191,
+              "end": 2201,
+              "nodeId": "n15",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "image"
+    },
+    {
+      "id": "c4a08e73-9f56-4b2a-8d1e-3c7b9f2a6e85",
+      "name": "Story 2 Col",
+      "slug": "story-2col",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         Programme</p><h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3><p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         Short supporting copy for the first congress story or feature.</p> <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         Registration</p><h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3><p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         Short supporting copy for the second congress story or feature.</p> <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+      "draftSource": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         Programme</p><h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3><p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         Short supporting copy for the first congress story or feature.</p> <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         Registration</p><h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3><p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         Short supporting copy for the second congress story or feature.</p> <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Story link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the image and the \"Read more\" link both link to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 586,
+              "end": 611,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n7",
+              "kind": "attribute"
+            },
+            {
+              "name": "href",
+              "start": 1826,
+              "end": 1851,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n12",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field2",
+          "label": "Story image",
+          "type": "image",
+          "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+          "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "src",
+              "start": 726,
+              "end": 786,
+              "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field3",
+          "label": "Story image alt text",
+          "type": "text",
+          "defaultValue": "Congress image description",
+          "originalValue": "Congress image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 679,
+              "end": 705,
+              "value": "Congress image description",
+              "quoted": true,
+              "nodeId": "n8",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field4",
+          "label": "Eyebrow label",
+          "type": "text",
+          "defaultValue": "Programme",
+          "originalValue": "Programme",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "",
+          "targets": [
+            {
+              "start": 1180,
+              "end": 1199,
+              "nodeId": "n9",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field5",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "First congress story headline",
+          "originalValue": "First congress story headline",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "",
+          "targets": [
+            {
+              "start": 1425,
+              "end": 1464,
+              "nodeId": "n10",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field6",
+          "label": "Body copy",
+          "type": "text",
+          "defaultValue": "Short supporting copy for the first congress story or feature.",
+          "originalValue": "Short supporting copy for the first congress story or feature.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 200,
+          "help": "",
+          "targets": [
+            {
+              "start": 1717,
+              "end": 1789,
+              "nodeId": "n11",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field7",
+          "label": "Button text",
+          "type": "text",
+          "defaultValue": "Read more",
+          "originalValue": "Read more",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "",
+          "targets": [
+            {
+              "start": 2126,
+              "end": 2137,
+              "nodeId": "n12",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        },
+        {
+          "id": "field8",
+          "label": "Story link 2",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the image and the \"Read more\" link both link to.",
+          "targets": [
+            {
+              "name": "href",
+              "start": 2337,
+              "end": 2362,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n15",
+              "kind": "attribute"
+            },
+            {
+              "name": "href",
+              "start": 3582,
+              "end": 3607,
+              "value": "https://www.escardio.org/",
+              "quoted": true,
+              "nodeId": "n20",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field9",
+          "label": "Story image 2",
+          "type": "image",
+          "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+          "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "",
+          "targets": [
+            {
+              "name": "src",
+              "start": 2477,
+              "end": 2537,
+              "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+              "quoted": true,
+              "nodeId": "n16",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field10",
+          "label": "Story image alt text 2",
+          "type": "text",
+          "defaultValue": "Congress image description",
+          "originalValue": "Congress image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 150,
+          "help": "",
+          "targets": [
+            {
+              "name": "alt",
+              "start": 2430,
+              "end": 2456,
+              "value": "Congress image description",
+              "quoted": true,
+              "nodeId": "n16",
+              "kind": "attribute"
+            }
+          ]
+        },
+        {
+          "id": "field11",
+          "label": "Eyebrow label 2",
+          "type": "text",
+          "defaultValue": "Registration",
+          "originalValue": "Registration",
+          "enabled": true,
+          "required": false,
+          "maxLength": 40,
+          "help": "",
+          "targets": [
+            {
+              "start": 2931,
+              "end": 2953,
+              "nodeId": "n17",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field12",
+          "label": "Heading 2",
+          "type": "text",
+          "defaultValue": "Second congress story headline",
+          "originalValue": "Second congress story headline",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "",
+          "targets": [
+            {
+              "start": 3179,
+              "end": 3219,
+              "nodeId": "n18",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field13",
+          "label": "Body copy 2",
+          "type": "text",
+          "defaultValue": "Short supporting copy for the second congress story or feature.",
+          "originalValue": "Short supporting copy for the second congress story or feature.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 200,
+          "help": "",
+          "targets": [
+            {
+              "start": 3472,
+              "end": 3545,
+              "nodeId": "n19",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field14",
+          "label": "Button text 2",
+          "type": "text",
+          "defaultValue": "Read more",
+          "originalValue": "Read more",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "",
+          "targets": [
+            {
+              "start": 3882,
+              "end": 3893,
+              "nodeId": "n20",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": false
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
+    },
+    {
+      "id": "d58a1f24-6b93-4e7c-8a2d-9f3c6b1e4d87",
+      "name": "Together List",
+      "slug": "together-list",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-together-list.3-rows --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-together-list\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\" width=\"580\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 10px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 28px 28px 24px;\" valign=\"top\">\n        <!-- Eyebrow --><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" height=\"16\" style=\"background-color: #ffffff; font-size: 0; height: 16px; line-height: 0; mso-line-height-rule: exactly;\" valign=\"middle\" width=\"28\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"4\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 1px; height: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 28px;\" width=\"28\">\n                &nbsp;</td></tr></table></td><td bgcolor=\"#ffffff\" height=\"16\" style=\"background-color: #ffffff; color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; height: 16px; letter-spacing: 1.8px; line-height: 16px; mso-line-height-rule: exactly; padding-left: 10px; text-transform: uppercase;\" valign=\"middle\">\n            <span style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 16px; mso-line-height-rule: exactly; text-transform: uppercase;\">Together we will </span></td></tr></table><h3 class=\"together-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; letter-spacing: -0.2px; line-height: 28px; margin: 14px 0 6px; mso-line-height-rule: exactly;\">\n         Transforming cardiology, together</h3><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"margin-top: 10px;\" width=\"100%\">\n         \n          {% for item in rows %}<tr>\n           <td style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 15px; font-weight: 700; line-height: 22px; padding: 8px 0; mso-line-height-rule: exactly;\" valign=\"top\" width=\"26\">\n            {{ forloop.index }}.</td><td class=\"together-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 400; line-height: 22px; padding: 8px 0 8px 4px; mso-line-height-rule: exactly;\" valign=\"top\">\n            {{ item.text }}</td></tr>{% if not forloop.last %}<tr>\n           <td colspan=\"2\" style=\"border-top: 1px solid #f0f0f0; font-size: 1px; line-height: 1px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr>{% endif %}{% endfor %}</table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-together-list.3-rows -->",
+      "draftSource": "<!-- START .esc-together-list.3-rows --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-together-list\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\" width=\"580\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 10px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 28px 28px 24px;\" valign=\"top\">\n        <!-- Eyebrow --><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" height=\"16\" style=\"background-color: #ffffff; font-size: 0; height: 16px; line-height: 0; mso-line-height-rule: exactly;\" valign=\"middle\" width=\"28\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"4\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 1px; height: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 28px;\" width=\"28\">\n                &nbsp;</td></tr></table></td><td bgcolor=\"#ffffff\" height=\"16\" style=\"background-color: #ffffff; color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; height: 16px; letter-spacing: 1.8px; line-height: 16px; mso-line-height-rule: exactly; padding-left: 10px; text-transform: uppercase;\" valign=\"middle\">\n            <span style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 16px; mso-line-height-rule: exactly; text-transform: uppercase;\">Together we will </span></td></tr></table><h3 class=\"together-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; letter-spacing: -0.2px; line-height: 28px; margin: 14px 0 6px; mso-line-height-rule: exactly;\">\n         Transforming cardiology, together</h3><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"margin-top: 10px;\" width=\"100%\">\n         \n          {% for item in rows %}<tr>\n           <td style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 15px; font-weight: 700; line-height: 22px; padding: 8px 0; mso-line-height-rule: exactly;\" valign=\"top\" width=\"26\">\n            {{ forloop.index }}.</td><td class=\"together-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 400; line-height: 22px; padding: 8px 0 8px 4px; mso-line-height-rule: exactly;\" valign=\"top\">\n            {{ item.text }}</td></tr>{% if not forloop.last %}<tr>\n           <td colspan=\"2\" style=\"border-top: 1px solid #f0f0f0; font-size: 1px; line-height: 1px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr>{% endif %}{% endfor %}</table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-together-list.3-rows -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "label": "Eyebrow label",
+          "type": "text",
+          "defaultValue": "Together we will",
+          "originalValue": "Together we will",
+          "enabled": true,
+          "required": false,
+          "maxLength": 30,
+          "help": "Small label above the heading, e.g. \"Together we will\".",
+          "targets": [
+            {
+              "start": 2297,
+              "end": 2314,
+              "nodeId": "n14",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "field2",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Transforming cardiology, together",
+          "originalValue": "Transforming cardiology, together",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "",
+          "targets": [
+            {
+              "start": 2617,
+              "end": 2660,
+              "nodeId": "n15",
+              "kind": "content"
+            }
+          ],
+          "allowLinks": true
+        },
+        {
+          "id": "control_together_rows",
+          "key": "rows",
+          "label": "Statements",
+          "type": "list",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "Each row is shown with an automatic number (1., 2., 3. ...).",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": [
+            {
+              "text": "Unite every discipline behind one powerful purpose: transforming patient outcomes."
+            },
+            {
+              "text": "Explore new science, practical learning and the latest developments shaping cardiovascular care."
+            },
+            {
+              "text": "Celebrate the human connection that drives discovery, collaboration and clinical progress."
+            }
+          ],
+          "itemFields": [
+            {
+              "id": "text",
+              "key": "text",
+              "label": "Statement text",
+              "type": "text",
+              "defaultValue": "Unite every discipline behind one powerful purpose: transforming patient outcomes.",
+              "originalValue": "Unite every discipline behind one powerful purpose: transforming patient outcomes.",
+              "enabled": true,
+              "required": true,
+              "maxLength": 150,
+              "help": "",
+              "targets": [],
+              "binding": "template"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 6
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "list-ul"
+    }
+  ],
+  "settings": {
+    "name": "Congress",
+    "clientName": "ESC",
+    "clientSlug": "esc",
+    "templateSlug": "congress",
+    "baseUrl": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025",
+    "location": "docs"
+  }
+}
