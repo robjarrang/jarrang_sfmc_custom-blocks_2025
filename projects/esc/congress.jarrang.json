@@ -841,21 +841,20 @@
       "name": "Personal Letter",
       "slug": "personal-letter",
       "release": "1.0.0",
-      "source": "<!-- START .esc-personal-letter --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-personal-letter\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 8px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        %%[ IF NOT EMPTY(@LastName) THEN ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,</p> %%[ ELSE ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear colleague,</p> %%[ ENDIF ]%%</td></tr><tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        <p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.</p><p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.</p><p class=\"letter-signoff dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 4px; mso-line-height-rule: exactly;\">\n         Best regards,</p><p class=\"letter-signature dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n         The %%=v(@BrandShortName)=%% Congress Team</p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-personal-letter -->",
-      "draftSource": "<!-- START .esc-personal-letter --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-personal-letter\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 8px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        %%[ IF NOT EMPTY(@LastName) THEN ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,</p> %%[ ELSE ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear colleague,</p> %%[ ENDIF ]%%</td></tr><tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        <p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.</p><p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.</p><p class=\"letter-signoff dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 4px; mso-line-height-rule: exactly;\">\n         Best regards,</p><p class=\"letter-signature dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n         The %%=v(@BrandShortName)=%% Congress Team</p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-personal-letter -->",
+      "source": "<!-- START .esc-personal-letter --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-personal-letter\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 8px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        %%[ IF NOT EMPTY(@LastName) THEN ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,</p> %%[ ELSE ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear colleague,</p> %%[ ENDIF ]%%</td></tr><tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        <p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,</p><p class=\"letter-signature dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n         The %%=v(@BrandShortName)=%% Congress Team</p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-personal-letter -->",
+      "draftSource": "<!-- START .esc-personal-letter --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-personal-letter\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 28px 0 8px; width: 580px;\" valign=\"top\" width=\"580\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        %%[ IF NOT EMPTY(@LastName) THEN ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,</p> %%[ ELSE ]%%<p class=\"letter-greeting dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Dear colleague,</p> %%[ ENDIF ]%%</td></tr><tr>\n       <td style=\"width: 100%;\" width=\"100%\">\n        <p class=\"letter-body dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 24px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,</p><p class=\"letter-signature dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n         The %%=v(@BrandShortName)=%% Congress Team</p></td></tr></table></td><td class=\"side\" style=\"width: 20px;\" width=\"20\">\n    &nbsp;</td></tr></table><!-- END .esc-personal-letter -->",
       "templateMode": false,
       "contextCss": "",
       "width": 620,
       "fields": [
         {
           "id": "field1",
-          "label": "Fallback greeting",
-          "type": "text",
+          "label": "Greeting",
+          "type": "select",
           "defaultValue": "Dear colleague,",
           "originalValue": "Dear colleague,",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
           "help": "Shown only when the subscriber's last name is unknown. The personalised greeting above it (\"Dear [Salutation] [LastName],\") is generated automatically by AMPscript and isn't editable here.",
           "targets": [
             {
@@ -865,64 +864,48 @@
               "kind": "content"
             }
           ],
-          "allowLinks": true
+          "allowLinks": true,
+          "options": [
+            {
+              "label": "Dear colleague,",
+              "value": "Dear colleague,"
+            },
+            {
+              "label": "Dear friend,",
+              "value": "Dear friend,"
+            },
+            {
+              "label": "Dear delegate,",
+              "value": "Dear delegate,"
+            },
+            {
+              "label": "Hello,",
+              "value": "Hello,"
+            },
+            {
+              "label": "Greetings,",
+              "value": "Greetings,"
+            }
+          ],
+          "maxLength": 0
         },
         {
           "id": "field2",
-          "label": "Body paragraph 1",
-          "type": "text",
-          "defaultValue": "Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.",
-          "originalValue": "Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.",
+          "label": "Body copy",
+          "type": "richtext",
+          "defaultValue": "\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,",
+          "originalValue": "\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,",
           "enabled": true,
           "required": true,
-          "maxLength": 300,
-          "help": "",
+          "maxLength": 500,
+          "help": "Use the formatting toolbar to add a line break between paragraphs.",
           "targets": [
             {
               "start": 1648,
-              "end": 1851,
+              "end": 2025,
               "nodeId": "n11",
-              "kind": "content"
-            }
-          ],
-          "allowLinks": true
-        },
-        {
-          "id": "field3",
-          "label": "Body paragraph 2",
-          "type": "text",
-          "defaultValue": "Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.",
-          "originalValue": "Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.",
-          "enabled": true,
-          "required": false,
-          "maxLength": 300,
-          "help": "",
-          "targets": [
-            {
-              "start": 2132,
-              "end": 2287,
-              "nodeId": "n12",
-              "kind": "content"
-            }
-          ],
-          "allowLinks": true
-        },
-        {
-          "id": "field4",
-          "label": "Sign-off",
-          "type": "text",
-          "defaultValue": "Best regards,",
-          "originalValue": "Best regards,",
-          "enabled": true,
-          "required": false,
-          "maxLength": 40,
-          "help": "",
-          "targets": [
-            {
-              "start": 2570,
-              "end": 2593,
-              "nodeId": "n13",
-              "kind": "content"
+              "kind": "content",
+              "originalValue": "\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,"
             }
           ],
           "allowLinks": true
