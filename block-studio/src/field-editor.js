@@ -1114,10 +1114,10 @@
           parent,
           'Toggle appearance',
           [
-            ['checkbox', 'Checkbox'],
             ['switch', 'Switch'],
+            ['checkbox', 'Checkbox'],
           ],
-          field.style || 'checkbox',
+          field.style || 'switch',
           (v) => (field.style = v),
         );
     }

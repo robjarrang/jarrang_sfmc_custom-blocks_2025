@@ -107,7 +107,7 @@
         input = document.createElement('input');
         input.type = 'checkbox';
         input.checked = values[field.id] === true || values[field.id] === 'shown';
-        input.className = field.style === 'switch' ? 'toggle-switch' : '';
+        input.className = field.style === 'checkbox' ? '' : 'toggle-switch';
         input.onchange = () => changed(input.checked ? 'shown' : 'hidden');
       } else if (field.type === 'select') {
         input = document.createElement('select');

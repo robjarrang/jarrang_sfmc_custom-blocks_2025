@@ -139,7 +139,7 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the primary button.",
-          "style": "checkbox",
+          "style": "switch",
           "targets": [
             {
               "start": 2651,
@@ -201,7 +201,7 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the secondary (outline) button.",
-          "style": "checkbox",
+          "style": "switch",
           "targets": [
             {
               "start": 3727,
@@ -675,7 +675,7 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the small label above the headline.",
-          "style": "checkbox",
+          "style": "switch",
           "targets": [
             {
               "start": 1060,
@@ -730,7 +730,7 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the summary copy.",
-          "style": "checkbox",
+          "style": "switch",
           "targets": [
             {
               "start": 1621,
@@ -765,7 +765,7 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the call-to-action link.",
-          "style": "checkbox",
+          "style": "switch",
           "targets": [
             {
               "start": 1913,
@@ -913,7 +913,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the category label above the headline.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field6",
@@ -955,7 +956,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the summary copy.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field9",
@@ -983,7 +985,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the \"Read more\" link.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field11",
@@ -1067,7 +1070,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the category label above the headline.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field17",
@@ -1109,7 +1113,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the summary copy.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field20",
@@ -1137,7 +1142,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the \"Read more\" link.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field22",
@@ -1277,7 +1283,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the summary copy.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field7",
@@ -1305,7 +1312,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the \"Read more\" link.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field9",
@@ -1403,7 +1411,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the summary copy.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field16",
@@ -1431,7 +1440,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the \"Read more\" link.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field18",
@@ -1529,7 +1539,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the summary copy.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field25",
@@ -1557,7 +1568,8 @@
           "required": false,
           "maxLength": 0,
           "help": "Turn off to hide the \"Read more\" link.",
-          "targets": []
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field27",
@@ -2208,7 +2220,7 @@
           "required": false,
           "maxLength": 0,
           "help": "Hide to remove the \"Join today\" button and its spacing entirely.",
-          "style": "checkbox",
+          "style": "switch",
           "targets": [
             {
               "start": 5289,

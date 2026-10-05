@@ -399,7 +399,7 @@
         required: false,
         maxLength: 0,
         help: '',
-        style: 'checkbox',
+        style: 'switch',
         targets: [{ start, end, nodeId: section.id, kind: 'element' }],
       };
     }
@@ -873,6 +873,7 @@
       help: '',
       maxLength: 0,
       targets: [],
+      ...(type === 'toggle' ? { style: 'switch' } : {}),
       defaultValue:
         type === 'toggle'
           ? 'shown'
