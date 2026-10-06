@@ -36,6 +36,7 @@ This full template export refreshes its catalogue. Removed modules disappear fro
 - Membership Callout: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/membership-callout/
 - Quote: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/quote/
 - Section Header: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/section-header/
+- Text Block: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/text-block/
 - Signature: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/signature/
 - Social Block: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/social-block/
 - Speaker Grid: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/speaker-grid/

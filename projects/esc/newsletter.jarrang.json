@@ -3990,6 +3990,68 @@
       "acknowledged": true,
       "iconColour": "#080043",
       "iconSymbol": "grid"
+    },
+    {
+      "id": "f2860b8f-e37d-4a92-9894-c1649afc09ff",
+      "name": "Text Block",
+      "slug": "text-block",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-text-block --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-text-block\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        {% if heading %}<h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0 0 14px;\">\n         {{ heading }}</h2>{% endif %}{% if paragraph_1 %}<p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 16px;\">\n         {{ paragraph_1 | richtext }}</p>{% endif %}{% if paragraph_2 %}<p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0;\">\n         {{ paragraph_2 | richtext }}</p>{% endif %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-text-block -->",
+      "draftSource": "<!-- START .esc-text-block --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-text-block\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        {% if heading %}<h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 22px; font-weight: 700; line-height: 28px; margin: 0 0 14px;\">\n         {{ heading }}</h2>{% endif %}{% if paragraph_1 %}<p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 16px;\">\n         {{ paragraph_1 | richtext }}</p>{% endif %}{% if paragraph_2 %}<p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0;\">\n         {{ paragraph_2 | richtext }}</p>{% endif %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-text-block -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "key": "heading",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Text block heading",
+          "originalValue": "Text block heading",
+          "enabled": true,
+          "required": false,
+          "maxLength": 80,
+          "help": "Leave blank to omit the heading.",
+          "targets": [],
+          "binding": "template"
+        },
+        {
+          "id": "field2",
+          "key": "paragraph_1",
+          "label": "Paragraph 1",
+          "type": "richtext",
+          "defaultValue": "Use this module for simple editorial content, introductory copy, summaries or explanatory paragraphs.",
+          "originalValue": "Use this module for simple editorial content, introductory copy, summaries or explanatory paragraphs.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Leave blank to omit this paragraph.",
+          "targets": [],
+          "allowLinks": true,
+          "binding": "template"
+        },
+        {
+          "id": "field3",
+          "key": "paragraph_2",
+          "label": "Paragraph 2",
+          "type": "richtext",
+          "defaultValue": "Add a second paragraph here, or remove this paragraph when it is not needed.",
+          "originalValue": "Add a second paragraph here, or remove this paragraph when it is not needed.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Leave blank to omit this paragraph.",
+          "targets": [],
+          "allowLinks": true,
+          "binding": "template"
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
     }
   ],
   "settings": {
