@@ -19,6 +19,8 @@ This full template export refreshes its catalogue. Removed modules disappear fro
 
 ## Module endpoints
 
+- Decorative Header: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/decorative-header/
+- Events: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/events/
 - Hero Story: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/hero-story/
 - Checklist: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/checklist/
 - Navigation: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/navigation/
