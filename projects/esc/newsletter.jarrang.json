@@ -3832,6 +3832,164 @@
       "acknowledged": true,
       "iconColour": "#080043",
       "iconSymbol": "grid"
+    },
+    {
+      "id": "7537da00-31b6-415d-8b48-15938999de0c",
+      "name": "Editorials",
+      "slug": "editorials",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 20px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 26px; margin: 0 0 20px;\">\n         {{ heading }}</h3></td></tr>{% for item in editorials %}<tr>\n       <td style=\"padding-bottom: {% if forloop.last %}0{% else %}22px{% endif %}; width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"{{ item.image_alt }}\" class=\"fluid\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"> </a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 15px; font-weight: 700; line-height: 21px; margin: 0 0 4px;\">\n             {{ item.title }}</p>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 19px; margin: 0 0 4px;\">\n             {{ item.author }}</p>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 18px; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 15px; font-weight: 700; line-height: 21px; margin: 0 0 4px;\">\n         {{ item.title }}</p>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 19px; margin: 0 0 4px;\">\n         {{ item.author }}</p>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 18px; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}</td></tr>{% endfor %}</table></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
+      "draftSource": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 20px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 26px; margin: 0 0 20px;\">\n         {{ heading }}</h3></td></tr>{% for item in editorials %}<tr>\n       <td style=\"padding-bottom: {% if forloop.last %}0{% else %}22px{% endif %}; width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"{{ item.image_alt }}\" class=\"fluid\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"> </a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 15px; font-weight: 700; line-height: 21px; margin: 0 0 4px;\">\n             {{ item.title }}</p>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 19px; margin: 0 0 4px;\">\n             {{ item.author }}</p>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 18px; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 15px; font-weight: 700; line-height: 21px; margin: 0 0 4px;\">\n         {{ item.title }}</p>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 19px; margin: 0 0 4px;\">\n         {{ item.author }}</p>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 18px; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}</td></tr>{% endfor %}</table></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "field1",
+          "key": "heading",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "Editorials",
+          "originalValue": "Editorials",
+          "enabled": true,
+          "required": true,
+          "maxLength": 60,
+          "help": "",
+          "targets": [],
+          "binding": "template"
+        },
+        {
+          "id": "control_edtrls1",
+          "key": "editorials",
+          "label": "Editorials",
+          "type": "list",
+          "defaultValue": [
+            {
+              "title": "Hypertensive remodelling: when bigger body means bigger problems",
+              "author": "Author name",
+              "link": "https://academic.oup.com/cardiovascres",
+              "link_text": "doi.org/10.1093/cvr/example",
+              "image": "https://placehold.co/150x100/999999/ffffff/png?text=Editorial",
+              "image_alt": "Editorial image"
+            },
+            {
+              "title": "Towards defining endotype-specific mechanisms of sub-clinical atherosclerosis",
+              "author": "Author name",
+              "link": "https://academic.oup.com/cardiovascres",
+              "link_text": "doi.org/10.1093/cvr/example",
+              "image": "",
+              "image_alt": ""
+            },
+            {
+              "title": "New insights into foam cells in atherosclerosis",
+              "author": "Author name",
+              "link": "https://academic.oup.com/cardiovascres",
+              "link_text": "doi.org/10.1093/cvr/example",
+              "image": "",
+              "image_alt": ""
+            }
+          ],
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Each editorial. Add an image to show it with a thumbnail, or leave it blank for a plain text entry.",
+          "targets": [],
+          "binding": "template",
+          "itemFields": [
+            {
+              "id": "title",
+              "key": "title",
+              "label": "Title",
+              "type": "text",
+              "defaultValue": "Editorial title goes here",
+              "originalValue": "Editorial title goes here",
+              "enabled": true,
+              "required": true,
+              "maxLength": 150,
+              "help": "",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "author",
+              "key": "author",
+              "label": "Author",
+              "type": "text",
+              "defaultValue": "Author name",
+              "originalValue": "Author name",
+              "enabled": true,
+              "required": false,
+              "maxLength": 100,
+              "help": "Leave blank to omit the author line.",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "link",
+              "key": "link",
+              "label": "Link",
+              "type": "url",
+              "defaultValue": "https://academic.oup.com/cardiovascres",
+              "originalValue": "https://academic.oup.com/cardiovascres",
+              "enabled": true,
+              "required": true,
+              "maxLength": 0,
+              "help": "Where the title/image/DOI link go.",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "link_text",
+              "key": "link_text",
+              "label": "Link text (DOI)",
+              "type": "text",
+              "defaultValue": "doi.org/10.1093/cvr/example",
+              "originalValue": "doi.org/10.1093/cvr/example",
+              "enabled": true,
+              "required": true,
+              "maxLength": 60,
+              "help": "",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "image",
+              "key": "image",
+              "label": "Image (optional)",
+              "type": "image",
+              "defaultValue": "",
+              "originalValue": "",
+              "enabled": true,
+              "required": false,
+              "maxLength": 0,
+              "help": "Optional. If provided, this editorial displays with a thumbnail image; if left blank, it shows as a plain text entry.",
+              "targets": [],
+              "binding": "template"
+            },
+            {
+              "id": "image_alt",
+              "key": "image_alt",
+              "label": "Image alt text",
+              "type": "text",
+              "defaultValue": "",
+              "originalValue": "",
+              "enabled": true,
+              "required": false,
+              "maxLength": 150,
+              "help": "Describe the image for screen readers. Only used if an image is provided.",
+              "targets": [],
+              "binding": "template"
+            }
+          ],
+          "minItems": 1,
+          "maxItems": 6
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "grid"
     }
   ],
   "settings": {
