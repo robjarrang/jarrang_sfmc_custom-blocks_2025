@@ -12,13 +12,21 @@
     timer,
     busy = false,
     dirty = false,
-    ready = false;
+    ready = false,
+    mounted = false;
   let controls = new Map();
   let blockId =
     'bs_' + (crypto.randomUUID?.() || Math.random().toString(36).slice(2)).replace(/-/g, '');
   const say = (message, error = false) => {
     status.textContent = message;
     status.className = error ? 'status error' : 'status';
+  };
+  // Blocking errors leave nothing editable on screen.
+  const fail = (message) => {
+    form.replaceChildren();
+    form.inert = true;
+    mounted = false;
+    say(message, true);
   };
   // Keep unchanged nodes (especially images) alive while test values change; mirrors the studio's own preview.
   function reconcile(current, next) {
@@ -78,7 +86,7 @@
       return;
     }
     frame.srcdoc =
-      '<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src https: http: data:; style-src \'unsafe-inline\'; script-src \'nonce-bs-local-preview\';"><style>body{margin:0;padding:20px;background:#f1f3f5}' +
+      "<!doctype html><html><head><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; img-src https: http: data:; style-src 'unsafe-inline'; script-src 'nonce-bs-local-preview';\"><style>body{margin:0;padding:20px;background:#f1f3f5}" +
       (definition.contextCss || '') +
       '</style></head><body>' +
       wrapped +
@@ -194,12 +202,28 @@
       },
       { onBlur: save },
     );
+    mounted = true;
+  }
+  function activate() {
+    form.inert = false;
     form.disabled = false;
     ready = true;
     if (!sdk) {
       dirty = true;
       save();
     } else say('Ready to edit');
+  }
+  // Draw the controls from the embedded definition so they are visible, but inert, while SFMC responds.
+  function showDefaults() {
+    try {
+      values = Object.fromEntries(
+        fields.map((f) => [f.id, JSON.parse(JSON.stringify(f.defaultValue))]),
+      );
+      form.inert = true;
+      mount();
+    } catch {
+      mounted = false;
+    }
   }
   function load(data) {
     metadata = data || {};
@@ -210,14 +234,14 @@
         metadata.studio.moduleVersion !== definition.release ||
         metadata.studio.schemaVersion !== 1)
     ) {
-      say(
+      fail(
         'This content belongs to another module version. Restore its original exported folder to edit it safely.',
-        true,
       );
       return;
     }
+    let next;
     try {
-      values = Object.fromEntries(
+      next = Object.fromEntries(
         fields.map((f) => {
           const saved = metadata.studio?.values;
           const value = saved && Object.hasOwn(saved, f.id) ? saved[f.id] : f.defaultValue;
@@ -227,39 +251,42 @@
         }),
       );
     } catch (error) {
-      say(
+      fail(
         'The saved field data is invalid. Restore valid block data before editing. ' +
           error.message,
-        true,
       );
       return;
+    }
+    // Controls already show the defaults; only rebuild them when SFMC holds saved values.
+    if (metadata.studio?.values || !mounted) {
+      values = next;
+      mount();
     }
     if (sdk && !metadata.studio) {
       let waiting = true;
       const timeout = setTimeout(() => {
         waiting = false;
-        say('SFMC did not return the existing content. Reopen the block before editing.', true);
+        fail('SFMC did not return the existing content. Reopen the block before editing.');
       }, 10000);
       sdk.getContent((content) => {
         if (!waiting) return;
         waiting = false;
         clearTimeout(timeout);
         if (typeof content !== 'string') {
-          say('SFMC returned invalid content. Reopen the block before editing.', true);
+          fail('SFMC returned invalid content. Reopen the block before editing.');
           return;
         }
         if (content.trim()) {
-          say(
+          fail(
             'Existing HTML has no matching Block Studio data. It has been preserved. Use a new block for this module.',
-            true,
           );
           return;
         }
-        mount();
+        activate();
         dirty = true;
         save();
       });
-    } else mount();
+    } else activate();
   }
   function closeEditor() {
     // The SDK posts blockReadyToClose after this hook. Post the latest state
@@ -296,12 +323,12 @@
     document.getElementById('standalone-area').append(frame);
     load({});
   } else {
+    showDefaults();
     say('Connecting to Content Builder…');
     const timeout = setTimeout(
       () =>
-        say(
+        fail(
           'Unable to connect to Content Builder. Check the installed block endpoint and reopen it.',
-          true,
         ),
       10000,
     );
@@ -313,7 +340,7 @@
       });
     } catch (e) {
       clearTimeout(timeout);
-      say('The Content Builder SDK could not start. ' + e.message, true);
+      fail('The Content Builder SDK could not start. ' + e.message);
     }
   }
   document.addEventListener('visibilitychange', () => {

@@ -3,7 +3,7 @@ const test = require('node:test'),
   fs = require('node:fs'),
   vm = require('node:vm');
 const C = require('../src/core.js');
-function host(saved = {}) {
+function host(saved = {}, { deferData = false } = {}) {
   const source = '{% for item in items %}<p>{{ item.text }}</p>{% endfor %}';
   const list = C.templateField({ fields: [] }, 'list', 'Items');
   list.id = 'items';
@@ -17,7 +17,7 @@ function host(saved = {}) {
     templateMode: true,
     fields: [list],
   };
-  const form = { disabled: true },
+  const form = { disabled: true, inert: false, replaceChildren() {} },
     status = {},
     nodes = {
       'block-definition': { textContent: JSON.stringify(definition) },
@@ -26,11 +26,16 @@ function host(saved = {}) {
       'block-name': {},
     };
   const calls = [],
-    pending = [];
-  let options, mounted, change;
+    pending = [],
+    dataCallbacks = [];
+  let options,
+    mounted,
+    change,
+    mountCount = 0;
   const sdk = {
     getData(cb) {
-      cb(saved);
+      if (deferData) dataCallbacks.push(cb);
+      else cb(saved);
     },
     getContent(cb) {
       pending.push(cb);
@@ -54,6 +59,7 @@ function host(saved = {}) {
     BlockControls: {
       mount(container, fields, values, onChange) {
         mounted = values;
+        mountCount++;
         change = onChange;
         return new Map(fields.map((f) => [f.id, { input: { setAttribute() {} }, error: {} }]));
       },
@@ -83,6 +89,12 @@ function host(saved = {}) {
     pending,
     get mounted() {
       return mounted;
+    },
+    get mountCount() {
+      return mountCount;
+    },
+    resolveData(data = saved) {
+      dataCallbacks.forEach((cb) => cb(data));
     },
     change(value) {
       change(list, value);
@@ -118,9 +130,10 @@ const metadata = () => ({
 test('existing HTML is checked before editing is enabled', () => {
   const h = host();
   assert.equal(h.form.disabled, true);
-  assert.equal(h.mounted, undefined);
+  assert.equal(h.form.inert, true);
   h.pending[0]('<p>Existing content</p>');
   assert.equal(h.form.disabled, true);
+  assert.equal(h.form.inert, true);
   assert.equal(h.calls.length, 0);
 });
 test('new empty blocks initialise only after the content check', () => {
@@ -129,6 +142,40 @@ test('new empty blocks initialise only after the content check', () => {
   h.pending[0]('');
   assert.equal(h.form.disabled, false);
   assert.equal(h.calls[0].value, '<p>Initial</p>');
+});
+test('controls are drawn from defaults and stay inert until SFMC responds', () => {
+  const h = host(metadata(), { deferData: true });
+  assert.deepEqual(JSON.parse(JSON.stringify(h.mounted)), { items: [{ text: 'Initial' }] });
+  assert.equal(h.form.inert, true);
+  assert.equal(h.form.disabled, true);
+  assert.equal(h.status.textContent, 'Connecting to Content Builder…');
+  h.resolveData({
+    studio: { ...metadata().studio, values: { items: [{ text: 'Saved' }] } },
+  });
+  assert.equal(h.mountCount, 2);
+  assert.deepEqual(JSON.parse(JSON.stringify(h.mounted)), { items: [{ text: 'Saved' }] });
+  assert.equal(h.form.inert, false);
+  assert.equal(h.form.disabled, false);
+  assert.equal(h.status.textContent, 'Ready to edit');
+});
+test('new blocks keep the already drawn controls once SFMC confirms they are empty', () => {
+  const h = host({}, { deferData: true });
+  h.resolveData({});
+  assert.equal(h.mountCount, 1);
+  assert.equal(h.form.inert, true);
+  h.pending[0]('');
+  assert.equal(h.mountCount, 1);
+  assert.equal(h.form.inert, false);
+  assert.equal(h.calls[0].value, '<p>Initial</p>');
+});
+test('connection timeout removes the placeholder controls', () => {
+  let cleared = 0;
+  const h = host({}, { deferData: true });
+  h.form.replaceChildren = () => cleared++;
+  h.expire();
+  assert.equal(cleared, 1);
+  assert.equal(h.form.inert, true);
+  assert.match(h.status.textContent, /Unable to connect/);
 });
 test('pending save metadata is an immutable snapshot of its HTML', () => {
   const h = host(metadata());
@@ -160,7 +207,7 @@ test('malformed saved repeaters remain locked with a recovery message', () => {
   const h = host(data);
   assert.equal(h.form.disabled, true);
   assert.match(h.status.textContent, /saved|invalid|restore/i);
-  assert.equal(h.mounted, undefined);
+  assert.equal(h.form.inert, true);
 });
 
 test('a delayed content reply after timeout cannot unlock or overwrite the block', () => {
@@ -168,7 +215,7 @@ test('a delayed content reply after timeout cannot unlock or overwrite the block
   h.expire();
   h.pending[0]('');
   assert.equal(h.form.disabled, true);
-  assert.equal(h.mounted, undefined);
+  assert.equal(h.form.inert, true);
   assert.equal(h.calls.length, 0);
   assert.match(h.status.textContent, /Reopen/);
 });

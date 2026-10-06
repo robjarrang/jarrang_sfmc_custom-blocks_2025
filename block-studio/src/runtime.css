@@ -35,6 +35,9 @@ fieldset {
   margin: 0;
   min-width: 0;
 }
+fieldset[inert] {
+  opacity: 0.55;
+}
 .field {
   margin-bottom: 22px;
 }

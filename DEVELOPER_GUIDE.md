@@ -20,7 +20,8 @@ block-studio/
   VALIDATION.md             Completed validation and remaining live-test work
   src/
     app.js                  Studio interface, project workflow and previews
-    core.js                 Parser, source mappings, rendering and validation
+    runtime-core.js         Lean parser, rendering and validation shipped with every exported block
+    core.js                 Authoring engine: source mappings and field inference (extends runtime-core.js)
     workspace.js            Clients/templates workspace, repository settings and project persistence
     preview.js              Configure/test preview bridge shared across steps
     quick-edit.js            Quick HTML fix workflow for existing modules

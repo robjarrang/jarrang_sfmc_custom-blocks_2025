@@ -172,7 +172,7 @@ rows.
    - `definition` written into that script tag is `{ id, name, slug, release, source, templateMode, contextCss, fields,
      editorTheme }` (omit `editorTheme` unless the project set one).
    - Reuse the **existing** `docs/shared-assets/runtime-<hash>/` folder unchanged if you haven't modified
-     `block-studio/src/{core,logic,rich-editor,controls,runtime}.js` — check its current name under `docs/shared-assets/`.
+     `block-studio/src/{runtime-core,logic,rich-editor,controls,runtime}.js` or `runtime*.css`/`controls.css` — check its current name under `docs/shared-assets/`.
      Only run `npm run build` and add a *new* hash folder (never delete the old one) if that source actually changed.
    - Write the template catalogue `docs/clients/<clientSlug>/<templateSlug>/index.html` (list of modules with links and
      endpoint URLs) — copy the format from
