@@ -367,8 +367,9 @@
       help.className = 'help';
       help.textContent = 'List text keeps the paragraph styling. Use Text colour to change it.';
       panel.append(label, choice, help);
-      buttons('Apply style', () => {
-        if (!restore() || !input.contains(list)) {
+      // Picking a style applies it straight away, then hands the caret back to the text.
+      choice.onchange = () => {
+        if (!input.contains(list)) {
           message.textContent = 'Place the cursor inside the list again.';
           closePanel();
           return;
@@ -376,8 +377,9 @@
         if (choice.value === options[0][0]) list.removeAttribute('type');
         else list.setAttribute('type', choice.value);
         closePanel();
+        restore();
         commit();
-      });
+      };
       choice.focus();
     });
     const linkButton = tool('Add or edit link', () => {
