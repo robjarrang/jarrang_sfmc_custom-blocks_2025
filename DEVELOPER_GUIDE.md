@@ -29,7 +29,7 @@ block-studio/
     code-editor.js / code-editor.css   Shared HTML code view (tag matching, folding, search)
     block-icons.js           Generated block icon/dragIcon assets
     exporter.js              ZIP export, icons and publishing guide generation
-    export-assets.js         Generated export dependency bundle
+    export-assets.js         Generated export dependencies (runtime.bundle.js, runtime.rich.bundle.js, runtime.bundle.css, catalogue brand.css, SDK licence)
     runtime.js                Generated client editor runtime
     runtime.css               Generated client editor styles
     studio.css                 Studio interface styles
@@ -89,6 +89,10 @@ block-studio.jarrang.json   Saved project data
 ```
 
 There is no npm install or build command for exported modules. Keep the exported shared runtime folder beside the module folders. Do not replace or remove older shared runtime versions while existing SFMC blocks may still depend on them.
+
+### Caching and hosting
+
+GitHub Pages serves HTTP/2 with gzip through a CDN, but its headers cannot be changed from this repository: every file gets `Cache-Control: max-age=600` plus an `ETag`, so a file is revalidated (a `304`) after ten minutes. The only levers available here are the ones already in place: the content-hashed `shared-assets/runtime-<hash>/` folder (every module in a template shares the same URLs, so the browser reuses them between blocks) and a minimal request count (one stylesheet and one script per module page, around 17-21 KB gzipped). Do not add per-module copies of the runtime. Changing cache headers needs a different host.
 
 ## What Block Studio Preserves
 

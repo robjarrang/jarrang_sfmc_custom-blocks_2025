@@ -89,6 +89,35 @@ test('full template export isolates paths and all editor dependencies resolve wi
     (await zip.file('projects/hertz/commercial-PUBLISHING.md').async('string')).includes('\n\n'),
   );
 });
+test('module pages load one bundled stylesheet and one bundled script, and nothing authoring-only', async () => {
+  const zip = await build(project(), false),
+    html = await zip.file('docs/clients/hertz/commercial/modules/hero/index.html').async('string'),
+    refs = [...html.matchAll(/(?:src|href)="(\.\.[^"]+)"/g)].map((m) => path.posix.basename(m[1]));
+  assert.deepEqual(refs.sort(), ['runtime.bundle.css', 'runtime.bundle.js']);
+  const assets = Object.keys(zip.files).filter((n) => n.includes('/shared-assets/'));
+  assert.ok(assets.every((n) => !/\/(core|logic|controls|runtime|rich-editor)\.js$/.test(n)));
+  const bundle = await zip
+    .file(assets.find((n) => n.endsWith('runtime.bundle.js')))
+    .async('string');
+  for (const name of ['BlockSDK', 'BlockLogic', 'BlockRuntimeCore', 'BlockControls'])
+    assert.ok(bundle.includes(name), name);
+  assert.ok(!bundle.includes('repeatSelection'));
+  assert.ok(!bundle.includes('BlockRichText ='));
+  assert.doesNotThrow(() => new vm.Script(bundle));
+});
+test('only modules with a rich text field load the rich text editor, including inside lists', async () => {
+  const rich = { id: 'f', type: 'richtext' },
+    list = { id: 'l', type: 'list', itemFields: [{ key: 'k', type: 'richtext' }] },
+    page = (fields) => E.moduleHtml({ ...moduleData('m'), fields });
+  assert.match(page([rich]), /runtime\.rich\.bundle\.js/);
+  assert.match(page([list]), /runtime\.rich\.bundle\.js/);
+  assert.match(page([{ id: 't', type: 'text' }]), /runtime\.bundle\.js/);
+  const zip = await build(project(), false),
+    names = Object.keys(zip.files),
+    code = await zip.file(names.find((n) => n.endsWith('runtime.rich.bundle.js'))).async('string');
+  assert.ok(code.includes('BlockRichText =') && code.includes('BlockControls'));
+  assert.doesNotThrow(() => new vm.Script(code));
+});
 test('single module update preserves catalogue and retains full editable project', async () => {
   const p = project(),
     zip = await build(p, false);
