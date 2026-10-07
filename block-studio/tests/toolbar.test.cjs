@@ -36,22 +36,22 @@ function mount(toolbar, allowLinks = true) {
     buttons: parent.children[0].children.flatMap((g) => g.children),
   };
 }
-test('legacy fields retain all nine tools', () => assert.equal(mount().buttons.length, 9));
+test('legacy fields retain all twelve tools', () => assert.equal(mount().buttons.length, 12));
 test('each toolbar option can be hidden independently', () => {
   for (const key of mount().keys) {
     const view = mount({ [key]: false });
-    assert.equal(view.buttons.length, 8);
+    assert.equal(view.buttons.length, 11);
   }
 });
-test('link controls and bold can be disabled while retaining the other six tools', () => {
+test('link controls and bold can be disabled while retaining the other nine tools', () => {
   const view = mount({ bold: false, link: false, unlink: false });
-  assert.equal(view.buttons.length, 6);
+  assert.equal(view.buttons.length, 9);
   assert(
     !view.buttons.some((b) =>
       ['Bold', 'Add or edit link', 'Remove link'].includes(b.attrs['aria-label']),
     ),
   );
-  assert.equal(view.toolbar.children.length, 3);
+  assert.equal(view.toolbar.children.length, 4);
 });
 test('all controls off hides the empty toolbar without removing editable content', () => {
   const view = mount(Object.fromEntries(mount().keys.map((k) => [k, false])));
@@ -86,5 +86,18 @@ test('disabled bold blocks keyboard and beforeinput routes; enabled italic remai
 });
 test('a surrounding link overrides client toolbar settings', () => {
   const view = mount({ link: true, unlink: true }, false);
-  assert.equal(view.buttons.length, 7);
+  assert.equal(view.buttons.length, 10);
+});
+test('list tools are grouped together and each can be blocked at the input level', () => {
+  const view = mount();
+  const group = view.toolbar.children.find((g) => g.attrs['aria-label'] === 'Lists');
+  assert.deepEqual(
+    group.children.map((b) => b.attrs['aria-label']),
+    ['Bulleted list', 'Numbered list', 'List style'],
+  );
+  let blocked = 0;
+  const { input } = mount({ bulletList: false, numberList: false });
+  for (const inputType of ['insertUnorderedList', 'insertOrderedList'])
+    input.onbeforeinput({ inputType, preventDefault: () => blocked++ });
+  assert.equal(blocked, 2);
 });

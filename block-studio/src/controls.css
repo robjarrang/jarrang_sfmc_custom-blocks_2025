@@ -85,6 +85,11 @@
 [contenteditable].control {
   min-height: 90px;
 }
+[contenteditable].control ul,
+[contenteditable].control ol {
+  margin: 0;
+  padding-left: 25px;
+}
 .repeat-items .field > label {
   margin-top: 14px;
 }

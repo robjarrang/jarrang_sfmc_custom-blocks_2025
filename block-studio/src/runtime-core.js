@@ -10,6 +10,22 @@
       .replace(/'/g, '&#39;');
   const dynamic = (value) => /%%|\{\{|\{%|<%/.test(value);
   const L = root.BlockLogic || (typeof require === 'function' ? require('./logic.js') : null);
+  const voidTags = new Set([
+    'area',
+    'base',
+    'br',
+    'col',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'link',
+    'meta',
+    'param',
+    'source',
+    'track',
+    'wbr',
+  ]);
   function parse(source) {
     const nodes = [],
       issues = [];
@@ -17,22 +33,6 @@
     const masked = source.replace(/%%[\s\S]*?%%|{%[\s\S]*?%}|{{[\s\S]*?}}/g, (s) =>
       s.replace(/[^\r\n]/g, ' '),
     );
-    const voidTags = new Set([
-      'area',
-      'base',
-      'br',
-      'col',
-      'embed',
-      'hr',
-      'img',
-      'input',
-      'link',
-      'meta',
-      'param',
-      'source',
-      'track',
-      'wbr',
-    ]);
     function scan(from, to, hidden) {
       const stack = [];
       let at = from;
@@ -187,7 +187,10 @@
       ),
     );
   }
-  function cleanRich(value, field = {}) {
+  // Rendered lists are fenced by private-use markers until placeLists() has fitted them to their paragraph.
+  const LIST_OPEN = '\uE000',
+    LIST_CLOSE = '\uE001';
+  function cleanRich(value, field = {}, options = {}) {
     if (typeof document === 'undefined') throw Error('Rich text requires a browser.');
     const doc = new DOMParser().parseFromString(String(value), 'text/html');
     const allowed = new Set([
@@ -204,14 +207,18 @@
       'DIV',
       'SPAN',
       'FONT',
+      'UL',
+      'OL',
+      'LI',
     ]);
+    const types = { UL: ['disc', 'circle', 'square'], OL: ['1', 'A', 'a', 'I', 'i'] };
     // Keep anchors outside surrounding formatting so ancestor colours, bold and
     // propagated underlines cannot override the field's link appearance.
     function wrap(tag, style, children) {
       const out = [];
       let current;
       for (const child of children) {
-        if (child.nodeName === 'A') {
+        if (['A', 'UL', 'OL'].includes(child.nodeName)) {
           out.push(child);
           current = null;
           continue;
@@ -225,8 +232,34 @@
       }
       return out;
     }
-    function visit(node, inLink = false) {
-      if (node.nodeType === 3) return [doc.createTextNode(node.nodeValue)];
+    // Rows keep their own text formatting; spacing and inherited paragraph styles are added at render time.
+    function listItem(node, inLink, depth) {
+      const li = doc.createElement('li');
+      li.append(...[...node.childNodes].flatMap((n) => visit(n, inLink, depth)));
+      while (li.childNodes.length > 1 && li.lastChild.nodeName === 'BR') li.lastChild.remove();
+      if (!li.childNodes.length) li.append(doc.createElement('br'));
+      return li;
+    }
+    function list(node, inLink, depth) {
+      const el = doc.createElement(node.tagName.toLowerCase()),
+        type = node.getAttribute('type');
+      // The default marker stays implicit so the editor's own markup is left untouched.
+      if (types[node.tagName].includes(type) && type !== types[node.tagName][0])
+        el.setAttribute('type', type);
+      for (const child of node.childNodes) {
+        if (child.nodeName === 'LI') el.append(listItem(child, inLink, depth + 1));
+        else if (child.nodeType === 3 && !child.nodeValue.trim()) continue;
+        else {
+          const li = doc.createElement('li');
+          li.append(...visit(child, inLink, depth + 1));
+          if (li.childNodes.length) el.append(li);
+        }
+      }
+      return el;
+    }
+    function visit(node, inLink = false, depth = 0) {
+      if (node.nodeType === 3)
+        return [doc.createTextNode(node.nodeValue.replace(/[\uE000\uE001]/g, ''))];
       if (
         node.nodeType !== 1 ||
         ['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'SVG', 'MATH'].includes(node.tagName)
@@ -235,16 +268,23 @@
       if (node.tagName === 'A') {
         const href = (node.getAttribute('href') || '').trim();
         if (inLink || field.allowLinks === false || !href || !validUrl(href, 'url'))
-          return [...node.childNodes].flatMap((n) => visit(n, inLink));
+          return [...node.childNodes].flatMap((n) => visit(n, inLink, depth));
         const a = doc.createElement('a');
         a.setAttribute('href', href);
         a.setAttribute('style', linkStyleCSS(field));
-        a.append(...[...node.childNodes].flatMap((n) => visit(n, true)));
+        a.append(...[...node.childNodes].flatMap((n) => visit(n, true, depth)));
+        while (a.lastChild?.nodeName === 'BR') a.lastChild.remove();
         return [a];
       }
-      const children = [...node.childNodes].flatMap((n) => visit(n, inLink));
+      // Lists nested more than three deep, or inside a link, collapse to plain lines.
+      if (['UL', 'OL'].includes(node.tagName) && !inLink && depth < 3)
+        return [list(node, inLink, depth)];
+      const children = [...node.childNodes].flatMap((n) => visit(n, inLink, depth));
       if (!allowed.has(node.tagName)) return children;
       if (node.tagName === 'BR') return [doc.createElement('br')];
+      if (['UL', 'OL'].includes(node.tagName))
+        return node.previousSibling ? [doc.createElement('br'), ...children] : children;
+      if (node.tagName === 'LI') return [...children, doc.createElement('br')];
       if (['P', 'DIV'].includes(node.tagName)) return [...children, doc.createElement('br')];
       if (['SPAN', 'FONT'].includes(node.tagName)) {
         const colour = normaliseColour(node.style.color || node.getAttribute('color'));
@@ -261,6 +301,17 @@
     }
     const out = doc.createElement('div');
     out.append(...[...doc.body.childNodes].flatMap((n) => visit(n)));
+    if (options.mark)
+      for (const el of [...out.children]) {
+        if (!['UL', 'OL'].includes(el.tagName)) continue;
+        for (const li of el.querySelectorAll('li')) if (!li.textContent.trim()) li.remove();
+        if (!el.querySelector('li')) {
+          el.remove();
+          continue;
+        }
+        el.before(doc.createTextNode(LIST_OPEN));
+        el.after(doc.createTextNode(LIST_CLOSE));
+      }
     return out.innerHTML.replace(/<br>$/, '');
   }
   function validUrl(value, type) {
@@ -398,6 +449,128 @@
       });
     return value;
   }
+  const inheritedProps = new Set([
+    'color',
+    'font-family',
+    'font-size',
+    'font-style',
+    'font-weight',
+    'letter-spacing',
+    'line-height',
+    'mso-line-height-rule',
+    'text-align',
+    'text-transform',
+  ]);
+  function openElements(html) {
+    const masked = html.replace(/%%\[[\s\S]*?\]%%|<!--[\s\S]*?-->/g, (m) => ' '.repeat(m.length)),
+      stack = [],
+      re = /<(\/?)([a-z][\w:-]*)((?:"[^"]*"|'[^']*'|[^'">])*)>/gi;
+    let m;
+    while ((m = re.exec(masked))) {
+      const tag = m[2].toLowerCase();
+      if (m[1]) {
+        const index = stack.map((n) => n.tag).lastIndexOf(tag);
+        if (index >= 0) stack.splice(index);
+      } else if (!voidTags.has(tag) && !/\/\s*$/.test(m[3]))
+        stack.push({
+          tag,
+          start: m.index,
+          end: m.index + m[0].length,
+          open: html.slice(m.index, m.index + m[0].length),
+        });
+    }
+    return stack;
+  }
+  function declarations(open) {
+    const m = open.match(/\sstyle\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+    if (!m) return [];
+    const text = (m[1] ?? m[2]).replace(/&quot;|"/g, "'"),
+      parts = [];
+    let current = '',
+      quote = '',
+      depth = 0;
+    for (const ch of text) {
+      if (quote) {
+        if (ch === quote) quote = '';
+      } else if (ch === '"' || ch === "'") quote = ch;
+      else if (ch === '(') depth++;
+      else if (ch === ')') depth = Math.max(0, depth - 1);
+      if (ch === ';' && !quote && !depth) {
+        parts.push(current);
+        current = '';
+      } else current += ch;
+    }
+    parts.push(current);
+    return parts
+      .map((d) => [
+        d.slice(0, d.indexOf(':')).trim().toLowerCase(),
+        d.slice(d.indexOf(':') + 1).trim(),
+      ])
+      .filter(([name, value]) => name && value && !name.includes(' '));
+  }
+  function paragraphBottom(open) {
+    const rules = declarations(open),
+      bottom = rules.filter(([name]) => name === 'margin-bottom').pop(),
+      all = rules.filter(([name]) => name === 'margin').pop();
+    if (bottom) return bottom[1];
+    const parts = all ? all[1].split(/\s+/) : [];
+    return parts.length > 2 ? parts[2] : parts[0] || '0';
+  }
+  // Rows take the paragraph's own text styling, found the way CSS inheritance would find it.
+  function fitList(list, stack, host) {
+    const inherited = new Map();
+    for (const el of [...stack].reverse())
+      for (const [name, value] of new Map(declarations(el.open)))
+        if (inheritedProps.has(name) && !inherited.has(name)) inherited.set(name, value);
+    const text = [...inherited].map(([name, value]) => name + ':' + value + ';').join(''),
+      bottom = host?.tag === 'p' ? paragraphBottom(host.open) : '0',
+      className = host?.tag === 'p' ? host.open.match(/\sclass\s*=\s*"([^"]*)"/i)?.[1] : '',
+      classAttr = className ? ' class="' + className + '"' : '';
+    let depth = 0;
+    return list.replace(/<(\/?)(ul|ol|li)\b([^>]*)>/gi, (all, close, tag, attrs) => {
+      tag = tag.toLowerCase();
+      if (close) {
+        if (tag !== 'li') depth--;
+        return all;
+      }
+      if (tag === 'li') return '<li' + classAttr + ' style="' + text + '">';
+      const type = attrs.match(/\stype="([^"]*)"/i)?.[1] || (tag === 'ul' ? 'disc' : '1'),
+        margin = depth++ ? '0' : bottom;
+      return (
+        '<' +
+        tag +
+        classAttr +
+        ' type="' +
+        type +
+        '" style="margin:0 0 ' +
+        margin +
+        ' 25px;padding:0;' +
+        text +
+        '">'
+      );
+    });
+  }
+  // A list cannot sit inside a <p>, so the paragraph is split around it and its open tag repeated.
+  function placeLists(html) {
+    let at;
+    while ((at = html.indexOf(LIST_OPEN)) >= 0) {
+      const end = html.indexOf(LIST_CLOSE, at);
+      let before = html.slice(0, at).replace(/<br\s*\/?>\s*$/i, ''),
+        after = html.slice(end + 1);
+      const stack = openElements(before),
+        host = stack.at(-1),
+        list = fitList(html.slice(at + 1, end), stack, host);
+      if (host?.tag === 'p') {
+        if (before.slice(host.end).trim()) before += '</p>';
+        else before = before.slice(0, host.start);
+        const closing = after.match(/^[^<\uE000]*<\/p>/i);
+        if (closing && !closing[0].slice(0, -4).trim()) after = after.slice(closing[0].length);
+        else after = host.open + after;
+      }
+      html = before + list + after;
+    }
+    return html;
+  }
   function render(module, values = {}, options = {}) {
     const patches = [],
       hidden = hiddenRanges(module, values),
@@ -437,11 +610,15 @@
             target.kind === 'css' && target.encoding === 'raw'
               ? String(value)
               : field.type === 'richtext' && target.kind === 'content'
-                ? cleanRich(value, {
-                    ...field,
-                    allowLinks:
-                      field.allowLinks !== false && richLinksAllowed(module.source, [target]),
-                  })
+                ? cleanRich(
+                    value,
+                    {
+                      ...field,
+                      allowLinks:
+                        field.allowLinks !== false && richLinksAllowed(module.source, [target]),
+                    },
+                    { mark: true },
+                  )
                 : escape(value);
           if (field.type === 'text' && target.kind === 'content')
             output = output.replace(/\r?\n/g, '<br>');
@@ -469,25 +646,28 @@
       if (patches[i].start < patches[i - 1].end)
         throw Error('Two editable fields overlap. Review their mappings.');
     if (module.templateMode)
-      return L.render(module.source, scope, patches, hidden, {
-        escape,
-        richtext: (value, path, context) => {
-          const parts = path.split('.'),
-            key = parts.pop();
-          let owner = context;
-          for (const p of parts) owner = owner[p];
-          return cleanRich(
-            value,
-            (parts.length ? owners.get(owner)?.[key] : definitions[key]) || {},
-          );
-        },
-      });
+      return placeLists(
+        L.render(module.source, scope, patches, hidden, {
+          escape,
+          richtext: (value, path, context) => {
+            const parts = path.split('.'),
+              key = parts.pop();
+            let owner = context;
+            for (const p of parts) owner = owner[p];
+            return cleanRich(
+              value,
+              (parts.length ? owners.get(owner)?.[key] : definitions[key]) || {},
+              { mark: true },
+            );
+          },
+        }),
+      );
     let out = module.source;
     for (const patch of [...patches, ...hidden.map((h) => ({ ...h, value: '' }))].sort(
       (a, b) => b.start - a.start,
     ))
       out = out.slice(0, patch.start) + patch.value + out.slice(patch.end);
-    return out;
+    return placeLists(out);
   }
   const api = {
     escape,
@@ -499,6 +679,7 @@
     linkStyleCSS,
     richLinksAllowed,
     cleanRich,
+    placeLists,
     validUrl,
     valueShape,
     validate,

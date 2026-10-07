@@ -64,6 +64,9 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 input:not([type='checkbox']):not([type='color']):not(.toggle-switch), textarea, select, .control{
   border-radius: 4px;
 }
+.count{
+  border-radius: 999px;
+}
 .rich-action-panel, .repeat-card, .link-style-settings{
   background: var(--mist);
   border-radius: 8px;

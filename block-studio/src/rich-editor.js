@@ -8,6 +8,9 @@
     ['superscript', 'Superscript'],
     ['subscript', 'Subscript'],
     ['colour', 'Text colour'],
+    ['bulletList', 'Bulleted list'],
+    ['numberList', 'Numbered list'],
+    ['listStyle', 'List style'],
     ['link', 'Add or edit link'],
     ['unlink', 'Remove link'],
     ['clear', 'Clear formatting'],
@@ -62,11 +65,45 @@
       const before = document.createRange();
       before.selectNodeContents(input);
       before.setEnd(r.startContainer, r.startOffset);
-      const start = before.toString().length;
-      return { start, end: start + r.toString().length };
+      const start = before.toString().length,
+        texts = document.createTreeWalker(input, NodeFilter.SHOW_TEXT);
+      let last = null;
+      while (texts.nextNode()) last = texts.currentNode;
+      // A caret on an empty line after the last text (below a list, say) has no text offset to return to.
+      const trailing =
+        r.collapsed && start === input.textContent.length && r.startContainer !== last;
+      return { start, end: start + r.toString().length, trailing };
     }
     function restoreBookmark(mark) {
       if (!mark) return;
+      if (mark.trailing) {
+        const last = input.lastChild,
+          empty = ['UL', 'OL'].includes(last?.nodeName)
+            ? [...last.querySelectorAll('li')].filter((li) => !li.textContent).pop()
+            : null,
+          range = document.createRange(),
+          count = input.childNodes.length;
+        // A lone trailing <br> shows no new line, so give the caret a placeholder one to stand on.
+        // The placeholder is never saved: the next commit() trims it.
+        if (
+          !empty &&
+          last?.nodeName === 'BR' &&
+          !['UL', 'OL'].includes(last.previousSibling?.nodeName)
+        )
+          input.append(document.createElement('br'));
+        if (empty) range.setStart(empty, 0);
+        else
+          range.setStart(
+            input,
+            input.lastChild?.nodeName === 'BR' ? input.childNodes.length - 1 : count,
+          );
+        range.collapse(true);
+        savedRange = range;
+        const s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(range);
+        return;
+      }
       const nodes = [],
         walker = document.createTreeWalker(input, NodeFilter.SHOW_TEXT);
       let n,
@@ -141,6 +178,12 @@
       'Remove link':
         '<path d="m9 16-2 2a4 4 0 0 1-6-6l2-2m12-5 2-2a4 4 0 0 1 6 6l-2 2M3 3l18 18"/>',
       'Clear formatting': '<path d="M4 4h14M11 4l-3 12m6 0 6 6m0-6-6 6M3 21h6"/>',
+      'Bulleted list':
+        '<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1" fill="currentColor"/><circle cx="4.5" cy="12" r="1" fill="currentColor"/><circle cx="4.5" cy="18" r="1" fill="currentColor"/>',
+      'Numbered list':
+        '<path d="M10 6h10M10 12h10M10 18h10M4 5l1.5-1v4M3.5 14.5c0-1 2.5-1 2.5 0 0 1-2.5 2-2.5 3h2.5M3.5 20.5h2.5l-1 1.5a1.2 1.2 0 1 1-1.5.5"/>',
+      'List style':
+        '<path d="M9 6h11M9 12h11M9 18h11"/><rect x="3" y="4.5" width="3" height="3" fill="currentColor"/><circle cx="4.5" cy="12" r="1.6"/><path d="m3 18 1.5-2.5L6 18z" fill="currentColor"/>',
     };
     const toolGroups = {};
     function tool(label, run) {
@@ -154,9 +197,11 @@
         ? 'Text style'
         : ['Superscript', 'Subscript', 'Text colour'].includes(label)
           ? 'Text appearance'
-          : ['Add or edit link', 'Remove link'].includes(label)
-            ? 'Links'
-            : 'Reset formatting';
+          : ['Bulleted list', 'Numbered list', 'List style'].includes(label)
+            ? 'Lists'
+            : ['Add or edit link', 'Remove link'].includes(label)
+              ? 'Links'
+              : 'Reset formatting';
       if (!toolGroups[category]) {
         const section = document.createElement('span');
         section.className = 'rich-tool-group';
@@ -192,6 +237,23 @@
       }
       closePanel();
       document.execCommand(name, false);
+      commit();
+    }
+    function closestList(r) {
+      const list = nodeElement(r?.startContainer)?.closest('ul,ol');
+      return list && input.contains(list) ? list : null;
+    }
+    function listCommand(name) {
+      if (!restore()) {
+        message.textContent = 'Click where the list should go first.';
+        return;
+      }
+      message.textContent = '';
+      closePanel();
+      // Browsers park the caret at the start of the first row after wrapping text in a list.
+      const mark = bookmark();
+      document.execCommand(name, false);
+      restoreBookmark(mark);
       commit();
     }
     tool('Bold', () => command('bold', true));
@@ -266,6 +328,57 @@
       });
       hex.focus();
       hex.select();
+    });
+    tool('Bulleted list', () => listCommand('insertUnorderedList'));
+    tool('Numbered list', () => listCommand('insertOrderedList'));
+    const markers = {
+      UL: [
+        ['disc', 'Solid circles'],
+        ['circle', 'Hollow circles'],
+        ['square', 'Squares'],
+      ],
+      OL: [
+        ['1', 'Numbers (1, 2, 3)'],
+        ['A', 'Capital letters (A, B, C)'],
+        ['a', 'Lowercase letters (a, b, c)'],
+        ['I', 'Roman numerals (I, II, III)'],
+        ['i', 'Lowercase roman numerals (i, ii, iii)'],
+      ],
+    };
+    tool('List style', () => {
+      const r = restore(),
+        list = closestList(r);
+      if (!list) {
+        message.textContent = 'Place the cursor inside a list first.';
+        return;
+      }
+      message.textContent = '';
+      closePanel();
+      panel.hidden = false;
+      const options = markers[list.tagName],
+        label = document.createElement('label'),
+        choice = document.createElement('select');
+      choice.id = 'rich-action-' + ++serial;
+      label.htmlFor = choice.id;
+      label.textContent = 'Marker style';
+      options.forEach(([value, text]) => choice.add(new Option(text, value)));
+      choice.value = list.getAttribute('type') || options[0][0];
+      const help = document.createElement('p');
+      help.className = 'help';
+      help.textContent = 'List text keeps the paragraph styling. Use Text colour to change it.';
+      panel.append(label, choice, help);
+      buttons('Apply style', () => {
+        if (!restore() || !input.contains(list)) {
+          message.textContent = 'Place the cursor inside the list again.';
+          closePanel();
+          return;
+        }
+        if (choice.value === options[0][0]) list.removeAttribute('type');
+        else list.setAttribute('type', choice.value);
+        closePanel();
+        commit();
+      });
+      choice.focus();
     });
     const linkButton = tool('Add or edit link', () => {
       const r = restore();
@@ -383,6 +496,8 @@
         formatFontColor: 'colour',
         formatRemove: 'clear',
         insertLink: 'link',
+        insertUnorderedList: 'bulletList',
+        insertOrderedList: 'numberList',
       }[e.inputType];
       if (key && !enabled(key)) e.preventDefault();
     };

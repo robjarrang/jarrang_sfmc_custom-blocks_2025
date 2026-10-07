@@ -80,7 +80,7 @@ Select a field to find **Order and remove** below its summary. Removing a mapped
 
 ## Formatted text and fixed link styles
 
-Formatted text has toolbar controls for bold, italic, underline, superscript, subscript, selected-text colour, adding/editing a link, removing a link and clearing formatting. Select the relevant words before applying formatting. Place the cursor inside an existing link to change its destination or remove it. The link dialogue checks the destination before inserting it and keeps the selected text.
+Formatted text has toolbar controls for bold, italic, underline, superscript, subscript, selected-text colour, bulleted and numbered lists, list marker style, adding/editing a link, removing a link and clearing formatting. Select the relevant words before applying formatting. Place the cursor inside an existing link to change its destination or remove it. The link dialogue checks the destination before inserting it and keeps the selected text.
 
 Text colour uses a picker or hex input and produces a `<span style="color:#rrggbb;">`. Superscript and subscript use semantic `<sup>`/`<sub>` elements with inline size, line-height and vertical-alignment styles. These defaults still need checking in the actual email design.
 
@@ -99,6 +99,19 @@ For example, black, underlined and bold settings produce:
 ```
 
 The link destination belongs in `href`; appearance belongs in `style`. Arbitrary pasted HTML/CSS is not exposed to clients. Pasting inserts plain text; the toolbar creates supported formatting. The sanitiser accepts supported inline formatting, hex/RGB span colours and validated link destinations, while removing scripts, event handlers and unsupported styles.
+
+### Lists in formatted text
+
+The **Bulleted list** and **Numbered list** buttons turn the line at the cursor (or the selected lines) into a list, and back again. Enter adds a row; Enter on an empty row leaves the list. **List style** changes the marker of the list at the cursor: solid circles, hollow circles or squares, and numbers, capital or lowercase letters or roman numerals. Bold, italic, underline, superscript/subscript and text colour work inside rows, and lists can be nested up to three levels deep. Each of the three buttons can be hidden per field under **Client toolbar controls**.
+
+Lists are stored as plain `<ul>`/`<ol>`/`<li>` with an optional `type`. When the email is rendered, each list is fitted to the paragraph its field sits in, following the semantic-list approach for email:
+
+- The paragraph is split around the list (`<p>…</p><ul>…</ul><p>…</p>`) because a list cannot sit inside a `<p>`; a list at the start or end leaves no empty paragraph behind.
+- The list and every row get the paragraph's own class and its inherited text styles (font family, size, weight, style, line height, colour, letter spacing, alignment, case), found the way CSS inheritance would find them. Rows therefore match the surrounding text until the client picks a different text colour, bold or marker style. AMPscript colours are copied unchanged.
+- The list has `margin: 0 0 <paragraph bottom margin> 25px; padding: 0` and an explicit `type`, so markers sit inside the container and spacing matches the paragraph.
+- Empty rows are dropped, so a stray Enter never leaves an empty bullet in the email.
+
+Not handled by a block: Gmail webmail's extra left indent and Outlook for Windows' large list margins need rules in the master template's `<head>` (for example `u + .body .glist { margin-left: 0 !important; }` and an `mso` conditional style), because a custom block cannot add head CSS. Outlook for Windows also ignores colour and weight on numbers. Lists inside a field mapped to a heading or a link are not split, so turn the list buttons off for those fields.
 
 A formatted-text field mapped inside an existing button/link cannot insert another link. Its toolbar explains this restriction; edit the surrounding destination using the separate link field. Paragraphs/headings containing inline links can be discovered as a single formatted-text field, preventing overlapping text and destination mappings. Existing saved projects retain their mappings until re-analysed.
 
