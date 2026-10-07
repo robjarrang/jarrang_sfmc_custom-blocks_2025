@@ -3362,8 +3362,8 @@
       "name": "Sponsor",
       "slug": "sponsor",
       "release": "1.0.0",
-      "source": "<!-- START .esc-sponsor --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-sponsor\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"center\" class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #fafafa; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"padding: 20px 24px; text-align: center; width: 100%;\">\n        {% if eyebrow_label %}<p class=\"esc-sponsor-heading dark-muted\" style=\"color: #777777; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; line-height: 16px; margin: 0 0 16px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<a href=\"https://www.escardio.org/\" style=\"display: inline-block; line-height: 0;\" target=\"_blank\"><img alt=\"Sponsor name\" src=\"https://placehold.co/220x80/f0f0f0/1a1a1a/png?text=Logo\" style=\"border: 0; display: block; height: auto; margin: 0 auto; outline: none; text-decoration: none;\" width=\"220\"> </a>{% if disclaimer_text %}<p class=\"esc-sponsor-text dark-body\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 18px; margin: 16px 0 0;\">\n         {{ disclaimer_text }}</p>{% endif %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-sponsor -->",
-      "draftSource": "<!-- START .esc-sponsor --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-sponsor\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"center\" class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #fafafa; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"padding: 20px 24px; text-align: center; width: 100%;\">\n        {% if eyebrow_label %}<p class=\"esc-sponsor-heading dark-muted\" style=\"color: #777777; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; line-height: 16px; margin: 0 0 16px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<a href=\"https://www.escardio.org/\" style=\"display: inline-block; line-height: 0;\" target=\"_blank\"><img alt=\"Sponsor name\" src=\"https://placehold.co/220x80/f0f0f0/1a1a1a/png?text=Logo\" style=\"border: 0; display: block; height: auto; margin: 0 auto; outline: none; text-decoration: none;\" width=\"220\"> </a>{% if disclaimer_text %}<p class=\"esc-sponsor-text dark-body\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 18px; margin: 16px 0 0;\">\n         {{ disclaimer_text }}</p>{% endif %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-sponsor -->",
+      "source": "<!-- START .esc-sponsor --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-sponsor\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"center\" class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #fafafa; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"padding: 20px 24px; text-align: center; width: 100%;\">\n        {% if eyebrow_label %}<p class=\"esc-sponsor-heading dark-muted\" style=\"color: #777777; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; line-height: 16px; margin: 0 0 16px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}{% if sponsor_logo %}<a href=\"{{ sponsor_link }}\" style=\"display: inline-block; line-height: 0;\" target=\"_blank\"><img alt=\"{{ sponsor_logo_alt }}\" src=\"{{ sponsor_logo }}\" style=\"border: 0; display: block; height: auto; margin: 0 auto; outline: none; text-decoration: none;\" width=\"220\"> </a>{% endif %}{% if disclaimer_text %}<p class=\"esc-sponsor-text dark-body\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 18px; margin: 16px 0 0;\">\n         {{ disclaimer_text }}</p>{% endif %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-sponsor -->",
+      "draftSource": "<!-- START .esc-sponsor --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-sponsor\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td align=\"center\" class=\"content-inner\" style=\"padding: 28px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #fafafa; border-radius: 12px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"padding: 20px 24px; text-align: center; width: 100%;\">\n        {% if eyebrow_label %}<p class=\"esc-sponsor-heading dark-muted\" style=\"color: #777777; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; line-height: 16px; margin: 0 0 16px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}{% if sponsor_logo %}<a href=\"{{ sponsor_link }}\" style=\"display: inline-block; line-height: 0;\" target=\"_blank\"><img alt=\"{{ sponsor_logo_alt }}\" src=\"{{ sponsor_logo }}\" style=\"border: 0; display: block; height: auto; margin: 0 auto; outline: none; text-decoration: none;\" width=\"220\"> </a>{% endif %}{% if disclaimer_text %}<p class=\"esc-sponsor-text dark-body\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 18px; margin: 16px 0 0;\">\n         {{ disclaimer_text }}</p>{% endif %}</td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-sponsor -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -3392,18 +3392,10 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Where the sponsor logo links to.",
-          "targets": [
-            {
-              "name": "href",
-              "start": 1037,
-              "end": 1062,
-              "value": "https://www.escardio.org/",
-              "quoted": true,
-              "nodeId": "n8",
-              "kind": "attribute"
-            }
-          ]
+          "help": "Where the sponsor logo links to. Not used when there is no logo.",
+          "targets": [],
+          "key": "sponsor_link",
+          "binding": "template"
         },
         {
           "id": "field3",
@@ -3412,20 +3404,12 @@
           "defaultValue": "https://placehold.co/220x80/f0f0f0/1a1a1a/png?text=Logo",
           "originalValue": "https://placehold.co/220x80/f0f0f0/1a1a1a/png?text=Logo",
           "enabled": true,
-          "required": true,
+          "required": false,
           "maxLength": 0,
-          "help": "",
-          "targets": [
-            {
-              "name": "src",
-              "start": 1156,
-              "end": 1211,
-              "value": "https://placehold.co/220x80/f0f0f0/1a1a1a/png?text=Logo",
-              "quoted": true,
-              "nodeId": "n9",
-              "kind": "attribute"
-            }
-          ]
+          "help": "Leave blank to leave the logo out.",
+          "targets": [],
+          "key": "sponsor_logo",
+          "binding": "template"
         },
         {
           "id": "field4",
@@ -3436,18 +3420,10 @@
           "enabled": true,
           "required": false,
           "maxLength": 150,
-          "help": "Describe the sponsor for screen readers.",
-          "targets": [
-            {
-              "name": "alt",
-              "start": 1137,
-              "end": 1149,
-              "value": "Sponsor name",
-              "quoted": true,
-              "nodeId": "n9",
-              "kind": "attribute"
-            }
-          ]
+          "help": "Describe the sponsor for screen readers. Not used when there is no logo.",
+          "targets": [],
+          "key": "sponsor_logo_alt",
+          "binding": "template"
         },
         {
           "id": "field5",
