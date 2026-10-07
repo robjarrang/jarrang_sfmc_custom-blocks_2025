@@ -8,8 +8,8 @@
       "name": "Hero Story",
       "slug": "hero-story",
       "release": "2.0.0",
-      "source": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        {% if category_label %}<p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         {{ category_label }}</p>{% endif %}<h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1>{% if intro_copy %}<p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         {{ intro_copy | richtext }}</p>{% endif %}<table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 16px 0 0;\" valign=\"top\">\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td><td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: %%=v(@ButtonBgColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonBgColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
-      "draftSource": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        {% if category_label %}<p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         {{ category_label }}</p>{% endif %}<h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1>{% if intro_copy %}<p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         {{ intro_copy | richtext }}</p>{% endif %}<table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 16px 0 0;\" valign=\"top\">\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td><td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: %%=v(@ButtonBgColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonBgColour)=%%; text-decoration: none;\" target=\"_blank\">Button text</a></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
+      "source": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        {% if category_label %}<p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         {{ category_label }}</p>{% endif %}<h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1>{% if intro_copy %}<p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         {{ intro_copy | richtext }}</p>{% endif %}<table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           {% if button1_show %}<td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 16px 0 0;\" valign=\"top\">{% if button1_style == 'outline' %}\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button1_link }}\" style=\"color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button1_text }}</a></td></tr></table>{% else %}\n            <table bgcolor=\"{% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"{% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" style=\"background-color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-radius: 50px; color: {% if button1_colour == 'black' %}#ffffff{% elsif button1_colour == 'white' %}#1a1a1a{% elsif button1_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button1_link }}\" style=\"color: {% if button1_colour == 'black' %}#ffffff{% elsif button1_colour == 'white' %}#1a1a1a{% elsif button1_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button1_text }}</a></td></tr></table>{% endif %}</td>{% endif %}{% if button2_show %}<td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: {% if button3_show %}0 16px 0 0{% else %}0{% endif %};\" valign=\"top\">{% if button2_style == 'outline' %}\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button2_link }}\" style=\"color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button2_text }}</a></td></tr></table>{% else %}\n            <table bgcolor=\"{% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"{% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" style=\"background-color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-radius: 50px; color: {% if button2_colour == 'black' %}#ffffff{% elsif button2_colour == 'white' %}#1a1a1a{% elsif button2_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button2_link }}\" style=\"color: {% if button2_colour == 'black' %}#ffffff{% elsif button2_colour == 'white' %}#1a1a1a{% elsif button2_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button2_text }}</a></td></tr></table>{% endif %}</td>{% endif %}{% if button3_show %}<td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">{% if button3_style == 'outline' %}\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button3_link }}\" style=\"color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button3_text }}</a></td></tr></table>{% else %}\n            <table bgcolor=\"{% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"{% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" style=\"background-color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-radius: 50px; color: {% if button3_colour == 'black' %}#ffffff{% elsif button3_colour == 'white' %}#1a1a1a{% elsif button3_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button3_link }}\" style=\"color: {% if button3_colour == 'black' %}#ffffff{% elsif button3_colour == 'white' %}#1a1a1a{% elsif button3_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button3_text }}</a></td></tr></table>{% endif %}</td>{% endif %}</tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
+      "draftSource": "<!-- START .esc-hero --><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-hero\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#ffffff\" class=\"content-inner\" style=\"background-color: #ffffff; padding: 30px 0 30px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Hero image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Hero+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr></table><table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"background-color: #ffffff; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding-top: 24px; width: 100%;\">\n        {% if category_label %}<p class=\"hero-label\" style=\"color: #878787; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 0 0 8px; mso-line-height-rule: exactly; text-transform: uppercase;\">\n         {{ category_label }}</p>{% endif %}<h1 class=\"hero-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 26px; font-weight: 700; line-height: 32px; margin: 0 0 16px; mso-line-height-rule: exactly;\">\n         Hero headline goes here</h1>{% if intro_copy %}<p class=\"hero-text dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 24px; mso-line-height-rule: exactly;\">\n         {{ intro_copy | richtext }}</p>{% endif %}<table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           {% if button1_show %}<td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0 16px 0 0;\" valign=\"top\">{% if button1_style == 'outline' %}\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button1_link }}\" style=\"color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button1_text }}</a></td></tr></table>{% else %}\n            <table bgcolor=\"{% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"{% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" style=\"background-color: {% if button1_colour == 'black' %}#1a1a1a{% elsif button1_colour == 'white' %}#ffffff{% elsif button1_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-radius: 50px; color: {% if button1_colour == 'black' %}#ffffff{% elsif button1_colour == 'white' %}#1a1a1a{% elsif button1_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button1_link }}\" style=\"color: {% if button1_colour == 'black' %}#ffffff{% elsif button1_colour == 'white' %}#1a1a1a{% elsif button1_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button1_text }}</a></td></tr></table>{% endif %}</td>{% endif %}{% if button2_show %}<td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: {% if button3_show %}0 16px 0 0{% else %}0{% endif %};\" valign=\"top\">{% if button2_style == 'outline' %}\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button2_link }}\" style=\"color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button2_text }}</a></td></tr></table>{% else %}\n            <table bgcolor=\"{% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"{% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" style=\"background-color: {% if button2_colour == 'black' %}#1a1a1a{% elsif button2_colour == 'white' %}#ffffff{% elsif button2_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-radius: 50px; color: {% if button2_colour == 'black' %}#ffffff{% elsif button2_colour == 'white' %}#1a1a1a{% elsif button2_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button2_link }}\" style=\"color: {% if button2_colour == 'black' %}#ffffff{% elsif button2_colour == 'white' %}#1a1a1a{% elsif button2_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button2_text }}</a></td></tr></table>{% endif %}</td>{% endif %}{% if button3_show %}<td align=\"left\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0;\" valign=\"top\">{% if button3_style == 'outline' %}\n            <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn esc-btn-outline\" role=\"presentation\" style=\"background-color: #ffffff; border: 1px solid {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 50px; color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 11px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button3_link }}\" style=\"color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button3_text }}</a></td></tr></table>{% else %}\n            <table bgcolor=\"{% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-collapse: separate; border-radius: 50px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               <td align=\"center\" bgcolor=\"{% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}\" style=\"background-color: {% if button3_colour == 'black' %}#1a1a1a{% elsif button3_colour == 'white' %}#ffffff{% elsif button3_colour == 'red' %}#AE1022{% else %}%%=v(@ButtonBgColour)=%%{% endif %}; border-radius: 50px; color: {% if button3_colour == 'black' %}#ffffff{% elsif button3_colour == 'white' %}#1a1a1a{% elsif button3_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n                <a href=\"{{ button3_link }}\" style=\"color: {% if button3_colour == 'black' %}#ffffff{% elsif button3_colour == 'white' %}#1a1a1a{% elsif button3_colour == 'red' %}#ffffff{% else %}%%=v(@ButtonTextColour)=%%{% endif %}; text-decoration: none;\" target=\"_blank\">{{ button3_text }}</a></td></tr></table>{% endif %}</td>{% endif %}</tr></table></td></tr></table></td><td bgcolor=\"#ffffff\" class=\"side\" style=\"background-color: #ffffff; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-hero -->",
       "contextCss": "",
       "width": 620,
       "fields": [
@@ -131,127 +131,303 @@
         },
         {
           "id": "field7",
-          "label": "Show primary button",
+          "key": "button1_show",
+          "label": "Show button 1",
           "type": "toggle",
+          "binding": "template",
           "defaultValue": "shown",
           "originalValue": "shown",
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the primary button.",
-          "style": "switch",
-          "targets": [
-            {
-              "start": 2651,
-              "end": 3727,
-              "nodeId": "n17",
-              "kind": "element"
-            }
-          ]
+          "help": "Turn off to hide the first button.",
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field8",
-          "label": "Primary button link",
+          "key": "button1_link",
+          "label": "Button 1 link",
           "type": "url",
+          "binding": "template",
           "defaultValue": "https://www.escardio.org/",
           "originalValue": "https://www.escardio.org/",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Where the primary button links to.",
-          "targets": [
-            {
-              "name": "href",
-              "start": 3580,
-              "end": 3605,
-              "value": "https://www.escardio.org/",
-              "quoted": true,
-              "nodeId": "n21",
-              "kind": "attribute"
-            }
-          ]
+          "help": "Where the first button links to.",
+          "targets": []
         },
         {
           "id": "field9",
-          "label": "Primary button text",
+          "key": "button1_text",
+          "label": "Button 1 text",
           "type": "text",
+          "binding": "template",
           "defaultValue": "Button text",
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
           "maxLength": 30,
-          "help": "Primary call-to-action button label.",
-          "targets": [
-            {
-              "start": 3689,
-              "end": 3700,
-              "nodeId": "n21",
-              "kind": "content"
-            }
-          ],
+          "help": "First call-to-action button label.",
+          "targets": [],
           "allowLinks": false
         },
         {
+          "id": "field13",
+          "key": "button1_style",
+          "label": "Button 1 style",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "solid",
+          "originalValue": "solid",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Solid",
+              "value": "solid"
+            },
+            {
+              "label": "Outline",
+              "value": "outline"
+            }
+          ]
+        },
+        {
+          "id": "field14",
+          "key": "button1_colour",
+          "label": "Button 1 colour",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "brand",
+          "originalValue": "brand",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Brand colour",
+              "value": "brand"
+            },
+            {
+              "label": "Black",
+              "value": "black"
+            },
+            {
+              "label": "White",
+              "value": "white"
+            },
+            {
+              "label": "ESC red",
+              "value": "red"
+            }
+          ]
+        },
+        {
           "id": "field10",
-          "label": "Show secondary button",
+          "key": "button2_show",
+          "label": "Show button 2",
           "type": "toggle",
+          "binding": "template",
           "defaultValue": "shown",
           "originalValue": "shown",
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the secondary (outline) button.",
-          "style": "switch",
-          "targets": [
-            {
-              "start": 3727,
-              "end": 4782,
-              "nodeId": "n22",
-              "kind": "element"
-            }
-          ]
+          "help": "Turn off to hide the second button.",
+          "targets": [],
+          "style": "switch"
         },
         {
           "id": "field11",
-          "label": "Secondary button link",
+          "key": "button2_link",
+          "label": "Button 2 link",
           "type": "url",
+          "binding": "template",
           "defaultValue": "https://www.escardio.org/",
           "originalValue": "https://www.escardio.org/",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Where the secondary button links to.",
-          "targets": [
-            {
-              "name": "href",
-              "start": 4637,
-              "end": 4662,
-              "value": "https://www.escardio.org/",
-              "quoted": true,
-              "nodeId": "n26",
-              "kind": "attribute"
-            }
-          ]
+          "help": "Where the second button links to.",
+          "targets": []
         },
         {
           "id": "field12",
-          "label": "Secondary button text",
+          "key": "button2_text",
+          "label": "Button 2 text",
           "type": "text",
+          "binding": "template",
           "defaultValue": "Button text",
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
           "maxLength": 30,
-          "help": "Secondary call-to-action button label.",
-          "targets": [
-            {
-              "start": 4744,
-              "end": 4755,
-              "nodeId": "n26",
-              "kind": "content"
-            }
-          ],
+          "help": "Second call-to-action button label.",
+          "targets": [],
           "allowLinks": false
+        },
+        {
+          "id": "field15",
+          "key": "button2_style",
+          "label": "Button 2 style",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "outline",
+          "originalValue": "outline",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Solid",
+              "value": "solid"
+            },
+            {
+              "label": "Outline",
+              "value": "outline"
+            }
+          ]
+        },
+        {
+          "id": "field16",
+          "key": "button2_colour",
+          "label": "Button 2 colour",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "brand",
+          "originalValue": "brand",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Brand colour",
+              "value": "brand"
+            },
+            {
+              "label": "Black",
+              "value": "black"
+            },
+            {
+              "label": "White",
+              "value": "white"
+            },
+            {
+              "label": "ESC red",
+              "value": "red"
+            }
+          ]
+        },
+        {
+          "id": "field17",
+          "key": "button3_show",
+          "label": "Show button 3",
+          "type": "toggle",
+          "binding": "template",
+          "defaultValue": "hidden",
+          "originalValue": "hidden",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn on to add a third button.",
+          "targets": [],
+          "style": "switch"
+        },
+        {
+          "id": "field18",
+          "key": "button3_link",
+          "label": "Button 3 link",
+          "type": "url",
+          "binding": "template",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the third button links to.",
+          "targets": []
+        },
+        {
+          "id": "field19",
+          "key": "button3_text",
+          "label": "Button 3 text",
+          "type": "text",
+          "binding": "template",
+          "defaultValue": "Button text",
+          "originalValue": "Button text",
+          "enabled": true,
+          "required": true,
+          "maxLength": 30,
+          "help": "Third call-to-action button label.",
+          "targets": [],
+          "allowLinks": false
+        },
+        {
+          "id": "field20",
+          "key": "button3_style",
+          "label": "Button 3 style",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "outline",
+          "originalValue": "outline",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Solid",
+              "value": "solid"
+            },
+            {
+              "label": "Outline",
+              "value": "outline"
+            }
+          ]
+        },
+        {
+          "id": "field21",
+          "key": "button3_colour",
+          "label": "Button 3 colour",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "brand",
+          "originalValue": "brand",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Brand colour",
+              "value": "brand"
+            },
+            {
+              "label": "Black",
+              "value": "black"
+            },
+            {
+              "label": "White",
+              "value": "white"
+            },
+            {
+              "label": "ESC red",
+              "value": "red"
+            }
+          ]
         }
       ],
       "analysed": true,
