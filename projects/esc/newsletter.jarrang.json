@@ -1607,6 +1607,214 @@
       "iconSymbol": "grid"
     },
     {
+      "id": "1d37692a-dcf5-439c-bc6f-19693346bd18",
+      "name": "Feature Card",
+      "slug": "feature-card",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 20px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 20px; width: 540px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"swap-content\" style=\"background-color: #ffffff; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Feature image description\" class=\"fluid\" src=\"https://placehold.co/200x180/8c8c8c/ffffff/png?text=Feature\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"> </a></td><td bgcolor=\"#ffffff\" class=\"stack-gap\" style=\"background-color: #ffffff; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"swap-content feature-copy\" style=\"background-color: #ffffff; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0 0 8px; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 400; line-height: 24px; margin: 0 0 12px; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
+      "draftSource": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 20px 0; width: 580px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 20px; width: 540px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"swap-content\" style=\"background-color: #ffffff; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Feature image description\" class=\"fluid\" src=\"https://placehold.co/200x180/8c8c8c/ffffff/png?text=Feature\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"> </a></td><td bgcolor=\"#ffffff\" class=\"stack-gap\" style=\"background-color: #ffffff; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"swap-content feature-copy\" style=\"background-color: #ffffff; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 18px; font-weight: 700; line-height: 24px; margin: 0 0 8px; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 400; line-height: 24px; margin: 0 0 12px; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><p style=\"margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"#212529\" class=\"side\" style=\"background-color: #212529; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
+      "templateMode": false,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "label": "Image link",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Where the feature image links to.",
+          "targets": [
+            {
+              "start": 1328,
+              "end": 1353,
+              "nodeId": "n10",
+              "kind": "attribute",
+              "name": "href",
+              "quoted": true,
+              "originalValue": "https://www.escardio.org/"
+            }
+          ],
+          "id": "field1"
+        },
+        {
+          "label": "Image",
+          "type": "image",
+          "defaultValue": "https://placehold.co/200x180/8c8c8c/ffffff/png?text=Feature",
+          "originalValue": "https://placehold.co/200x180/8c8c8c/ffffff/png?text=Feature",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Feature image, 200px wide.",
+          "targets": [
+            {
+              "start": 1467,
+              "end": 1526,
+              "nodeId": "n11",
+              "kind": "attribute",
+              "name": "src",
+              "quoted": true,
+              "originalValue": "https://placehold.co/200x180/8c8c8c/ffffff/png?text=Feature"
+            }
+          ],
+          "id": "field2"
+        },
+        {
+          "label": "Image description",
+          "type": "text",
+          "defaultValue": "Feature image description",
+          "originalValue": "Feature image description",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Accessible alt text describing the image.",
+          "targets": [
+            {
+              "start": 1421,
+              "end": 1446,
+              "nodeId": "n11",
+              "kind": "attribute",
+              "name": "alt",
+              "quoted": true,
+              "originalValue": "Feature image description"
+            }
+          ],
+          "id": "field3"
+        },
+        {
+          "label": "Headline",
+          "type": "text",
+          "defaultValue": "Feature card headline goes here",
+          "originalValue": "Feature card headline goes here",
+          "enabled": true,
+          "required": true,
+          "maxLength": 80,
+          "help": "Feature card headline.",
+          "targets": [
+            {
+              "start": 2642,
+              "end": 2673,
+              "nodeId": "n17",
+              "kind": "content",
+              "originalValue": "Feature card headline goes here"
+            }
+          ],
+          "id": "field4"
+        },
+        {
+          "label": "Show description",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the summary copy.",
+          "style": "switch",
+          "targets": [
+            {
+              "start": 2678,
+              "end": 3074,
+              "nodeId": "n18",
+              "kind": "element"
+            }
+          ],
+          "id": "field5",
+          "originalValue": "shown"
+        },
+        {
+          "label": "Description",
+          "type": "richtext",
+          "defaultValue": "Use this for an important story that deserves more visual weight than a standard card.",
+          "originalValue": "Use this for an important story that deserves more visual weight than a standard card.",
+          "enabled": true,
+          "required": false,
+          "maxLength": 200,
+          "help": "Short summary copy shown below the headline.",
+          "targets": [
+            {
+              "start": 2984,
+              "end": 3070,
+              "nodeId": "n18",
+              "kind": "content",
+              "originalValue": "Use this for an important story that deserves more visual weight than a standard card."
+            }
+          ],
+          "allowLinks": true,
+          "id": "field6"
+        },
+        {
+          "label": "Show link",
+          "type": "toggle",
+          "defaultValue": "shown",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Turn off to hide the call-to-action link.",
+          "style": "switch",
+          "targets": [
+            {
+              "start": 3074,
+              "end": 3485,
+              "nodeId": "n19",
+              "kind": "element"
+            }
+          ],
+          "id": "field7",
+          "originalValue": "shown"
+        },
+        {
+          "label": "Link URL",
+          "type": "url",
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "enabled": true,
+          "required": true,
+          "maxLength": 0,
+          "help": "Where the link goes.",
+          "targets": [
+            {
+              "start": 3146,
+              "end": 3171,
+              "nodeId": "n20",
+              "kind": "attribute",
+              "name": "href",
+              "quoted": true,
+              "originalValue": "https://www.escardio.org/"
+            }
+          ],
+          "id": "field8"
+        },
+        {
+          "label": "Link text",
+          "type": "text",
+          "defaultValue": "Read more →",
+          "originalValue": "Read more →",
+          "enabled": true,
+          "required": true,
+          "maxLength": 30,
+          "help": "Call-to-action link label.",
+          "targets": [
+            {
+              "start": 3461,
+              "end": 3477,
+              "nodeId": "n20",
+              "kind": "content",
+              "originalValue": "Read more →"
+            }
+          ],
+          "allowLinks": false,
+          "id": "field9"
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#080043",
+      "iconSymbol": "image"
+    },
+    {
       "id": "f3b8d6a1-5e2c-4a90-8b7d-2c6e9a1f4d80",
       "name": "CTA Banner",
       "slug": "cta",
