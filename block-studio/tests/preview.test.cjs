@@ -122,3 +122,54 @@ test('preview alias resolution separates sibling loops and restores an outer ali
   assert.equal(resolve('{{ item.alt }}'), 'images');
   assert.equal(resolve('{{ item.footer }}'), 'cards');
 });
+
+test('preview fit contains both dimensions without enlarging modules or changing their viewport', () => {
+  const fit = context.window.BlockPreview.fitScale;
+  assert.equal(fit(800, 600, 700, 450), 0.75);
+  assert.equal(fit(800, 100, 600, 450), 0.75);
+  assert.equal(fit(375, 600, 700, 450), 0.75);
+  assert.equal(fit(800, 600, 1200, 900), 1);
+  assert.equal(fit(800, 600, 400, Infinity), 0.5);
+  assert.equal(fit(800, 600, 0, 0), 1);
+});
+
+test('preview height follows the content shell when growing or shrinking, independent of iframe height', () => {
+  const listeners = {},
+    sent = [];
+  let contentHeight = 800,
+    resize,
+    observed;
+  const shell = {
+    get scrollHeight() {
+      return contentHeight;
+    },
+    getBoundingClientRect: () => ({ height: contentHeight, top: 0 }),
+  };
+  vm.runInNewContext('(' + context.window.BlockPreview.previewBridge.toString() + ')();', {
+    window: { addEventListener: (type, fn) => (listeners[type] = fn) },
+    parent: { postMessage: (data) => sent.push(data) },
+    document: {
+      addEventListener() {},
+      querySelector: () => shell,
+      documentElement: { scrollHeight: 1200 },
+      body: {},
+    },
+    ResizeObserver: class {
+      constructor(callback) {
+        resize = callback;
+      }
+      observe(node) {
+        observed = node;
+      }
+    },
+  });
+  assert.equal(observed, shell);
+  listeners.load();
+  assert.equal(sent.at(-1).studioHeight, 800);
+  contentHeight = 80;
+  resize();
+  assert.equal(sent.at(-1).studioHeight, 80);
+  contentHeight = 1600;
+  resize();
+  assert.equal(sent.at(-1).studioHeight, 1600);
+});

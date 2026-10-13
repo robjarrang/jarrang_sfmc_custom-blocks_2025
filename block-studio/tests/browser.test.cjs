@@ -6,7 +6,7 @@ const fs = require('node:fs/promises'),
   assert = require('node:assert/strict');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const JSZip = require(process.env.JSZIP_MODULE || 'jszip');
+const JSZip = require(process.env.JSZIP_MODULE || '../vendor/jszip.min.js');
 const ROOT = path.resolve(__dirname, '..');
 async function main() {
   const browser = await chromium.launch({
@@ -77,7 +77,6 @@ async function main() {
     await page.locator('#review-export').click();
     await page.locator('#pages-url').fill('https://example.github.io/blocks/');
     await page.locator('#export-location').selectOption('docs');
-    await page.locator('#acknowledge-review').check();
     assert.equal(
       await page.locator('#endpoint-value').textContent(),
       'https://example.github.io/blocks/product-story/',

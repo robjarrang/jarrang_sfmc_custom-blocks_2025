@@ -209,6 +209,29 @@ test('malformed saved repeaters remain locked with a recovery message', () => {
   assert.match(h.status.textContent, /saved|invalid|restore/i);
   assert.equal(h.form.inert, true);
 });
+test('save timeout locks every control and preserves its error after change events or late callbacks', () => {
+  const h = host(metadata());
+  h.change([{ text: 'Unsaved' }]);
+  h.flush();
+  h.expire();
+  const message = h.status.textContent;
+  assert.equal(h.form.inert, true);
+  assert.equal(h.form.disabled, true);
+  h.change([{ text: 'Must be ignored' }]);
+  h.flush();
+  h.calls[0].cb('late reply');
+  assert.equal(h.calls.length, 1);
+  assert.equal(h.status.textContent, message);
+  assert.match(message, /did not confirm/);
+});
+test('a late metadata response cannot reactivate a timed-out connection', () => {
+  const h = host(metadata(), { deferData: true });
+  h.expire();
+  const message = h.status.textContent;
+  h.resolveData();
+  assert.equal(h.form.inert, true);
+  assert.equal(h.status.textContent, message);
+});
 
 test('a delayed content reply after timeout cannot unlock or overwrite the block', () => {
   const h = host();

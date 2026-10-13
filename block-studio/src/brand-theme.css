@@ -83,7 +83,7 @@ button {
 .topbar .button.quiet {
   color: white;
 }
-.topbar .button.quiet:hover {
+.topbar .button.quiet:hover:not(:disabled) {
   background: #28215e;
 }
 .topbar .button.secondary {
@@ -91,7 +91,8 @@ button {
   border-color: var(--aqua);
   color: var(--navy);
 }
-.topbar .button.secondary:hover {
+.topbar .button.secondary:hover:not(:disabled) {
+  color: var(--navy);
   background: #fff;
   border-color: #fff;
 }
@@ -106,7 +107,7 @@ button {
   color: var(--navy);
   border-color: var(--aqua);
 }
-.button.primary:hover {
+.button.primary:hover:not(:disabled) {
   background: var(--navy);
   border-color: var(--navy);
   color: #fff;
@@ -116,11 +117,11 @@ button {
   color: var(--navy);
   background: #fff;
 }
-.button.secondary:hover {
+.button.secondary:hover:not(:disabled) {
   background: var(--navy);
   color: white;
 }
-.button.quiet:hover {
+.button.quiet:hover:not(:disabled) {
   background: var(--mist);
 }
 .button.danger {
@@ -189,7 +190,7 @@ dialog,
 .preview-dot {
   background: var(--aqua);
 }
-input:not([type='checkbox']):not([type='color']):not(.toggle-switch),
+input:not([type='checkbox']):not([type='radio']):not([type='color']):not(.toggle-switch),
 textarea,
 select,
 .control {
@@ -231,7 +232,7 @@ select,
   color: var(--navy);
   border-radius: 4px;
 }
-.rich-toolbar button:hover {
+.rich-toolbar button:hover:not(:disabled) {
   background: var(--mist);
   border-color: var(--navy);
 }
@@ -243,7 +244,7 @@ select,
   color: var(--navy);
   border-color: var(--aqua);
 }
-.rich-action-buttons button:first-child:hover {
+.rich-action-buttons button:first-child:hover:not(:disabled) {
   background: var(--navy);
   color: white;
   border-color: var(--navy);
@@ -420,6 +421,9 @@ input.toggle-switch:checked,
 }
 .rich-tool-group {
   display: inline-flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
   gap: 2px;
   padding-right: 5px;
@@ -515,7 +519,7 @@ input.toggle-switch:checked,
 .field-drag-handle svg {
   pointer-events: none;
 }
-.field-drag-handle:hover {
+.field-drag-handle:hover:not(:disabled) {
   background: #fff;
   color: var(--navy);
 }

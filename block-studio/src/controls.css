@@ -7,12 +7,17 @@
 }
 .repeat-heading {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 5px;
 }
 .repeat-heading strong {
   font-size: 13px;
+  flex: 1 0 65px;
   margin-right: auto;
+}
+.repeat-heading button {
+  flex-shrink: 0;
 }
 .repeat-heading button,
 .add-repeat-item {
@@ -53,6 +58,7 @@
 }
 .control {
   width: 100%;
+  min-width: 0;
   font: inherit;
   border: 1px solid #d6d9e6;
   border-radius: 5px;
@@ -84,6 +90,7 @@
 }
 [contenteditable].control {
   min-height: 90px;
+  overflow-wrap: anywhere;
 }
 [contenteditable].control ul,
 [contenteditable].control ol {

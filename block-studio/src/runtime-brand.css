@@ -61,7 +61,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 .panel{
   box-shadow: 0 2px 8px #08004304;
 }
-input:not([type='checkbox']):not([type='color']):not(.toggle-switch), textarea, select, .control{
+input:not([type='checkbox']):not([type='radio']):not([type='color']):not(.toggle-switch), textarea, select, .control{
   border-radius: 4px;
 }
 .count{
@@ -77,7 +77,7 @@ input:not([type='checkbox']):not([type='color']):not(.toggle-switch), textarea, 
   color: var(--navy);
   border-radius: 4px;
 }
-.rich-toolbar button:hover{
+.rich-toolbar button:hover:not(:disabled){
   background: var(--mist);
   border-color: var(--navy);
 }
@@ -89,7 +89,7 @@ input:not([type='checkbox']):not([type='color']):not(.toggle-switch), textarea, 
   color: var(--navy);
   border-color: var(--aqua);
 }
-.rich-action-buttons button:first-child:hover{
+.rich-action-buttons button:first-child:hover:not(:disabled){
   background: var(--navy);
   color: white;
   border-color: var(--navy);
@@ -147,6 +147,9 @@ button{
 }
 .rich-tool-group{
   display: inline-flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
   gap: 2px;
   padding-right: 5px;

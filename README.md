@@ -10,12 +10,12 @@ The studio runs locally in the browser. It does not need a server, npm install, 
 
 ## Typical Workflow
 
-1. Use **Clients & templates** in Block Studio to choose or create the template you're editing.
+1. Pull the latest repository in Tower. Use **Open repository** and select the repository root. A fresh Studio workspace starts with the bundled ESC templates; existing browser drafts are kept until you confirm replacement.
 2. Import a tested email module fragment, or open an existing module for edits.
 3. Review the suggested editable text, image, alt-text, link, number, and colour fields.
 4. Rename labels, add help text, set validation rules, and disable anything the client should not edit.
 5. Try the generated editor at desktop and mobile widths.
-6. Export the template package (or a single module ZIP) and merge the `docs/` and `projects/` output into this repository, preserving other files.
+6. Click **Save** for the current module or **Save template** for the complete template. Studio writes the generated blocks and editable project directly into the connected repository.
 7. Commit and push. See [block-studio/TOWER-WORKFLOW.md](block-studio/TOWER-WORKFLOW.md) for the full branch-publishing workflow.
 8. Save the `.jarrang.json` project file so future edits can reuse the exact mappings.
 
@@ -37,14 +37,17 @@ GitHub Pages' "Deploy from a branch" option only offers `/(root)` or `/docs` rel
 
 Exported modules are created by Block Studio and committed from the downloaded ZIP. They are not generated from files in this repository.
 
+See [ESC-MAINTENANCE.md](ESC-MAINTENANCE.md) for the ESC handover and [ESC-COMPATIBILITY.md](ESC-COMPATIBILITY.md) for the feature review.
+
 ## Commands
 
 ```bash
+npm ci --prefix block-studio       # Pinned developer test dependencies only
 npm run build          # Rebuild Block Studio embedded assets and single-file app
-npm test               # Run Block Studio core tests
+npm test               # Run all automated Block Studio tests
 ```
 
-For the full test suite (formatting checks, workspace, preview and browser-regression tests) run `npm test` and `npm run format:check` inside `block-studio/`, where its own `package.json` defines those scripts.
+The automated suite includes DOM simulations and ESC integration checks. It does not run a live browser or SFMC. Formatting can be checked with `npm run format:check` inside `block-studio/`.
 
 ## More Detail
 

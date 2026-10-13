@@ -21,6 +21,10 @@
     fieldActive,
     render,
   } = R;
+  const H =
+    root.BlockHTMLValidation ||
+    (typeof require === 'function' ? require('./html-validation.js') : null);
+  const htmlProblems = (module) => H.moduleProblems(module, R);
   const slug = (value) =>
     String(value)
       .toLowerCase()
@@ -626,6 +630,59 @@
       warnings.push('A complete email was imported. Extract a module fragment before exporting.');
     return [...new Set(warnings)];
   }
+  // Check references in every branch, including branches hidden by the starting values.
+  function templateProblems(module) {
+    if (!module.templateMode) return [];
+    const L = root.BlockLogic || (typeof require === 'function' ? require('./logic.js') : null);
+    const errors = [];
+    function sample(field) {
+      if (field.type === 'list')
+        return [Object.fromEntries((field.itemFields || []).map((f) => [f.key, sample(f)]))];
+      if (field.type === 'toggle') return true;
+      if (field.type === 'number') return 1;
+      return field.defaultValue || '';
+    }
+    const scope = Object.fromEntries(
+      module.fields.filter((f) => f.enabled).map((f) => [f.key || f.id, sample(f)]),
+    );
+    scope.block_id = 'bs_preview';
+    function walk(nodes, context) {
+      for (const node of nodes) {
+        try {
+          if (node.type === 'value') L.lookup(node.expression.split('|')[0].trim(), context);
+          if (node.type === 'if') {
+            for (const branch of node.branches) {
+              try {
+                L.evaluate(branch.test, context);
+              } catch (e) {
+                errors.push(e.message);
+              }
+              walk(branch.children, context);
+            }
+            walk(node.otherwise, context);
+          }
+          if (node.type === 'for') {
+            const list = L.lookup(node.collection, context);
+            if (!Array.isArray(list)) throw Error(node.collection + ' must be a repeatable list.');
+            walk(node.children, {
+              ...context,
+              [node.variable]: list[0],
+              forloop: { index: 1, index0: 0, first: true, last: true, length: 1 },
+            });
+            walk(node.otherwise, context);
+          }
+        } catch (e) {
+          errors.push(e.message);
+        }
+      }
+    }
+    try {
+      walk(L.compile(module.source), scope);
+    } catch (e) {
+      errors.push(e.message);
+    }
+    return [...new Set(errors)];
+  }
   function assertProject(project) {
     if (
       !project ||
@@ -698,6 +755,7 @@
     return project;
   }
   const api = {
+    htmlProblems,
     escape,
     slug,
     dynamic,
@@ -717,6 +775,7 @@
     linkStyleCSS,
     richLinksAllowed,
     assertProject,
+    templateProblems,
     sourceValue,
     preserveOriginal,
     sourceOffset,

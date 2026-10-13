@@ -6,9 +6,9 @@
   "type": "commonjs",
   "scripts": {
     "build": "python3 block-studio/build.py",
-    "test": "node block-studio/tests/core.test.cjs",
+    "test": "node block-studio/scripts/validate.cjs",
     "studio:build": "python3 block-studio/build.py",
-    "studio:test": "node block-studio/tests/core.test.cjs"
+    "studio:test": "node block-studio/scripts/validate.cjs"
   },
   "keywords": [
     "sfmc",

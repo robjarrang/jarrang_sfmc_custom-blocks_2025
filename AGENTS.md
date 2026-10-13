@@ -154,13 +154,13 @@ rows.
        const errors = C.fieldProblems(f);
        if (errors.length) throw new Error(f.label + ': ' + errors.join(' '));
      }
-   for (const m of project.modules) C.render(m); // throws if any target/template reference is broken
+   for (const m of project.modules) C.render(m); // richtext rendering needs a DOM; use the ESC DOM-backed tests for these modules
    ```
 
    Also self-check the rules `exporter.js`'s `problems()` enforces (that function needs a browser DOM/canvas, so
    replicate its checks manually): slug regex and not `docs`/`shared-assets`/`src`/`vendor`; release matches
    `\d+\.\d+\.\d+`; no executable HTML; `source` is a fragment, not a full document; and
-   `C.parse(m.source).issues` is empty. Read `C.inspect(m)` for non-blocking warnings (AMPscript present, Outlook
+   `C.parse(m.source).issues` and `C.htmlProblems(m)` are empty. The former checks lexical syntax; the latter checks rendered tag structure with a DOM available for rich text. Read `C.inspect(m)` for non-blocking warnings (AMPscript present, Outlook
    markup, interactive content, missing `contextCss` for class-based styling) and mention any relevant ones to the user.
 
 7. **Write the exported files.** Study a real existing module as the exact template, e.g.
@@ -204,3 +204,9 @@ rows.
 - [ ] `icon.png`/`dragIcon.png` exist (real or a flagged placeholder) at the right sizes.
 - [ ] The template catalogue `index.html` lists every module in the template, not just the new one.
 - [ ] `projects/<client>/<template>.jarrang.json` matches exactly what was published to `docs/`.
+
+## Maintenance additions (1.18.0)
+
+Read ESC-MAINTENANCE.md before modifying existing ESC modules. Preserve `iconAssets`, `published` and `exportedDefinition` in editable project JSON. The latter two describe the last export, not proof of deployment. Do not reset a published reference to bypass a compatibility error. Duplicate the module for incompatible schema changes. The Studio preserves supplied PNG pairs during export.
+
+Plain Node cannot sanitise rich text without a DOM. The automated ESC suite uses happy-dom as a development-only dependency and renders all 40 modules. Run `npm install --prefix block-studio` once, then `npm test` from the root. These are simulations, not live SFMC validation. Existing runtime folders must remain byte-identical.

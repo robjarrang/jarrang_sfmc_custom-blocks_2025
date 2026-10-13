@@ -155,11 +155,14 @@ test('empty repeating group can become one item using child defaults', () => {
   group.defaultValue = [];
   assert.ok(C.render(builder.singleDraft(module, group.id).draft).includes('Go'));
 });
-test('custom loop counters and external references block conversion without mutation', () => {
+test('single-item conversion resolves loop counters and still protects external references', () => {
   const { module, group, builder } = repeating();
-  module.source = module.source.replace('{% endfor %}', '{{ forloop.index }}{% endfor %}');
+  const at = module.source.indexOf('{% endfor %}');
+  C.rebase(module, [{ start: at, end: at, value: '{{ forloop.index }}' }]);
   const before = JSON.stringify(module);
-  assert.throws(() => builder.singleDraft(module, group.id), /loop counters/);
+  const result = builder.singleDraft(module, group.id);
+  assert.ok(!result.draft.source.includes('forloop.index'));
+  assert.match(C.render(result.draft), /1/);
   assert.equal(JSON.stringify(module), before);
   module.source = module.source.replace('{{ forloop.index }}', '') + '{{ ' + group.key + '.size }}';
   assert.throws(() => builder.singleDraft(module, group.id), /Other template logic/);

@@ -61,7 +61,7 @@
     parent.append(wrap);
     return n;
   }
-  function setType(f, type) {
+  function setType(f, type, rows) {
     const old = f.type;
     f.type = type;
     if (type === 'list') {
@@ -91,12 +91,10 @@
           value: String(f.defaultValue),
         },
       ];
-    if (type === 'richtext' && old === 'text')
-      f.defaultValue = C.escape(f.defaultValue).replace(/\n/g, '<br>');
-    if (old === 'richtext' && type === 'text')
-      f.defaultValue = C.decode(
-        f.defaultValue.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]*>/g, ''),
-      );
+    f.defaultValue = window.BlockFieldTransforms.content(f.defaultValue, old, type);
+    for (const row of rows || [])
+      if (Object.hasOwn(row, f.key))
+        row[f.key] = window.BlockFieldTransforms.content(row[f.key], old, type);
   }
   function compatible(f) {
     if (f.targets.some((t) => t.kind === 'element')) return types.filter((t) => t[0] === 'toggle');
@@ -133,11 +131,19 @@
   }
   function open(module, original, onSave, initialType, childKey) {
     const field = copy(original);
+    const ruleChanges = new Map();
+    function stagedModule() {
+      return window.BlockFieldTransforms.apply(
+        window.BlockTemplateRules.apply(module, [...ruleChanges.values()]),
+        original,
+        field,
+      );
+    }
     let itemMode = 'repeat',
       keptItem = 0,
       confirmedSingle = false;
     function singleResult() {
-      const draft = copy(module);
+      const draft = stagedModule();
       const index = draft.fields.findIndex((f) => f.id === field.id);
       if (index < 0) draft.fields.push(copy(field));
       else draft.fields[index] = copy(field);
@@ -153,11 +159,7 @@
     const header = el('header', undefined, 'field-dialog-header'),
       heading = el('h2', isNew ? 'Add a field' : 'Edit field');
     heading.id = 'field-editor-title';
-    header.append(
-      el('div', 'CLIENT CONTROLS', 'eyebrow'),
-      heading,
-      el('p', 'Choose what your client can edit. Try the control as you set it up.', 'help'),
-    );
+    header.append(heading);
     dialog.append(header);
     const grid = el('div', undefined, 'field-workspace'),
       left = el('div', undefined, 'field-settings-column'),
@@ -229,7 +231,7 @@
     right.append(
       previewHead,
       el('h3', 'What your client sees'),
-      el('p', 'Try it here. These test values will not change your starting content.', 'help'),
+      el('p', 'Test values only; starting content is unchanged.', 'help'),
     );
     const preview = el('div', undefined, 'live-control-card'),
       previewStatus = el('p', undefined, 'preview-value-status');
@@ -287,8 +289,7 @@
           [{ ...field, label: field.label || 'Your field' }],
           values,
           (_, v) => {
-            previewStatus.textContent =
-              C.validate(field, v) || 'Preview updated. Starting content is unchanged.';
+            previewStatus.textContent = C.validate(field, v) || '';
           },
           { prefix: 'field-preview-' },
         );
@@ -314,9 +315,10 @@
         ),
       );
       const connected = field.targets.length || hasReference(module, field);
+      connection.hidden = !!connected;
       connection.classList.toggle('unconnected', !connected);
       footerText.textContent = connected
-        ? 'Changes are applied when you save.'
+        ? ''
         : 'Save this control, then connect it in Template code.';
     }
     function changed() {
@@ -342,11 +344,7 @@
     function optionsEditor(parent, f) {
       parent.append(
         el('h3', 'Choices for your client'),
-        el(
-          'p',
-          'Give each choice a clear label. The inserted value is what the email code needs. Select the starting choice.',
-          'help',
-        ),
+        el('p', 'Labels appear in the editor; values are inserted into the email.', 'help'),
       );
       const box = el('div', undefined, 'choice-table');
       parent.append(box);
@@ -422,9 +420,19 @@
       draw();
     }
     function defaults(parent, f, label = 'Starting content') {
+      const previous =
+        f.id === original.id ? original : original.itemFields?.find((child) => child.id === f.id);
+      if (previous?.type === 'richtext' && f.type === 'text')
+        parent.append(
+          el(
+            'p',
+            'Saving as plain text removes formatting and links from the starting content and existing starting items. Cancel keeps the original formatting.',
+            'help',
+          ),
+        );
       if (f.type === 'list') return;
       if (f.type === 'richtext') {
-        f.linkStyle ||= C.linkStyle(f);
+        const appearance = C.linkStyle(f);
         const box = el('div', undefined, 'starting-richtext');
         parent.append(box);
         const mountStarting = () =>
@@ -483,9 +491,9 @@
             ['inherit', 'Match surrounding text'],
             ['custom', 'Use a specific colour'],
           ],
-          f.linkStyle.colour === 'inherit' ? 'inherit' : 'custom',
+          appearance.colour === 'inherit' ? 'inherit' : 'custom',
           (v) => {
-            f.linkStyle.colour = v === 'inherit' ? 'inherit' : '#000000';
+            appearance.colour = v === 'inherit' ? 'inherit' : '#000000';
             drawColour();
             update();
           },
@@ -493,17 +501,17 @@
         styles.append(custom);
         function drawColour() {
           custom.replaceChildren();
-          if (f.linkStyle.colour === 'inherit') return;
-          const hex = input(custom, 'Link hex colour', f.linkStyle.colour, (v) => {
-            f.linkStyle.colour = v;
+          if (appearance.colour === 'inherit') return;
+          const hex = input(custom, 'Link hex colour', appearance.colour, (v) => {
+            appearance.colour = v;
             update();
           });
           const picker = el('input');
           picker.type = 'color';
-          picker.value = C.normaliseColour(f.linkStyle.colour) || '#000000';
+          picker.value = C.normaliseColour(appearance.colour) || '#000000';
           picker.setAttribute('aria-label', 'Choose link colour');
           picker.oninput = () => {
-            f.linkStyle.colour = picker.value;
+            appearance.colour = picker.value;
             hex.value = picker.value;
             update();
           };
@@ -521,9 +529,9 @@
             ['underline', 'Underlined'],
             ['none', 'No underline'],
           ],
-          f.linkStyle.decoration,
+          appearance.decoration,
           (v) => {
-            f.linkStyle.decoration = v;
+            appearance.decoration = v;
             update();
           },
         );
@@ -535,15 +543,16 @@
             ['normal', 'Normal'],
             ['bold', 'Bold'],
           ],
-          f.linkStyle.weight,
+          appearance.weight,
           (v) => {
-            f.linkStyle.weight = v;
+            appearance.weight = v;
             update();
           },
         );
         const sample = el('div', undefined, 'link-style-sample');
         styles.append(sample);
         function update() {
+          f.linkStyle = { ...appearance };
           sample.replaceChildren();
           const a = el('a', 'Example link');
           a.setAttribute('style', C.linkStyleCSS(f));
@@ -614,28 +623,10 @@
         control.parentNode.classList.add('starting-colour');
         control.before(picker);
       }
-      if (f.type === 'image')
-        parent.append(
-          el('p', 'Use an existing hosted image. The client will also enter an image URL.', 'help'),
-        );
-      if (f.type === 'richtext')
-        parent.append(
-          el(
-            'p',
-            'Starting content can include inline formatting. The client gets a formatting toolbar, shown in the preview.',
-            'help',
-          ),
-        );
+      if (f.type === 'image') parent.append(el('p', 'Use a hosted image URL.', 'help'));
     }
     function itemSchema(parent) {
-      parent.append(
-        el('h3', 'What can change in each item?'),
-        el(
-          'p',
-          'For bullets, one text field is enough. A card might need an image, a title and a link.',
-          'help',
-        ),
-      );
+      parent.append(el('h3', 'Item fields'));
       field.itemFields.forEach((child, i) => {
         const card = disclosure(
           parent,
@@ -670,18 +661,32 @@
           types.filter((t) => t[0] !== 'list'),
           child.type,
           (v) => {
-            setType(child, v);
+            setType(child, v, field.defaultValue);
             drawSetup();
             changed();
           },
         );
         defaults(card, child, 'Content for a new item');
+        guidance(card, child);
         const advanced = disclosure(
           card,
           'Code reference',
-          'Changing this reference also requires updating the item expression in Template code.',
+          'References in the item template update together when you save.',
         );
         const key = input(advanced, 'Item template key', child.key, () => {});
+        const publishedChild = module.published?.fields
+          ?.find((f) => f.id === field.id)
+          ?.itemFields?.find((f) => f.key === child.key);
+        if (publishedChild) {
+          key.disabled = true;
+          advanced.append(
+            el(
+              'p',
+              'This key is used by saved SFMC items. Duplicate the module to change it. You can still change the client-facing field name.',
+              'help',
+            ),
+          );
+        }
         key.onchange = () => {
           const v = key.value.trim();
           if (
@@ -701,7 +706,6 @@
               delete row[child.key];
             }
           });
-          child.id = v;
           child.key = v;
         };
         card.append(
@@ -912,31 +916,206 @@
         });
       else
         parent.append(el('p', 'Control: ' + (choices[0]?.[1] || field.type), 'field-type-summary'));
-      parent.append(el('p', Catalog.types.find((t) => t.id === field.type)?.help || '', 'help'));
       if (field.type === 'list') itemSchema(parent);
       else defaults(parent, field);
+      guidance(parent, field);
+    }
+    function guidance(parent, f) {
       const optional = disclosure(
         parent,
         'Guidance and limits',
         'Optional settings to help your client enter the right content.',
       );
-      input(optional, 'Help for your client', field.help, (v) => (field.help = v), 'textarea');
-      if (!['list', 'toggle'].includes(field.type)) {
+      input(optional, 'Help for your client', f.help, (v) => (f.help = v), 'textarea');
+      if (!['list', 'toggle'].includes(f.type)) {
         input(
           optional,
           'Character limit',
-          field.maxLength || '',
-          (v) => (field.maxLength = v === '' ? 0 : Math.max(0, Number(v) || 0)),
+          f.maxLength || '',
+          (v) => (f.maxLength = v === '' ? 0 : Math.max(0, Number(v) || 0)),
           'number',
           'Leave empty for no limit.',
         );
         const l = el('label', undefined, 'check-label'),
           n = el('input');
         n.type = 'checkbox';
-        n.checked = field.required;
-        n.onchange = () => (field.required = n.checked);
+        n.checked = f.required;
+        n.onchange = () => (f.required = n.checked);
         l.append(n, document.createTextNode('Require a value'));
         optional.append(l);
+      }
+    }
+    function drawRules(parent) {
+      const ruleModule = {
+        ...module,
+        fields: module.fields.map((f) => (f.id === field.id ? { ...field, key: f.key } : f)),
+      };
+      const rules = window.BlockTemplateRules.rules(ruleModule, field);
+      if (!rules.length) return;
+      parent.append(
+        el('h3', 'Layout rules'),
+        el(
+          'p',
+          'These conditions choose which parts of the HTML appear. Changes apply when you save the field. The HTML for each branch stays in place.',
+          'help',
+        ),
+      );
+      for (const rule of rules) {
+        const card = disclosure(
+          parent,
+          (rule.tag === 'if' ? 'If' : 'Otherwise if') + ' · line ' + rule.line,
+        );
+        card.classList.add('template-rule-card');
+        if (!rule.model) {
+          card.append(
+            el(
+              'p',
+              'This expression uses custom logic. Edit it in Advanced template logic.',
+              'help',
+            ),
+            el('pre', rule.condition, 'template-snippet'),
+          );
+          continue;
+        }
+        const saved = ruleChanges.get(rule.start);
+        const model = saved ? window.BlockTemplateRules.parse(saved.condition) : copy(rule.model);
+        const summary = card.querySelector('summary');
+        function describeRule() {
+          return model.terms
+            .map((term) => {
+              const operand = rule.operands.find((o) => o.path === term.path);
+              const boolean = ['toggle', 'boolean'].includes(operand.field.type);
+              const comparison = {
+                present: boolean ? 'is on' : 'has a value',
+                absent: boolean ? 'is off' : 'is empty',
+                '==': 'equals',
+                '!=': 'does not equal',
+                '>': 'is greater than',
+                '>=': 'is at least',
+                '<': 'is less than',
+                '<=': 'is at most',
+                contains: 'contains',
+              }[term.op];
+              const value =
+                operand.field.options?.find((o) => o.value === term.value)?.label ?? term.value;
+              return (
+                operand.label +
+                ' ' +
+                comparison +
+                (['present', 'absent'].includes(term.op) ? '' : ' ' + value)
+              );
+            })
+            .join(model.join === 'or' ? ' or ' : ' and ');
+        }
+        const branchLabel = rule.tag === 'if' ? 'If ' : 'Otherwise if ';
+        summary.textContent = branchLabel + describeRule() + ' · line ' + rule.line;
+        const conditionPreview = el('code');
+        const store = () => {
+          const condition = window.BlockTemplateRules.expression(model);
+          ruleChanges.set(rule.start, {
+            ...rule,
+            condition,
+            value: '{% ' + rule.tag + ' ' + condition + ' %}',
+          });
+          conditionPreview.textContent = condition;
+          summary.textContent = branchLabel + describeRule() + ' · line ' + rule.line + ' · edited';
+          changed();
+        };
+        if (model.terms.length > 1)
+          select(
+            card,
+            'Match conditions',
+            [
+              ['and', 'All conditions'],
+              ['or', 'Any condition'],
+            ],
+            model.join,
+            (v) => {
+              model.join = v;
+              store();
+            },
+          );
+        model.terms.forEach((term, index) => {
+          const row = el('div', undefined, 'template-rule-term');
+          const valueBox = el('div');
+          const operand = rule.operands.find((o) => o.path === term.path);
+          row.append(
+            el(
+              'strong',
+              operand.label + (model.terms.length > 1 ? ' · condition ' + (index + 1) : ''),
+            ),
+          );
+          const type = operand.field.type;
+          const comparisons = [
+            ['present', type === 'toggle' || type === 'boolean' ? 'Is on / true' : 'Has a value'],
+            ['absent', type === 'toggle' || type === 'boolean' ? 'Is off / false' : 'Is empty'],
+            ['==', 'Equals'],
+            ['!=', 'Does not equal'],
+          ];
+          if (type === 'number')
+            comparisons.push(
+              ['>', 'Greater than'],
+              ['>=', 'At least'],
+              ['<', 'Less than'],
+              ['<=', 'At most'],
+            );
+          if (['text', 'richtext', 'url', 'image'].includes(type))
+            comparisons.push(['contains', 'Contains']);
+          if (!comparisons.some(([value]) => value === term.op))
+            comparisons.push([term.op, term.op]);
+          function drawValue() {
+            valueBox.replaceChildren();
+            if (['present', 'absent'].includes(term.op)) return;
+            if (type === 'select' || type === 'toggle' || type === 'boolean') {
+              const choices =
+                type === 'select'
+                  ? operand.field.options.map((o) => [o.value, o.label])
+                  : type === 'toggle'
+                    ? [
+                        ['true', 'On'],
+                        ['false', 'Off'],
+                      ]
+                    : [
+                        ['true', 'True'],
+                        ['false', 'False'],
+                      ];
+              if (!choices.some(([v]) => v === String(term.value)))
+                choices.push([String(term.value), String(term.value)]);
+              select(valueBox, 'Compare with', choices, String(term.value), (v) => {
+                term.value = ['toggle', 'boolean'].includes(type) ? v === 'true' : v;
+                store();
+              });
+            } else
+              input(
+                valueBox,
+                'Compare with',
+                term.value,
+                (v) => {
+                  term.value = type === 'number' ? Number(v) : v;
+                  store();
+                },
+                type === 'number' ? 'number' : 'text',
+              );
+          }
+          select(row, 'Condition', comparisons, term.op, (v) => {
+            term.op = v;
+            term.value ??=
+              type === 'number'
+                ? 1
+                : ['toggle', 'boolean'].includes(type)
+                  ? true
+                  : operand.field.options?.[0]?.value || '';
+            drawValue();
+            store();
+          });
+          row.append(valueBox);
+          card.append(row);
+          drawValue();
+        });
+        conditionPreview.textContent = saved?.condition || rule.condition;
+        const code = el('p', undefined, 'help');
+        code.append(conditionPreview);
+        card.append(code);
       }
     }
     function drawConnections() {
@@ -964,6 +1143,7 @@
               ? '{% if ' + field.key + ' %}\n  <!-- Your optional section -->\n{% endif %}'
               : '{{ ' + field.key + (field.type === 'richtext' ? ' | richtext' : '') + ' }}';
         parent.append(el('pre', example, 'template-snippet'));
+        drawRules(parent);
         return;
       }
       parent.append(
@@ -1107,7 +1287,7 @@
         field.key,
         (v) => (field.key = v),
         'text',
-        'Changing an existing key requires updating its references in Template code.',
+        'Existing template references update together when you save.',
       );
       if (field.type === 'toggle')
         select(
@@ -1145,8 +1325,16 @@
         ['block_id', 'forloop', 'item', 'constructor', 'prototype', '__proto__'].includes(field.key)
       )
         issues.push('Choose a different template key.');
-      const next = copy(module);
-      next.fields = next.fields.filter((f) => f.id !== field.id).concat(field);
+      let next;
+      try {
+        next = stagedModule();
+      } catch (e) {
+        fail([e.message]);
+        return;
+      }
+
+      issues.push(...C.templateProblems(next));
+      issues.push(...C.htmlProblems(next));
       try {
         C.assertProject({
           format: 'jarrang-block-studio',
@@ -1164,7 +1352,13 @@
         fail([...new Set(issues)]);
         return;
       }
-      onSave(field);
+      const savedField = next.fields.find((f) => f.id === field.id);
+      onSave(
+        savedField,
+        next.source !== module.source
+          ? { draft: next, fields: [savedField], kind: 'rules' }
+          : undefined,
+      );
       dialog.close();
     }
     dialog.onclose = () => dialog.remove();
@@ -1197,9 +1391,7 @@
     let chosen;
     function typeScreen() {
       title.textContent = 'What should your client change?';
-      content.replaceChildren(
-        el('p', 'Choose a control, then choose where it belongs in your module.', 'help'),
-      );
+      content.replaceChildren();
       const grid = el('div', undefined, 'field-type-grid');
       content.append(grid);
       for (const type of Catalog.types) {
@@ -1223,10 +1415,7 @@
         card.append(icon, words);
         grid.append(card);
       }
-      footer.replaceChildren(
-        el('span', 'Already found a field? Select it in the field list.', 'help'),
-        button('Cancel', () => dialog.close()),
-      );
+      footer.replaceChildren(button('Cancel', () => dialog.close()));
     }
     function locationScreen() {
       title.textContent =

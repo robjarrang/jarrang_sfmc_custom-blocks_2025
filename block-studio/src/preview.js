@@ -2,6 +2,10 @@
 (function (root) {
   'use strict';
   const C = root.BlockCore;
+  function fitScale(width, height, availableWidth, availableHeight) {
+    if (!(width > 0 && height > 0 && availableWidth > 0 && availableHeight > 0)) return 1;
+    return Math.min(1, availableWidth / width, availableHeight / height);
+  }
   // Keep unchanged nodes (especially images) alive during test-value edits.
   function reconcile(current, next) {
     if (current.isEqualNode(next)) return;
@@ -72,11 +76,25 @@
       const node = target?.closest('[data-studio-fields]');
       if (node) parent.postMessage({ studioFields: JSON.parse(node.dataset.studioFields) }, '*');
     });
+    // Measure the content shell, not the iframe viewport, so shorter content can shrink.
     function size() {
-      parent.postMessage({ studioHeight: document.documentElement.scrollHeight }, '*');
+      const shell = document.querySelector('[data-studio-preview-shell]');
+      if (!shell) return;
+      const rect = shell.getBoundingClientRect();
+      parent.postMessage(
+        {
+          studioHeight: Math.max(
+            1,
+            Math.ceil(Math.max(shell.scrollHeight, rect.height) + Math.max(0, rect.top)),
+          ),
+        },
+        '*',
+      );
     }
     window.addEventListener('load', size);
-    new ResizeObserver(size).observe(document.body);
+    new ResizeObserver(size).observe(
+      document.querySelector('[data-studio-preview-shell]') || document.body,
+    );
   }
   function loopScopes(source) {
     const scopes = [],
@@ -182,6 +200,7 @@
       (m.contextCss || '');
     doc.head.append(style);
     const shell = doc.createElement('div');
+    shell.setAttribute('data-studio-preview-shell', '');
     shell.style.cssText = 'width:' + (Number(m.width) || 600) + 'px;max-width:100%;margin:0 auto;';
     shell.append(...doc.body.childNodes);
     doc.body.append(shell);
@@ -207,5 +226,5 @@
     }
     return '<!doctype html>' + doc.documentElement.outerHTML;
   }
-  root.BlockPreview = { documentHTML, previewBridge, reconcile, loopScopes };
+  root.BlockPreview = { documentHTML, previewBridge, reconcile, loopScopes, fitScale };
 })(window);

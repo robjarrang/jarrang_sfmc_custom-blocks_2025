@@ -284,12 +284,19 @@
       },
       'Find in HTML (Ctrl/Cmd+F)',
     );
+    const toolsMenu = doc.createElement('details');
+    toolsMenu.className = 'code-tools-menu';
+    const toolsLabel = doc.createElement('summary');
+    toolsLabel.textContent = 'Code tools';
+    const toolsBody = doc.createElement('div');
+    toolsBody.className = 'code-tools-options';
+    toolsMenu.append(toolsLabel, toolsBody);
     const line = doc.createElement('input');
     line.type = 'number';
     line.min = '1';
     line.placeholder = 'Line';
     line.setAttribute('aria-label', 'Go to line number');
-    toolbar.append(line);
+    toolsBody.append(line);
     function go() {
       const value = Number(line.value);
       const starts = rawLines;
@@ -299,7 +306,7 @@
       }
       reveal(starts[value - 1], starts[value - 1]);
     }
-    button(toolbar, 'Go', go);
+    button(toolsBody, 'Go', go);
     line.onkeydown = (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -307,7 +314,7 @@
       }
     };
     const partner = button(
-      toolbar,
+      toolsBody,
       'Matching tag',
       () => {
         const t = tokenAt(lastSelection.start);
@@ -328,12 +335,13 @@
         () => options.onRepeat({ ...lastSelection }),
         'Choose a complete repeating item around the cursor or selection',
       );
-    button(toolbar, 'Expand all', () => {
+    button(toolsBody, 'Expand all', () => {
       const offset = lastSelection.start;
       folds = [];
       render();
       reveal(offset, offset);
     });
+    toolbar.append(toolsMenu);
     const find = doc.createElement('input');
     find.type = 'search';
     find.placeholder = 'Find literal text';

@@ -29,6 +29,21 @@
       if (field.type === 'list') {
         input = document.createElement('div');
         input.className = 'repeat-items';
+        function focusItem(index, action) {
+          const card = input.querySelectorAll('.repeat-card')[index];
+          const sameAction =
+            action &&
+            [...(card?.querySelectorAll('.repeat-heading button') || [])].find(
+              (b) => b.textContent === action && !b.disabled,
+            );
+          const target =
+            sameAction ||
+            card?.querySelector(
+              'textarea, input:not([type=hidden]), select, [contenteditable=true]',
+            ) ||
+            input.querySelector('.add-repeat-item');
+          target?.focus();
+        }
         function draw() {
           input.replaceChildren();
           const rows = values[field.id];
@@ -40,7 +55,7 @@
             const name = document.createElement('strong');
             name.textContent = 'Item ' + (index + 1);
             head.append(name);
-            const action = (text, title, disabled, run) => {
+            const action = (text, title, disabled, run, destination = () => index) => {
               const b = document.createElement('button');
               b.type = 'button';
               b.textContent = text;
@@ -51,6 +66,7 @@
                 run();
                 changed(clone(rows));
                 draw();
+                focusItem(destination(), text);
               };
               head.append(b);
             };
@@ -59,18 +75,28 @@
               'Move up item',
               index === 0,
               () => ([rows[index - 1], rows[index]] = [rows[index], rows[index - 1]]),
+              () => index - 1,
             );
             action(
               '↓',
               'Move down item',
               index === rows.length - 1,
               () => ([rows[index + 1], rows[index]] = [rows[index], rows[index + 1]]),
+              () => index + 1,
             );
-            action('Duplicate', 'Duplicate item', rows.length >= (field.maxItems ?? 50), () =>
-              rows.splice(index + 1, 0, clone(row)),
+            action(
+              'Duplicate',
+              'Duplicate item',
+              rows.length >= (field.maxItems ?? 50),
+              () => rows.splice(index + 1, 0, clone(row)),
+              () => index + 1,
             );
-            action('Remove', 'Remove item', rows.length <= (field.minItems ?? 0), () =>
-              rows.splice(index, 1),
+            action(
+              'Remove',
+              'Remove item',
+              rows.length <= (field.minItems ?? 0),
+              () => rows.splice(index, 1),
+              () => Math.min(index, rows.length - 1),
             );
             card.append(head);
             const body = document.createElement('div');
@@ -95,6 +121,7 @@
             );
             changed(clone(rows));
             draw();
+            focusItem(rows.length - 1);
           };
           input.append(add);
           const note = document.createElement('p');

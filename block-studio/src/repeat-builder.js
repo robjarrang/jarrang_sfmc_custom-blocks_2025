@@ -233,18 +233,8 @@
       );
     const bodyEnd = loop.members.length > 2 ? model.tokens[loop.members[1]].start : closing.start;
     const body = draft.source.slice(opening.end, bodyEnd);
-    if (
-      /{%\s*for\b/.test(body) ||
-      logicTokens.some(
-        (t) =>
-          t.start >= opening.end &&
-          t.end <= bodyEnd &&
-          words(t.text).some((w) => w === 'forloop' || w.startsWith('forloop.')),
-      )
-    )
-      throw Error(
-        'This item uses nested loops or loop counters. Update that custom logic before making it non-repeatable.',
-      );
+    if (/{%\s*for\b/.test(body))
+      throw Error('This item contains another repeating group. Make the inner group single first.');
     const rows = field.defaultValue;
     if (rows.length && (!Number.isInteger(itemIndex) || itemIndex < 0 || itemIndex >= rows.length))
       throw Error('Choose a starting item to keep.');
@@ -266,16 +256,27 @@
       promoted.push(next);
       draft.fields.push(next);
     }
-    const replacement = body.replace(/{{[\s\S]*?}}|{%[\s\S]*?%}/g, (token) =>
-      token.replace(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\b[A-Za-z_]\w*(?:\.\w+)*/g, (word) => {
-        if (replacements.has(word)) return replacements.get(word);
-        if (word === alias || word.startsWith(alias + '.') || word.split('.')[0] === groupKey)
-          throw Error(
-            'This item uses a custom group expression that cannot be converted automatically.',
-          );
-        return word;
-      }),
-    );
+    const singleLoop = { index: 1, index0: 0, first: true, last: true, length: 1 };
+    const replacement = body.replace(/%%[\s\S]*?%%|{{[\s\S]*?}}|{%[\s\S]*?%}/g, (token) => {
+      if (token.startsWith('%%')) return token;
+      const output = token.match(/^{{\s*forloop\.(\w+)(?:\s*\|\s*escape)?\s*}}$/);
+      if (output && Object.hasOwn(singleLoop, output[1])) return String(singleLoop[output[1]]);
+      return token.replace(
+        /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|\b[A-Za-z_]\w*(?:\.\w+)*/g,
+        (word) => {
+          if (replacements.has(word)) return replacements.get(word);
+          if (word.startsWith('forloop.') && Object.hasOwn(singleLoop, word.slice(8)))
+            return String(singleLoop[word.slice(8)]);
+          if (word === 'forloop' || word.startsWith('forloop.'))
+            throw Error('Unknown item-position value: ' + word);
+          if (word === alias || word.startsWith(alias + '.') || word.split('.')[0] === groupKey)
+            throw Error(
+              'This item uses a custom group expression that cannot be converted automatically.',
+            );
+          return word;
+        },
+      );
+    });
     const index = draft.fields.findIndex((f) => f.id === fieldId);
     draft.fields = draft.fields.filter((f) => !promoted.includes(f));
     C.rebase(draft, [{ start: loop.start, end: loop.end, value: replacement }], [fieldId]);

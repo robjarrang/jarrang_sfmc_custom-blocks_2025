@@ -254,3 +254,43 @@
   letter-spacing: inherit;
   vertical-align: baseline;
 }
+
+.code-tools-menu {
+  flex: 1;
+  min-width: 120px;
+}
+.code-tools-menu > summary {
+  cursor: pointer;
+  padding: 6px 9px;
+  font-size: 12px;
+  width: fit-content;
+}
+.code-tools-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+/* Fit source tools and the editing surface into the desktop preview panel. */
+@media (min-width: 901px) and (min-height: 700px) {
+  #source-preview-layout > .code-host,
+  #source-preview-layout .code-surface {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  #source-preview-layout .code-tools,
+  #source-preview-layout .code-search,
+  #source-preview-layout .code-status {
+    flex: none;
+  }
+  #source-preview-layout .code-stage {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+}

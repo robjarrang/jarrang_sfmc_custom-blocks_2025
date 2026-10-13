@@ -4,7 +4,7 @@ const { test } = require('node:test'),
   vm = require('node:vm'),
   path = require('node:path');
 const C = require('../src/core.js'),
-  JSZip = require('jszip');
+  JSZip = require('../vendor/jszip.min.js');
 const canvas = {
   getContext: () => ({
     fillRect() {},
@@ -199,4 +199,54 @@ test('single and full packages include both case-sensitive PNG names and preserv
       /Bootstrap Authors/,
     );
   }
+});
+
+test('direct save prepares file bytes and a complete catalogue without rebuilding other modules', async () => {
+  const p = project();
+  p.modules[1].exportedDefinition = JSON.parse(JSON.stringify(E.definition(p.modules[1])));
+  p.modules[1].name = 'Unfinished footer rename';
+  const files = await E.files(p, [p.modules[0]], {
+    ...p.settings,
+    baseUrl: 'https://team.github.io/blocks',
+  });
+  const catalogue = new TextDecoder().decode(files.get('docs/clients/hertz/commercial/index.html'));
+  assert.match(catalogue, /modules\/hero\//);
+  assert.match(catalogue, /modules\/footer\//);
+  assert.doesNotMatch(catalogue, /Unfinished footer rename/);
+  assert.ok(files.has('docs/clients/hertz/commercial/modules/hero/index.html'));
+  assert.equal(files.has('docs/clients/hertz/commercial/modules/footer/index.html'), false);
+  assert.ok(files.has('projects/hertz/commercial.jarrang.json'));
+  for (const bytes of files.values()) assert.ok(bytes instanceof Uint8Array);
+});
+
+test('saving requires valid content and settings, not legacy review flags', () => {
+  const m = { ...moduleData(), analysed: true, reviewed: false, acknowledged: false };
+  assert.equal(E.problems(m).length, 0);
+  assert.equal(
+    E.issues({ ...m, analysed: false }).some((issue) => issue.target === 'import'),
+    true,
+  );
+  assert.equal(
+    E.issues({ ...m, release: 'bad' }).some((issue) => issue.target === 'version'),
+    true,
+  );
+  assert.equal(
+    E.issues({ ...m, slug: 'bad folder' }).some((issue) => issue.target === 'folder'),
+    true,
+  );
+  const unsafe = { ...m, source: '<p onclick="alert(1)">Hello</p>' };
+  unsafe.draftSource = unsafe.source;
+  assert.equal(
+    E.issues(unsafe).some((issue) => /executable/.test(issue.message) && issue.target === 'source'),
+    true,
+  );
+  const field = C.infer(m.source).fields[0];
+  field.type = 'select';
+  field.options = [];
+  assert.equal(
+    E.issues({ ...m, fields: [field] }).some(
+      (issue) => issue.target === 'field' && issue.fieldId === field.id,
+    ),
+    true,
+  );
 });

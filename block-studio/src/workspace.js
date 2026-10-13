@@ -168,7 +168,7 @@
         'Another tab has changed the saved workspace. Save your current template file, then reload before continuing.',
       );
     const value = JSON.stringify(workspace);
-    storage.setItem(KEY, value);
+    if (value !== expected) storage.setItem(KEY, value);
     return value;
   }
   window.BlockWorkspace = {

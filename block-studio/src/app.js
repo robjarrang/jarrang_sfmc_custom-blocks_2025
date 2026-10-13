@@ -60,6 +60,14 @@
     else {
       const previous = localStorage.getItem(key);
       workspace = W.create(previous ? C.assertProject(JSON.parse(previous)) : project);
+      if (!previous && window.REPOSITORY_PROJECTS?.projects.length) {
+        workspace = window.BlockMaintenance.importBatch(
+          workspace,
+          window.REPOSITORY_PROJECTS.projects,
+          W,
+        );
+        workspace.projects = workspace.projects.filter((p) => W.path(p));
+      }
     }
   } catch {
     storageWarning =
@@ -69,7 +77,7 @@
   project = workspace.projects.find((p) => p.projectId === workspace.activeId);
   let storageBlocked = !!storageWarning;
   let currentId = project.modules[0]?.id,
-    step = 0,
+    step = project.modules[0]?.analysed ? 1 : 0,
     selectedField = null,
     viewport = 'desktop',
     trialValues = {},
@@ -81,6 +89,9 @@
   }
   project.settings ||= {};
   const current = () => project.modules.find((m) => m.id === currentId);
+  const H = window.BlockHistory,
+    history = H.create();
+  history.track(current());
   function tell(message, error = false) {
     clearTimeout(noticeTimer);
     $('notice').hidden = false;
@@ -88,7 +99,13 @@
     $('notice').className = 'notice' + (error ? ' error' : '');
     noticeTimer = setTimeout(() => ($('notice').hidden = true), 10000);
   }
-  function persist() {
+  function persist(label, group = null) {
+    const liveModules = workspace.projects.flatMap((p) => p.modules);
+    history.prune(liveModules);
+    const live = new Set(liveModules);
+    for (const module of codeDrafts.keys()) if (!live.has(module)) codeDrafts.delete(module);
+    history.capture(current(), label, group);
+    renderHistory();
     unsavedDraft = true;
     if (storageBlocked) {
       $('save-state').textContent = 'Draft not saved: download an editable project before closing';
@@ -98,7 +115,8 @@
       workspace.activeId = project.projectId;
       savedWorkspace = W.save(localStorage, workspace, savedWorkspace);
       unsavedDraft = false;
-      $('save-state').textContent = 'Draft saved in this browser';
+      $('save-state').textContent = 'Recovery draft saved in this browser';
+      renderRepositoryState();
       return true;
     } catch (error) {
       $('save-state').textContent = 'Draft not saved: download an editable project before closing';
@@ -112,6 +130,7 @@
   }
   window.addEventListener('beforeunload', (event) => {
     if (
+      savingRepository ||
       unsavedDraft ||
       [...codeDrafts.values()].some((state) => state.draft.source !== state.original.source)
     ) {
@@ -155,6 +174,7 @@
     );
   }
   function activateTemplate(next) {
+    history.endGroup();
     project = next;
     if (!project.modules.length) project.modules.push(newModule());
     project.settings ||= {};
@@ -195,18 +215,67 @@
         const title = document.createElement('strong');
         title.textContent = p.settings.name || 'Untitled template';
         const meta = document.createElement('span');
-        meta.textContent =
-          p.modules.length +
-          ' modules · ' +
-          p.modules.filter((m) => m.reviewed).length +
-          ' reviewed' +
-          (p.projectId === project.projectId ? ' · Open' : '');
+        meta.textContent = p.modules.length + (p.modules.length === 1 ? ' module' : ' modules');
+        button.setAttribute(
+          'aria-label',
+          title.textContent +
+            ', ' +
+            meta.textContent +
+            (p.projectId === project.projectId ? ', current template' : ''),
+        );
         button.append(title, meta);
         button.onclick = () => {
           $('projects-dialog').close();
           activateTemplate(p);
         };
-        cards.append(button);
+        if (!p.settings.clientName && !W.path(p) && workspace.projects.length > 1) {
+          const entry = document.createElement('div');
+          entry.className = 'template-entry';
+          const remove = document.createElement('button');
+          remove.className = 'button quiet danger';
+          remove.type = 'button';
+          remove.textContent = 'Remove draft';
+          remove.setAttribute(
+            'aria-label',
+            'Remove draft: ' + (p.settings.name || 'Untitled template'),
+          );
+          remove.onclick = () => {
+            if (p.modules.some(hasCodeChanges)) {
+              tell('Apply or discard pending HTML changes before removing this draft.', true);
+              return;
+            }
+            confirmAction(
+              'Remove ' + (p.settings.name || 'Untitled template') + '?',
+              'This removes its ' +
+                p.modules.length +
+                ' modules from this browser. Download the editable project first if you need a backup. ESC templates and repository files are kept. This cannot be undone.',
+              () => {
+                if (!workspace.projects.includes(p) || workspace.projects.length < 2) return;
+                const next = {
+                  ...workspace,
+                  projects: workspace.projects.filter((item) => item !== p),
+                };
+                if (next.activeId === p.projectId) next.activeId = next.projects[0].projectId;
+                try {
+                  if (storageBlocked)
+                    throw Error('Browser storage is unavailable. The draft has been kept.');
+                  savedWorkspace = W.save(localStorage, next, savedWorkspace);
+                  workspace = next;
+                  if (project === p)
+                    activateTemplate(
+                      next.projects.find((item) => item.projectId === next.activeId),
+                    );
+                  renderProjects();
+                  tell('Unassigned draft removed.');
+                } catch (error) {
+                  tell(error.message, true);
+                }
+              },
+            );
+          };
+          entry.append(button, remove);
+          cards.append(entry);
+        } else cards.append(button);
       }
       section.append(h, cards);
       $('project-cards').append(section);
@@ -280,6 +349,185 @@
     $('repository-error').textContent = '';
     $('repository-dialog').showModal();
   }
+  let repository = null,
+    rememberedRepository = null,
+    savingRepository = false;
+  const repositorySaved = new Map(),
+    repositoryBuilt = new Map();
+  const moduleSaveKey = (p, m) => W.path(p) + '/' + m.id;
+  const moduleSaveContent = (p, m) =>
+    JSON.stringify({
+      definition: E.definition(E.themedModule(p, m)),
+      draftSource: m.draftSource,
+      width: m.width,
+      iconColour: m.iconColour,
+      iconSymbol: m.iconSymbol,
+      iconAssets: m.iconAssets,
+    });
+  const repositorySettings = (p) =>
+    JSON.stringify({ ...p.settings, baseUrl: workspace.repository.baseUrl, location: 'docs' });
+  function repositoryContent(p) {
+    return JSON.stringify({
+      ...p,
+      settings: { ...p.settings, baseUrl: workspace.repository.baseUrl, location: 'docs' },
+    });
+  }
+  function renderRepositoryState() {
+    $('save-repository').disabled = savingRepository;
+    $('repository-state').textContent = savingRepository
+      ? 'Saving to repository…'
+      : repository
+        ? repository.name +
+          ' · ' +
+          (!hasCodeChanges() &&
+          repositorySaved.get(W.path(project)) === repositorySettings(project) &&
+          repositoryBuilt.get(moduleSaveKey(project, current())) ===
+            moduleSaveContent(project, current())
+            ? 'Saved to repository'
+            : 'Unsaved repository changes')
+        : 'No repository connected';
+    $('connect-repository').textContent = repository
+      ? 'Reload repository'
+      : rememberedRepository
+        ? 'Reconnect ' + rememberedRepository.name
+        : 'Open repository';
+  }
+  async function openWritableRepository(reconnect = false) {
+    if (savingRepository) return;
+    if (!window.showDirectoryPicker) {
+      $('repository-folder').click();
+      tell(
+        'Direct saving needs a browser with folder write access, such as desktop Chrome or Edge. You can still import and download ZIPs here.',
+      );
+      return;
+    }
+    if (workspace.projects.some((p) => p.modules.some(hasCodeChanges))) {
+      tell('Apply or discard pending HTML changes before opening a repository.', true);
+      return;
+    }
+    try {
+      const handle =
+        reconnect && rememberedRepository
+          ? rememberedRepository
+          : await window.showDirectoryPicker({ mode: 'readwrite', id: 'block-studio-repository' });
+      if ((await handle.requestPermission({ mode: 'readwrite' })) !== 'granted')
+        throw Error('Folder access was not granted.');
+      const connection = await window.BlockRepository.connect(handle);
+      const projects = await window.BlockMaintenance.readRepository(connection.files, W);
+      importTemplates(projects, () => {
+        repository = connection;
+        rememberedRepository = handle;
+        repositorySaved.clear();
+        repositoryBuilt.clear();
+        for (const input of projects) {
+          const loaded = workspace.projects.find((p) => W.path(p) === W.path(input));
+          repositorySaved.set(W.path(loaded), repositorySettings(loaded));
+          for (const m of loaded.modules) {
+            if (
+              m.exportedDefinition &&
+              JSON.stringify(E.definition(E.themedModule(loaded, m))) ===
+                JSON.stringify(m.exportedDefinition)
+            )
+              repositoryBuilt.set(moduleSaveKey(loaded, m), moduleSaveContent(loaded, m));
+          }
+        }
+        window.BlockRepository.remembered(handle).catch(() => {});
+        renderRepositoryState();
+      });
+    } catch (error) {
+      if (error.name !== 'AbortError') tell('Repository not opened: ' + error.message, true);
+    }
+  }
+  async function saveRepository(all = false) {
+    if (savingRepository) return;
+    if (!repository) {
+      showProjects();
+      tell(
+        'Open your repository before saving. ZIP downloads are available under Manage templates.',
+      );
+      return;
+    }
+    if (project.modules.some(hasCodeChanges)) {
+      tell('Apply or discard pending HTML changes before saving.', true);
+      return;
+    }
+    if (!W.path(project)) {
+      openTemplateSettings();
+      return;
+    }
+    const target = project,
+      options = { ...exportOptions(), fullTemplate: all };
+    const snapshot = JSON.parse(JSON.stringify(target));
+    const modules = all ? snapshot.modules : snapshot.modules.filter((m) => m.id === currentId);
+    const failed = modules.find((m) => E.problems(E.themedModule(snapshot, m)).length);
+    if (failed) {
+      showSaveIssues(failed);
+      return;
+    }
+    const surfaces = [
+      ...document.querySelectorAll('main, .sidebar, .top-actions, .draft-status-bar, dialog[open]'),
+    ];
+    const previousInert = surfaces.map((el) => el.inert);
+    savingRepository = true;
+    surfaces.forEach((el) => {
+      el.inert = true;
+    });
+    renderRepositoryState();
+    try {
+      if (storageBlocked || localStorage.getItem(W.KEY) !== savedWorkspace)
+        throw Error(
+          'Browser drafts changed in another tab or could not be loaded. Download a backup and reload before saving.',
+        );
+      const entries = await E.files(snapshot, modules, options);
+      await repository.save(entries, options);
+      window.BlockMaintenance.recordExport(
+        target,
+        modules.map((m) => E.definition(E.themedModule(snapshot, m))),
+      );
+      target.settings.baseUrl = options.baseUrl;
+      target.settings.location = 'docs';
+      repositorySaved.set(W.path(target), repositorySettings(target));
+      for (const saved of modules) {
+        const m = target.modules.find((m) => m.id === saved.id);
+        repositoryBuilt.set(moduleSaveKey(target, m), moduleSaveContent(target, m));
+      }
+      if (persist()) tell('Saved to repository. Ready to commit and push in Tower.');
+      else
+        tell(
+          'Saved to repository, but the browser recovery draft was not saved. Keep this tab open and download an editable project backup before reloading.',
+          true,
+        );
+    } catch (error) {
+      tell('Save failed: ' + error.message, true);
+    } finally {
+      savingRepository = false;
+      surfaces.forEach((el, i) => {
+        el.inert = previousInert[i];
+      });
+      renderRepositoryState();
+    }
+  }
+  $('connect-repository').onclick = () => openWritableRepository(true);
+  $('save-repository').onclick = () => saveRepository();
+  $('copy-module-url').onclick = async () => {
+    const url = E.endpoint(current(), workspace.repository.baseUrl, exportOptions());
+    if (!workspace.repository.baseUrl) {
+      openRepositorySettings();
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      tell('Module URL copied.');
+    } catch {
+      tell('Copy the module URL shown above.');
+    }
+  };
+  window.BlockRepository?.remembered()
+    .then((handle) => {
+      rememberedRepository = handle;
+      renderRepositoryState();
+    })
+    .catch(() => {});
   function exportOptions() {
     return {
       ...project.settings,
@@ -336,28 +584,37 @@
     $('active-template').textContent = project.settings.name || 'Untitled template';
     document.title =
       (project.settings?.name ? project.settings.name + ' · ' : '') + 'Block Studio · Jarrang';
-    $('module-list').replaceChildren();
+    const list = $('module-list'),
+      top = list.scrollTop,
+      left = list.scrollLeft,
+      focusedId = document.activeElement?.dataset?.moduleId;
+    list.replaceChildren();
     project.modules.forEach((m) => {
       const b = document.createElement('button');
+      b.dataset.moduleId = m.id;
       b.className = 'module-button' + (m.id === currentId ? ' active' : '');
       b.innerHTML =
         '<span class="module-icon" aria-hidden="true">▤</span><span><span class="name"></span><span class="meta"></span></span>';
       b.querySelector('.name').textContent = m.name;
       b.querySelector('.meta').textContent = hasCodeChanges(m)
         ? 'Unapplied HTML changes'
-        : m.reviewed
+        : m.analysed
           ? m.fields.filter((f) => f.enabled).length + ' editable fields'
           : 'Draft module';
       b.onclick = () => {
         if (currentId === m.id) return;
+        history.endGroup();
         currentId = m.id;
         step = m.analysed ? 1 : 0;
         selectedField = null;
         trialValues = {};
         render();
       };
-      $('module-list').append(b);
+      list.append(b);
+      if (m.id === focusedId) b.focus({ preventScroll: true });
     });
+    list.scrollTop = top;
+    list.scrollLeft = left;
   }
   let workspaceMode = 'configure';
   let previewMode = 'desktop';
@@ -376,19 +633,19 @@
     render();
   }
   function render() {
+    $('save-issues').hidden = true;
     const m = current();
+    history.track(m);
+    renderHistory();
     $('quick-edit-html').hidden = !m.analysed;
     $('setup-navigation').hidden = !!m.analysed && step !== 0;
     $('module-task-navigation').hidden = !m.analysed;
     renderTaskNavigation();
     renderSidebar();
     $('module-title').textContent = m.name;
-    $('module-status').textContent = hasCodeChanges(m)
-      ? 'Unapplied HTML'
-      : m.reviewed
-        ? 'Fields reviewed'
-        : 'Draft';
-    $('module-status').className = 'pill' + (m.reviewed ? ' good' : '');
+    $('module-title').title = m.name;
+    $('module-status').textContent = hasCodeChanges(m) ? 'Unapplied HTML' : 'Draft';
+    $('module-status').hidden = m.analysed && !hasCodeChanges(m);
     document.querySelectorAll('.step').forEach((b) => {
       const n = Number(b.dataset.step);
       b.classList.toggle('active', n === step);
@@ -436,7 +693,7 @@
       m.acknowledged = false;
       selectedField = m.fields[0]?.id;
       trialValues = {};
-      persist();
+      persist('find editable content');
       step = 1;
       render();
       tell(result.fields.length + ' suggested fields. Review what should be editable.');
@@ -463,18 +720,74 @@
     renderFields();
     mappingCode?.setSelected(selectedField);
     syncPreviewSelection();
-    $('field-list').querySelectorAll('.field-drag-handle')[target]?.focus();
+    const row = $('field-list').children[target];
+    row?.querySelector('.field-drag-handle')?.focus({ preventScroll: true });
+    revealField(row);
     tell(field.label + ' moved to position ' + (target + 1) + ' of ' + m.fields.length + '.');
   }
+  // Scroll only the field list, never its ancestors or the preview.
+  function revealField(row) {
+    const list = $('field-list');
+    if (!row || list.scrollHeight <= list.clientHeight) return;
+    const bounds = list.getBoundingClientRect?.(),
+      item = row.getBoundingClientRect?.();
+    if (!bounds || !item) return;
+    if (item.top < bounds.top) list.scrollTop += item.top - bounds.top;
+    else if (item.bottom > bounds.bottom)
+      list.scrollTop += Math.min(item.bottom - bounds.bottom, item.top - bounds.top);
+  }
+  let stopFieldDrag = () => {};
   function renderFields() {
-    const m = current();
+    stopFieldDrag();
+    const m = current(),
+      list = $('field-list'),
+      top = list.dataset.moduleId === m.id ? list.scrollTop : 0;
+    list.dataset.moduleId = m.id;
     if (!m.fields.some((f) => f.id === selectedField)) selectedField = m.fields[0]?.id || null;
     $('field-count').textContent = m.fields.length + (m.fields.length === 1 ? ' field' : ' fields');
     $('field-list').replaceChildren();
     if (!m.fields.length)
       $('field-list').innerHTML =
         '<div class="empty-fields"><strong>No simple editable fields found.</strong>The source may contain only layout or personalisation. You can export it as a fixed block, or import a simpler module.</div>';
-    let draggedId = null;
+    let draggedId = null,
+      scrollFrame = null,
+      scrollSpeed = 0,
+      lastFrame = null;
+    const stopScroll = () => {
+      if (scrollFrame !== null) cancelAnimationFrame(scrollFrame);
+      scrollFrame = null;
+      lastFrame = null;
+      scrollSpeed = 0;
+    };
+    const scrollDrag = (time) => {
+      const elapsed = lastFrame === null ? 16 : Math.min(time - lastFrame, 32);
+      lastFrame = time;
+      list.scrollTop += (scrollSpeed * elapsed) / 16;
+      scrollFrame = requestAnimationFrame(scrollDrag);
+    };
+    stopFieldDrag = () => {
+      stopScroll();
+      draggedId = null;
+      clearDrop();
+    };
+    list.ondragover = (e) => {
+      if (!draggedId) return;
+      e.preventDefault();
+      const bounds = list.getBoundingClientRect(),
+        edge = Math.min(40, bounds.height / 4);
+      scrollSpeed =
+        e.clientY < bounds.top + edge
+          ? -10 * Math.min(1, (bounds.top + edge - e.clientY) / edge)
+          : e.clientY > bounds.bottom - edge
+            ? 10 * Math.min(1, (e.clientY - bounds.bottom + edge) / edge)
+            : 0;
+      if (!scrollSpeed || list.scrollHeight <= list.clientHeight) stopScroll();
+      else if (scrollFrame === null) scrollFrame = requestAnimationFrame(scrollDrag);
+    };
+    list.ondragleave = (e) => {
+      if (!list.contains(e.relatedTarget)) stopScroll();
+    };
+    list.ondrop = stopFieldDrag;
     const clearDrop = () =>
       $('field-list')
         .querySelectorAll('.field-row')
@@ -536,10 +849,7 @@
         e.dataTransfer.setData('text/plain', f.id);
         row.classList.add('dragging');
       };
-      handle.ondragend = () => {
-        draggedId = null;
-        clearDrop();
-      };
+      handle.ondragend = stopFieldDrag;
       row.ondragover = (e) => {
         if (!draggedId || draggedId === f.id) return;
         e.preventDefault();
@@ -559,8 +869,7 @@
           from = m.fields.findIndex((x) => x.id === id),
           after =
             e.clientY > row.getBoundingClientRect().top + row.getBoundingClientRect().height / 2;
-        draggedId = null;
-        clearDrop();
+        stopFieldDrag();
         if (id === f.id) return;
         const insertion = index + (after ? 1 : 0);
         moveField(id, insertion - (from < insertion ? 1 : 0));
@@ -576,10 +885,7 @@
         type.className = 'field-kind';
         type.textContent =
           window.BlockFieldCatalog.types.find((t) => t.id === f.type)?.name || f.type;
-        const connection = document.createElement('span');
-        connection.className = 'field-location';
-        connection.textContent = window.BlockFieldEditor.connectionText(m, f);
-        info.append(type, connection);
+        info.append(type);
         const discard = document.createElement('button');
         discard.type = 'button';
         discard.className = 'field-remove';
@@ -611,8 +917,9 @@
         }
         row.append(children);
       }
-      $('field-list').append(row);
+      list.append(row);
     });
+    list.scrollTop = top;
   }
   function deleteField(id) {
     if (!requireAppliedCode()) return;
@@ -661,7 +968,11 @@
           fieldChanged();
           renderFields();
           renderMapping();
-          tell('Saved as a single item. Its fields remain editable.');
+          tell(
+            conversion.kind === 'rules'
+              ? 'Field and layout rules saved. Switch to Test to check each affected choice.'
+              : 'Saved as a single item. Its fields remain editable.',
+          );
           return;
         }
         if (draftModule) Object.assign(target, draftModule);
@@ -712,12 +1023,44 @@
       makeRepeating,
     );
   }
-  function previewDocument(source, interactive = false) {
-    return window.BlockPreview.documentHTML(source, current(), interactive, selectedField);
-  }
   function frameWidth() {
     return viewport === 'desktop' ? Math.max(800, (Number(current().width) || 600) + 160) : 375;
   }
+  function fitPreview() {
+    const canvas = $('mapping-canvas'),
+      frame = $('mapping-preview'),
+      box = $('preview-size');
+    if (canvas.hidden || !canvas.clientWidth) return;
+    const style = window.getComputedStyle(canvas),
+      paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight),
+      paddingY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom),
+      bounded = window.matchMedia('(min-width: 901px) and (min-height: 700px)').matches,
+      width = frameWidth(),
+      height = parseFloat(frame.style.height) || 360,
+      scale =
+        $('preview-scale').value === 'actual'
+          ? 1
+          : window.BlockPreview.fitScale(
+              width,
+              height,
+              canvas.clientWidth - paddingX,
+              bounded ? canvas.clientHeight - paddingY : Infinity,
+            );
+    box.style.width = width * scale + 'px';
+    box.style.height = height * scale + 'px';
+    frame.style.transform = 'scale(' + scale + ')';
+    $('preview-fit-option').textContent =
+      $('preview-scale').value === 'actual'
+        ? 'Fit module'
+        : 'Fit module (' + Math.round(scale * 100) + '%)';
+  }
+  $('preview-scale').onchange = () => {
+    $('mapping-canvas').scrollTop = 0;
+    $('mapping-canvas').scrollLeft = 0;
+    fitPreview();
+  };
+  if (window.ResizeObserver) new window.ResizeObserver(fitPreview).observe($('mapping-canvas'));
+  window.addEventListener('resize', fitPreview);
   function setFrame(id, html) {
     // browsers can leave a sandboxed iframe blank when it's reused after being hidden; force a fresh load
     const frame = $(id);
@@ -818,17 +1161,14 @@
       $('field-list')
         .children[index]?.querySelector('.field-select')
         ?.focus({ preventScroll: true });
+    } else {
+      revealField($('field-list').children[current().fields.findIndex((f) => f.id === id)]);
     }
   }
   function selectCodeField(ids) {
     if (!ids.length) return;
     const index = ids.indexOf(selectedField);
     selectMappingField(ids[(index + 1) % ids.length]);
-    tell(
-      'Selected ' +
-        current().fields.find((f) => f.id === selectedField).label +
-        '. Choose Edit to change its settings.',
-    );
   }
   function renderSourceMapping() {
     if (!mappingCode)
@@ -848,9 +1188,10 @@
               candidate,
               candidate.source.slice(0, edit.start) + edit.value + candidate.source.slice(edit.end),
             );
-          state.draft = window.BlockQuickEdit.validate(state.original, candidate);
+          const draft = window.BlockQuickEdit.validate(state.original, candidate);
+          stageCodeDraft(state, draft);
           codeChanged();
-          return state.draft.source;
+          return draft.source;
         },
       });
     const module = codeState().draft;
@@ -870,36 +1211,34 @@
       });
     trialCode.setSource(source, { identity: current().id });
   }
-  function renderMapping() {
+  function renderMappingPreview() {
+    const draft = codeState().draft;
     $('mapping-preview').style.width = frameWidth() + 'px';
+    fitPreview();
     try {
       updateWorkspacePreview(
-        window.BlockPreview.documentHTML(
-          codeState().draft.source,
-          codeState().draft,
-          true,
-          selectedField,
-          true,
-        ),
+        window.BlockPreview.documentHTML(draft.source, draft, true, selectedField, true),
       );
     } catch (e) {
       tell('The preview could not be updated. Check the source HTML.', true);
       tell(e.message, true);
     }
+  }
+  function renderMapping() {
+    if (previewMode !== 'html') renderMappingPreview();
     renderSourceMapping();
     const warnings = C.inspect(current());
     $('mapping-warnings').hidden = !warnings.length;
-    $('mapping-warnings').replaceChildren();
+    $('mapping-warnings-content').replaceChildren();
     if (warnings.length) {
-      const strong = document.createElement('strong');
-      strong.textContent = 'Review these dependencies';
+      $('mapping-warnings-summary').textContent = warnings.length + ' source checks';
       const ul = document.createElement('ul');
       warnings.forEach((w) => {
         const li = document.createElement('li');
         li.textContent = w;
         ul.append(li);
       });
-      $('mapping-warnings').append(strong, ul);
+      $('mapping-warnings-content').append(ul);
     }
   }
   function selectedSourceRange() {
@@ -939,9 +1278,10 @@
   }
   window.addEventListener('message', (e) => {
     if (e.source !== $('mapping-preview').contentWindow) return;
-    if (e.data?.studioHeight)
-      $('mapping-preview').style.height =
-        Math.min(3000, Math.max(360, Number(e.data.studioHeight))) + 'px';
+    if (Number.isFinite(e.data?.studioHeight) && e.data.studioHeight > 0) {
+      $('mapping-preview').style.height = Math.max(1, e.data.studioHeight) + 'px';
+      fitPreview();
+    }
     if (workspaceMode === 'configure' && Array.isArray(e.data?.studioFields)) {
       const fields = current().fields.filter(
         (f) => f.enabled && e.data.studioFields.includes(f.id),
@@ -949,7 +1289,6 @@
       if (fields.length) {
         const next = fields.find((f) => f.id !== selectedField) || fields[0];
         selectMappingField(next.id);
-        tell('Selected ' + next.label + '. Choose Edit to change its settings.');
       } else
         tell(
           'This region is fixed layout or protected content. Select one of the highlighted editable regions.',
@@ -1023,7 +1362,10 @@
     updateThemePreview();
   }
   function renderTrial() {
-    const m = current();
+    const m = current(),
+      list = $('trial-fields'),
+      top = list.dataset.moduleId === m.id ? list.scrollTop : 0;
+    list.dataset.moduleId = m.id;
     $('trial-title').textContent = m.name;
     updateThemePreview();
     window.BlockControls.mount(
@@ -1038,6 +1380,7 @@
     );
     if (!m.fields.some((f) => f.enabled))
       $('trial-fields').innerHTML = '<p class="empty-fields">This is a fixed block.</p>';
+    list.scrollTop = top;
     renderTrialPreview();
   }
   let workspacePreviewHTML = null;
@@ -1065,6 +1408,7 @@
       currentHtml = C.render(current(), trialValues);
       renderOutputCode(currentHtml);
       $('mapping-preview').style.width = frameWidth() + 'px';
+      fitPreview();
       updateWorkspacePreview(
         window.BlockPreview.documentHTML(currentHtml, current(), false, null, true),
       );
@@ -1093,64 +1437,91 @@
       (project.settings.name || 'Untitled template');
     $('export-template-path').textContent = W.path(project)
       ? 'docs/' + W.path(project) + '/'
-      : 'Choose a client in Template settings before exporting.';
+      : 'Choose a client in Template settings before saving.';
     $('icon-colour').value = window.BlockIcons.background(m);
-    $('icon-symbol').value = window.BlockIcons.selected(m)?.id || '';
+    $('icon-symbol').value = m.iconAssets ? '__supplied' : window.BlockIcons.selected(m)?.id || '';
+    $('icon-colour').disabled = !!m.iconAssets;
+    const suppliedOption = $('icon-symbol').querySelector('option[value="__supplied"]');
+    suppliedOption.disabled = suppliedOption.hidden = !m.iconAssets;
+    $('icon-export-help').textContent = m.iconAssets
+      ? 'The supplied icon.png and dragIcon.png are preserved exactly, including their dimensions and transparency. Choose another icon to replace both.'
+      : 'Generated icons export as icon.png (60 × 60) and dragIcon.png (120 × 120), with automatic foreground contrast.';
     renderBlockIcon();
-    $('acknowledge-review').checked = !!m.acknowledged;
-    updateExportChecks();
+    updateModuleSettings();
   }
-  function updateExportChecks() {
-    const m = current();
-    $('endpoint-value').textContent = E.endpoint(m, workspace.repository.baseUrl, project.settings);
-    $('export-checklist').replaceChildren();
-    const warnings = C.inspect(m),
-      errors = E.problems(E.themedModule(project, m)).filter((e) => !e.startsWith('Confirm that'));
-    const items = [
-      {
-        good: m.reviewed,
-        title: m.reviewed ? 'Editable fields reviewed' : 'Editable fields need review',
-        detail:
-          m.fields.filter((f) => f.enabled).length +
-          ' fields enabled. Other content remains fixed.',
-      },
-      {
-        good: true,
-        title: 'Source structure retained',
-        detail: 'Only configured values, conditions and loops change the output.',
-      },
-      {
-        good: !errors.length,
-        title: errors.length ? 'Resolve export issues' : 'Static package can be generated',
-        detail: errors.length
-          ? errors.join(' ')
-          : 'Individual editor, icons and local SDK dependencies.',
-      },
-    ];
-    if (warnings.length)
-      items.push({
-        warn: true,
-        title: 'Source dependencies to review',
-        detail: warnings.join(' '),
-      });
-    items.forEach((item) => {
-      const div = document.createElement('div');
-      div.className = 'export-checklist-item';
-      const symbol = document.createElement('span');
-      symbol.className = 'check-symbol' + (item.warn ? ' warn' : item.good ? '' : ' fail');
-      symbol.textContent = item.warn ? '!' : item.good ? '✓' : '!';
-      const copy = document.createElement('div'),
-        title = document.createElement('strong'),
-        detail = document.createElement('p');
-      title.textContent = item.title;
-      detail.textContent = item.detail;
-      copy.append(title, detail);
-      div.append(symbol, copy);
-      $('export-checklist').append(div);
-    });
-    $('checks-summary').textContent = errors.length ? 'NEEDS ATTENTION' : 'PACKAGE CHECKED';
-    $('download-module').disabled = !!E.problems(E.themedModule(project, m)).length;
+  function updateModuleSettings() {
+    $('endpoint-value').textContent = E.endpoint(
+      current(),
+      workspace.repository.baseUrl,
+      project.settings,
+    );
   }
+  function showSaveIssues(module) {
+    if ($('projects-dialog').open) $('projects-dialog').close();
+    if (currentId !== module.id) {
+      currentId = module.id;
+      selectedField = null;
+      step = module.analysed ? 1 : 0;
+    }
+    render();
+    $('save-issues-title').textContent = 'Could not save ' + module.name;
+    const list = $('save-issues-list');
+    list.replaceChildren();
+    const labels = {
+      source: 'Edit HTML & CSS',
+      import: 'Open source import',
+      folder: 'Edit folder name',
+      version: 'Edit module version',
+      field: 'Edit field',
+      fields: 'Review fields',
+      icon: 'Choose icon',
+      repository: 'Reload repository',
+      theme: 'Edit template colours',
+      maintenance: 'Module settings',
+    };
+    for (const issue of E.issues(E.themedModule(project, current()))) {
+      const row = document.createElement('li'),
+        text = document.createElement('span'),
+        action = document.createElement('button');
+      text.textContent = issue.message;
+      action.type = 'button';
+      action.className = 'button quiet';
+      action.textContent = labels[issue.target];
+      action.onclick = () => {
+        $('save-issues').hidden = true;
+        if (issue.target === 'field') {
+          const field = current().fields.find((f) => f.id === issue.fieldId);
+          if (field) editField(field);
+        } else if (issue.target === 'fields') $('task-fields').onclick();
+        else if (issue.target === 'repository') openWritableRepository(true);
+        else if (issue.target === 'theme') $('template-colours').onclick();
+        else if (issue.target === 'import' || (issue.target === 'source' && !current().analysed)) {
+          step = 0;
+          render();
+          $('source-html').focus();
+        } else if (issue.target === 'source') openCodeEditor();
+        else {
+          step = 3;
+          render();
+          $(
+            issue.target === 'version'
+              ? 'module-release'
+              : issue.target === 'icon'
+                ? 'icon-symbol'
+                : 'module-slug',
+          ).focus();
+        }
+      };
+      row.append(text, action);
+      list.append(row);
+    }
+    $('notice').hidden = true;
+    $('save-issues').hidden = false;
+    $('save-issues').focus();
+  }
+  $('dismiss-save-issues').onclick = () => {
+    $('save-issues').hidden = true;
+  };
   async function exportModules(all = false) {
     if (project.modules.some((module) => hasCodeChanges(module))) {
       tell('Apply or discard pending HTML changes before exporting this template.', true);
@@ -1162,7 +1533,8 @@
       tell('Choose the client and template name before exporting.');
       return;
     }
-    const exportProject = JSON.parse(JSON.stringify(project)),
+    const exportTarget = project,
+      exportProject = JSON.parse(JSON.stringify(project)),
       exportId = currentId,
       options = { ...exportOptions(), fullTemplate: all };
     const filename = all ? projectFileSlug() + '-sfmc-modules.zip' : current().slug + '-sfmc.zip';
@@ -1175,11 +1547,7 @@
     );
     if (errors.length) {
       const failed = modules.find((m) => E.problems(E.themedModule(exportProject, m)).length);
-      currentId = failed.id;
-      step = failed.analysed ? 3 : 0;
-      selectedField = null;
-      render();
-      tell(errors[0], true);
+      showSaveIssues(failed);
       return;
     }
     button.disabled = true;
@@ -1188,6 +1556,13 @@
     try {
       const blob = await E.build(exportProject, modules, options);
       download(blob, filename);
+      if (workspace.projects.includes(exportTarget)) {
+        window.BlockMaintenance.recordExport(
+          exportTarget,
+          modules.map((m) => E.definition(E.themedModule(exportProject, m))),
+        );
+        persist();
+      }
       showDownloadReceipt(filename, 'package');
     } catch (e) {
       tell(e.message, true);
@@ -1227,18 +1602,170 @@
     );
   }
   const codeDrafts = new Map();
-  let codePreviewTimer;
+  function renderHistory() {
+    const state = history.status(current()),
+      pending = hasCodeChanges();
+    for (const direction of ['undo', 'redo']) {
+      const button = $('module-' + direction),
+        action = state[direction];
+      button.disabled = pending || !action;
+      const label = direction === 'undo' ? 'Undo' : 'Redo';
+      button.title = pending
+        ? 'Apply or discard your HTML changes first.'
+        : action
+          ? label + ' ' + action + ' (this session)'
+          : 'Nothing to ' + direction + ' in this session.';
+      button.setAttribute('aria-label', action ? label + ' ' + action : label);
+    }
+    let available = false,
+      referenceError = '';
+    try {
+      available = H.hasRecoveryChanges(current());
+    } catch (error) {
+      referenceError = error.message;
+    }
+    $('restore-export').disabled = pending || !available;
+    $('restore-export').title = pending
+      ? 'Apply or discard your HTML changes first.'
+      : !current().exportedDefinition
+        ? 'Export this module or open its repository to save a recovery reference.'
+        : referenceError
+          ? referenceError
+          : available
+            ? 'Review the last exported content before restoring it.'
+            : 'Content already matches the last export.';
+  }
+  function moveHistory(direction) {
+    if (savingRepository) return;
+    if (!requireAppliedCode()) return;
+    try {
+      const label = history[direction](current());
+      if (!label) return;
+      codeDrafts.delete(current());
+      trialValues = {};
+      if (!current().analysed || current().draftSource !== current().source) step = 0;
+      else if (step === 0) step = 1;
+      persist();
+      render();
+      tell(
+        (direction === 'undo' ? 'Undid ' : 'Redid ') +
+          label +
+          '. Temporary test values have been reset.',
+      );
+    } catch (error) {
+      tell(error.message, true);
+    }
+  }
+  $('module-undo').onclick = () => moveHistory('undo');
+  $('module-redo').onclick = () => moveHistory('redo');
+  window.addEventListener('focusout', () => history.endGroup());
+  window.addEventListener('keydown', (event) => {
+    if (
+      event.defaultPrevented ||
+      !(event.metaKey || event.ctrlKey) ||
+      event.altKey ||
+      event.key.toLowerCase() !== 'z'
+    )
+      return;
+    // Text inputs and open dialogs own their own undo. Do not steal editing shortcuts.
+    if (
+      event.target?.closest?.('input, textarea, select, [contenteditable], dialog') ||
+      document.querySelector('dialog[open]')
+    )
+      return;
+    event.preventDefault();
+    moveHistory(event.shiftKey ? 'redo' : 'undo');
+  });
+  $('restore-export').onclick = () => {
+    if (!requireAppliedCode()) return;
+    try {
+      const target = current(),
+        draft = H.exportedContent(target);
+      C.assertProject({
+        format: 'jarrang-block-studio',
+        version: 1,
+        settings: {},
+        modules: [draft],
+      });
+      const before = H.snapshot(target),
+        reference = JSON.stringify(target.exportedDefinition);
+      const list = $('recovery-changes');
+      list.replaceChildren();
+      const old = H.comparison(target),
+        next = H.comparison(draft);
+      const labels = {
+        name: 'Module name',
+        slug: 'Module folder',
+        release: 'Module version',
+        source: 'HTML & CSS',
+        draftSource: 'Source import draft',
+        templateMode: 'Template logic mode',
+        contextCss: 'Preview CSS',
+        fields: 'Editable fields and their settings',
+      };
+      for (const key of Object.keys(labels))
+        if (JSON.stringify(old[key]) !== JSON.stringify(next[key])) {
+          const row = document.createElement('li');
+          row.textContent =
+            labels[key] +
+            (key === 'fields'
+              ? ' (' + old.fields.length + ' currently, ' + next.fields.length + ' in the export)'
+              : '');
+          list.append(row);
+        }
+      if (!list.children.length) {
+        tell('This module’s content already matches the last export.');
+        return;
+      }
+      $('recovery-current').textContent = JSON.stringify(old, null, 2);
+      $('recovery-exported').textContent = JSON.stringify(next, null, 2);
+      $('recovery-confirm').onclick = () => {
+        if (
+          current() !== target ||
+          H.snapshot(target) !== before ||
+          JSON.stringify(target.exportedDefinition) !== reference ||
+          hasCodeChanges(target)
+        ) {
+          $('recovery-dialog').close();
+          tell(
+            'The module or export reference changed. Open recovery again to review the latest content.',
+            true,
+          );
+          return;
+        }
+        H.restoreExportedContent(target);
+        codeDrafts.delete(target);
+        trialValues = {};
+        selectedField = null;
+        step = 1;
+        $('recovery-dialog').close();
+        persist('restore last exported content');
+        render();
+        tell(
+          'Last exported content restored. You can undo this restoration. Review and export when ready.',
+        );
+      };
+      $('recovery-dialog').showModal();
+    } catch (error) {
+      tell(error.message, true);
+    }
+  };
+  $('recovery-cancel').onclick = () => $('recovery-dialog').close();
   function codeState() {
     const module = current();
-    let state = codeDrafts.get(module);
-    if (!state || state.original.source === state.draft.source) {
-      state = {
-        original: JSON.parse(JSON.stringify(module)),
-        draft: JSON.parse(JSON.stringify(module)),
-      };
-      codeDrafts.set(module, state);
+    // Browsing code needs no copies. Keep a separate snapshot only while a fix is pending.
+    return codeDrafts.get(module) || { original: module, draft: module };
+  }
+  function stageCodeDraft(state, draft) {
+    const module = current();
+    if (draft.source === state.original.source) {
+      codeDrafts.delete(module);
+      return;
     }
-    return state;
+    codeDrafts.set(module, {
+      original: state.original === module ? JSON.parse(JSON.stringify(module)) : state.original,
+      draft,
+    });
   }
   function hasCodeChanges(module = current()) {
     const state = codeDrafts.get(module);
@@ -1250,33 +1777,26 @@
     return false;
   }
   function updateCodeActions() {
+    renderRepositoryState();
     const dirty = hasCodeChanges();
     for (const id of ['quick-code-save', 'quick-code-cancel']) $(id).disabled = !dirty;
-    $('quick-code-preview-state').textContent = dirty
-      ? 'Unapplied code changes. The saved module is unchanged.'
-      : 'HTML & CSS: edit here or select content to connect fields.';
+    $('quick-code-preview-state').textContent = dirty ? 'Unapplied changes' : 'No changes';
     $('configure-fields-panel').inert = dirty;
-    $('module-status').textContent = dirty
-      ? 'Unapplied HTML'
-      : current().reviewed
-        ? 'Fields reviewed'
-        : 'Draft';
+    $('module-status').textContent = dirty ? 'Unapplied HTML' : 'Draft';
+    $('module-status').hidden = current().analysed && !dirty;
+    renderHistory();
   }
   function codeChanged() {
     $('quick-code-error').textContent = '';
     updateCodeActions();
     renderSidebar();
-    clearTimeout(codePreviewTimer);
-    const module = current();
-    codePreviewTimer = setTimeout(() => {
-      if (current() === module && workspaceMode === 'configure') previewQuickCode();
-    }, 250);
   }
   function editQuickSource(value) {
     const state = codeState();
-    state.draft = window.BlockQuickEdit.patchInput(state.draft, value);
+    const draft = window.BlockQuickEdit.patchInput(state.draft, value);
+    stageCodeDraft(state, draft);
     codeChanged();
-    return state.draft.source;
+    return draft.source;
   }
   function previewQuickCode() {
     const state = codeState();
@@ -1291,6 +1811,7 @@
         : 'Preview up to date.';
     } catch (error) {
       $('quick-code-error').textContent = error.message;
+      tell('Preview could not be updated: ' + error.message, true);
     }
   }
   function openCodeEditor() {
@@ -1333,7 +1854,7 @@
         acknowledged: false,
       });
       codeDrafts.delete(current());
-      persist();
+      persist('HTML & CSS fix');
       render();
       tell('HTML changes applied. Field settings are preserved.');
     } catch (error) {
@@ -1469,8 +1990,8 @@
     $('mapping-warnings').hidden = testing;
     $('workspace-preview-title').textContent = testing ? 'Test output' : 'Starting content';
     $('workspace-preview-help').textContent = testing
-      ? 'Browser preview of your test values. SFMC and email-client testing are still required.'
-      : 'Select highlighted content or underlined source to find its field. Use Edit to change its settings.';
+      ? 'Test preview · values are not saved to the module.'
+      : 'Select highlighted content to find its field.';
     if (testing) renderTrial();
     else {
       renderFields();
@@ -1503,6 +2024,7 @@
     }
   }
   function setPreviewMode(mode) {
+    const wasHtml = previewMode === 'html';
     previewMode = mode;
     renderTaskNavigation();
     const html = mode === 'html';
@@ -1516,7 +2038,7 @@
     $('show-map-source').textContent = workspaceMode === 'test' ? 'Generated HTML' : 'HTML & CSS';
     $('inline-code-actions').hidden = !html || workspaceMode === 'test';
     $('edit-code-from-view').hidden = workspaceMode !== 'test';
-    $('code-view-context').hidden = !html;
+    $('code-view-context').hidden = !html || workspaceMode !== 'test';
     $('code-view-purpose').textContent =
       workspaceMode === 'test'
         ? 'Read-only output with temporary test values. Edit the source to fix HTML or CSS.'
@@ -1525,6 +2047,7 @@
     $('mapping-source').hidden = !html || workspaceMode === 'test';
     $('trial-source').hidden = !html || workspaceMode !== 'test';
     $('mapping-canvas').hidden = html;
+    $('preview-scale').hidden = html;
     $('show-map-source').classList.toggle('active', html);
     $('show-map-source').setAttribute('aria-pressed', String(html));
     document.querySelectorAll('.viewport').forEach((button) => {
@@ -1533,6 +2056,11 @@
       button.setAttribute('aria-pressed', String(active));
     });
     $('mapping-preview').style.width = frameWidth() + 'px';
+    fitPreview();
+    if (wasHtml && !html && step === 1 && workspaceMode === 'configure') {
+      if (hasCodeChanges()) previewQuickCode();
+      else renderMappingPreview();
+    }
   }
   document
     .querySelectorAll('.viewport')
@@ -1541,21 +2069,22 @@
     const m = current(),
       old = m.name;
     m.name = e.target.value || 'Untitled module';
-    if (m.slug === C.slug(old)) m.slug = C.slug(m.name);
+    if (!m.published && m.slug === C.slug(old)) m.slug = C.slug(m.name);
     $('module-title').textContent = m.name;
-    persist();
+    $('module-title').title = m.name;
+    persist('module name', 'module-name');
     renderSidebar();
   };
   $('source-html').oninput = (e) => {
     current().draftSource = e.target.value;
     current().acknowledged = false;
     $('source-size').textContent = e.target.value.length.toLocaleString('en-GB') + ' characters';
-    persist();
+    persist('source import edit', 'source-html');
   };
   $('context-css').oninput = (e) => {
     current().contextCss = e.target.value;
     current().acknowledged = false;
-    persist();
+    persist('preview CSS', 'context-css');
   };
   $('email-width').onchange = (e) => {
     current().width = Math.min(1200, Math.max(280, Number(e.target.value) || 600));
@@ -1632,8 +2161,6 @@
   $('add-manual-field').onclick = addManualField;
   $('task-export').onclick = () => {
     if (!requireAppliedCode()) return;
-    current().reviewed = true;
-    persist();
     setStep(3);
   };
   $('reset-values').onclick = () => {
@@ -1664,13 +2191,13 @@
   $('show-map-source').onclick = () => setPreviewMode('html');
   $('module-slug').oninput = (e) => {
     current().slug = e.target.value;
-    persist();
-    updateExportChecks();
+    persist('module folder', 'module-slug');
+    updateModuleSettings();
   };
   $('module-release').oninput = (e) => {
     current().release = e.target.value;
-    persist();
-    updateExportChecks();
+    persist('module version', 'module-release');
+    updateModuleSettings();
   };
   for (const icon of window.BlockIcons.choices) {
     const option = document.createElement('option');
@@ -1679,9 +2206,29 @@
     $('icon-symbol').append(option);
   }
   function renderBlockIcon() {
-    $('block-icon-preview').src = 'data:image/png;base64,' + E.icon(current(), 60);
+    $('block-icon-preview').src =
+      'data:image/png;base64,' + (current().iconAssets?.icon || E.icon(current(), 60));
   }
   $('icon-symbol').onchange = (e) => {
+    if (e.target.value === '__supplied') {
+      renderExport();
+      return;
+    }
+    if (current().iconAssets) {
+      const symbol = e.target.value;
+      confirmAction(
+        'Replace the supplied icons?',
+        'This replaces both PNGs with generated artwork when you export. Cancel to keep the ESC icons.',
+        () => {
+          delete current().iconAssets;
+          current().iconSymbol = symbol;
+          persist();
+          renderExport();
+        },
+      );
+      $('icon-symbol').value = '__supplied';
+      return;
+    }
     current().iconSymbol = window.BlockIcons.choices.some((icon) => icon.id === e.target.value)
       ? e.target.value
       : '';
@@ -1690,16 +2237,19 @@
   };
   $('icon-colour').oninput = (e) => {
     current().iconColour = e.target.value;
-    persist();
+    persist('icon colour', 'icon-colour');
     renderBlockIcon();
   };
-  $('acknowledge-review').onchange = (e) => {
-    current().acknowledged = e.target.checked;
-    persist();
-    updateExportChecks();
+  $('download-module').onclick = () => saveRepository();
+  $('export-all').onclick = () => saveRepository(true);
+  $('download-module-zip').onclick = () => {
+    $('projects-dialog').close();
+    return exportModules();
   };
-  $('download-module').onclick = () => exportModules();
-  $('export-all').onclick = () => exportModules(true);
+  $('download-template-zip').onclick = () => {
+    $('projects-dialog').close();
+    return exportModules(true);
+  };
   $('new-module').onclick = addModule;
   $('duplicate-module').onclick = () => {
     if (!requireAppliedCode()) return;
@@ -1710,6 +2260,8 @@
       i = 2;
     while (project.modules.some((x) => x.slug === s)) s = C.slug(m.name) + '-' + i++;
     m.slug = s;
+    delete m.published;
+    delete m.exportedDefinition;
     m.acknowledged = false;
     project.modules.push(m);
     currentId = m.id;
@@ -1761,10 +2313,77 @@
     );
     showDownloadReceipt(projectFileSlug() + '.jarrang.json', 'project');
   };
+  function importTemplates(projects, onImported) {
+    if (workspace.projects.some((p) => p.modules.some(hasCodeChanges))) {
+      tell('Apply or discard pending HTML changes before loading templates.', true);
+      return;
+    }
+    const conflicts = projects
+      .map((p) => {
+        const existing = W.importConflict(workspace, p);
+        return existing && repositoryContent(existing) !== repositoryContent(p) ? existing : null;
+      })
+      .filter(Boolean);
+    const apply = () => {
+      try {
+        workspace = window.BlockMaintenance.importBatch(workspace, projects, W);
+        if (onImported) onImported();
+        if ($('projects-dialog').open) $('projects-dialog').close();
+        activateTemplate(workspace.projects.find((p) => p.projectId === workspace.activeId));
+        tell(
+          'Loaded ' +
+            projects.length +
+            ' templates. Original module URLs and icons have been kept.',
+        );
+      } catch (e) {
+        tell(e.message, true);
+      }
+    };
+    if (conflicts.length)
+      confirmAction(
+        'Replace saved template drafts?',
+        'This replaces browser drafts for ' +
+          conflicts.map((p) => p.settings.clientName + ' / ' + p.settings.name).join(', ') +
+          '. Download any edits you need to keep first.',
+        apply,
+      );
+    else apply();
+  }
+  $('repository-snapshot-note').textContent = window.REPOSITORY_PROJECTS?.projects.length
+    ? 'Bundled templates: ' +
+      window.REPOSITORY_PROJECTS.projects
+        .map((p) => p.settings.clientName + ' / ' + p.settings.name)
+        .join(', ') +
+      '. For later changes, pull in Tower and open the repository folder.'
+    : 'Open your local repository to load its saved templates and original icons.';
+  $('load-bundled-projects').hidden = !window.REPOSITORY_PROJECTS?.projects.length;
+  $('load-bundled-projects').onclick = () => {
+    try {
+      importTemplates(window.REPOSITORY_PROJECTS.projects);
+    } catch (e) {
+      tell(e.message, true);
+    }
+  };
+  $('open-repository').onclick = () => openWritableRepository();
+  $('repository-folder').onchange = async (e) => {
+    const input = e.target;
+    try {
+      importTemplates(await window.BlockMaintenance.readRepository(input.files, W));
+    } catch (e) {
+      tell('Repository not loaded: ' + e.message, true);
+    } finally {
+      input.value = '';
+    }
+  };
   $('open-project').onclick = () => $('project-file').click();
   $('project-file').onchange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
+    if (workspace.projects.some((p) => p.modules.some(hasCodeChanges))) {
+      tell('Apply or discard pending HTML changes before importing a template.', true);
+      e.target.value = '';
+      return;
+    }
     try {
       if (file.size > 20000000) throw Error('Choose a template file smaller than 20 MB.');
       const loaded = W.normalise(C.assertProject(JSON.parse(await file.text()))),

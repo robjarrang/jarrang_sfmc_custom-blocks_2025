@@ -1,4 +1,4 @@
-/* Dependency-free checks. Browser and live SFMC checks are separate. */
+/* Syntax, runtime payload budgets and automated regressions. Live browser/SFMC checks are separate. */
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
@@ -18,6 +18,7 @@ for (const name of fs
   .sort()) {
   run(['--check', path.join('src', name)]);
 }
+run(['scripts/check-size.cjs']);
 const browserSuites = new Set([
   'browser.test.cjs',
   'field-ux.test.cjs',

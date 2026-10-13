@@ -5,7 +5,7 @@ const fs = require('node:fs/promises'),
   assert = require('node:assert/strict');
 const { pathToFileURL } = require('node:url'),
   { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright'),
-  JSZip = require(process.env.JSZIP_MODULE || 'jszip');
+  JSZip = require(process.env.JSZIP_MODULE || '../vendor/jszip.min.js');
 const ROOT = path.resolve(__dirname, '..');
 (async () => {
   const browser = await chromium.launch({
@@ -89,7 +89,6 @@ const ROOT = path.resolve(__dirname, '..');
       fullPage: true,
     });
     await page.locator('#review-export').click();
-    await page.locator('#acknowledge-review').check();
     const [download] = await Promise.all([
       page.waitForEvent('download'),
       page.locator('#download-module').click(),

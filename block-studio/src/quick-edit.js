@@ -114,6 +114,8 @@
       version: 1,
       modules: [result],
     });
+    const structure = C.htmlProblems(result);
+    if (structure.length) throw Error(structure[0]);
     C.render(result);
     result.draftSource = result.source;
     result.acknowledged = false;

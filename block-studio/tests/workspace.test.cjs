@@ -125,3 +125,23 @@ test('old projects receive missing draft HTML; malformed drafts fail before open
   p.modules[0].draftSource = {};
   assert.throws(() => W.normalise(p), /Invalid draft HTML/);
 });
+
+test('unchanged workspace saves avoid storage writes while still detecting another tab', () => {
+  const ws = W.create(project());
+  let value = null,
+    writes = 0;
+  const storage = {
+    getItem: () => value,
+    setItem: (key, next) => {
+      value = next;
+      writes++;
+    },
+  };
+  const saved = W.save(storage, ws, null);
+  assert.equal(writes, 1);
+  assert.equal(W.save(storage, ws, saved), saved);
+  assert.equal(writes, 1);
+  value = 'another tab';
+  assert.throws(() => W.save(storage, ws, saved), /Another tab/);
+  assert.equal(writes, 1);
+});

@@ -114,35 +114,50 @@
       rule('[aria-invalid=true]', 'border:2px solid ' + t.text + '!important;')
     );
   }
-  function problems(module) {
-    const errors = themeProblems(module);
-    if (!module.source.trim()) errors.push('Import some email HTML.');
-    if (module.draftSource !== module.source)
-      errors.push('Analyse the changed HTML before exporting.');
-    if (!module.reviewed) errors.push('Review and confirm the editable fields.');
-    if (!module.acknowledged)
-      errors.push('Confirm that you have reviewed the source dependencies.');
+  // Structured destinations let the UI take users straight to the failing setting.
+  function issues(module) {
+    const result = [],
+      add = (messages, target, fieldId) =>
+        messages.forEach((message) => result.push({ message, target, fieldId }));
+    add(themeProblems(module), 'theme');
+    if (window.BlockMaintenance) result.push(...window.BlockMaintenance.issues(module));
+    else if (module.published || module.iconAssets)
+      add(['Maintenance checks are unavailable. Rebuild Studio.'], 'maintenance');
+    add(C.templateProblems(module), 'source');
+    add(C.htmlProblems(module), 'source');
+    if (!module.source.trim()) add(['Import some email HTML.'], 'import');
+    if (module.analysed === false || module.draftSource !== module.source)
+      add(['Find editable content for the imported HTML before saving.'], 'import');
     if (
       !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(module.slug) ||
       ['docs', 'shared-assets', 'src', 'vendor'].includes(module.slug)
     )
-      errors.push('Choose a valid, unique module folder name.');
-    if (!/^\d+\.\d+\.\d+$/.test(module.release)) errors.push('Use a version such as 1.0.0.');
+      add(['Choose a valid, unique module folder name.'], 'folder');
+    if (!/^\d+\.\d+\.\d+$/.test(module.release)) add(['Use a version such as 1.0.0.'], 'version');
     if (/<(?:script|iframe|object|embed)\b|\son\w+\s*=/i.test(module.source))
-      errors.push('Remove executable HTML from the email module.');
+      add(['Remove executable HTML from the email module.'], 'source');
     if (/<!doctype|<html\b|<body\b/i.test(module.source))
-      errors.push('Import a module fragment, rather than a complete email document.');
+      add(['Import a module fragment, rather than a complete email document.'], 'source');
     module.fields
       .filter((f) => f.enabled)
-      .forEach((f) => C.fieldProblems(f).forEach((e) => errors.push(f.label + ': ' + e)));
+      .forEach((f) =>
+        add(
+          C.fieldProblems(f).map((message) => f.label + ': ' + message),
+          'field',
+          f.id,
+        ),
+      );
     try {
       C.render(module);
-    } catch (e) {
-      errors.push(e.message);
+    } catch (error) {
+      add([error.message], 'source');
     }
     if (C.parse(module.source).issues.length)
-      errors.push('Fix the unclosed HTML syntax before exporting.');
-    return errors;
+      add(['Fix the unclosed HTML syntax before saving.'], 'source');
+    return result;
+  }
+  function problems(module) {
+    return issues(module).map((issue) => issue.message);
   }
   function definition(module) {
     return {
@@ -226,7 +241,7 @@
       (project.settings.name || 'this template') +
       ' with Tower\n\n' +
       '## One-time repository setup\n\nUse the supplied Block Studio repository package. In GitHub Settings > Pages, choose Deploy from a branch, your branch and /docs. Open the published /studio/ page to use the central tool. Do not append /docs to the public site URL.\n\n' +
-      '## Apply this export\n\n1. Extract the ZIP outside your repository.\n2. Merge its docs/ and projects/ contents into the corresponding folders in your local repository. On macOS, do not replace an existing top-level folder with the exported folder: that can remove other clients. Copy the changed files into their matching folders, preserving all other files.\n3. In Tower, review the diff. This export only updates this template and adds the runtime assets it needs. Unexpected deletions of other templates or older runtimes should not be committed.\n4. Commit and push to the configured Pages branch.\n5. Open the endpoints below and register each module separately in SFMC.\n\n' +
+      '## Apply this export\n\n1. Extract the ZIP outside your repository.\n2. Merge its docs/ and projects/ contents into the corresponding folders in your local repository. On macOS, do not replace an existing top-level folder with the exported folder: that can remove other clients. Copy the changed files into their matching folders, preserving all other files.\n3. In Tower, review the diff. This export only updates this template and adds the runtime assets it needs. Unexpected deletions of other templates or older runtimes should not be committed.\n4. Commit and push to the configured Pages branch.\n5. Open the endpoints below. Register only new endpoints in SFMC; existing blocks keep their registered endpoint. Reopen and test an existing saved instance after an update.\n\n' +
       'Template destination: docs/' +
       path +
       '/\nEditable source: projects/' +
@@ -242,12 +257,12 @@
       modules.map((m) => '- ' + m.name + ': ' + endpoint(m, options.baseUrl, options)).join('\n') +
       '\n\n' +
       '## Keep existing blocks working\n\nKeep module identities, publishing folders and older runtime folders. Runtime folders are identified by their content and are never overwritten by a different release. Updating Studio does not change published modules. Re-export intentionally to adopt new code. For a changed field schema, create a new module folder and release; retain the previous endpoint. Existing SFMC instances are not migrated automatically.\n\n' +
-      '## Shared editing\n\nPull the latest changes in Tower before starting. Import the relevant projects/ JSON into Studio, edit it, then export back into the same repository. Browser drafts are local to that browser and do not synchronise between people or devices. Resolve conflicting project edits through your normal Git review process.\n\n' +
+      '## Shared editing\n\nPull the latest changes in Tower before starting. In Clients & templates, choose Open repository folder and select the repository root. This reads the current projects/ JSON and preserves the PNG artwork in docs/. Edit and export back into the same repository. You can also import an individual editable project file. Browser drafts are local to that browser and do not synchronise between people or devices. Resolve conflicting project edits through your normal Git review process.\n\n' +
       'The projects/ folder is outside the Pages publishing folder; it remains visible to people with repository access (and everyone if the repository is public). Published module defaults are public site content.\n\n' +
       '## Verify in SFMC\n\nTest new blocks, editing, close/reopen, duplication, tracking, AMPscript and sends. Browser preview does not certify email-client rendering. Conditions and loops render in the editor; AMPscript remains for SFMC. Template context CSS is preview-only.\n'
     );
   }
-  async function build(project, modules, options) {
+  async function prepare(project, modules, options) {
     C.assertProject(project);
     modules = modules.map((module) => themedModule(project, module));
     const path = templatePath(options);
@@ -265,6 +280,14 @@
       if (errs.length) throw Error(m.name + ': ' + errs[0]);
     }
     if (!modules.length) throw Error('Add a module before exporting.');
+    if (
+      project.modules.some(
+        (m) => m.published && !m.exportedDefinition && !modules.some((e) => e.id === m.id),
+      )
+    )
+      throw Error(
+        'This older project has no exported content reference for its other modules. Open the current repository folder before a single-module export, or export the whole template.',
+      );
     if (options.baseUrl) {
       const url = new URL(options.baseUrl);
       if (url.protocol !== 'https:' || url.search || url.hash || url.username || url.password)
@@ -286,10 +309,15 @@
     for (const m of modules) {
       const folder = prefix + path + '/modules/' + m.slug + '/';
       zip.file(folder + 'index.html', moduleHtml(m, '../../../../../' + assetFolder));
-      zip.file(folder + 'icon.png', icon(m, 60), { base64: true });
-      zip.file(folder + 'dragIcon.png', icon(m, 120), { base64: true });
+      zip.file(folder + 'icon.png', m.iconAssets?.icon || icon(m, 60), { base64: true });
+      zip.file(folder + 'dragIcon.png', m.iconAssets?.dragIcon || icon(m, 120), { base64: true });
     }
-    if (options.fullTemplate) {
+    const catalogueModules = options.repository
+      ? project.modules
+          .map((m) => modules.find((item) => item.id === m.id) || m.exportedDefinition)
+          .filter(Boolean)
+      : modules;
+    if (options.fullTemplate || options.repository) {
       const heading =
         (project.settings.clientName || options.clientSlug) +
         ' / ' +
@@ -303,7 +331,7 @@
           '/brand.css"><body class="catalogue"><h1>' +
           C.escape(heading) +
           '</h1><p>Each module is a separate SFMC custom block.</p><ul>' +
-          modules
+          catalogueModules
             .map(
               (m) =>
                 '<li><a href="modules/' +
@@ -321,14 +349,17 @@
     const sourceFolder = 'projects/' + options.clientSlug + '/';
     zip.file(
       sourceFolder + options.templateSlug + '-PUBLISHING.md',
-      guide(project, modules, options),
+      guide(project, catalogueModules, options),
     );
     // Keep the whole editable template, including drafts, in both full and module-only exports.
+    const savedProject = JSON.parse(JSON.stringify(project));
+    if (window.BlockMaintenance)
+      window.BlockMaintenance.recordExport(savedProject, modules.map(definition));
     zip.file(
       sourceFolder + options.templateSlug + '.jarrang.json',
       JSON.stringify(
         {
-          ...project,
+          ...savedProject,
           settings: {
             ...project.settings,
             baseUrl: options.baseUrl || '',
@@ -339,12 +370,28 @@
         2,
       ),
     );
-    return zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
+    return zip;
+  }
+  async function build(project, modules, options) {
+    return (await prepare(project, modules, options)).generateAsync({
+      type: 'blob',
+      compression: 'DEFLATE',
+    });
+  }
+  async function files(project, modules, options) {
+    const zip = await prepare(project, modules, { ...options, repository: true });
+    const entries = new Map();
+    for (const [name, file] of Object.entries(zip.files)) {
+      if (!file.dir) entries.set(name, await file.async('uint8array'));
+    }
+    return entries;
   }
   window.BlockExport = {
     build,
+    files,
     icon,
     problems,
+    issues,
     endpoint,
     moduleHtml,
     definition,

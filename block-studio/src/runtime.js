@@ -23,6 +23,8 @@
   };
   // Blocking errors leave nothing editable on screen.
   const fail = (message) => {
+    ready = false;
+    busy = false;
     form.replaceChildren();
     form.inert = true;
     mounted = false;
@@ -146,6 +148,7 @@
       busy = false;
       ready = false;
       form.disabled = true;
+      form.inert = true;
       say('SFMC did not confirm the save. Reopen the block before continuing.', true);
     }, 10000);
     sdk.setContent(html, (accepted) => {
@@ -194,6 +197,7 @@
       fields,
       values,
       (field, value) => {
+        if (!ready) return;
         values[field.id] = value;
         dirty = true;
         say('Unsaved changes');
@@ -325,20 +329,23 @@
   } else {
     showDefaults();
     say('Connecting to Content Builder…');
-    const timeout = setTimeout(
-      () =>
-        fail(
-          'Unable to connect to Content Builder. Check the installed block endpoint and reopen it.',
-        ),
-      10000,
-    );
+    let connecting = true;
+    const timeout = setTimeout(() => {
+      connecting = false;
+      fail(
+        'Unable to connect to Content Builder. Check the installed block endpoint and reopen it.',
+      );
+    }, 10000);
     try {
       sdk = new window.sfdc.BlockSDK({ tabs: [], onEditClose: closeEditor });
       sdk.getData((data) => {
+        if (!connecting) return;
+        connecting = false;
         clearTimeout(timeout);
         load(data);
       });
     } catch (e) {
+      connecting = false;
       clearTimeout(timeout);
       fail('The Content Builder SDK could not start. ' + e.message);
     }
