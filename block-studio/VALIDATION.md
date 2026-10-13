@@ -1,3 +1,23 @@
+# Current validation - 1.25.4
+
+Applied the supplied ESC-hosted landscape placeholder to 19 populated image defaults across 14 modules: Newsletter Hero Story, Story Card 1/2/3 Col, Feature Card, Image Banner, Social Block, Video Embed, Webinar Card and Editorials; Congress Lead Editorial, Lead Poster and Story 1/2 Col. The JPEG was retrieved and inspected as 1920 × 1080px, 32,536 bytes. The external URL is used directly. Logos, speaker portraits and journal covers retain their existing defaults. Empty optional editorial images and the congress mobile override remain empty, preserving their existing behaviour.
+
+All 228 automated tests pass with no failures or skips. The new regression checks mapped source URLs, field defaults, the populated editorial row, blank optional images and the lead's mobile fallback. The punctuation regressions from 1.25.3 continue to pass. Layout markup apart from image URLs, AMPscript, module identities, field types/keys, supplied icons and shared runtimes are unchanged. Mapped ranges are rebased with the existing core helper. Generated pages, export references, editable projects and bundled Studio snapshots are consistent. Hosted and standalone Studio builds match. No deployment was performed.
+
+These are starting values: previously saved SFMC images and browser drafts are not overwritten automatically. Open the updated repository to refresh Studio's project data. This verification does not substitute for live email-client rendering.
+
+---
+
+# Current validation - 1.25.3
+
+Corrected HTML entities stored as plain text in six ESC modules: Congress Deadlines List, Lead Editorial and Lead Poster; Newsletter Journal Section, Quote and Social Block. Seven field definitions, three starting repeater-row values and affected field guidance now contain actual Unicode punctuation. Source-mapped defaults that already rendered correctly are also corrected so opening, editing and saving them does not introduce double escaping. Legitimate entities in HTML source and rich-text fields are unchanged. The six generated module pages, their published/exported definitions, both projects and bundled Studio projects are updated together.
+
+All 227 automated tests pass with no failures or skips. New regressions check every ESC plain-text default, original value, repeater row and guidance string; rendered text across all 40 modules; punctuation after edits and adding rows; and continued escaping of literal entity text, ampersands and HTML input. All module source/draft HTML, AMPscript, IDs, field types, target ranges, icons and shared runtime files remain unchanged. Hosted and standalone Studio builds match. No deployment was performed.
+
+This is a correction to supplied field data, not automatic decoding of end-user input. Existing SFMC instances retain their saved values. Correct any previously saved entity strings in those instances once; reopening alone does not replace saved values with new defaults. Reload the updated repository in Studio to replace its previous bundled/browser project data.
+
+---
+
 # Current validation - 1.25.2
 
 Revised Congress Lead Editorial following visual feedback on 1.25.1. The desktop header returns to a shared two-column row: 320px for content, 300px for the visual, with a 274px image frame and a 26px outside gutter. The visual is vertically centred beside the copy in the same AMPscript-driven primary-colour panel. The original type hierarchy is retained, with 8px image rounding consistent with the suite's cards. Image height remains automatic; a 1920 × 1080px asset displays at approximately 274 × 154px. Mobile continues to use the supplied master template's stacking, full-width table and image-switching rules. The optional mobile override from 1.25.1 is retained.

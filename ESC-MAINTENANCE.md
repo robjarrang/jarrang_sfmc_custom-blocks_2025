@@ -1,5 +1,18 @@
 # Maintaining the ESC custom blocks
 
+## Landscape placeholder (1.25.4)
+
+The populated landscape-image defaults now use the ESC-hosted 1920 × 1080px JPEG:
+https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg
+
+This covers general content imagery, banners, video/webinar images, social imagery and the first editorial thumbnail. Logos, journal covers and circular speaker portraits retain their purpose-specific defaults. Optional blank images remain blank. The congress mobile image reuses the main placeholder until an alternative is supplied. Existing SFMC instances keep their saved images.
+
+## Plain-text punctuation correction (1.25.3)
+
+Plain-text fields should store the actual character, for example `28 Aug – 31 Aug 2026`, not HTML entity notation such as `&ndash;`. The renderer escapes plain text before inserting it into HTML. HTML source and rich-text fields can still contain valid entities.
+
+The bundled defaults and exports are corrected in Congress Deadlines List, Lead Editorial and Lead Poster, plus Newsletter Journal Section, Quote and Social Block. Open the updated repository in Studio to refresh old drafts before further editing. Existing SFMC blocks keep their saved values: replace any entity text already saved in a field with the actual character and save that instance. Newly added blocks use the corrected defaults after deployment.
+
 ## Landscape imagery (1.25.2)
 
 Congress **Lead Editorial** retains the side-by-side desktop composition: a 320px content column and a 300px visual column share the ESC primary-colour panel. The image sits vertically centred in a 274px frame, leaving a 26px outer gutter to match the content inset. Its 8px corners follow the card imagery elsewhere in the suite; clients that ignore border-radius retain square corners. A 1920 × 1080px asset displays at approximately 274 × 154px on desktop with automatic height, keeping the whole image visible. This replaces the full-width stacked desktop treatment introduced in 1.25.1. Other aspect ratios also remain proportional, including previously saved portrait images, which can make the panel taller.

@@ -1714,8 +1714,8 @@
           "id": "field2",
           "label": "Heading",
           "type": "text",
-          "defaultValue": "Don&rsquo;t miss these deadlines",
-          "originalValue": "Don&rsquo;t miss these deadlines",
+          "defaultValue": "Don’t miss these deadlines",
+          "originalValue": "Don’t miss these deadlines",
           "enabled": true,
           "required": true,
           "maxLength": 0,
@@ -1745,19 +1745,19 @@
             {
               "date": "09 Dec 2025",
               "text": "Abstract submission deadline",
-              "link_text": "Submit &rsaquo;",
+              "link_text": "Submit ›",
               "link_url": "https://www.escardio.org/"
             },
             {
               "date": "28 Feb 2026",
               "text": "Late-Breaking Science submission",
-              "link_text": "Register &rsaquo;",
+              "link_text": "Register ›",
               "link_url": "https://www.escardio.org/"
             },
             {
               "date": "15 Mar 2026",
               "text": "Early registration deadline",
-              "link_text": "Book &rsaquo;",
+              "link_text": "Book ›",
               "link_url": "https://www.escardio.org/"
             }
           ],
@@ -1795,8 +1795,8 @@
               "key": "link_text",
               "label": "Link text",
               "type": "text",
-              "defaultValue": "Submit &rsaquo;",
-              "originalValue": "Submit &rsaquo;",
+              "defaultValue": "Submit ›",
+              "originalValue": "Submit ›",
               "enabled": true,
               "required": false,
               "maxLength": 30,
@@ -1856,8 +1856,8 @@
             "id": "field2",
             "label": "Heading",
             "type": "text",
-            "defaultValue": "Don&rsquo;t miss these deadlines",
-            "originalValue": "Don&rsquo;t miss these deadlines",
+            "defaultValue": "Don’t miss these deadlines",
+            "originalValue": "Don’t miss these deadlines",
             "enabled": true,
             "required": true,
             "maxLength": 0,
@@ -1887,19 +1887,19 @@
               {
                 "date": "09 Dec 2025",
                 "text": "Abstract submission deadline",
-                "link_text": "Submit &rsaquo;",
+                "link_text": "Submit ›",
                 "link_url": "https://www.escardio.org/"
               },
               {
                 "date": "28 Feb 2026",
                 "text": "Late-Breaking Science submission",
-                "link_text": "Register &rsaquo;",
+                "link_text": "Register ›",
                 "link_url": "https://www.escardio.org/"
               },
               {
                 "date": "15 Mar 2026",
                 "text": "Early registration deadline",
-                "link_text": "Book &rsaquo;",
+                "link_text": "Book ›",
                 "link_url": "https://www.escardio.org/"
               }
             ],
@@ -1937,8 +1937,8 @@
                 "key": "link_text",
                 "label": "Link text",
                 "type": "text",
-                "defaultValue": "Submit &rsaquo;",
-                "originalValue": "Submit &rsaquo;",
+                "defaultValue": "Submit ›",
+                "originalValue": "Submit ›",
                 "enabled": true,
                 "required": false,
                 "maxLength": 30,
@@ -1994,8 +1994,8 @@
             "id": "field2",
             "label": "Heading",
             "type": "text",
-            "defaultValue": "Don&rsquo;t miss these deadlines",
-            "originalValue": "Don&rsquo;t miss these deadlines",
+            "defaultValue": "Don’t miss these deadlines",
+            "originalValue": "Don’t miss these deadlines",
             "enabled": true,
             "required": true,
             "maxLength": 0,
@@ -2025,19 +2025,19 @@
               {
                 "date": "09 Dec 2025",
                 "text": "Abstract submission deadline",
-                "link_text": "Submit &rsaquo;",
+                "link_text": "Submit ›",
                 "link_url": "https://www.escardio.org/"
               },
               {
                 "date": "28 Feb 2026",
                 "text": "Late-Breaking Science submission",
-                "link_text": "Register &rsaquo;",
+                "link_text": "Register ›",
                 "link_url": "https://www.escardio.org/"
               },
               {
                 "date": "15 Mar 2026",
                 "text": "Early registration deadline",
-                "link_text": "Book &rsaquo;",
+                "link_text": "Book ›",
                 "link_url": "https://www.escardio.org/"
               }
             ],
@@ -2075,8 +2075,8 @@
                 "key": "link_text",
                 "label": "Link text",
                 "type": "text",
-                "defaultValue": "Submit &rsaquo;",
-                "originalValue": "Submit &rsaquo;",
+                "defaultValue": "Submit ›",
+                "originalValue": "Submit ›",
                 "enabled": true,
                 "required": false,
                 "maxLength": 30,
@@ -2110,8 +2110,8 @@
       "name": "Lead Editorial",
       "slug": "lead-editorial",
       "release": "1.0.0",
-      "source": "<!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"320\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 320px;\" width=\"320\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 32px 26px 24px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          {% if show_format_badge and format_badge %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">{{ format_badge }}</td></tr></table></td></tr>{% endif %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           {% if congress_dates %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ congress_dates }}</td>{% endif %}</tr><tr>\n           {% if location %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ location | richtext }}</td>{% endif %}</tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               {% if organiser_label %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"ESC\" src=\"https://placehold.co/224x64/ffffff/AE1022/png?text=Logo\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"300\">\n    <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-image-frame\" role=\"presentation\" style=\"border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 274px;\" width=\"274\"><tr><td style=\"font-size: 0; line-height: 0; padding: 0;\">\n    <a href=\"https://www.escardio.org/\" style=\"border-radius: 8px; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" src=\"https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress\" style=\"border: 0; border-radius: 8px; display: block; height: auto; line-height: 0; max-width: 274px; outline: none; text-decoration: none; width: 100%;\" width=\"274\"> <!--[if !mso]><!--> <img alt=\"{% if field10 %}{{ field11 }}{% else %}{{ field9 }}{% endif %}\" class=\"esc-lead-visual-mobile\" src=\"{% if field10 %}{{ field10 }}{% else %}{{ field8 }}{% endif %}\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
-      "draftSource": "<!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"320\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 320px;\" width=\"320\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 32px 26px 24px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          {% if show_format_badge and format_badge %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">{{ format_badge }}</td></tr></table></td></tr>{% endif %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           {% if congress_dates %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ congress_dates }}</td>{% endif %}</tr><tr>\n           {% if location %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ location | richtext }}</td>{% endif %}</tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               {% if organiser_label %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"ESC\" src=\"https://placehold.co/224x64/ffffff/AE1022/png?text=Logo\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"300\">\n    <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-image-frame\" role=\"presentation\" style=\"border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 274px;\" width=\"274\"><tr><td style=\"font-size: 0; line-height: 0; padding: 0;\">\n    <a href=\"https://www.escardio.org/\" style=\"border-radius: 8px; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" src=\"https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress\" style=\"border: 0; border-radius: 8px; display: block; height: auto; line-height: 0; max-width: 274px; outline: none; text-decoration: none; width: 100%;\" width=\"274\"> <!--[if !mso]><!--> <img alt=\"{% if field10 %}{{ field11 }}{% else %}{{ field9 }}{% endif %}\" class=\"esc-lead-visual-mobile\" src=\"{% if field10 %}{{ field10 }}{% else %}{{ field8 }}{% endif %}\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
+      "source": "<!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"320\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 320px;\" width=\"320\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 32px 26px 24px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          {% if show_format_badge and format_badge %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">{{ format_badge }}</td></tr></table></td></tr>{% endif %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           {% if congress_dates %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ congress_dates }}</td>{% endif %}</tr><tr>\n           {% if location %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ location | richtext }}</td>{% endif %}</tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               {% if organiser_label %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"ESC\" src=\"https://placehold.co/224x64/ffffff/AE1022/png?text=Logo\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"300\">\n    <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-image-frame\" role=\"presentation\" style=\"border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 274px;\" width=\"274\"><tr><td style=\"font-size: 0; line-height: 0; padding: 0;\">\n    <a href=\"https://www.escardio.org/\" style=\"border-radius: 8px; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; line-height: 0; max-width: 274px; outline: none; text-decoration: none; width: 100%;\" width=\"274\"> <!--[if !mso]><!--> <img alt=\"{% if field10 %}{{ field11 }}{% else %}{{ field9 }}{% endif %}\" class=\"esc-lead-visual-mobile\" src=\"{% if field10 %}{{ field10 }}{% else %}{{ field8 }}{% endif %}\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
+      "draftSource": "<!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"320\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 320px;\" width=\"320\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 32px 26px 24px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          {% if show_format_badge and format_badge %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">{{ format_badge }}</td></tr></table></td></tr>{% endif %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           {% if congress_dates %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ congress_dates }}</td>{% endif %}</tr><tr>\n           {% if location %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ location | richtext }}</td>{% endif %}</tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               {% if organiser_label %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"ESC\" src=\"https://placehold.co/224x64/ffffff/AE1022/png?text=Logo\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"300\">\n    <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-image-frame\" role=\"presentation\" style=\"border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 274px;\" width=\"274\"><tr><td style=\"font-size: 0; line-height: 0; padding: 0;\">\n    <a href=\"https://www.escardio.org/\" style=\"border-radius: 8px; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; line-height: 0; max-width: 274px; outline: none; text-decoration: none; width: 100%;\" width=\"274\"> <!--[if !mso]><!--> <img alt=\"{% if field10 %}{{ field11 }}{% else %}{{ field9 }}{% endif %}\" class=\"esc-lead-visual-mobile\" src=\"{% if field10 %}{{ field10 }}{% else %}{{ field8 }}{% endif %}\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -2169,12 +2169,12 @@
         {
           "label": "Congress dates",
           "type": "text",
-          "defaultValue": "28 Aug &ndash; 31 Aug 2026",
-          "originalValue": "28 Aug &ndash; 31 Aug 2026",
+          "defaultValue": "28 Aug – 31 Aug 2026",
+          "originalValue": "28 Aug – 31 Aug 2026",
           "enabled": true,
           "required": false,
           "maxLength": 60,
-          "help": "e.g. \"28 Aug &ndash; 31 Aug 2026\".",
+          "help": "e.g. \"28 Aug – 31 Aug 2026\".",
           "targets": [],
           "id": "field2",
           "binding": "template",
@@ -2278,8 +2278,8 @@
         {
           "label": "Visual image",
           "type": "image",
-          "defaultValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress",
-          "originalValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress",
+          "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+          "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
           "enabled": true,
           "required": false,
           "maxLength": 0,
@@ -2287,12 +2287,12 @@
           "targets": [
             {
               "start": 6137,
-              "end": 6199,
+              "end": 6236,
               "nodeId": "n33",
               "kind": "attribute",
               "name": "src",
               "quoted": true,
-              "originalValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress"
+              "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg"
             }
           ],
           "id": "field8"
@@ -2415,12 +2415,12 @@
           {
             "label": "Congress dates",
             "type": "text",
-            "defaultValue": "28 Aug &ndash; 31 Aug 2026",
-            "originalValue": "28 Aug &ndash; 31 Aug 2026",
+            "defaultValue": "28 Aug – 31 Aug 2026",
+            "originalValue": "28 Aug – 31 Aug 2026",
             "enabled": true,
             "required": false,
             "maxLength": 60,
-            "help": "e.g. \"28 Aug &ndash; 31 Aug 2026\".",
+            "help": "e.g. \"28 Aug – 31 Aug 2026\".",
             "targets": [],
             "id": "field2",
             "binding": "template",
@@ -2524,8 +2524,8 @@
           {
             "label": "Visual image",
             "type": "image",
-            "defaultValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress",
-            "originalValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": false,
             "maxLength": 0,
@@ -2533,12 +2533,12 @@
             "targets": [
               {
                 "start": 6137,
-                "end": 6199,
+                "end": 6236,
                 "nodeId": "n33",
                 "kind": "attribute",
                 "name": "src",
                 "quoted": true,
-                "originalValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress"
+                "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg"
               }
             ],
             "id": "field8"
@@ -2600,7 +2600,7 @@
         "name": "Lead Editorial",
         "slug": "lead-editorial",
         "release": "1.0.0",
-        "source": "<!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"320\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 320px;\" width=\"320\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 32px 26px 24px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          {% if show_format_badge and format_badge %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">{{ format_badge }}</td></tr></table></td></tr>{% endif %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           {% if congress_dates %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ congress_dates }}</td>{% endif %}</tr><tr>\n           {% if location %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ location | richtext }}</td>{% endif %}</tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               {% if organiser_label %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"ESC\" src=\"https://placehold.co/224x64/ffffff/AE1022/png?text=Logo\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"300\">\n    <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-image-frame\" role=\"presentation\" style=\"border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 274px;\" width=\"274\"><tr><td style=\"font-size: 0; line-height: 0; padding: 0;\">\n    <a href=\"https://www.escardio.org/\" style=\"border-radius: 8px; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" src=\"https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress\" style=\"border: 0; border-radius: 8px; display: block; height: auto; line-height: 0; max-width: 274px; outline: none; text-decoration: none; width: 100%;\" width=\"274\"> <!--[if !mso]><!--> <img alt=\"{% if field10 %}{{ field11 }}{% else %}{{ field9 }}{% endif %}\" class=\"esc-lead-visual-mobile\" src=\"{% if field10 %}{{ field10 }}{% else %}{{ field8 }}{% endif %}\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
+        "source": "<!-- START .esc-congress-lead.esc-lead-editorial --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-editorial\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: separate; border-radius: 20px 20px 0 0; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; overflow: hidden; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-content\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"320\">\n    <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 320px;\" width=\"320\">\n     \n      <tr>\n       <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; mso-line-height-rule: exactly; padding: 32px 26px 24px; vertical-align: middle;\" valign=\"middle\">\n        <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n         \n          {% if show_format_badge and format_badge %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               <td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">{{ format_badge }}</td></tr></table></td></tr>{% endif %}<tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0 0 16px;\">\n            <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 32px; font-weight: 700; letter-spacing: -0.4px; line-height: 36px; margin: 0; mso-line-height-rule: exactly;\">\n             Congress 2026</h1></td></tr><tr>\n           {% if congress_dates %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ congress_dates }}</td>{% endif %}</tr><tr>\n           {% if location %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 500; line-height: 20px; mso-line-height-rule: exactly; padding: 0;\">\n            {{ location | richtext }}</td>{% endif %}</tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" height=\"28\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; height: 28px; line-height: 28px; mso-line-height-rule: exactly;\">\n            &nbsp;</td></tr><tr>\n           <td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 0;\">\n            <table bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n             \n              <tr>\n               {% if organiser_label %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.4px; line-height: 12px; mso-line-height-rule: exactly; opacity: 0.75; padding-right: 12px;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td bgcolor=\"%%=v(@PrimaryColour)=%%\" style=\"background-color: %%=v(@PrimaryColour)=%%; font-size: 0; line-height: 0; mso-line-height-alt: 0; mso-line-height-rule: exactly;\" valign=\"middle\">\n                <img alt=\"ESC\" src=\"https://placehold.co/224x64/ffffff/AE1022/png?text=Logo\" style=\"border: 0; display: block; height: auto; line-height: 0; outline: none; text-decoration: none; vertical-align: middle;\" width=\"112\"></td></tr></table></td></tr></table></td></tr></table></td><td align=\"left\" bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"block esc-lead-visual\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden; padding: 0; vertical-align: middle;\" valign=\"middle\" width=\"300\">\n    <table align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-image-frame\" role=\"presentation\" style=\"border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 274px;\" width=\"274\"><tr><td style=\"font-size: 0; line-height: 0; padding: 0;\">\n    <a href=\"https://www.escardio.org/\" style=\"border-radius: 8px; display: block; font-size: 0; line-height: 0; mso-line-height-rule: exactly; overflow: hidden;\" target=\"_blank\"><img alt=\"Congress\" class=\"esc-lead-visual-img esc-lead-visual-desktop\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; line-height: 0; max-width: 274px; outline: none; text-decoration: none; width: 100%;\" width=\"274\"> <!--[if !mso]><!--> <img alt=\"{% if field10 %}{{ field11 }}{% else %}{{ field9 }}{% endif %}\" class=\"esc-lead-visual-mobile\" src=\"{% if field10 %}{{ field10 }}{% else %}{{ field8 }}{% endif %}\" style=\"border: 0; display: none; height: auto; max-height: 0; max-width: 100%; mso-hide: all; outline: none; overflow: hidden; text-decoration: none; width: 100%;\"> <!--<![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td height=\"20\" style=\"font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial -->",
         "templateMode": true,
         "contextCss": "",
         "fields": [
@@ -2657,12 +2657,12 @@
           {
             "label": "Congress dates",
             "type": "text",
-            "defaultValue": "28 Aug &ndash; 31 Aug 2026",
-            "originalValue": "28 Aug &ndash; 31 Aug 2026",
+            "defaultValue": "28 Aug – 31 Aug 2026",
+            "originalValue": "28 Aug – 31 Aug 2026",
             "enabled": true,
             "required": false,
             "maxLength": 60,
-            "help": "e.g. \"28 Aug &ndash; 31 Aug 2026\".",
+            "help": "e.g. \"28 Aug – 31 Aug 2026\".",
             "targets": [],
             "id": "field2",
             "binding": "template",
@@ -2766,8 +2766,8 @@
           {
             "label": "Visual image",
             "type": "image",
-            "defaultValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress",
-            "originalValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": false,
             "maxLength": 0,
@@ -2775,12 +2775,12 @@
             "targets": [
               {
                 "start": 6137,
-                "end": 6199,
+                "end": 6236,
                 "nodeId": "n33",
                 "kind": "attribute",
                 "name": "src",
                 "quoted": true,
-                "originalValue": "https://placehold.co/1920x1080/ffffff/AE1022/png?text=Congress"
+                "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg"
               }
             ],
             "id": "field8"
@@ -2843,8 +2843,8 @@
       "name": "Lead Poster",
       "slug": "lead-poster",
       "release": "1.0.0",
-      "source": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               {% if format_badge %}<td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>{{ format_badge }}</td>{% endif %}</tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               {% if organiser_label %}<td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if congress_dates %}<td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ congress_dates }}</td>{% endif %}</tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if location %}<td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ location }}</td>{% endif %}</tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
-      "draftSource": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               {% if format_badge %}<td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>{{ format_badge }}</td>{% endif %}</tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               {% if organiser_label %}<td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if congress_dates %}<td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ congress_dates }}</td>{% endif %}</tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if location %}<td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ location }}</td>{% endif %}</tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
+      "source": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               {% if format_badge %}<td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>{{ format_badge }}</td>{% endif %}</tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               {% if organiser_label %}<td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if congress_dates %}<td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ congress_dates }}</td>{% endif %}</tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if location %}<td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ location }}</td>{% endif %}</tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
+      "draftSource": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               {% if format_badge %}<td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>{{ format_badge }}</td>{% endif %}</tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               {% if organiser_label %}<td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if congress_dates %}<td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ congress_dates }}</td>{% endif %}</tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if location %}<td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ location }}</td>{% endif %}</tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -2902,8 +2902,8 @@
           "id": "field4",
           "label": "Congress dates",
           "type": "text",
-          "defaultValue": "23 &ndash; 25 Apr 2026",
-          "originalValue": "23 &ndash; 25 Apr 2026",
+          "defaultValue": "23 – 25 Apr 2026",
+          "originalValue": "23 – 25 Apr 2026",
           "enabled": true,
           "required": false,
           "maxLength": 60,
@@ -2954,18 +2954,18 @@
           "id": "field7",
           "label": "Poster image",
           "type": "image",
-          "defaultValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
-          "originalValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+          "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+          "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "",
+          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
           "targets": [
             {
               "name": "src",
               "start": 5642,
-              "end": 5713,
-              "value": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+              "end": 5741,
+              "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
               "quoted": true,
               "nodeId": "n46",
               "kind": "attribute"
@@ -3062,8 +3062,8 @@
             "id": "field4",
             "label": "Congress dates",
             "type": "text",
-            "defaultValue": "23 &ndash; 25 Apr 2026",
-            "originalValue": "23 &ndash; 25 Apr 2026",
+            "defaultValue": "23 – 25 Apr 2026",
+            "originalValue": "23 – 25 Apr 2026",
             "enabled": true,
             "required": false,
             "maxLength": 60,
@@ -3114,18 +3114,18 @@
             "id": "field7",
             "label": "Poster image",
             "type": "image",
-            "defaultValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
-            "originalValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
                 "start": 5642,
-                "end": 5713,
-                "value": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+                "end": 5741,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n46",
                 "kind": "attribute"
@@ -3161,7 +3161,7 @@
         "name": "Lead Poster",
         "slug": "lead-poster",
         "release": "1.0.0",
-        "source": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               {% if format_badge %}<td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>{{ format_badge }}</td>{% endif %}</tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               {% if organiser_label %}<td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if congress_dates %}<td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ congress_dates }}</td>{% endif %}</tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if location %}<td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ location }}</td>{% endif %}</tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
+        "source": "<!-- START .esc-congress-lead.esc-lead-poster --><table align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-congress-lead esc-lead-poster\" role=\"presentation\" style=\"background-color: %%=v(@PrimaryColour)=%%; background-image: linear-gradient(175deg, %%=v(@SecondaryColour)=%% 0%, %%=v(@PrimaryColour)=%% 55%); border-radius: 20px 20px 0 0; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 20px 0 0 0; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"content-inner\" style=\"background-color: %%=v(@PrimaryColour)=%%; padding: 36px 0 28px; width: 580px;\" valign=\"top\">\n    <!-- Top meta row --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 22px;\" valign=\"middle\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\">\n         \n          <tr>\n           <td align=\"left\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"display: inline-table;\">\n             \n              <tr>\n               {% if format_badge %}<td style=\"background-color: rgba(255,255,255,0.22); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; line-height: 1; padding: 8px 16px; text-transform: uppercase;\" valign=\"middle\">\n                <span style=\"color: %%=v(@TextOnPrimaryColour)=%%; display: inline-block; margin-right: 8px;\">&bull;</span>{{ format_badge }}</td>{% endif %}</tr></table></td><td align=\"right\" class=\"mobile-hide\" valign=\"middle\">\n            <table align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-lead-organiser-table\" role=\"presentation\">\n             \n              <tr>\n               {% if organiser_label %}<td style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.7; padding-right: 10px; text-transform: uppercase;\" valign=\"middle\">\n                {{ organiser_label }}</td>{% endif %}<td valign=\"middle\">\n                <img alt=\"%%=v(@FooterLogoAlt)=%%\" src=\"%%=v(@FooterLogoURL)=%%\" style=\"border: 0; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></td></tr></table></td></tr></table></td></tr></table><!-- Congress title and details --><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding: 0 10px 18px;\">\n        <h1 class=\"esc-lead-title\" style=\"color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 42px; font-weight: 700; letter-spacing: -0.6px; line-height: 46px; margin: 0;\">\n         Congress Name 2026</h1></td></tr><tr>\n       <td style=\"padding: 0 10px;\">\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n         \n          <tr>\n           <td style=\"padding: 0 10px 10px 0;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if congress_dates %}<td style=\"background-color: rgba(255,255,255,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ congress_dates }}</td>{% endif %}</tr></table></td><td style=\"padding-bottom: 10px;\" valign=\"middle\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n             \n              <tr>\n               {% if location %}<td style=\"background-color: rgba(0,0,0,0.18); border-radius: 999px; color: %%=v(@TextOnPrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 500; letter-spacing: 0.2px; line-height: 1; padding: 10px 18px;\" valign=\"middle\">\n                {{ location }}</td>{% endif %}</tr></table></td></tr></table></td></tr></table></td><td bgcolor=\"%%=v(@PrimaryColour)=%%\" class=\"side\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 20px 0 0; width: 20px;\">\n    &nbsp;</td></tr><!-- Poster image panel --><tr>\n   <td align=\"center\" bgcolor=\"%%=v(@PrimaryColour)=%%\" colspan=\"3\" style=\"background-color: %%=v(@PrimaryColour)=%%; border-radius: 0 0 20px 20px; padding: 24px 20px;\" valign=\"top\">\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background-color: #ffffff; border-radius: 16px; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td align=\"center\" style=\"font-size: 0; line-height: 0; padding: 20px;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><!--[if mso]>\n              <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"540\"><tr><td>\n              <![endif]--> <img alt=\"Congress key visual\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; margin: 0; max-width: 540px; outline: none; text-decoration: none; width: 100%;\" width=\"540\"> <!--[if mso]>\n              </td></tr></table>\n              <![endif]--> </a></td></tr></table></td></tr></table><table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\" width=\"620\">\n \n  <tr>\n   <td bgcolor=\"#ffffff\" height=\"20\" style=\"background-color: #ffffff; font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;\">\n    &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-poster -->",
         "templateMode": true,
         "contextCss": "",
         "fields": [
@@ -3218,8 +3218,8 @@
             "id": "field4",
             "label": "Congress dates",
             "type": "text",
-            "defaultValue": "23 &ndash; 25 Apr 2026",
-            "originalValue": "23 &ndash; 25 Apr 2026",
+            "defaultValue": "23 – 25 Apr 2026",
+            "originalValue": "23 – 25 Apr 2026",
             "enabled": true,
             "required": false,
             "maxLength": 60,
@@ -3270,18 +3270,18 @@
             "id": "field7",
             "label": "Poster image",
             "type": "image",
-            "defaultValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
-            "originalValue": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
                 "start": 5642,
-                "end": 5713,
-                "value": "https://placehold.co/540x280/ffffff/AE1022/png?text=Congress+Key+Visual",
+                "end": 5741,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n46",
                 "kind": "attribute"
@@ -4017,8 +4017,8 @@
       "name": "Story 1 Col",
       "slug": "story-1col",
       "release": "1.0.0",
-      "source": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
-      "draftSource": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
+      "source": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
+      "draftSource": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
       "templateMode": false,
       "contextCss": "",
       "width": 620,
@@ -4045,8 +4045,8 @@
             },
             {
               "name": "href",
-              "start": 2082,
-              "end": 2107,
+              "start": 2115,
+              "end": 2140,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n15",
@@ -4058,18 +4058,18 @@
           "id": "field2",
           "label": "Story image",
           "type": "image",
-          "defaultValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
-          "originalValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+          "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+          "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "",
+          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
           "targets": [
             {
               "name": "src",
               "start": 712,
-              "end": 778,
-              "value": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+              "end": 811,
+              "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
               "quoted": true,
               "nodeId": "n8",
               "kind": "attribute"
@@ -4110,8 +4110,8 @@
           "help": "",
           "targets": [
             {
-              "start": 1225,
-              "end": 1398,
+              "start": 1258,
+              "end": 1431,
               "nodeId": "n11",
               "kind": "content"
             }
@@ -4130,8 +4130,8 @@
           "help": "",
           "targets": [
             {
-              "start": 2191,
-              "end": 2201,
+              "start": 2224,
+              "end": 2234,
               "nodeId": "n15",
               "kind": "content"
             }
@@ -4175,8 +4175,8 @@
               },
               {
                 "name": "href",
-                "start": 2082,
-                "end": 2107,
+                "start": 2115,
+                "end": 2140,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n15",
@@ -4188,18 +4188,18 @@
             "id": "field2",
             "label": "Story image",
             "type": "image",
-            "defaultValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
-            "originalValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
                 "start": 712,
-                "end": 778,
-                "value": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+                "end": 811,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n8",
                 "kind": "attribute"
@@ -4240,8 +4240,8 @@
             "help": "",
             "targets": [
               {
-                "start": 1225,
-                "end": 1398,
+                "start": 1258,
+                "end": 1431,
                 "nodeId": "n11",
                 "kind": "content"
               }
@@ -4260,8 +4260,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2191,
-                "end": 2201,
+                "start": 2224,
+                "end": 2234,
                 "nodeId": "n15",
                 "kind": "content"
               }
@@ -4275,7 +4275,7 @@
         "name": "Story 1 Col",
         "slug": "story-1col",
         "release": "1.0.0",
-        "source": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
+        "source": "<!-- START .esc-story-1col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-1col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 20px 0 8px; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"padding-bottom: 18px; width: 100%;\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"580\"> </a></td></tr><tr>\n       <td style=\"width: 100%;\">\n        <p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 15px; line-height: 23px; margin: 0 0 20px;\">\n         Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.</p><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 1px solid %%=v(@ButtonBgColour)=%%; border-collapse: separate; border-radius: 50px;\">\n         \n          <tr>\n           <td align=\"center\" style=\"border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 26px; text-align: center; text-transform: uppercase;\">\n            <a href=\"https://www.escardio.org/\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">Learn more</a></td></tr></table></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-1col -->",
         "templateMode": false,
         "contextCss": "",
         "fields": [
@@ -4301,8 +4301,8 @@
               },
               {
                 "name": "href",
-                "start": 2082,
-                "end": 2107,
+                "start": 2115,
+                "end": 2140,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n15",
@@ -4314,18 +4314,18 @@
             "id": "field2",
             "label": "Story image",
             "type": "image",
-            "defaultValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
-            "originalValue": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
                 "start": 712,
-                "end": 778,
-                "value": "https://placehold.co/580x290/1a1a1a/ffffff/png?text=Congress+Image",
+                "end": 811,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n8",
                 "kind": "attribute"
@@ -4366,8 +4366,8 @@
             "help": "",
             "targets": [
               {
-                "start": 1225,
-                "end": 1398,
+                "start": 1258,
+                "end": 1431,
                 "nodeId": "n11",
                 "kind": "content"
               }
@@ -4386,8 +4386,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2191,
-                "end": 2201,
+                "start": 2224,
+                "end": 2234,
                 "nodeId": "n15",
                 "kind": "content"
               }
@@ -4402,8 +4402,8 @@
       "name": "Story 2 Col",
       "slug": "story-2col",
       "release": "1.0.0",
-      "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3>{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label_2 %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3>{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy_2 | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
-      "draftSource": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3>{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label_2 %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3>{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy_2 | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+      "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3>{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label_2 %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3>{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy_2 | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+      "draftSource": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3>{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label_2 %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3>{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy_2 | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -4430,8 +4430,8 @@
             },
             {
               "name": "href",
-              "start": 1862,
-              "end": 1887,
+              "start": 1901,
+              "end": 1926,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n12",
@@ -4443,18 +4443,18 @@
           "id": "field2",
           "label": "Story image",
           "type": "image",
-          "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
-          "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+          "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+          "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "",
+          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
           "targets": [
             {
               "name": "src",
               "start": 726,
-              "end": 786,
-              "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+              "end": 825,
+              "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
               "quoted": true,
               "nodeId": "n8",
               "kind": "attribute"
@@ -4510,8 +4510,8 @@
           "help": "",
           "targets": [
             {
-              "start": 1468,
-              "end": 1507,
+              "start": 1507,
+              "end": 1546,
               "nodeId": "n10",
               "kind": "content"
             }
@@ -4545,8 +4545,8 @@
           "help": "",
           "targets": [
             {
-              "start": 2162,
-              "end": 2173,
+              "start": 2201,
+              "end": 2212,
               "nodeId": "n12",
               "kind": "content"
             }
@@ -4566,8 +4566,8 @@
           "targets": [
             {
               "name": "href",
-              "start": 2373,
-              "end": 2398,
+              "start": 2412,
+              "end": 2437,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n15",
@@ -4575,8 +4575,8 @@
             },
             {
               "name": "href",
-              "start": 3658,
-              "end": 3683,
+              "start": 3736,
+              "end": 3761,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n20",
@@ -4588,18 +4588,18 @@
           "id": "field9",
           "label": "Story image 2",
           "type": "image",
-          "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
-          "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+          "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+          "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "",
+          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
           "targets": [
             {
               "name": "src",
-              "start": 2513,
-              "end": 2573,
-              "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+              "start": 2552,
+              "end": 2651,
+              "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
               "quoted": true,
               "nodeId": "n16",
               "kind": "attribute"
@@ -4619,8 +4619,8 @@
           "targets": [
             {
               "name": "alt",
-              "start": 2466,
-              "end": 2492,
+              "start": 2505,
+              "end": 2531,
               "value": "Congress image description",
               "quoted": true,
               "nodeId": "n16",
@@ -4655,8 +4655,8 @@
           "help": "",
           "targets": [
             {
-              "start": 3259,
-              "end": 3299,
+              "start": 3337,
+              "end": 3377,
               "nodeId": "n18",
               "kind": "content"
             }
@@ -4690,8 +4690,8 @@
           "help": "",
           "targets": [
             {
-              "start": 3958,
-              "end": 3969,
+              "start": 4036,
+              "end": 4047,
               "nodeId": "n20",
               "kind": "content"
             }
@@ -4735,8 +4735,8 @@
               },
               {
                 "name": "href",
-                "start": 1862,
-                "end": 1887,
+                "start": 1901,
+                "end": 1926,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n12",
@@ -4748,18 +4748,18 @@
             "id": "field2",
             "label": "Story image",
             "type": "image",
-            "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
-            "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
                 "start": 726,
-                "end": 786,
-                "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+                "end": 825,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n8",
                 "kind": "attribute"
@@ -4815,8 +4815,8 @@
             "help": "",
             "targets": [
               {
-                "start": 1468,
-                "end": 1507,
+                "start": 1507,
+                "end": 1546,
                 "nodeId": "n10",
                 "kind": "content"
               }
@@ -4850,8 +4850,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2162,
-                "end": 2173,
+                "start": 2201,
+                "end": 2212,
                 "nodeId": "n12",
                 "kind": "content"
               }
@@ -4871,8 +4871,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 2373,
-                "end": 2398,
+                "start": 2412,
+                "end": 2437,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n15",
@@ -4880,8 +4880,8 @@
               },
               {
                 "name": "href",
-                "start": 3658,
-                "end": 3683,
+                "start": 3736,
+                "end": 3761,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n20",
@@ -4893,18 +4893,18 @@
             "id": "field9",
             "label": "Story image 2",
             "type": "image",
-            "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
-            "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
-                "start": 2513,
-                "end": 2573,
-                "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+                "start": 2552,
+                "end": 2651,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n16",
                 "kind": "attribute"
@@ -4924,8 +4924,8 @@
             "targets": [
               {
                 "name": "alt",
-                "start": 2466,
-                "end": 2492,
+                "start": 2505,
+                "end": 2531,
                 "value": "Congress image description",
                 "quoted": true,
                 "nodeId": "n16",
@@ -4960,8 +4960,8 @@
             "help": "",
             "targets": [
               {
-                "start": 3259,
-                "end": 3299,
+                "start": 3337,
+                "end": 3377,
                 "nodeId": "n18",
                 "kind": "content"
               }
@@ -4995,8 +4995,8 @@
             "help": "",
             "targets": [
               {
-                "start": 3958,
-                "end": 3969,
+                "start": 4036,
+                "end": 4047,
                 "nodeId": "n20",
                 "kind": "content"
               }
@@ -5010,7 +5010,7 @@
         "name": "Story 2 Col",
         "slug": "story-2col",
         "release": "1.0.0",
-        "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3>{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://placehold.co/280x170/e8e8e8/666666/png?text=Congress\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label_2 %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3>{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy_2 | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+        "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 24px 0; width: 580px;\" valign=\"top\">\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         First congress story headline</h3>{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td><td class=\"gap block\" style=\"font-size: 1px; line-height: 1px; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"width: 280px;\" valign=\"top\" width=\"280\">\n        <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img alt=\"Congress image description\" class=\"fluid\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\"> </a>{% if eyebrow_label_2 %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 11px; font-weight: 700; letter-spacing: 1px; line-height: 16px; margin: 16px 0 6px; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p>{% endif %}<h3 class=\"news-card-title dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 17px; font-weight: 700; line-height: 23px; margin: 0 0 10px;\">\n         Second congress story headline</h3>{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 14px; line-height: 21px; margin: 0 0 12px;\">\n         {{ body_copy_2 | richtext }}</p>{% endif %} <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; text-decoration: underline;\" target=\"_blank\"> Read more </a></td></tr></table></td><td class=\"side\" style=\"width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
         "templateMode": true,
         "contextCss": "",
         "fields": [
@@ -5036,8 +5036,8 @@
               },
               {
                 "name": "href",
-                "start": 1862,
-                "end": 1887,
+                "start": 1901,
+                "end": 1926,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n12",
@@ -5049,18 +5049,18 @@
             "id": "field2",
             "label": "Story image",
             "type": "image",
-            "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
-            "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
                 "start": 726,
-                "end": 786,
-                "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+                "end": 825,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n8",
                 "kind": "attribute"
@@ -5116,8 +5116,8 @@
             "help": "",
             "targets": [
               {
-                "start": 1468,
-                "end": 1507,
+                "start": 1507,
+                "end": 1546,
                 "nodeId": "n10",
                 "kind": "content"
               }
@@ -5151,8 +5151,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2162,
-                "end": 2173,
+                "start": 2201,
+                "end": 2212,
                 "nodeId": "n12",
                 "kind": "content"
               }
@@ -5172,8 +5172,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 2373,
-                "end": 2398,
+                "start": 2412,
+                "end": 2437,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n15",
@@ -5181,8 +5181,8 @@
               },
               {
                 "name": "href",
-                "start": 3658,
-                "end": 3683,
+                "start": 3736,
+                "end": 3761,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n20",
@@ -5194,18 +5194,18 @@
             "id": "field9",
             "label": "Story image 2",
             "type": "image",
-            "defaultValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
-            "originalValue": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "",
+            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
                 "name": "src",
-                "start": 2513,
-                "end": 2573,
-                "value": "https://placehold.co/280x170/e8e8e8/666666/png?text=Congress",
+                "start": 2552,
+                "end": 2651,
+                "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n16",
                 "kind": "attribute"
@@ -5225,8 +5225,8 @@
             "targets": [
               {
                 "name": "alt",
-                "start": 2466,
-                "end": 2492,
+                "start": 2505,
+                "end": 2531,
                 "value": "Congress image description",
                 "quoted": true,
                 "nodeId": "n16",
@@ -5261,8 +5261,8 @@
             "help": "",
             "targets": [
               {
-                "start": 3259,
-                "end": 3299,
+                "start": 3337,
+                "end": 3377,
                 "nodeId": "n18",
                 "kind": "content"
               }
@@ -5296,8 +5296,8 @@
             "help": "",
             "targets": [
               {
-                "start": 3958,
-                "end": 3969,
+                "start": 4036,
+                "end": 4047,
                 "nodeId": "n20",
                 "kind": "content"
               }

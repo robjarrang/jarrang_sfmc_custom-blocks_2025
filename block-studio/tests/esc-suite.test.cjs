@@ -56,6 +56,8 @@ async function environment() {
   return { ...context.window, dom };
 }
 const clone = (x) => JSON.parse(JSON.stringify(x));
+const landscapePlaceholder =
+  'https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg';
 const click = (container, text) => {
   const button = [...container.querySelectorAll('button')].find((b) => b.textContent === text);
   assert.ok(button, 'Button: ' + text);
@@ -66,6 +68,131 @@ const labelled = (container, text) => {
   assert.ok(label, 'Label: ' + text);
   return container.querySelector('#' + label.htmlFor);
 };
+test('ESC landscape defaults use the supplied placeholder without changing optional image behaviour', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const excluded = new Set(['journal-section', 'signature', 'speaker-grid', 'sponsor']);
+    let defaults = 0;
+    for (const p of projects)
+      for (const m of p.modules) {
+        for (const f of m.fields.filter((f) => f.type === 'image')) {
+          if (!f.defaultValue) continue;
+          if (excluded.has(m.slug) || (m.slug === 'lead-editorial' && f.id === 'field5')) {
+            assert.notEqual(f.defaultValue, landscapePlaceholder);
+            continue;
+          }
+          assert.equal(f.defaultValue, landscapePlaceholder, m.slug + ': ' + f.id);
+          assert.equal(f.originalValue, landscapePlaceholder);
+          for (const t of f.targets)
+            assert.equal(m.source.slice(t.start, t.end), landscapePlaceholder);
+          defaults++;
+        }
+      }
+    const editorial = projects[0].modules.find((m) => m.slug === 'editorials');
+    const list = editorial.fields.find((f) => f.type === 'list');
+    assert.equal(list.defaultValue[0].image, landscapePlaceholder);
+    defaults++;
+    assert.equal(list.defaultValue[1].image, '');
+    assert.equal(list.defaultValue[2].image, '');
+    assert.equal(list.itemFields.find((f) => f.key === 'image').defaultValue, '');
+    assert.equal(defaults, 19);
+    const lead = projects[1].modules.find((m) => m.slug === 'lead-editorial');
+    assert.equal(lead.fields.find((f) => f.id === 'field10').defaultValue, '');
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(lead);
+    assert.equal(
+      host.querySelector('.esc-lead-visual-desktop').getAttribute('src'),
+      landscapePlaceholder,
+    );
+    assert.equal(
+      host.querySelector('.esc-lead-visual-mobile').getAttribute('src'),
+      landscapePlaceholder,
+    );
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('ESC plain-text defaults, repeater rows and guidance contain decoded characters', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const check = (value, label) => {
+      if (typeof value === 'string') assert.equal(value, C.decode(value), label);
+    };
+    const checkFields = (fields, module) => {
+      for (const f of fields) {
+        check(f.label, module + ': label');
+        check(f.help, module + ': help');
+        if (f.type === 'text') {
+          check(f.defaultValue, module + ': ' + f.id + ' default');
+          check(f.originalValue, module + ': ' + f.id + ' original');
+        }
+        if (f.type === 'list') {
+          checkFields(f.itemFields, module);
+          for (const key of ['defaultValue', 'originalValue'])
+            for (const row of Array.isArray(f[key]) ? f[key] : [])
+              for (const child of f.itemFields.filter((child) => child.type === 'text'))
+                check(row[child.key], module + ': ' + f.id + '.' + child.key);
+        }
+      }
+    };
+    for (const p of projects)
+      for (const m of p.modules) {
+        checkFields(m.fields, m.slug);
+        const host = dom.document.createElement('div');
+        host.innerHTML = C.render(m);
+        assert.doesNotMatch(host.textContent, /&(?:[a-z]+|#\d+|#x[0-9a-f]+);/i, m.slug);
+      }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('ESC punctuation remains readable after editing mapped fields and adding repeating rows', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const text = (m, values) => {
+      const host = dom.document.createElement('div');
+      host.innerHTML = C.render(m, values);
+      return host.textContent;
+    };
+    for (const [template, slug, fieldId, expected] of [
+      [0, 'journal-section', 'field6', 'Volume 121 Issue 15 • 9 December 2025'],
+      [0, 'quote', 'field1', '“Add a short quote or editorial callout here.”'],
+      [0, 'social-block', 'field3', 'View post →'],
+      [1, 'deadlines-list', 'field2', 'Don’t miss these deadlines'],
+      [1, 'lead-editorial', 'field2', '28 Aug – 31 Aug 2026'],
+      [1, 'lead-poster', 'field4', '23 – 25 Apr 2026'],
+    ]) {
+      const m = projects[template].modules.find((m) => m.slug === slug);
+      assert.equal(m.fields.find((f) => f.id === fieldId).defaultValue, expected);
+      assert.ok(text(m, {}).includes(expected), slug + ': default');
+      assert.ok(text(m, { [fieldId]: expected + '!' }).includes(expected + '!'), slug + ': edited');
+    }
+    const m = projects[1].modules.find((m) => m.slug === 'deadlines-list');
+    const list = m.fields.find((f) => f.type === 'list');
+    const rows = clone(list.defaultValue);
+    rows.push(Object.fromEntries(list.itemFields.map((f) => [f.key, f.defaultValue])));
+    const result = text(m, { [list.id]: rows });
+    for (const label of ['Submit ›', 'Register ›', 'Book ›', 'Submit\u00a0›'])
+      assert.ok(result.includes(label), label);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('plain-text escaping preserves intentionally literal entities and prevents HTML injection', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const m = projects[1].modules.find((m) => m.slug === 'lead-editorial');
+    const value = 'A & B <b>text</b> &ndash;';
+    const output = C.render(m, { field2: value });
+    assert.ok(output.includes('A &amp; B &lt;b&gt;text&lt;/b&gt; &amp;ndash;'));
+    const host = dom.document.createElement('div');
+    host.innerHTML = output;
+    assert.ok(host.textContent.includes(value));
+    assert.equal(host.querySelector('b'), null);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('congress landscape header retains side-by-side composition and proportional imagery', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
@@ -92,7 +219,7 @@ test('congress landscape header retains side-by-side composition and proportiona
     assert.equal(desktop.style.width, '100%');
     assert.equal(desktop.style.maxWidth, '274px');
     assert.equal(desktop.style.borderRadius, '8px');
-    assert.match(desktop.src, /1920x1080/);
+    assert.equal(desktop.src, landscapePlaceholder);
     assert.match(m.source, /<!--\[if !mso\]><!-->.*esc-lead-visual-mobile/s);
     assert.match(m.source, /%%=v\(@PrimaryColour\)=%%/);
     assert.match(m.source, /%%=v\(@TextOnPrimaryColour\)=%%/);
