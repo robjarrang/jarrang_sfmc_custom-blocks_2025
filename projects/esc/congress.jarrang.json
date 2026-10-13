@@ -85,7 +85,8 @@
             "binding": "template",
             "key": "attribution_text"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -1052,7 +1053,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -1320,7 +1322,8 @@
             "minItems": 1,
             "maxItems": 8
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -1681,7 +1684,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -2102,7 +2106,8 @@
             "minItems": 1,
             "maxItems": 6
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -2919,7 +2924,8 @@
             "binding": "template",
             "key": "field11"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -3394,7 +3400,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -3632,7 +3639,8 @@
             "targets": [],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -3732,7 +3740,8 @@
             ],
             "allowLinks": true
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -4093,7 +4102,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -4478,7 +4488,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -5388,7 +5399,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -5656,7 +5668,8 @@
             "minItems": 1,
             "maxItems": 6
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     }
   ],
@@ -5666,6 +5679,7 @@
     "clientSlug": "esc",
     "templateSlug": "congress",
     "baseUrl": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025",
-    "location": "docs"
+    "location": "docs",
+    "showEditorHeader": false
   }
 }

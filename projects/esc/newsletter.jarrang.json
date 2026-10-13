@@ -1252,7 +1252,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -1565,7 +1566,8 @@
             "minItems": 1,
             "maxItems": 10
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -1803,7 +1805,8 @@
             "minItems": 2,
             "maxItems": 8
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -2191,7 +2194,8 @@
             "minItems": 1,
             "maxItems": 5
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -2885,7 +2889,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -3939,7 +3944,8 @@
             "help": "The arrow after this text is added automatically.",
             "targets": []
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -5203,7 +5209,8 @@
             "help": "The arrow after this text is added automatically.",
             "targets": []
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -5813,7 +5820,8 @@
             "allowLinks": false,
             "id": "field9"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -6084,7 +6092,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -6322,7 +6331,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -6836,7 +6846,8 @@
             ],
             "allowLinks": true
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -7212,7 +7223,8 @@
             "minItems": 1,
             "maxItems": 10
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -7789,7 +7801,8 @@
             "minItems": 1,
             "maxItems": 8
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -7994,7 +8007,8 @@
             "key": "author_role",
             "binding": "template"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -8190,7 +8204,8 @@
             "help": "Main heading for this section.",
             "targets": []
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -8401,7 +8416,8 @@
             ],
             "id": "field3"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -8930,7 +8946,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -9810,7 +9827,8 @@
             "help": "",
             "targets": []
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -10066,7 +10084,8 @@
             "binding": "template",
             "key": "disclaimer_text"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -10541,7 +10560,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -11016,7 +11036,8 @@
             ],
             "allowLinks": false
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -11356,7 +11377,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -11468,7 +11490,8 @@
               }
             ]
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -11643,7 +11666,8 @@
             "allowLinks": false,
             "binding": "template"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -12184,7 +12208,8 @@
             "minItems": 1,
             "maxItems": 6
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -12644,7 +12669,8 @@
             "minItems": 1,
             "maxItems": 6
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     },
     {
@@ -12816,7 +12842,8 @@
             "allowLinks": true,
             "binding": "template"
           }
-        ]
+        ],
+        "showEditorHeader": false
       }
     }
   ],
@@ -12826,6 +12853,7 @@
     "clientSlug": "esc",
     "templateSlug": "newsletter",
     "baseUrl": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025",
-    "location": "docs"
+    "location": "docs",
+    "showEditorHeader": false
   }
 }

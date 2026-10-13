@@ -1,3 +1,11 @@
+# Current validation - 1.25.7
+
+Template settings now includes Show Jarrang Block Studio header under Editor appearance for all modules. The default remains enabled for existing templates without a preference. Both ESC templates disable it; all 40 published pages omit the brand header. The setting is included in exported definitions and checked when importing repository pages.
+
+All 231 automated tests pass. Header on/off and legacy default behaviour are covered; email output is unchanged. All module source, fields, identifiers, icons and shared runtime assets are identical to 1.25.6. No deployment was performed.
+
+---
+
 # Current validation - 1.25.6
 
 Congress Lead Editorial adds organiser logo width and optional link controls beside its existing logo fields. Width defaults to 112px, caps at 160px and falls back to 112px for non-positive values; height remains automatic. Empty links produce no anchor. Existing field IDs, values, module identity, AMPscript and runtime assets are preserved. Source ranges were rebased and published/exported definitions regenerated.

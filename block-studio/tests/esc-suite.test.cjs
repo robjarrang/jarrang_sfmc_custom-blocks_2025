@@ -774,7 +774,11 @@ test('all 40 ESC modules retain their exported definition and supplied PNG pair'
         const definition = JSON.parse(
           page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1],
         );
-        assert.deepEqual(JSON.parse(JSON.stringify(E.definition(m))), definition, m.slug);
+        assert.deepEqual(
+          JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))),
+          definition,
+          m.slug,
+        );
         assert.equal(JSON.stringify(E.problems(m)), '[]', m.slug);
         assert.equal(JSON.stringify(M.problems(m)), '[]', m.slug);
         for (const [key, name] of [
@@ -1070,6 +1074,33 @@ test('congress organiser logo supports optional links and bounded proportional w
     assert.equal(logo.closest('a'), null);
     assert.equal(logo.getAttribute('src'), 'https://example.com/saved-logo.png');
     assert.equal(logo.getAttribute('alt'), 'Saved organiser');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('exported editor header follows template setting without changing email output', async () => {
+  const { BlockCore: C, BlockExport: E, dom } = await environment();
+  try {
+    const p = clone(projects[0]),
+      m = p.modules[0],
+      original = C.render(m);
+    for (const enabled of [false, true]) {
+      p.settings.showEditorHeader = enabled;
+      const themed = E.themedModule(p, m),
+        host = dom.document.createElement('div');
+      host.innerHTML = E.moduleHtml(themed);
+      assert.equal(!!host.querySelector('.runtime-brand'), enabled);
+      assert.equal(C.render(themed), original);
+      assert.equal(E.definition(themed).showEditorHeader, enabled);
+    }
+    delete p.settings.showEditorHeader;
+    assert.match(E.moduleHtml(E.themedModule(p, m)), /class="runtime-brand"/);
+    for (const project of projects) {
+      assert.equal(project.settings.showEditorHeader, false);
+      for (const module of project.modules)
+        assert.doesNotMatch(E.moduleHtml(E.themedModule(project, module)), /class="runtime-brand"/);
+    }
   } finally {
     await dom.happyDOM.close();
   }

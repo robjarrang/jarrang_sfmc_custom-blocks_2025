@@ -173,6 +173,11 @@
             : m.editorTheme;
         if (JSON.stringify(d.editorTheme || null) !== JSON.stringify(expectedTheme || null))
           throw Error(m.name + ': editor colours differ from its exported page.');
+        const expectedHeader = m.exportedDefinition
+          ? expected.showEditorHeader !== false
+          : p.settings.showEditorHeader !== false;
+        if ((d.showEditorHeader !== false) !== expectedHeader)
+          throw Error(m.name + ': editor header setting differs from its exported page.');
         const pair = {};
         for (const [key, filename] of [
           ['icon', 'icon.png'],

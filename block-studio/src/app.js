@@ -306,6 +306,7 @@
         ),
       ),
     };
+    $('show-editor-header').checked = templateDraft.settings.showEditorHeader !== false;
     const legacy = templateDraft.modules.filter((m) => m.editorTheme);
     $('theme-existing').replaceChildren();
     for (const m of legacy) {
@@ -553,6 +554,7 @@
       const themeErrors = E.themeProblems(templateThemeDraft);
       if (themeErrors.length) throw Error(themeErrors.join(' '));
       templateDraft.settings = nextSettings;
+      templateDraft.settings.showEditorHeader = $('show-editor-header').checked;
       templateDraft.settings.editorTheme = templateThemeDraft.editorTheme
         ? E.editorTheme(templateThemeDraft)
         : null;
