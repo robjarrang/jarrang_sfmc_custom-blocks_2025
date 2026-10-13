@@ -1,3 +1,13 @@
+# Current validation - 1.25.2
+
+Revised Congress Lead Editorial following visual feedback on 1.25.1. The desktop header returns to a shared two-column row: 320px for content, 300px for the visual, with a 274px image frame and a 26px outside gutter. The visual is vertically centred beside the copy in the same AMPscript-driven primary-colour panel. The original type hierarchy is retained, with 8px image rounding consistent with the suite's cards. Image height remains automatic; a 1920 × 1080px asset displays at approximately 274 × 154px. Mobile continues to use the supplied master template's stacking, full-width table and image-switching rules. The optional mobile override from 1.25.1 is retained.
+
+All 224 automated tests pass with no failures or skips. The layout regression now checks the shared desktop row, explicit image/frame widths, vertical alignment, unconstrained height and mobile-expandable frame. Saved values, escaping, field editing, export and recovery checks continue to pass. Compared with 1.25.1, only this module and its project/export references change; the other 39 modules, icons, AMPscript tokens and shared runtimes remain unchanged. Hosted and standalone Studio builds match. No deployment was performed.
+
+These checks validate code structure and behaviour, not visual appearance in live email clients. SFMC, Outlook, mobile image switching and dark-mode rendering still need a live proof against the supplied master template. Clients without border-radius support retain square image corners.
+
+---
+
 # Current validation - 1.25.1
 
 ESC landscape image maintenance: Congress Lead Editorial now uses separate content/image rows, a 620px-wide proportional visual and an optional mobile override with main-image/alt fallback. Newsletter Story Card 2 Col and Story Card 3 Col retain their existing layouts but no longer force image height attributes. The supplied master template, all module identities, field IDs/types, AMPscript tokens, icon pairs, shared runtimes and other 37 modules are unchanged. The three intended pages and both project snapshots have been re-exported consistently; no deployment was performed.

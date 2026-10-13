@@ -1,4 +1,4 @@
-# Jarrang Block Studio 1.25.1
+# Jarrang Block Studio 1.25.2
 
 Convert coded email modules into independent SFMC custom blocks. This update simplifies field setup with a guided Add field flow, suggested module locations and an interactive preview of the client’s control. Conditional templates and repeatable content remain supported. Each module remains its own draggable block. The app exports static files for GitHub Pages branch publishing; it does not publish or install them.
 

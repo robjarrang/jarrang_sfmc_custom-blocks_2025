@@ -66,7 +66,7 @@ const labelled = (container, text) => {
   assert.ok(label, 'Label: ' + text);
   return container.querySelector('#' + label.htmlFor);
 };
-test('congress landscape header stacks its image and preserves proportions and responsive hooks', async () => {
+test('congress landscape header retains side-by-side composition and proportional imagery', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
     const m = projects[1].modules.find((m) => m.slug === 'lead-editorial');
@@ -74,17 +74,24 @@ test('congress landscape header stacks its image and preserves proportions and r
     host.innerHTML = C.render(m);
     const content = host.querySelector('.esc-lead-content');
     const visual = host.querySelector('.esc-lead-visual');
-    assert.notEqual(content.parentElement, visual.parentElement, 'separate table rows');
-    assert.equal(content.parentElement.nextElementSibling, visual.parentElement);
-    assert.equal(content.getAttribute('width'), '620');
-    assert.equal(visual.getAttribute('width'), '620');
+    assert.equal(content.parentElement, visual.parentElement, 'shared desktop row');
+    assert.equal(content.nextElementSibling, visual);
+    assert.equal(content.getAttribute('width'), '320');
+    assert.equal(visual.getAttribute('width'), '300');
+    assert.equal(visual.getAttribute('valign'), 'middle');
+    assert.equal(visual.style.verticalAlign, 'middle');
+    const frame = visual.querySelector('.esc-lead-image-frame');
+    assert.equal(frame.getAttribute('width'), '274');
+    assert.equal(frame.style.width, '274px');
+    assert.equal(frame.style.maxWidth, '', 'master template can expand the frame on mobile');
     const desktop = visual.querySelector('.esc-lead-visual-desktop');
-    assert.equal(desktop.getAttribute('width'), '620', 'explicit Outlook display width');
+    assert.equal(desktop.getAttribute('width'), '274', 'explicit Outlook display width');
     assert.equal(desktop.hasAttribute('height'), false);
     assert.equal(desktop.style.height, 'auto');
     assert.equal(desktop.style.maxHeight, '');
     assert.equal(desktop.style.width, '100%');
-    assert.equal(desktop.style.maxWidth, '620px');
+    assert.equal(desktop.style.maxWidth, '274px');
+    assert.equal(desktop.style.borderRadius, '8px');
     assert.match(desktop.src, /1920x1080/);
     assert.match(m.source, /<!--\[if !mso\]><!-->.*esc-lead-visual-mobile/s);
     assert.match(m.source, /%%=v\(@PrimaryColour\)=%%/);
