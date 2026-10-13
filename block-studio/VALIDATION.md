@@ -1,3 +1,19 @@
+# Current validation - 1.25.6
+
+Congress Lead Editorial adds organiser logo width and optional link controls beside its existing logo fields. Width defaults to 112px, caps at 160px and falls back to 112px for non-positive values; height remains automatic. Empty links produce no anchor. Existing field IDs, values, module identity, AMPscript and runtime assets are preserved. Source ranges were rebased and published/exported definitions regenerated.
+
+All 230 automated tests pass, including saved logo values, optional anchors, URL escaping and width bounds. No live email-client rendering or deployment was performed. The separate master-template mobile organiser visibility fix remains applicable.
+
+---
+
+# Current validation - 1.25.5
+
+Dropdown controls now retain their native select element with a decorative chevron inset 16px from the right edge and 40px reserved text padding. The chevron inherits the template text colour, ignores pointer events and yields to the native arrow in forced-colour mode. Shared controls cover SFMC editors, Studio test forms and repeating items.
+
+All 229 automated tests pass. The new regression checks native selection, label association and change handling. All 40 published pages reference the new immutable runtime; project definitions, icons and previous runtime assets are byte-identical to 1.25.4. Hosted and standalone builds match. These are automated DOM and source checks, not live SFMC visual verification. No deployment was performed.
+
+---
+
 # Current validation - 1.25.4
 
 Applied the supplied ESC-hosted landscape placeholder to 19 populated image defaults across 14 modules: Newsletter Hero Story, Story Card 1/2/3 Col, Feature Card, Image Banner, Social Block, Video Embed, Webinar Card and Editorials; Congress Lead Editorial, Lead Poster and Story 1/2 Col. The JPEG was retrieved and inspected as 1920 × 1080px, 32,536 bytes. The external URL is used directly. Logos, speaker portraits and journal covers retain their existing defaults. Empty optional editorial images and the congress mobile override remain empty, preserving their existing behaviour.

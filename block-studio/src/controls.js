@@ -174,7 +174,12 @@
       if (field.type !== 'toggle' && field.type !== 'list') input.classList.add('control');
       input.setAttribute('aria-describedby', error.id);
       if (options.onBlur) input.addEventListener('focusout', options.onBlur);
-      group.append(input);
+      if (field.type === 'select') {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'select-control';
+        wrapper.append(input);
+        group.append(wrapper);
+      } else group.append(input);
       if (field.help) {
         const help = document.createElement('p');
         help.className = 'help';

@@ -56,6 +56,50 @@ async function environment() {
   return { ...context.window, dom };
 }
 const clone = (x) => JSON.parse(JSON.stringify(x));
+test('dropdown arrow wrapper preserves native selection, labels and change handling', async () => {
+  const { dom, BlockControls } = await environment();
+  try {
+    const container = dom.document.createElement('div');
+    dom.document.body.append(container);
+    const values = {};
+    const changes = [];
+    const refs = BlockControls.mount(
+      container,
+      [
+        {
+          id: 'theme',
+          label: 'Theme',
+          type: 'select',
+          defaultValue: 'light',
+          options: [
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+          ],
+        },
+      ],
+      values,
+      (field, value) => changes.push([field.id, value]),
+      { prefix: 'test-' },
+    );
+    const select = refs.get('theme').input;
+    assert.equal(select.tagName, 'SELECT');
+    assert.equal(select.parentElement.className, 'select-control');
+    assert.equal(container.querySelector('label').htmlFor, select.id);
+    assert.equal(select.id, 'test-theme');
+    assert.equal(select.value, 'light');
+    select.value = 'dark';
+    select.dispatchEvent(new dom.Event('change', { bubbles: true }));
+    assert.equal(values.theme, 'dark');
+    assert.deepEqual(changes, [['theme', 'dark']]);
+    const css = fs.readFileSync(path.join(root, 'block-studio/src/controls.css'), 'utf8');
+    assert.match(css, /padding-right: 40px/);
+    assert.match(css, /right: 16px/);
+    assert.match(css, /pointer-events: none/);
+    assert.match(css, /forced-colors: active/);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 const landscapePlaceholder =
   'https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg';
 const click = (container, text) => {
@@ -267,7 +311,7 @@ test('congress image fallback honours saved mobile values and keeps URLs and alt
       'https://example.com/mobile.jpg',
       '',
     );
-    assert.equal(definition.fields.length, 13);
+    assert.equal(definition.fields.length, 15);
     assert.equal(definition.id, 'c5a8e174-6d3b-4f92-8a5c-1e7d9b4f2a86');
     assert.equal(definition.slug, 'lead-editorial');
     assert.equal(definition.release, '1.0.0');
@@ -547,7 +591,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 237);
+    assert.equal(count, 241);
   } finally {
     await dom.happyDOM.close();
   }
@@ -993,6 +1037,39 @@ test('all 40 ESC modules retain exact output, fields, references and PNGs throug
         h.undo(m);
         assert.equal(H.snapshot(m), edited, m.slug);
       }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('congress organiser logo supports optional links and bounded proportional widths', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const m = projects[1].modules.find((m) => m.slug === 'lead-editorial');
+    const host = dom.document.createElement('div');
+    for (const [input, expected] of [
+      ['80', '80'],
+      ['160', '160'],
+      ['999', '160'],
+      ['0', '112'],
+      ['-5', '112'],
+    ]) {
+      host.innerHTML = C.render(m, { field14: input, field15: 'https://example.com/?a=1&b=2' });
+      const logo = host.querySelector('.esc-lead-organiser-table img');
+      assert.equal(logo.getAttribute('width'), expected);
+      assert.equal(logo.style.height, 'auto');
+      assert.equal(logo.parentElement.getAttribute('href'), 'https://example.com/?a=1&b=2');
+      assert.equal(logo.parentElement.getAttribute('target'), '_blank');
+    }
+    host.innerHTML = C.render(m, {
+      field5: 'https://example.com/saved-logo.png',
+      field6: 'Saved organiser',
+    });
+    const logo = host.querySelector('.esc-lead-organiser-table img');
+    assert.equal(logo.getAttribute('width'), '112');
+    assert.equal(logo.closest('a'), null);
+    assert.equal(logo.getAttribute('src'), 'https://example.com/saved-logo.png');
+    assert.equal(logo.getAttribute('alt'), 'Saved organiser');
   } finally {
     await dom.happyDOM.close();
   }

@@ -67,6 +67,36 @@
   background: #fff;
   box-sizing: border-box;
 }
+.select-control {
+  position: relative;
+  color: var(--navy, #080043);
+}
+.select-control > select.control {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 40px;
+}
+.select-control::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+@media (forced-colors: active) {
+  .select-control > select.control {
+    -webkit-appearance: auto;
+    appearance: auto;
+  }
+  .select-control::after {
+    display: none;
+  }
+}
 .field-error {
   color: #a03d32;
   font-size: 12px;
