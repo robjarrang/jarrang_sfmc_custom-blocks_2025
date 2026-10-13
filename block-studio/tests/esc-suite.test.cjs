@@ -1105,3 +1105,19 @@ test('exported editor header follows template setting without changing email out
     await dom.happyDOM.close();
   }
 });
+
+test('congress image frame remains in normal flow within its middle-aligned cell', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const m = projects[1].modules.find((m) => m.slug === 'lead-editorial');
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(m);
+    const frame = host.querySelector('.esc-lead-image-frame');
+    assert.equal(frame.hasAttribute('align'), false);
+    assert.equal(frame.parentElement.getAttribute('valign'), 'middle');
+    assert.equal(frame.parentElement.style.verticalAlign, 'middle');
+    assert.equal(frame.getAttribute('width'), '274');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});

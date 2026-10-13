@@ -1,3 +1,11 @@
+# Current validation - 1.25.8
+
+Removed the unnecessary align="left" from the Congress Lead Editorial image frame, keeping the containing cell valign="middle" and vertical-align:middle. This avoids an aligned nested table while preserving image dimensions, fields and AMPscript. A separately supplied master template sets border-collapse:collapse on the editorial lead to address its Apple Mail dark-mode column seam.
+
+All 232 automated tests pass, including normal-flow image-frame structure. These changes have not been rendered in Outlook Windows or Apple Mail. A fresh client proof must confirm image centring, seam removal and rounded corners before treating the visual issues as resolved. No deployment was performed.
+
+---
+
 # Current validation - 1.25.7
 
 Template settings now includes Show Jarrang Block Studio header under Editor appearance for all modules. The default remains enabled for existing templates without a preference. Both ESC templates disable it; all 40 published pages omit the brand header. The setting is included in exported definitions and checked when importing repository pages.
