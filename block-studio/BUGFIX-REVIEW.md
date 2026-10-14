@@ -1,5 +1,7 @@
 # Workflow regression sweep - 1.12.2
 
+> Historical review record. Claims and test totals apply to the dated release below, not automatically to later changes. For current operation use the [user guide](../USER_GUIDE.md) and [technical documentation](../DEVELOPER_GUIDE.md).
+
 Confirmed and fixed:
 - Repeating → single → repeating failed because the converter rejected connected template references. It now converts supported references and literal mappings together while retaining values, settings and filters.
 - Visual repeat candidates ignored template-connected fields with no source offsets. Candidate discovery now includes their references.

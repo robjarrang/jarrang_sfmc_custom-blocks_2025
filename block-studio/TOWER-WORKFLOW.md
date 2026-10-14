@@ -1,42 +1,32 @@
-# One repository, multiple clients
+# Set up the repository with Tower and GitHub Pages
 
-## Set up once
+For the Jarrang person responsible for initial hosting. Day-to-day editing is covered in the [user guide](../USER_GUIDE.md#open-the-current-files).
 
-1. Extract this repository package into your local Git repository. It includes the tool source plus the pre-built site in `docs/`.
-2. In Tower, review the files, commit and push.
-3. In GitHub Settings → Pages, choose **Deploy from a branch**, your branch and **/docs**.
-4. Open `https://<organisation>.github.io/<repository>/studio/`.
-5. Open **Clients & templates → Repository settings** and enter `https://<organisation>.github.io/<repository>/`. Do not include `/docs` or `/studio`.
+## One-time setup
 
-The tool is already built. No build command or custom Actions workflow is needed to publish the supplied package. Developers changing the tool source run `python3 build.py` locally before committing the regenerated files.
+1. Put the supplied package in the team's local Git repository. If updating an existing checkout, merge files into their matching paths; retain other client folders and old runtime assets.
+2. Review, commit and push in Tower to the intended publishing branch.
+3. On GitHub, open **Settings → Pages**, choose **Deploy from a branch**, the intended branch and **/docs**, then save. The package is prebuilt; no custom Actions workflow is needed.
+4. After deployment, open the Pages site followed by `/studio/`.
+5. In Studio, open **Clients & templates → Manage templates → Repository settings** and enter the Pages site URL including its repository path, for example `https://your-team.github.io/custom-blocks/`. Do not append `/docs` or `/studio`.
+6. Choose **Open repository** and select the local repository root containing `docs/`, `projects/` and `block-studio/`. Grant access and load the intended template.
 
-## Edit existing modules or create new ones
+**Result:** Studio reads and saves files in the same checkout Tower uses. Each module's **Module settings → Copy module URL** provides its endpoint.
 
-1. Pull in Tower before editing.
-2. Choose **Open repository** in Studio and select the repository root. Grant read/write permission. Studio loads projects and their existing module artwork. A remembered connection can be reopened with **Reconnect**.
-3. Select the client, template and module. Use HTML & CSS for code fixes, Fields for configuration, and Test for temporary editor values.
-4. Click **Save** for the current module, or **Save template** for every module. Resolve any validation messages. Studio writes the project JSON, module files, icons, catalogue and required runtime assets directly into their existing folders.
-5. Review changed files in Tower, commit and push. GitHub Pages publishes through the configured branch and /docs folder. No manual copying or ZIP extraction is needed for normal editing.
-6. Register a new module using **Copy module URL** from **Module settings** once Pages has deployed. Existing modules keep their URLs.
+GitHub may show an automatically managed Pages deployment in Actions even with branch publishing. That does not require changing this setup to a custom Actions workflow. See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
-Browser recovery drafts are separate from repository saves. Single-module saves keep other module drafts in the project JSON but preserve their generated files. Save template applies shared template styling to all modules. After pulling changes during an editing session, use **Reload repository** before saving; Studio refuses to overwrite files changed outside the app.
+## Normal publishing
 
-Direct writing requires a supported browser, such as desktop Chrome or Edge. **Clients & templates → Manage templates** retains ZIP and editable-project downloads for sharing or browsers without folder write access. For ZIP fallback only, merge files into matching repository paths without replacing whole directories.
+Pull in Tower, open/reload the repository in Studio, edit and test, then **Save** or **Save template**. Review, commit and push in Tower. Check deployment, the hosted endpoint and SFMC before client use. Register an endpoint only for a new block; compatible updates keep the existing endpoint.
 
-Saving is not a multi-file filesystem transaction. Output is prepared and checked first; failures trigger best-effort rollback and block further writes until the repository is reopened. If rollback cannot complete, review and restore the affected files in Tower before committing. A crashed browser cannot complete rollback.
+A save is local, not a commit or deployment. Browser drafts do not synchronise between colleagues. Coordinate work on the same template and reload after pulls. Studio checks for external changes rather than overwriting them.
 
-## Update Studio
+## ZIP fallback
 
-Merge updated tool source and `docs/studio/index.html` from a new Studio release. Preserve `docs/clients/`, `docs/shared-assets/` and `projects/`. Review, commit and push with Tower. Existing blocks keep using their previously exported code. Re-export only the modules you intend to update.
+If folder writing is unavailable, use **Clients & templates → Manage templates → Download template ZIP** or **Download current module ZIP**. Extract outside the checkout and merge changed files into matching paths. Do not replace whole `docs/` or `projects/` folders in Finder. Use a template ZIP to refresh the complete catalogue.
 
-## Existing projects and endpoints
+## Updating or rolling back Studio
 
-Old `.jarrang.json` projects can be imported without rebuilding their field mappings. Assign their client and template in Template settings before exporting. This produces new nested endpoints. Already registered SFMC blocks still use their old endpoint, so retain the old hosting paths or repositories while those blocks remain in use. No automatic endpoint migration is performed.
+Follow the [technical release procedure](../DEVELOPER_GUIDE.md#change-and-release-procedures). Keep editable projects, all required module paths and older runtime folders. Rebuild after changing source or bundled project snapshots. Re-saving modules intentionally adopts the current runtime; updating the central Studio by itself does not.
 
-Renaming a template changes its display name, not its publishing folder. New field schemas should use new module folders and versions; retain old folders for existing emails.
-
-## Shared work
-
-Browser drafts do not automatically update from Git. Pull in Tower and open or reload the repository before starting work. Imports matching an existing project identity or publishing folder ask before replacing the local draft. Coordinate concurrent edits to the same template using your normal Git workflow.
-
-Project JSON files are outside `/docs` and are not published by Pages. They are still readable by people with repository access, or everyone if the repository is public. Published module definitions include their default content.
+For a rollback, revert the relevant commit in Tower, push, then reopen the repository in Studio. Restore matching editable and generated files together. An endpoint move is not automatic migration: retain the previous URL while it is used in SFMC.

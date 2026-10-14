@@ -1,10 +1,12 @@
 # Template syntax
 
+Developer reference. For guided section/list setup, use the [internal user guide](../USER_GUIDE.md#make-content-optional-or-repeatable).
+
 The module author defines controls and template rules. The client sees ordinary controls, toggles and item cards. These rules run in the editor, not per subscriber at send time. Use AMPscript separately for send-time personalisation.
 
 ## Named values
 
-Choose **+ Add field**, choose the control type, then use **Advanced options > Create a template control**. Its template key is under **Advanced** in the field editor. Insert the reference using **Advanced tools > Template code**:
+Choose **+ Add field**, choose the control type, then use **Advanced options > Create a template control**. Its template key is under **Advanced** in the field editor. Insert the reference using **Fields > More tools > Advanced template logic**:
 
 ```html
 <td style="background-color:{{ background_colour }};">

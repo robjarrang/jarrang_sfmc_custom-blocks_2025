@@ -1,8 +1,28 @@
+# Conversion tracking release 1.26.0
+
+Added optional conversion controls for URL fields, repeating item links and formatted-text links, with authoring settings and saved-value compatibility. URL strings and field identities remain unchanged; separate boolean choices produce only the anchor conversion attribute. Unsupported partial connections and competing template conversion logic are blocked. Both ESC suites expose the checkbox and default it off.
+
+Default output was compared for all 40 modules before/after enabling the field settings and remained byte-identical. Source fragments, AMPscript, identities, slugs, module releases and supplied icon bytes are preserved. All 246 automated tests pass, including 14 conversion regressions covering independent links, shared destinations, loop scopes, hidden branches, sanitisation, link dialogues, Studio settings, SDK reopen/save and checkbox CSS. Formatting and documentation-link checks also pass. Verification is DOM/SDK simulation, not a live SFMC conversion result.
+
+The feature adds roughly 5 KB of shared raw runtime JavaScript and no new production dependencies or requests. Runtime budgets were deliberately reviewed at 70,000 bytes for standard JS, 90,000 for rich JS and the unchanged 11,000 for CSS. Older hosted runtime directories remain unchanged. Deployment and a real send/click/website-conversion check are still required.
+
+---
+
+# Internal documentation review: 13 October 2026
+
+Reviewed against Studio 1.25.8. The two current entry points are [USER_GUIDE.md](../USER_GUIDE.md) for tasks and [DEVELOPER_GUIDE.md](../DEVELOPER_GUIDE.md) for implementation. Older entries below are release history, not cumulative certification.
+
+Replaced mixed user/developer instructions, corrected obsolete Export/ZIP-first paths and UI labels, reconciled the ESC handover with the separately delivered master-template fixes, and labelled historic reviews. Updated publishing-note text in exporter.js as well as both generated ESC notes; rebuilt standalone/hosted Studio so future saves retain the corrected guidance. Application version remains 1.25.8 for this documentation revision.
+
+Verification: all 232 automated tests pass. Prettier passes when invoked through its Node entry point; the installed npm shim lacked executable permission in this extracted workspace. Both templates' publishing notes and endpoints were generated and checked, including the single-module repository-save wording. All local Markdown links/anchors were checked. Against the previous 1.25.8 ZIP, module pages, project JSON, icons and runtime assets are byte-identical. No live browser/SFMC/email-client testing or deployment was performed for this documentation change.
+
+---
+
 # Current validation - 1.25.8
 
-Removed the unnecessary align="left" from the Congress Lead Editorial image frame, keeping the containing cell valign="middle" and vertical-align:middle. This avoids an aligned nested table while preserving image dimensions, fields and AMPscript. A separately supplied master template sets border-collapse:collapse on the editorial lead to address its Apple Mail dark-mode column seam.
+Removed the unnecessary align="left" from the Congress Lead Editorial image frame, keeping the containing cell valign="middle" and vertical-align:middle. This avoids an aligned nested table while preserving image dimensions, fields and AMPscript. The first separately supplied master-template attempt used border-collapse:collapse for the Apple Mail seam; the user reported that attempt did not resolve it. It was superseded by one continuous dark-mode outer background and transparent inner structural tables/cells. See ESC-MAINTENANCE.md for the separate master-template dependency.
 
-All 232 automated tests pass, including normal-flow image-frame structure. These changes have not been rendered in Outlook Windows or Apple Mail. A fresh client proof must confirm image centring, seam removal and rounded corners before treating the visual issues as resolved. No deployment was performed.
+All 232 automated tests pass, including normal-flow image-frame structure. The automated environment did not render Outlook Windows or Apple Mail. The user subsequently confirmed the Outlook image-centering fix and the replacement Apple Mail seam fix on their client proofs. The later View online Outlook background update remains awaiting a fresh client proof. No deployment was performed.
 
 ---
 

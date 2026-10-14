@@ -1,5 +1,7 @@
 # Code cleanliness review - 1.21.1
 
+> Historical review record. Claims and test totals apply to the dated release below, not automatically to later changes. For current operation use the [user guide](../USER_GUIDE.md) and [technical documentation](../DEVELOPER_GUIDE.md).
+
 Reviewed on 11 October 2026 against current MDN, web.dev and npm documentation. These are established practices still applicable in 2026, not reasons to replace a working app with a new framework.
 
 ## Principles and decisions

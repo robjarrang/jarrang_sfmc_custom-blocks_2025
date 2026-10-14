@@ -951,7 +951,10 @@
     current().reviewed = false;
     current().acknowledged = false;
     if (changedId === undefined) trialValues = {};
-    else if (changedId !== null) delete trialValues[changedId];
+    else if (changedId !== null) {
+      delete trialValues[changedId];
+      delete trialValues[C.conversionKey]?.[changedId];
+    }
     persist();
     renderSidebar();
     $('module-status').textContent = 'Draft';

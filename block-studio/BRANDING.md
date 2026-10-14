@@ -1,18 +1,23 @@
-# Jarrang interface styling
+# Brand and editor appearance reference
 
-Version 1.5 follows https://www.jarrang.com/, reviewed 16 September 2026.
+For developers maintaining Studio's visual assets. For user settings, see [Style the client editor and block icon](../USER_GUIDE.md#style-the-client-editor-and-block-icon).
 
-- Navy: `#080043`
-- Aqua: `#59DBCA`
-- Pale blue-grey: `#EFF2FA`
-- Neue Montreal: regular (400) and medium (500)
-- Pill-shaped primary/secondary actions, 12px panels, restrained 4px form controls
-- Original Jarrang SVG wordmark
+## Studio identity
 
-The theme covers the authoring workspace, field dialogues, rich-text controls, exported module editor and exported catalogue. Imported email code and field content retain their authored styles. New module icons default to navy with an aqua detail; saved icon colours remain customisable.
+The Jarrang styling follows the website reviewed on 16 September 2026:
 
-`src/brand-theme.css` is the shared theme source. `build.py` generates `src/brand.css`, embedding both WOFF2 fonts from `vendor/brand`. The standalone HTML and exported runtime include this stylesheet, so the branding does not depend on network access. Rebuild after changing theme or font files.
+- Navy `#080043`, aqua `#59DBCA` and pale blue-grey `#EFF2FA`.
+- Neue Montreal regular (400) and medium (500) in Studio.
+- Rounded panels, pill-shaped primary actions and the Jarrang wordmark.
 
-Asset provenance: wordmark from Jarrang's homepage; fonts from its public stylesheet's `PPNeueMontreal-Regular.5e0546b4.woff2` and `PPNeueMontreal-Medium.8cc8aa34.woff2` URLs under `https://www.jarrang.com/css/`. These are existing Jarrang brand assets for this internal tool, not assets covered by the third-party SDK's licence.
+`src/brand-theme.css` is the maintained shared theme source. `build.py` generates `src/brand.css` with bundled WOFF2 fonts for Studio/catalogues. It separately generates `src/runtime-brand.css` with the rules used by exported forms and system fonts, avoiding those embedded fonts in each SFMC runtime bundle. Do not edit either generated file directly.
 
-Exports now use `shared-assets/block-studio-1.5.0`. Retain older shared runtime folders when publishing updates alongside existing modules.
+## Client editor appearance
+
+Template-level `editorTheme` controls the block form palette. `showEditorHeader` controls the Jarrang header and defaults on when absent. Both ESC templates disable it. Apply these settings through the exporter's theme/definition functions; do not hard-code branding by copying page wrappers. These settings do not alter the email's design or the wider SFMC application.
+
+## Assets and licensing
+
+The wordmark and Neue Montreal files were obtained from Jarrang's site for this internal tool. Font source filenames were `PPNeueMontreal-Regular.5e0546b4.woff2` and `PPNeueMontreal-Medium.8cc8aa34.woff2` under `https://www.jarrang.com/css/`. They are Jarrang brand assets, not covered by the SDK or Bootstrap Icons licences. Retain the supplied licence notices and confirm rights before repurposing brand assets elsewhere.
+
+Generated module icons use the bundled Bootstrap Icons symbols and a chosen background, with a contrasting foreground. Existing supplied PNG pairs can be retained unchanged. Rebuild after changing source assets; deliberately save/export affected modules to adopt changed runtime styling. Assets use `docs/shared-assets/runtime-<hash>/`; never replace an old hash directory with different content.

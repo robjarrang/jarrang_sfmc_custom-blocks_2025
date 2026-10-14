@@ -64,6 +64,10 @@
   function setType(f, type, rows) {
     const old = f.type;
     f.type = type;
+    if (!['url', 'richtext'].includes(type)) {
+      delete f.allowConversionTracking;
+      delete f.defaultConversionTracking;
+    }
     if (type === 'list') {
       f.itemFields ||= [
         {
@@ -420,6 +424,7 @@
       draw();
     }
     function defaults(parent, f, label = 'Starting content') {
+      let refreshTracking = () => {};
       const previous =
         f.id === original.id ? original : original.itemFields?.find((child) => child.id === f.id);
       if (previous?.type === 'richtext' && f.type === 'text')
@@ -431,6 +436,31 @@
           ),
         );
       if (f.type === 'list') return;
+      if (['url', 'richtext'].includes(f.type)) {
+        const settings = disclosure(parent, 'Conversion tracking'),
+          allow = el('input'),
+          enabled = el('label', undefined, 'conversion-option'),
+          starting = el('label', undefined, 'conversion-option'),
+          check = el('input');
+        allow.type = check.type = 'checkbox';
+        allow.checked = f.allowConversionTracking === true;
+        check.checked = f.defaultConversionTracking === true;
+        starting.hidden = !allow.checked;
+        enabled.append(allow, document.createTextNode('Allow clients to mark conversion links'));
+        starting.append(check, document.createTextNode('Enabled for new links by default'));
+        allow.onchange = () => {
+          f.allowConversionTracking = allow.checked;
+          starting.hidden = !allow.checked;
+          refreshTracking();
+          changed();
+        };
+        check.onchange = () => {
+          f.defaultConversionTracking = check.checked;
+          refreshTracking();
+          changed();
+        };
+        settings.append(enabled, starting);
+      }
       if (f.type === 'richtext') {
         const appearance = C.linkStyle(f);
         const box = el('div', undefined, 'starting-richtext');
@@ -443,6 +473,7 @@
             (_, value) => (f.defaultValue = value),
             { prefix: 'starting-rich-' + f.id + '-' },
           );
+        refreshTracking = mountStarting;
         mountStarting();
         const toolbarSettings = disclosure(
           parent,
@@ -704,6 +735,10 @@
             if (Object.hasOwn(row, child.key)) {
               row[v] = row[child.key];
               delete row[child.key];
+            }
+            if (Object.hasOwn(row[C.conversionKey] || {}, child.key)) {
+              row[C.conversionKey][v] = row[C.conversionKey][child.key];
+              delete row[C.conversionKey][child.key];
             }
           });
           child.key = v;
@@ -1334,6 +1369,7 @@
       }
 
       issues.push(...C.templateProblems(next));
+      issues.push(...C.conversionProblems(next));
       issues.push(...C.htmlProblems(next));
       try {
         C.assertProject({

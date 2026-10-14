@@ -11,6 +11,10 @@
     normaliseColour,
     linkStyle,
     linkStyleCSS,
+    conversionKey,
+    conversionChoice,
+    conversionData,
+    webLink,
     richLinksAllowed,
     cleanRich,
     placeLists,
@@ -79,7 +83,10 @@
               )
                 targets.push({ ...attr, nodeId: hidden.id, kind: 'attribute' });
             }
-          add('Link destination', 'url', decode(href.value), targets);
+          add('Link destination', 'url', decode(href.value), targets, {
+            allowConversionTracking: true,
+            defaultConversionTracking: targetAttr('conversion')?.value.toLowerCase() === 'true',
+          });
         }
       }
       if (
@@ -334,6 +341,20 @@
   }
   function fieldProblems(field) {
     const errors = [];
+    if (field.key === conversionKey)
+      errors.push('That key is reserved for conversion tracking choices. Choose another key.');
+    if (
+      field.allowConversionTracking !== undefined &&
+      typeof field.allowConversionTracking !== 'boolean'
+    )
+      errors.push('Choose whether conversion tracking is available.');
+    if (
+      field.defaultConversionTracking !== undefined &&
+      typeof field.defaultConversionTracking !== 'boolean'
+    )
+      errors.push('Choose a valid starting conversion tracking setting.');
+    if (field.allowConversionTracking && !['url', 'richtext'].includes(field.type))
+      errors.push('Conversion tracking is available for link and formatted-text fields.');
     if (field.type === 'richtext' && field.linkStyle) {
       const s = field.linkStyle;
       if (s.colour !== 'inherit' && !normaliseColour(s.colour))
@@ -383,6 +404,79 @@
       errors.push('Formatted text can only replace text content.');
     const error = validate(field, field.defaultValue);
     if (error) errors.push(error);
+    return [...new Set(errors)];
+  }
+  function conversionProblems(module) {
+    const links = parse(module.source).nodes.filter((n) => n.tag === 'a');
+    const connected = new Set(),
+      errors = [];
+    function connect(field, node) {
+      if (field?.type !== 'url' || field.allowConversionTracking !== true) return;
+      connected.add(field);
+      if (node.attrs.some((a) => a.name === 'conversion' && dynamic(a.value)))
+        errors.push(
+          field.label +
+            ': Conversion tracking is already controlled by template logic. Keep one control for this setting.',
+        );
+    }
+    const fields = module.fields.filter((f) => f.enabled);
+    for (const field of fields)
+      for (const node of links) {
+        const href = node.attrs.find((a) => a.name === 'href');
+        if (href && field.targets.some((t) => t.start === href.start && t.end === href.end))
+          connect(field, node);
+      }
+    if (module.templateMode) {
+      const L = root.BlockLogic || require('./logic.js');
+      const resolve = (path, context) => {
+        const parts = path.split('.');
+        let field = context[parts.shift()];
+        for (const key of parts) field = field?.itemFields?.find((f) => f.key === key);
+        return field;
+      };
+      function walk(nodes, context) {
+        for (const node of nodes) {
+          if (node.type === 'value') {
+            if (node.expression.includes('|') && node.expression.split('|')[1].trim() !== 'escape')
+              continue;
+            const field = resolve(node.expression.split('|')[0].trim(), context);
+            const link = links.find((n) =>
+              n.attrs.some(
+                (a) =>
+                  a.name === 'href' &&
+                  node.start >= a.start &&
+                  node.end <= a.end &&
+                  module.source.slice(a.start, a.end).trim() ===
+                    module.source.slice(node.start, node.end),
+              ),
+            );
+            if (link) connect(field, link);
+          }
+          if (node.type === 'for') {
+            walk(node.children, { ...context, [node.variable]: resolve(node.collection, context) });
+            walk(node.otherwise, context);
+          }
+          if (node.type === 'if') {
+            for (const branch of node.branches) walk(branch.children, context);
+            walk(node.otherwise, context);
+          }
+        }
+      }
+      try {
+        walk(L.compile(module.source), Object.fromEntries(fields.map((f) => [f.key || f.id, f])));
+      } catch (e) {
+        errors.push(e.message);
+      }
+    }
+    function check(field) {
+      if (field.type === 'url' && field.allowConversionTracking === true && !connected.has(field))
+        errors.push(
+          field.label +
+            ': Connect this link field to a complete anchor href before allowing conversion tracking.',
+        );
+      for (const child of field.itemFields || []) check(child);
+    }
+    fields.forEach(check);
     return [...new Set(errors)];
   }
   function uniqueKey(module, label) {
@@ -709,6 +803,7 @@
       for (const f of m.fields) {
         if (
           typeof f.id !== 'string' ||
+          f.id === conversionKey ||
           ids.has(f.id) ||
           ![
             'text',
@@ -773,6 +868,10 @@
     normaliseColour,
     linkStyle,
     linkStyleCSS,
+    conversionKey,
+    conversionChoice,
+    conversionData,
+    webLink,
     richLinksAllowed,
     assertProject,
     templateProblems,
@@ -781,6 +880,7 @@
     sourceOffset,
     mappingTarget,
     fieldProblems,
+    conversionProblems,
     hiddenRanges,
     fieldActive,
     uniqueKey,

@@ -175,16 +175,19 @@
       if (total > 2000000) throw Error('Rendered output exceeds 2 MB.');
       return value;
     }
-    function literal(start, end) {
+    function literal(start, end, context) {
       let out = '',
         at = start;
       const changes = [...patches, ...hidden.map((h) => ({ ...h, value: '' }))]
-        .filter((p) => p.start < end && p.end > start)
+        .filter((p) =>
+          p.start === p.end ? p.start >= start && p.start < end : p.start < end && p.end > start,
+        )
         .sort((a, b) => a.start - b.start);
       for (const p of changes) {
         if (p.start < at && p.end <= at) continue;
         out += source.slice(at, Math.max(at, p.start));
-        if (p.start >= start && p.end <= end) out += p.value;
+        if (p.start >= start && p.end <= end)
+          out += typeof p.value === 'function' ? p.value(context) : p.value;
         else if (p.value) throw Error('A mapped field crosses a template tag. Review its mapping.');
         at = Math.min(end, Math.max(at, p.end));
       }
@@ -194,7 +197,7 @@
       return nodes
         .map((node) => {
           if (hidden.some((h) => node.start >= h.start && node.end <= h.end)) return '';
-          if (node.type === 'text') return output(literal(node.start, node.end));
+          if (node.type === 'text') return output(literal(node.start, node.end, context));
           if (node.type === 'value') {
             const [path, filter] = node.expression.split('|').map((s) => s.trim()),
               value = lookup(path, context);

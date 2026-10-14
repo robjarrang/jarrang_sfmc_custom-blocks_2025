@@ -4,23 +4,25 @@
 
 Use the supplied Block Studio repository package. In GitHub Settings > Pages, choose Deploy from a branch, your branch and /docs. Open the published /studio/ page to use the central tool. Do not append /docs to the public site URL.
 
-## Apply this export
+## Save and publish
 
-1. Extract the ZIP outside your repository.
-2. Merge its docs/ and projects/ contents into the corresponding folders in your local repository. On macOS, do not replace an existing top-level folder with the exported folder: that can remove other clients. Copy the changed files into their matching folders, preserving all other files.
-3. In Tower, review the diff. This export only updates this template and adds the runtime assets it needs. Unexpected deletions of other templates or older runtimes should not be committed.
-4. Commit and push to the configured Pages branch.
-5. Open the endpoints below and register each module separately in SFMC.
+1. Pull in Tower, then choose Open repository in Studio (or Reload repository after a pull). Select the client/template, edit and test.
+2. Choose Save for the current module or Save template for the whole suite. These write into the connected local repository; no files need moving. A browser draft is not a repository save.
+3. Review the diff in Tower. Keep the editable project and generated files together. Investigate unexpected changes to other clients or deletions of older runtimes.
+4. Commit and push to the configured Pages branch, then verify deployment and the hosted endpoint.
+5. Register only new endpoints in SFMC. Existing compatible blocks keep their registered endpoint. Test both a new block and an existing saved instance after an update.
+
+## ZIP fallback
+
+If folder writing is unavailable, use Clients & templates > Manage templates to download a publishing ZIP. Extract it outside the repository and merge files into matching docs/ and projects/ paths. Do not replace whole top-level folders in Finder. Then review, commit and push in Tower as above. An editable-project JSON download alone does not contain a deployable editor.
 
 Template destination: docs/clients/esc/newsletter/
 Editable source: projects/esc/newsletter.jarrang.json
 
-This full template export refreshes its catalogue. Removed modules disappear from the catalogue but their previously published folders must be retained for existing SFMC content.
+This full-template save/package refreshes the catalogue. Removed modules disappear from the catalogue; retain their previously published folders for existing SFMC content.
 
 ## Module endpoints
 
-- Decorative Header: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/decorative-header/
-- Events: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/events/
 - Hero Story: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/hero-story/
 - Checklist: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/checklist/
 - Navigation: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/navigation/
@@ -32,12 +34,10 @@ This full template export refreshes its catalogue. Removed modules disappear fro
 - CTA Banner: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/cta/
 - Image Banner: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/image-banner/
 - Journal Section: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/
-- Editorials: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/editorials/
 - Link List: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/link-list/
 - Membership Callout: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/membership-callout/
 - Quote: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/quote/
 - Section Header: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/section-header/
-- Text Block: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/text-block/
 - Signature: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/signature/
 - Social Block: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/social-block/
 - Speaker Grid: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/speaker-grid/
@@ -46,14 +46,18 @@ This full template export refreshes its catalogue. Removed modules disappear fro
 - Webinar Card: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/webinar-card/
 - Spacer: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/spacer/
 - Divider: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/divider/
+- Decorative Header: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/decorative-header/
+- Events: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/events/
+- Editorials: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/editorials/
+- Text Block: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/text-block/
 
 ## Keep existing blocks working
 
-Keep module identities, publishing folders and older runtime folders. Runtime folders are identified by their content and are never overwritten by a different release. Updating Studio does not change published modules. Re-export intentionally to adopt new code. For a changed field schema, create a new module folder and release; retain the previous endpoint. Existing SFMC instances are not migrated automatically.
+Keep module identities, publishing folders and older runtime folders. Runtime folders are identified by content and must not be overwritten with different bytes. Updating Studio alone does not update module pages. Save affected modules deliberately to adopt new code. Duplicate into a new folder and release for incompatible field changes; retain the previous endpoint. Existing SFMC email content is not rewritten automatically.
 
 ## Shared editing
 
-Pull the latest changes in Tower before starting. Import the relevant projects/ JSON into Studio, edit it, then export back into the same repository. Browser drafts are local to that browser and do not synchronise between people or devices. Resolve conflicting project edits through your normal Git review process.
+Open the current repository before editing. Browser drafts and Test values do not synchronise between colleagues; Test values are excluded from saved files. If files change outside Studio, preserve your draft and reconcile it with the latest repository before saving again. Coordinate concurrent edits through the normal Git review process.
 
 The projects/ folder is outside the Pages publishing folder; it remains visible to people with repository access (and everyone if the repository is public). Published module defaults are public site content.
 

@@ -254,6 +254,8 @@
           return [f.id, JSON.parse(JSON.stringify(value))];
         }),
       );
+      if (metadata.studio?.values?.[C.conversionKey] !== undefined)
+        next[C.conversionKey] = C.conversionData(metadata.studio.values[C.conversionKey]);
     } catch (error) {
       fail(
         'The saved field data is invalid. Restore valid block data before editing. ' +

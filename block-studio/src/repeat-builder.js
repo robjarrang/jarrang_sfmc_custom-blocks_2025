@@ -252,6 +252,8 @@
         binding: 'template',
         defaultValue: JSON.parse(JSON.stringify(values[child.key] ?? child.defaultValue)),
       };
+      if (child.type === 'url' && child.allowConversionTracking)
+        next.defaultConversionTracking = C.conversionChoice(child, values, child.key);
       replacements.set(alias + '.' + child.key, next.key);
       promoted.push(next);
       draft.fields.push(next);

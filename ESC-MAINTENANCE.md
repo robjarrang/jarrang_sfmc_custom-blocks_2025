@@ -1,103 +1,72 @@
-# Maintaining the ESC custom blocks
+# ESC modules: internal maintenance handover
 
-## Landscape placeholder (1.25.4)
+For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.26.0. This is an internal supplement to the [user guide](USER_GUIDE.md), not a client-facing manual.
 
-The populated landscape-image defaults now use the ESC-hosted 1920 × 1080px JPEG:
-https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg
+## Open and make a change
 
-This covers general content imagery, banners, video/webinar images, social imagery and the first editorial thumbnail. Logos, journal covers and circular speaker portraits retain their purpose-specific defaults. Optional blank images remain blank. The congress mobile image reuses the main placeholder until an alternative is supplied. Existing SFMC instances keep their saved images.
+1. Pull in Tower and open Studio. Choose **Open repository** and select the local repository root.
+2. Choose **ESC / Newsletter** (27 modules) or **ESC / Congress** (13 modules).
+3. Use **HTML & CSS** for a small code correction, **Fields → Edit** for starting content/control settings, or **Test** for temporary values.
+4. Apply the edit, test the affected behaviour and choose **Save**. Use **Save template** for shared editor appearance changes.
+5. Review, commit and push in Tower. Check the hosted editor and new/existing instances in SFMC.
 
-## Plain-text punctuation correction (1.25.3)
+If the repository import reports a project/page mismatch, reconcile that pair before editing. Do not load a stale bundled snapshot over a newer project. Current endpoints are listed in [Newsletter publishing notes](projects/esc/newsletter-PUBLISHING.md) and [Congress publishing notes](projects/esc/congress-PUBLISHING.md).
 
-Plain-text fields should store the actual character, for example `28 Aug – 31 Aug 2026`, not HTML entity notation such as `&ndash;`. The renderer escapes plain text before inserting it into HTML. HTML source and rich-text fields can still contain valid entities.
+## Preserve existing content
 
-The bundled defaults and exports are corrected in Congress Deadlines List, Lead Editorial and Lead Poster, plus Newsletter Journal Section, Quote and Social Block. Open the updated repository in Studio to refresh old drafts before further editing. Existing SFMC blocks keep their saved values: replace any entity text already saved in a field with the actual character and save that instance. Newly added blocks use the corrected defaults after deployment.
+Maintain existing module IDs, folders, releases, field IDs/types and item keys for compatible fixes. Use **Module actions → Duplicate** and a new endpoint for incompatible field changes; retain the original block. Preserve supplied `icon.png` and `dragIcon.png` bytes using **Module settings → Custom block icon → Keep supplied PNGs**.
 
-## Landscape imagery (1.25.2)
+Both ESC templates disable **Show Jarrang Block Studio header** under **Template settings → Editor appearance for all modules**. This is form branding, not email styling. Save the whole template when changing it.
 
-Congress **Lead Editorial** retains the side-by-side desktop composition: a 320px content column and a 300px visual column share the ESC primary-colour panel. The image sits vertically centred in a 274px frame, leaving a 26px outer gutter to match the content inset. Its 8px corners follow the card imagery elsewhere in the suite; clients that ignore border-radius retain square corners. A 1920 × 1080px asset displays at approximately 274 × 154px on desktop with automatic height, keeping the whole image visible. This replaces the full-width stacked desktop treatment introduced in 1.25.1. Other aspect ratios also remain proportional, including previously saved portrait images, which can make the panel taller.
+Existing SFMC instances retain their saved values. New defaults, images and corrected punctuation do not replace them automatically. Plain-text fields use actual characters, for example `28 Aug – 31 Aug 2026`, rather than `&ndash;`.
 
-Use **Visual image** and its alt text for the main image. **Mobile image (optional)** can be left empty to reuse both the main image and its alt text. If a mobile alternative is supplied, its own alt text is used, including an intentionally empty alt value. Previously saved desktop/mobile URLs, alt text, links and other field values retain their IDs and continue to work. New blocks start with a 1920 × 1080 placeholder and no mobile override. Existing instances retain their saved mobile alternative; clear it to use the main image everywhere.
+## ESC controls and layouts
 
-The supplied ESC master template needs no change. The module retains its table layout, inline CSS, AMPscript, mobile image switching classes, MSO conditional exclusion and dark-mode classes. No object-fit, background cropping, new runtime dependency or new SFMC endpoint is required. On mobile, the existing master-template rules stack the content and image, expand the image frame to 100%, switch to the mobile image and remove image corner rounding. The organiser logo still hides on mobile according to the master template.
+The suite uses optional sections, colour/theme choices, conditional layouts, repeating lists, item-position rules and formatted-text lists. Use **Where it applies → Layout rules** to edit supported existing conditions. Test each affected choice because several rules may work together on one layout. New/restructured logic belongs in **More tools → Advanced template logic** with developer review.
 
-Newsletter **Story Card 2 Col** and **Story Card 3 Col** also have their fixed image height attributes removed in every layout variant, while retaining explicit widths and height:auto. Most other content imagery already scales proportionally. Logos and circular speaker portraits remain purpose-specific artwork; 16:9 should not be treated as a universal replacement for those assets. Compress the supplied image files before uploading, as display scaling does not reduce download size.
+A repeated group can become a single item through its field settings, including supported item-position rules. The retained item becomes both first and last. This still changes an existing published field schema, so release that change as a duplicated module rather than replacing the live endpoint.
 
-Open the updated repository in Studio to refresh existing browser drafts, save subsequent edits to that repository, then review and commit/push through Tower. These files have not been deployed. After deployment, reopen and save a test instance in SFMC and check a new instance too; existing email HTML is not rewritten merely by updating the hosted editor. Check desktop Outlook, mobile layout and dark mode against the master template before a production send.
+## Images and the Congress lead
 
-The width-attribute, max-width and proportional-height approach follows the existing ESC modules and Litmus's responsive image guidance: https://www.litmus.com/blog/understanding-retina-images-in-html-email (accessed 13 October 2026).
+The landscape placeholder is the ESC-hosted [1920 × 1080 image](https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg). It is used for populated general landscape-image defaults. Logos, journal covers and speaker portraits keep their own artwork; optional images remain blank. Display scaling does not reduce the asset's download size.
 
-## Open the current suite
+Congress **Lead Editorial** retains the side-by-side desktop composition: a 320px content column and a 300px visual column, with a 274px image frame and proportional height. The image frame is in normal table flow; its containing cell supplies vertical centring. Do not reintroduce `align="left"` on the nested image-frame table, which was removed to address Windows Outlook alignment.
 
-1. Pull the latest changes in Tower before editing.
-2. Open `block-studio/Open-Block-Studio.html` in Chrome or Edge on your Mac. No server or build command is needed.
-3. Open **Clients & templates → Open repository folder** and choose the repository root, the folder containing `docs/`, `projects/` and `block-studio/`. This reads files locally; it does not write to your repository.
-4. Confirm replacement only if you no longer need the matching browser drafts. Download an editable project first if you need to keep them.
-5. Choose **ESC / Newsletter** or **ESC / Congress**, then the module.
+**Visual image** is the main image. Leave **Mobile image (optional)** blank to reuse the main image and alt text. A supplied mobile alternative uses its own alt text. Existing instances with a saved alternative keep it until cleared.
 
-A fresh workspace already includes the 40 bundled ESC modules. That snapshot belongs to this Studio build. Opening the repository folder after a Tower pull loads the latest committed projects and icons. It also checks that each saved definition matches its exported page. If it reports a mismatch, stop and reconcile the named JSON/page pair rather than importing old data over a newer block.
+Lead Editorial also includes organiser logo width and optional link controls. Width starts at 112px, renders with a 160px cap and falls back to 112px for non-positive values. A blank logo link produces no anchor. Test the result with the actual master-template mobile rules as well as on desktop.
 
-Browser drafts and temporary Test values are local to your browser. They do not update GitHub or another person's workspace. Nothing is deployed just by opening or editing Studio.
+## The master template is a separate dependency
 
-## Fix HTML or CSS
+The ESC master template was supplied and updated separately as `ESC-Master-Template.html`; it is not included as an editable Studio project in this package. Obtain the current approved template when handing over the suite. A Studio template is a collection of modules, not that master email file.
 
-1. Choose **HTML & CSS**, make the small code correction, then **Apply changes**.
-2. Switch to **Fields** for Desktop/Mobile previews, or **Test** to exercise the client controls.
-3. Choose **Export**, review the dependency notes, confirm the review and download the module package.
+All current ESC modules have empty preview-only `contextCss`. The master template supplies responsive CSS and AMPscript initialisation. Context CSS can improve Studio previews but is never exported into email output. Studio does not execute AMPscript or emulate Outlook.
 
-Keep the existing module identity, folder name and version for a maintenance fix. The editor protects mapped values and template/AMPscript expressions during quick code edits. Change starting copy through **Fields → Edit**. Existing conditions can be changed in **Fields → Edit → Where it applies → Layout rules**. Creating or restructuring branches uses **More tools → Advanced template logic** and needs developer review.
+The separately supplied master-template changes include:
 
-## Change controls or starting content
+- A “View online” row whose light-mode background matches the outer `#e8e8e8` background, with explicit outer table/body values for Windows Outlook.
+- Removal of organiser-table mobile hiding rules so organiser content remains visible.
+- A mobile width exception that keeps the Onsite badge compact rather than stretching it across the column.
+- An Apple Mail dark-mode correction for Lead Editorial: one continuous primary-colour outer surface with transparent inner structural table/cell backgrounds. The earlier `border-collapse:collapse` workaround did **not** resolve the seam and must not be treated as the final fix.
 
-Use **Fields → Edit** for labels, help, starting content, dropdown options, list fields and limits, rich-text tools and locked link styles. Use **Test** for trial values; these are excluded from exports.
+The user confirmed the Outlook centring and Apple Mail seam fixes on their proofs. The later View online Outlook background change still needs a fresh Outlook proof; automated structure checks do not establish its visual result. Do not infer that every master-template change is included merely by saving the module package.
 
-The current ESC suite uses switches, optional sections, colour/theme choices, repeating lists, conditional layouts and formatted-text lists. These continue through the same workflow. Use **Where it applies → Layout rules** to change an existing condition: dropdown choices, whether content is present, combined conditions, or an item-position comparison. Each condition shows its source line. Changes are staged until Save field; Cancel leaves the source unchanged. Test every affected choice after changing a rule, especially where several conditions cooperate on one layout.
+## Conversion tracking
 
-For a repeating group, expand an item field to set its **Guidance and limits**. **Content behaviour → Single item** now also works with the supplied item-position rules. The retained item becomes the first and last item, with a count of one. Changing an existing published list into scalar fields still changes its saved-data schema, so use a duplicated module/new endpoint for that release.
+URL controls and supported formatted-text link dialogues now include **Conversion Tracking Link**. It starts unchecked for all ESC defaults and can be chosen separately for links within repeating items. Ticking it adds `conversion="true"` to the relevant generated web-link anchor; it does not change the destination or fixed link styling. Existing field IDs and saved URL strings remain compatible.
 
-Compatible updates can retain the existing endpoint. Export blocks changes that remove/change an existing field, remove a dropdown value or tighten validation enough to reject saved content. For an incompatible update, use **Module actions → Duplicate**, give the copy a clear name and new folder, and register it as a separate SFMC block. Retain the original module and endpoint for existing emails. Changing a template key also requires updating its code references.
+Deploy the updated module pages and their new runtime folder together. Reopen a block in SFMC to use the updated controls; existing stored email HTML is not regenerated simply by publishing the files. Check a newly inserted block and a saved instance. For Congress registrations and Membership links, verify a real send/click carries SFMC's conversion parameters and a completed website conversion reaches the existing reporting setup. DOM/SDK tests cannot establish that final website result.
 
-Starting content changes affect defaults. Existing SFMC instances retain their saved field values; updating the hosted editor does not update every email automatically. Reopen and test an existing instance as well as a newly dragged block.
+## Release check for this suite
 
-## Keep the ESC icons
+For each affected module, verify:
 
-**Export → Custom block icon → Keep supplied PNGs** preserves both PNG files exactly, including transparency and dimensions. The supplied suite contains 58×58 artwork as well as the earlier generated sizes. Do not regenerate icons just to make their dimensions uniform.
+1. A new SFMC block and an existing saved instance can be edited, closed/reopened and duplicated without losing content.
+2. Relevant switches, dropdown choices, list counts/order and rich-text links/lists render as intended.
+3. URLs/tracking, alt text, mobile image fallback and any organiser link work with realistic content.
+4. The email uses the approved master template and resolves AMPscript in subscriber preview/test sends.
+5. The affected desktop/mobile, Windows Outlook and dark-mode layouts pass the team's client checks. For Lead Editorial, include image centring, the column seam, organiser visibility and badge width.
 
-Choosing a generated icon asks before replacing the supplied pair. Both `icon.png` and `dragIcon.png` remain beside the module's `index.html`. Editable projects now retain the PNG bytes, so importing the saved JSON also preserves them.
+Record the environment and outcome, not just “preview passed”. [ESC-COMPATIBILITY.md](ESC-COMPATIBILITY.md) records an earlier independent comparison; it is not certification of subsequent email-client changes. [VALIDATION.md](block-studio/VALIDATION.md) records later automated work and its limits.
 
-## Recover an editing mistake
-
-Use **Undo/Redo** beside Module actions for changes made in the current Studio session. Applied code fixes and their field mappings move together. For an earlier baseline, choose **Module actions → Restore last exported content…**, review the changes, then restore. The restoration can itself be undone.
-
-This recovers module content and field settings, while keeping current icons, preview width and template colours. It resets temporary Test values. The export reference stays intact; it is evidence of an export, not proof of deployment. Session history clears on reload, but the exported reference stays with saved drafts and editable projects. Whole-module/template deletion and shared template settings are outside module history.
-
-Review and test recovered content before exporting. These actions do not update hosted files or existing SFMC instances. Use Tower to roll back a published release.
-
-## Publish through Tower
-
-1. Extract the downloaded ZIP outside the repository.
-2. Copy its changed files into the matching repository locations. Merge `docs/` and `projects/`; do not replace either top-level folder in Finder.
-3. Review the diff in Tower. A module update should affect its page, the editable template JSON, publishing notes and, if necessary, new shared runtime files. Supplied icons should be unchanged unless you chose to replace them. Other clients and existing runtime folders must remain.
-4. Commit and push to the existing GitHub Pages publishing branch. The site uses **Deploy from a branch → /docs**. No GitHub Actions workflow is needed.
-5. Keep the same installed-package endpoint for an existing block. Register a new endpoint only for a new/duplicated block.
-6. Open the hosted block and test in SFMC. If the old editor is still cached, verify the published files and reload before testing again.
-
-For rollback, revert the relevant commit in Tower and push. Restore the matching page, editable project and any changed icon files together. Do not delete older shared runtimes.
-
-## Before client use
-
-Test a new block and an existing saved instance: edit, close/reopen, duplicate, switches, every relevant dropdown choice, list add/remove/reorder, formatted-text lists and links. Check the final output with realistic content in the required email clients.
-
-The modules depend on the ESC email master template. Studio does not execute AMPscript, resolve subscriber data or reproduce Outlook. All 40 supplied modules currently have empty preview-only `contextCss`; master-template CSS can be added there if needed for the browser preview. Keep the live email's master-template CSS and AMPscript initialisation in place, and use SFMC subscriber preview/test sends to check branding and personalisation.
-
-The automated checks are documented in `ESC-COMPATIBILITY.md`. They do not replace this final SFMC check.
-
-## Export references and drafts (1.20.0)
-
-Studio records an `exportedDefinition` snapshot and its `published` schema reference when it produces an export. These describe downloaded files, not confirmation that they were deployed. Continue committing the matching files through Tower.
-
-A single-module export can retain newer, unexported changes in other modules. Opening the repository compares each hosted page with that module's exported snapshot and restores the editable draft separately. Keep the project JSON and exported files from the same download together. Older browser projects with a schema reference but no exported snapshot need to be reopened from the current repository, or exported as a full template, before partial export.
-
-Renaming a draft template key updates scoped references and repeating-row values together on Save. Existing published item keys are protected because saved SFMC values depend on them; change the visible label or duplicate the module for a new schema. Changing formatted text to plain text removes formatting and links, with a warning before saving.
-
-The save-failure lock and repeater focus fixes ship in the newly generated runtime. Existing hosted modules remain on their original runtime until deliberately re-exported. Preserve all old runtime folders when merging an export.
+For recovery and deployment rollback, follow the [user guide](USER_GUIDE.md#recover-a-mistake). Restore matching project and generated files together; keep old runtime directories and existing endpoints.

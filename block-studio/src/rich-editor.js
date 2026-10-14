@@ -407,6 +407,25 @@
         existing?.getAttribute('href') || '',
       );
       destination.placeholder = 'https://example.com/';
+      let conversion;
+      if (field.allowConversionTracking === true) {
+        const label = document.createElement('label');
+        label.className = 'conversion-option';
+        conversion = document.createElement('input');
+        conversion.type = 'checkbox';
+        conversion.checked = existing
+          ? existing.getAttribute('conversion') === 'true'
+          : field.defaultConversionTracking === true;
+        const available = () => (conversion.disabled = !C.webLink(destination.value.trim()));
+        available();
+        destination.addEventListener('input', available);
+        label.append(conversion, document.createTextNode('Conversion Tracking Link'));
+        panel.append(label);
+      }
+      const track = (anchor, href) => {
+        if (conversion?.checked && C.webLink(href)) anchor.setAttribute('conversion', 'true');
+        else anchor.removeAttribute('conversion');
+      };
       const help = document.createElement('p');
       help.className = 'help';
       help.textContent = 'Link appearance is set by the module developer.';
@@ -430,10 +449,12 @@
         if (existing && input.contains(existing)) {
           existing.setAttribute('href', href);
           existing.setAttribute('style', C.linkStyleCSS(field));
+          track(existing, href);
         } else {
           const a = document.createElement('a');
           a.setAttribute('href', href);
           a.setAttribute('style', C.linkStyleCSS(field));
+          track(a, href);
           a.append(range.extractContents());
           range.insertNode(a);
           range.selectNodeContents(a);

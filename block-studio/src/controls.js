@@ -180,6 +180,32 @@
         wrapper.append(input);
         group.append(wrapper);
       } else group.append(input);
+      if (field.type === 'url' && field.allowConversionTracking === true) {
+        const option = document.createElement('label'),
+          check = document.createElement('input');
+        option.className = 'conversion-option';
+        check.type = 'checkbox';
+        check.id = prefix + field.id + '-conversion';
+        check.checked = C.conversionChoice(field, values);
+        values[C.conversionKey] = {
+          ...C.conversionData(values[C.conversionKey]),
+          [field.id]: check.checked,
+        };
+        const available = () => {
+          check.disabled = !C.webLink(input.value);
+        };
+        available();
+        input.addEventListener('input', available);
+        check.onchange = () => {
+          values[C.conversionKey] = {
+            ...C.conversionData(values[C.conversionKey]),
+            [field.id]: check.checked,
+          };
+          onChange(field, values[field.id]);
+        };
+        option.append(check, document.createTextNode('Conversion Tracking Link'));
+        group.append(option);
+      }
       if (field.help) {
         const help = document.createElement('p');
         help.className = 'help';

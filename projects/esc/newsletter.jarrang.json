@@ -33,7 +33,9 @@
               "nodeId": "n7",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field2",
@@ -127,7 +129,9 @@
           "targets": [],
           "allowLinks": true,
           "binding": "template",
-          "key": "intro_copy"
+          "key": "intro_copy",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field7",
@@ -156,7 +160,9 @@
           "required": true,
           "maxLength": 0,
           "help": "Where the first button links to.",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field9",
@@ -252,7 +258,9 @@
           "required": true,
           "maxLength": 0,
           "help": "Where the second button links to.",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field12",
@@ -348,7 +356,9 @@
           "required": true,
           "maxLength": 0,
           "help": "Where the third button links to.",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field19",
@@ -453,7 +463,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field2",
@@ -547,7 +559,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "intro_copy"
+            "key": "intro_copy",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field7",
@@ -576,7 +590,9 @@
             "required": true,
             "maxLength": 0,
             "help": "Where the first button links to.",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field9",
@@ -672,7 +688,9 @@
             "required": true,
             "maxLength": 0,
             "help": "Where the second button links to.",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field12",
@@ -768,7 +786,9 @@
             "required": true,
             "maxLength": 0,
             "help": "Where the third button links to.",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field19",
@@ -868,7 +888,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field2",
@@ -962,7 +984,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "intro_copy"
+            "key": "intro_copy",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field7",
@@ -991,7 +1015,9 @@
             "required": true,
             "maxLength": 0,
             "help": "Where the first button links to.",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field9",
@@ -1087,7 +1113,9 @@
             "required": true,
             "maxLength": 0,
             "help": "Where the second button links to.",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field12",
@@ -1183,7 +1211,9 @@
             "required": true,
             "maxLength": 0,
             "help": "Where the third button links to.",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field19",
@@ -1314,7 +1344,9 @@
           "targets": [],
           "allowLinks": true,
           "binding": "template",
-          "key": "intro_copy"
+          "key": "intro_copy",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "control_trkbp3xry6s",
@@ -1421,7 +1453,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "intro_copy"
+            "key": "intro_copy",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "control_trkbp3xry6s",
@@ -1523,7 +1557,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "intro_copy"
+            "key": "intro_copy",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "control_trkbp3xry6s",
@@ -1641,7 +1677,9 @@
               "maxLength": 0,
               "help": "Where this link goes.",
               "targets": [],
-              "binding": "template"
+              "binding": "template",
+              "allowConversionTracking": true,
+              "defaultConversionTracking": false
             }
           ],
           "minItems": 2,
@@ -1722,7 +1760,9 @@
                 "maxLength": 0,
                 "help": "Where this link goes.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 2,
@@ -1799,7 +1839,9 @@
                 "maxLength": 0,
                 "help": "Where this link goes.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 2,
@@ -1872,7 +1914,9 @@
               "maxLength": 0,
               "help": "Where this link goes.",
               "targets": [],
-              "binding": "template"
+              "binding": "template",
+              "allowConversionTracking": true,
+              "defaultConversionTracking": false
             }
           ],
           "minItems": 1,
@@ -1930,7 +1974,9 @@
               "maxLength": 0,
               "help": "Where this link goes.",
               "targets": [],
-              "binding": "template"
+              "binding": "template",
+              "allowConversionTracking": true,
+              "defaultConversionTracking": false
             }
           ],
           "minItems": 1,
@@ -2003,7 +2049,9 @@
                 "maxLength": 0,
                 "help": "Where this link goes.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 1,
@@ -2061,7 +2109,9 @@
                 "maxLength": 0,
                 "help": "Where this link goes.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 1,
@@ -2130,7 +2180,9 @@
                 "maxLength": 0,
                 "help": "Where this link goes.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 1,
@@ -2188,7 +2240,9 @@
                 "maxLength": 0,
                 "help": "Where this link goes.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 1,
@@ -2273,7 +2327,9 @@
               "nodeId": "n7",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field4",
@@ -2363,7 +2419,9 @@
           "targets": [],
           "allowLinks": true,
           "binding": "template",
-          "key": "description"
+          "key": "description",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field9",
@@ -2405,7 +2463,9 @@
               "nodeId": "n15",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field11",
@@ -2506,7 +2566,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field4",
@@ -2596,7 +2658,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "description"
+            "key": "description",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field9",
@@ -2638,7 +2702,9 @@
                 "nodeId": "n15",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field11",
@@ -2735,7 +2801,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field4",
@@ -2825,7 +2893,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "description"
+            "key": "description",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field9",
@@ -2867,7 +2937,9 @@
                 "nodeId": "n15",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field11",
@@ -2968,7 +3040,9 @@
           "required": true,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field5",
@@ -3040,7 +3114,9 @@
           "required": false,
           "maxLength": 200,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field10",
@@ -3069,7 +3145,9 @@
           "required": false,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field12",
@@ -3125,7 +3203,9 @@
           "required": true,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field16",
@@ -3197,7 +3277,9 @@
           "required": false,
           "maxLength": 200,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field21",
@@ -3226,7 +3308,9 @@
           "required": false,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field23",
@@ -3321,7 +3405,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field5",
@@ -3393,7 +3479,9 @@
             "required": false,
             "maxLength": 200,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field10",
@@ -3422,7 +3510,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field12",
@@ -3478,7 +3568,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field16",
@@ -3550,7 +3642,9 @@
             "required": false,
             "maxLength": 200,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field21",
@@ -3579,7 +3673,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field23",
@@ -3670,7 +3766,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field5",
@@ -3742,7 +3840,9 @@
             "required": false,
             "maxLength": 200,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field10",
@@ -3771,7 +3871,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field12",
@@ -3827,7 +3929,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field16",
@@ -3899,7 +4003,9 @@
             "required": false,
             "maxLength": 200,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field21",
@@ -3928,7 +4034,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field23",
@@ -4023,7 +4131,9 @@
           "required": true,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field5",
@@ -4066,7 +4176,9 @@
           "required": false,
           "maxLength": 150,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field8",
@@ -4095,7 +4207,9 @@
           "required": false,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field10",
@@ -4151,7 +4265,9 @@
           "required": true,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field14",
@@ -4194,7 +4310,9 @@
           "required": false,
           "maxLength": 150,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field17",
@@ -4223,7 +4341,9 @@
           "required": false,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field19",
@@ -4279,7 +4399,9 @@
           "required": true,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field23",
@@ -4322,7 +4444,9 @@
           "required": false,
           "maxLength": 150,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field26",
@@ -4351,7 +4475,9 @@
           "required": false,
           "maxLength": 0,
           "help": "",
-          "targets": []
+          "targets": [],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field28",
@@ -4446,7 +4572,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field5",
@@ -4489,7 +4617,9 @@
             "required": false,
             "maxLength": 150,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field8",
@@ -4518,7 +4648,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field10",
@@ -4574,7 +4706,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field14",
@@ -4617,7 +4751,9 @@
             "required": false,
             "maxLength": 150,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field17",
@@ -4646,7 +4782,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field19",
@@ -4702,7 +4840,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field23",
@@ -4745,7 +4885,9 @@
             "required": false,
             "maxLength": 150,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field26",
@@ -4774,7 +4916,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field28",
@@ -4865,7 +5009,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field5",
@@ -4908,7 +5054,9 @@
             "required": false,
             "maxLength": 150,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field8",
@@ -4937,7 +5085,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field10",
@@ -4993,7 +5143,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field14",
@@ -5036,7 +5188,9 @@
             "required": false,
             "maxLength": 150,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field17",
@@ -5065,7 +5219,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field19",
@@ -5121,7 +5277,9 @@
             "required": true,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field23",
@@ -5164,7 +5322,9 @@
             "required": false,
             "maxLength": 150,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field26",
@@ -5193,7 +5353,9 @@
             "required": false,
             "maxLength": 0,
             "help": "",
-            "targets": []
+            "targets": [],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field28",
@@ -5244,7 +5406,9 @@
               "originalValue": "https://www.escardio.org/"
             }
           ],
-          "id": "field1"
+          "id": "field1",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "label": "Image",
@@ -5349,7 +5513,9 @@
             }
           ],
           "allowLinks": true,
-          "id": "field6"
+          "id": "field6",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "label": "Show link",
@@ -5391,7 +5557,9 @@
               "originalValue": "https://www.escardio.org/"
             }
           ],
-          "id": "field8"
+          "id": "field8",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "label": "Link text",
@@ -5449,7 +5617,9 @@
                 "originalValue": "https://www.escardio.org/"
               }
             ],
-            "id": "field1"
+            "id": "field1",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Image",
@@ -5554,7 +5724,9 @@
               }
             ],
             "allowLinks": true,
-            "id": "field6"
+            "id": "field6",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Show link",
@@ -5596,7 +5768,9 @@
                 "originalValue": "https://www.escardio.org/"
               }
             ],
-            "id": "field8"
+            "id": "field8",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Link text",
@@ -5650,7 +5824,9 @@
                 "originalValue": "https://www.escardio.org/"
               }
             ],
-            "id": "field1"
+            "id": "field1",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Image",
@@ -5755,7 +5931,9 @@
               }
             ],
             "allowLinks": true,
-            "id": "field6"
+            "id": "field6",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Show link",
@@ -5797,7 +5975,9 @@
                 "originalValue": "https://www.escardio.org/"
               }
             ],
-            "id": "field8"
+            "id": "field8",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Link text",
@@ -5890,7 +6070,9 @@
               "nodeId": "n12",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field4",
@@ -5982,7 +6164,9 @@
                 "nodeId": "n12",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field4",
@@ -6070,7 +6254,9 @@
                 "nodeId": "n12",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field4",
@@ -6127,7 +6313,9 @@
               "nodeId": "n7",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field2",
@@ -6208,7 +6396,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field2",
@@ -6285,7 +6475,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field2",
@@ -6366,7 +6558,9 @@
               "nodeId": "n7",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field2",
@@ -6482,7 +6676,9 @@
               "nodeId": "n13",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field8",
@@ -6539,7 +6735,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field2",
@@ -6655,7 +6853,9 @@
                 "nodeId": "n13",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field8",
@@ -6708,7 +6908,9 @@
                 "nodeId": "n7",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field2",
@@ -6824,7 +7026,9 @@
                 "nodeId": "n13",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field8",
@@ -6937,7 +7141,9 @@
               "help": "Where this link goes.",
               "targets": [],
               "key": "link_url",
-              "binding": "template"
+              "binding": "template",
+              "allowConversionTracking": true,
+              "defaultConversionTracking": false
             },
             {
               "id": "link_text",
@@ -7064,7 +7270,9 @@
                 "help": "Where this link goes.",
                 "targets": [],
                 "key": "link_url",
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               },
               {
                 "id": "link_text",
@@ -7187,7 +7395,9 @@
                 "help": "Where this link goes.",
                 "targets": [],
                 "key": "link_url",
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               },
               {
                 "id": "link_text",
@@ -7290,7 +7500,9 @@
               "originalValue": "Access exclusive resources, discounts, education and the latest cardiovascular research. "
             }
           ],
-          "id": "field3"
+          "id": "field3",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "label": "Benefits label",
@@ -7346,7 +7558,9 @@
               "originalValue": "https://www.escardio.org/Membership"
             }
           ],
-          "id": "field7"
+          "id": "field7",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "label": "Show CTA button",
@@ -7484,7 +7698,9 @@
                 "originalValue": "Access exclusive resources, discounts, education and the latest cardiovascular research. "
               }
             ],
-            "id": "field3"
+            "id": "field3",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Benefits label",
@@ -7540,7 +7756,9 @@
                 "originalValue": "https://www.escardio.org/Membership"
               }
             ],
-            "id": "field7"
+            "id": "field7",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Show CTA button",
@@ -7674,7 +7892,9 @@
                 "originalValue": "Access exclusive resources, discounts, education and the latest cardiovascular research. "
               }
             ],
-            "id": "field3"
+            "id": "field3",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Benefits label",
@@ -7730,7 +7950,9 @@
                 "originalValue": "https://www.escardio.org/Membership"
               }
             ],
-            "id": "field7"
+            "id": "field7",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "label": "Show CTA button",
@@ -8484,7 +8706,9 @@
               "nodeId": "n22",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field3",
@@ -8662,7 +8886,9 @@
                 "nodeId": "n22",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field3",
@@ -8836,7 +9062,9 @@
                 "nodeId": "n22",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field3",
@@ -9869,7 +10097,9 @@
           "help": "Where the sponsor logo links to. Not used when there is no logo.",
           "targets": [],
           "key": "sponsor_link",
-          "binding": "template"
+          "binding": "template",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field3",
@@ -9956,7 +10186,9 @@
             "help": "Where the sponsor logo links to. Not used when there is no logo.",
             "targets": [],
             "key": "sponsor_link",
-            "binding": "template"
+            "binding": "template",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field3",
@@ -10039,7 +10271,9 @@
             "help": "Where the sponsor logo links to. Not used when there is no logo.",
             "targets": [],
             "key": "sponsor_link",
-            "binding": "template"
+            "binding": "template",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field3",
@@ -10163,7 +10397,9 @@
               "nodeId": "n22",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field4",
@@ -10222,7 +10458,9 @@
           "targets": [],
           "allowLinks": true,
           "binding": "template",
-          "key": "description"
+          "key": "description",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field7",
@@ -10323,7 +10561,9 @@
                 "nodeId": "n22",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field4",
@@ -10382,7 +10622,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "description"
+            "key": "description",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field7",
@@ -10479,7 +10721,9 @@
                 "nodeId": "n22",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field4",
@@ -10538,7 +10782,9 @@
             "targets": [],
             "allowLinks": true,
             "binding": "template",
-            "key": "description"
+            "key": "description",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field7",
@@ -10654,7 +10900,9 @@
               "nodeId": "n23",
               "kind": "attribute"
             }
-          ]
+          ],
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field5",
@@ -10814,7 +11062,9 @@
                 "nodeId": "n23",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field5",
@@ -10970,7 +11220,9 @@
                 "nodeId": "n23",
                 "kind": "attribute"
               }
-            ]
+            ],
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field5",
@@ -11842,7 +12094,9 @@
               "maxLength": 0,
               "help": "",
               "targets": [],
-              "binding": "template"
+              "binding": "template",
+              "allowConversionTracking": true,
+              "defaultConversionTracking": false
             }
           ],
           "minItems": 1,
@@ -12024,7 +12278,9 @@
                 "maxLength": 0,
                 "help": "",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 1,
@@ -12202,7 +12458,9 @@
                 "maxLength": 0,
                 "help": "",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               }
             ],
             "minItems": 1,
@@ -12315,7 +12573,9 @@
               "maxLength": 0,
               "help": "Where the title/image/DOI link go.",
               "targets": [],
-              "binding": "template"
+              "binding": "template",
+              "allowConversionTracking": true,
+              "defaultConversionTracking": false
             },
             {
               "id": "link_text",
@@ -12470,7 +12730,9 @@
                 "maxLength": 0,
                 "help": "Where the title/image/DOI link go.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               },
               {
                 "id": "link_text",
@@ -12621,7 +12883,9 @@
                 "maxLength": 0,
                 "help": "Where the title/image/DOI link go.",
                 "targets": [],
-                "binding": "template"
+                "binding": "template",
+                "allowConversionTracking": true,
+                "defaultConversionTracking": false
               },
               {
                 "id": "link_text",
@@ -12711,7 +12975,9 @@
           "help": "Leave blank to omit this paragraph.",
           "targets": [],
           "allowLinks": true,
-          "binding": "template"
+          "binding": "template",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         },
         {
           "id": "field3",
@@ -12726,7 +12992,9 @@
           "help": "Leave blank to omit this paragraph.",
           "targets": [],
           "allowLinks": true,
-          "binding": "template"
+          "binding": "template",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false
         }
       ],
       "analysed": true,
@@ -12770,7 +13038,9 @@
             "help": "Leave blank to omit this paragraph.",
             "targets": [],
             "allowLinks": true,
-            "binding": "template"
+            "binding": "template",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field3",
@@ -12785,7 +13055,9 @@
             "help": "Leave blank to omit this paragraph.",
             "targets": [],
             "allowLinks": true,
-            "binding": "template"
+            "binding": "template",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           }
         ]
       },
@@ -12825,7 +13097,9 @@
             "help": "Leave blank to omit this paragraph.",
             "targets": [],
             "allowLinks": true,
-            "binding": "template"
+            "binding": "template",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           },
           {
             "id": "field3",
@@ -12840,7 +13114,9 @@
             "help": "Leave blank to omit this paragraph.",
             "targets": [],
             "allowLinks": true,
-            "binding": "template"
+            "binding": "template",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false
           }
         ],
         "showEditorHeader": false

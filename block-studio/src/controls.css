@@ -5,6 +5,21 @@
   margin: 12px 0;
   padding: 12px;
 }
+.conversion-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin: 8px 0;
+}
+.conversion-option input[type='checkbox'] {
+  width: auto;
+  flex: 0 0 auto;
+  margin: 0;
+}
+.conversion-option[hidden] {
+  display: none;
+}
 .repeat-heading {
   display: flex;
   flex-wrap: wrap;

@@ -1,5 +1,7 @@
 # Bug-fix sweep - 1.24.1
 
+> Historical review record. Claims and test totals apply to the dated release below, not automatically to later changes. For current operation use the [user guide](USER_GUIDE.md) and [technical documentation](DEVELOPER_GUIDE.md).
+
 Completed 12 October 2026. Baseline: 208 passing tests. Seven confirmed defects were reproduced before their fixes; the final suite contains 214 passing tests, including extensions to existing ESC tests.
 
 Prioritisation is by potential data loss or incorrect publishing state, followed by blocked workflows and misleading feedback. These ratings describe impact, not observed frequency.

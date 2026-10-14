@@ -1,5 +1,7 @@
 # ESC suite compatibility review
 
+> Historical review record. Claims and test totals apply to the dated release below, not automatically to later changes. For current operation use the [user guide](USER_GUIDE.md) and [technical documentation](DEVELOPER_GUIDE.md).
+
 Reviewed 10 October 2026 against the supplied repository. Verified Studio release: 1.20.1.
 
 ## Independent round-trip verification (1.20.1)

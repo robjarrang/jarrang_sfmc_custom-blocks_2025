@@ -1,157 +1,200 @@
-# Jarrang SFMC Block Studio - Developer Guide
+# Jarrang Block Studio: technical documentation
 
-## Current Direction
+For developers maintaining Studio, its generated SFMC editors and client module projects. Reviewed against Studio 1.26.0 on 14 October 2026. For day-to-day tasks, use the [internal user guide](USER_GUIDE.md).
 
-This repository now uses **Block Studio** as the way to create Salesforce Marketing Cloud custom blocks. New client-facing blocks are created by importing approved email module HTML into Block Studio and exporting static module packages.
+## Contents
 
-Block Studio is a local, browser-based converter. It analyses a module fragment, suggests editable fields, lets a developer review and refine those fields, generates a client-friendly editor, and exports static files that can be committed directly to a GitHub Pages branch.
+- [System boundaries](#system-boundaries)
+- [Source and generated files](#source-and-generated-files)
+- [Code ownership](#code-ownership)
+- [Project and runtime data](#project-and-runtime-data)
+- [Rendering and field rules](#rendering-and-field-rules)
+- [Repository saving and recovery](#repository-saving-and-recovery)
+- [Change and release procedures](#change-and-release-procedures)
+- [Build and verification](#build-and-verification)
+- [Troubleshooting and documentation maintenance](#troubleshooting-and-documentation-maintenance)
 
-## Repository Structure
+## System boundaries
 
-```text
-block-studio/
-  Open-Block-Studio.html    Self-contained application for day-to-day use
-  index.html                Folder-based application entry during development
-  build.py                  Rebuilds embedded assets, Open-Block-Studio.html and docs/studio/index.html
-  package.json              Block Studio's own scripts (test, format, format:check, test:browser)
-  README.md                 Studio workflow and scope
-  TOWER-WORKFLOW.md         Single-repository, multiple-client Git/Tower publishing workflow
-  CODE-REVIEW.md            Debt remediation notes and generated-file guidance
-  VALIDATION.md             Completed validation and remaining live-test work
-  src/
-    app.js                  Studio interface, project workflow and previews
-    runtime-core.js         Lean parser, rendering and validation shipped with every exported block
-    core.js                 Authoring engine: source mappings and field inference (extends runtime-core.js)
-    workspace.js            Clients/templates workspace, repository settings and project persistence
-    repository.js           Folder handles, external-change checks and recoverable direct file writes
-    preview.js              Configure/test preview bridge shared across steps
-    tour.js                 Optional, read-only guided tours; excluded from exported runtimes
-    quick-edit.js            Quick HTML fix workflow for existing modules
-    repeat-builder.js        Repeatable content and conditional section builder
-    code-editor.js / code-editor.css   Shared HTML code view (tag matching, folding, search)
-    block-icons.js           Generated block icon/dragIcon assets
-    exporter.js              ZIP export, icons and publishing guide generation
-    export-assets.js         Generated export dependencies (runtime.bundle.js, runtime.rich.bundle.js, runtime.bundle.css, catalogue brand.css, SDK licence)
-    runtime.js                Generated client editor runtime
-    runtime.css               Generated client editor styles
-    studio.css                 Studio interface styles
-  tests/                     Core, workspace, preview, code-editor and browser workflow tests
-  scripts/
-    validate.cjs             Syntax, runtime budgets and automated non-browser test suites
-  vendor/                    Bundled JSZip, Bootstrap Icons and Salesforce Block SDK assets
+Studio is a static browser application. It imports HTML fragments, maps editable values and writes static block editors plus editable project JSON. Each module remains a separate draggable SFMC block. There is no application backend, GitHub credential store or automatic commit/push.
 
-docs/                        Pre-built GitHub Pages site, at the repository root (Deploy from a branch → /docs)
-projects/                    Editable .jarrang.json template projects, at the repository root
-README.md                   Repository overview and command summary
-package.json                Root Block Studio scripts only
-```
+The local repository holds the shared working files. Tower handles Git. GitHub Pages serves `docs/` from the configured branch, including the central Studio at `/studio/` and modules under `/clients/<client>/<template>/modules/<module>/`. A custom GitHub Actions workflow is not required; GitHub may still show its own Pages deployment workflow for branch publishing.
 
-GitHub Pages' "Deploy from a branch" option only offers `/(root)` or `/docs` relative to the repository root, so the publishing folder cannot live inside `block-studio/`. `build.py` writes `docs/studio/index.html` and `docs/.nojekyll` to the repository root regardless of where it is invoked from.
+In SFMC, a module page uses the bundled Block SDK to read saved values and submit rendered HTML and editor metadata. Template conditions and loops run in that editor. AMPscript remains opaque source for SFMC to process. Studio neither executes subscriber personalisation nor supplies the master email's head CSS.
 
-Exported module folders are downloaded from Block Studio and committed to the selected publishing branch. They are not maintained as source in this repository.
+Updating Studio changes the authoring application. Existing module pages keep their referenced runtime until intentionally saved/exported again. Updating an endpoint does not automatically rewrite HTML already stored in an SFMC email instance.
 
-## Commands
+## Source and generated files
 
-The root npm scripts now target Block Studio by default:
+| Path | Ownership and purpose |
+| --- | --- |
+| `projects/<client>/<template>.jarrang.json` | Editable source for a suite, including module drafts and last generated references. Open through Studio for routine changes. |
+| `projects/<client>/<template>-PUBLISHING.md` | Generated deployment notes and endpoints. Wording comes from `exporter.js`; do not fix wording only in this output. |
+| `block-studio/index.html`, `block-studio/src/` | Authoring/runtime source, except the generated files listed below. |
+| `block-studio/build.py` | Standard-library Python build. Embeds assets and current project snapshots. |
+| `block-studio/src/brand.css`, `runtime-brand.css` | Generated from `brand-theme.css` and bundled font assets. |
+| `block-studio/src/export-assets.js` | Generated runtime bundles, licences and their content-hash identifier. |
+| `block-studio/src/repository-projects.js` | Generated offline starting snapshot of `projects/`. Not a live Git synchronisation mechanism. |
+| `block-studio/Open-Block-Studio.html`, `docs/studio/index.html` | Generated standalone and hosted applications. Build both; do not patch them by hand. |
+| `docs/clients/<client>/<template>/modules/<module>/` | Generated `index.html`, `icon.png` and `dragIcon.png` for an endpoint. |
+| `docs/clients/<client>/<template>/index.html` | Generated template catalogue. |
+| `docs/shared-assets/runtime-<hash>/` | Immutable exported runtime assets. Preserve old directories for existing endpoints. |
+| `block-studio/vendor/` | Bundled dependencies and licence material. Change deliberately and retain notices. |
 
-```bash
+`runtime.js`, `runtime.css`, `controls.js`, `controls.css` and `rich-editor.js` are maintained source, not generated files. `build.py` embeds their output in export assets; it does not regenerate existing module pages or populate a new hosted runtime folder by itself. Saving/exporting modules writes the required hashed runtime assets.
+
+Keep editable JSON and generated pages together in the same reviewed commit. A project may include newer drafts for modules that have not been individually saved; compare each page against its `exportedDefinition`, not blindly against the latest authoring draft.
+
+## Code ownership
+
+All paths below are within `block-studio/src/`.
+
+| Area | Main files |
+| --- | --- |
+| Application workflow and navigation | `app.js`, `workspace.js`, `tour.js` |
+| Direct file access and save conflict handling | `repository.js` |
+| Import, compatibility and generated baselines | `maintenance.js` |
+| In-memory module undo/redo | `history.js` |
+| Authoring parser, inference and source mappings | `core.js`, `html-validation.js` |
+| Shared rendering and template language | `runtime-core.js`, `logic.js` |
+| Field forms, conversion and rules | `field-editor.js`, `field-catalog.js`, `field-transforms.js`, `repeat-builder.js`, `template-rules.js` |
+| Source editing and preview | `quick-edit.js`, `code-editor.js`, `code-editor.css`, `preview.js` |
+| Client controls shared with Studio Test | `controls.js`, `controls.css`, `rich-editor.js` |
+| SFMC SDK lifecycle | `runtime.js`, `runtime.css` |
+| Definitions, packages, icons and publishing notes | `exporter.js`, `block-icons.js` |
+| Studio styling and shared brand source | `studio.css`, `brand-theme.css` |
+
+The standard runtime bundle contains the SDK, logic, runtime-core, controls and runtime. The rich variant adds rich-editor. Authoring inference, repository access, history, tours and code editing do not belong in SFMC runtime bundles. Keep changes in the narrowest existing component that owns the behaviour.
+
+## Project and runtime data
+
+The project format is `jarrang-block-studio`, version `1`. Its `settings` identify the client/template, base Pages URL and editor appearance; `modules` holds the editable module definitions. Use `core.js` project validation rather than accepting unvalidated JSON.
+
+| Property | Contract |
+| --- | --- |
+| `settings.clientSlug`, `templateSlug` | Stable publishing folders. Lowercase hyphenated slugs; validate through the exporter. |
+| `settings.editorTheme`, `showEditorHeader` | Template-wide form appearance. Header defaults on when absent; both bundled ESC templates set it off. |
+| Module `id`, `slug`, `release` | Stable for compatible maintenance. Existing published identities are protected; duplicate for an incompatible new release. |
+| `source`, `draftSource`, `templateMode` | Authored fragment/import draft and explicit template-language mode. Do not splice source with mapped fields without rebasing. |
+| `fields` | Stable field IDs/types, defaults, validation, mapped targets or named keys, plus list item schemas. |
+| `contextCss`, `width` | Preview context. Context CSS does not become email output. |
+| `iconAssets` | Supplied base64 PNG pair. Preserve bytes when keeping supplied artwork. |
+| `published` | Compatibility baseline from the last generated save/export. Not a live deployment flag. |
+| `exportedDefinition` | Last generated definition, separate from newer authoring drafts. Used for import consistency and recovery. |
+
+Top-level runtime values are stored by field ID; repeating item values use item keys. Labels can change without renaming those identities. Field types are `text`, `richtext`, `url`, `image`, `colour`, `number`, `toggle`, `select` and `list`. A dropdown has visible labels and inserted values; existing saved values depend on the latter.
+
+The runtime preserves other SDK metadata and stores its own data under `studio`, including `schemaVersion`, `blockId`, `moduleId`, `moduleVersion` and `values`. It renders before saving, submits content and metadata through SDK callbacks and locks editing if a save cannot be confirmed. Test reopen and failure paths, not just initial defaults.
+
+## Rendering and field rules
+
+### Mapped source
+
+Fields can replace element content, attribute values or complete elements. Targets refer to source offsets. Overlapping targets are invalid except supported containing section toggles. Preserve Outlook conditional comments, line endings and AMPscript bytes outside intentional edits.
+
+For a scripted source correction, use `BlockCore.rebase(module, edits)` with `{ start, end, value }` edits and validate the result. Direct string replacement followed by retaining old target offsets can silently connect fields to the wrong code. The UI's quick-edit path adds protection for mapped values, template expressions and AMPscript.
+
+Unchanged mapped values generally retain their source bytes. Changed plain text is escaped; store actual punctuation, not pre-escaped entity strings. Formatted content is sanitised and configured link styling may normalise its original markup too.
+
+### Template logic
+
+Use [TEMPLATE-SYNTAX.md](block-studio/TEMPLATE-SYNTAX.md) as the language reference. The implementation is a defined Liquid-style subset, not Liquid or JavaScript. It supports conditions, repeated items and scoped loop properties, with `escape` and `richtext` output filters. No raw HTML filter is provided.
+
+Template mode is explicit. Applying advanced template code can rebuild mapped fields; named controls survive and referenced mappings can be promoted to named controls. Review resulting connections and defaults. Automatic single/repeating conversion has narrower supported structures than the renderer. A blocked conversion is not evidence that the underlying template language lacks the feature.
+
+### Rich text and URLs
+
+The shared rich editor supports inline emphasis, superscript/subscript, colour spans, links and semantic lists. The sanitiser restricts markup/styles and validates destinations; toolbar visibility is a UI policy, not a substitute for sanitisation. Disabling a tool does not retroactively remove all matching markup. Link appearance is enforced from the field definition, including repeated fields, rather than saved as a client-editable style option.
+
+Lists inside paragraph fields are rendered as valid sibling lists with inherited text styling. Lists inside headings or links need restrictions. Client-specific list spacing and master-template CSS remain separate from the block editor.
+
+### Conversion tracking
+
+`allowConversionTracking` exposes the client checkbox on a URL or rich-text field. `defaultConversionTracking` sets the initial choice; the ESC suite sets it false. URL values remain strings. Per-link booleans are stored in the reserved `values.__studioConversions` map, keyed by field ID; repeating rows carry their own map keyed by item key. Missing legacy choices use the field's default, and mounted controls record the resolved choice for subsequent saves. Invalid tracking metadata is rejected.
+
+The renderer patches only anchor attributes using existing source offsets. Mapped hrefs and complete `{{ key }}` or `{{ item.key }}` href references are supported, including the escape filter. Loop patches evaluate within the current item scope. No additional template syntax, new field IDs, DOM email serialisation or AMPscript rewrite is introduced. `conversionProblems` blocks partial href connections and a competing dynamic conversion expression. Rich-text link dialogues store the attribute in their sanitised HTML; the sanitiser accepts only the literal `conversion="true"` on permitted web links.
+
+The runtime saves these choices through the existing SDK value snapshot and preserves unrelated SDK metadata. A checkbox alone does not implement website-side conversion capture. Salesforce's [conversion tracking guidance](https://help.salesforce.com/s/articleView?id=005093107&language=en_US&type=1) specifies the email attribute, link parameters and website reporting dependency. Verify these in a real SFMC send, click and conversion before declaring the complete tracking journey passed.
+
+### Icons and themes
+
+Use the exporter to build both icon files. Generated icons are 60×60 and 120×120 respectively; these are Studio defaults, not dimensions mandated by the cited Salesforce widget guidance. Existing supplied PNGs, including differently sized ESC artwork, remain byte-identical when retained.
+
+Apply template appearance through `BlockExport.themedModule(project, module)` before generating a definition/page. Respect `showEditorHeader`; copying a previous page wrapper can reintroduce unwanted branding. Theme contrast validation blocks unsuitable combinations. Editor colours do not style the email.
+
+## Repository saving and recovery
+
+`repository.js` uses the browser File System Access API. Direct saving needs supported folder access. A remembered handle may need permission again; ZIP export remains the fallback.
+
+Save prepares and validates the output before writing. It compares relevant files with the opened repository snapshot, checks allowed paths, refuses replacement of a differing existing runtime asset, skips identical bytes and verifies writes. Failure triggers best-effort rollback and a save lock until reopening. This is not an atomic multi-file transaction: a crash, permission loss or conflicting external write can prevent complete restoration. Inspect the Tower diff before retrying.
+
+A module Save writes its generated page/icons, the whole editable project and supporting files. In direct repository mode the catalogue includes this saved module and the other modules' last generated definitions. A full-template Save regenerates every module. A single-module fallback ZIP does not refresh the complete catalogue; use a full-template ZIP for that purpose.
+
+Browser drafts, pending code, temporary Test values, local saved files and deployed files are distinct states. Pending code must be resolved before saving and does not survive reload. Test values are excluded from authoring output. Undo/redo is in memory; last-export restoration uses the stored generated baseline and is not a deployment rollback. Neither mechanism replaces Git history.
+
+## Change and release procedures
+
+### Maintain a compatible module
+
+1. Pull and open the repository in Studio. Resolve any project/page mismatch before editing.
+2. Make the smallest change through fields or HTML & CSS. Preserve module identity, field IDs/types, item keys, folder and release.
+3. Test the affected branches and existing saved-value cases, then save the module.
+4. Review the project/page/icons together in Tower. Keep unrelated modules and historical runtimes intact.
+5. Commit/push, verify the hosted endpoint, then test a new and existing SFMC instance. Check email output in its real master template.
+
+Compatibility checks in `maintenance.js` reject missing/retyped controls, removed dropdown values and restrictions that invalidate prior values. Do not clear `published` or `exportedDefinition` to bypass them. Duplicate the module, assign a new folder/release and register a separate block for incompatible changes. Retain the old endpoint for existing content.
+
+### Change Studio or its runtime
+
+1. Edit source files. Add a focused regression for behavioural fixes, especially source offsets, SDK state and repository writes.
+2. Build and run the checks below. Review generated changes rather than hand-editing them.
+3. If runtime behaviour changed, deliberately save/export the affected modules so they reference the new content-hash folder. Keep every earlier runtime folder unchanged. A Studio-only change need not regenerate client pages.
+4. If project JSON changed, rebuild Studio to refresh its bundled starting snapshot. The snapshot must not overwrite existing browser drafts automatically.
+5. Commit source, relevant generated files and documentation together. Use Tower and branch-based Pages publishing.
+
+For programmatic generation, read [AGENTS.md](AGENTS.md) and reuse exporter/maintenance functions in a DOM-capable harness. Do not copy wrappers by hand or approximate exporter safety checks. Rich-text sanitisation needs a DOM; generated PNGs need a real canvas implementation or preserved supplied PNGs.
+
+### Roll back
+
+Revert the relevant commit in Tower, restoring matching project, pages and icons together, then push. Retain runtime directories that any surviving endpoint references. Reopen Studio's repository after the revert to avoid saving a newer browser draft back over it. Existing email-instance content requires separate SFMC review.
+
+## Build and verification
+
+From the repository root, with Python 3 and Node/npm installed:
+
+```sh
+npm ci --prefix block-studio
 npm run build
 npm test
+npm run format:check --prefix block-studio
 ```
 
-- `npm run build` runs `python3 block-studio/build.py`, rebuilding `block-studio/src/export-assets.js`, `block-studio/Open-Block-Studio.html` and `docs/studio/index.html` at the repository root.
-- `npm test` runs `node block-studio/scripts/validate.cjs`, covering syntax, runtime payload budgets and the automated suite including ESC integration and DOM simulations.
-- For the full suite (workspace, preview, code editor, browser regressions and formatting checks) run `npm test`, `npm run format:check` and `npm run test:browser` inside `block-studio/`, where its own `package.json` defines those scripts.
+Use a supported Node version meeting dependency requirements; the existing validation environment uses Node 24. `npm ci` uses the checked-in lockfile. No npm install or build is required for normal use of the supplied prebuilt Studio or hosted blocks.
 
-## Creating New Blocks
+`npm test` checks JavaScript syntax, runtime size budgets and non-browser test suites, including Happy DOM/SDK simulations. `npm run check:size --prefix block-studio` reports payload budgets separately. These are project guardrails, not proof of browser speed or email compatibility.
 
-1. Open [block-studio/Open-Block-Studio.html](block-studio/Open-Block-Studio.html) in a current desktop browser.
-2. Start a module and paste or upload an approved email module fragment.
-3. Add master-template CSS under Template context if the browser preview needs it. This CSS is preview-only and is not inserted into the email output.
-4. Select **Find editable content**.
-5. Review every suggested field. Rename labels, add help text, set required fields and character limits, and delete any field the client should not edit. To let the client show or hide a whole section (for example a button), select its complete element in the HTML view and choose Add field from selection to create a show/hide toggle.
-6. Use **Test** to test realistic long copy, blank optional fields, image URLs, links with tracking parameters and mobile viewport width.
-7. Review export checks, set the stable folder name and semantic version, then download the module ZIP or project ZIP.
-8. Commit the exported static files to the selected GitHub Pages branch and register each exported module endpoint in SFMC Content Builder.
-9. Save the `.jarrang.json` project file. The mappings refer to exact source offsets and are needed for future maintenance.
+`npm run test:browser --prefix block-studio` is a separate Playwright suite. It requires an available Playwright installation and browser; these are not provided by the project's declared development dependencies. The runner accepts `PLAYWRIGHT_MODULE` and `CHROMIUM_EXECUTABLE` overrides. Do not report that suite as passing unless actually run. Older excluded browser suites are historical coverage, not current release evidence.
 
-## Export Model
+| Change | Verification needed |
+| --- | --- |
+| Documentation only | Check links, actual UI labels, commands and generated-document consistency. No app regression run is needed solely for prose. |
+| UI or shared control behaviour | Build, automated checks, focused interaction regression and real-browser verification of the affected behaviour when available. |
+| Renderer/field logic or module source | Automated output/round-trip checks, saved-value cases, and SFMC plus relevant email-client checks. |
+| Repository save/export | Conflict, partial-write and rollback tests; inspect affected files and reopen the generated repository. |
 
-Each exported module is independent and static. A typical export contains:
+Before production use, the human release owner must check SFMC new/edit/close/reopen/duplicate behaviour, tracking/personalisation and test sends. DOM simulations cannot certify accessibility, browser layout, Outlook, Apple Mail or dark mode. Record which environment was actually used in [VALIDATION.md](block-studio/VALIDATION.md), including known gaps.
 
-```text
-[module-slug]/index.html
-[module-slug]/icon.png
-[module-slug]/dragIcon.png
-shared-assets/block-studio-1.0.0/
-index.html                  Preview catalogue for the exported package
-PUBLISHING.md               Branch publishing and SFMC setup instructions
-block-studio.jarrang.json   Saved project data
-.nojekyll                   GitHub Pages compatibility marker
-```
+## Troubleshooting and documentation maintenance
 
-There is no npm install or build command for exported modules. Keep the exported shared runtime folder beside the module folders. Do not replace or remove older shared runtime versions while existing SFMC blocks may still depend on them.
+For user-facing symptoms, see the [user guide's troubleshooting table](USER_GUIDE.md#resolve-a-problem). For a JSON/page mismatch, compare the exported snapshot, embedded `block-definition` and template appearance. For stale code, check the module's referenced hash and deployed files; rebuilding Studio alone will not change that reference.
 
-### Caching and hosting
+Keep two main entry points: USER_GUIDE for tasks and this file for implementation. Syntax, branding and ESC-specific notes are linked references. Review/checklist files are dated evidence, not alternate user manuals. Update a control's documentation in the same change as its label or behaviour, and update the publishing-note generator when changing deployment instructions. Prefer stable responsibilities over hard-coded test totals and byte counts.
 
-GitHub Pages serves HTTP/2 with gzip through a CDN, but its headers cannot be changed from this repository: every file gets `Cache-Control: max-age=600` plus an `ETag`, so a file is revalidated (a `304`) after ten minutes. The only levers available here are the ones already in place: the content-hashed `shared-assets/runtime-<hash>/` folder (every module in a template shares the same URLs, so the browser reuses them between blocks) and a minimal request count (one stylesheet and one script per module page, around 17-21 KB gzipped). Do not add per-module copies of the runtime. Changing cache headers needs a different host.
+This separation follows [Diátaxis](https://diataxis.fr/start-here/): task instructions should be easy to follow without requiring implementation reference. It is a documentation design approach, not a claim of completed usability testing.
 
-## What Block Studio Preserves
+Primary platform references, reviewed 13 October 2026:
 
-- Original source bytes when fields are unchanged.
-- AMPscript and other detected personalisation, locked from ordinary editing.
-- Outlook conditional markup and linked visible/VML destinations where detected.
-- Existing default text, formatted inline content, image sources, alt text and destinations.
-- Unrelated SFMC metadata on reopen.
+- [GitHub: configure the Pages publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- [Salesforce: develop a custom block widget](https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/develop-block-widget.html)
 
-Only changed fields are rendered back into the source. Text field line breaks become `<br>`. Edited formatted text is intentionally limited to approved inline formatting; unedited formatted defaults keep their original markup.
-
-## Review Requirements
-
-Block Studio speeds up conversion, but it does not replace developer review. Before client use:
-
-- Confirm that all visible and fallback locations that should change together have been mapped correctly.
-- Verify image URLs, link URLs, tracking parameters, AMPscript and inherited master-template CSS.
-- Install in a controlled SFMC test account and test edit, close, reopen, duplicate, rapid close, tracking and subscriber preview behaviour.
-- Test the final email in required clients, especially Outlook desktop, Apple Mail, Gmail web/mobile and mobile mail apps.
-- Keep authorised sample content in defaults. GitHub Pages output may be publicly accessible.
-
-## Known Limits
-
-- Automatic discovery covers simple module fragments; complex modules still need careful review.
-- Repeating lists, conditional sections, dropdowns and formatted-text lists are supported. Arbitrary JavaScript and automatic migration of existing SFMC field data are not supported.
-- Full email documents and executable HTML are blocked from export.
-- Image upload and hosting are not included; use externally hosted image URLs.
-- Browser preview is not an Outlook/Gmail emulator.
-- Existing SFMC instances reject a different module identity/version rather than silently migrating. For a new schema or design, export to a new folder and retain the old endpoint.
-
-## Support References
-
-- [README.md](README.md) - root project overview and command summary
-- [block-studio/README.md](block-studio/README.md) - Studio user workflow and publishing model
-- [block-studio/TOWER-WORKFLOW.md](block-studio/TOWER-WORKFLOW.md) - Git/Tower branch-publishing workflow for multiple clients and templates
-- [block-studio/VALIDATION.md](block-studio/VALIDATION.md) - completed tests and remaining live validation
-- Salesforce Block SDK documentation: https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/develop-block-widget.html
-- GitHub Pages documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
-
-## ESC maintenance (1.18.0)
-
-`src/maintenance.js` imports local repository folders, retains original PNG bytes and checks changes against each module's `published` field reference. `src/repository-projects.js` is generated by build.py from projects/ and is authoring-only. Fresh workspaces load the bundled templates; existing browser drafts require explicit replacement. Rebuild Studio after committed project changes if its bundled starting snapshot needs updating. Day-to-day maintainers can always load the current repository folder without rebuilding.
-
-`iconAssets` stores base64 PNG bytes in editable project data. Neither it nor `published` is sent to the SFMC runtime definition. Existing pages and content-hashed runtime folders have been retained unchanged in this delivery. Export is explicit.
-
-`core.templateProblems()` checks references in all conditional branches and repeating-item schemas, including branches not rendered by default. Published-field compatibility prevents same-endpoint exports that remove/change existing controls or tighten saved-value validation. For an incompatible change, duplicate the module and register its new endpoint. This check cannot predict semantic changes to arbitrary email markup; review the diff and test existing saved SFMC instances.
-
-## ESC authoring support (1.19.0)
-
-`src/template-rules.js` is authoring-only. It discovers existing if/elsif expressions with their list scope, provides a guided model and applies source patches through `core.rebase`. Field editor rule changes are transactional. Unsupported guided expressions remain editable through Advanced template logic. The rich-text field editor only records a link-style policy when it is explicitly changed, avoiding source rewrites on unchanged saves.
-
-All 235 ESC conditions are covered by the guided model. Tests also open/save all 275 top-level fields and compare rendered output, exercise child-field guidance/limits, and convert all 11 list controls to a single item. This release does not alter the exported runtime or existing published module pages.
-
-## Transactional maintenance (1.20.0)
-
-`src/html-validation.js` is authoring-only. `core.htmlProblems(module)` checks tag balance in representative rendered states and common Outlook conditional projections. `core.parse` remains a lexical/source-mapping parser and is not a structural HTML validator. Run both syntax/reference and rendered-structure checks before export. Optional HTML end tags and opaque AMPscript are supported; arbitrary state combinations and email-client conformance still need review.
-
-`src/field-transforms.js` stages key/type changes against a cloned module. It patches scoped template expressions through `core.rebase`, converts repeated-row values, and blocks rich-text conversion in attribute bindings. Save commits source and schema together; cancellation discards both.
-
-`maintenance.recordExport` stores the actual exported definition and schema baseline independently of newer drafts. Repository import verifies pages against `exportedDefinition` when present. Preserve this metadata in editable project data; never pass it to the SFMC runtime. Duplicated modules clear both references. A downloaded export is not deployment confirmation.
+Keep credentials and subscriber data out of module defaults and examples. The Pages output contains default content and definitions; `projects/` is outside the published Pages folder but remains visible to anyone with repository access, including the public when the repository is public.
