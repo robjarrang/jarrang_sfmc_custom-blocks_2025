@@ -254,6 +254,11 @@
       };
       if (child.type === 'url' && child.allowConversionTracking)
         next.defaultConversionTracking = C.conversionChoice(child, values, child.key);
+      if (child.type === 'url') {
+        const options = C.linkOptionsChoice(child, values, child.key);
+        for (const [attr, allow, setting] of C.linkAttributes)
+          if (child[allow]) next[setting] = options[attr];
+      }
       replacements.set(alias + '.' + child.key, next.key);
       promoted.push(next);
       draft.fields.push(next);

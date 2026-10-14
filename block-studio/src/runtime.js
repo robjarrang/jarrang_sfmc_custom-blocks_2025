@@ -256,6 +256,8 @@
       );
       if (metadata.studio?.values?.[C.conversionKey] !== undefined)
         next[C.conversionKey] = C.conversionData(metadata.studio.values[C.conversionKey]);
+      if (metadata.studio?.values?.[C.linkOptionsKey] !== undefined)
+        next[C.linkOptionsKey] = C.linkOptionsData(metadata.studio.values[C.linkOptionsKey]);
     } catch (error) {
       fail(
         'The saved field data is invalid. Restore valid block data before editing. ' +

@@ -67,6 +67,10 @@
     if (!['url', 'richtext'].includes(type)) {
       delete f.allowConversionTracking;
       delete f.defaultConversionTracking;
+      for (const [, allow, setting] of C.linkAttributes) {
+        delete f[allow];
+        delete f[setting];
+      }
     }
     if (type === 'list') {
       f.itemFields ||= [
@@ -437,7 +441,7 @@
         );
       if (f.type === 'list') return;
       if (['url', 'richtext'].includes(f.type)) {
-        const settings = disclosure(parent, 'Conversion tracking'),
+        const settings = disclosure(parent, 'Link options'),
           allow = el('input'),
           enabled = el('label', undefined, 'conversion-option'),
           starting = el('label', undefined, 'conversion-option'),
@@ -459,6 +463,28 @@
           refreshTracking();
           changed();
         };
+        for (const [, permission, setting, caption] of C.linkAttributes) {
+          const label = el('label', undefined, 'conversion-option'),
+            checkbox = el('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = f[permission] === true;
+          label.append(checkbox, document.createTextNode('Allow clients to edit ' + caption));
+          settings.append(label);
+          const box = el('div');
+          box.hidden = !checkbox.checked;
+          input(box, 'Default ' + caption, f[setting] || '', (value) => {
+            f[setting] = value;
+            refreshTracking();
+            changed();
+          });
+          settings.append(box);
+          checkbox.onchange = () => {
+            f[permission] = checkbox.checked;
+            box.hidden = !checkbox.checked;
+            refreshTracking();
+            changed();
+          };
+        }
         settings.append(enabled, starting);
       }
       if (f.type === 'richtext') {
@@ -736,10 +762,11 @@
               row[v] = row[child.key];
               delete row[child.key];
             }
-            if (Object.hasOwn(row[C.conversionKey] || {}, child.key)) {
-              row[C.conversionKey][v] = row[C.conversionKey][child.key];
-              delete row[C.conversionKey][child.key];
-            }
+            for (const map of [C.conversionKey, C.linkOptionsKey])
+              if (Object.hasOwn(row[map] || {}, child.key)) {
+                row[map][v] = row[map][child.key];
+                delete row[map][child.key];
+              }
           });
           child.key = v;
         };

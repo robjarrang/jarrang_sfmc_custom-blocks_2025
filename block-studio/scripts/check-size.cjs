@@ -8,9 +8,9 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'src/export-assets.js'), 'utf8'), context);
 const assets = context.window.EXPORT_ASSETS;
 const limits = {
-  // Conversion choices add about 5 KB of shared code, with no additional requests or dependencies.
-  'runtime.bundle.js': 70000,
-  'runtime.rich.bundle.js': 90000,
+  // Optional Title/Alias controls add about 5 KB shared with conversion settings; no new requests or dependencies.
+  'runtime.bundle.js': 72000,
+  'runtime.rich.bundle.js': 94000,
   'runtime.bundle.css': 11000,
 };
 let failed = false;

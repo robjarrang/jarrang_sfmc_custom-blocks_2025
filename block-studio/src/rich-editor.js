@@ -407,6 +407,18 @@
         existing?.getAttribute('href') || '',
       );
       destination.placeholder = 'https://example.com/';
+      const options = Object.fromEntries(
+        C.linkAttributes.map(([attr, , setting]) => [
+          attr,
+          existing ? existing.getAttribute(attr) || '' : field[setting] || '',
+        ]),
+      );
+      const linkParent = root.BlockControls.linkOptions(
+        panel,
+        field,
+        options,
+        (name, text) => (options[name] = text),
+      );
       let conversion;
       if (field.allowConversionTracking === true) {
         const label = document.createElement('label');
@@ -420,9 +432,14 @@
         available();
         destination.addEventListener('input', available);
         label.append(conversion, document.createTextNode('Conversion Tracking Link'));
-        panel.append(label);
+        linkParent.append(label);
       }
       const track = (anchor, href) => {
+        for (const [attr, allow] of C.linkAttributes) {
+          if (field[allow] !== true) continue;
+          if (options[attr]) anchor.setAttribute(attr, options[attr]);
+          else anchor.removeAttribute(attr);
+        }
         if (conversion?.checked && C.webLink(href)) anchor.setAttribute('conversion', 'true');
         else anchor.removeAttribute('conversion');
       };

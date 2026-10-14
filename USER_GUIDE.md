@@ -1,6 +1,6 @@
 # Jarrang Block Studio: internal user guide
 
-For Jarrang colleagues creating and maintaining SFMC custom blocks. Reviewed against Studio 1.26.0 on 14 October 2026.
+For Jarrang colleagues creating and maintaining SFMC custom blocks. Reviewed against Studio 1.27.0 on 14 October 2026.
 
 Studio turns one coded email module into one draggable SFMC block. You choose the content clients can edit, test their controls and save the files into your local repository. Tower commits and pushes those files; GitHub Pages hosts them.
 
@@ -110,11 +110,16 @@ In the field settings:
 
 Hiding a toolbar tool does not automatically strip existing formatting. A field already inside a button or link cannot add a nested link; edit the separate destination field. Keep list tools off for fields inside headings or links. Use **Test** to check the final permitted toolbar.
 
-### Conversion tracking
+### Link options
 
-For a Link field, expand **Conversion tracking** in **Set up** and enable **Allow clients to mark conversion links**. Leave **Enabled for new links by default** unchecked unless tracking should start on. The setting also works for repeating item links and links created in Formatted text. Save the field, test the checkbox in **Test**, then save the module.
+For a Link or Formatted text field, expand **Link options** in **Set up**. Enable **Allow clients to edit Title** and/or **Allow clients to edit Tracking Alias** and set optional defaults. Title supplies descriptive hover text where supported; Tracking Alias supplies an SFMC reporting name, for example `congress_registration`. Neither changes the visible link text. Leave defaults blank when not needed.
 
-The SFMC user sees **Conversion Tracking Link** beside the destination, or inside the formatted-text link dialogue. It applies to web links and inserts `conversion="true"` into the rendered anchor. Mail, telephone and in-email anchor links do not use it. Both ESC suites expose the option and start unchecked.
+In **Test** and SFMC, expand **Link options** below the destination, or inside the formatted-text link dialogue. Settings are saved with that link; repeating items keep their own values. Clearing an input removes that attribute. Existing formatted-text links retain their own Title and Tracking Alias when reopened; defaults apply to newly inserted links. Both ESC suites expose the optional inputs with blank defaults.
+
+
+For a Link field, expand **Link options** in **Set up** and enable **Allow clients to mark conversion links**. Leave **Enabled for new links by default** unchecked unless tracking should start on. The setting also works for repeating item links and links created in Formatted text. Save the field, test the checkbox in **Test**, then save the module.
+
+The SFMC user sees **Conversion Tracking Link** under **Link options**, below the destination or inside the formatted-text link dialogue. It applies to web links and inserts `conversion="true"` into the rendered anchor. Mail, telephone and in-email anchor links do not use it. Both ESC suites expose the option and start unchecked.
 
 For a published module update, deploy through Tower as usual and check an existing saved instance as well as a new block. The checkbox marks the email link; ESC's website conversion tracking must also remain in place. A real test send and conversion are needed to verify the complete journey.
 

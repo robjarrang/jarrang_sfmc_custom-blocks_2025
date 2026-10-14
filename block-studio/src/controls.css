@@ -270,3 +270,19 @@ input.toggle-switch:checked:after {
 .starting-richtext .trial-field > label {
   margin: 14px 0 8px;
 }
+
+.link-options {
+  margin-top: 8px;
+}
+.link-options > summary {
+  cursor: pointer;
+  font-size: 13px;
+}
+.link-options > label:not(.conversion-option) {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 13px;
+}
+.link-options > .control {
+  width: 100%;
+}

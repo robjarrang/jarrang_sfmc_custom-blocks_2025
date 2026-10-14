@@ -1,3 +1,15 @@
+# Link options release 1.27.0
+
+Added optional Title and Tracking Alias inputs in a shared, collapsed Link options section with Conversion Tracking Link. The same UI serves URL controls and formatted-text link dialogues. Authoring settings expose permissions and defaults; repeating item values keep their own options. URL values remain strings and the additional metadata map is validated separately.
+
+All 255 automated checks pass, including nine new regressions for source preservation, escaping, independent/default/cleared values, nested loops, author controls, rich-text sanitisation and fixed styles, duplication/single-item conversion, and SDK reopen/save. Existing conversion coverage also passes. Both ESC templates reopen with 40 matching generated pages and icon pairs. All 40 default HTML outputs remain byte-identical when Title/Alias inputs are blank. Against 1.26.0, module fragments, AMPscript, existing field schemas/values, identities, slugs/releases, all 80 supplied PNGs and all six historical runtime folders are preserved. Only compatible optional settings are added to existing fields.
+
+The current runtime is runtime-05578b8657d067cb. Standard JS is 70,840 raw bytes, rich JS 92,024 and CSS 10,732. This adds about 4.9 KB of shared raw JavaScript, with no new dependencies or requests. Payload guardrails were deliberately reviewed at 72,000 / 94,000 bytes for the JS bundles; CSS remains 11,000. Formatting and local documentation links pass. The updated five-page client guide was rendered and visually checked.
+
+Verification uses DOM/SDK simulations and generated-file comparisons. No live-browser, SFMC reporting, send/click/conversion or email-client certification is claimed; no deployment was performed. Deploy updated pages and the new runtime together through Tower, then check a saved and new SFMC block and actual link aliases in reporting.
+
+---
+
 # Conversion tracking release 1.26.0
 
 Added optional conversion controls for URL fields, repeating item links and formatted-text links, with authoring settings and saved-value compatibility. URL strings and field identities remain unchanged; separate boolean choices produce only the anchor conversion attribute. Unsupported partial connections and competing template conversion logic are blocked. Both ESC suites expose the checkbox and default it off.

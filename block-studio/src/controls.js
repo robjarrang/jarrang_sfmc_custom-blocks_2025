@@ -1,6 +1,32 @@
 (function (root) {
   'use strict';
   const clone = (value) => JSON.parse(JSON.stringify(value));
+  let linkSerial = 0;
+  // Shared by URL fields and the formatted-text link dialogue.
+  function linkOptions(parent, field, initial, onChange) {
+    const C = root.BlockCore;
+    const attributes = C.linkAttributes.filter(([, allow]) => field[allow] === true);
+    if (!attributes.length && field.allowConversionTracking !== true) return parent;
+    const details = document.createElement('details'),
+      summary = document.createElement('summary');
+    details.className = 'link-options';
+    summary.textContent = 'Link options';
+    details.append(summary);
+    for (const [attr, , , caption] of attributes) {
+      const label = document.createElement('label'),
+        input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'control';
+      input.id = 'link-option-' + ++linkSerial;
+      label.htmlFor = input.id;
+      label.textContent = caption;
+      input.value = initial[attr] || '';
+      input.oninput = () => onChange(attr, input.value);
+      details.append(label, input);
+    }
+    parent.append(details);
+    return details;
+  }
   function mount(container, fields, values, onChange, options = {}) {
     const C = root.BlockCore,
       refs = new Map(),
@@ -180,6 +206,25 @@
         wrapper.append(input);
         group.append(wrapper);
       } else group.append(input);
+      let linkParent = group;
+      if (field.type === 'url') {
+        const choice = C.linkOptionsChoice(field, values);
+        linkParent = linkOptions(group, field, choice, (name, text) => {
+          values[C.linkOptionsKey] = {
+            ...C.linkOptionsData(values[C.linkOptionsKey]),
+            [field.id]: { ...choice, [name]: text },
+          };
+          choice[name] = text;
+          onChange(field, values[field.id]);
+        });
+        if (field.allowLinkTitle || field.allowTrackingAlias)
+          values[C.linkOptionsKey] = {
+            ...C.linkOptionsData(values[C.linkOptionsKey]),
+            [field.id]: choice,
+          };
+      }
+      if (linkParent !== group && options.onBlur)
+        linkParent.addEventListener('focusout', options.onBlur);
       if (field.type === 'url' && field.allowConversionTracking === true) {
         const option = document.createElement('label'),
           check = document.createElement('input');
@@ -204,7 +249,7 @@
           onChange(field, values[field.id]);
         };
         option.append(check, document.createTextNode('Conversion Tracking Link'));
-        group.append(option);
+        linkParent.append(option);
       }
       if (field.help) {
         const help = document.createElement('p');
@@ -218,5 +263,5 @@
     }
     return refs;
   }
-  root.BlockControls = { mount };
+  root.BlockControls = { mount, linkOptions };
 })(window);

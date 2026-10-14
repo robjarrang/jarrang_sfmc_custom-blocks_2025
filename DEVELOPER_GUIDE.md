@@ -1,6 +1,6 @@
 # Jarrang Block Studio: technical documentation
 
-For developers maintaining Studio, its generated SFMC editors and client module projects. Reviewed against Studio 1.26.0 on 14 October 2026. For day-to-day tasks, use the [internal user guide](USER_GUIDE.md).
+For developers maintaining Studio, its generated SFMC editors and client module projects. Reviewed against Studio 1.27.0 on 14 October 2026. For day-to-day tasks, use the [internal user guide](USER_GUIDE.md).
 
 ## Contents
 
@@ -107,6 +107,14 @@ Template mode is explicit. Applying advanced template code can rebuild mapped fi
 The shared rich editor supports inline emphasis, superscript/subscript, colour spans, links and semantic lists. The sanitiser restricts markup/styles and validates destinations; toolbar visibility is a UI policy, not a substitute for sanitisation. Disabling a tool does not retroactively remove all matching markup. Link appearance is enforced from the field definition, including repeated fields, rather than saved as a client-editable style option.
 
 Lists inside paragraph fields are rendered as valid sibling lists with inherited text styling. Lists inside headings or links need restrictions. Client-specific list spacing and master-template CSS remain separate from the block editor.
+
+### Link options
+
+`allowLinkTitle` and `allowTrackingAlias` expose optional text inputs. `defaultLinkTitle` and `defaultTrackingAlias` provide starting values. URL values remain strings; `values.__studioLinkOptions` stores `{title, alias}` strings by field ID, with an equivalent map keyed by item key in each repeated row. Empty strings explicitly remove attributes. Missing legacy metadata uses configured defaults, or preserves authored attributes when no default exists. Mounted controls snapshot their resolved defaults. Validate the map with `linkOptionsData`; its key is reserved for metadata.
+
+The existing anchor-range renderer also patches `title` and `alias`. It escapes changed values, preserves unchanged source bytes and refuses competing attribute mappings/template expressions through `conversionProblems`. Complete href mappings and loop aliases follow the same rules as conversion tracking. `cleanRich` retains safe Title/Alias strings while removing unsupported attributes and enforcing developer link styles. Rich-text defaults apply only to newly inserted links; existing link attributes are reopened as saved. Permissions hide the inputs without stripping authored attributes.
+
+Use an optional static alias to distinguish links in SFMC reporting. See [Salesforce link aliases](https://developer.salesforce.com/docs/marketing/marketing-cloud-ampscript/guide/mc-ampscript-guide-language-basics-dynamic-link-aliases.html). Title is advisory hover text, not a replacement for clear visible link text or image alt text. Check actual aliases in a real SFMC send/report before signing off tracking.
 
 ### Conversion tracking
 

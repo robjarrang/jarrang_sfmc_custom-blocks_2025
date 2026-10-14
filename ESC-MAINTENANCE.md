@@ -1,6 +1,6 @@
 # ESC modules: internal maintenance handover
 
-For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.26.0. This is an internal supplement to the [user guide](USER_GUIDE.md), not a client-facing manual.
+For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.27.0. This is an internal supplement to the [user guide](USER_GUIDE.md), not a client-facing manual.
 
 ## Open and make a change
 
@@ -51,9 +51,12 @@ The separately supplied master-template changes include:
 
 The user confirmed the Outlook centring and Apple Mail seam fixes on their proofs. The later View online Outlook background change still needs a fresh Outlook proof; automated structure checks do not establish its visual result. Do not infer that every master-template change is included merely by saving the module package.
 
-## Conversion tracking
+## Link options and conversion tracking
 
-URL controls and supported formatted-text link dialogues now include **Conversion Tracking Link**. It starts unchecked for all ESC defaults and can be chosen separately for links within repeating items. Ticking it adds `conversion="true"` to the relevant generated web-link anchor; it does not change the destination or fixed link styling. Existing field IDs and saved URL strings remain compatible.
+Expand **Link options** below a destination, or inside a formatted-text link dialogue. **Title** and **Tracking Alias** are optional and start blank in the ESC suite. Title adds advisory text where supported; Tracking Alias names the link in SFMC reporting. Each repeated item stores its own options. Use field **Set up → Link options** to configure defaults or hide either input. Existing saved URLs and link styling remain unchanged.
+
+
+URL controls and supported formatted-text link dialogues include **Conversion Tracking Link** under **Link options**. It starts unchecked for all ESC defaults and can be chosen separately for links within repeating items. Ticking it adds `conversion="true"` to the relevant generated web-link anchor; it does not change the destination or fixed link styling. Existing field IDs and saved URL strings remain compatible.
 
 Deploy the updated module pages and their new runtime folder together. Reopen a block in SFMC to use the updated controls; existing stored email HTML is not regenerated simply by publishing the files. Check a newly inserted block and a saved instance. For Congress registrations and Membership links, verify a real send/click carries SFMC's conversion parameters and a completed website conversion reaches the existing reporting setup. DOM/SDK tests cannot establish that final website result.
 

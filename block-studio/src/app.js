@@ -954,6 +954,7 @@
     else if (changedId !== null) {
       delete trialValues[changedId];
       delete trialValues[C.conversionKey]?.[changedId];
+      delete trialValues[C.linkOptionsKey]?.[changedId];
     }
     persist();
     renderSidebar();

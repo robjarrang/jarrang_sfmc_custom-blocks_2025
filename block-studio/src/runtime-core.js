@@ -182,6 +182,35 @@
   }
   // URL values remain strings. Optional conversion choices live beside them, including in list rows.
   const conversionKey = '__studioConversions';
+  const linkOptionsKey = '__studioLinkOptions';
+  const linkAttributes = [
+    ['title', 'allowLinkTitle', 'defaultLinkTitle', 'Title'],
+    ['alias', 'allowTrackingAlias', 'defaultTrackingAlias', 'Tracking Alias'],
+  ];
+  function linkOptionsData(value) {
+    if (value === undefined) return {};
+    if (!value || typeof value !== 'object' || Array.isArray(value))
+      throw Error('The saved link options are invalid.');
+    const entries = Object.entries(value).map(([key, options]) => {
+      if (
+        !options ||
+        typeof options !== 'object' ||
+        Array.isArray(options) ||
+        Object.entries(options).some(
+          ([name, text]) => !['title', 'alias'].includes(name) || typeof text !== 'string',
+        )
+      )
+        throw Error('Title and Tracking Alias must be text.');
+      return [key, { ...options }];
+    });
+    return Object.fromEntries(entries);
+  }
+  function linkOptionsChoice(field, values, key = field.id) {
+    const saved = linkOptionsData(values?.[linkOptionsKey])[key] || {};
+    return Object.fromEntries(
+      linkAttributes.map(([attr, , setting]) => [attr, saved[attr] ?? field[setting] ?? '']),
+    );
+  }
   function conversionChoice(field, values, key = field.id) {
     const choice = values?.[conversionKey]?.[key];
     if (choice !== undefined && typeof choice !== 'boolean')
@@ -292,6 +321,10 @@
         const a = doc.createElement('a');
         a.setAttribute('href', href);
         a.setAttribute('style', linkStyleCSS(field));
+        for (const [attr] of linkAttributes) {
+          const text = node.getAttribute(attr);
+          if (text) a.setAttribute(attr, text);
+        }
         if (
           field.allowConversionTracking === true &&
           node.getAttribute('conversion')?.toLowerCase() === 'true' &&
@@ -367,6 +400,7 @@
           return 'Item ' + (i + 1) + ' must be an object of field values.';
         try {
           conversionData(row[conversionKey]);
+          linkOptionsData(row[linkOptionsKey]);
         } catch (e) {
           return 'Item ' + (i + 1) + ': ' + e.message;
         }
@@ -611,6 +645,7 @@
       choices = new WeakMap(),
       definitions = Object.fromEntries(module.fields.map((f) => [f.key || f.id, f]));
     conversionData(values[conversionKey]);
+    linkOptionsData(values[linkOptionsKey]);
     scope.block_id = options.blockId || 'bs_preview';
     for (const field of module.fields.filter((f) => f.enabled)) {
       const value = Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
@@ -676,7 +711,11 @@
       }
     }
     // Work on source ranges, rather than serialising the email through a DOM. AMPscript and MSO stay opaque.
-    const tracks = (f) => f.allowConversionTracking || f.itemFields?.some(tracks);
+    const tracks = (f) =>
+      f.allowConversionTracking ||
+      f.allowLinkTitle ||
+      f.allowTrackingAlias ||
+      f.itemFields?.some(tracks);
     const trackingFields = module.fields.some((f) => f.enabled && tracks(f));
     if (trackingFields)
       for (const node of parse(module.source).nodes.filter((n) => n.tag === 'a')) {
@@ -692,38 +731,54 @@
           module.templateMode &&
           href.value.trim().match(/^{{\s*([A-Za-z_]\w*(?:\.\w+)*)(?:\s*\|\s*escape)?\s*}}$/)?.[1];
         if (!mapped && !path) continue;
-        const attr = node.attrs.find((a) => a.name === 'conversion');
-        // A developer's dynamic conversion expression owns its value; do not silently override it.
-        if (attr && dynamic(attr.value)) continue;
-        const prefix =
-          attr && module.source.slice(node.start, attr.start).match(/\s+conversion\s*=\s*["']?$/i);
-        const start = prefix ? node.start + prefix.index : node.startEnd - 1;
-        const end = prefix ? attr.end + (attr.quoted ? 1 : 0) : start;
-        const original = module.source.slice(start, end);
-        const value = (context = scope) => {
-          let field = mapped,
-            row = values,
-            key = mapped?.id;
-          if (!field) {
-            const parts = path.split('.');
-            key = parts.pop();
-            let owner = context;
-            for (const part of parts) owner = L.lookup(part, owner);
-            field = parts.length ? owners.get(owner)?.[key] : definitions[key];
-            row = parts.length ? choices.get(owner) : values;
-            if (!parts.length) key = field?.id;
-          }
-          if (field?.type !== 'url' || field.allowConversionTracking !== true) return original;
-          const destination = mapped
-            ? Object.hasOwn(values, mapped.id)
-              ? values[mapped.id]
-              : mapped.defaultValue
-            : L.lookup(path, context);
-          return conversionChoice(field, row, key) && webLink(destination)
-            ? ' conversion="true"'
-            : '';
-        };
-        patches.push({ start, end, value });
+        for (const [name, allow, setting] of [
+          ['conversion', 'allowConversionTracking'],
+          ...linkAttributes,
+        ]) {
+          const attr = node.attrs.find((a) => a.name === name);
+          // A developer's dynamic conversion expression owns its value; do not silently override it.
+          if (attr && dynamic(attr.value)) continue;
+          const prefix =
+            attr &&
+            module.source
+              .slice(node.start, attr.start)
+              .match(new RegExp('\\s+' + name + '\\s*=\\s*["\']?$', 'i'));
+          const start = prefix
+            ? node.start + prefix.index
+            : node.startEnd - (module.source[node.startEnd - 2] === '/' ? 2 : 1);
+          const end = prefix ? attr.end + (attr.quoted ? 1 : 0) : start;
+          const original = module.source.slice(start, end);
+          const value = (context = scope) => {
+            let field = mapped,
+              row = values,
+              key = mapped?.id;
+            if (!field) {
+              const parts = path.split('.');
+              key = parts.pop();
+              let owner = context;
+              for (const part of parts) owner = L.lookup(part, owner);
+              field = parts.length ? owners.get(owner)?.[key] : definitions[key];
+              row = parts.length ? choices.get(owner) : values;
+              if (!parts.length) key = field?.id;
+            }
+            if (field?.type !== 'url' || field[allow] !== true) return original;
+            if (name !== 'conversion') {
+              const saved = linkOptionsData(row?.[linkOptionsKey])[key];
+              const text = saved?.[name] ?? field[setting] ?? (attr ? decode(attr.value) : '');
+              if (attr && text === decode(attr.value)) return original;
+              return text ? ' ' + name + '="' + escape(text) + '"' : '';
+            }
+            const destination = mapped
+              ? Object.hasOwn(values, mapped.id)
+                ? values[mapped.id]
+                : mapped.defaultValue
+              : L.lookup(path, context);
+            return conversionChoice(field, row, key) && webLink(destination)
+              ? ' conversion="true"'
+              : '';
+          };
+          patches.push({ start, end, value });
+        }
       }
     patches.sort((a, b) => a.start - b.start);
     for (let i = 1; i < patches.length; i++)
@@ -767,6 +822,10 @@
     conversionKey,
     conversionChoice,
     conversionData,
+    linkOptionsKey,
+    linkAttributes,
+    linkOptionsData,
+    linkOptionsChoice,
     webLink,
     richLinksAllowed,
     cleanRich,

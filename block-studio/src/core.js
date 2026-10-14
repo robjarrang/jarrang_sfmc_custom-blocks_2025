@@ -14,6 +14,10 @@
     conversionKey,
     conversionChoice,
     conversionData,
+    linkOptionsKey,
+    linkAttributes,
+    linkOptionsData,
+    linkOptionsChoice,
     webLink,
     richLinksAllowed,
     cleanRich,
@@ -84,6 +88,10 @@
                 targets.push({ ...attr, nodeId: hidden.id, kind: 'attribute' });
             }
           add('Link destination', 'url', decode(href.value), targets, {
+            allowLinkTitle: !dynamic(targetAttr('title')?.value || ''),
+            allowTrackingAlias: !dynamic(targetAttr('alias')?.value || ''),
+            defaultLinkTitle: decode(targetAttr('title')?.value || ''),
+            defaultTrackingAlias: decode(targetAttr('alias')?.value || ''),
             allowConversionTracking: true,
             defaultConversionTracking: targetAttr('conversion')?.value.toLowerCase() === 'true',
           });
@@ -119,7 +127,12 @@
             kind: 'content',
           },
         ],
-        { allowLinks: node.tag !== 'a' },
+        {
+          allowLinks: node.tag !== 'a',
+          ...(formatted && node.tag !== 'a'
+            ? { allowLinkTitle: true, allowTrackingAlias: true }
+            : {}),
+        },
       );
       taken.push(node);
     }
@@ -341,8 +354,8 @@
   }
   function fieldProblems(field) {
     const errors = [];
-    if (field.key === conversionKey)
-      errors.push('That key is reserved for conversion tracking choices. Choose another key.');
+    if ([conversionKey, linkOptionsKey].includes(field.key))
+      errors.push('That key is reserved for link settings. Choose another key.');
     if (
       field.allowConversionTracking !== undefined &&
       typeof field.allowConversionTracking !== 'boolean'
@@ -355,6 +368,14 @@
       errors.push('Choose a valid starting conversion tracking setting.');
     if (field.allowConversionTracking && !['url', 'richtext'].includes(field.type))
       errors.push('Conversion tracking is available for link and formatted-text fields.');
+    for (const [, allow, setting, caption] of linkAttributes) {
+      if (field[allow] !== undefined && typeof field[allow] !== 'boolean')
+        errors.push('Choose whether ' + caption + ' is available.');
+      if (field[setting] !== undefined && typeof field[setting] !== 'string')
+        errors.push(caption + ' must be text.');
+      if (field[allow] && !['url', 'richtext'].includes(field.type))
+        errors.push(caption + ' is available for link and formatted-text fields.');
+    }
     if (field.type === 'richtext' && field.linkStyle) {
       const s = field.linkStyle;
       if (s.colour !== 'inherit' && !normaliseColour(s.colour))
@@ -411,13 +432,36 @@
     const connected = new Set(),
       errors = [];
     function connect(field, node) {
-      if (field?.type !== 'url' || field.allowConversionTracking !== true) return;
+      if (
+        field?.type !== 'url' ||
+        !(field.allowConversionTracking || field.allowLinkTitle || field.allowTrackingAlias)
+      )
+        return;
       connected.add(field);
-      if (node.attrs.some((a) => a.name === 'conversion' && dynamic(a.value)))
-        errors.push(
-          field.label +
-            ': Conversion tracking is already controlled by template logic. Keep one control for this setting.',
-        );
+      for (const [name, allow, , caption] of [
+        ['conversion', 'allowConversionTracking', '', 'Conversion tracking'],
+        ...linkAttributes,
+      ])
+        if (
+          field[allow] &&
+          node.attrs.some(
+            (a) =>
+              a.name === name &&
+              (dynamic(a.value) ||
+                module.fields.some(
+                  (f) =>
+                    f.enabled &&
+                    f !== field &&
+                    f.targets.some((t) => t.start === a.start && t.end === a.end),
+                )),
+          )
+        )
+          errors.push(
+            field.label +
+              ': ' +
+              caption +
+              ' is already controlled by another field or template logic. Keep one control for this setting.',
+          );
     }
     const fields = module.fields.filter((f) => f.enabled);
     for (const field of fields)
@@ -469,10 +513,14 @@
       }
     }
     function check(field) {
-      if (field.type === 'url' && field.allowConversionTracking === true && !connected.has(field))
+      if (
+        field.type === 'url' &&
+        (field.allowConversionTracking || field.allowLinkTitle || field.allowTrackingAlias) &&
+        !connected.has(field)
+      )
         errors.push(
           field.label +
-            ': Connect this link field to a complete anchor href before allowing conversion tracking.',
+            ': Connect this link field to a complete anchor href before allowing link options.',
         );
       for (const child of field.itemFields || []) check(child);
     }
@@ -803,7 +851,7 @@
       for (const f of m.fields) {
         if (
           typeof f.id !== 'string' ||
-          f.id === conversionKey ||
+          [conversionKey, linkOptionsKey].includes(f.id) ||
           ids.has(f.id) ||
           ![
             'text',
@@ -871,6 +919,10 @@
     conversionKey,
     conversionChoice,
     conversionData,
+    linkOptionsKey,
+    linkAttributes,
+    linkOptionsData,
+    linkOptionsChoice,
     webLink,
     richLinksAllowed,
     assertProject,
