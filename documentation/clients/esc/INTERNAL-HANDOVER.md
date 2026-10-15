@@ -1,6 +1,8 @@
 # ESC modules: internal maintenance handover
 
-For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.28.0. This is an internal supplement to the [user guide](USER_GUIDE.md), not a client-facing manual.
+**Audience: Jarrang developers. Not for client distribution.**
+
+For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.28.0. This is an internal supplement to the [user guide](../../internal/USER_GUIDE.md), not a client-facing manual.
 
 ## Open and make a change
 
@@ -10,7 +12,7 @@ For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 again
 4. Apply the edit, test the affected behaviour and choose **Save**. Use **Save template** for shared editor appearance changes.
 5. Review, commit and push in Tower. Check the hosted editor and new/existing instances in SFMC.
 
-If the repository import reports a project/page mismatch, reconcile that pair before editing. Do not load a stale bundled snapshot over a newer project. Current endpoints are listed in [Newsletter publishing notes](projects/esc/newsletter-PUBLISHING.md) and [Congress publishing notes](projects/esc/congress-PUBLISHING.md).
+If the repository import reports a project/page mismatch, reconcile that pair before editing. Do not load a stale bundled snapshot over a newer project. Current endpoints are listed in [Newsletter publishing notes](../../../projects/esc/newsletter-PUBLISHING.md) and [Congress publishing notes](../../../projects/esc/congress-PUBLISHING.md).
 
 ## Preserve existing content
 
@@ -70,10 +72,14 @@ For each affected module, verify:
 4. The email uses the approved master template and resolves AMPscript in subscriber preview/test sends.
 5. The affected desktop/mobile, Windows Outlook and dark-mode layouts pass the team's client checks. For Lead Editorial, include image centring, the column seam, organiser visibility and badge width.
 
-Record the environment and outcome, not just “preview passed”. [ESC-COMPATIBILITY.md](ESC-COMPATIBILITY.md) records an earlier independent comparison; it is not certification of subsequent email-client changes. [VALIDATION.md](block-studio/VALIDATION.md) records later automated work and its limits.
+Record the environment and outcome, not just “preview passed”. Follow the [technical verification procedure](../../internal/DEVELOPER_GUIDE.md#build-and-verification) and record results with the release.
 
-For recovery and deployment rollback, follow the [user guide](USER_GUIDE.md#recover-a-mistake). Restore matching project and generated files together; keep old runtime directories and existing endpoints.
+For recovery and deployment rollback, follow the [user guide](../../internal/USER_GUIDE.md#recover-a-mistake). Restore matching project and generated files together; keep old runtime directories and existing endpoints.
 
 ## Shared email settings (1.28.0)
 
-The additional **ESC / Email settings** suite contains one settings-only block for both Newsletter and Congress. It exposes Brand and Footer logo, with no category or header-prefix control. All 31 supported brand keys are listed, with Council and Working Group labels. The original 40 modules remain unchanged. Follow [the integration guide](integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
+The additional **ESC / Email settings** suite contains one settings-only block for both Newsletter and Congress. It exposes Brand and Footer logo, with no category or header-prefix control. All 31 supported brand keys are listed, with Council and Working Group labels. The original 40 modules remain unchanged. Follow [the integration guide](../../../integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
+
+## Supplied module inventory
+
+[ESC module spreadsheet](reference/ESC-Block-Studio-Modules.xlsx) is a preserved reference snapshot supplied with the repository. It predates the shared Email settings block and some later field changes. Use the current Studio projects and generated publishing notes for the maintained module/field definitions and URLs; do not treat this spreadsheet as a second source of truth.

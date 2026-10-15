@@ -98,7 +98,7 @@ Unchanged mapped values generally retain their source bytes. Changed plain text 
 
 ### Template logic
 
-Use [TEMPLATE-SYNTAX.md](block-studio/TEMPLATE-SYNTAX.md) as the language reference. The implementation is a defined Liquid-style subset, not Liquid or JavaScript. It supports conditions, repeated items and scoped loop properties, with `escape` and `richtext` output filters. No raw HTML filter is provided.
+Use [TEMPLATE-SYNTAX.md](TEMPLATE-SYNTAX.md) as the language reference. The implementation is a defined Liquid-style subset, not Liquid or JavaScript. It supports conditions, repeated items and scoped loop properties, with `escape` and `richtext` output filters. No raw HTML filter is provided.
 
 Template mode is explicit. Applying advanced template code can rebuild mapped fields; named controls survive and referenced mappings can be promoted to named controls. Review resulting connections and defaults. Automatic single/repeating conversion has narrower supported structures than the renderer. A blocked conversion is not evidence that the underlying template language lacks the feature.
 
@@ -160,7 +160,7 @@ Compatibility checks in `maintenance.js` reject missing/retyped controls, remove
 4. If project JSON changed, rebuild Studio to refresh its bundled starting snapshot. The snapshot must not overwrite existing browser drafts automatically.
 5. Commit source, relevant generated files and documentation together. Use Tower and branch-based Pages publishing.
 
-For programmatic generation, read [AGENTS.md](AGENTS.md) and reuse exporter/maintenance functions in a DOM-capable harness. Do not copy wrappers by hand or approximate exporter safety checks. Rich-text sanitisation needs a DOM; generated PNGs need a real canvas implementation or preserved supplied PNGs.
+For programmatic generation, read [AGENTS.md](../../AGENTS.md) and reuse exporter/maintenance functions in a DOM-capable harness. Do not copy wrappers by hand or approximate exporter safety checks. Rich-text sanitisation needs a DOM; generated PNGs need a real canvas implementation or preserved supplied PNGs.
 
 ### Roll back
 
@@ -181,7 +181,7 @@ Use a supported Node version meeting dependency requirements; the existing valid
 
 `npm test` checks JavaScript syntax, runtime size budgets and non-browser test suites, including Happy DOM/SDK simulations. `npm run check:size --prefix block-studio` reports payload budgets separately. These are project guardrails, not proof of browser speed or email compatibility.
 
-`npm run test:browser --prefix block-studio` is a separate Playwright suite. It requires an available Playwright installation and browser; these are not provided by the project's declared development dependencies. The runner accepts `PLAYWRIGHT_MODULE` and `CHROMIUM_EXECUTABLE` overrides. Do not report that suite as passing unless actually run. Older excluded browser suites are historical coverage, not current release evidence.
+`npm run test:browser --prefix block-studio` is a separate Playwright suite. It requires an available Playwright installation and browser; these are not provided by the project's declared development dependencies. The runner accepts `PLAYWRIGHT_MODULE` and `CHROMIUM_EXECUTABLE` overrides. Do not report that suite as passing unless actually run. Older excluded browser suites are retained as historical test code, not current release evidence.
 
 | Change | Verification needed |
 | --- | --- |
@@ -190,13 +190,13 @@ Use a supported Node version meeting dependency requirements; the existing valid
 | Renderer/field logic or module source | Automated output/round-trip checks, saved-value cases, and SFMC plus relevant email-client checks. |
 | Repository save/export | Conflict, partial-write and rollback tests; inspect affected files and reopen the generated repository. |
 
-Before production use, the human release owner must check SFMC new/edit/close/reopen/duplicate behaviour, tracking/personalisation and test sends. DOM simulations cannot certify accessibility, browser layout, Outlook, Apple Mail or dark mode. Record which environment was actually used in [VALIDATION.md](block-studio/VALIDATION.md), including known gaps.
+Before production use, the human release owner must check SFMC new/edit/close/reopen/duplicate behaviour, tracking/personalisation and test sends. DOM simulations cannot certify accessibility, browser layout, Outlook, Apple Mail or dark mode. Record the tested environment, results and known gaps in the release commit or pull request. Keep outstanding checks with the release, rather than accumulating duplicate review documents.
 
 ## Troubleshooting and documentation maintenance
 
 For user-facing symptoms, see the [user guide's troubleshooting table](USER_GUIDE.md#resolve-a-problem). For a JSON/page mismatch, compare the exported snapshot, embedded `block-definition` and template appearance. For stale code, check the module's referenced hash and deployed files; rebuilding Studio alone will not change that reference.
 
-Keep two main entry points: USER_GUIDE for tasks and this file for implementation. Syntax, branding and ESC-specific notes are linked references. Review/checklist files are dated evidence, not alternate user manuals. Update a control's documentation in the same change as its label or behaviour, and update the publishing-note generator when changing deployment instructions. Prefer stable responsibilities over hard-coded test totals and byte counts.
+Keep two main entry points: USER_GUIDE for tasks and this file for implementation. Template syntax remains a focused reference; ESC-specific documentation lives under `documentation/clients/esc/`; installable AMPscript and template examples live under `integrations/esc/`. Hosting, branding and verification guidance are maintained here. Keep completed review narratives in release history rather than adding more repository documents. Update a control's documentation in the same change as its label or behaviour, and update the publishing-note generator when changing deployment instructions. Prefer stable responsibilities over hard-coded test totals and byte counts.
 
 This separation follows [Diátaxis](https://diataxis.fr/start-here/): task instructions should be easy to follow without requiring implementation reference. It is a documentation design approach, not a claim of completed usability testing.
 
@@ -224,4 +224,75 @@ Each variable/placeholder must match one enabled named dropdown's `key`. The fie
 
 The mode is included in exported definitions, repository consistency checks, undo state and publishing baselines. Changing the mode on an already published module requires a duplicate endpoint. Edit existing dropdown labels, choices and defaults through the normal field editor. Developer source edits must retain the restricted assignment form; this mode does not support arbitrary Liquid branches or repeaters.
 
-The shared ESC settings suite is documented in [ESC email settings integration](integrations/esc/email-settings/README.md). Its runtime adds approximately 2.8 KB of source without another dependency or request. The existing 40 module endpoints retain their previous runtime.
+The shared ESC settings suite is documented in [ESC email settings integration](../../integrations/esc/email-settings/README.md). Its runtime adds approximately 2.8 KB of source without another dependency or request. The existing 40 module endpoints retain their previous runtime.
+
+## Repository setup with Tower
+
+## One-time setup
+
+1. Put the supplied package in the team's local Git repository. If updating an existing checkout, merge files into their matching paths; retain other client folders and old runtime assets.
+2. Review, commit and push in Tower to the intended publishing branch.
+3. On GitHub, open **Settings → Pages**, choose **Deploy from a branch**, the intended branch and **/docs**, then save. The package is prebuilt; no custom Actions workflow is needed.
+4. After deployment, open the Pages site followed by `/studio/`.
+5. In Studio, open **Clients & templates → Manage templates → Repository settings** and enter the Pages site URL including its repository path, for example `https://your-team.github.io/custom-blocks/`. Do not append `/docs` or `/studio`.
+6. Choose **Open repository** and select the local repository root containing `docs/`, `projects/` and `block-studio/`. Grant access and load the intended template.
+
+**Result:** Studio reads and saves files in the same checkout Tower uses. Each module's **Module settings → Copy module URL** provides its endpoint.
+
+GitHub may show an automatically managed Pages deployment in Actions even with branch publishing. That does not require changing this setup to a custom Actions workflow. See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+## Normal publishing
+
+Pull in Tower, open/reload the repository in Studio, edit and test, then **Save** or **Save template**. Review, commit and push in Tower. Check deployment, the hosted endpoint and SFMC before client use. Register an endpoint only for a new block; compatible updates keep the existing endpoint.
+
+A save is local, not a commit or deployment. Browser drafts do not synchronise between colleagues. Coordinate work on the same template and reload after pulls. Studio checks for external changes rather than overwriting them.
+
+## ZIP fallback
+
+If folder writing is unavailable, use **Clients & templates → Manage templates → Download template ZIP** or **Download current module ZIP**. Extract outside the checkout and merge changed files into matching paths. Do not replace whole `docs/` or `projects/` folders in Finder. Use a template ZIP to refresh the complete catalogue.
+
+## Updating or rolling back Studio
+
+Follow the [technical release procedure](DEVELOPER_GUIDE.md#change-and-release-procedures). Keep editable projects, all required module paths and older runtime folders. Rebuild after changing source or bundled project snapshots. Re-saving modules intentionally adopts the current runtime; updating the central Studio by itself does not.
+
+For a rollback, revert the relevant commit in Tower, push, then reopen the repository in Studio. Restore matching editable and generated files together. An endpoint move is not automatic migration: retain the previous URL while it is used in SFMC.
+
+## Brand assets and styling
+
+## Studio identity
+
+The Jarrang styling follows the website reviewed on 16 September 2026:
+
+- Navy `#080043`, aqua `#59DBCA` and pale blue-grey `#EFF2FA`.
+- Neue Montreal regular (400) and medium (500) in Studio.
+- Rounded panels, pill-shaped primary actions and the Jarrang wordmark.
+
+`block-studio/src/brand-theme.css` is the maintained shared theme source. `block-studio/build.py` generates `block-studio/src/brand.css` with bundled WOFF2 fonts for Studio/catalogues. It separately generates `block-studio/src/runtime-brand.css` with the rules used by exported forms and system fonts, avoiding those embedded fonts in each SFMC runtime bundle. Do not edit either generated file directly.
+
+## Client editor appearance
+
+Template-level `editorTheme` controls the block form palette. `showEditorHeader` controls the Jarrang header and defaults on when absent. Both ESC templates disable it. Apply these settings through the exporter's theme/definition functions; do not hard-code branding by copying page wrappers. These settings do not alter the email's design or the wider SFMC application.
+
+## Assets and licensing
+
+The wordmark and Neue Montreal files were obtained from Jarrang's site for this internal tool. Font source filenames were `PPNeueMontreal-Regular.5e0546b4.woff2` and `PPNeueMontreal-Medium.8cc8aa34.woff2` under `https://www.jarrang.com/css/`. They are Jarrang brand assets, not covered by the SDK or Bootstrap Icons licences. Retain the supplied licence notices and confirm rights before repurposing brand assets elsewhere.
+
+Generated module icons use the bundled Bootstrap Icons symbols and a chosen background, with a contrasting foreground. Existing supplied PNG pairs can be retained unchanged. Rebuild after changing source assets; deliberately save/export affected modules to adopt changed runtime styling. Assets use `docs/shared-assets/runtime-<hash>/`; never replace an old hash directory with different content.
+
+## Maintenance principles and verification record
+
+Keep authoring code out of the exported runtime, include the rich-text bundle only where needed, and measure performance before introducing new dependencies or abstractions. Keep generated files reproducible from their maintained source. Runtime payload budgets are enforced by the test runner; changes to those budgets need a reason. Browser draft writes remain synchronous and multi-file repository saves are not atomic. These are deliberate limitations, not guarantees of unlimited workspace scale or crash recovery.
+
+Prioritise defects by data loss or incorrect saved output, then blocked tasks, then visual polish. Reproduce the fault, make a focused correction, and retain a regression for the observable behaviour. Include failure paths, saved-value compatibility, source offsets and partial-write recovery where relevant.
+
+On 15 October 2026, the automated suite passed 263 tests before this documentation-only cleanup. That run covers the current 31 brand choices, SDK save/reopen simulation, module definitions/icons, rendering and repository safeguards. This cleanup changes no application, project, generated editor or runtime bytes. It does not add live-browser, SFMC or email-client verification.
+
+For an independent comparison against a supplied ESC repository, retain the original ZIP outside the working repository and run:
+
+```sh
+node block-studio/scripts/verify-esc.cjs /path/to/original-repository.zip /path/to/results
+```
+
+The comparison uses the original runtime, checks rendered output and field-editor round trips, and records the baseline fingerprint. Historical 1.20.1/1.24.1 audits covered 40 modules and 6,728 cases; those results do not certify later changes. Run the comparison again for the release being assessed. Keep generated reports and comparison ZIPs outside the source tree.
+
+Before release, check the affected workflows in a real browser, including keyboard/zoom, rich-text selection, folder permissions and conflicting edits. In SFMC check new and saved instances, close/reopen, duplication, tracking, subscriber preview and test sends. Check affected mobile, Outlook and dark-mode layouts in the approved master template. The internal ESC handover records the specific outstanding checks.

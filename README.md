@@ -6,13 +6,13 @@ An internal tool for turning coded email modules into individual Salesforce Mark
 
 | I want to… | Start here |
 | --- | --- |
-| Create a block, change fields, fix HTML/CSS or save my work | [Internal user guide](USER_GUIDE.md) |
-| Maintain the code, build Studio or understand compatibility and releases | [Technical documentation](DEVELOPER_GUIDE.md) |
-| Set up GitHub Pages and Tower for the first time | [Repository setup](block-studio/TOWER-WORKFLOW.md) |
+| Create a block, change fields, fix HTML/CSS or save my work | [Internal user guide](documentation/internal/USER_GUIDE.md) |
+| Maintain the code, build Studio or understand compatibility and releases | [Technical documentation](documentation/internal/DEVELOPER_GUIDE.md) |
+| Set up GitHub Pages and Tower for the first time | [Repository setup](documentation/internal/DEVELOPER_GUIDE.md#repository-setup-with-tower) |
 | Install the shared Email settings block | [ESC email settings integration](integrations/esc/email-settings/README.md) |
-| Maintain the ESC suite | [Internal ESC handover](ESC-MAINTENANCE.md) |
+| Maintain the ESC suite | [Internal ESC handover](documentation/clients/esc/INTERNAL-HANDOVER.md) |
 
-The user and technical guides describe the current workflow. Dated reviews and checklists record earlier work; they are not alternate instructions. Client-facing module documentation is outside this internal guide set.
+The user and technical guides describe the current workflow. ESC-specific handover, integration files and the supplied reference spreadsheet are grouped under `documentation/clients/esc/`.
 
 ## Open and work
 
@@ -29,6 +29,9 @@ Direct saving uses a desktop browser with folder write access, such as Chrome or
 | Folder | Purpose |
 | --- | --- |
 | `block-studio/` | Tool source and prebuilt standalone application |
+| `documentation/internal/` | Studio user guide, technical guide and template syntax |
+| `documentation/clients/esc/` | ESC internal handover and reference material |
+| `integrations/esc/` | AMPscript, email example and SFMC installation instructions |
 | `projects/` | Editable client/template projects |
 | `docs/studio/` | Prebuilt hosted application |
 | `docs/clients/` | Generated module editors and catalogues |

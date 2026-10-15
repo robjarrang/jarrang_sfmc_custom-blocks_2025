@@ -18,11 +18,11 @@ You do not need to understand the code to adjust an existing field's label, star
 - [Recover a mistake](#recover-a-mistake)
 - [Resolve a problem](#resolve-a-problem)
 
-For implementation, build commands and release maintenance, see the [technical guide](DEVELOPER_GUIDE.md). ESC maintainers should also read the [ESC handover](ESC-MAINTENANCE.md).
+For implementation, build commands and release maintenance, see the [technical guide](DEVELOPER_GUIDE.md). ESC maintainers should also read the [ESC handover](../clients/esc/INTERNAL-HANDOVER.md).
 
 ## Open the current files
 
-You need a local checkout in Tower and a desktop browser with folder write access, such as Chrome or Edge. The repository contains `block-studio/`, `projects/` and `docs/`. For initial hosting setup, use the [Tower setup guide](block-studio/TOWER-WORKFLOW.md).
+You need a local checkout in Tower and a desktop browser with folder write access, such as Chrome or Edge. The repository contains `block-studio/`, `projects/` and `docs/`. For initial hosting setup, use the [Tower setup guide](DEVELOPER_GUIDE.md#repository-setup-with-tower).
 
 1. Pull the latest changes in Tower before editing.
 2. Open the team's hosted Studio at the Pages site URL followed by `/studio/`, or open `block-studio/Open-Block-Studio.html` locally.
@@ -142,7 +142,7 @@ Only the selected item becomes repeatable. Existing siblings stay outside the gr
 
 To return to one item, edit the group and choose **Set up → Content behaviour → Single item**. Choose the starting item to retain, review removal of the others and choose **Save as single item**. Its child fields remain editable. A previously single item can be made repeatable again when its connections are supported.
 
-Some structures cannot be converted automatically, such as connections shared outside the selected item or unsupported nested logic. Read the specific explanation and ask a developer to review [template syntax](block-studio/TEMPLATE-SYNTAX.md). A repeating list supplies repeated content; it does not create carousel behaviour or email-client fallbacks.
+Some structures cannot be converted automatically, such as connections shared outside the selected item or unsupported nested logic. Read the specific explanation and ask a developer to review [template syntax](TEMPLATE-SYNTAX.md). A repeating list supplies repeated content; it does not create carousel behaviour or email-client fallbacks.
 
 Changing an already published list to ordinary fields changes its saved-data structure. Use a duplicated module and a new endpoint for that change.
 
@@ -163,7 +163,7 @@ For a module's icon, open **Module settings → Custom block icon**. Choose a ba
 5. For a new module, have the SFMC administrator register that endpoint as a custom content block in Installed Packages. Existing compatible modules keep their endpoint.
 6. In SFMC, test a newly inserted block and an existing saved instance: edit, close/reopen and check the resulting email. Use subscriber preview/test sends and the team's required email-client checks.
 
-Studio previews do not execute AMPscript or reproduce Outlook. Testing a module in the actual master template is essential for CSS, personalisation and dark-mode behaviour. See the [ESC handover](ESC-MAINTENANCE.md) for its specific dependencies.
+Studio previews do not execute AMPscript or reproduce Outlook. Testing a module in the actual master template is essential for CSS, personalisation and dark-mode behaviour. See the [ESC handover](../clients/esc/INTERNAL-HANDOVER.md) for its specific dependencies.
 
 ### If direct saving is unavailable
 
@@ -197,4 +197,4 @@ When asking for help, include the client/template, module name, action, exact er
 
 Choose **ESC / Email settings** to manage the shared block used before the email's content. Open the module, then edit **Brand** or **Footer logo** like any other dropdown. All 31 supported brand keys are included. Add future brands using confirmed keys from `BrandSettings`. The displayed label can be friendly; the inserted value must be the exact key. Save and push through Tower.
 
-The preview card represents settings and is not email content. Actual colours and assets are resolved in SFMC Subscriber Preview. Initial installation and the master-template adjustment are covered in the [ESC email settings integration guide](integrations/esc/email-settings/README.md).
+The preview card represents settings and is not email content. Actual colours and assets are resolved in SFMC Subscriber Preview. Initial installation and the master-template adjustment are covered in the [ESC email settings integration guide](../../integrations/esc/email-settings/README.md).

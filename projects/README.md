@@ -4,4 +4,4 @@
 
 Other module drafts can be present in the JSON without having updated their generated pages. Preserve the per-module exported references and commit the JSON together with the generated files. The adjacent `*-PUBLISHING.md` is generated deployment guidance, not a second source of module content.
 
-See the [user guide](../USER_GUIDE.md) for editing and the [technical guide](../DEVELOPER_GUIDE.md) for file/data contracts. These files are outside the Pages publishing folder, but are readable by anyone with repository access.
+See the [user guide](../documentation/internal/USER_GUIDE.md) for editing and the [technical guide](../documentation/internal/DEVELOPER_GUIDE.md) for file/data contracts. These files are outside the Pages publishing folder, but are readable by anyone with repository access.

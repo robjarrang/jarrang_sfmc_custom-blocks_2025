@@ -1,6 +1,6 @@
 # Agent guide: safe module maintenance
 
-Read [README.md](README.md), [DEVELOPER_GUIDE.md](DEVELOPER_GUIDE.md) and, for ESC work, [ESC-MAINTENANCE.md](ESC-MAINTENANCE.md) before making changes. The [user guide](USER_GUIDE.md) describes the browser workflow. This file covers programmatic maintenance, not a separate publishing process.
+Read [README.md](README.md), [DEVELOPER_GUIDE.md](documentation/internal/DEVELOPER_GUIDE.md) and, for ESC work, [ESC handover](documentation/clients/esc/INTERNAL-HANDOVER.md) before making changes. The [user guide](documentation/internal/USER_GUIDE.md) describes the browser workflow. This file covers programmatic maintenance, not a separate publishing process.
 
 ## Non-negotiable rules
 
