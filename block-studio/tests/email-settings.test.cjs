@@ -146,8 +146,14 @@ test('exported settings editor saves through the real SDK and restores both sele
       pump();
       const controls = dom.document.querySelectorAll('select');
       assert.equal(controls.length, 2);
-      assert.equal(controls[0].value, 'ESC');
+      assert.equal(controls[0].value, edit ? 'ESC' : 'WG-CP');
+      assert.equal(
+        controls[0].querySelector('option[value="WG-CP"]').textContent,
+        'Working group: Cardiovascular pharmacotherapy',
+      );
       if (edit) {
+        controls[0].value = 'WG-CP';
+        controls[0].dispatchEvent(new dom.Event('change'));
         controls[1].value = 'ESC';
         controls[1].dispatchEvent(new dom.Event('change'));
       } else assert.equal(controls[1].value, 'ESC');
@@ -157,7 +163,9 @@ test('exported settings editor saves through the real SDK and restores both sele
           t.fn();
           pump();
         }
-      assert.equal(content, '%%[\nSET @BrandKey = "ESC"\nSET @FooterLogoMode = "ESC"\n]%%');
+      assert.equal(content, '%%[\nSET @BrandKey = "WG-CP"\nSET @FooterLogoMode = "ESC"\n]%%');
+      assert.match(summary, /Working group: Cardiovascular pharmacotherapy/);
+      assert.equal(stored.studio.values.brand, 'WG-CP');
       assert.match(summary, /Editor only/);
       assert.match(summary, /Footer logo: <strong>ESC/);
       assert.equal(stored.studio.values['footer-logo'], 'ESC');
@@ -173,9 +181,9 @@ test('exported settings editor saves through the real SDK and restores both sele
   await open(false);
 });
 
-test('all 32 supplied brand keys render exactly with either explicit footer choice', () => {
+test('all 31 supported brand keys render exactly with either explicit footer choice', () => {
   const keys =
-    'ACNAP,ACVC,EACVI,EAPC,EAPCI,EHRA,ESC,HFA,E365,C-CS,C-CP,C-CO,C-CG,C-Gen,C-H,C-S,C-VHD,WG-ACHD,WG-PVD,WG-AVB,WG-CCE,WG-CP,WG-CRRM,WG-CS,WG-CBH,WG-CPM,WG-DAP,WG-EC,WG-MF,WG-MPD,WG-PCRVF,WG-T'.split(
+    'ACNAP,ACVC,EACVI,EAPC,EAPCI,EHRA,ESC,HFA,E365,C-CS,C-CP,C-CO,C-Gen,C-H,C-S,C-VHD,WG-ACHD,WG-PVD,WG-AVB,WG-CCE,WG-CP,WG-CRRM,WG-CS,WG-CBH,WG-CPM,WG-DAP,WG-EC,WG-MF,WG-MPD,WG-PCRVF,WG-T'.split(
       ',',
     );
   assert.deepEqual(original.fields[0].options.map((o) => o.value).sort(), [...keys].sort());
@@ -205,4 +213,18 @@ test('settings mode participates in undo, dirty-state detection and exported-con
   H.restoreExportedContent(m);
   assert.equal(m.settingsOnly, true);
   assert.equal(C.render(m), C.render(original));
+});
+
+test('confirmed council names retain keys and the non-working brand is rejected', () => {
+  const options = original.fields[0].options;
+  assert.equal(
+    options.find((o) => o.value === 'C-CS').label,
+    'Council: Basic Cardiovascular Science',
+  );
+  assert.equal(
+    options.find((o) => o.value === 'C-Gen').label,
+    'Council: Generic (ESC Councils banner)',
+  );
+  assert.ok(!options.some((o) => o.value === 'C-CG'));
+  assert.throws(() => C.render(original, { brand: 'C-CG' }), /configured dropdown/);
 });

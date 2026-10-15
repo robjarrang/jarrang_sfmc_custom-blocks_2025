@@ -195,6 +195,6 @@ When asking for help, include the client/template, module name, action, exact er
 
 ## Maintain ESC email settings
 
-Choose **ESC / Email settings** to manage the shared block used before the email's content. Open the module, then edit **Brand** or **Footer logo** like any other dropdown. All 32 supplied brand keys are included. Add future brands using confirmed keys from `BrandSettings`. The displayed label can be friendly; the inserted value must be the exact key. Save and push through Tower.
+Choose **ESC / Email settings** to manage the shared block used before the email's content. Open the module, then edit **Brand** or **Footer logo** like any other dropdown. All 31 supported brand keys are included. Add future brands using confirmed keys from `BrandSettings`. The displayed label can be friendly; the inserted value must be the exact key. Save and push through Tower.
 
 The preview card represents settings and is not email content. Actual colours and assets are resolved in SFMC Subscriber Preview. Initial installation and the master-template adjustment are covered in the [ESC email settings integration guide](integrations/esc/email-settings/README.md).

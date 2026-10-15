@@ -21,7 +21,7 @@ The example is the supplied populated email with revised settings/CSS ordering, 
 
 ## Choices
 
-- **Brand** selects the row in the existing `BrandSettings` Data Extension. All 32 supplied keys are included, preserving the spelling of `C-Gen`. Council and Working Group choices are labelled accordingly. No brand records or API credentials are embedded.
+- **Brand** selects the row in the existing `BrandSettings` Data Extension. All 31 supported keys are included, preserving the spelling of `C-Gen`. Council and Working Group choices are labelled accordingly. No brand records or API credentials are embedded.
 - **Footer logo → Selected brand** uses the selected brand's footer logo and the existing URL/alternative-text defaults.
 - **Footer logo → ESC** uses the main ESC footer logo, ESC homepage and ESC alternative text. Footer colours still follow the selected brand.
 
@@ -40,3 +40,11 @@ Changing a settings block does not execute AMPscript in the editing canvas or in
 Existing Newsletter/Congress modules and their runtime dependencies are unchanged. Existing emails without `@FooterLogoMode` retain their category-based footer rules. The master setup still handles legacy `@EmailType` header defaults. The separate `ESC_GLOBAL_Footer` source was not supplied, so any further category-dependent behaviour inside it has not been changed or certified.
 
 No live SFMC assets are changed by downloading this package. Complete the installation and live checks above before client rollout.
+
+## Brand labels (15 October 2026)
+
+The Brand dropdown now uses descriptive names, alphabetically ordered within associations, councils and working groups, with ESC and ESC 365 first. Association abbreviations remain in brackets. Only display labels and ordering change; all supported SFMC values and defaults remain unchanged.
+
+Names were checked against the [ESC communities directory](https://www.escardio.org/communities/), [councils](https://www.escardio.org/communities/councils/) and [working groups](https://www.escardio.org/communities/working-groups/). Rob confirmed the private BrandSettings mapping: `C-CS` is Basic Cardiovascular Science; `C-Gen` uses the generic ESC Councils banner. `C-CG` has no working brand and was explicitly removed on 15 October 2026. The dropdown now contains 31 choices. This is an authorised correction of an invalid option, including its saved publishing reference, not a general relaxation of Studio compatibility checks. If a previously saved block used `C-CG`, choose a supported brand before saving; the tool rejects that value rather than silently switching brands. All other stored brand values remain valid.
+
+Publish the updated settings endpoint together with its project and rebuilt Studio. Existing browser drafts are not replaced automatically; reopen the latest repository. Reopen an existing SFMC settings block to see the new labels. No master setup or email HTML changes are required for this label update.

@@ -29,8 +29,8 @@
       "iconColour": "#AE1022",
       "iconSymbol": "grid",
       "iconAssets": {
-        "icon": "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAFhElEQVR4nO2aa2xURRTH58zM3XZ3S3e7C5SnvBpiSmlLyzM0GoIg+KWQWEKggOURERNCQlEMASuGgEA0SrQYBCNSY8CIEBOJxCBYLCKtWEAQeVhRoS3d7m67r3vn4Yc2/aDt9t5mWGLY/7dNzp7z25kz55y5d+Fz92j0fxN+2AB9URI6UUpCJ0pJ6EQpCZ0oPTLQgDEQggASYNOtqNUvIAAWCknGicMOlCIpH6CNGmgAyZhncqHN7fLXX9F9rd3EU2XTs6ylBwDwaCxv56tFxw+5c7N5KAz43x5M2WAsDCNvZ0XR8UMZ+TkiGvuvjTLoDrFwRAohGY+TjnFsAGNpMD0aMNraJOe6P8iMMBDyYKEBY8C490PWnQ1gzCIR6uo3bf/7nkkTgJCc114aMHWa3uIzz53YkgcgDGZzu4qOfTxq+WKbK521hwY8Of2JE4c9UwpYKGQySSxDA+0sUn2oVkCI0RYcvWppxoRc34WLJyfOPDFuekPVZ5orPadio2TMpB8r0AAIQI/4hG4ghIxAUDJm6QAhIbBmGzijSArxy9bdvrqLsRZf/Suvs3DYM7XQPmSw0HUzC2E6JIDknEciWWUr00Y/JhkbvqDY5vWY39NOJ1LwcBghlDo4k6MYC7Wn9PcCxjwSFYZhcuss1GnJWOF7u0YuW9jxMevFFd5pk6qLS41A0GyVBUCc/3X0q8HPzMrZ+jJgiN5ryt5cTlJT7xw+FrnXmOLxSM57dWNqkYBSw+8fsahk5LKF0cam2hfKz85f2lpXn1GQO37bJqO93eRiS8Y0t7vhkyO/f/RpaubAwsrd048ezCjIba2rv7Rpm5aWJoUw48fczkqJCBk6f64U4vKWN37dW/nnF1/+uHIdj0YHzZlpH5RpMhc7BJTWrtlwfvna9pu3JWM33t1/evazuq8Va5rJpmgWGgAThwMhFL3bSFAKdabF7rdIIYg91XywTleEELv9xocftN/6Ayi9c/iY3uKjTqfJZTYNjbEw9KZT1YBx9pZyT0F+iteTu30zdTh852ojf9/FNpslbiSlze7BNg0hpLnSgVLzxMjkQZSca/3Sb+07OHTeXM/E/FkXvmGhME1zGoHg5YodQK2PighJxjt+p+Tc0oiHzKcH1qjuD1QXL7l9oEoPBGmas/n02TNzFvh+qLO0s0pktsRKIajdzoJtNSueb639GUl5pWJX87kam9dUkVIrC/1MCgGU2lLdQCkCoGlOqjkST4wszx5SdqWgFCLBWdGlBzLldQ2l1iYT01LvFAhhsXDHyMbCkY4xS20IxdCAQfcH3Dk5NrdLMpaePVYwQ/J4d5w+SCU0EGIE2rJWP/f0T6cyCvOA0oI9OyYf2COiUYVRkEJoIMQIBjNnz5jwznZESEPVketvVhr+wKiyRY9vXKe3+vvWg7qVypWWnI9csgBJeW3H29+XLq9dX36+bK0wjBGlJbYMtzQMVYHUQUsJVHM8Nkwi1Pj1t5Q6Hf2HNX9XI3TdPiSzI8VVZbY6aIyFHvNfvAQAY9aUkdSU2P2WMauWUocjePW3aGOTtaEqrpTlGRKC2u039x0csbhkeEmxO2+c3hrwTilECF1/q1LEYsRuR4rap7KVlkIQhyN45Vr1vNLA5av9xmZ5pxRG7zXVrtnQUHVEc7sVNnzFB1FzuXzn605Oeqr5TI0Uonb1+uuVe1O8XrUjiuLmIjmnTqdkXHIOGAvd0Gxmb37mpb6NSyFQ1wMxDJKrH6r6At0538UpBVJ22oh45aJ3Pz2oL9DUYQeMgZI48VTZdCuw9i8EAMmYO398rw/MFdgog0YIAfBwuNdXE2psepD15iIldToRQLx0VGXTg/p0+zdRwlTZdKtH5j3iQ1cSOlFKQidKSehEKQmdKP0D0gX98xDZOSYAAAAASUVORK5CYII=",
-        "dragIcon": "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"
+        "icon": "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",
+        "dragIcon": "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"
       },
       "fields": [
         {
@@ -45,131 +45,127 @@
           "defaultValue": "ESC",
           "options": [
             {
-              "label": "ESC",
+              "label": "European Society of Cardiology (ESC)",
               "value": "ESC"
             },
             {
-              "label": "ACNAP",
-              "value": "ACNAP"
-            },
-            {
-              "label": "ACVC",
-              "value": "ACVC"
-            },
-            {
-              "label": "EACVI",
-              "value": "EACVI"
-            },
-            {
-              "label": "EAPC",
-              "value": "EAPC"
-            },
-            {
-              "label": "EAPCI",
-              "value": "EAPCI"
-            },
-            {
-              "label": "EHRA",
-              "value": "EHRA"
-            },
-            {
-              "label": "HFA",
-              "value": "HFA"
-            },
-            {
-              "label": "E365",
+              "label": "ESC 365",
               "value": "E365"
             },
             {
-              "label": "Council · C-CS",
+              "label": "Acute cardiovascular care (ACVC)",
+              "value": "ACVC"
+            },
+            {
+              "label": "Cardiovascular imaging (EACVI)",
+              "value": "EACVI"
+            },
+            {
+              "label": "Cardiovascular nursing & allied professions (ACNAP)",
+              "value": "ACNAP"
+            },
+            {
+              "label": "Heart failure (HFA)",
+              "value": "HFA"
+            },
+            {
+              "label": "Heart rhythm (EHRA)",
+              "value": "EHRA"
+            },
+            {
+              "label": "Percutaneous cardiovascular interventions (EAPCI)",
+              "value": "EAPCI"
+            },
+            {
+              "label": "Preventive cardiology (EAPC)",
+              "value": "EAPC"
+            },
+            {
+              "label": "Council: Basic Cardiovascular Science",
               "value": "C-CS"
             },
             {
-              "label": "Council · C-CP",
-              "value": "C-CP"
-            },
-            {
-              "label": "Council · C-CO",
+              "label": "Council: Cardio-oncology",
               "value": "C-CO"
             },
             {
-              "label": "Council · C-CG",
-              "value": "C-CG"
+              "label": "Council: Cardiology practice",
+              "value": "C-CP"
             },
             {
-              "label": "Council · C-Gen",
+              "label": "Council: Generic (ESC Councils banner)",
               "value": "C-Gen"
             },
             {
-              "label": "Council · C-H",
+              "label": "Council: Hypertension",
               "value": "C-H"
             },
             {
-              "label": "Council · C-S",
+              "label": "Council: Stroke",
               "value": "C-S"
             },
             {
-              "label": "Council · C-VHD",
+              "label": "Council: Valvular heart disease",
               "value": "C-VHD"
             },
             {
-              "label": "Working Group · WG-ACHD",
+              "label": "Working group: Adult congenital heart disease",
               "value": "WG-ACHD"
             },
             {
-              "label": "Working Group · WG-PVD",
+              "label": "Working group: Aorta & peripheral vascular diseases",
               "value": "WG-PVD"
             },
             {
-              "label": "Working Group · WG-AVB",
+              "label": "Working group: Atherosclerosis & vascular biology",
               "value": "WG-AVB"
             },
             {
-              "label": "Working Group · WG-CCE",
+              "label": "Working group: Cardiac cellular electrophysiology",
               "value": "WG-CCE"
             },
             {
-              "label": "Working Group · WG-CP",
+              "label": "Working group: Cardiovascular pharmacotherapy",
               "value": "WG-CP"
             },
             {
-              "label": "Working Group · WG-CRRM",
+              "label": "Working group: Cardiovascular regenerative & reparative medicine",
               "value": "WG-CRRM"
             },
             {
-              "label": "Working Group · WG-CS",
+              "label": "Working group: Cardiovascular surgery",
               "value": "WG-CS"
             },
             {
-              "label": "Working Group · WG-CBH",
+              "label": "Working group: Cellular biology of the heart",
               "value": "WG-CBH"
             },
             {
-              "label": "Working Group · WG-CPM",
+              "label": "Working group: Coronary pathophysiology & microcirculation",
               "value": "WG-CPM"
             },
             {
-              "label": "Working Group · WG-DAP",
+              "label": "Working group: Development, anatomy & pathology",
               "value": "WG-DAP"
             },
             {
-              "label": "Working Group · WG-EC",
+              "label": "Working group: e-Cardiology",
               "value": "WG-EC"
             },
             {
-              "label": "Working Group · WG-MF",
-              "value": "WG-MF"
-            },
-            {
-              "label": "Working Group · WG-MPD",
+              "label": "Working group: Myocardial & pericardial diseases",
               "value": "WG-MPD"
             },
             {
-              "label": "Working Group · WG-PCRVF",
+              "label": "Working group: Myocardial function",
+              "value": "WG-MF"
+            },
+            {
+              "label": "Working group: Pulmonary circulation & right ventricular function",
               "value": "WG-PCRVF"
             },
             {
-              "label": "Working Group · WG-T",
+              "label": "Working group: Thrombosis",
               "value": "WG-T"
             }
           ]
@@ -214,131 +210,127 @@
             "defaultValue": "ESC",
             "options": [
               {
-                "label": "ESC",
+                "label": "European Society of Cardiology (ESC)",
                 "value": "ESC"
               },
               {
-                "label": "ACNAP",
-                "value": "ACNAP"
-              },
-              {
-                "label": "ACVC",
-                "value": "ACVC"
-              },
-              {
-                "label": "EACVI",
-                "value": "EACVI"
-              },
-              {
-                "label": "EAPC",
-                "value": "EAPC"
-              },
-              {
-                "label": "EAPCI",
-                "value": "EAPCI"
-              },
-              {
-                "label": "EHRA",
-                "value": "EHRA"
-              },
-              {
-                "label": "HFA",
-                "value": "HFA"
-              },
-              {
-                "label": "E365",
+                "label": "ESC 365",
                 "value": "E365"
               },
               {
-                "label": "Council · C-CS",
+                "label": "Acute cardiovascular care (ACVC)",
+                "value": "ACVC"
+              },
+              {
+                "label": "Cardiovascular imaging (EACVI)",
+                "value": "EACVI"
+              },
+              {
+                "label": "Cardiovascular nursing & allied professions (ACNAP)",
+                "value": "ACNAP"
+              },
+              {
+                "label": "Heart failure (HFA)",
+                "value": "HFA"
+              },
+              {
+                "label": "Heart rhythm (EHRA)",
+                "value": "EHRA"
+              },
+              {
+                "label": "Percutaneous cardiovascular interventions (EAPCI)",
+                "value": "EAPCI"
+              },
+              {
+                "label": "Preventive cardiology (EAPC)",
+                "value": "EAPC"
+              },
+              {
+                "label": "Council: Basic Cardiovascular Science",
                 "value": "C-CS"
               },
               {
-                "label": "Council · C-CP",
-                "value": "C-CP"
-              },
-              {
-                "label": "Council · C-CO",
+                "label": "Council: Cardio-oncology",
                 "value": "C-CO"
               },
               {
-                "label": "Council · C-CG",
-                "value": "C-CG"
+                "label": "Council: Cardiology practice",
+                "value": "C-CP"
               },
               {
-                "label": "Council · C-Gen",
+                "label": "Council: Generic (ESC Councils banner)",
                 "value": "C-Gen"
               },
               {
-                "label": "Council · C-H",
+                "label": "Council: Hypertension",
                 "value": "C-H"
               },
               {
-                "label": "Council · C-S",
+                "label": "Council: Stroke",
                 "value": "C-S"
               },
               {
-                "label": "Council · C-VHD",
+                "label": "Council: Valvular heart disease",
                 "value": "C-VHD"
               },
               {
-                "label": "Working Group · WG-ACHD",
+                "label": "Working group: Adult congenital heart disease",
                 "value": "WG-ACHD"
               },
               {
-                "label": "Working Group · WG-PVD",
+                "label": "Working group: Aorta & peripheral vascular diseases",
                 "value": "WG-PVD"
               },
               {
-                "label": "Working Group · WG-AVB",
+                "label": "Working group: Atherosclerosis & vascular biology",
                 "value": "WG-AVB"
               },
               {
-                "label": "Working Group · WG-CCE",
+                "label": "Working group: Cardiac cellular electrophysiology",
                 "value": "WG-CCE"
               },
               {
-                "label": "Working Group · WG-CP",
+                "label": "Working group: Cardiovascular pharmacotherapy",
                 "value": "WG-CP"
               },
               {
-                "label": "Working Group · WG-CRRM",
+                "label": "Working group: Cardiovascular regenerative & reparative medicine",
                 "value": "WG-CRRM"
               },
               {
-                "label": "Working Group · WG-CS",
+                "label": "Working group: Cardiovascular surgery",
                 "value": "WG-CS"
               },
               {
-                "label": "Working Group · WG-CBH",
+                "label": "Working group: Cellular biology of the heart",
                 "value": "WG-CBH"
               },
               {
-                "label": "Working Group · WG-CPM",
+                "label": "Working group: Coronary pathophysiology & microcirculation",
                 "value": "WG-CPM"
               },
               {
-                "label": "Working Group · WG-DAP",
+                "label": "Working group: Development, anatomy & pathology",
                 "value": "WG-DAP"
               },
               {
-                "label": "Working Group · WG-EC",
+                "label": "Working group: e-Cardiology",
                 "value": "WG-EC"
               },
               {
-                "label": "Working Group · WG-MF",
-                "value": "WG-MF"
-              },
-              {
-                "label": "Working Group · WG-MPD",
+                "label": "Working group: Myocardial & pericardial diseases",
                 "value": "WG-MPD"
               },
               {
-                "label": "Working Group · WG-PCRVF",
+                "label": "Working group: Myocardial function",
+                "value": "WG-MF"
+              },
+              {
+                "label": "Working group: Pulmonary circulation & right ventricular function",
                 "value": "WG-PCRVF"
               },
               {
-                "label": "Working Group · WG-T",
+                "label": "Working group: Thrombosis",
                 "value": "WG-T"
               }
             ]
@@ -388,131 +380,127 @@
             "defaultValue": "ESC",
             "options": [
               {
-                "label": "ESC",
+                "label": "European Society of Cardiology (ESC)",
                 "value": "ESC"
               },
               {
-                "label": "ACNAP",
-                "value": "ACNAP"
-              },
-              {
-                "label": "ACVC",
-                "value": "ACVC"
-              },
-              {
-                "label": "EACVI",
-                "value": "EACVI"
-              },
-              {
-                "label": "EAPC",
-                "value": "EAPC"
-              },
-              {
-                "label": "EAPCI",
-                "value": "EAPCI"
-              },
-              {
-                "label": "EHRA",
-                "value": "EHRA"
-              },
-              {
-                "label": "HFA",
-                "value": "HFA"
-              },
-              {
-                "label": "E365",
+                "label": "ESC 365",
                 "value": "E365"
               },
               {
-                "label": "Council · C-CS",
+                "label": "Acute cardiovascular care (ACVC)",
+                "value": "ACVC"
+              },
+              {
+                "label": "Cardiovascular imaging (EACVI)",
+                "value": "EACVI"
+              },
+              {
+                "label": "Cardiovascular nursing & allied professions (ACNAP)",
+                "value": "ACNAP"
+              },
+              {
+                "label": "Heart failure (HFA)",
+                "value": "HFA"
+              },
+              {
+                "label": "Heart rhythm (EHRA)",
+                "value": "EHRA"
+              },
+              {
+                "label": "Percutaneous cardiovascular interventions (EAPCI)",
+                "value": "EAPCI"
+              },
+              {
+                "label": "Preventive cardiology (EAPC)",
+                "value": "EAPC"
+              },
+              {
+                "label": "Council: Basic Cardiovascular Science",
                 "value": "C-CS"
               },
               {
-                "label": "Council · C-CP",
-                "value": "C-CP"
-              },
-              {
-                "label": "Council · C-CO",
+                "label": "Council: Cardio-oncology",
                 "value": "C-CO"
               },
               {
-                "label": "Council · C-CG",
-                "value": "C-CG"
+                "label": "Council: Cardiology practice",
+                "value": "C-CP"
               },
               {
-                "label": "Council · C-Gen",
+                "label": "Council: Generic (ESC Councils banner)",
                 "value": "C-Gen"
               },
               {
-                "label": "Council · C-H",
+                "label": "Council: Hypertension",
                 "value": "C-H"
               },
               {
-                "label": "Council · C-S",
+                "label": "Council: Stroke",
                 "value": "C-S"
               },
               {
-                "label": "Council · C-VHD",
+                "label": "Council: Valvular heart disease",
                 "value": "C-VHD"
               },
               {
-                "label": "Working Group · WG-ACHD",
+                "label": "Working group: Adult congenital heart disease",
                 "value": "WG-ACHD"
               },
               {
-                "label": "Working Group · WG-PVD",
+                "label": "Working group: Aorta & peripheral vascular diseases",
                 "value": "WG-PVD"
               },
               {
-                "label": "Working Group · WG-AVB",
+                "label": "Working group: Atherosclerosis & vascular biology",
                 "value": "WG-AVB"
               },
               {
-                "label": "Working Group · WG-CCE",
+                "label": "Working group: Cardiac cellular electrophysiology",
                 "value": "WG-CCE"
               },
               {
-                "label": "Working Group · WG-CP",
+                "label": "Working group: Cardiovascular pharmacotherapy",
                 "value": "WG-CP"
               },
               {
-                "label": "Working Group · WG-CRRM",
+                "label": "Working group: Cardiovascular regenerative & reparative medicine",
                 "value": "WG-CRRM"
               },
               {
-                "label": "Working Group · WG-CS",
+                "label": "Working group: Cardiovascular surgery",
                 "value": "WG-CS"
               },
               {
-                "label": "Working Group · WG-CBH",
+                "label": "Working group: Cellular biology of the heart",
                 "value": "WG-CBH"
               },
               {
-                "label": "Working Group · WG-CPM",
+                "label": "Working group: Coronary pathophysiology & microcirculation",
                 "value": "WG-CPM"
               },
               {
-                "label": "Working Group · WG-DAP",
+                "label": "Working group: Development, anatomy & pathology",
                 "value": "WG-DAP"
               },
               {
-                "label": "Working Group · WG-EC",
+                "label": "Working group: e-Cardiology",
                 "value": "WG-EC"
               },
               {
-                "label": "Working Group · WG-MF",
-                "value": "WG-MF"
-              },
-              {
-                "label": "Working Group · WG-MPD",
+                "label": "Working group: Myocardial & pericardial diseases",
                 "value": "WG-MPD"
               },
               {
-                "label": "Working Group · WG-PCRVF",
+                "label": "Working group: Myocardial function",
+                "value": "WG-MF"
+              },
+              {
+                "label": "Working group: Pulmonary circulation & right ventricular function",
                 "value": "WG-PCRVF"
               },
               {
-                "label": "Working Group · WG-T",
+                "label": "Working group: Thrombosis",
                 "value": "WG-T"
               }
             ]

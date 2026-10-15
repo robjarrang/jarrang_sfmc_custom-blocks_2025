@@ -76,4 +76,4 @@ For recovery and deployment rollback, follow the [user guide](USER_GUIDE.md#reco
 
 ## Shared email settings (1.28.0)
 
-The additional **ESC / Email settings** suite contains one settings-only block for both Newsletter and Congress. It exposes Brand and Footer logo, with no category or header-prefix control. All 32 supplied brand keys are listed, with Council and Working Group labels. The original 40 modules remain unchanged. Follow [the integration guide](integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
+The additional **ESC / Email settings** suite contains one settings-only block for both Newsletter and Congress. It exposes Brand and Footer logo, with no category or header-prefix control. All 31 supported brand keys are listed, with Council and Working Group labels. The original 40 modules remain unchanged. Follow [the integration guide](integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
