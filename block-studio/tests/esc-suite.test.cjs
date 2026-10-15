@@ -599,7 +599,10 @@ test('every ESC conditional expression has a supported guided editor model', asy
 test('ESC field settings and layout rules can be opened and saved without changing rendered content', async () => {
   const { BlockFieldEditor: F, BlockCore: C, dom } = await environment();
   try {
-    for (const p of projects)
+    for (const p of [
+      ...projects,
+      JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/email-settings.jarrang.json'))),
+    ])
       for (const original of p.modules)
         for (const field of original.fields) {
           const m = clone(original);
@@ -952,7 +955,7 @@ test('all-branch validation catches a removed child key in an inactive branch or
     await dom.happyDOM.close();
   }
 });
-test('standalone UI boots with both ESC templates and previews supplied icons without regenerating them', async () => {
+test('standalone UI boots with the ESC content and settings templates and previews supplied icons without regenerating them', async () => {
   const { Window } = await import('happy-dom');
   const dom = new Window({
     settings: {
@@ -985,11 +988,11 @@ test('standalone UI boots with both ESC templates and previews supplied icons wi
     const d = dom.document,
       W = context.window.BlockWorkspace;
     const saved = JSON.parse(dom.localStorage.getItem(W.KEY));
-    assert.equal(saved.projects.length, 2);
+    assert.equal(saved.projects.length, 3);
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      40,
+      41,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');

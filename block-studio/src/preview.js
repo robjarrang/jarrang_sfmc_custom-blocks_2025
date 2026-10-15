@@ -118,8 +118,8 @@
     return scopes;
   }
   function documentHTML(source, m, interactive = false, selectedField = null, live = false) {
-    let html = source;
-    if (interactive) {
+    let html = C.settingsSummary(m, m.settingsOnly && interactive ? C.render(m) : source);
+    if (interactive && !m.settingsOnly) {
       const nodes = C.parse(source).nodes.filter((n) => !n.hidden),
         edits = [];
       const scopes = loopScopes(source);

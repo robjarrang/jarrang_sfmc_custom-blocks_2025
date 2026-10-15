@@ -1,0 +1,546 @@
+{
+  "format": "jarrang-block-studio",
+  "version": 1,
+  "projectId": "esc-email-settings-suite",
+  "settings": {
+    "name": "Email settings",
+    "clientName": "ESC",
+    "clientSlug": "esc",
+    "templateSlug": "email-settings",
+    "baseUrl": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025",
+    "location": "docs",
+    "showEditorHeader": false
+  },
+  "modules": [
+    {
+      "id": "esc-email-settings-v1",
+      "name": "Email settings",
+      "slug": "email-settings",
+      "release": "1.0.0",
+      "source": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\n]%%",
+      "draftSource": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\n]%%",
+      "templateMode": true,
+      "settingsOnly": true,
+      "contextCss": "",
+      "width": 620,
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#AE1022",
+      "iconSymbol": "grid",
+      "iconAssets": {
+        "icon": "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAFhElEQVR4nO2aa2xURRTH58zM3XZ3S3e7C5SnvBpiSmlLyzM0GoIg+KWQWEKggOURERNCQlEMASuGgEA0SrQYBCNSY8CIEBOJxCBYLCKtWEAQeVhRoS3d7m67r3vn4Yc2/aDt9t5mWGLY/7dNzp7z25kz55y5d+Fz92j0fxN+2AB9URI6UUpCJ0pJ6EQpCZ0oPTLQgDEQggASYNOtqNUvIAAWCknGicMOlCIpH6CNGmgAyZhncqHN7fLXX9F9rd3EU2XTs6ylBwDwaCxv56tFxw+5c7N5KAz43x5M2WAsDCNvZ0XR8UMZ+TkiGvuvjTLoDrFwRAohGY+TjnFsAGNpMD0aMNraJOe6P8iMMBDyYKEBY8C490PWnQ1gzCIR6uo3bf/7nkkTgJCc114aMHWa3uIzz53YkgcgDGZzu4qOfTxq+WKbK521hwY8Of2JE4c9UwpYKGQySSxDA+0sUn2oVkCI0RYcvWppxoRc34WLJyfOPDFuekPVZ5orPadio2TMpB8r0AAIQI/4hG4ghIxAUDJm6QAhIbBmGzijSArxy9bdvrqLsRZf/Suvs3DYM7XQPmSw0HUzC2E6JIDknEciWWUr00Y/JhkbvqDY5vWY39NOJ1LwcBghlDo4k6MYC7Wn9PcCxjwSFYZhcuss1GnJWOF7u0YuW9jxMevFFd5pk6qLS41A0GyVBUCc/3X0q8HPzMrZ+jJgiN5ryt5cTlJT7xw+FrnXmOLxSM57dWNqkYBSw+8fsahk5LKF0cam2hfKz85f2lpXn1GQO37bJqO93eRiS8Y0t7vhkyO/f/RpaubAwsrd048ezCjIba2rv7Rpm5aWJoUw48fczkqJCBk6f64U4vKWN37dW/nnF1/+uHIdj0YHzZlpH5RpMhc7BJTWrtlwfvna9pu3JWM33t1/evazuq8Va5rJpmgWGgAThwMhFL3bSFAKdabF7rdIIYg91XywTleEELv9xocftN/6Ayi9c/iY3uKjTqfJZTYNjbEw9KZT1YBx9pZyT0F+iteTu30zdTh852ojf9/FNpslbiSlze7BNg0hpLnSgVLzxMjkQZSca/3Sb+07OHTeXM/E/FkXvmGhME1zGoHg5YodQK2PighJxjt+p+Tc0oiHzKcH1qjuD1QXL7l9oEoPBGmas/n02TNzFvh+qLO0s0pktsRKIajdzoJtNSueb639GUl5pWJX87kam9dUkVIrC/1MCgGU2lLdQCkCoGlOqjkST4wszx5SdqWgFCLBWdGlBzLldQ2l1iYT01LvFAhhsXDHyMbCkY4xS20IxdCAQfcH3Dk5NrdLMpaePVYwQ/J4d5w+SCU0EGIE2rJWP/f0T6cyCvOA0oI9OyYf2COiUYVRkEJoIMQIBjNnz5jwznZESEPVketvVhr+wKiyRY9vXKe3+vvWg7qVypWWnI9csgBJeW3H29+XLq9dX36+bK0wjBGlJbYMtzQMVYHUQUsJVHM8Nkwi1Pj1t5Q6Hf2HNX9XI3TdPiSzI8VVZbY6aIyFHvNfvAQAY9aUkdSU2P2WMauWUocjePW3aGOTtaEqrpTlGRKC2u039x0csbhkeEmxO2+c3hrwTilECF1/q1LEYsRuR4rap7KVlkIQhyN45Vr1vNLA5av9xmZ5pxRG7zXVrtnQUHVEc7sVNnzFB1FzuXzn605Oeqr5TI0Uonb1+uuVe1O8XrUjiuLmIjmnTqdkXHIOGAvd0Gxmb37mpb6NSyFQ1wMxDJKrH6r6At0538UpBVJ22oh45aJ3Pz2oL9DUYQeMgZI48VTZdCuw9i8EAMmYO398rw/MFdgog0YIAfBwuNdXE2psepD15iIldToRQLx0VGXTg/p0+zdRwlTZdKtH5j3iQ1cSOlFKQidKSehEKQmdKP0D0gX98xDZOSYAAAAASUVORK5CYII=",
+        "dragIcon": "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"
+      },
+      "fields": [
+        {
+          "id": "brand",
+          "key": "BrandKey",
+          "label": "Brand",
+          "type": "select",
+          "binding": "template",
+          "enabled": true,
+          "required": true,
+          "targets": [],
+          "defaultValue": "ESC",
+          "options": [
+            {
+              "label": "ESC",
+              "value": "ESC"
+            },
+            {
+              "label": "ACNAP",
+              "value": "ACNAP"
+            },
+            {
+              "label": "ACVC",
+              "value": "ACVC"
+            },
+            {
+              "label": "EACVI",
+              "value": "EACVI"
+            },
+            {
+              "label": "EAPC",
+              "value": "EAPC"
+            },
+            {
+              "label": "EAPCI",
+              "value": "EAPCI"
+            },
+            {
+              "label": "EHRA",
+              "value": "EHRA"
+            },
+            {
+              "label": "HFA",
+              "value": "HFA"
+            },
+            {
+              "label": "E365",
+              "value": "E365"
+            },
+            {
+              "label": "Council · C-CS",
+              "value": "C-CS"
+            },
+            {
+              "label": "Council · C-CP",
+              "value": "C-CP"
+            },
+            {
+              "label": "Council · C-CO",
+              "value": "C-CO"
+            },
+            {
+              "label": "Council · C-CG",
+              "value": "C-CG"
+            },
+            {
+              "label": "Council · C-Gen",
+              "value": "C-Gen"
+            },
+            {
+              "label": "Council · C-H",
+              "value": "C-H"
+            },
+            {
+              "label": "Council · C-S",
+              "value": "C-S"
+            },
+            {
+              "label": "Council · C-VHD",
+              "value": "C-VHD"
+            },
+            {
+              "label": "Working Group · WG-ACHD",
+              "value": "WG-ACHD"
+            },
+            {
+              "label": "Working Group · WG-PVD",
+              "value": "WG-PVD"
+            },
+            {
+              "label": "Working Group · WG-AVB",
+              "value": "WG-AVB"
+            },
+            {
+              "label": "Working Group · WG-CCE",
+              "value": "WG-CCE"
+            },
+            {
+              "label": "Working Group · WG-CP",
+              "value": "WG-CP"
+            },
+            {
+              "label": "Working Group · WG-CRRM",
+              "value": "WG-CRRM"
+            },
+            {
+              "label": "Working Group · WG-CS",
+              "value": "WG-CS"
+            },
+            {
+              "label": "Working Group · WG-CBH",
+              "value": "WG-CBH"
+            },
+            {
+              "label": "Working Group · WG-CPM",
+              "value": "WG-CPM"
+            },
+            {
+              "label": "Working Group · WG-DAP",
+              "value": "WG-DAP"
+            },
+            {
+              "label": "Working Group · WG-EC",
+              "value": "WG-EC"
+            },
+            {
+              "label": "Working Group · WG-MF",
+              "value": "WG-MF"
+            },
+            {
+              "label": "Working Group · WG-MPD",
+              "value": "WG-MPD"
+            },
+            {
+              "label": "Working Group · WG-PCRVF",
+              "value": "WG-PCRVF"
+            },
+            {
+              "label": "Working Group · WG-T",
+              "value": "WG-T"
+            }
+          ]
+        },
+        {
+          "id": "footer-logo",
+          "key": "FooterLogoMode",
+          "label": "Footer logo",
+          "type": "select",
+          "binding": "template",
+          "enabled": true,
+          "required": true,
+          "targets": [],
+          "defaultValue": "BRAND",
+          "options": [
+            {
+              "label": "Selected brand",
+              "value": "BRAND"
+            },
+            {
+              "label": "ESC",
+              "value": "ESC"
+            }
+          ]
+        }
+      ],
+      "published": {
+        "id": "esc-email-settings-v1",
+        "slug": "email-settings",
+        "release": "1.0.0",
+        "settingsOnly": true,
+        "fields": [
+          {
+            "id": "brand",
+            "key": "BrandKey",
+            "label": "Brand",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": true,
+            "targets": [],
+            "defaultValue": "ESC",
+            "options": [
+              {
+                "label": "ESC",
+                "value": "ESC"
+              },
+              {
+                "label": "ACNAP",
+                "value": "ACNAP"
+              },
+              {
+                "label": "ACVC",
+                "value": "ACVC"
+              },
+              {
+                "label": "EACVI",
+                "value": "EACVI"
+              },
+              {
+                "label": "EAPC",
+                "value": "EAPC"
+              },
+              {
+                "label": "EAPCI",
+                "value": "EAPCI"
+              },
+              {
+                "label": "EHRA",
+                "value": "EHRA"
+              },
+              {
+                "label": "HFA",
+                "value": "HFA"
+              },
+              {
+                "label": "E365",
+                "value": "E365"
+              },
+              {
+                "label": "Council · C-CS",
+                "value": "C-CS"
+              },
+              {
+                "label": "Council · C-CP",
+                "value": "C-CP"
+              },
+              {
+                "label": "Council · C-CO",
+                "value": "C-CO"
+              },
+              {
+                "label": "Council · C-CG",
+                "value": "C-CG"
+              },
+              {
+                "label": "Council · C-Gen",
+                "value": "C-Gen"
+              },
+              {
+                "label": "Council · C-H",
+                "value": "C-H"
+              },
+              {
+                "label": "Council · C-S",
+                "value": "C-S"
+              },
+              {
+                "label": "Council · C-VHD",
+                "value": "C-VHD"
+              },
+              {
+                "label": "Working Group · WG-ACHD",
+                "value": "WG-ACHD"
+              },
+              {
+                "label": "Working Group · WG-PVD",
+                "value": "WG-PVD"
+              },
+              {
+                "label": "Working Group · WG-AVB",
+                "value": "WG-AVB"
+              },
+              {
+                "label": "Working Group · WG-CCE",
+                "value": "WG-CCE"
+              },
+              {
+                "label": "Working Group · WG-CP",
+                "value": "WG-CP"
+              },
+              {
+                "label": "Working Group · WG-CRRM",
+                "value": "WG-CRRM"
+              },
+              {
+                "label": "Working Group · WG-CS",
+                "value": "WG-CS"
+              },
+              {
+                "label": "Working Group · WG-CBH",
+                "value": "WG-CBH"
+              },
+              {
+                "label": "Working Group · WG-CPM",
+                "value": "WG-CPM"
+              },
+              {
+                "label": "Working Group · WG-DAP",
+                "value": "WG-DAP"
+              },
+              {
+                "label": "Working Group · WG-EC",
+                "value": "WG-EC"
+              },
+              {
+                "label": "Working Group · WG-MF",
+                "value": "WG-MF"
+              },
+              {
+                "label": "Working Group · WG-MPD",
+                "value": "WG-MPD"
+              },
+              {
+                "label": "Working Group · WG-PCRVF",
+                "value": "WG-PCRVF"
+              },
+              {
+                "label": "Working Group · WG-T",
+                "value": "WG-T"
+              }
+            ]
+          },
+          {
+            "id": "footer-logo",
+            "key": "FooterLogoMode",
+            "label": "Footer logo",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": true,
+            "targets": [],
+            "defaultValue": "BRAND",
+            "options": [
+              {
+                "label": "Selected brand",
+                "value": "BRAND"
+              },
+              {
+                "label": "ESC",
+                "value": "ESC"
+              }
+            ]
+          }
+        ]
+      },
+      "exportedDefinition": {
+        "id": "esc-email-settings-v1",
+        "name": "Email settings",
+        "slug": "email-settings",
+        "release": "1.0.0",
+        "source": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\n]%%",
+        "templateMode": true,
+        "settingsOnly": true,
+        "contextCss": "",
+        "fields": [
+          {
+            "id": "brand",
+            "key": "BrandKey",
+            "label": "Brand",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": true,
+            "targets": [],
+            "defaultValue": "ESC",
+            "options": [
+              {
+                "label": "ESC",
+                "value": "ESC"
+              },
+              {
+                "label": "ACNAP",
+                "value": "ACNAP"
+              },
+              {
+                "label": "ACVC",
+                "value": "ACVC"
+              },
+              {
+                "label": "EACVI",
+                "value": "EACVI"
+              },
+              {
+                "label": "EAPC",
+                "value": "EAPC"
+              },
+              {
+                "label": "EAPCI",
+                "value": "EAPCI"
+              },
+              {
+                "label": "EHRA",
+                "value": "EHRA"
+              },
+              {
+                "label": "HFA",
+                "value": "HFA"
+              },
+              {
+                "label": "E365",
+                "value": "E365"
+              },
+              {
+                "label": "Council · C-CS",
+                "value": "C-CS"
+              },
+              {
+                "label": "Council · C-CP",
+                "value": "C-CP"
+              },
+              {
+                "label": "Council · C-CO",
+                "value": "C-CO"
+              },
+              {
+                "label": "Council · C-CG",
+                "value": "C-CG"
+              },
+              {
+                "label": "Council · C-Gen",
+                "value": "C-Gen"
+              },
+              {
+                "label": "Council · C-H",
+                "value": "C-H"
+              },
+              {
+                "label": "Council · C-S",
+                "value": "C-S"
+              },
+              {
+                "label": "Council · C-VHD",
+                "value": "C-VHD"
+              },
+              {
+                "label": "Working Group · WG-ACHD",
+                "value": "WG-ACHD"
+              },
+              {
+                "label": "Working Group · WG-PVD",
+                "value": "WG-PVD"
+              },
+              {
+                "label": "Working Group · WG-AVB",
+                "value": "WG-AVB"
+              },
+              {
+                "label": "Working Group · WG-CCE",
+                "value": "WG-CCE"
+              },
+              {
+                "label": "Working Group · WG-CP",
+                "value": "WG-CP"
+              },
+              {
+                "label": "Working Group · WG-CRRM",
+                "value": "WG-CRRM"
+              },
+              {
+                "label": "Working Group · WG-CS",
+                "value": "WG-CS"
+              },
+              {
+                "label": "Working Group · WG-CBH",
+                "value": "WG-CBH"
+              },
+              {
+                "label": "Working Group · WG-CPM",
+                "value": "WG-CPM"
+              },
+              {
+                "label": "Working Group · WG-DAP",
+                "value": "WG-DAP"
+              },
+              {
+                "label": "Working Group · WG-EC",
+                "value": "WG-EC"
+              },
+              {
+                "label": "Working Group · WG-MF",
+                "value": "WG-MF"
+              },
+              {
+                "label": "Working Group · WG-MPD",
+                "value": "WG-MPD"
+              },
+              {
+                "label": "Working Group · WG-PCRVF",
+                "value": "WG-PCRVF"
+              },
+              {
+                "label": "Working Group · WG-T",
+                "value": "WG-T"
+              }
+            ]
+          },
+          {
+            "id": "footer-logo",
+            "key": "FooterLogoMode",
+            "label": "Footer logo",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": true,
+            "targets": [],
+            "defaultValue": "BRAND",
+            "options": [
+              {
+                "label": "Selected brand",
+                "value": "BRAND"
+              },
+              {
+                "label": "ESC",
+                "value": "ESC"
+              }
+            ]
+          }
+        ],
+        "showEditorHeader": false
+      }
+    }
+  ]
+}

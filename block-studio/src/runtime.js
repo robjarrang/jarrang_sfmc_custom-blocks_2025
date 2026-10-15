@@ -138,7 +138,7 @@
     }
     dirty = false;
     if (!sdk) {
-      localPreview(html);
+      localPreview(C.settingsSummary(definition, html));
       say('Standalone preview. Open this block in SFMC to save email content.');
       return;
     }
@@ -167,6 +167,7 @@
         if (!ready) return;
         clearTimeout(timeout);
         metadata = saved || next;
+        if (definition.settingsOnly) sdk.setSuperContent(C.settingsSummary(definition, html));
         busy = false;
         say(
           typeof accepted === 'string' && accepted !== html
@@ -307,6 +308,7 @@
       ready = false;
       dirty = false;
       sdk.setContent(html);
+      if (definition.settingsOnly) sdk.setSuperContent(C.settingsSummary(definition, html));
       sdk.setData({
         ...metadata,
         studio: {

@@ -1,0 +1,240 @@
+%%[
+/* =========================================================    ESC MASTER SETUP    Source of truth for brand values: BrandSettings DE    ========================================================= */
+/* Required starter values, with safe fallbacks */
+IF EMPTY(@EmailType) THEN
+  SET @EmailType = "Newsletter"
+ENDIF
+IF EMPTY(@BrandKey) THEN
+  SET @BrandKey = "ESC"
+ENDIF
+SET @EmailType = Uppercase(Trim(@EmailType))
+SET @BrandKey = Uppercase(Trim(@BrandKey))
+SET @DefaultESCURL = "https://www.escardio.org/"
+SET @DefaultESCFooterLogoURL = "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/30752666-10ae-4d88-b5c4-b1e9e5d0b953.png"
+SET @UseESCFooter = "false"
+/* Explicit footer choice takes priority. Older emails keep their existing rules. */
+IF NOT EMPTY(@FooterLogoMode) THEN
+  SET @FooterLogoMode = Uppercase(Trim(@FooterLogoMode))
+  IF @FooterLogoMode != "BRAND" AND @FooterLogoMode != "ESC" THEN
+    RaiseError("Footer logo must be BRAND or ESC.", true)
+  ENDIF
+  IF @FooterLogoMode == "ESC" THEN
+    SET @UseESCFooter = "true"
+  ENDIF
+ELSEIF @EmailType == "COUNCIL" OR @EmailType == "WORKING GROUP" OR @EmailType == "WORKINGGROUP" OR @EmailType == "WORKING_GROUP" OR @EmailType == "E365" THEN
+  SET @UseESCFooter = "true"
+ENDIF
+/* =========================================================    Brand lookup    ========================================================= */
+SET @BrandRows = LookupRows("BrandSettings", "BrandKey", @BrandKey)
+SET @BrandRowCount = RowCount(@BrandRows)
+IF @BrandRowCount < 1 THEN
+  RaiseError(Concat("No BrandSettings row found for BrandKey: ", @BrandKey), true)
+ENDIF
+SET @BrandRow = Row(@BrandRows, 1)
+SET @BrandName = Field(@BrandRow, "BrandName")
+SET @PrimaryColour = Field(@BrandRow, "PrimaryColour")
+SET @SecondaryColour = Field(@BrandRow, "SecondaryColour")
+SET @AccentColour = Field(@BrandRow, "AccentColour")
+SET @LogoURL = Field(@BrandRow, "LogoURL")
+SET @DarkLogoURL = Field(@BrandRow, "DarkLogoURL")
+SET @FooterLogoURL = Field(@BrandRow, "FooterLogoURL")
+SET @BrandURL = Field(@BrandRow, "BrandURL")
+SET @TextOnPrimaryColour = Field(@BrandRow, "TextOnPrimaryColour")
+/* Header assets from BrandSettings */
+SET @BrandHeaderLogoWidth = Field(@BrandRow, "HeaderLogoWidth", false)
+SET @BrandHeaderDesktopCellsURL = Field(@BrandRow, "HeaderDesktopCellsURL", false)
+SET @BrandHeaderMobileCellsURL = Field(@BrandRow, "HeaderMobileCellsURL", false)
+/* Social URLs from BrandSettings */
+SET @FacebookURL = Field(@BrandRow, "FacebookURL")
+SET @XURL = Field(@BrandRow, "XURL")
+SET @LinkedInURL = Field(@BrandRow, "LinkedInURL")
+SET @InstagramURL = Field(@BrandRow, "InstagramURL")
+SET @YouTubeURL = Field(@BrandRow, "YouTubeURL")
+/* Default blank social URLs to ESC */
+SET @DefaultFacebookURL = "https://www.facebook.com/EuropeanSocietyofCardiology"
+SET @DefaultXURL = "https://x.com/escardio"
+SET @DefaultLinkedInURL = "https://www.linkedin.com/company/european-society-of-cardiology"
+SET @DefaultInstagramURL = "https://www.instagram.com/escardio"
+SET @DefaultYouTubeURL = "https://www.youtube.com/escardio"
+IF EMPTY(@FacebookURL) THEN
+  SET @FacebookURL = @DefaultFacebookURL
+ENDIF
+IF EMPTY(@XURL) THEN
+  SET @XURL = @DefaultXURL
+ENDIF
+IF EMPTY(@LinkedInURL) THEN
+  SET @LinkedInURL = @DefaultLinkedInURL
+ENDIF
+IF EMPTY(@InstagramURL) THEN
+  SET @InstagramURL = @DefaultInstagramURL
+ENDIF
+IF EMPTY(@YouTubeURL) THEN
+  SET @YouTubeURL = @DefaultYouTubeURL
+ENDIF
+/* =========================================================    Defensive brand fallbacks    ========================================================= */
+IF EMPTY(@BrandName) THEN
+  SET @BrandName = "European Society of Cardiology"
+ENDIF
+IF EMPTY(@PrimaryColour) THEN
+  SET @PrimaryColour = "#AE1022"
+ENDIF
+IF EMPTY(@SecondaryColour) THEN
+  SET @SecondaryColour = "#63192D"
+ENDIF
+IF EMPTY(@AccentColour) THEN
+  SET @AccentColour = "#1BA2B5"
+ENDIF
+IF EMPTY(@LogoURL) THEN
+  SET @LogoURL = "https://cdn.client.jarrang.com/c124/2386ef8ae61c12b9fae771d2b0fa53aa.png"
+ENDIF
+IF EMPTY(@DarkLogoURL) THEN
+  SET @DarkLogoURL = @LogoURL
+ENDIF
+IF @UseESCFooter == "true" THEN
+  SET @FooterLogoURL = @DefaultESCFooterLogoURL
+ELSE
+  IF EMPTY(@FooterLogoURL) THEN
+    SET @FooterLogoURL = @DarkLogoURL
+  ENDIF
+ENDIF
+IF EMPTY(@BrandURL) THEN
+  SET @BrandURL = @DefaultESCURL
+ENDIF
+IF EMPTY(@TextOnPrimaryColour) THEN
+  SET @TextOnPrimaryColour = "#ffffff"
+ENDIF
+/* =========================================================    Shared layout values    ========================================================= */
+SET @BodyBgColour = "#c4c4c4"
+SET @MainBgColour = "#e8e8e8"
+SET @CardBgColour = "#ffffff"
+SET @BrandShortName = @BrandKey
+/* =========================================================    Header defaults    These can be overridden by the starter settings block.     E365 intentionally has no title prefix or subtitle. This is    handled explicitly because EMPTY("") returns true in AMPscript.    ========================================================= */
+IF EMPTY(@HeaderURL) THEN
+  SET @HeaderURL = @BrandURL
+ENDIF
+IF EMPTY(@HeaderLogoURL) THEN
+  SET @HeaderLogoURL = @LogoURL
+ENDIF
+IF EMPTY(@HeaderDarkLogoURL) THEN
+  SET @HeaderDarkLogoURL = @DarkLogoURL
+ENDIF
+IF EMPTY(@HeaderDarkLogoURL) THEN
+  SET @HeaderDarkLogoURL = @HeaderLogoURL
+ENDIF
+IF EMPTY(@HeaderLogoAlt) THEN
+  SET @HeaderLogoAlt = @BrandName
+ENDIF
+IF EMPTY(@HeaderLogoWidth) THEN
+  IF NOT EMPTY(@BrandHeaderLogoWidth) THEN
+    SET @HeaderLogoWidth = @BrandHeaderLogoWidth
+  ELSE
+    SET @HeaderLogoWidth = "200"
+  ENDIF
+ENDIF
+SET @HeaderLogoWidthValue = Replace(Lowercase(Trim(@HeaderLogoWidth)), "px", "")
+SET @HeaderLogoWidthCss = Concat(@HeaderLogoWidthValue, "px")
+IF EMPTY(@HeaderDesktopCellsURL) THEN
+  IF NOT EMPTY(@BrandHeaderDesktopCellsURL) THEN
+    SET @HeaderDesktopCellsURL = @BrandHeaderDesktopCellsURL
+  ELSE
+    SET @HeaderDesktopCellsURL = "https://placehold.co/580x160/ffffff/ffffff.png?text=%20"
+  ENDIF
+ENDIF
+IF EMPTY(@HeaderMobileCellsURL) THEN
+  IF NOT EMPTY(@BrandHeaderMobileCellsURL) THEN
+    SET @HeaderMobileCellsURL = @BrandHeaderMobileCellsURL
+  ELSE
+    SET @HeaderMobileCellsURL = "https://placehold.co/144x100/ffffff/ffffff.png?text=%20"
+  ENDIF
+ENDIF
+IF @EmailType == "E365" THEN
+  SET @HeaderTitlePrefix = ""
+  IF EMPTY(@HeaderTitleText) THEN
+    SET @HeaderTitleText = "The cardiology<br>knowledge hub"
+  ENDIF
+  SET @HeaderSubtitle = ""
+ELSE
+  IF EMPTY(@HeaderTitlePrefix) THEN
+    SET @HeaderTitlePrefix = @BrandShortName
+  ENDIF
+  IF EMPTY(@HeaderTitleText) THEN
+    SET @HeaderTitleText = "Newsletter"
+  ENDIF
+  IF EMPTY(@HeaderSubtitle) THEN
+    SET @HeaderSubtitle = "Latest updates from the European Society of Cardiology"
+  ENDIF
+ENDIF
+/* =========================================================    Button defaults    ========================================================= */
+IF EMPTY(@ButtonBgColour) THEN
+  SET @ButtonBgColour = @PrimaryColour
+ENDIF
+IF EMPTY(@ButtonTextColour) THEN
+  SET @ButtonTextColour = @TextOnPrimaryColour
+ENDIF
+/* =========================================================    Footer defaults     Council, Working Group and E365 emails use their own logo in    the header, but the footer shows the main ESC logo. Therefore    the footer logo link should always point to the ESC homepage.    ========================================================= */
+IF @UseESCFooter == "true" THEN
+  SET @FooterURL = @DefaultESCURL
+  SET @FooterLogoAlt = "European Society of Cardiology"
+ELSE
+  IF EMPTY(@FooterURL) THEN
+    SET @FooterURL = @BrandURL
+  ENDIF
+  IF EMPTY(@FooterLogoAlt) THEN
+    SET @FooterLogoAlt = @BrandName
+  ENDIF
+ENDIF
+IF EMPTY(@FooterLogoWidth) THEN
+  SET @FooterLogoWidth = "200"
+ENDIF
+IF EMPTY(@FooterBgColour) THEN
+  SET @FooterBgColour = @PrimaryColour
+ENDIF
+IF EMPTY(@FooterTextColour) THEN
+  SET @FooterTextColour = @TextOnPrimaryColour
+ENDIF
+IF EMPTY(@FooterLinkColour) THEN
+  SET @FooterLinkColour = @TextOnPrimaryColour
+ENDIF
+IF EMPTY(@FooterMutedColour) THEN
+  SET @FooterMutedColour = @TextOnPrimaryColour
+ENDIF
+/* =========================================================    Subscriber / send context    ========================================================= */
+SET @SubscriberKey = _subscriberkey
+SET @SubscriberEmail = AttributeValue("EmailAddress")
+IF EMPTY(@SubscriberEmail) THEN
+  SET @SubscriberEmail = AttributeValue("emailaddr")
+ENDIF
+IF EMPTY(@SubscriberEmail) THEN
+  SET @SubscriberEmail = emailaddr
+ENDIF
+SET @Salutation = AttributeValue("Salutation")
+IF EMPTY(@Salutation) THEN
+  SET @Salutation = "Dr"
+ENDIF
+SET @FirstName = AttributeValue("First Name")
+SET @LastName = AttributeValue("Last Name")
+SET @LeadID = AttributeValue("Lead_Request ID")
+IF EMPTY(@LeadID) THEN
+  SET @LeadID = @SubscriberKey
+ENDIF
+SET @CurrentSystemTime = NOW()
+SET @LocalNow = SystemDateToLocalDate(@CurrentSystemTime)
+SET @SendDate = FormatDate(@LocalNow, "d MMMM yyyy")
+SET @CurrentYear = FormatDate(@LocalNow, "yyyy")
+/* =========================================================    Footer routes    Based on existing ESC template behaviour    ========================================================= */
+SET @ModifyEmailURL = "https://myesc.escardio.org/M_ChangeEmail"
+SET @PreferencesBaseURL = "https://myesc.escardio.org/Account/ESCeNewsSettings?q="
+SET @UnsubscribeAllBaseURL = "https://myesc.escardio.org/Account/ESCeNewsUnsubscribe?q="
+SET @ContactURL = "https://help.escardio.org/s/"
+SET @CreateMyESCURL = "https://myesc.escardio.org/Account/ESCRegister"
+SET @NewsletterUnsubscribeBaseURL = "https://pub.s6.exacttarget.com/dw2keqvnyyf?id="
+SET @PreferencesURL = Concat(@PreferencesBaseURL, @SubscriberKey)
+SET @UnsubscribeAllURL = Concat(@UnsubscribeAllBaseURL, @SubscriberKey)
+SET @NewsletterUnsubscribeURL = Concat(@NewsletterUnsubscribeBaseURL, @LeadID)
+/* =========================================================    Social icon assets    Resolved social URLs come from BrandSettings with ESC fallbacks.    Icons use the new template design assets.    ========================================================= */
+SET @FacebookIconURL = "https://cdn.client.jarrang.com/c124/3343bc2148f2e7ca8493500e052967ed.png"
+SET @LinkedInIconURL = "https://cdn.client.jarrang.com/c124/b964923fedb63b8c4b87d2578f73945b.png"
+SET @XIconURL = "https://cdn.client.jarrang.com/c124/42f0f2fa89cfb71e3302ae070fcc7f8d.png"
+SET @YouTubeIconURL = "https://cdn.client.jarrang.com/c124/e3eae8794913eecd5c7e9b33237f27d6.png"
+SET @InstagramIconURL = "https://cdn.client.jarrang.com/c124/10473e67a9bb8ae648a8c63be4cec900.png"
+]%%

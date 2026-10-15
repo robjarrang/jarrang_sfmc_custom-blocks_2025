@@ -1,6 +1,6 @@
 # Jarrang Block Studio: technical documentation
 
-For developers maintaining Studio, its generated SFMC editors and client module projects. Reviewed against Studio 1.27.0 on 14 October 2026. For day-to-day tasks, use the [internal user guide](USER_GUIDE.md).
+For developers maintaining Studio, its generated SFMC editors and client module projects. Reviewed against Studio 1.28.0 on 14 October 2026. For day-to-day tasks, use the [internal user guide](USER_GUIDE.md).
 
 ## Contents
 
@@ -206,3 +206,22 @@ Primary platform references, reviewed 13 October 2026:
 - [Salesforce: develop a custom block widget](https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/develop-block-widget.html)
 
 Keep credentials and subscriber data out of module defaults and examples. The Pages output contains default content and definitions; `projects/` is outside the published Pages folder but remains visible to anyone with repository access, including the public when the repository is public.
+
+## Settings-only blocks (1.28.0)
+
+A module can opt into `settingsOnly: true` under **Module settings → Output options**. Ordinary modules keep their existing source-preserving rendering. Settings-only modules accept one AMPscript block containing assignments of this exact form:
+
+```ampscript
+%%[
+SET @BrandKey = "{{ BrandKey }}"
+SET @FooterLogoMode = "{{ FooterLogoMode }}"
+]%%
+```
+
+Each variable/placeholder must match one enabled named dropdown's `key`. The fields use the existing `select` type and template binding; field IDs remain the SDK value identifiers. Every option value is restricted to 1-80 ASCII letters, numbers, underscores or hyphens. Every submitted value must match a configured option. Other statements, free text, duplicate keys, disabled/missing fields and visible HTML are rejected. This restricted format deliberately does not interpolate arbitrary text into AMPscript or relax the normal template parser's protection of AMPscript.
+
+`runtime-core.js` validates and renders the assignments. `settingsSummary` builds an escaped label/value card from the rendered assignments. The runtime sends the assignments through `setContent`, retains choices through `setData`, and sends the card separately through `setSuperContent`; Studio and standalone previews use the same card. The summary never becomes email output. SFMC acceptance, editor-only display and absence of wrapper spacing need a live check.
+
+The mode is included in exported definitions, repository consistency checks, undo state and publishing baselines. Changing the mode on an already published module requires a duplicate endpoint. Edit existing dropdown labels, choices and defaults through the normal field editor. Developer source edits must retain the restricted assignment form; this mode does not support arbitrary Liquid branches or repeaters.
+
+The shared ESC settings suite is documented in [ESC email settings integration](integrations/esc/email-settings/README.md). Its runtime adds approximately 2.8 KB of source without another dependency or request. The existing 40 module endpoints retain their previous runtime.

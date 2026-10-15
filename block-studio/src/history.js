@@ -8,6 +8,7 @@
     'source',
     'draftSource',
     'templateMode',
+    'settingsOnly',
     'contextCss',
     'width',
     'fields',
@@ -148,6 +149,7 @@
       'source',
       'fields',
       'templateMode',
+      'settingsOnly',
       'contextCss',
     ]) {
       if (Object.hasOwn(saved, key)) draft[key] = copy(saved[key]);
@@ -167,6 +169,7 @@
       source: module.source,
       draftSource: module.draftSource,
       templateMode: !!module.templateMode,
+      settingsOnly: !!module.settingsOnly,
       contextCss: module.contextCss || '',
       fields: module.fields,
     };

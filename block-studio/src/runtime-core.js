@@ -637,7 +637,62 @@
     }
     return html;
   }
+  // Explicit settings-only mode. Never interpolate arbitrary user text into AMPscript.
+  // Restrict this small format to named dropdowns and literal identifier values.
+  function settingsOutput(module, values = {}) {
+    const body = module.source.match(/^\s*%%\[([\s\S]*?)\]%%\s*$/)?.[1];
+    if (body === undefined) throw Error('Settings blocks need one AMPscript assignment block.');
+    const used = new Set(),
+      lines = [];
+    const rest = body.replace(/SET\s+@([A-Za-z][\w]*)\s*=\s*"{{\s*\1\s*}}"/g, (_, key) => {
+      const field = module.fields.find((f) => f.enabled && f.key === key);
+      if (!field || field.type !== 'select' || used.has(key))
+        throw Error('Each settings variable needs one enabled dropdown with the same key.');
+      if (
+        !field.options?.length ||
+        field.options.some((o) => !/^[A-Za-z0-9_-]{1,80}$/.test(o.value))
+      )
+        throw Error(
+          field.label +
+            ': use option values containing only letters, numbers, hyphens or underscores.',
+        );
+      const value = Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
+      const error = validate(field, value);
+      if (error) throw Error(field.label + ': ' + error);
+      used.add(key);
+      lines.push('SET @' + key + ' = "' + value + '"');
+      return '';
+    });
+    if (rest.trim() || !used.size || module.fields.filter((f) => f.enabled).length !== used.size)
+      throw Error('Use only SET @FieldKey = "{{ FieldKey }}" assignments in a settings block.');
+    return '%%[\n' + lines.join('\n') + '\n]%%';
+  }
+  function settingsSummary(module, html) {
+    if (!module.settingsOnly) return html;
+    const values = Object.fromEntries(
+      [...html.matchAll(/SET @([A-Za-z]\w*) = "([A-Za-z0-9_-]+)"/g)].map((m) => [m[1], m[2]]),
+    );
+    const rows = module.fields
+      .filter((f) => f.enabled)
+      .map(
+        (f) =>
+          '<div style="margin-top:6px">' +
+          escape(f.label) +
+          ': <strong>' +
+          escape(f.options?.find((o) => o.value === values[f.key])?.label || values[f.key] || '') +
+          '</strong></div>',
+      )
+      .join('');
+    return (
+      '<div style="padding:16px 20px;border:1px solid #d6d8e5;border-radius:8px;background:#f5f6fa;color:#080043;font:14px/1.5 Arial,sans-serif"><strong>' +
+      escape(module.name) +
+      '</strong>' +
+      rows +
+      '<div style="margin-top:10px;font-size:12px">Editor only · Not included in the email</div></div>'
+    );
+  }
   function render(module, values = {}, options = {}) {
+    if (module.settingsOnly) return settingsOutput(module, values);
     const patches = [],
       hidden = hiddenRanges(module, values),
       scope = Object.create(null),
@@ -835,6 +890,7 @@
     validate,
     hiddenRanges,
     fieldActive,
+    settingsSummary,
     render,
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;

@@ -170,6 +170,7 @@
       release: module.release,
       source: module.source,
       templateMode: !!module.templateMode,
+      ...(module.settingsOnly ? { settingsOnly: true } : {}),
       contextCss: module.contextCss || '',
       fields: module.fields,
       editorTheme: module.editorTheme ? editorTheme(module) : undefined,

@@ -1,3 +1,18 @@
+# 1.28.0 - Shared ESC email settings (14 October 2026)
+
+- Added the shared settings-only module and all 32 brand keys supplied by Rob. Tested every key with both footer choices (64 combinations), preserving `C-Gen` in generated assignments.
+- Settings-only mode restricts output to named dropdown assignments; rejects unknown choices, unsafe option values, extra statements, visible HTML and ambiguous mappings. Ordinary AMPscript remains opaque.
+- Actual exported editor and bundled Block SDK tested against a simulated parent host: both controls, AMPscript `setContent`, separate `setSuperContent`, metadata save and reopening. This does not simulate SFMC sanitisation or execute AMPscript.
+- Mode retained in definitions, import consistency, compatibility baselines, undo/redo, dirty-state detection and recovery. Field-editor round trips include the settings module.
+- Build and formatting passed; all 262 automated tests passed.
+- All 40 original module pages, project JSON, icon pairs and pre-existing runtime files remain byte-identical. Only the settings endpoint references the new runtime. The shared runtime adds approximately 2.8 KB, no dependencies or requests.
+- Master setup preserves all original executable tokens outside the new footer-choice branch after removing Markdown transport escaping. Existing emails without FooterLogoMode retain the legacy category rules. Customer Key remains ESC_SNIP_Master_Setup.
+- Supplied email example changed only in its starter assignments and the location of the trailing brand-dependent style group. The CSS bytes and module body content were preserved. No live master template was edited.
+
+Live checks still required: settings summary and wrapper spacing in SFMC; new/edit/close/reopen behaviour in the real host; BrandSettings lookups; legacy and explicit footer choices; relocated CSS in desktop/mobile, Outlook and dark-mode test sends. The external ESC_GLOBAL_Footer implementation was not supplied. Browser automation and live SFMC/email-client tests were not run.
+
+---
+
 # Link options release 1.27.0
 
 Added optional Title and Tracking Alias inputs in a shared, collapsed Link options section with Conversion Tracking Link. The same UI serves URL controls and formatted-text link dialogues. Authoring settings expose permissions and defaults; repeating item values keep their own options. URL values remain strings and the additional metadata map is validated separately.

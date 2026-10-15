@@ -7,6 +7,7 @@
       id: module.id,
       slug: module.slug,
       release: module.release,
+      ...(module.settingsOnly ? { settingsOnly: true } : {}),
       fields: module.fields,
     });
   }
@@ -37,6 +38,11 @@
       );
     const old = module.published;
     if (!old) return errors;
+    if (!!old.settingsOnly !== !!module.settingsOnly)
+      add(
+        'Keep the output mode for an existing block. Duplicate it to change between email content and settings-only output.',
+        'maintenance',
+      );
     if (
       !Array.isArray(old.fields) ||
       typeof old.id !== 'string' ||
@@ -163,6 +169,7 @@
             );
         if (
           !!d.templateMode !== !!expected.templateMode ||
+          !!d.settingsOnly !== !!expected.settingsOnly ||
           (d.contextCss || '') !== (expected.contextCss || '')
         )
           throw Error(m.name + ': preview or template settings differ from its exported page.');

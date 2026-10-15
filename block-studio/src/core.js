@@ -27,6 +27,7 @@
     validate,
     hiddenRanges,
     fieldActive,
+    settingsSummary,
     render,
   } = R;
   const H =
@@ -905,6 +906,7 @@
     parse,
     infer,
     manualField,
+    settingsSummary,
     render,
     inspect,
     validate,

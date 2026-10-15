@@ -1,6 +1,6 @@
 # Jarrang Block Studio: internal user guide
 
-For Jarrang colleagues creating and maintaining SFMC custom blocks. Reviewed against Studio 1.27.0 on 14 October 2026.
+For Jarrang colleagues creating and maintaining SFMC custom blocks. Reviewed against Studio 1.28.0 on 14 October 2026.
 
 Studio turns one coded email module into one draggable SFMC block. You choose the content clients can edit, test their controls and save the files into your local repository. Tower commits and pushes those files; GitHub Pages hosts them.
 
@@ -192,3 +192,9 @@ For a deployed mistake, use Tower to revert the relevant change, including its m
 | The published editor looks unchanged | Check the Tower push, Pages deployment and correct endpoint, then reload the editor. Updating Studio alone does not update saved module pages. |
 
 When asking for help, include the client/template, module name, action, exact error and whether the problem is in Studio, the hosted editor or SFMC. Include a screenshot and a minimal example without subscriber data or credentials.
+
+## Maintain ESC email settings
+
+Choose **ESC / Email settings** to manage the shared block used before the email's content. Open the module, then edit **Brand** or **Footer logo** like any other dropdown. All 32 supplied brand keys are included. Add future brands using confirmed keys from `BrandSettings`. The displayed label can be friendly; the inserted value must be the exact key. Save and push through Tower.
+
+The preview card represents settings and is not email content. Actual colours and assets are resolved in SFMC Subscriber Preview. Initial installation and the master-template adjustment are covered in the [ESC email settings integration guide](integrations/esc/email-settings/README.md).

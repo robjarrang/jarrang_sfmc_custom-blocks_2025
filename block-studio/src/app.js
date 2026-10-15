@@ -1436,6 +1436,7 @@
   function renderExport() {
     const m = current();
     $('module-slug').value = m.slug;
+    $('settings-only').checked = !!m.settingsOnly;
     $('module-release').value = m.release;
     $('export-template-name').textContent =
       (project.settings.clientName || 'Unassigned') +
@@ -1706,6 +1707,7 @@
         source: 'HTML & CSS',
         draftSource: 'Source import draft',
         templateMode: 'Template logic mode',
+        settingsOnly: 'Settings-only output',
         contextCss: 'Preview CSS',
         fields: 'Editable fields and their settings',
       };
@@ -2195,6 +2197,11 @@
     renderThemeSettings();
   };
   $('show-map-source').onclick = () => setPreviewMode('html');
+  $('settings-only').onchange = (e) => {
+    current().settingsOnly = e.target.checked;
+    persist('settings-only mode');
+    renderExport();
+  };
   $('module-slug').oninput = (e) => {
     current().slug = e.target.value;
     persist('module folder', 'module-slug');

@@ -1,6 +1,6 @@
 # ESC modules: internal maintenance handover
 
-For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.27.0. This is an internal supplement to the [user guide](USER_GUIDE.md), not a client-facing manual.
+For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.28.0. This is an internal supplement to the [user guide](USER_GUIDE.md), not a client-facing manual.
 
 ## Open and make a change
 
@@ -73,3 +73,7 @@ For each affected module, verify:
 Record the environment and outcome, not just “preview passed”. [ESC-COMPATIBILITY.md](ESC-COMPATIBILITY.md) records an earlier independent comparison; it is not certification of subsequent email-client changes. [VALIDATION.md](block-studio/VALIDATION.md) records later automated work and its limits.
 
 For recovery and deployment rollback, follow the [user guide](USER_GUIDE.md#recover-a-mistake). Restore matching project and generated files together; keep old runtime directories and existing endpoints.
+
+## Shared email settings (1.28.0)
+
+The additional **ESC / Email settings** suite contains one settings-only block for both Newsletter and Congress. It exposes Brand and Footer logo, with no category or header-prefix control. All 32 supplied brand keys are listed, with Council and Working Group labels. The original 40 modules remain unchanged. Follow [the integration guide](integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
