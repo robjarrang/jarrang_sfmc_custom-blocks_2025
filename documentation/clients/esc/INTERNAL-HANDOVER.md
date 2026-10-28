@@ -7,7 +7,7 @@ For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 again
 ## Open and make a change
 
 1. Pull in Tower and open Studio. Choose **Open repository** and select the local repository root.
-2. Choose **ESC / Newsletter** (27 modules) or **ESC / Congress** (13 modules).
+2. Choose **ESC / Newsletter** (28 modules) or **ESC / Congress** (13 modules).
 3. Use **HTML & CSS** for a small code correction, **Fields → Edit** for starting content/control settings, or **Test** for temporary values.
 4. Apply the edit, test the affected behaviour and choose **Save**. Use **Save template** for shared editor appearance changes.
 5. Review, commit and push in Tower. Check the hosted editor and new/existing instances in SFMC.
@@ -37,6 +37,12 @@ Congress **Lead Editorial** retains the side-by-side desktop composition: a 320p
 **Visual image** is the main image. Leave **Mobile image (optional)** blank to reuse the main image and alt text. A supplied mobile alternative uses its own alt text. Existing instances with a saved alternative keep it until cleared.
 
 Lead Editorial also includes organiser logo width and optional link controls. Width starts at 112px, renders with a 160px cap and falls back to 112px for non-positive values. A blank logo link produces no anchor. Test the result with the actual master-template mobile rules as well as on desktop.
+
+## Newsletter Membership Card
+
+**Membership Card** is a personalised member card with a fixed orange treatment. Its AMPscript reads the `Salutation`, `FirstName`, `Last Name`, `Profession`, `ESC Product` and `ESCID` sendable-data attributes, builds the name and membership line, and links to the MyESC profile. Only the greeting, profile link text and badge label are editable; keep the AMPscript unchanged. The ESC ID badge appears only for members with an ESC ID. Check it with subscriber preview against real member records.
+
+Its icon pair is a byte copy of Membership Callout's ID-badge artwork until dedicated artwork is supplied. Replace both PNGs through **Module settings → Custom block icon**.
 
 ## The master template is a separate dependency
 

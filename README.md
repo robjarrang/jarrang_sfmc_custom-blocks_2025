@@ -1,6 +1,6 @@
 # Jarrang Block Studio
 
-An internal tool for turning coded email modules into individual Salesforce Marketing Cloud custom blocks. One repository hosts Studio and each client's template/module folders. The supplied ESC suite contains 27 Newsletter and 13 Congress modules, plus one shared Email settings block.
+An internal tool for turning coded email modules into individual Salesforce Marketing Cloud custom blocks. One repository hosts Studio and each client's template/module folders. The supplied ESC suite contains 28 Newsletter and 13 Congress modules, plus one shared Email settings block.
 
 ## Documentation
 

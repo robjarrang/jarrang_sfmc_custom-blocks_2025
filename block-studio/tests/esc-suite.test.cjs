@@ -756,12 +756,12 @@ test('repeated item guidance and validation can be edited through the field edit
     await dom.happyDOM.close();
   }
 });
-test('all 40 ESC modules retain their exported definition and supplied PNG pair', async () => {
+test('all 41 ESC modules retain their exported definition and supplied PNG pair', async () => {
   const { BlockCore: C, BlockExport: E, BlockMaintenance: M, dom } = await environment();
   try {
     assert.equal(
       projects.reduce((n, p) => n + p.modules.length, 0),
-      40,
+      41,
     );
     for (const p of projects) {
       C.assertProject(p);
@@ -992,7 +992,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      41,
+      42,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');
@@ -1009,7 +1009,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
   }
 });
 
-test('all 40 ESC modules retain exact output, fields, references and PNGs through undo and exported-content recovery', async () => {
+test('all 41 ESC modules retain exact output, fields, references and PNGs through undo and exported-content recovery', async () => {
   const { BlockCore: C, dom } = await environment();
   const H = require('../src/history.js');
   try {
