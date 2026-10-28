@@ -28,6 +28,20 @@ The suite uses optional sections, colour/theme choices, conditional layouts, rep
 
 A repeated group can become a single item through its field settings, including supported item-position rules. The retained item becomes both first and last. This still changes an existing published field schema, so release that change as a duplicated module rather than replacing the live endpoint.
 
+## Vertical spacing
+
+Use table spacers for vertical spacing, not `padding` or `margin`, so every email client renders it the same way. A spacer is a fixed-height cell holding a non-breaking space:
+
+```html
+<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; width: 100%;" width="100%"><tr><td height="24" style="font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;">&nbsp;</td></tr></table>
+```
+
+Text elements carry `margin: 0`; the gap between two elements is a spacer between them, placed inside the same `{% if %}` as the element it belongs to so a hidden element leaves no gap. Cell padding keeps only its horizontal part. Where a show/hide toggle connects to an element that has spacers, the connection is a one-cell wrapper table holding the element and its spacers, so hiding it removes both.
+
+Deliberate exceptions: button and pill internal padding (it sizes the button), padding on cells with a fixed height (it interacts with the height), and the Congress Lead Editorial and Lead Poster, whose mobile padding is overridden by the master template CSS.
+
+A text field left blank but still shown leaves an empty paragraph. Spacers around it add up in every client; the old margins collapsed in browsers but not in Outlook. Use the show/hide switch to remove a section.
+
 ## Images and the Congress lead
 
 The landscape placeholder is the ESC-hosted [1920 × 1080 image](https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg). It is used for populated general landscape-image defaults. Logos, journal covers and speaker portraits keep their own artwork; optional images remain blank. Display scaling does not reduce the asset's download size.
