@@ -637,7 +637,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 268);
+    assert.equal(count, 291);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1223,6 +1223,36 @@ test('congress deadline links are optional per row and need both a title and a U
     assert.equal(links[0].getAttribute('href'), 'https://example.com/a');
     assert.equal(host.querySelectorAll('.deadline-text').length, 4);
     assert.equal(host.textContent.includes('Text only'), false);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('editorials items can italicise their title without changing existing output', async () => {
+  const { BlockCore: C, BlockControls, dom } = await environment();
+  try {
+    const m = projects[0].modules.find((m) => m.slug === 'editorials');
+    const list = m.fields.find((f) => f.key === 'editorials');
+    const toggle = list.itemFields.find((f) => f.key === 'title_italic');
+    assert.equal(toggle.type, 'toggle');
+    assert.equal(toggle.defaultValue, 'hidden');
+    const styles = (rows) => {
+      const host = dom.document.createElement('div');
+      host.innerHTML = C.render(m, rows ? { [list.id]: rows } : {});
+      return [...host.querySelectorAll('p.dark-invert')].map((p) => p.style.fontStyle || 'normal');
+    };
+    assert.ok(styles().every((s) => s === 'normal'));
+    const legacy = list.defaultValue.map(({ title_italic, ...row }) => row);
+    assert.ok(styles(legacy).every((s) => s === 'normal'));
+    const rows = list.defaultValue.map((row, i) => ({ ...row, title_italic: i === 0 }));
+    assert.deepEqual(styles(rows).slice(0, 2), ['italic', 'normal']);
+    const container = dom.document.createElement('div');
+    dom.document.body.append(container);
+    BlockControls.mount(container, [list], {}, () => {}, { prefix: 'ed-' });
+    const switches = [...container.querySelectorAll('label')].filter(
+      (l) => l.textContent.trim() === 'Italic title',
+    );
+    assert.equal(switches.length, list.defaultValue.length);
   } finally {
     await dom.happyDOM.close();
   }

@@ -6095,12 +6095,36 @@
       "name": "Feature Card",
       "slug": "feature-card",
       "release": "1.0.0",
-      "source": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #212529; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 0 20px; width: 540px;\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"swap-content\" style=\"background-color: #ffffff; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"Feature image description\" class=\"fluid\" height=\"{% if feature_image_height > 0 %}{{ feature_image_height }}{% else %}112{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"></a></td><td bgcolor=\"#ffffff\" class=\"stack-gap\" style=\"background-color: #ffffff; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"swap-content feature-copy\" style=\"background-color: #ffffff; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\"><tr><td><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><p style=\"line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#212529\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #212529; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
-      "draftSource": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #212529; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 0 20px; width: 540px;\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"swap-content\" style=\"background-color: #ffffff; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"Feature image description\" class=\"fluid\" height=\"{% if feature_image_height > 0 %}{{ feature_image_height }}{% else %}112{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"></a></td><td bgcolor=\"#ffffff\" class=\"stack-gap\" style=\"background-color: #ffffff; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"swap-content feature-copy\" style=\"background-color: #ffffff; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\"><tr><td><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><p style=\"line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#212529\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #212529; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
+      "source": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section{% if theme == 'dark' %} esc-news-section-dark{% endif %}\" role=\"presentation\" style=\"background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"content-inner\" style=\"background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; border-radius: 16px; padding: 0 20px; width: 540px;\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"swap-content\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"Feature image description\" class=\"fluid\" height=\"{% if feature_image_height > 0 %}{{ feature_image_height }}{% else %}112{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"></a></td><td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"stack-gap\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"swap-content feature-copy\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\"><tr><td><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><p style=\"line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
+      "draftSource": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section{% if theme == 'dark' %} esc-news-section-dark{% endif %}\" role=\"presentation\" style=\"background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"content-inner\" style=\"background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; border-radius: 16px; padding: 0 20px; width: 540px;\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"swap-content\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"Feature image description\" class=\"fluid\" height=\"{% if feature_image_height > 0 %}{{ feature_image_height }}{% else %}112{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"></a></td><td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"stack-gap\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"swap-content feature-copy\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\"><tr><td><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><p style=\"line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
       "fields": [
+        {
+          "id": "field10",
+          "key": "theme",
+          "label": "Theme",
+          "type": "select",
+          "binding": "template",
+          "defaultValue": "dark",
+          "originalValue": "dark",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "help": "Choose the light or dark background style for this feature card.",
+          "targets": [],
+          "options": [
+            {
+              "label": "Light background",
+              "value": "light"
+            },
+            {
+              "label": "Dark background",
+              "value": "dark"
+            }
+          ]
+        },
         {
           "label": "Image link",
           "type": "url",
@@ -6112,8 +6136,8 @@
           "help": "Where the feature image links to.",
           "targets": [
             {
-              "start": 1558,
-              "end": 1583,
+              "start": 2217,
+              "end": 2242,
               "nodeId": "n12",
               "kind": "attribute",
               "name": "href",
@@ -6140,8 +6164,8 @@
           "help": "1920 × 1080px recommended. Scales proportionally to fit.",
           "targets": [
             {
-              "start": 1801,
-              "end": 1900,
+              "start": 2460,
+              "end": 2559,
               "nodeId": "n13",
               "kind": "attribute",
               "name": "src",
@@ -6162,8 +6186,8 @@
           "help": "Accessible alt text describing the image.",
           "targets": [
             {
-              "start": 1662,
-              "end": 1687,
+              "start": 2321,
+              "end": 2346,
               "nodeId": "n13",
               "kind": "attribute",
               "name": "alt",
@@ -6198,8 +6222,8 @@
           "help": "Feature card headline.",
           "targets": [
             {
-              "start": 3009,
-              "end": 3040,
+              "start": 3980,
+              "end": 4011,
               "nodeId": "n19",
               "kind": "content",
               "originalValue": "Feature card headline goes here"
@@ -6218,8 +6242,8 @@
           "style": "switch",
           "targets": [
             {
-              "start": 3141,
-              "end": 3832,
+              "start": 4112,
+              "end": 4803,
               "nodeId": "n21",
               "kind": "element"
             }
@@ -6238,8 +6262,8 @@
           "help": "Short summary copy shown below the headline.",
           "targets": [
             {
-              "start": 3625,
-              "end": 3711,
+              "start": 4596,
+              "end": 4682,
               "nodeId": "n24",
               "kind": "content",
               "originalValue": "Use this for an important story that deserves more visual weight than a standard card."
@@ -6265,8 +6289,8 @@
           "style": "switch",
           "targets": [
             {
-              "start": 3832,
-              "end": 4293,
+              "start": 4803,
+              "end": 5264,
               "nodeId": "n26",
               "kind": "element"
             }
@@ -6285,8 +6309,8 @@
           "help": "Where the link goes.",
           "targets": [
             {
-              "start": 3954,
-              "end": 3979,
+              "start": 4925,
+              "end": 4950,
               "nodeId": "n27",
               "kind": "attribute",
               "name": "href",
@@ -6313,8 +6337,8 @@
           "help": "Call-to-action link label.",
           "targets": [
             {
-              "start": 4269,
-              "end": 4285,
+              "start": 5240,
+              "end": 5256,
               "nodeId": "n27",
               "kind": "content",
               "originalValue": "Read more →"
@@ -6339,6 +6363,30 @@
         "release": "1.0.0",
         "fields": [
           {
+            "id": "field10",
+            "key": "theme",
+            "label": "Theme",
+            "type": "select",
+            "binding": "template",
+            "defaultValue": "dark",
+            "originalValue": "dark",
+            "enabled": true,
+            "required": false,
+            "maxLength": 0,
+            "help": "Choose the light or dark background style for this feature card.",
+            "targets": [],
+            "options": [
+              {
+                "label": "Light background",
+                "value": "light"
+              },
+              {
+                "label": "Dark background",
+                "value": "dark"
+              }
+            ]
+          },
+          {
             "label": "Image link",
             "type": "url",
             "defaultValue": "https://www.escardio.org/",
@@ -6349,8 +6397,8 @@
             "help": "Where the feature image links to.",
             "targets": [
               {
-                "start": 1558,
-                "end": 1583,
+                "start": 2217,
+                "end": 2242,
                 "nodeId": "n12",
                 "kind": "attribute",
                 "name": "href",
@@ -6377,8 +6425,8 @@
             "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
-                "start": 1801,
-                "end": 1900,
+                "start": 2460,
+                "end": 2559,
                 "nodeId": "n13",
                 "kind": "attribute",
                 "name": "src",
@@ -6399,8 +6447,8 @@
             "help": "Accessible alt text describing the image.",
             "targets": [
               {
-                "start": 1662,
-                "end": 1687,
+                "start": 2321,
+                "end": 2346,
                 "nodeId": "n13",
                 "kind": "attribute",
                 "name": "alt",
@@ -6435,8 +6483,8 @@
             "help": "Feature card headline.",
             "targets": [
               {
-                "start": 3009,
-                "end": 3040,
+                "start": 3980,
+                "end": 4011,
                 "nodeId": "n19",
                 "kind": "content",
                 "originalValue": "Feature card headline goes here"
@@ -6455,8 +6503,8 @@
             "style": "switch",
             "targets": [
               {
-                "start": 3141,
-                "end": 3832,
+                "start": 4112,
+                "end": 4803,
                 "nodeId": "n21",
                 "kind": "element"
               }
@@ -6475,8 +6523,8 @@
             "help": "Short summary copy shown below the headline.",
             "targets": [
               {
-                "start": 3625,
-                "end": 3711,
+                "start": 4596,
+                "end": 4682,
                 "nodeId": "n24",
                 "kind": "content",
                 "originalValue": "Use this for an important story that deserves more visual weight than a standard card."
@@ -6502,8 +6550,8 @@
             "style": "switch",
             "targets": [
               {
-                "start": 3832,
-                "end": 4293,
+                "start": 4803,
+                "end": 5264,
                 "nodeId": "n26",
                 "kind": "element"
               }
@@ -6522,8 +6570,8 @@
             "help": "Where the link goes.",
             "targets": [
               {
-                "start": 3954,
-                "end": 3979,
+                "start": 4925,
+                "end": 4950,
                 "nodeId": "n27",
                 "kind": "attribute",
                 "name": "href",
@@ -6550,8 +6598,8 @@
             "help": "Call-to-action link label.",
             "targets": [
               {
-                "start": 4269,
-                "end": 4285,
+                "start": 5240,
+                "end": 5256,
                 "nodeId": "n27",
                 "kind": "content",
                 "originalValue": "Read more →"
@@ -6567,11 +6615,35 @@
         "name": "Feature Card",
         "slug": "feature-card",
         "release": "1.0.0",
-        "source": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"#212529\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section esc-news-section-dark\" role=\"presentation\" style=\"background-color: #212529; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#212529\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #212529; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#212529\" class=\"content-inner\" style=\"background-color: #212529; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; border-radius: 16px; padding: 0 20px; width: 540px;\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"#ffffff\" class=\"swap-content\" style=\"background-color: #ffffff; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"Feature image description\" class=\"fluid\" height=\"{% if feature_image_height > 0 %}{{ feature_image_height }}{% else %}112{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"></a></td><td bgcolor=\"#ffffff\" class=\"stack-gap\" style=\"background-color: #ffffff; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"#ffffff\" class=\"swap-content feature-copy\" style=\"background-color: #ffffff; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"#ffffff\" style=\"background-color: #ffffff; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\"><tr><td><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><p style=\"line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#212529\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #212529; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
+        "source": "<!-- START .esc-feature-card-dark --><table align=\"center\" bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-news-section{% if theme == 'dark' %} esc-news-section-dark{% endif %}\" role=\"presentation\" style=\"background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"content-inner\" style=\"background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect news-card\" role=\"presentation\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; border-collapse: separate; border-radius: 16px; overflow: hidden; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; border-radius: 16px; padding: 0 20px; width: 540px;\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; table-layout: fixed; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n         \n          <tr>\n           <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"swap-content\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0; width: 200px;\" valign=\"top\" width=\"200\">\n            <a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"Feature image description\" class=\"fluid\" height=\"{% if feature_image_height > 0 %}{{ feature_image_height }}{% else %}112{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: 0; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 200px;\" width=\"200\"></a></td><td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"stack-gap\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; display: none; mso-hide: all; font-size: 0; line-height: 0; height: 0; max-height: 0; overflow: hidden; width: 0;\" width=\"0\">\n            &nbsp;</td><td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" class=\"swap-content feature-copy\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0 0 0 16px; width: 324px;\" valign=\"top\" width=\"340\">\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\" width=\"100%\">\n             \n              <tr>\n               <td bgcolor=\"{% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}\" style=\"background-color: {% if theme == 'dark' %}#ffffff{% else %}#f8f8f8{% endif %}; padding: 0; width: 324px;\">\n                <h3 class=\"news-card-title\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Feature card headline goes here</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\"><tr><td><p class=\"news-card-text\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 400; line-height: 24px; margin: 0; mso-line-height-rule: exactly;\">\n                 Use this for an important story that deserves more visual weight than a standard card.</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><p style=\"line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">\n                 <a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; text-decoration: underline;\" target=\"_blank\">Read more &rarr;</a></p></td></tr></table></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"{% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: {% if theme == 'dark' %}#212529{% else %}#ffffff{% endif %}; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-feature-card-dark -->",
         "templateMode": true,
         "minifyOutput": true,
         "contextCss": "",
         "fields": [
+          {
+            "id": "field10",
+            "key": "theme",
+            "label": "Theme",
+            "type": "select",
+            "binding": "template",
+            "defaultValue": "dark",
+            "originalValue": "dark",
+            "enabled": true,
+            "required": false,
+            "maxLength": 0,
+            "help": "Choose the light or dark background style for this feature card.",
+            "targets": [],
+            "options": [
+              {
+                "label": "Light background",
+                "value": "light"
+              },
+              {
+                "label": "Dark background",
+                "value": "dark"
+              }
+            ]
+          },
           {
             "label": "Image link",
             "type": "url",
@@ -6583,8 +6655,8 @@
             "help": "Where the feature image links to.",
             "targets": [
               {
-                "start": 1558,
-                "end": 1583,
+                "start": 2217,
+                "end": 2242,
                 "nodeId": "n12",
                 "kind": "attribute",
                 "name": "href",
@@ -6611,8 +6683,8 @@
             "help": "1920 × 1080px recommended. Scales proportionally to fit.",
             "targets": [
               {
-                "start": 1801,
-                "end": 1900,
+                "start": 2460,
+                "end": 2559,
                 "nodeId": "n13",
                 "kind": "attribute",
                 "name": "src",
@@ -6633,8 +6705,8 @@
             "help": "Accessible alt text describing the image.",
             "targets": [
               {
-                "start": 1662,
-                "end": 1687,
+                "start": 2321,
+                "end": 2346,
                 "nodeId": "n13",
                 "kind": "attribute",
                 "name": "alt",
@@ -6669,8 +6741,8 @@
             "help": "Feature card headline.",
             "targets": [
               {
-                "start": 3009,
-                "end": 3040,
+                "start": 3980,
+                "end": 4011,
                 "nodeId": "n19",
                 "kind": "content",
                 "originalValue": "Feature card headline goes here"
@@ -6689,8 +6761,8 @@
             "style": "switch",
             "targets": [
               {
-                "start": 3141,
-                "end": 3832,
+                "start": 4112,
+                "end": 4803,
                 "nodeId": "n21",
                 "kind": "element"
               }
@@ -6709,8 +6781,8 @@
             "help": "Short summary copy shown below the headline.",
             "targets": [
               {
-                "start": 3625,
-                "end": 3711,
+                "start": 4596,
+                "end": 4682,
                 "nodeId": "n24",
                 "kind": "content",
                 "originalValue": "Use this for an important story that deserves more visual weight than a standard card."
@@ -6736,8 +6808,8 @@
             "style": "switch",
             "targets": [
               {
-                "start": 3832,
-                "end": 4293,
+                "start": 4803,
+                "end": 5264,
                 "nodeId": "n26",
                 "kind": "element"
               }
@@ -6756,8 +6828,8 @@
             "help": "Where the link goes.",
             "targets": [
               {
-                "start": 3954,
-                "end": 3979,
+                "start": 4925,
+                "end": 4950,
                 "nodeId": "n27",
                 "kind": "attribute",
                 "name": "href",
@@ -6784,8 +6856,8 @@
             "help": "Call-to-action link label.",
             "targets": [
               {
-                "start": 4269,
-                "end": 4285,
+                "start": 5240,
+                "end": 5256,
                 "nodeId": "n27",
                 "kind": "content",
                 "originalValue": "Read more →"
@@ -13877,8 +13949,8 @@
       "name": "Editorials",
       "slug": "editorials",
       "release": "1.0.0",
-      "source": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ heading }}</h3><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr>{% for item in editorials %}<tr>\n       <td style=\"width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"{{ item.image_alt }}\" class=\"fluid\" height=\"{% if item.image_height > 0 %}{{ item.image_height }}{% else %}84{% endif %}\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"></a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}{% if not forloop.last %}<div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}</td></tr>{% endfor %}</table><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
-      "draftSource": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ heading }}</h3><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr>{% for item in editorials %}<tr>\n       <td style=\"width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"{{ item.image_alt }}\" class=\"fluid\" height=\"{% if item.image_height > 0 %}{{ item.image_height }}{% else %}84{% endif %}\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"></a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}{% if not forloop.last %}<div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}</td></tr>{% endfor %}</table><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
+      "source": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ heading }}</h3><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr>{% for item in editorials %}<tr>\n       <td style=\"width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"{{ item.image_alt }}\" class=\"fluid\" height=\"{% if item.image_height > 0 %}{{ item.image_height }}{% else %}84{% endif %}\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"></a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; {% if item.title_italic %}font-style: italic; {% endif %}\">\n             {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; {% if item.title_italic %}font-style: italic; {% endif %}\">\n         {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}{% if not forloop.last %}<div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}</td></tr>{% endfor %}</table><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
+      "draftSource": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ heading }}</h3><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr>{% for item in editorials %}<tr>\n       <td style=\"width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"{{ item.image_alt }}\" class=\"fluid\" height=\"{% if item.image_height > 0 %}{{ item.image_height }}{% else %}84{% endif %}\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"></a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; {% if item.title_italic %}font-style: italic; {% endif %}\">\n             {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; {% if item.title_italic %}font-style: italic; {% endif %}\">\n         {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}{% if not forloop.last %}<div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}</td></tr>{% endfor %}</table><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -13951,6 +14023,21 @@
               "help": "",
               "targets": [],
               "binding": "template"
+            },
+            {
+              "id": "title_italic",
+              "key": "title_italic",
+              "label": "Italic title",
+              "type": "toggle",
+              "binding": "template",
+              "defaultValue": "hidden",
+              "originalValue": "hidden",
+              "enabled": true,
+              "required": false,
+              "maxLength": 0,
+              "help": "Turn on to show the whole title in italics, for example when it is a journal title.",
+              "targets": [],
+              "style": "switch"
             },
             {
               "id": "author",
@@ -14131,6 +14218,21 @@
                 "binding": "template"
               },
               {
+                "id": "title_italic",
+                "key": "title_italic",
+                "label": "Italic title",
+                "type": "toggle",
+                "binding": "template",
+                "defaultValue": "hidden",
+                "originalValue": "hidden",
+                "enabled": true,
+                "required": false,
+                "maxLength": 0,
+                "help": "Turn on to show the whole title in italics, for example when it is a journal title.",
+                "targets": [],
+                "style": "switch"
+              },
+              {
                 "id": "author",
                 "key": "author",
                 "label": "Author",
@@ -14231,7 +14333,7 @@
         "name": "Editorials",
         "slug": "editorials",
         "release": "1.0.0",
-        "source": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ heading }}</h3><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr>{% for item in editorials %}<tr>\n       <td style=\"width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"{{ item.image_alt }}\" class=\"fluid\" height=\"{% if item.image_height > 0 %}{{ item.image_height }}{% else %}84{% endif %}\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"></a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}{% if not forloop.last %}<div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}</td></tr>{% endfor %}</table><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
+        "source": "<!-- START .esc-editorials-list --><table align=\"center\" bgcolor=\"#f7e6e8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-editorials-list\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f7e6e8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f7e6e8\" class=\"content-inner\" style=\"background-color: #f7e6e8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td style=\"width: 100%;\">\n        <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ heading }}</h3><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div></td></tr>{% for item in editorials %}<tr>\n       <td style=\"width: 100%;\">\n        {% if item.image %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" width=\"100%\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n         \n          <tr>\n           <td class=\"mobile-hide\" style=\"width: 150px; padding-right: 16px;\" valign=\"top\" width=\"150\">\n            <a href=\"{{ item.link }}\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" alt=\"{{ item.image_alt }}\" class=\"fluid\" height=\"{% if item.image_height > 0 %}{{ item.image_height }}{% else %}84{% endif %}\" src=\"{{ item.image }}\" style=\"border: none; border-radius: 8px; display: block; height: auto; outline: none; text-decoration: none; width: 150px;\" width=\"150\"></a></td><td class=\"block\" valign=\"top\">\n            <p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; {% if item.title_italic %}font-style: italic; {% endif %}\">\n             {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n             {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a></td></tr></table>{% else %}<p class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0; {% if item.title_italic %}font-style: italic; {% endif %}\">\n         {{ item.title }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% if item.author %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ item.author }}</p><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<a class=\"text-link\" href=\"{{ item.link }}\" style=\"color: #AE1022; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; text-underline-color: #AE1022;\" target=\"_blank\">{{ item.link_text }}</a>{% endif %}{% if not forloop.last %}<div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}</td></tr>{% endfor %}</table><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f7e6e8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f7e6e8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-editorials-list -->",
         "templateMode": true,
         "minifyOutput": true,
         "contextCss": "",
@@ -14304,6 +14406,21 @@
                 "help": "",
                 "targets": [],
                 "binding": "template"
+              },
+              {
+                "id": "title_italic",
+                "key": "title_italic",
+                "label": "Italic title",
+                "type": "toggle",
+                "binding": "template",
+                "defaultValue": "hidden",
+                "originalValue": "hidden",
+                "enabled": true,
+                "required": false,
+                "maxLength": 0,
+                "help": "Turn on to show the whole title in italics, for example when it is a journal title.",
+                "targets": [],
+                "style": "switch"
               },
               {
                 "id": "author",
