@@ -34,11 +34,13 @@ The Newsletter and Congress templates set `minifyOutput`, so the email HTML each
 
 ## Vertical spacing
 
-Use table spacers for vertical spacing, not `padding` or `margin`, so every email client renders it the same way. A spacer is a fixed-height cell holding a non-breaking space:
+Use spacers for vertical spacing, not `padding` or `margin`, so every email client renders it the same way. A spacer is a fixed-height `<div>` holding a hair space (the [Good Email Code](https://www.goodemailcode.com/email-code/spacing.html) method):
 
 ```html
-<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; width: 100%;" width="100%"><tr><td height="24" style="font-size: 1px; height: 24px; line-height: 24px; mso-line-height-rule: exactly;">&nbsp;</td></tr></table>
+<div style="line-height:20px;height:20px">&#8202;</div>
 ```
+
+Keep `height` and `line-height` equal and a multiple of 4. Add `font-size` equal to the height when the height is below the font size it inherits (16px in the master template), as in `<div style="line-height:8px;height:8px;font-size:8px">&#8202;</div>`. Add `background-color` only where the spacer sits on a coloured area that is set on the spacer itself. Do not use a `<div>` where a row in a structural table, a fixed-width accent bar or the Congress lead-module outer wrappers need a cell; those stay as table cells.
 
 Text elements carry `margin: 0`; the gap between two elements is a spacer between them, placed inside the same `{% if %}` as the element it belongs to so a hidden element leaves no gap. Cell padding keeps only its horizontal part. Where a show/hide toggle connects to an element that has spacers, the connection is a one-cell wrapper table holding the element and its spacers, so hiding it removes both.
 
