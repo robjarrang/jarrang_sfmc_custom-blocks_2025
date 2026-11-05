@@ -46,6 +46,8 @@ A text field left blank but still shown leaves an empty paragraph. Spacers aroun
 
 The landscape placeholder is the ESC-hosted [1920 × 1080 image](https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg). It is used for populated general landscape-image defaults. Logos, journal covers and speaker portraits keep their own artwork; optional images remain blank. Display scaling does not reduce the asset's download size.
 
+Landscape images carry an explicit `height` for Windows Outlook, which otherwise derives a fractional height (326.25px at 580px wide) that its 125% display scaling turns into 1px lines. Each image has an **… height in Outlook (px)** field: `0` uses the 1920 × 1080 height rounded to the nearest multiple of 4 for that width (for example 328px at 580px), and any positive value replaces it for other image shapes. The inline `height: auto` keeps every other client proportional, so the value affects Windows Outlook only. Logos, journal covers, the signature and speaker portraits are excluded.
+
 Congress **Lead Editorial** retains the side-by-side desktop composition: a 320px content column and a 300px visual column, with a 274px image frame and proportional height. The image frame is in normal table flow; its containing cell supplies vertical centring. Do not reintroduce `align="left"` on the nested image-frame table, which was removed to address Windows Outlook alignment.
 
 **Visual image** is the main image. Leave **Mobile image (optional)** blank to reuse the main image and alt text. A supplied mobile alternative uses its own alt text. Existing instances with a saved alternative keep it until cleared.

@@ -257,7 +257,7 @@ test('congress landscape header retains side-by-side composition and proportiona
     assert.equal(frame.style.maxWidth, '', 'master template can expand the frame on mobile');
     const desktop = visual.querySelector('.esc-lead-visual-desktop');
     assert.equal(desktop.getAttribute('width'), '274', 'explicit Outlook display width');
-    assert.equal(desktop.hasAttribute('height'), false);
+    assert.equal(desktop.getAttribute('height'), '156', 'whole-pixel Outlook height');
     assert.equal(desktop.style.height, 'auto');
     assert.equal(desktop.style.maxHeight, '');
     assert.equal(desktop.style.width, '100%');
@@ -311,7 +311,7 @@ test('congress image fallback honours saved mobile values and keeps URLs and alt
       'https://example.com/mobile.jpg',
       '',
     );
-    assert.equal(definition.fields.length, 15);
+    assert.equal(definition.fields.length, 16);
     assert.equal(definition.id, 'c5a8e174-6d3b-4f92-8a5c-1e7d9b4f2a86');
     assert.equal(definition.slug, 'lead-editorial');
     assert.equal(definition.release, '1.0.0');
@@ -325,15 +325,61 @@ test('newsletter story cards use proportional images in every light and dark var
     for (const m of projects[0].modules.filter((m) =>
       ['story-card-2col', 'story-card-3col'].includes(m.slug),
     )) {
-      const images = [...m.source.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
+      const images = [...m.source.matchAll(/<img\b(?:[^>"]|"[^"]*")*>/g)].map((match) => match[0]);
       assert.ok(images.length >= 4);
       for (const image of images) {
-        assert.doesNotMatch(image, /\sheight="/);
+        // Outlook uses the height attribute; every other client keeps the inline height: auto.
+        assert.match(
+          image,
+          /\sheight="\{% if (card\d_image_height) > 0 %\}\{\{ \1 \}\}\{% else %\}\d+\{% endif %\}"/,
+        );
         assert.match(image, /height: auto;/);
         assert.match(image, /\swidth="\d+"/);
       }
       assert.equal(C.htmlProblems(m).length, 0);
     }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('landscape images give Windows Outlook an editable height divisible by 4', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    let images = 0;
+    for (const p of projects)
+      for (const m of p.modules) {
+        const fields = m.fields.flatMap((f) => [f, ...(f.itemFields || [])]);
+        for (const [tag, ref, auto] of m.source.matchAll(
+          /<img\b[^>]*\sheight="\{% if ([\w.]+) > 0 %\}\{\{ \1 \}\}\{% else %\}(\d+)\{% endif %\}"[^>]*>/g,
+        )) {
+          const width = Number(tag.match(/\swidth="(\d+)"/)[1]);
+          assert.equal(Number(auto) % 4, 0, m.slug + ': ' + auto);
+          assert.ok(Math.abs(Number(auto) - (width * 9) / 16) <= 2, m.slug + ': ' + auto);
+          assert.match(tag, /height: auto;/);
+          const field = fields.find((f) => f.key === ref.replace(/^item\./, ''));
+          assert.equal(field.type, 'number');
+          assert.equal(field.defaultValue, '0');
+          images++;
+        }
+      }
+    assert.equal(images, 24);
+    const heights = (html) => [...html.matchAll(/<img\b[^>]*\sheight="(\d+)"/g)].map((m) => m[1]);
+    const hero = projects[0].modules.find((m) => m.slug === 'hero-story');
+    // Blocks saved before the height field existed fall back to the automatic height.
+    const saved = Object.fromEntries(
+      hero.fields.filter((f) => f.key !== 'hero_image_height').map((f) => [f.id, f.defaultValue]),
+    );
+    assert.deepEqual(heights(C.render(hero, saved)), ['328']);
+    assert.deepEqual(heights(C.render(hero, { ...saved, hero_image_height: '324' })), ['324']);
+    const editorials = projects[0].modules.find((m) => m.slug === 'editorials');
+    const list = editorials.fields.find((f) => f.type === 'list');
+    const row = { ...list.defaultValue[0], image: 'https://example.com/a.jpg' };
+    delete row.image_height;
+    assert.deepEqual(heights(C.render(editorials, { [list.id]: [row] })), ['84']);
+    assert.deepEqual(
+      heights(C.render(editorials, { [list.id]: [{ ...row, image_height: '96' }] })),
+      ['96'],
+    );
   } finally {
     await dom.happyDOM.close();
   }
@@ -591,7 +637,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 241);
+    assert.equal(count, 265);
   } finally {
     await dom.happyDOM.close();
   }
