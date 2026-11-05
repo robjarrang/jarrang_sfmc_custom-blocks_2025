@@ -28,6 +28,10 @@ The suite uses optional sections, colour/theme choices, conditional layouts, rep
 
 A repeated group can become a single item through its field settings, including supported item-position rules. The retained item becomes both first and last. This still changes an existing published field schema, so release that change as a duplicated module rather than replacing the live endpoint.
 
+## Minified output
+
+The Newsletter and Congress templates set `minifyOutput`, so the email HTML each block saves into SFMC has its indentation, tabs and line breaks removed (about 4–5% smaller). Source in Studio and in the project files stays formatted. AMPscript and comments are never changed. Write source for readability and do not add `white-space: pre` styling that relies on line breaks. The Email settings block does not use it. See [Output minification](../../internal/DEVELOPER_GUIDE.md#output-minification) for the rules.
+
 ## Vertical spacing
 
 Use table spacers for vertical spacing, not `padding` or `margin`, so every email client renders it the same way. A spacer is a fixed-height cell holding a non-breaking space:

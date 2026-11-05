@@ -23,6 +23,7 @@
     );
   }
   function themedModule(project, module) {
+    if (project.settings?.minifyOutput === true) module = { ...module, minifyOutput: true };
     if (Object.hasOwn(project.settings || {}, 'showEditorHeader'))
       module = { ...module, showEditorHeader: project.settings.showEditorHeader !== false };
     return Object.hasOwn(project.settings || {}, 'editorTheme')
@@ -171,6 +172,7 @@
       source: module.source,
       templateMode: !!module.templateMode,
       ...(module.settingsOnly ? { settingsOnly: true } : {}),
+      ...(module.minifyOutput === true ? { minifyOutput: true } : {}),
       contextCss: module.contextCss || '',
       fields: module.fields,
       editorTheme: module.editorTheme ? editorTheme(module) : undefined,

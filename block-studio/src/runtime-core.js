@@ -691,7 +691,165 @@
       '<div style="margin-top:10px;font-size:12px">Editor only · Not included in the email</div></div>'
     );
   }
+  const layoutTags = new Set(
+    'html head body title meta link style script table thead tbody tfoot tr td th caption colgroup col div p h1 h2 h3 h4 h5 h6 ul ol li dl dt dd blockquote center hr br section article header footer nav main aside figure figcaption form fieldset address pre noscript'.split(
+      ' ',
+    ),
+  );
+  const lineBreak = /[\n\r\t]/;
+  /*
+   * Removes indentation, tabs and line breaks from rendered HTML. Only whitespace runs containing a
+   * line break or tab change: they vanish beside layout boundaries and become one space between inline
+   * content. AMPscript, comments, empty elements and style/script/pre content are copied unchanged.
+   */
+  function minify(html, trimEnds = true) {
+    const tokens = [],
+      stack = [],
+      find = /<|%%/g;
+    let at = 0,
+      scan = 0;
+    const push = (token) => tokens.push(token);
+    const opaque = (to) => {
+      push({ type: 'neutral', value: html.slice(at, to) });
+      at = scan = to;
+    };
+    for (;;) {
+      find.lastIndex = scan;
+      const hit = find.exec(html);
+      if (!hit) break;
+      const i = hit.index;
+      if (html[i] === '<' && !/^<[A-Za-z/!?]/.test(html.slice(i, i + 2))) {
+        scan = i + 1;
+        continue;
+      }
+      if (i > at) push({ type: 'text', value: html.slice(at, i) });
+      at = i;
+      if (html[i] === '%') {
+        const end = html.indexOf('%%', i + 2);
+        if (end < 0) {
+          opaque(html.length);
+          break;
+        }
+        const kind = html[i + 2] === '[' ? 'neutral' : 'output';
+        push({ type: kind, value: html.slice(i, end + 2) });
+        at = scan = end + 2;
+        continue;
+      }
+      if (html.startsWith('<!--', i)) {
+        const open = /^<!--\[if\b[^\]]*\]>/i.exec(html.slice(i, i + 200))?.[0],
+          inner = i + (open?.length || 0),
+          close =
+            open && !html.startsWith('<!-->', inner) ? html.indexOf('<![endif]-->', inner) : -1;
+        if (close >= 0) {
+          push({
+            type: 'neutral',
+            value: open + minify(html.slice(inner, close), false) + '<![endif]-->',
+          });
+          at = scan = close + 12;
+          continue;
+        }
+        const end = html.indexOf('-->', i + 4);
+        if (end < 0) {
+          opaque(html.length);
+          break;
+        }
+        opaque(end + 3);
+        continue;
+      }
+      let end = i + 1;
+      for (let quote = ''; end < html.length; end++) {
+        const ch = html[end];
+        if (quote) {
+          if (ch === quote) quote = '';
+        } else if (ch === '"' || ch === "'") quote = ch;
+        else if (ch === '%' && html[end + 1] === '%')
+          end = html.indexOf('%%', end + 2) + 1 || html.length;
+        else if (ch === '>') break;
+      }
+      if (end >= html.length) {
+        opaque(html.length);
+        break;
+      }
+      const raw = html.slice(i, end + 1),
+        head = /^<(\/?)([A-Za-z][\w:.-]*)/.exec(raw),
+        name = head ? head[2].toLowerCase() : '!',
+        closing = !!head?.[1],
+        selfClosing = raw.endsWith('/>') || voidTags.has(name);
+      if (/^(style|script|pre|textarea)$/.test(name) && !closing && !selfClosing) {
+        const close = new RegExp('</' + name + '\\b[^>]*>', 'i').exec(html.slice(end + 1));
+        if (close) {
+          const stop = end + 1 + close.index + close[0].length;
+          push({ type: 'raw', layout: name !== 'textarea', value: html.slice(i, stop) });
+          at = scan = stop;
+          continue;
+        }
+      }
+      let layout =
+        layoutTags.has(name) ||
+        name.includes(':') ||
+        /display\s*:\s*(block|table|flex|list-item)/i.test(raw);
+      if (closing) {
+        let open = stack.length - 1;
+        while (open >= 0 && stack[open].name !== name) open--;
+        if (open >= 0) {
+          layout = layout || stack[open].layout;
+          stack.length = open;
+        }
+      } else if (!selfClosing) stack.push({ name, layout });
+      // Whitespace inside the tag, outside quoted values and AMPscript.
+      const value = raw.replace(
+        /("[^"]*"|'[^']*'|%%[\s\S]*?%%)|[ \t\r\n\f]+/g,
+        (run, keep, offset) =>
+          keep || !lineBreak.test(run)
+            ? run
+            : /^\/?>/.test(raw.slice(offset + run.length))
+              ? ''
+              : ' ',
+      );
+      push({ type: 'tag', name, closing, layout, value });
+      at = scan = end + 1;
+    }
+    if (at < html.length) push({ type: 'text', value: html.slice(at) });
+    const blank = (t) => t.type === 'text' && !/[^ \t\r\n\f]/.test(t.value);
+    const near = (from, step) => {
+      for (let i = from + step; tokens[i]; i += step)
+        if (tokens[i].type !== 'neutral' && !blank(tokens[i])) return tokens[i];
+      return null;
+    };
+    // True when whitespace beside this neighbour has no effect on layout.
+    const boundary = (t) => (t ? !!t.layout : trimEnds);
+    tokens.forEach((token, i) => {
+      if (token.type !== 'text') return;
+      const before = tokens[i - 1],
+        after = tokens[i + 1];
+      if (
+        blank(token) &&
+        before?.type === 'tag' &&
+        !before.closing &&
+        after?.closing &&
+        after.name === before.name
+      )
+        return;
+      const gap = (run, side) =>
+        !lineBreak.test(run)
+          ? run
+          : boundary(near(i, side)) || (blank(token) && boundary(near(i, -side)))
+            ? ''
+            : ' ';
+      token.value = token.value
+        .replace(/^[ \t\r\n\f]+/, (run) => gap(run, -1))
+        .replace(/[ \t\r\n\f]+$/, (run) => gap(run, 1))
+        .replace(/(?<=[^ \t\r\n\f])[ \t\r\n\f]+(?=[^ \t\r\n\f])/g, (run) =>
+          lineBreak.test(run) ? ' ' : run,
+        );
+    });
+    return tokens.map((t) => t.value).join('');
+  }
   function render(module, values = {}, options = {}) {
+    const html = renderSource(module, values, options);
+    return module.minifyOutput === true && !module.settingsOnly ? minify(html) : html;
+  }
+  function renderSource(module, values = {}, options = {}) {
     if (module.settingsOnly) return settingsOutput(module, values);
     const patches = [],
       hidden = hiddenRanges(module, values),
@@ -885,6 +1043,7 @@
     richLinksAllowed,
     cleanRich,
     placeLists,
+    minify,
     validUrl,
     valueShape,
     validate,

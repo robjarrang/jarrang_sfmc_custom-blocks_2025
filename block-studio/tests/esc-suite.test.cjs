@@ -1133,7 +1133,7 @@ test('exported editor header follows template setting without changing email out
   try {
     const p = clone(projects[0]),
       m = p.modules[0],
-      original = C.render(m);
+      original = C.render(E.themedModule(p, m));
     for (const enabled of [false, true]) {
       p.settings.showEditorHeader = enabled;
       const themed = E.themedModule(p, m),

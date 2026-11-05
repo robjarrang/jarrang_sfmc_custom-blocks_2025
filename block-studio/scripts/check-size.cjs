@@ -8,9 +8,10 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'src/export-assets.js'), 'utf8'), context);
 const assets = context.window.EXPORT_ASSETS;
 const limits = {
-  // Settings-only validation and preview add about 2.8 KB; no new requests or dependencies.
-  'runtime.bundle.js': 75000,
-  'runtime.rich.bundle.js': 97000,
+  // Settings-only validation and preview add about 2.8 KB; output minification adds about 6 KB.
+  // No new requests or dependencies.
+  'runtime.bundle.js': 80000,
+  'runtime.rich.bundle.js': 101500,
   'runtime.bundle.css': 11000,
 };
 let failed = false;

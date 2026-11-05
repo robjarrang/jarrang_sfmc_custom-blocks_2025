@@ -74,6 +74,7 @@ The project format is `jarrang-block-studio`, version `1`. Its `settings` identi
 | --- | --- |
 | `settings.clientSlug`, `templateSlug` | Stable publishing folders. Lowercase hyphenated slugs; validate through the exporter. |
 | `settings.editorTheme`, `showEditorHeader` | Template-wide form appearance. Header defaults on when absent; both bundled ESC templates set it off. |
+| `settings.minifyOutput` | When `true`, exported definitions carry `minifyOutput` and the runtime minifies the rendered email HTML (see [Output minification](#output-minification)). Absent or `false` leaves output unchanged. The ESC newsletter and congress templates enable it; Email settings does not. |
 | Module `id`, `slug`, `release` | Stable for compatible maintenance. Existing published identities are protected; duplicate for an incompatible new release. |
 | `source`, `draftSource`, `templateMode` | Authored fragment/import draft and explicit template-language mode. Do not splice source with mapped fields without rebasing. |
 | `fields` | Stable field IDs/types, defaults, validation, mapped targets or named keys, plus list item schemas. |
@@ -123,6 +124,15 @@ Use an optional static alias to distinguish links in SFMC reporting. See [Salesf
 The renderer patches only anchor attributes using existing source offsets. Mapped hrefs and complete `{{ key }}` or `{{ item.key }}` href references are supported, including the escape filter. Loop patches evaluate within the current item scope. No additional template syntax, new field IDs, DOM email serialisation or AMPscript rewrite is introduced. `conversionProblems` blocks partial href connections and a competing dynamic conversion expression. Rich-text link dialogues store the attribute in their sanitised HTML; the sanitiser accepts only the literal `conversion="true"` on permitted web links.
 
 The runtime saves these choices through the existing SDK value snapshot and preserves unrelated SDK metadata. A checkbox alone does not implement website-side conversion capture. Salesforce's [conversion tracking guidance](https://help.salesforce.com/s/articleView?id=005093107&language=en_US&type=1) specifies the email attribute, link parameters and website reporting dependency. Verify these in a real SFMC send, click and conversion before declaring the complete tracking journey passed.
+
+### Output minification
+
+`BlockCore.minify` in `runtime-core.js` runs on the final rendered HTML when a definition has `minifyOutput`. It acts on the output only: authored `source`, field offsets and `exportedDefinition` baselines keep their formatting. It currently does two things, and only to whitespace runs that contain a line break or tab:
+
+- Removes indentation and line breaks beside layout boundaries (table, row, cell, block elements and `display: block` elements), inside tags and at the ends of the output.
+- Replaces them with one space between inline content, so wording and spacing are unchanged.
+
+Not touched: AMPscript, plain and revealed comments, `style`, `script`, `pre` and `textarea` content, quoted attribute values, spaces without a line break, `&nbsp;` and literal non-breaking spaces, and elements containing only whitespace. HTML inside Outlook conditional comments is minified; the comment markers are not. Changing the runtime changes its content hash, so re-save the affected modules to publish a new runtime folder (see [Change Studio or its runtime](#change-studio-or-its-runtime)). Existing email-instance content is unchanged until it is reopened and saved.
 
 ### Icons and themes
 

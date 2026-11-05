@@ -170,6 +170,8 @@
         if (
           !!d.templateMode !== !!expected.templateMode ||
           !!d.settingsOnly !== !!expected.settingsOnly ||
+          !!d.minifyOutput !==
+            (m.exportedDefinition ? !!expected.minifyOutput : p.settings.minifyOutput === true) ||
           (d.contextCss || '') !== (expected.contextCss || '')
         )
           throw Error(m.name + ': preview or template settings differ from its exported page.');
