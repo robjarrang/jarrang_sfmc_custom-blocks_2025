@@ -637,7 +637,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 265);
+    assert.equal(count, 267);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1166,6 +1166,32 @@ test('congress image frame remains in normal flow within its middle-aligned cell
     assert.equal(frame.parentElement.getAttribute('valign'), 'middle');
     assert.equal(frame.parentElement.style.verticalAlign, 'middle');
     assert.equal(frame.getAttribute('width'), '274');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('hero story top and bottom spacing can be hidden independently and default to shown', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const m = projects[0].modules.find((m) => m.slug === 'hero-story');
+    const id = (key) => m.fields.find((f) => f.key === key).id;
+    const rows = (values) => {
+      const host = dom.document.createElement('div');
+      host.innerHTML = C.render(m, values);
+      const outer = host.querySelector('table.esc-hero');
+      return [...outer.querySelectorAll(':scope > tbody > tr')];
+    };
+    const spacer = (row) => row.querySelector('td.content-inner')?.getAttribute('height') === '32';
+    const both = rows({});
+    assert.equal(both.length, 3);
+    assert.deepEqual(both.map(spacer), [true, false, true]);
+    assert.deepEqual(rows({ [id('show_top_spacing')]: false }).map(spacer), [false, true]);
+    assert.deepEqual(rows({ [id('show_bottom_spacing')]: false }).map(spacer), [true, false]);
+    assert.deepEqual(
+      rows({ [id('show_top_spacing')]: false, [id('show_bottom_spacing')]: false }).map(spacer),
+      [false],
+    );
   } finally {
     await dom.happyDOM.close();
   }

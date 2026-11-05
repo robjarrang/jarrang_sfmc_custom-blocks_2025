@@ -46,6 +46,8 @@ Text elements carry `margin: 0`; the gap between two elements is a spacer betwee
 
 Deliberate exceptions: button and pill internal padding (it sizes the button), padding on cells with a fixed height (it interacts with the height), and the Congress Lead Editorial and Lead Poster, whose mobile padding is overridden by the master template CSS.
 
+Newsletter **Hero Story** has **Show top spacing** and **Show bottom spacing** switches (both on by default) that remove its 32px outer spacer rows, for placing it directly against a neighbouring module that already supplies spacing. Existing emails keep both rows.
+
 A text field left blank but still shown leaves an empty paragraph. Spacers around it add up in every client; the old margins collapsed in browsers but not in Outlook. Use the show/hide switch to remove a section.
 
 ## Images and the Congress lead
