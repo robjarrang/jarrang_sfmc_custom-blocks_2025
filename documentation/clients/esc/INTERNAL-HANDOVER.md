@@ -46,7 +46,7 @@ Text elements carry `margin: 0`; the gap between two elements is a spacer betwee
 
 Deliberate exceptions: button and pill internal padding (it sizes the button), padding on cells with a fixed height (it interacts with the height), and the Congress Lead Editorial and Lead Poster, whose mobile padding is overridden by the master template CSS.
 
-The Newsletter **Decorative Header** draws its desktop artwork with a VML box for Windows Outlook. Its textbox uses `mso-fit-shape-to-text:true`, so a taller logo or wrapped title extends the box instead of being clipped at 180px; the artwork then stretches to the new height in Outlook only.
+The Newsletter **Decorative Header** draws its desktop artwork with a VML box for Windows Outlook. Its textbox uses `mso-fit-shape-to-text:true`, so a taller logo or wrapped title extends the box instead of being clipped at 180px. Its `v:fill` keeps `size="620px,180px"` with `origin` and `position` at `-0.5,-0.5`, which pins the artwork at its own size to the top-left. Any extra height shows the white fill colour, as in other clients, instead of stretching the artwork. Keep these attributes if the artwork changes, and update `size` if its dimensions change.
 
 Newsletter **Hero Story** has **Show top spacing** and **Show bottom spacing** switches (both on by default) that remove its 32px outer spacer rows, for placing it directly against a neighbouring module that already supplies spacing. Existing emails keep both rows.
 
