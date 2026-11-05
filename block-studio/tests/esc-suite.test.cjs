@@ -637,7 +637,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 267);
+    assert.equal(count, 268);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1192,6 +1192,37 @@ test('hero story top and bottom spacing can be hidden independently and default 
       rows({ [id('show_top_spacing')]: false, [id('show_bottom_spacing')]: false }).map(spacer),
       [false],
     );
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('congress deadline links are optional per row and need both a title and a URL', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const m = projects[1].modules.find((m) => m.slug === 'deadlines-list');
+    const list = m.fields.find((f) => f.key === 'deadlines');
+    assert.equal(list.itemFields.find((f) => f.key === 'link_url').required, false);
+    const row = (link_text, link_url) => ({
+      date: '09 Dec 2025',
+      text: 'Deadline',
+      link_text,
+      link_url,
+    });
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(m, {
+      [list.id]: [
+        row('Submit ›', 'https://example.com/a'),
+        row('', ''),
+        row('Text only', ''),
+        row('', 'https://example.com/b'),
+      ],
+    });
+    const links = [...host.querySelectorAll('a')];
+    assert.equal(links.length, 1);
+    assert.equal(links[0].getAttribute('href'), 'https://example.com/a');
+    assert.equal(host.querySelectorAll('.deadline-text').length, 4);
+    assert.equal(host.textContent.includes('Text only'), false);
   } finally {
     await dom.happyDOM.close();
   }
