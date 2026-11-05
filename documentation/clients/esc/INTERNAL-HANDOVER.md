@@ -37,18 +37,30 @@ The Newsletter and Congress templates set `minifyOutput`, so the email HTML each
 Use spacers for vertical spacing, not `padding` or `margin`, so every email client renders it the same way. A spacer is a fixed-height `<div>` holding a hair space (the [Good Email Code](https://www.goodemailcode.com/email-code/spacing.html) method):
 
 ```html
-<div style="line-height:20px;height:20px">&#8202;</div>
+<div style="line-height:20px;height:20px;mso-line-height-rule:exactly">&#8202;</div>
 ```
 
-Keep `height` and `line-height` equal and a multiple of 4. Add `font-size` equal to the height when the height is below the font size it inherits (16px in the master template), as in `<div style="line-height:8px;height:8px;font-size:8px">&#8202;</div>`. Add `background-color` only where the spacer sits on a coloured area that is set on the spacer itself. Do not use a `<div>` where a row in a structural table, a fixed-width accent bar or the Congress lead-module outer wrappers need a cell; those stay as table cells.
+Keep `height` and `line-height` equal and a multiple of 4, and always end with `mso-line-height-rule:exactly`: without it Windows Outlook treats `line-height` as a minimum and small spacers grow to a full text line. Add `font-size` equal to the height when the height is below the font size it inherits (16px in the master template), as in `<div style="line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly">&#8202;</div>`. Add `background-color` only where the spacer sits on a coloured area that is set on the spacer itself. Do not use a `<div>` where a row in a structural table, a fixed-width accent bar or the Congress lead-module outer wrappers need a cell; those stay as table cells.
 
 Text elements carry `margin: 0`; the gap between two elements is a spacer between them, placed inside the same `{% if %}` as the element it belongs to so a hidden element leaves no gap. Cell padding keeps only its horizontal part. Where a show/hide toggle connects to an element that has spacers, the connection is a one-cell wrapper table holding the element and its spacers, so hiding it removes both.
 
 Deliberate exceptions: button and pill internal padding (it sizes the button), padding on cells with a fixed height (it interacts with the height), and the Congress Lead Editorial and Lead Poster, whose mobile padding is overridden by the master template CSS.
 
+The Newsletter **Decorative Header** draws its desktop artwork with a VML box for Windows Outlook. Its textbox uses `mso-fit-shape-to-text:true`, so a taller logo or wrapped title extends the box instead of being clipped at 180px; the artwork then stretches to the new height in Outlook only.
+
 Newsletter **Hero Story** has **Show top spacing** and **Show bottom spacing** switches (both on by default) that remove its 32px outer spacer rows, for placing it directly against a neighbouring module that already supplies spacing. Existing emails keep both rows.
 
 A text field left blank but still shown leaves an empty paragraph. Spacers around it add up in every client; the old margins collapsed in browsers but not in Outlook. Use the show/hide switch to remove a section.
+
+## Outlook 1px lines
+
+All ESC modules follow ActionRocket's [white-lines guidance](https://www.actionrocket.co/blog/white-lines-in-outlook). Keep these rules when editing or adding a module:
+
+- Font sizes, line-heights, heights and padding are multiples of 4px. Exceptions: 1px hairline dividers, the hero outline buttons (11px padding plus a 1px border), `mso-text-raise`, letter-spacing and border-radius.
+- Every px `line-height` carries `mso-line-height-rule: exactly`.
+- Every image has `border="0"` and `display: block` (or `display: none` for swapped images), with no whitespace before its closing `</a>`.
+- Tables use `border-collapse: collapse` and zero `mso-table-lspace`/`mso-table-rspace`, except rounded buttons and cards, which need `separate` for their corners.
+- `side` cells holding only `&nbsp;` use `font-size: 4px; line-height: 4px; mso-line-height-rule: exactly`. Leave `gap` cells between stacking columns alone: on screens from 581px to 640px their text line forms the gap between stacked cards.
 
 ## Images and the Congress lead
 
