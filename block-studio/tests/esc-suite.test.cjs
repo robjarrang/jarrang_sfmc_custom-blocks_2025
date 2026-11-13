@@ -311,7 +311,7 @@ test('congress image fallback honours saved mobile values and keeps URLs and alt
       'https://example.com/mobile.jpg',
       '',
     );
-    assert.equal(definition.fields.length, 16);
+    assert.equal(definition.fields.length, 17);
     assert.equal(definition.id, 'c5a8e174-6d3b-4f92-8a5c-1e7d9b4f2a86');
     assert.equal(definition.slug, 'lead-editorial');
     assert.equal(definition.release, '1.0.0');
@@ -637,7 +637,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 291);
+    assert.equal(count, 337);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1253,6 +1253,39 @@ test('editorials items can italicise their title without changing existing outpu
       (l) => l.textContent.trim() === 'Italic title',
     );
     assert.equal(switches.length, list.defaultValue.length);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC headings can be italicised per field without changing existing output', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    let toggles = 0;
+    for (const p of projects)
+      for (const m of p.modules) {
+        const italic = m.fields.filter((f) => f.type === 'toggle' && /_italic$/.test(f.key || ''));
+        const base = C.render(m, {});
+        const count = (html) => (html.match(/font-style: italic/g) || []).length;
+        for (const f of italic) {
+          toggles++;
+          assert.equal(f.defaultValue, 'hidden', m.slug + ' ' + f.key);
+          assert.equal(f.binding, 'template');
+          assert.ok(count(C.render(m, { [f.id]: 'shown' })) > count(base), m.slug + ' ' + f.key);
+          assert.equal(count(C.render(m, { [f.id]: 'hidden' })), count(base));
+        }
+        if (italic.length) assert.doesNotMatch(base, /\{%|\{\{/);
+      }
+    assert.equal(toggles, 33);
+    const m = projects[0].modules.find((m) => m.slug === 'events');
+    const list = m.fields.find((f) => f.key === 'events');
+    assert.equal(list.itemFields.find((f) => f.key === 'title_italic').defaultValue, 'hidden');
+    const rows = (flag) => list.defaultValue.map((row) => ({ ...row, title_italic: flag }));
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(m, { [list.id]: rows(true) });
+    assert.ok(host.querySelector('h2[style*="font-style: italic"]'));
+    host.innerHTML = C.render(m, { [list.id]: rows(false) });
+    assert.equal(host.querySelector('h2[style*="font-style: italic"]'), null);
   } finally {
     await dom.happyDOM.close();
   }
