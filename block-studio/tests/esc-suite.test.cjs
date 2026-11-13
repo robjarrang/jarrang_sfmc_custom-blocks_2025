@@ -139,7 +139,7 @@ test('ESC landscape defaults use the supplied placeholder without changing optio
     assert.equal(list.defaultValue[1].image, '');
     assert.equal(list.defaultValue[2].image, '');
     assert.equal(list.itemFields.find((f) => f.key === 'image').defaultValue, '');
-    assert.equal(defaults, 19);
+    assert.equal(defaults, 20);
     const lead = projects[1].modules.find((m) => m.slug === 'lead-editorial');
     assert.equal(lead.fields.find((f) => f.id === 'field10').defaultValue, '');
     const host = dom.document.createElement('div');
@@ -362,7 +362,7 @@ test('landscape images give Windows Outlook an editable height divisible by 4', 
           images++;
         }
       }
-    assert.equal(images, 24);
+    assert.equal(images, 25);
     const heights = (html) => [...html.matchAll(/<img\b[^>]*\sheight="(\d+)"/g)].map((m) => m[1]);
     const hero = projects[0].modules.find((m) => m.slug === 'hero-story');
     // Blocks saved before the height field existed fall back to the automatic height.
@@ -803,12 +803,12 @@ test('repeated item guidance and validation can be edited through the field edit
     await dom.happyDOM.close();
   }
 });
-test('all 41 ESC modules retain their exported definition and supplied PNG pair', async () => {
+test('all 42 ESC modules retain their exported definition and supplied PNG pair', async () => {
   const { BlockCore: C, BlockExport: E, BlockMaintenance: M, dom } = await environment();
   try {
     assert.equal(
       projects.reduce((n, p) => n + p.modules.length, 0),
-      41,
+      42,
     );
     for (const p of projects) {
       C.assertProject(p);
@@ -1056,7 +1056,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
   }
 });
 
-test('all 41 ESC modules retain exact output, fields, references and PNGs through undo and exported-content recovery', async () => {
+test('all 42 ESC modules retain exact output, fields, references and PNGs through undo and exported-content recovery', async () => {
   const { BlockCore: C, dom } = await environment();
   const H = require('../src/history.js');
   try {
@@ -1545,22 +1545,47 @@ test('ESC TV Disclaimer renders approved wording safely and matches its generate
   }
 });
 
-test('ESC TV Full Width Image supports image proportions and the shared link tracking controls', async () => {
+test('Newsletter Full Width Image supports image proportions and the shared link tracking controls', async () => {
   const { BlockCore: C, BlockExport: E, BlockControls: Controls, dom } = await environment();
   try {
-    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
-    const m = p.modules.find((m) => m.slug === 'esc-tv-full-width-image');
+    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/newsletter.jarrang.json')));
+    const m = p.modules.find((m) => m.slug === 'full-width-image');
     C.assertProject(p);
     assert.deepEqual(Array.from(E.problems(m)), []);
     const host = dom.document.createElement('div');
     host.innerHTML = C.render(m);
     assert.equal(host.querySelector('table').getAttribute('width'), '620');
-    assert.equal(host.querySelector('table').getAttribute('bgcolor'), '#011933');
+    assert.equal(host.querySelector('table').getAttribute('bgcolor'), '#ffffff');
     assert.equal(host.querySelector('.side'), null);
     assert.equal(host.querySelector('img').getAttribute('width'), '620');
     assert.equal(host.querySelector('img').getAttribute('height'), '348');
     assert.equal(host.querySelector('img').style.height, 'auto');
     assert.equal(host.querySelector('img').style.borderRadius, '');
+    const tv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    assert.equal(
+      tv.modules.some((module) => module.slug.includes('full-width-image')),
+      false,
+    );
+    const legacyFolder = path.join(root, 'docs/clients/esc/esc-tv/modules/esc-tv-full-width-image');
+    const legacy = JSON.parse(
+      fs
+        .readFileSync(path.join(legacyFolder, 'index.html'), 'utf8')
+        .match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1],
+    );
+    assert.notEqual(m.id, legacy.id);
+    assert.equal(C.render(legacy).includes('#011933'), true);
+    assert.equal(
+      fs
+        .readFileSync(path.join(root, 'docs/clients/esc/esc-tv/index.html'), 'utf8')
+        .includes('modules/esc-tv-full-width-image/'),
+      false,
+    );
+    assert.equal(
+      fs
+        .readFileSync(path.join(root, 'docs/clients/esc/newsletter/index.html'), 'utf8')
+        .includes('modules/full-width-image/'),
+      true,
+    );
     const link = m.fields.find((f) => f.key === 'image_link');
     const parent = dom.document.createElement('div');
     const values = {};
@@ -1591,7 +1616,7 @@ test('ESC TV Full Width Image supports image proportions and the shared link tra
     host.innerHTML = C.render(m, values);
     assert.equal(host.querySelector('a').hasAttribute('conversion'), false);
     assert.equal(JSON.stringify(C.parse(C.render(m, values)).issues), '[]');
-    const folder = path.join(root, 'docs/clients/esc/esc-tv/modules', m.slug);
+    const folder = path.join(root, 'docs/clients/esc/newsletter/modules', m.slug);
     const page = fs.readFileSync(path.join(folder, 'index.html'), 'utf8');
     const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
     assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);

@@ -28,7 +28,6 @@ This module save refreshes the catalogue using this module and the last generate
 - ESC TV 2 Col: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-2-col/
 - ESC TV Button Row: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-button-row/
 - ESC TV Disclaimer: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-disclaimer/
-- ESC TV Full Width Image: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-full-width-image/
 
 ## Keep existing blocks working
 

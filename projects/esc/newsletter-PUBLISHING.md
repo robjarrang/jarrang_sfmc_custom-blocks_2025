@@ -19,7 +19,7 @@ If folder writing is unavailable, use Clients & templates > Manage templates to 
 Template destination: docs/clients/esc/newsletter/
 Editable source: projects/esc/newsletter.jarrang.json
 
-This full-template save/package refreshes the catalogue. Removed modules disappear from the catalogue; retain their previously published folders for existing SFMC content.
+This module save refreshes the catalogue using this module and the last generated definitions of other modules. Other module drafts remain in the editable project without updating their generated pages. Use Save template to update the whole suite.
 
 ## Module endpoints
 
@@ -51,6 +51,7 @@ This full-template save/package refreshes the catalogue. Removed modules disappe
 - Events: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/events/
 - Editorials: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/editorials/
 - Text Block: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/text-block/
+- Full Width Image: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/full-width-image/
 
 ## Keep existing blocks working
 
