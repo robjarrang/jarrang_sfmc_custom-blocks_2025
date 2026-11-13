@@ -145,7 +145,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -654,7 +654,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1159,7 +1159,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1580,7 +1580,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -1708,7 +1708,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1832,7 +1832,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -2749,7 +2749,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3029,7 +3029,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -3306,7 +3306,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -3574,7 +3574,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole card 1 headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3778,7 +3778,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole card 2 headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -4021,7 +4021,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 1 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4225,7 +4225,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 2 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4465,7 +4465,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 1 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4669,7 +4669,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 2 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4883,7 +4883,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole card 1 headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5058,7 +5058,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole card 2 headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5233,7 +5233,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole card 3 headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5447,7 +5447,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 1 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5622,7 +5622,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 2 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5797,7 +5797,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 3 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6008,7 +6008,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 1 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6183,7 +6183,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 2 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6358,7 +6358,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole card 3 headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6602,7 +6602,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole headline in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -6878,7 +6878,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -7151,7 +7151,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole headline in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -7317,7 +7317,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -7430,7 +7430,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -7540,7 +7540,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -8520,7 +8520,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -8668,7 +8668,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -8813,7 +8813,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -8960,7 +8960,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -9181,7 +9181,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -9399,7 +9399,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -10070,7 +10070,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole section title in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         }
@@ -10152,7 +10152,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole section title in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -10231,7 +10231,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole section title in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -11163,7 +11163,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -11192,7 +11192,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole subtitle in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -11488,7 +11488,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -11517,7 +11517,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole subtitle in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -11810,7 +11810,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -11839,7 +11839,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole subtitle in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -12390,7 +12390,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -12591,7 +12591,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -12789,7 +12789,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -12990,7 +12990,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -13185,7 +13185,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -13377,7 +13377,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14023,7 +14023,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -14053,7 +14053,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole subtitle in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         }
@@ -14113,7 +14113,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14143,7 +14143,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole subtitle in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -14200,7 +14200,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14230,7 +14230,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole subtitle in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -14288,7 +14288,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole intro heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -14317,7 +14317,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole intro subtitle in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -14411,7 +14411,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Turn on to show the whole title in italics.",
+              "help": "",
               "targets": [],
               "style": "switch"
             },
@@ -14521,7 +14521,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole intro heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14550,7 +14550,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole intro subtitle in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14644,7 +14644,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Turn on to show the whole title in italics.",
+                "help": "",
                 "targets": [],
                 "style": "switch"
               },
@@ -14751,7 +14751,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole intro heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14780,7 +14780,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole intro subtitle in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -14874,7 +14874,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Turn on to show the whole title in italics.",
+                "help": "",
                 "targets": [],
                 "style": "switch"
               },
@@ -14970,7 +14970,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -15040,7 +15040,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Turn on to show the whole title in italics, for example when it is a journal title.",
+              "help": "",
               "targets": [],
               "style": "switch"
             },
@@ -15178,7 +15178,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -15248,7 +15248,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Turn on to show the whole title in italics, for example when it is a journal title.",
+                "help": "",
                 "targets": [],
                 "style": "switch"
               },
@@ -15383,7 +15383,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -15453,7 +15453,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Turn on to show the whole title in italics, for example when it is a journal title.",
+                "help": "",
                 "targets": [],
                 "style": "switch"
               },
@@ -15591,7 +15591,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -15677,7 +15677,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -15760,7 +15760,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },

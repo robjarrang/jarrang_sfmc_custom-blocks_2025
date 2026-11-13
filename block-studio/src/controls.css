@@ -170,6 +170,25 @@ input.toggle-switch:after {
 input.toggle-switch:checked:after {
   left: 20px;
 }
+.inline-toggle {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 12px;
+  margin-bottom: 14px;
+}
+.inline-toggle > * {
+  grid-column: 2;
+}
+.inline-toggle > input {
+  grid-area: 1 / 1;
+  margin: 0;
+}
+.field.inline-toggle > label {
+  grid-row: 1;
+  margin: 0;
+  border: 0;
+}
 .rich-toolbar {
   flex-wrap: wrap;
   align-items: center;

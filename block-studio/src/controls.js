@@ -35,7 +35,7 @@
     for (const field of fields) {
       if (!Object.hasOwn(values, field.id)) values[field.id] = clone(field.defaultValue);
       const group = document.createElement('div');
-      group.className = 'field trial-field';
+      group.className = 'field trial-field' + (field.type === 'toggle' ? ' inline-toggle' : '');
       const label = document.createElement('label');
       label.htmlFor = prefix + field.id;
       label.textContent = field.label + (field.required ? ' *' : '');

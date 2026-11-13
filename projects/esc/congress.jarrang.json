@@ -1170,7 +1170,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -1276,7 +1276,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1379,7 +1379,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1485,7 +1485,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -1634,7 +1634,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1780,7 +1780,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1929,7 +1929,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -2092,7 +2092,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -2252,7 +2252,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -2430,7 +2430,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole congress name in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -2745,7 +2745,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole congress name in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -3057,7 +3057,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole congress name in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -3371,7 +3371,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole congress name in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3566,7 +3566,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole congress name in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -3758,7 +3758,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole congress name in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4182,7 +4182,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         }
@@ -4232,7 +4232,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -4279,7 +4279,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -4344,7 +4344,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -4493,7 +4493,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4639,7 +4639,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5348,7 +5348,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5534,7 +5534,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading 2 in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5735,7 +5735,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5921,7 +5921,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading 2 in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6119,7 +6119,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6305,7 +6305,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading 2 in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6411,7 +6411,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show the whole heading in italics.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -6517,7 +6517,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6620,7 +6620,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show the whole heading in italics.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
