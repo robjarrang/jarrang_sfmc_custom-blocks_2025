@@ -1673,3 +1673,59 @@ test('ESC TV Lead CTA avoids fractional border height and unpainted Outlook cell
     await dom.happyDOM.close();
   }
 });
+
+test('ESC TV Button Row keeps all button styles on a 48px painted Outlook layout', async () => {
+  const { BlockCore: C, BlockExport: E, dom } = await environment();
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    const m = p.modules.find((m) => m.slug === 'esc-tv-button-row');
+    const host = dom.document.createElement('div');
+    for (const style of ['primary', 'white', 'outline']) {
+      const values = Object.fromEntries(
+        m.fields.filter((f) => /button\d_style/.test(f.key)).map((f) => [f.id, style]),
+      );
+      host.innerHTML = C.render(m, values);
+      const buttons = host.querySelectorAll('.esc-btn, .esc-btn-white, .esc-btn-outline');
+      assert.equal(buttons.length, 3);
+      for (const button of buttons) {
+        const cell = button.querySelector('td');
+        assert.equal(parseInt(button.style.borderSpacing), 0);
+        assert.equal(button.getAttribute('cellspacing'), '0');
+        const border = parseInt(button.style.border);
+        assert.equal(border, style === 'outline' ? 2 : 0);
+        assert.equal(
+          parseInt(cell.style.lineHeight) + 2 * parseInt(cell.style.paddingTop) + 2 * border,
+          48,
+        );
+        assert.equal(parseInt(cell.style.paddingLeft) + border, 24);
+        assert.equal(
+          cell.getAttribute('bgcolor'),
+          { primary: '%%=v(@ButtonBgColour)=%%', white: '#ffffff', outline: '#011933' }[style],
+        );
+        assert.ok(
+          cell
+            .getAttribute('style')
+            .includes('background-color: ' + cell.getAttribute('bgcolor') + ';'),
+        );
+        if (style === 'outline')
+          assert.ok(
+            button.getAttribute('style').includes('background-color: transparent !important;'),
+          );
+      }
+      for (const td of host.querySelectorAll('td')) {
+        assert.ok(td.style.lineHeight);
+        assert.match(td.getAttribute('style'), /mso-line-height-rule: exactly/);
+      }
+      assert.equal(JSON.stringify(C.parse(C.render(m, values)).issues), '[]');
+    }
+    assert.deepEqual(Array.from(E.problems(m)), []);
+    const page = fs.readFileSync(
+      path.join(root, 'docs/clients/esc/esc-tv/modules/esc-tv-button-row/index.html'),
+      'utf8',
+    );
+    const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
+    assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
