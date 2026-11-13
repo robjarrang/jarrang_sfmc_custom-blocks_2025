@@ -122,7 +122,7 @@
           "originalValue": "Hero headline goes here",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Hero headline.",
           "targets": [
             {
@@ -200,7 +200,7 @@
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "First call-to-action button label.",
           "targets": [],
           "allowLinks": false
@@ -302,7 +302,7 @@
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Second call-to-action button label.",
           "targets": [],
           "allowLinks": false
@@ -404,7 +404,7 @@
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Third call-to-action button label.",
           "targets": [],
           "allowLinks": false
@@ -616,7 +616,7 @@
             "originalValue": "Hero headline goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Hero headline.",
             "targets": [
               {
@@ -694,7 +694,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "First call-to-action button label.",
             "targets": [],
             "allowLinks": false
@@ -796,7 +796,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Second call-to-action button label.",
             "targets": [],
             "allowLinks": false
@@ -898,7 +898,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Third call-to-action button label.",
             "targets": [],
             "allowLinks": false
@@ -1106,7 +1106,7 @@
             "originalValue": "Hero headline goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Hero headline.",
             "targets": [
               {
@@ -1184,7 +1184,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "First call-to-action button label.",
             "targets": [],
             "allowLinks": false
@@ -1286,7 +1286,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Second call-to-action button label.",
             "targets": [],
             "allowLinks": false
@@ -1388,7 +1388,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Third call-to-action button label.",
             "targets": [],
             "allowLinks": false
@@ -1866,7 +1866,7 @@
               "originalValue": "Events",
               "enabled": true,
               "required": true,
-              "maxLength": 24,
+              "maxLength": 0,
               "help": "Short label shown in the navigation bar.",
               "targets": [],
               "binding": "template"
@@ -1953,7 +1953,7 @@
                 "originalValue": "Events",
                 "enabled": true,
                 "required": true,
-                "maxLength": 24,
+                "maxLength": 0,
                 "help": "Short label shown in the navigation bar.",
                 "targets": [],
                 "binding": "template"
@@ -2037,7 +2037,7 @@
                 "originalValue": "Events",
                 "enabled": true,
                 "required": true,
-                "maxLength": 24,
+                "maxLength": 0,
                 "help": "Short label shown in the navigation bar.",
                 "targets": [],
                 "binding": "template"
@@ -2116,7 +2116,7 @@
               "originalValue": "Link text",
               "enabled": true,
               "required": true,
-              "maxLength": 40,
+              "maxLength": 0,
               "help": "Shown after the arrow.",
               "targets": [],
               "binding": "template"
@@ -2180,7 +2180,7 @@
               "originalValue": "Link text",
               "enabled": true,
               "required": true,
-              "maxLength": 40,
+              "maxLength": 0,
               "help": "Shown after the arrow.",
               "targets": [],
               "binding": "template"
@@ -2259,7 +2259,7 @@
                 "originalValue": "Link text",
                 "enabled": true,
                 "required": true,
-                "maxLength": 40,
+                "maxLength": 0,
                 "help": "Shown after the arrow.",
                 "targets": [],
                 "binding": "template"
@@ -2323,7 +2323,7 @@
                 "originalValue": "Link text",
                 "enabled": true,
                 "required": true,
-                "maxLength": 40,
+                "maxLength": 0,
                 "help": "Shown after the arrow.",
                 "targets": [],
                 "binding": "template"
@@ -2399,7 +2399,7 @@
                 "originalValue": "Link text",
                 "enabled": true,
                 "required": true,
-                "maxLength": 40,
+                "maxLength": 0,
                 "help": "Shown after the arrow.",
                 "targets": [],
                 "binding": "template"
@@ -2463,7 +2463,7 @@
                 "originalValue": "Link text",
                 "enabled": true,
                 "required": true,
-                "maxLength": 40,
+                "maxLength": 0,
                 "help": "Shown after the arrow.",
                 "targets": [],
                 "binding": "template"
@@ -2636,7 +2636,7 @@
           "originalValue": "Card headline goes here",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Card headline.",
           "targets": [
             {
@@ -2676,7 +2676,7 @@
           "originalValue": "Card summary copy goes here. Keep this concise and useful.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "Short summary copy shown below the headline.",
           "targets": [],
           "allowLinks": true,
@@ -2745,7 +2745,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Call-to-action button label.",
           "targets": [
             {
@@ -2901,7 +2901,7 @@
             "originalValue": "Card headline goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Card headline.",
             "targets": [
               {
@@ -2941,7 +2941,7 @@
             "originalValue": "Card summary copy goes here. Keep this concise and useful.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Short summary copy shown below the headline.",
             "targets": [],
             "allowLinks": true,
@@ -3010,7 +3010,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action button label.",
             "targets": [
               {
@@ -3163,7 +3163,7 @@
             "originalValue": "Card headline goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Card headline.",
             "targets": [
               {
@@ -3203,7 +3203,7 @@
             "originalValue": "Card summary copy goes here. Keep this concise and useful.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Short summary copy shown below the headline.",
             "targets": [],
             "allowLinks": true,
@@ -3272,7 +3272,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action button label.",
             "targets": [
               {
@@ -3347,7 +3347,7 @@
           "originalValue": "Card image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -3410,7 +3410,7 @@
           "originalValue": "Category",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -3424,7 +3424,7 @@
           "originalValue": "First card headline",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -3453,7 +3453,7 @@
           "originalValue": "Short summary copy goes here. Keep it to two or three lines where possible.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowConversionTracking": true,
@@ -3508,7 +3508,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "The arrow after this text is added automatically.",
           "targets": []
         },
@@ -3536,7 +3536,7 @@
           "originalValue": "Card image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -3599,7 +3599,7 @@
           "originalValue": "Category",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -3613,7 +3613,7 @@
           "originalValue": "Second card headline",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -3642,7 +3642,7 @@
           "originalValue": "Short summary copy goes here. Keep it to two or three lines where possible.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowConversionTracking": true,
@@ -3697,7 +3697,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "The arrow after this text is added automatically.",
           "targets": []
         }
@@ -3764,7 +3764,7 @@
             "originalValue": "Card image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -3827,7 +3827,7 @@
             "originalValue": "Category",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -3841,7 +3841,7 @@
             "originalValue": "First card headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -3870,7 +3870,7 @@
             "originalValue": "Short summary copy goes here. Keep it to two or three lines where possible.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -3925,7 +3925,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           },
@@ -3953,7 +3953,7 @@
             "originalValue": "Card image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -4016,7 +4016,7 @@
             "originalValue": "Category",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -4030,7 +4030,7 @@
             "originalValue": "Second card headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -4059,7 +4059,7 @@
             "originalValue": "Short summary copy goes here. Keep it to two or three lines where possible.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -4114,7 +4114,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           }
@@ -4178,7 +4178,7 @@
             "originalValue": "Card image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -4241,7 +4241,7 @@
             "originalValue": "Category",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -4255,7 +4255,7 @@
             "originalValue": "First card headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -4284,7 +4284,7 @@
             "originalValue": "Short summary copy goes here. Keep it to two or three lines where possible.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -4339,7 +4339,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           },
@@ -4367,7 +4367,7 @@
             "originalValue": "Card image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -4430,7 +4430,7 @@
             "originalValue": "Category",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -4444,7 +4444,7 @@
             "originalValue": "Second card headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -4473,7 +4473,7 @@
             "originalValue": "Short summary copy goes here. Keep it to two or three lines where possible.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -4528,7 +4528,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           }
@@ -4595,7 +4595,7 @@
           "originalValue": "News image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -4643,7 +4643,7 @@
           "originalValue": "First compact headline",
           "enabled": true,
           "required": true,
-          "maxLength": 70,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -4672,7 +4672,7 @@
           "originalValue": "Short summary copy for this item.",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowConversionTracking": true,
@@ -4727,7 +4727,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "The arrow after this text is added automatically.",
           "targets": []
         },
@@ -4755,7 +4755,7 @@
           "originalValue": "News image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -4803,7 +4803,7 @@
           "originalValue": "Second compact headline",
           "enabled": true,
           "required": true,
-          "maxLength": 70,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -4832,7 +4832,7 @@
           "originalValue": "Short summary copy for this item.",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowConversionTracking": true,
@@ -4887,7 +4887,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "The arrow after this text is added automatically.",
           "targets": []
         },
@@ -4915,7 +4915,7 @@
           "originalValue": "News image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -4963,7 +4963,7 @@
           "originalValue": "Third compact headline",
           "enabled": true,
           "required": true,
-          "maxLength": 70,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -4992,7 +4992,7 @@
           "originalValue": "Short summary copy for this item.",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowConversionTracking": true,
@@ -5047,7 +5047,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "The arrow after this text is added automatically.",
           "targets": []
         }
@@ -5114,7 +5114,7 @@
             "originalValue": "News image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -5162,7 +5162,7 @@
             "originalValue": "First compact headline",
             "enabled": true,
             "required": true,
-            "maxLength": 70,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -5191,7 +5191,7 @@
             "originalValue": "Short summary copy for this item.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -5246,7 +5246,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           },
@@ -5274,7 +5274,7 @@
             "originalValue": "News image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -5322,7 +5322,7 @@
             "originalValue": "Second compact headline",
             "enabled": true,
             "required": true,
-            "maxLength": 70,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -5351,7 +5351,7 @@
             "originalValue": "Short summary copy for this item.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -5406,7 +5406,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           },
@@ -5434,7 +5434,7 @@
             "originalValue": "News image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -5482,7 +5482,7 @@
             "originalValue": "Third compact headline",
             "enabled": true,
             "required": true,
-            "maxLength": 70,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -5511,7 +5511,7 @@
             "originalValue": "Short summary copy for this item.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -5566,7 +5566,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           }
@@ -5630,7 +5630,7 @@
             "originalValue": "News image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -5678,7 +5678,7 @@
             "originalValue": "First compact headline",
             "enabled": true,
             "required": true,
-            "maxLength": 70,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -5707,7 +5707,7 @@
             "originalValue": "Short summary copy for this item.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -5762,7 +5762,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           },
@@ -5790,7 +5790,7 @@
             "originalValue": "News image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -5838,7 +5838,7 @@
             "originalValue": "Second compact headline",
             "enabled": true,
             "required": true,
-            "maxLength": 70,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -5867,7 +5867,7 @@
             "originalValue": "Short summary copy for this item.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -5922,7 +5922,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           },
@@ -5950,7 +5950,7 @@
             "originalValue": "News image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -5998,7 +5998,7 @@
             "originalValue": "Third compact headline",
             "enabled": true,
             "required": true,
-            "maxLength": 70,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -6027,7 +6027,7 @@
             "originalValue": "Short summary copy for this item.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowConversionTracking": true,
@@ -6082,7 +6082,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "The arrow after this text is added automatically.",
             "targets": []
           }
@@ -6218,7 +6218,7 @@
           "originalValue": "Feature card headline goes here",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Feature card headline.",
           "targets": [
             {
@@ -6258,7 +6258,7 @@
           "originalValue": "Use this for an important story that deserves more visual weight than a standard card.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "Short summary copy shown below the headline.",
           "targets": [
             {
@@ -6333,7 +6333,7 @@
           "originalValue": "Read more →",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Call-to-action link label.",
           "targets": [
             {
@@ -6479,7 +6479,7 @@
             "originalValue": "Feature card headline goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Feature card headline.",
             "targets": [
               {
@@ -6519,7 +6519,7 @@
             "originalValue": "Use this for an important story that deserves more visual weight than a standard card.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Short summary copy shown below the headline.",
             "targets": [
               {
@@ -6594,7 +6594,7 @@
             "originalValue": "Read more →",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action link label.",
             "targets": [
               {
@@ -6737,7 +6737,7 @@
             "originalValue": "Feature card headline goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Feature card headline.",
             "targets": [
               {
@@ -6777,7 +6777,7 @@
             "originalValue": "Use this for an important story that deserves more visual weight than a standard card.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Short summary copy shown below the headline.",
             "targets": [
               {
@@ -6852,7 +6852,7 @@
             "originalValue": "Read more →",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action link label.",
             "targets": [
               {
@@ -6889,7 +6889,7 @@
           "originalValue": "Call-to-action heading",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Call-to-action heading.",
           "targets": [
             {
@@ -6909,7 +6909,7 @@
           "originalValue": "Use this module for a strong final action, registration prompt or member benefit message.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "Supporting copy for the call to action.",
           "targets": [],
           "allowLinks": false,
@@ -6952,7 +6952,7 @@
           "originalValue": "Button text",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Call-to-action button label.",
           "targets": [
             {
@@ -6987,7 +6987,7 @@
             "originalValue": "Call-to-action heading",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Call-to-action heading.",
             "targets": [
               {
@@ -7007,7 +7007,7 @@
             "originalValue": "Use this module for a strong final action, registration prompt or member benefit message.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Supporting copy for the call to action.",
             "targets": [],
             "allowLinks": false,
@@ -7050,7 +7050,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action button label.",
             "targets": [
               {
@@ -7082,7 +7082,7 @@
             "originalValue": "Call-to-action heading",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Call-to-action heading.",
             "targets": [
               {
@@ -7102,7 +7102,7 @@
             "originalValue": "Use this module for a strong final action, registration prompt or member benefit message.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Supporting copy for the call to action.",
             "targets": [],
             "allowLinks": false,
@@ -7145,7 +7145,7 @@
             "originalValue": "Button text",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action button label.",
             "targets": [
               {
@@ -7230,7 +7230,7 @@
           "originalValue": "Image banner description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Accessible alt text describing the image.",
           "targets": [
             {
@@ -7331,7 +7331,7 @@
             "originalValue": "Image banner description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Accessible alt text describing the image.",
             "targets": [
               {
@@ -7429,7 +7429,7 @@
             "originalValue": "Image banner description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Accessible alt text describing the image.",
             "targets": [
               {
@@ -7530,7 +7530,7 @@
           "originalValue": "Cardiovascular Research journal cover",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Accessible alt text describing the journal cover.",
           "targets": [
             {
@@ -7552,7 +7552,7 @@
           "originalValue": "Journal",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label shown above the journal name, e.g. \"Journal\".",
           "targets": [],
           "allowLinks": true,
@@ -7567,7 +7567,7 @@
           "originalValue": "Cardiovascular Research",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Name of the journal.",
           "targets": [
             {
@@ -7587,7 +7587,7 @@
           "originalValue": "Volume 121 Issue 15 • 9 December 2025",
           "enabled": true,
           "required": false,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "Volume, issue and date line shown below the journal name.",
           "targets": [],
           "allowLinks": true,
@@ -7630,7 +7630,7 @@
           "originalValue": "Read this issue",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Call-to-action button label.",
           "targets": [
             {
@@ -7715,7 +7715,7 @@
             "originalValue": "Cardiovascular Research journal cover",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Accessible alt text describing the journal cover.",
             "targets": [
               {
@@ -7737,7 +7737,7 @@
             "originalValue": "Journal",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label shown above the journal name, e.g. \"Journal\".",
             "targets": [],
             "allowLinks": true,
@@ -7752,7 +7752,7 @@
             "originalValue": "Cardiovascular Research",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Name of the journal.",
             "targets": [
               {
@@ -7772,7 +7772,7 @@
             "originalValue": "Volume 121 Issue 15 • 9 December 2025",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Volume, issue and date line shown below the journal name.",
             "targets": [],
             "allowLinks": true,
@@ -7815,7 +7815,7 @@
             "originalValue": "Read this issue",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action button label.",
             "targets": [
               {
@@ -7897,7 +7897,7 @@
             "originalValue": "Cardiovascular Research journal cover",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Accessible alt text describing the journal cover.",
             "targets": [
               {
@@ -7919,7 +7919,7 @@
             "originalValue": "Journal",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label shown above the journal name, e.g. \"Journal\".",
             "targets": [],
             "allowLinks": true,
@@ -7934,7 +7934,7 @@
             "originalValue": "Cardiovascular Research",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Name of the journal.",
             "targets": [
               {
@@ -7954,7 +7954,7 @@
             "originalValue": "Volume 121 Issue 15 • 9 December 2025",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Volume, issue and date line shown below the journal name.",
             "targets": [],
             "allowLinks": true,
@@ -7997,7 +7997,7 @@
             "originalValue": "Read this issue",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Call-to-action button label.",
             "targets": [
               {
@@ -8047,7 +8047,7 @@
           "originalValue": "Explore more from ESC",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Section heading.",
           "targets": [
             {
@@ -8116,7 +8116,7 @@
               "originalValue": "First useful link headline",
               "enabled": true,
               "required": true,
-              "maxLength": 80,
+              "maxLength": 0,
               "help": "Headline shown for this link.",
               "targets": [],
               "allowLinks": false,
@@ -8131,7 +8131,7 @@
               "originalValue": "Optional short supporting description for this link.",
               "enabled": true,
               "required": false,
-              "maxLength": 150,
+              "maxLength": 0,
               "help": "Optional short supporting copy shown under the link.",
               "targets": [],
               "allowLinks": true,
@@ -8180,7 +8180,7 @@
             "originalValue": "Explore more from ESC",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Section heading.",
             "targets": [
               {
@@ -8249,7 +8249,7 @@
                 "originalValue": "First useful link headline",
                 "enabled": true,
                 "required": true,
-                "maxLength": 80,
+                "maxLength": 0,
                 "help": "Headline shown for this link.",
                 "targets": [],
                 "allowLinks": false,
@@ -8264,7 +8264,7 @@
                 "originalValue": "Optional short supporting description for this link.",
                 "enabled": true,
                 "required": false,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "Optional short supporting copy shown under the link.",
                 "targets": [],
                 "allowLinks": true,
@@ -8310,7 +8310,7 @@
             "originalValue": "Explore more from ESC",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Section heading.",
             "targets": [
               {
@@ -8379,7 +8379,7 @@
                 "originalValue": "First useful link headline",
                 "enabled": true,
                 "required": true,
-                "maxLength": 80,
+                "maxLength": 0,
                 "help": "Headline shown for this link.",
                 "targets": [],
                 "allowLinks": false,
@@ -8394,7 +8394,7 @@
                 "originalValue": "Optional short supporting description for this link.",
                 "enabled": true,
                 "required": false,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "Optional short supporting copy shown under the link.",
                 "targets": [],
                 "allowLinks": true,
@@ -8427,7 +8427,7 @@
           "originalValue": "Membership ",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the heading.",
           "targets": [],
           "id": "field1",
@@ -8441,7 +8441,7 @@
           "originalValue": "Become an ESC Member ",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Main heading text.",
           "targets": [
             {
@@ -8461,7 +8461,7 @@
           "originalValue": "Access exclusive resources, discounts, education and the latest cardiovascular research. ",
           "enabled": true,
           "required": true,
-          "maxLength": 220,
+          "maxLength": 0,
           "help": "Supporting body copy.",
           "targets": [
             {
@@ -8487,7 +8487,7 @@
           "originalValue": "You can enjoy: ",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Label above the list of benefits.",
           "targets": [],
           "id": "field4",
@@ -8501,7 +8501,7 @@
           "originalValue": "Join today ",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Text shown on the button.",
           "targets": [
             {
@@ -8600,7 +8600,7 @@
               "originalValue": "Access to ESC Member Directories ",
               "enabled": true,
               "required": true,
-              "maxLength": 100,
+              "maxLength": 0,
               "help": "Benefit copy.",
               "targets": [],
               "id": "benefit_text",
@@ -8633,7 +8633,7 @@
             "originalValue": "Membership ",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "id": "field1",
@@ -8647,7 +8647,7 @@
             "originalValue": "Become an ESC Member ",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Main heading text.",
             "targets": [
               {
@@ -8667,7 +8667,7 @@
             "originalValue": "Access exclusive resources, discounts, education and the latest cardiovascular research. ",
             "enabled": true,
             "required": true,
-            "maxLength": 220,
+            "maxLength": 0,
             "help": "Supporting body copy.",
             "targets": [
               {
@@ -8693,7 +8693,7 @@
             "originalValue": "You can enjoy: ",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Label above the list of benefits.",
             "targets": [],
             "id": "field4",
@@ -8707,7 +8707,7 @@
             "originalValue": "Join today ",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Text shown on the button.",
             "targets": [
               {
@@ -8806,7 +8806,7 @@
                 "originalValue": "Access to ESC Member Directories ",
                 "enabled": true,
                 "required": true,
-                "maxLength": 100,
+                "maxLength": 0,
                 "help": "Benefit copy.",
                 "targets": [],
                 "id": "benefit_text",
@@ -8836,7 +8836,7 @@
             "originalValue": "Membership ",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "id": "field1",
@@ -8850,7 +8850,7 @@
             "originalValue": "Become an ESC Member ",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Main heading text.",
             "targets": [
               {
@@ -8870,7 +8870,7 @@
             "originalValue": "Access exclusive resources, discounts, education and the latest cardiovascular research. ",
             "enabled": true,
             "required": true,
-            "maxLength": 220,
+            "maxLength": 0,
             "help": "Supporting body copy.",
             "targets": [
               {
@@ -8896,7 +8896,7 @@
             "originalValue": "You can enjoy: ",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Label above the list of benefits.",
             "targets": [],
             "id": "field4",
@@ -8910,7 +8910,7 @@
             "originalValue": "Join today ",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Text shown on the button.",
             "targets": [
               {
@@ -9009,7 +9009,7 @@
                 "originalValue": "Access to ESC Member Directories ",
                 "enabled": true,
                 "required": true,
-                "maxLength": 100,
+                "maxLength": 0,
                 "help": "Benefit copy.",
                 "targets": [],
                 "id": "benefit_text",
@@ -9042,7 +9042,7 @@
           "originalValue": "Hello,",
           "enabled": true,
           "required": true,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Shown above the member’s name.",
           "targets": [
             {
@@ -9062,7 +9062,7 @@
           "originalValue": "Update your profile →",
           "enabled": true,
           "required": true,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Links to the member’s MyESC profile.",
           "targets": [
             {
@@ -9083,7 +9083,7 @@
           "originalValue": "ESC ID",
           "enabled": true,
           "required": true,
-          "maxLength": 20,
+          "maxLength": 0,
           "help": "Shown above the ESC ID. The badge only appears when the member has an ESC ID.",
           "targets": [
             {
@@ -9118,7 +9118,7 @@
             "originalValue": "Hello,",
             "enabled": true,
             "required": true,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Shown above the member’s name.",
             "targets": [
               {
@@ -9138,7 +9138,7 @@
             "originalValue": "Update your profile →",
             "enabled": true,
             "required": true,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Links to the member’s MyESC profile.",
             "targets": [
               {
@@ -9159,7 +9159,7 @@
             "originalValue": "ESC ID",
             "enabled": true,
             "required": true,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "Shown above the ESC ID. The badge only appears when the member has an ESC ID.",
             "targets": [
               {
@@ -9191,7 +9191,7 @@
             "originalValue": "Hello,",
             "enabled": true,
             "required": true,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Shown above the member’s name.",
             "targets": [
               {
@@ -9211,7 +9211,7 @@
             "originalValue": "Update your profile →",
             "enabled": true,
             "required": true,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Links to the member’s MyESC profile.",
             "targets": [
               {
@@ -9232,7 +9232,7 @@
             "originalValue": "ESC ID",
             "enabled": true,
             "required": true,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "Shown above the ESC ID. The badge only appears when the member has an ESC ID.",
             "targets": [
               {
@@ -9268,7 +9268,7 @@
           "originalValue": "“Add a short quote or editorial callout here.”",
           "enabled": true,
           "required": true,
-          "maxLength": 220,
+          "maxLength": 0,
           "help": "The quote or editorial callout.",
           "targets": [
             {
@@ -9288,7 +9288,7 @@
           "originalValue": "Name Surname",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "Name of the person quoted.",
           "targets": [
             {
@@ -9308,7 +9308,7 @@
           "originalValue": "Role or organisation",
           "enabled": true,
           "required": false,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Role or organisation shown under the author name.",
           "targets": [],
           "allowLinks": true,
@@ -9338,7 +9338,7 @@
             "originalValue": "“Add a short quote or editorial callout here.”",
             "enabled": true,
             "required": true,
-            "maxLength": 220,
+            "maxLength": 0,
             "help": "The quote or editorial callout.",
             "targets": [
               {
@@ -9358,7 +9358,7 @@
             "originalValue": "Name Surname",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Name of the person quoted.",
             "targets": [
               {
@@ -9378,7 +9378,7 @@
             "originalValue": "Role or organisation",
             "enabled": true,
             "required": false,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Role or organisation shown under the author name.",
             "targets": [],
             "allowLinks": true,
@@ -9405,7 +9405,7 @@
             "originalValue": "“Add a short quote or editorial callout here.”",
             "enabled": true,
             "required": true,
-            "maxLength": 220,
+            "maxLength": 0,
             "help": "The quote or editorial callout.",
             "targets": [
               {
@@ -9425,7 +9425,7 @@
             "originalValue": "Name Surname",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Name of the person quoted.",
             "targets": [
               {
@@ -9445,7 +9445,7 @@
             "originalValue": "Role or organisation",
             "enabled": true,
             "required": false,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Role or organisation shown under the author name.",
             "targets": [],
             "allowLinks": true,
@@ -9501,7 +9501,7 @@
           "originalValue": "Section label",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the title.",
           "targets": []
         },
@@ -9515,7 +9515,7 @@
           "originalValue": "Section title goes here",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Main heading for this section.",
           "targets": []
         }
@@ -9568,7 +9568,7 @@
             "originalValue": "Section label",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the title.",
             "targets": []
           },
@@ -9582,7 +9582,7 @@
             "originalValue": "Section title goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Main heading for this section.",
             "targets": []
           }
@@ -9632,7 +9632,7 @@
             "originalValue": "Section label",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the title.",
             "targets": []
           },
@@ -9646,7 +9646,7 @@
             "originalValue": "Section title goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Main heading for this section.",
             "targets": []
           }
@@ -9673,7 +9673,7 @@
           "originalValue": "Best regards,",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "The line above the signature block, e.g. \"Best regards,\".",
           "targets": [],
           "allowLinks": true,
@@ -9745,7 +9745,7 @@
             "originalValue": "Best regards,",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "The line above the signature block, e.g. \"Best regards,\".",
             "targets": [],
             "allowLinks": true,
@@ -9814,7 +9814,7 @@
             "originalValue": "Best regards,",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "The line above the signature block, e.g. \"Best regards,\".",
             "targets": [],
             "allowLinks": true,
@@ -9886,7 +9886,7 @@
           "originalValue": "Social highlight",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the post link, e.g. \"Social highlight\".",
           "targets": [],
           "allowLinks": true,
@@ -9947,7 +9947,7 @@
           "originalValue": "View post →",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Text of the “View post” link, including its arrow.",
           "targets": [
             {
@@ -9989,7 +9989,7 @@
           "originalValue": "Medical imaging featured in the ESC Journals post",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the left image for screen readers.",
           "targets": [
             {
@@ -10047,7 +10047,7 @@
           "originalValue": "ESC Journals social post: Heart in a shell - a cascade of classical findings",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the social post image for screen readers.",
           "targets": [
             {
@@ -10098,7 +10098,7 @@
             "originalValue": "Social highlight",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the post link, e.g. \"Social highlight\".",
             "targets": [],
             "allowLinks": true,
@@ -10159,7 +10159,7 @@
             "originalValue": "View post →",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Text of the “View post” link, including its arrow.",
             "targets": [
               {
@@ -10201,7 +10201,7 @@
             "originalValue": "Medical imaging featured in the ESC Journals post",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the left image for screen readers.",
             "targets": [
               {
@@ -10259,7 +10259,7 @@
             "originalValue": "ESC Journals social post: Heart in a shell - a cascade of classical findings",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the social post image for screen readers.",
             "targets": [
               {
@@ -10307,7 +10307,7 @@
             "originalValue": "Social highlight",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the post link, e.g. \"Social highlight\".",
             "targets": [],
             "allowLinks": true,
@@ -10368,7 +10368,7 @@
             "originalValue": "View post →",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Text of the “View post” link, including its arrow.",
             "targets": [
               {
@@ -10410,7 +10410,7 @@
             "originalValue": "Medical imaging featured in the ESC Journals post",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the left image for screen readers.",
             "targets": [
               {
@@ -10468,7 +10468,7 @@
             "originalValue": "ESC Journals social post: Heart in a shell - a cascade of classical findings",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the social post image for screen readers.",
             "targets": [
               {
@@ -10549,7 +10549,7 @@
           "originalValue": "Faculty",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the heading.",
           "targets": []
         },
@@ -10563,7 +10563,7 @@
           "originalValue": "Meet the faculty",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10577,7 +10577,7 @@
           "originalValue": "Expert speakers sharing their insights",
           "enabled": true,
           "required": false,
-          "maxLength": 120,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10605,7 +10605,7 @@
           "originalValue": "Dr Maria Santos",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -10619,7 +10619,7 @@
           "originalValue": "Dr Maria Santos",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10633,7 +10633,7 @@
           "originalValue": "Cardiology Lead",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10647,7 +10647,7 @@
           "originalValue": "Hospital Barcelona",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10675,7 +10675,7 @@
           "originalValue": "Prof Hans Weber",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -10689,7 +10689,7 @@
           "originalValue": "Prof Hans Weber",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "Only shown when 2 or 3 speakers are selected.",
           "targets": []
         },
@@ -10703,7 +10703,7 @@
           "originalValue": "Director of Research",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10717,7 +10717,7 @@
           "originalValue": "University of Munich",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10745,7 +10745,7 @@
           "originalValue": "Dr Sophie Laurent",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": []
         },
@@ -10759,7 +10759,7 @@
           "originalValue": "Dr Sophie Laurent",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "Only shown when 3 speakers are selected.",
           "targets": []
         },
@@ -10773,7 +10773,7 @@
           "originalValue": "Interventional Cardiology",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         },
@@ -10787,7 +10787,7 @@
           "originalValue": "Paris Heart Institute",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": []
         }
@@ -10844,7 +10844,7 @@
             "originalValue": "Faculty",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": []
           },
@@ -10858,7 +10858,7 @@
             "originalValue": "Meet the faculty",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -10872,7 +10872,7 @@
             "originalValue": "Expert speakers sharing their insights",
             "enabled": true,
             "required": false,
-            "maxLength": 120,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -10900,7 +10900,7 @@
             "originalValue": "Dr Maria Santos",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -10914,7 +10914,7 @@
             "originalValue": "Dr Maria Santos",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -10928,7 +10928,7 @@
             "originalValue": "Cardiology Lead",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -10942,7 +10942,7 @@
             "originalValue": "Hospital Barcelona",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -10970,7 +10970,7 @@
             "originalValue": "Prof Hans Weber",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -10984,7 +10984,7 @@
             "originalValue": "Prof Hans Weber",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Only shown when 2 or 3 speakers are selected.",
             "targets": []
           },
@@ -10998,7 +10998,7 @@
             "originalValue": "Director of Research",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11012,7 +11012,7 @@
             "originalValue": "University of Munich",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11040,7 +11040,7 @@
             "originalValue": "Dr Sophie Laurent",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -11054,7 +11054,7 @@
             "originalValue": "Dr Sophie Laurent",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Only shown when 3 speakers are selected.",
             "targets": []
           },
@@ -11068,7 +11068,7 @@
             "originalValue": "Interventional Cardiology",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11082,7 +11082,7 @@
             "originalValue": "Paris Heart Institute",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           }
@@ -11136,7 +11136,7 @@
             "originalValue": "Faculty",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": []
           },
@@ -11150,7 +11150,7 @@
             "originalValue": "Meet the faculty",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11164,7 +11164,7 @@
             "originalValue": "Expert speakers sharing their insights",
             "enabled": true,
             "required": false,
-            "maxLength": 120,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11192,7 +11192,7 @@
             "originalValue": "Dr Maria Santos",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -11206,7 +11206,7 @@
             "originalValue": "Dr Maria Santos",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11220,7 +11220,7 @@
             "originalValue": "Cardiology Lead",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11234,7 +11234,7 @@
             "originalValue": "Hospital Barcelona",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11262,7 +11262,7 @@
             "originalValue": "Prof Hans Weber",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -11276,7 +11276,7 @@
             "originalValue": "Prof Hans Weber",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Only shown when 2 or 3 speakers are selected.",
             "targets": []
           },
@@ -11290,7 +11290,7 @@
             "originalValue": "Director of Research",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11304,7 +11304,7 @@
             "originalValue": "University of Munich",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11332,7 +11332,7 @@
             "originalValue": "Dr Sophie Laurent",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": []
           },
@@ -11346,7 +11346,7 @@
             "originalValue": "Dr Sophie Laurent",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Only shown when 3 speakers are selected.",
             "targets": []
           },
@@ -11360,7 +11360,7 @@
             "originalValue": "Interventional Cardiology",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           },
@@ -11374,7 +11374,7 @@
             "originalValue": "Paris Heart Institute",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": []
           }
@@ -11401,7 +11401,7 @@
           "originalValue": "Supported by",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the sponsor logo.",
           "targets": [],
           "allowLinks": true,
@@ -11450,7 +11450,7 @@
           "originalValue": "Sponsor name",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the sponsor for screen readers. Not used when there is no logo.",
           "targets": [],
           "key": "sponsor_logo_alt",
@@ -11464,7 +11464,7 @@
           "originalValue": "Optional sponsor disclaimer or supporting text can go here.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "Optional supporting text shown under the logo.",
           "targets": [],
           "allowLinks": true,
@@ -11494,7 +11494,7 @@
             "originalValue": "Supported by",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the sponsor logo.",
             "targets": [],
             "allowLinks": true,
@@ -11543,7 +11543,7 @@
             "originalValue": "Sponsor name",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the sponsor for screen readers. Not used when there is no logo.",
             "targets": [],
             "key": "sponsor_logo_alt",
@@ -11557,7 +11557,7 @@
             "originalValue": "Optional sponsor disclaimer or supporting text can go here.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Optional supporting text shown under the logo.",
             "targets": [],
             "allowLinks": true,
@@ -11584,7 +11584,7 @@
             "originalValue": "Supported by",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the sponsor logo.",
             "targets": [],
             "allowLinks": true,
@@ -11633,7 +11633,7 @@
             "originalValue": "Sponsor name",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the sponsor for screen readers. Not used when there is no logo.",
             "targets": [],
             "key": "sponsor_logo_alt",
@@ -11647,7 +11647,7 @@
             "originalValue": "Optional sponsor disclaimer or supporting text can go here.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "Optional supporting text shown under the logo.",
             "targets": [],
             "allowLinks": true,
@@ -11677,7 +11677,7 @@
           "originalValue": "ESC TV Today",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the heading.",
           "targets": [],
           "allowLinks": true,
@@ -11692,7 +11692,7 @@
           "originalValue": "Expert insights",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -11771,7 +11771,7 @@
           "originalValue": "ESC TV Today video thumbnail",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the video for screen readers.",
           "targets": [
             {
@@ -11807,7 +11807,7 @@
           "originalValue": "Add a short summary of the video here. Keep it focused on the value of watching, not just the topic.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -11828,7 +11828,7 @@
           "originalValue": "Watch now",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -11863,7 +11863,7 @@
             "originalValue": "ESC TV Today",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "allowLinks": true,
@@ -11878,7 +11878,7 @@
             "originalValue": "Expert insights",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -11957,7 +11957,7 @@
             "originalValue": "ESC TV Today video thumbnail",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the video for screen readers.",
             "targets": [
               {
@@ -11993,7 +11993,7 @@
             "originalValue": "Add a short summary of the video here. Keep it focused on the value of watching, not just the topic.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -12014,7 +12014,7 @@
             "originalValue": "Watch now",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -12046,7 +12046,7 @@
             "originalValue": "ESC TV Today",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "allowLinks": true,
@@ -12061,7 +12061,7 @@
             "originalValue": "Expert insights",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -12140,7 +12140,7 @@
             "originalValue": "ESC TV Today video thumbnail",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the video for screen readers.",
             "targets": [
               {
@@ -12176,7 +12176,7 @@
             "originalValue": "Add a short summary of the video here. Keep it focused on the value of watching, not just the topic.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -12197,7 +12197,7 @@
             "originalValue": "Watch now",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -12232,7 +12232,7 @@
           "originalValue": "Live Webinar",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the heading.",
           "targets": [],
           "allowLinks": true,
@@ -12247,7 +12247,7 @@
           "originalValue": "Distinguishing inherited arrhythmias from mimics",
           "enabled": true,
           "required": true,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -12267,7 +12267,7 @@
           "originalValue": "\n             <strong class=\"dark-invert\" style=\"color: #1a1a1a; font-weight: 700;\">Friday, 12 December 2025</strong> &nbsp;&bull;&nbsp; 18:00 - 19:00 CET",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Keep the date in bold; edit the rest as plain text.",
           "targets": [],
           "allowLinks": false,
@@ -12341,7 +12341,7 @@
           "originalValue": "Webinar image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Describe the image for screen readers.",
           "targets": [
             {
@@ -12377,7 +12377,7 @@
           "originalValue": "Register now",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -12412,7 +12412,7 @@
             "originalValue": "Live Webinar",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "allowLinks": true,
@@ -12427,7 +12427,7 @@
             "originalValue": "Distinguishing inherited arrhythmias from mimics",
             "enabled": true,
             "required": true,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -12447,7 +12447,7 @@
             "originalValue": "\n             <strong class=\"dark-invert\" style=\"color: #1a1a1a; font-weight: 700;\">Friday, 12 December 2025</strong> &nbsp;&bull;&nbsp; 18:00 - 19:00 CET",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Keep the date in bold; edit the rest as plain text.",
             "targets": [],
             "allowLinks": false,
@@ -12521,7 +12521,7 @@
             "originalValue": "Webinar image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": [
               {
@@ -12557,7 +12557,7 @@
             "originalValue": "Register now",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -12589,7 +12589,7 @@
             "originalValue": "Live Webinar",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "allowLinks": true,
@@ -12604,7 +12604,7 @@
             "originalValue": "Distinguishing inherited arrhythmias from mimics",
             "enabled": true,
             "required": true,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -12624,7 +12624,7 @@
             "originalValue": "\n             <strong class=\"dark-invert\" style=\"color: #1a1a1a; font-weight: 700;\">Friday, 12 December 2025</strong> &nbsp;&bull;&nbsp; 18:00 - 19:00 CET",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Keep the date in bold; edit the rest as plain text.",
             "targets": [],
             "allowLinks": false,
@@ -12698,7 +12698,7 @@
             "originalValue": "Webinar image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Describe the image for screen readers.",
             "targets": [
               {
@@ -12734,7 +12734,7 @@
             "originalValue": "Register now",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -13226,7 +13226,7 @@
           "originalValue": "ESC",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Shown in the brand colour before the main heading. Leave blank to omit.",
           "targets": [],
           "allowLinks": false,
@@ -13241,7 +13241,7 @@
           "originalValue": "Newsletter",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "Main heading text, shown after the highlighted prefix.",
           "targets": [],
           "allowLinks": false,
@@ -13256,7 +13256,7 @@
           "originalValue": "Your essential cardiology update",
           "enabled": true,
           "required": false,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "Short line shown below the heading.",
           "targets": [],
           "allowLinks": false,
@@ -13286,7 +13286,7 @@
             "originalValue": "ESC",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Shown in the brand colour before the main heading. Leave blank to omit.",
             "targets": [],
             "allowLinks": false,
@@ -13301,7 +13301,7 @@
             "originalValue": "Newsletter",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Main heading text, shown after the highlighted prefix.",
             "targets": [],
             "allowLinks": false,
@@ -13316,7 +13316,7 @@
             "originalValue": "Your essential cardiology update",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Short line shown below the heading.",
             "targets": [],
             "allowLinks": false,
@@ -13343,7 +13343,7 @@
             "originalValue": "ESC",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Shown in the brand colour before the main heading. Leave blank to omit.",
             "targets": [],
             "allowLinks": false,
@@ -13358,7 +13358,7 @@
             "originalValue": "Newsletter",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "Main heading text, shown after the highlighted prefix.",
             "targets": [],
             "allowLinks": false,
@@ -13373,7 +13373,7 @@
             "originalValue": "Your essential cardiology update",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Short line shown below the heading.",
             "targets": [],
             "allowLinks": false,
@@ -13403,7 +13403,7 @@
           "originalValue": "Events & Conferences",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the intro heading. Leave blank to hide this line.",
           "targets": [],
           "binding": "template"
@@ -13417,7 +13417,7 @@
           "originalValue": "Our congresses bring us together",
           "enabled": true,
           "required": false,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Leave this and the other intro fields blank to omit the intro section entirely.",
           "targets": [],
           "binding": "template"
@@ -13431,7 +13431,7 @@
           "originalValue": "To share knowledge and shape the future of cardiovascular care",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Supporting line below the intro heading. Leave blank to hide this line.",
           "targets": [],
           "binding": "template"
@@ -13468,7 +13468,7 @@
               "originalValue": "APR",
               "enabled": true,
               "required": true,
-              "maxLength": 5,
+              "maxLength": 0,
               "help": "Short month abbreviation, e.g. APR.",
               "targets": [],
               "binding": "template"
@@ -13482,7 +13482,7 @@
               "originalValue": "24",
               "enabled": true,
               "required": true,
-              "maxLength": 4,
+              "maxLength": 0,
               "help": "Day of the month, e.g. 24.",
               "targets": [],
               "binding": "template"
@@ -13496,7 +13496,7 @@
               "originalValue": "Upcoming event",
               "enabled": true,
               "required": false,
-              "maxLength": 40,
+              "maxLength": 0,
               "help": "Small label above the event title.",
               "targets": [],
               "binding": "template"
@@ -13510,7 +13510,7 @@
               "originalValue": "Event title goes here",
               "enabled": true,
               "required": true,
-              "maxLength": 80,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -13524,7 +13524,7 @@
               "originalValue": "Add the date, location, deadline or short event summary here.",
               "enabled": true,
               "required": false,
-              "maxLength": 150,
+              "maxLength": 0,
               "help": "Date, location, deadline or short summary.",
               "targets": [],
               "binding": "template"
@@ -13538,7 +13538,7 @@
               "originalValue": "Register now",
               "enabled": true,
               "required": false,
-              "maxLength": 30,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -13591,7 +13591,7 @@
             "originalValue": "Events & Conferences",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the intro heading. Leave blank to hide this line.",
             "targets": [],
             "binding": "template"
@@ -13605,7 +13605,7 @@
             "originalValue": "Our congresses bring us together",
             "enabled": true,
             "required": false,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Leave this and the other intro fields blank to omit the intro section entirely.",
             "targets": [],
             "binding": "template"
@@ -13619,7 +13619,7 @@
             "originalValue": "To share knowledge and shape the future of cardiovascular care",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Supporting line below the intro heading. Leave blank to hide this line.",
             "targets": [],
             "binding": "template"
@@ -13656,7 +13656,7 @@
                 "originalValue": "APR",
                 "enabled": true,
                 "required": true,
-                "maxLength": 5,
+                "maxLength": 0,
                 "help": "Short month abbreviation, e.g. APR.",
                 "targets": [],
                 "binding": "template"
@@ -13670,7 +13670,7 @@
                 "originalValue": "24",
                 "enabled": true,
                 "required": true,
-                "maxLength": 4,
+                "maxLength": 0,
                 "help": "Day of the month, e.g. 24.",
                 "targets": [],
                 "binding": "template"
@@ -13684,7 +13684,7 @@
                 "originalValue": "Upcoming event",
                 "enabled": true,
                 "required": false,
-                "maxLength": 40,
+                "maxLength": 0,
                 "help": "Small label above the event title.",
                 "targets": [],
                 "binding": "template"
@@ -13698,7 +13698,7 @@
                 "originalValue": "Event title goes here",
                 "enabled": true,
                 "required": true,
-                "maxLength": 80,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -13712,7 +13712,7 @@
                 "originalValue": "Add the date, location, deadline or short event summary here.",
                 "enabled": true,
                 "required": false,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "Date, location, deadline or short summary.",
                 "targets": [],
                 "binding": "template"
@@ -13726,7 +13726,7 @@
                 "originalValue": "Register now",
                 "enabled": true,
                 "required": false,
-                "maxLength": 30,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -13776,7 +13776,7 @@
             "originalValue": "Events & Conferences",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the intro heading. Leave blank to hide this line.",
             "targets": [],
             "binding": "template"
@@ -13790,7 +13790,7 @@
             "originalValue": "Our congresses bring us together",
             "enabled": true,
             "required": false,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Leave this and the other intro fields blank to omit the intro section entirely.",
             "targets": [],
             "binding": "template"
@@ -13804,7 +13804,7 @@
             "originalValue": "To share knowledge and shape the future of cardiovascular care",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Supporting line below the intro heading. Leave blank to hide this line.",
             "targets": [],
             "binding": "template"
@@ -13841,7 +13841,7 @@
                 "originalValue": "APR",
                 "enabled": true,
                 "required": true,
-                "maxLength": 5,
+                "maxLength": 0,
                 "help": "Short month abbreviation, e.g. APR.",
                 "targets": [],
                 "binding": "template"
@@ -13855,7 +13855,7 @@
                 "originalValue": "24",
                 "enabled": true,
                 "required": true,
-                "maxLength": 4,
+                "maxLength": 0,
                 "help": "Day of the month, e.g. 24.",
                 "targets": [],
                 "binding": "template"
@@ -13869,7 +13869,7 @@
                 "originalValue": "Upcoming event",
                 "enabled": true,
                 "required": false,
-                "maxLength": 40,
+                "maxLength": 0,
                 "help": "Small label above the event title.",
                 "targets": [],
                 "binding": "template"
@@ -13883,7 +13883,7 @@
                 "originalValue": "Event title goes here",
                 "enabled": true,
                 "required": true,
-                "maxLength": 80,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -13897,7 +13897,7 @@
                 "originalValue": "Add the date, location, deadline or short event summary here.",
                 "enabled": true,
                 "required": false,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "Date, location, deadline or short summary.",
                 "targets": [],
                 "binding": "template"
@@ -13911,7 +13911,7 @@
                 "originalValue": "Register now",
                 "enabled": true,
                 "required": false,
-                "maxLength": 30,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -13964,7 +13964,7 @@
           "originalValue": "Editorials",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "binding": "template"
@@ -14019,7 +14019,7 @@
               "originalValue": "Editorial title goes here",
               "enabled": true,
               "required": true,
-              "maxLength": 150,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -14048,7 +14048,7 @@
               "originalValue": "Author name",
               "enabled": true,
               "required": false,
-              "maxLength": 100,
+              "maxLength": 0,
               "help": "Leave blank to omit the author line.",
               "targets": [],
               "binding": "template"
@@ -14082,7 +14082,7 @@
               "originalValue": "doi.org/10.1093/cvr/example",
               "enabled": true,
               "required": true,
-              "maxLength": 60,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -14110,7 +14110,7 @@
               "originalValue": "",
               "enabled": true,
               "required": false,
-              "maxLength": 150,
+              "maxLength": 0,
               "help": "Describe the image for screen readers. Only used if an image is provided.",
               "targets": [],
               "binding": "template"
@@ -14157,7 +14157,7 @@
             "originalValue": "Editorials",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "binding": "template"
@@ -14212,7 +14212,7 @@
                 "originalValue": "Editorial title goes here",
                 "enabled": true,
                 "required": true,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -14241,7 +14241,7 @@
                 "originalValue": "Author name",
                 "enabled": true,
                 "required": false,
-                "maxLength": 100,
+                "maxLength": 0,
                 "help": "Leave blank to omit the author line.",
                 "targets": [],
                 "binding": "template"
@@ -14275,7 +14275,7 @@
                 "originalValue": "doi.org/10.1093/cvr/example",
                 "enabled": true,
                 "required": true,
-                "maxLength": 60,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -14303,7 +14303,7 @@
                 "originalValue": "",
                 "enabled": true,
                 "required": false,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "Describe the image for screen readers. Only used if an image is provided.",
                 "targets": [],
                 "binding": "template"
@@ -14347,7 +14347,7 @@
             "originalValue": "Editorials",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "binding": "template"
@@ -14402,7 +14402,7 @@
                 "originalValue": "Editorial title goes here",
                 "enabled": true,
                 "required": true,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -14431,7 +14431,7 @@
                 "originalValue": "Author name",
                 "enabled": true,
                 "required": false,
-                "maxLength": 100,
+                "maxLength": 0,
                 "help": "Leave blank to omit the author line.",
                 "targets": [],
                 "binding": "template"
@@ -14465,7 +14465,7 @@
                 "originalValue": "doi.org/10.1093/cvr/example",
                 "enabled": true,
                 "required": true,
-                "maxLength": 60,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -14493,7 +14493,7 @@
                 "originalValue": "",
                 "enabled": true,
                 "required": false,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "Describe the image for screen readers. Only used if an image is provided.",
                 "targets": [],
                 "binding": "template"
@@ -14540,7 +14540,7 @@
           "originalValue": "Text block heading",
           "enabled": true,
           "required": false,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Leave blank to omit the heading.",
           "targets": [],
           "binding": "template"
@@ -14611,7 +14611,7 @@
             "originalValue": "Text block heading",
             "enabled": true,
             "required": false,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Leave blank to omit the heading.",
             "targets": [],
             "binding": "template"
@@ -14679,7 +14679,7 @@
             "originalValue": "Text block heading",
             "enabled": true,
             "required": false,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Leave blank to omit the heading.",
             "targets": [],
             "binding": "template"

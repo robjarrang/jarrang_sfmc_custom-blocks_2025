@@ -22,7 +22,7 @@
           "originalValue": "In collaboration with the European Society of Cardiology.",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "The organiser name and logo come from send personalisation and are not editable here.",
           "targets": [],
           "allowLinks": true,
@@ -52,7 +52,7 @@
             "originalValue": "In collaboration with the European Society of Cardiology.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "The organiser name and logo come from send personalisation and are not editable here.",
             "targets": [],
             "allowLinks": true,
@@ -79,7 +79,7 @@
             "originalValue": "In collaboration with the European Society of Cardiology.",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "The organiser name and logo come from send personalisation and are not editable here.",
             "targets": [],
             "allowLinks": true,
@@ -155,8 +155,8 @@
           "originalValue": "Register now",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
-          "help": "Button label, up to 30 characters.",
+          "maxLength": 0,
+          "help": "Button label.",
           "targets": [],
           "allowLinks": false
         },
@@ -261,8 +261,8 @@
           "originalValue": "View programme",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
-          "help": "Button label, up to 30 characters.",
+          "maxLength": 0,
+          "help": "Button label.",
           "targets": [],
           "allowLinks": false
         },
@@ -367,8 +367,8 @@
           "originalValue": "Third button",
           "enabled": true,
           "required": true,
-          "maxLength": 30,
-          "help": "Button label, up to 30 characters.",
+          "maxLength": 0,
+          "help": "Button label.",
           "targets": [],
           "allowLinks": false
         },
@@ -497,8 +497,8 @@
             "originalValue": "Register now",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
-            "help": "Button label, up to 30 characters.",
+            "maxLength": 0,
+            "help": "Button label.",
             "targets": [],
             "allowLinks": false
           },
@@ -603,8 +603,8 @@
             "originalValue": "View programme",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
-            "help": "Button label, up to 30 characters.",
+            "maxLength": 0,
+            "help": "Button label.",
             "targets": [],
             "allowLinks": false
           },
@@ -709,8 +709,8 @@
             "originalValue": "Third button",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
-            "help": "Button label, up to 30 characters.",
+            "maxLength": 0,
+            "help": "Button label.",
             "targets": [],
             "allowLinks": false
           },
@@ -836,8 +836,8 @@
             "originalValue": "Register now",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
-            "help": "Button label, up to 30 characters.",
+            "maxLength": 0,
+            "help": "Button label.",
             "targets": [],
             "allowLinks": false
           },
@@ -942,8 +942,8 @@
             "originalValue": "View programme",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
-            "help": "Button label, up to 30 characters.",
+            "maxLength": 0,
+            "help": "Button label.",
             "targets": [],
             "allowLinks": false
           },
@@ -1048,8 +1048,8 @@
             "originalValue": "Third button",
             "enabled": true,
             "required": true,
-            "maxLength": 30,
-            "help": "Button label, up to 30 characters.",
+            "maxLength": 0,
+            "help": "Button label.",
             "targets": [],
             "allowLinks": false
           },
@@ -1402,7 +1402,7 @@
           "originalValue": "Join the conversation",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label above the heading.",
           "targets": [],
           "allowLinks": true,
@@ -1417,7 +1417,7 @@
           "originalValue": "Be part of the congress community",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -1437,7 +1437,7 @@
           "originalValue": "Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.",
           "enabled": true,
           "required": false,
-          "maxLength": 220,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -1458,7 +1458,7 @@
           "originalValue": "#ESC26",
           "enabled": true,
           "required": false,
-          "maxLength": 20,
+          "maxLength": 0,
           "help": "Shown large next to the link, e.g. \"#ESC26\".",
           "targets": [],
           "allowLinks": true,
@@ -1501,7 +1501,7 @@
           "originalValue": "View congress updates",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -1536,7 +1536,7 @@
             "originalValue": "Join the conversation",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "allowLinks": true,
@@ -1551,7 +1551,7 @@
             "originalValue": "Be part of the congress community",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -1571,7 +1571,7 @@
             "originalValue": "Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.",
             "enabled": true,
             "required": false,
-            "maxLength": 220,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -1592,7 +1592,7 @@
             "originalValue": "#ESC26",
             "enabled": true,
             "required": false,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "Shown large next to the link, e.g. \"#ESC26\".",
             "targets": [],
             "allowLinks": true,
@@ -1635,7 +1635,7 @@
             "originalValue": "View congress updates",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -1667,7 +1667,7 @@
             "originalValue": "Join the conversation",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label above the heading.",
             "targets": [],
             "allowLinks": true,
@@ -1682,7 +1682,7 @@
             "originalValue": "Be part of the congress community",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -1702,7 +1702,7 @@
             "originalValue": "Follow the latest congress updates, share your experience and connect with colleagues before, during and after the event.",
             "enabled": true,
             "required": false,
-            "maxLength": 220,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -1723,7 +1723,7 @@
             "originalValue": "#ESC26",
             "enabled": true,
             "required": false,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "Shown large next to the link, e.g. \"#ESC26\".",
             "targets": [],
             "allowLinks": true,
@@ -1766,7 +1766,7 @@
             "originalValue": "View congress updates",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -1801,7 +1801,7 @@
           "originalValue": "KEY DATES",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Small label above the heading, e.g. \"KEY DATES\".",
           "targets": [],
           "allowLinks": true,
@@ -1869,7 +1869,7 @@
               "originalValue": "09 Dec 2025",
               "enabled": true,
               "required": true,
-              "maxLength": 20,
+              "maxLength": 0,
               "help": "e.g. \"09 Dec 2025\".",
               "targets": [],
               "binding": "template"
@@ -1883,7 +1883,7 @@
               "originalValue": "Abstract submission deadline",
               "enabled": true,
               "required": true,
-              "maxLength": 60,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -1897,7 +1897,7 @@
               "originalValue": "Submit ›",
               "enabled": true,
               "required": false,
-              "maxLength": 30,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -1949,7 +1949,7 @@
             "originalValue": "KEY DATES",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Small label above the heading, e.g. \"KEY DATES\".",
             "targets": [],
             "allowLinks": true,
@@ -2017,7 +2017,7 @@
                 "originalValue": "09 Dec 2025",
                 "enabled": true,
                 "required": true,
-                "maxLength": 20,
+                "maxLength": 0,
                 "help": "e.g. \"09 Dec 2025\".",
                 "targets": [],
                 "binding": "template"
@@ -2031,7 +2031,7 @@
                 "originalValue": "Abstract submission deadline",
                 "enabled": true,
                 "required": true,
-                "maxLength": 60,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -2045,7 +2045,7 @@
                 "originalValue": "Submit ›",
                 "enabled": true,
                 "required": false,
-                "maxLength": 30,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -2094,7 +2094,7 @@
             "originalValue": "KEY DATES",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Small label above the heading, e.g. \"KEY DATES\".",
             "targets": [],
             "allowLinks": true,
@@ -2162,7 +2162,7 @@
                 "originalValue": "09 Dec 2025",
                 "enabled": true,
                 "required": true,
-                "maxLength": 20,
+                "maxLength": 0,
                 "help": "e.g. \"09 Dec 2025\".",
                 "targets": [],
                 "binding": "template"
@@ -2176,7 +2176,7 @@
                 "originalValue": "Abstract submission deadline",
                 "enabled": true,
                 "required": true,
-                "maxLength": 60,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -2190,7 +2190,7 @@
                 "originalValue": "Submit ›",
                 "enabled": true,
                 "required": false,
-                "maxLength": 30,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -2259,7 +2259,7 @@
           "originalValue": "Onsite",
           "enabled": true,
           "required": false,
-          "maxLength": 20,
+          "maxLength": 0,
           "help": "For example \"Onsite\" or \"Online\".",
           "targets": [],
           "allowLinks": false
@@ -2271,7 +2271,7 @@
           "originalValue": "Congress 2026",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -2291,7 +2291,7 @@
           "originalValue": "28 Aug – 31 Aug 2026",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "e.g. \"28 Aug – 31 Aug 2026\".",
           "targets": [],
           "id": "field2",
@@ -2305,7 +2305,7 @@
           "originalValue": "\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany",
           "enabled": true,
           "required": false,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "Keep the city name bold; edit the rest as plain text.",
           "targets": [],
           "allowLinks": false,
@@ -2320,7 +2320,7 @@
           "originalValue": "Organised by:",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label shown before the organiser logo.",
           "targets": [],
           "id": "field4",
@@ -2356,7 +2356,7 @@
           "originalValue": "ESC",
           "enabled": true,
           "required": false,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "Describes the organiser logo for screen readers.",
           "targets": [
             {
@@ -2462,7 +2462,7 @@
           "originalValue": "Congress",
           "enabled": true,
           "required": false,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "Describes the main image for screen readers.",
           "targets": [
             {
@@ -2512,7 +2512,7 @@
           "originalValue": "",
           "enabled": true,
           "required": false,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "Describes the optional mobile image. When the main image is used, its alt text is used too.",
           "targets": [],
           "id": "field11",
@@ -2559,7 +2559,7 @@
             "originalValue": "Onsite",
             "enabled": true,
             "required": false,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "For example \"Onsite\" or \"Online\".",
             "targets": [],
             "allowLinks": false
@@ -2571,7 +2571,7 @@
             "originalValue": "Congress 2026",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -2591,7 +2591,7 @@
             "originalValue": "28 Aug – 31 Aug 2026",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "e.g. \"28 Aug – 31 Aug 2026\".",
             "targets": [],
             "id": "field2",
@@ -2605,7 +2605,7 @@
             "originalValue": "\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Keep the city name bold; edit the rest as plain text.",
             "targets": [],
             "allowLinks": false,
@@ -2620,7 +2620,7 @@
             "originalValue": "Organised by:",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label shown before the organiser logo.",
             "targets": [],
             "id": "field4",
@@ -2656,7 +2656,7 @@
             "originalValue": "ESC",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Describes the organiser logo for screen readers.",
             "targets": [
               {
@@ -2762,7 +2762,7 @@
             "originalValue": "Congress",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Describes the main image for screen readers.",
             "targets": [
               {
@@ -2812,7 +2812,7 @@
             "originalValue": "",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Describes the optional mobile image. When the main image is used, its alt text is used too.",
             "targets": [],
             "id": "field11",
@@ -2856,7 +2856,7 @@
             "originalValue": "Onsite",
             "enabled": true,
             "required": false,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "For example \"Onsite\" or \"Online\".",
             "targets": [],
             "allowLinks": false
@@ -2868,7 +2868,7 @@
             "originalValue": "Congress 2026",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -2888,7 +2888,7 @@
             "originalValue": "28 Aug – 31 Aug 2026",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "e.g. \"28 Aug – 31 Aug 2026\".",
             "targets": [],
             "id": "field2",
@@ -2902,7 +2902,7 @@
             "originalValue": "\n            <strong style=\"font-weight: 700;\">Munich</strong>, Germany",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Keep the city name bold; edit the rest as plain text.",
             "targets": [],
             "allowLinks": false,
@@ -2917,7 +2917,7 @@
             "originalValue": "Organised by:",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label shown before the organiser logo.",
             "targets": [],
             "id": "field4",
@@ -2953,7 +2953,7 @@
             "originalValue": "ESC",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Describes the organiser logo for screen readers.",
             "targets": [
               {
@@ -3059,7 +3059,7 @@
             "originalValue": "Congress",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Describes the main image for screen readers.",
             "targets": [
               {
@@ -3109,7 +3109,7 @@
             "originalValue": "",
             "enabled": true,
             "required": false,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "Describes the optional mobile image. When the main image is used, its alt text is used too.",
             "targets": [],
             "id": "field11",
@@ -3138,7 +3138,7 @@
           "originalValue": "Onsite",
           "enabled": true,
           "required": false,
-          "maxLength": 20,
+          "maxLength": 0,
           "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
           "targets": [],
           "id": "field1",
@@ -3153,7 +3153,7 @@
           "originalValue": "Organised by",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "Small label next to the organiser logo.",
           "targets": [],
           "allowLinks": true,
@@ -3168,7 +3168,7 @@
           "originalValue": "Congress Name 2026",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -3188,7 +3188,7 @@
           "originalValue": "23 – 25 Apr 2026",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -3203,7 +3203,7 @@
           "originalValue": "City, Country",
           "enabled": true,
           "required": false,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -3268,7 +3268,7 @@
           "originalValue": "Congress key visual",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -3318,7 +3318,7 @@
             "originalValue": "Onsite",
             "enabled": true,
             "required": false,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
             "targets": [],
             "id": "field1",
@@ -3333,7 +3333,7 @@
             "originalValue": "Organised by",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label next to the organiser logo.",
             "targets": [],
             "allowLinks": true,
@@ -3348,7 +3348,7 @@
             "originalValue": "Congress Name 2026",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -3368,7 +3368,7 @@
             "originalValue": "23 – 25 Apr 2026",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -3383,7 +3383,7 @@
             "originalValue": "City, Country",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -3448,7 +3448,7 @@
             "originalValue": "Congress key visual",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -3495,7 +3495,7 @@
             "originalValue": "Onsite",
             "enabled": true,
             "required": false,
-            "maxLength": 20,
+            "maxLength": 0,
             "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
             "targets": [],
             "id": "field1",
@@ -3510,7 +3510,7 @@
             "originalValue": "Organised by",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "Small label next to the organiser logo.",
             "targets": [],
             "allowLinks": true,
@@ -3525,7 +3525,7 @@
             "originalValue": "Congress Name 2026",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -3545,7 +3545,7 @@
             "originalValue": "23 – 25 Apr 2026",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -3560,7 +3560,7 @@
             "originalValue": "City, Country",
             "enabled": true,
             "required": false,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -3625,7 +3625,7 @@
             "originalValue": "Congress key visual",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -3678,7 +3678,7 @@
           "originalValue": "Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,",
           "enabled": true,
           "required": true,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "Shown when the last name is known. Keep the %%…%% personalisation, without quote marks.",
           "targets": [],
           "allowLinks": false
@@ -3693,7 +3693,7 @@
           "originalValue": "Dear colleague,",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "Shown when the last name is unknown.",
           "targets": [],
           "allowLinks": false
@@ -3706,7 +3706,7 @@
           "originalValue": "\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,",
           "enabled": true,
           "required": true,
-          "maxLength": 500,
+          "maxLength": 0,
           "help": "Use the formatting toolbar to add a line break between paragraphs.",
           "targets": [
             {
@@ -3735,7 +3735,7 @@
           "originalValue": "The %%=v(@BrandShortName)=%% Congress Team",
           "enabled": true,
           "required": true,
-          "maxLength": 100,
+          "maxLength": 0,
           "help": "The sign-off under the body copy. Keep the %%…%% personalisation, without quote marks.",
           "targets": [],
           "allowLinks": false
@@ -3765,7 +3765,7 @@
             "originalValue": "Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,",
             "enabled": true,
             "required": true,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Shown when the last name is known. Keep the %%…%% personalisation, without quote marks.",
             "targets": [],
             "allowLinks": false
@@ -3780,7 +3780,7 @@
             "originalValue": "Dear colleague,",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Shown when the last name is unknown.",
             "targets": [],
             "allowLinks": false
@@ -3793,7 +3793,7 @@
             "originalValue": "\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,",
             "enabled": true,
             "required": true,
-            "maxLength": 500,
+            "maxLength": 0,
             "help": "Use the formatting toolbar to add a line break between paragraphs.",
             "targets": [
               {
@@ -3822,7 +3822,7 @@
             "originalValue": "The %%=v(@BrandShortName)=%% Congress Team",
             "enabled": true,
             "required": true,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "The sign-off under the body copy. Keep the %%…%% personalisation, without quote marks.",
             "targets": [],
             "allowLinks": false
@@ -3849,7 +3849,7 @@
             "originalValue": "Dear %%=v(@Salutation)=%% %%=v(@LastName)=%%,",
             "enabled": true,
             "required": true,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "Shown when the last name is known. Keep the %%…%% personalisation, without quote marks.",
             "targets": [],
             "allowLinks": false
@@ -3864,7 +3864,7 @@
             "originalValue": "Dear colleague,",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "Shown when the last name is unknown.",
             "targets": [],
             "allowLinks": false
@@ -3877,7 +3877,7 @@
             "originalValue": "\n         Add the main personal message here. This format is useful for registration-led congress emails, call-for-science reminders, abstract submission prompts or messages from the congress leadership.<br><br>Keep the copy direct and human. The congress examples use this style well when the message needs to feel more personal than a standard news card.<br><br>Best regards,",
             "enabled": true,
             "required": true,
-            "maxLength": 500,
+            "maxLength": 0,
             "help": "Use the formatting toolbar to add a line break between paragraphs.",
             "targets": [
               {
@@ -3906,7 +3906,7 @@
             "originalValue": "The %%=v(@BrandShortName)=%% Congress Team",
             "enabled": true,
             "required": true,
-            "maxLength": 100,
+            "maxLength": 0,
             "help": "The sign-off under the body copy. Keep the %%…%% personalisation, without quote marks.",
             "targets": [],
             "allowLinks": false
@@ -3934,7 +3934,7 @@
           "originalValue": "Section heading goes here",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -3969,7 +3969,7 @@
             "originalValue": "Section heading goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4001,7 +4001,7 @@
             "originalValue": "Section heading goes here",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4036,7 +4036,7 @@
           "originalValue": "2026 Spotlight",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -4051,7 +4051,7 @@
           "originalValue": "Artificial Intelligence",
           "enabled": true,
           "required": true,
-          "maxLength": 60,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -4071,7 +4071,7 @@
           "originalValue": "Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.",
           "enabled": true,
           "required": false,
-          "maxLength": 300,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -4135,7 +4135,7 @@
           "originalValue": "Explore programme",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -4170,7 +4170,7 @@
             "originalValue": "2026 Spotlight",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -4185,7 +4185,7 @@
             "originalValue": "Artificial Intelligence",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4205,7 +4205,7 @@
             "originalValue": "Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.",
             "enabled": true,
             "required": false,
-            "maxLength": 300,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -4269,7 +4269,7 @@
             "originalValue": "Explore programme",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4301,7 +4301,7 @@
             "originalValue": "2026 Spotlight",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -4316,7 +4316,7 @@
             "originalValue": "Artificial Intelligence",
             "enabled": true,
             "required": true,
-            "maxLength": 60,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4336,7 +4336,7 @@
             "originalValue": "Discover AI in action, from diagnosis to delivery - through hands-on sessions, live demonstrations, and immersive learning.",
             "enabled": true,
             "required": false,
-            "maxLength": 300,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -4400,7 +4400,7 @@
             "originalValue": "Explore programme",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4494,7 +4494,7 @@
           "originalValue": "Congress image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -4530,7 +4530,7 @@
           "originalValue": "Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.",
           "enabled": true,
           "required": true,
-          "maxLength": 300,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -4556,7 +4556,7 @@
           "originalValue": "Learn more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -4650,7 +4650,7 @@
             "originalValue": "Congress image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4686,7 +4686,7 @@
             "originalValue": "Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.",
             "enabled": true,
             "required": true,
-            "maxLength": 300,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4712,7 +4712,7 @@
             "originalValue": "Learn more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4803,7 +4803,7 @@
             "originalValue": "Congress image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4839,7 +4839,7 @@
             "originalValue": "Add the main congress story copy here. This works well for introductory congress content, registration prompts, call for science messaging or programme highlights.",
             "enabled": true,
             "required": true,
-            "maxLength": 300,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4865,7 +4865,7 @@
             "originalValue": "Learn more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -4959,7 +4959,7 @@
           "originalValue": "Congress image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -4995,7 +4995,7 @@
           "originalValue": "Programme",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -5010,7 +5010,7 @@
           "originalValue": "First congress story headline",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -5030,7 +5030,7 @@
           "originalValue": "Short supporting copy for the first congress story or feature.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -5051,7 +5051,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -5130,7 +5130,7 @@
           "originalValue": "Congress image description",
           "enabled": true,
           "required": false,
-          "maxLength": 150,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -5166,7 +5166,7 @@
           "originalValue": "Registration",
           "enabled": true,
           "required": false,
-          "maxLength": 40,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -5181,7 +5181,7 @@
           "originalValue": "Second congress story headline",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -5201,7 +5201,7 @@
           "originalValue": "Short supporting copy for the second congress story or feature.",
           "enabled": true,
           "required": false,
-          "maxLength": 200,
+          "maxLength": 0,
           "help": "",
           "targets": [],
           "allowLinks": true,
@@ -5222,7 +5222,7 @@
           "originalValue": "Read more",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -5316,7 +5316,7 @@
             "originalValue": "Congress image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5352,7 +5352,7 @@
             "originalValue": "Programme",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5367,7 +5367,7 @@
             "originalValue": "First congress story headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5387,7 +5387,7 @@
             "originalValue": "Short supporting copy for the first congress story or feature.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5408,7 +5408,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5487,7 +5487,7 @@
             "originalValue": "Congress image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5523,7 +5523,7 @@
             "originalValue": "Registration",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5538,7 +5538,7 @@
             "originalValue": "Second congress story headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5558,7 +5558,7 @@
             "originalValue": "Short supporting copy for the second congress story or feature.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5579,7 +5579,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5670,7 +5670,7 @@
             "originalValue": "Congress image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5706,7 +5706,7 @@
             "originalValue": "Programme",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5721,7 +5721,7 @@
             "originalValue": "First congress story headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5741,7 +5741,7 @@
             "originalValue": "Short supporting copy for the first congress story or feature.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5762,7 +5762,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5841,7 +5841,7 @@
             "originalValue": "Congress image description",
             "enabled": true,
             "required": false,
-            "maxLength": 150,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5877,7 +5877,7 @@
             "originalValue": "Registration",
             "enabled": true,
             "required": false,
-            "maxLength": 40,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5892,7 +5892,7 @@
             "originalValue": "Second congress story headline",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5912,7 +5912,7 @@
             "originalValue": "Short supporting copy for the second congress story or feature.",
             "enabled": true,
             "required": false,
-            "maxLength": 200,
+            "maxLength": 0,
             "help": "",
             "targets": [],
             "allowLinks": true,
@@ -5933,7 +5933,7 @@
             "originalValue": "Read more",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -5968,7 +5968,7 @@
           "originalValue": "Together we will",
           "enabled": true,
           "required": false,
-          "maxLength": 30,
+          "maxLength": 0,
           "help": "Small label above the heading, e.g. \"Together we will\".",
           "targets": [],
           "allowLinks": true,
@@ -5983,7 +5983,7 @@
           "originalValue": "Transforming cardiology, together",
           "enabled": true,
           "required": true,
-          "maxLength": 80,
+          "maxLength": 0,
           "help": "",
           "targets": [
             {
@@ -6027,7 +6027,7 @@
               "originalValue": "Unite every discipline behind one powerful purpose: transforming patient outcomes.",
               "enabled": true,
               "required": true,
-              "maxLength": 150,
+              "maxLength": 0,
               "help": "",
               "targets": [],
               "binding": "template"
@@ -6059,7 +6059,7 @@
             "originalValue": "Together we will",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Small label above the heading, e.g. \"Together we will\".",
             "targets": [],
             "allowLinks": true,
@@ -6074,7 +6074,7 @@
             "originalValue": "Transforming cardiology, together",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -6118,7 +6118,7 @@
                 "originalValue": "Unite every discipline behind one powerful purpose: transforming patient outcomes.",
                 "enabled": true,
                 "required": true,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
@@ -6147,7 +6147,7 @@
             "originalValue": "Together we will",
             "enabled": true,
             "required": false,
-            "maxLength": 30,
+            "maxLength": 0,
             "help": "Small label above the heading, e.g. \"Together we will\".",
             "targets": [],
             "allowLinks": true,
@@ -6162,7 +6162,7 @@
             "originalValue": "Transforming cardiology, together",
             "enabled": true,
             "required": true,
-            "maxLength": 80,
+            "maxLength": 0,
             "help": "",
             "targets": [
               {
@@ -6206,7 +6206,7 @@
                 "originalValue": "Unite every discipline behind one powerful purpose: transforming patient outcomes.",
                 "enabled": true,
                 "required": true,
-                "maxLength": 150,
+                "maxLength": 0,
                 "help": "",
                 "targets": [],
                 "binding": "template"
