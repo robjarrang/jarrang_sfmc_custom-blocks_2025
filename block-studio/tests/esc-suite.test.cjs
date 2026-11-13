@@ -638,7 +638,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 363);
+    assert.equal(count, 364);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1039,7 +1039,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      47,
+      48,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');
@@ -1540,6 +1540,70 @@ test('ESC TV Disclaimer renders approved wording safely and matches its generate
     );
     assert.match(catalogue, /modules\/esc-tv-disclaimer\//);
     for (const module of p.modules) assert.ok(catalogue.includes('modules/' + module.slug + '/'));
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC TV Full Width Image supports image proportions and the shared link tracking controls', async () => {
+  const { BlockCore: C, BlockExport: E, BlockControls: Controls, dom } = await environment();
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    const m = p.modules.find((m) => m.slug === 'esc-tv-full-width-image');
+    C.assertProject(p);
+    assert.deepEqual(Array.from(E.problems(m)), []);
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(m);
+    assert.equal(host.querySelector('table').getAttribute('width'), '620');
+    assert.equal(host.querySelector('table').getAttribute('bgcolor'), '#011933');
+    assert.equal(host.querySelector('.side'), null);
+    assert.equal(host.querySelector('img').getAttribute('width'), '620');
+    assert.equal(host.querySelector('img').getAttribute('height'), '348');
+    assert.equal(host.querySelector('img').style.height, 'auto');
+    assert.equal(host.querySelector('img').style.borderRadius, '');
+    const link = m.fields.find((f) => f.key === 'image_link');
+    const parent = dom.document.createElement('div');
+    const values = {};
+    Controls.mount(parent, [link], values, () => {});
+    const checkbox = parent.querySelector('[type=checkbox]');
+    assert.equal(checkbox.parentElement.textContent, 'Conversion Tracking Link');
+    assert.equal(checkbox.checked, false);
+    checkbox.checked = true;
+    checkbox.dispatchEvent(new dom.Event('change'));
+    const alt = 'ESC TV "image" & description';
+    Object.assign(values, {
+      image: 'https://example.com/tall-image.png',
+      image_alt: alt,
+      image_link: 'https://example.com/watch?source=email&campaign=esc-tv',
+      image_height: '620',
+      [C.linkOptionsKey]: { [link.id]: { title: 'Watch ESC TV', alias: 'esc_tv_image' } },
+    });
+    host.innerHTML = C.render(m, values);
+    assert.equal(host.querySelector('img').getAttribute('src'), values.image);
+    assert.equal(host.querySelector('img').getAttribute('alt'), alt);
+    assert.equal(host.querySelector('img').getAttribute('height'), '620');
+    assert.equal(host.querySelector('a').getAttribute('href'), values.image_link);
+    assert.equal(host.querySelector('a').getAttribute('conversion'), 'true');
+    assert.equal(host.querySelector('a').getAttribute('title'), 'Watch ESC TV');
+    assert.equal(host.querySelector('a').getAttribute('alias'), 'esc_tv_image');
+    checkbox.checked = false;
+    checkbox.dispatchEvent(new dom.Event('change'));
+    host.innerHTML = C.render(m, values);
+    assert.equal(host.querySelector('a').hasAttribute('conversion'), false);
+    assert.equal(JSON.stringify(C.parse(C.render(m, values)).issues), '[]');
+    const folder = path.join(root, 'docs/clients/esc/esc-tv/modules', m.slug);
+    const page = fs.readFileSync(path.join(folder, 'index.html'), 'utf8');
+    const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
+    assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);
+    assert.deepEqual(definition, m.exportedDefinition);
+    for (const [key, name] of [
+      ['icon', 'icon.png'],
+      ['dragIcon', 'dragIcon.png'],
+    ])
+      assert.deepEqual(
+        Buffer.from(m.iconAssets[key], 'base64'),
+        fs.readFileSync(path.join(folder, name)),
+      );
   } finally {
     await dom.happyDOM.close();
   }

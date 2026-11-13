@@ -7,7 +7,7 @@ For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 again
 ## Open and make a change
 
 1. Pull in Tower and open Studio. Choose **Open repository** and select the local repository root.
-2. Choose **ESC / Newsletter** (28 modules), **ESC / Congress** (13 modules) or **ESC / ESC TV** (5 modules).
+2. Choose **ESC / Newsletter** (28 modules), **ESC / Congress** (13 modules) or **ESC / ESC TV** (6 modules).
 3. Use **HTML & CSS** for a small code correction, **Fields → Edit** for starting content/control settings, or **Test** for temporary values.
 4. Apply the edit, test the affected behaviour and choose **Save**. Use **Save template** for shared editor appearance changes.
 5. Review, commit and push in Tower. Check the hosted editor and new/existing instances in SFMC.
@@ -132,6 +132,8 @@ For recovery and deployment rollback, follow the [user guide](../../internal/USE
 **ESC TV Button Row** (`esc-tv-button-row`) shows “Get reminders”, “Previous episodes” and “Become a member” on the navy background. All three are shown by default; buttons 2 and 3 can be hidden independently. Each button has editable text, link and style (primary brand colour, solid white or white outline). It follows the Congress Button Row table/stacking structure and uses narrower horizontal button padding to keep the supplied labels on one line at 620px. The primary button uses the existing brand AMPscript, so select the appropriate ESC TV brand in Email settings. Link defaults remain the ESC homepage until campaign destinations are supplied. Existing saved visibility choices are retained.
 
 **ESC TV Disclaimer** (`esc-tv-disclaimer`) contains two required, editable plain-text statements matching the supplied funding and independence wording. Both are centred in white Mulish text at 12px/16px on the same navy wrapper, with 8px fixed-height spacers above, between and below. It reuses the standard 620px outer table, 20px side cells and responsive `content-inner`/`sect` classes. Text wraps naturally on mobile; no new master-template CSS is required.
+
+**ESC TV Full Width Image** (`esc-tv-full-width-image`) is a single linked image spanning the full 620px email width, with square edges and no side margins or extra spacers. Supply an image URL, alt text and destination; the link includes the shared conversion tracking, title and alias controls (conversion tracking off by default). A 1920 × 1080px image is recommended; other proportions scale naturally. **Image height in Outlook (px)** defaults to 0, which supplies a 348px height for Windows Outlook. For a different shape, enter its displayed height at 620px wide (source height × 620 ÷ source width), ideally rounded to a multiple of 4. Other clients use proportional `height: auto`. The surrounding table retains the ESC TV navy background.
 
 ## Shared email settings (1.28.0)
 
