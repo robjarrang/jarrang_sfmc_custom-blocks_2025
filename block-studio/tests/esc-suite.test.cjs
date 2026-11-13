@@ -1633,3 +1633,43 @@ test('Newsletter Full Width Image supports image proportions and the shared link
     await dom.happyDOM.close();
   }
 });
+
+test('ESC TV Lead CTA avoids fractional border height and unpainted Outlook cell gaps', async () => {
+  const { BlockCore: C, BlockExport: E, dom } = await environment();
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    const m = p.modules.find((m) => m.slug === 'esc-tv-lead');
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(m);
+    const button = host.querySelector('table.esc-btn');
+    const cell = button.querySelector('td');
+    assert.equal(parseInt(button.style.border), 0);
+    assert.equal(parseInt(button.style.borderSpacing), 0);
+    assert.equal(button.getAttribute('cellspacing'), '0');
+    assert.equal(button.getAttribute('cellpadding'), '0');
+    assert.equal(button.getAttribute('bgcolor'), '%%=v(@ButtonBgColour)=%%');
+    assert.equal(cell.getAttribute('bgcolor'), button.getAttribute('bgcolor'));
+    assert.ok(cell.getAttribute('style').includes('background-color: %%=v(@ButtonBgColour)=%%;'));
+    assert.equal(parseInt(cell.style.border), 0);
+    assert.equal(cell.style.lineHeight, '24px');
+    assert.equal(cell.style.padding, '12px 28px');
+    assert.equal(parseInt(cell.style.lineHeight) + 2 * parseInt(cell.style.paddingTop), 48);
+    for (const td of host.querySelectorAll('td')) {
+      assert.ok(td.style.lineHeight, 'Every text-containing cell has an explicit line height');
+      assert.match(td.getAttribute('style'), /mso-line-height-rule: exactly/);
+    }
+    for (const match of m.source.matchAll(/(?:font-size|line-height|height|padding):\s*([^;]+);/g))
+      for (const value of match[1].matchAll(/(\d+)px/g))
+        assert.equal(Number(value[1]) % 4, 0, match[0]);
+    assert.deepEqual(Array.from(E.problems(m)), []);
+    assert.equal(JSON.stringify(C.parse(C.render(m)).issues), '[]');
+    const page = fs.readFileSync(
+      path.join(root, 'docs/clients/esc/esc-tv/modules/esc-tv-lead/index.html'),
+      'utf8',
+    );
+    const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
+    assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
