@@ -609,7 +609,8 @@ test('every ESC conditional expression has a supported guided editor model', asy
   const { BlockTemplateRules: R, BlockLogic: L, dom } = await environment();
   try {
     let count = 0;
-    for (const p of projects)
+    const esctv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    for (const p of [...projects, esctv])
       for (const m of p.modules) {
         const rules = new Map(m.fields.flatMap((f) => R.rules(m, f)).map((r) => [r.start, r]));
         const conditions = [...m.source.matchAll(/{%\s*(?:if|elsif|elseif)\s+([\s\S]*?)%}/g)];
@@ -637,7 +638,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 337);
+    assert.equal(count, 355);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1034,11 +1035,11 @@ test('standalone UI boots with the ESC content and settings templates and previe
     const d = dom.document,
       W = context.window.BlockWorkspace;
     const saved = JSON.parse(dom.localStorage.getItem(W.KEY));
-    assert.equal(saved.projects.length, 3);
+    assert.equal(saved.projects.length, 4);
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      42,
+      45,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');
@@ -1286,6 +1287,130 @@ test('ESC headings can be italicised per field without changing existing output'
     assert.ok(host.querySelector('h2[style*="font-style: italic"]'));
     host.innerHTML = C.render(m, { [list.id]: rows(false) });
     assert.equal(host.querySelector('h2[style*="font-style: italic"]'), null);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC TV Lead keeps its background, optional list and optional button', async () => {
+  const { BlockCore: C, BlockExport: E, dom } = await environment();
+  try {
+    const project = JSON.parse(
+      fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')),
+    );
+    assert.equal(project.settings.templateSlug, 'esc-tv');
+    const m = project.modules.find((m) => m.slug === 'esc-tv-lead');
+    C.assertProject(project);
+    assert.equal(E.problems(E.themedModule(project, m)).length, 0);
+    const id = (key) => m.fields.find((f) => f.key === key).id;
+    const render = (values = {}) => C.render(m, values);
+    const base = render();
+    assert.doesNotMatch(base, /\{%|\{\{/);
+    assert.match(base, /Hello %%=v\(@FirstName\)=%%,/);
+    assert.equal(base.match(/bgcolor="#011933"/g).length, 4);
+    assert.doesNotMatch(base, /#ffffff;"\s+width="620"/);
+    assert.equal(base.match(/&#9656;/g).length, 4);
+    assert.ok(base.includes('Topics include:') && base.includes('Watch now'));
+    const noList = render({ [id('show_list')]: 'hidden' });
+    assert.ok(!noList.includes('Topics include:') && !noList.includes('&#9656;'));
+    assert.ok(noList.includes('Watch now'));
+    const noButton = render({ [id('show_button')]: 'hidden' });
+    assert.ok(!noButton.includes('Watch now') && !noButton.includes('esc-btn'));
+    assert.ok(noButton.includes('&#9656;'));
+    const textOnly = render({ [id('show_list')]: 'hidden', [id('show_button')]: 'hidden' });
+    assert.ok(!textOnly.includes('&#9656;') && !textOnly.includes('esc-btn'));
+    assert.ok(textOnly.includes('Welcome to the latest episode'));
+    assert.ok(!base.includes('font-style'));
+    assert.ok(render({ [id('greeting_italic')]: 'shown' }).includes('font-style: italic'));
+    // A hidden section leaves no spacer row behind.
+    const height = (html) => (html.match(/height:\d+px;mso-line-height-rule/g) || []).length;
+    assert.ok(height(noList) < height(base) && height(noButton) < height(base));
+    const host = dom.document.createElement('div');
+    host.innerHTML = render({ [id('body_copy')]: '' });
+    assert.ok(!host.textContent.includes('Welcome to the latest'));
+    assert.equal(m.exportedDefinition.slug, 'esc-tv-lead');
+    assert.ok(m.iconAssets.icon && m.iconAssets.dragIcon);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC TV Story Card rounds the image and card corners and keeps description and button optional', async () => {
+  const { BlockCore: C, BlockExport: E, dom } = await environment();
+  try {
+    const project = JSON.parse(
+      fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')),
+    );
+    const m = project.modules.find((m) => m.slug === 'esc-tv-story-card');
+    C.assertProject(project);
+    assert.equal(E.problems(E.themedModule(project, m)).length, 0);
+    const id = (key) => m.fields.find((f) => f.key === key).id;
+    const render = (values = {}) => C.render(m, values);
+    const base = render();
+    assert.doesNotMatch(base, /\{%|\{\{/);
+    assert.equal(base.match(/bgcolor="#011933"/g).length, 4);
+    assert.match(base, /<td bgcolor="#011933" class="side"[^>]*width="20"/);
+    assert.match(base, /border-radius: 12px 12px 0 0/);
+    assert.match(base, /border-radius: 0 0 12px 12px/);
+    assert.match(base, /height="328"/);
+    assert.match(render({ [id('card_image_height')]: '292' }), /height="292"/);
+    const host = dom.document.createElement('div');
+    host.innerHTML = render({ [id('card_image_alt')]: 'A "quoted" <b>alt</b>' });
+    assert.equal(host.querySelector('img').getAttribute('alt'), 'A "quoted" <b>alt</b>');
+    const noDescription = render({ [id('show_description')]: 'hidden' });
+    assert.ok(!noDescription.includes('Add a short summary') && noDescription.includes('esc-btn'));
+    const noButton = render({ [id('show_button')]: 'hidden' });
+    assert.ok(!noButton.includes('esc-btn') && noButton.includes('Add a short summary'));
+    const bare = render({ [id('show_description')]: 'hidden', [id('show_button')]: 'hidden' });
+    assert.ok(!bare.includes('esc-btn') && bare.includes('Snapshots'));
+    const spacers = (html) =>
+      (html.match(/height:\d+px;(?:font-size:\d+px;)?mso-line-height-rule/g) || []).length;
+    assert.ok(spacers(bare) < spacers(noButton) && spacers(noButton) < spacers(base));
+    assert.ok(!base.includes('font-style'));
+    assert.ok(render({ [id('headline_italic')]: 'shown' }).includes('font-style: italic'));
+    assert.ok(m.iconAssets.icon && m.iconAssets.dragIcon && m.exportedDefinition);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC TV 2 Col keeps a white rounded card on navy with two independent cards', async () => {
+  const { BlockCore: C, BlockExport: E, dom } = await environment();
+  try {
+    const project = JSON.parse(
+      fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')),
+    );
+    const m = project.modules.find((m) => m.slug === 'esc-tv-2-col');
+    C.assertProject(project);
+    assert.equal(E.problems(E.themedModule(project, m)).length, 0);
+    const id = (key) => m.fields.find((f) => f.key === key).id;
+    const render = (values = {}) => C.render(m, values);
+    const base = render();
+    assert.doesNotMatch(base, /\{%|\{\{/);
+    assert.equal(base.match(/bgcolor="#011933"/g).length, 4);
+    assert.match(base, /border-radius: 16px/);
+    assert.equal(base.match(/height="148"/g).length, 2);
+    assert.equal(base.match(/class="[^"]*\bblock\b/g).length, 3);
+    assert.ok(base.includes('mobile-hide') && base.includes('news-card-stack-first'));
+    assert.equal(base.match(/&rarr;/g).length, 2);
+    assert.match(render({ [id('card2_image_height')]: '132' }), /height="132"/);
+    const hidden = render({
+      [id('card1_show_description')]: 'hidden',
+      [id('card2_show_cta')]: 'hidden',
+    });
+    assert.ok(!hidden.includes('Memantine') && hidden.includes('Gianfranco'));
+    assert.ok(hidden.includes('(4 mins)') && !hidden.includes('(8 mins)'));
+    assert.ok(!base.includes('font-style'));
+    const italic = render({ [id('card2_headline_italic')]: 'shown' });
+    assert.equal(italic.match(/font-style: italic/g).length, 1);
+    const host = dom.document.createElement('div');
+    host.innerHTML = base;
+    assert.equal(host.querySelectorAll('img').length, 2);
+    const description = m.fields.find((f) => f.key === 'card1_description');
+    assert.equal(description.linkStyle.colour, '#ae1022');
+    assert.equal(description.linkStyle.decoration, 'underline');
+    assert.equal(description.linkStyle.weight, 'bold');
+    assert.ok(m.iconAssets.icon && m.iconAssets.dragIcon && m.exportedDefinition);
   } finally {
     await dom.happyDOM.close();
   }
