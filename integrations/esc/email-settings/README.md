@@ -60,3 +60,9 @@ The example's CSS was consolidated without changing any computed style: the two 
 - The link reset `a{color:inherit;…}` no longer uses `!important`. With it, the stylesheet beat every link's inline colour, so brand-coloured links (Read more, table of contents, link list, deadlines and others) showed in the surrounding grey text colour. Links without an inline colour still inherit; the Apple data-detector and Outlook hyperlink resets keep their `!important`.
 - The dark-mode rules that use `%%=v(@PrimaryColour)=%%` need the master setup to have run first. Where this CSS sits in the `<head>` above the setup call, those declarations resolve to nothing in SFMC and Apple Mail shows the dark fallback instead of the brand-colour lead. Move the brand-dependent group below the setup call as step 5 above describes to get the brand colours in dark mode.
 - Check the result in Subscriber Preview and the usual Outlook, mobile and dark-mode proofs before replacing the SFMC template.
+
+## Button spacing and Outlook lines
+
+The maintained modules and populated example now paint button cells as well as tables, reset table spacing, remove filled-button borders and keep total text/padding/border heights divisible by 4. Newsletter CTA Banner and Journal Section use table-based buttons in place of fractional `em` padding and percentage text-raise shims. Existing field IDs and tracking controls remain unchanged.
+
+Update the live master/starter email's matching dark-mode rules from `Brand-Dependent-Styles.html`: filled buttons use `border:0 !important`; outline rules set `border-color:#ffffff !important` without replacing their border width. The example includes these same rule changes. Publish affected module pages, reopen/save existing blocks and run fresh Windows Outlook tests; browser checks cannot certify Word rendering.

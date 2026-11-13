@@ -63,6 +63,12 @@ All ESC modules follow ActionRocket's [white-lines guidance](https://www.actionr
 - Tables use `border-collapse: collapse` and zero `mso-table-lspace`/`mso-table-rspace`, except rounded buttons and cards, which need `separate` for their corners.
 - `side` cells holding only `&nbsp;` use `font-size: 4px; line-height: 4px; mso-line-height-rule: exactly`. Leave `gap` cells between stacking columns alone: on screens from 581px to 640px their text line forms the gap between stacked cards.
 
+### Button audit
+
+All maintained ESC buttons use table/cell fills, zero table spacing and explicit exact text line heights. Solid buttons have no decorative table border. Outline borders remain, with padding chosen so the total height is divisible by 4. The Newsletter CTA Banner and Journal Section now use the same table-button structure rather than fractional `em` padding and percentage-based Outlook text-raise shims. Field IDs, link metadata, saved values, supplied icons and module endpoints are retained.
+
+The shared dark-mode CSS in `integrations/esc/email-settings/Brand-Dependent-Styles.html` no longer adds a 1px border to filled buttons or overrides outline widths. Apply these two CSS rule changes to the live starter/master email too; updating module endpoints alone cannot change an email's head CSS. The populated `ESC-Email-Example.html` carries the same fixes. After deployment, reopen/save affected existing blocks and validate new sends in Windows Outlook at 100% and 125% scaling, plus the usual mobile and dark-mode proofs.
+
 ## Images and the Congress lead
 
 The landscape placeholder is the ESC-hosted [1920 × 1080 image](https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg). It is used for populated general landscape-image defaults. Logos, journal covers and speaker portraits keep their own artwork; optional images remain blank. Display scaling does not reduce the asset's download size.

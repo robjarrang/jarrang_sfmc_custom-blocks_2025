@@ -19,7 +19,7 @@ If folder writing is unavailable, use Clients & templates > Manage templates to 
 Template destination: docs/clients/esc/congress/
 Editable source: projects/esc/congress.jarrang.json
 
-This full-template save/package refreshes the catalogue. Removed modules disappear from the catalogue; retain their previously published folders for existing SFMC content.
+This module save refreshes the catalogue using this module and the last generated definitions of other modules. Other module drafts remain in the editable project without updating their generated pages. Use Save template to update the whole suite.
 
 ## Module endpoints
 

@@ -638,7 +638,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 364);
+    assert.equal(count, 382);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1725,6 +1725,100 @@ test('ESC TV Button Row keeps all button styles on a 48px painted Outlook layout
     );
     const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
     assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('all ESC button variants use painted cells, zero spacing and whole-point total heights', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const suites = ['newsletter', 'congress', 'esc-tv'].map((name) =>
+      JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/' + name + '.jarrang.json'))),
+    );
+    const host = dom.document.createElement('div');
+    let checked = 0;
+    for (const p of suites)
+      for (const m of p.modules.filter((m) => m.source.includes('esc-btn'))) {
+        const shown = Object.fromEntries(
+          m.fields.filter((f) => f.type === 'toggle').map((f) => [f.id, 'shown']),
+        );
+        const variants = [shown];
+        for (const f of m.fields.filter((f) => f.type === 'select'))
+          for (const option of f.options) variants.push({ ...shown, [f.id]: option.value });
+        for (const values of variants) {
+          const flags = Object.fromEntries(
+            m.fields
+              .filter((f) => f.type === 'url' && f.allowConversionTracking)
+              .map((f) => [f.id, true]),
+          );
+          const lists = Object.fromEntries(
+            m.fields
+              .filter((f) => f.type === 'list')
+              .map((f) => [
+                f.id,
+                f.defaultValue.map((row) => ({
+                  ...row,
+                  [C.conversionKey]: Object.fromEntries(
+                    f.itemFields
+                      .filter((child) => child.type === 'url' && child.allowConversionTracking)
+                      .map((child) => [child.key, true]),
+                  ),
+                })),
+              ]),
+          );
+          host.innerHTML = C.render(m, { ...values, ...lists, [C.conversionKey]: flags });
+          assert.equal(
+            host.querySelector('a.esc-btn, a.esc-btn-white, a.esc-btn-outline'),
+            null,
+            m.slug,
+          );
+          for (const table of host.querySelectorAll(
+            'table.esc-btn, table.esc-btn-white, table.esc-btn-outline',
+          )) {
+            const cell = table.querySelector('td');
+            const style = table.getAttribute('style');
+            assert.equal(parseInt(table.style.borderSpacing), 0, m.slug);
+            assert.match(style, /mso-table-lspace: 0pt/);
+            assert.match(style, /mso-table-rspace: 0pt/);
+            const border = Number(style.match(/(?:^|;)\s*border:\s*(\d+)/)?.[1]);
+            assert.equal(
+              border,
+              table.classList.contains('esc-btn-outline') ? (m.slug === 'hero-story' ? 1 : 2) : 0,
+              m.slug,
+            );
+            assert.ok(cell.getAttribute('bgcolor'), m.slug);
+            assert.ok(
+              cell
+                .getAttribute('style')
+                .includes('background-color: ' + cell.getAttribute('bgcolor') + ';'),
+              m.slug,
+            );
+            assert.equal(parseInt(cell.style.border), 0, m.slug);
+            assert.match(cell.getAttribute('style'), /mso-line-height-rule: exactly/);
+            const total =
+              parseInt(cell.style.lineHeight) +
+              parseInt(cell.style.paddingTop) +
+              parseInt(cell.style.paddingBottom) +
+              2 * border;
+            assert.ok(total > 0 && total % 4 === 0, m.slug + ': ' + total);
+            assert.doesNotMatch(cell.innerHTML, /mso-(?:font-width|text-raise):\s*\d+%/);
+            assert.equal(cell.querySelector('a').getAttribute('conversion'), 'true', m.slug);
+            checked++;
+          }
+        }
+      }
+    assert.ok(checked > 100, 'Exercise default and selectable button variants');
+    const shared = fs.readFileSync(
+      path.join(root, 'integrations/esc/email-settings/Brand-Dependent-Styles.html'),
+      'utf8',
+    );
+    assert.match(shared, /\.esc-btn,\.esc-btn-white\{[^}]*border:0 !important/);
+    assert.match(
+      shared,
+      /\.esc-btn-outline,a\.esc-btn-outline\{[^}]*border-color:#ffffff !important/,
+    );
+    assert.doesNotMatch(shared, /\.esc-btn,\.esc-btn-white\{[^}]*border:1px/);
   } finally {
     await dom.happyDOM.close();
   }
