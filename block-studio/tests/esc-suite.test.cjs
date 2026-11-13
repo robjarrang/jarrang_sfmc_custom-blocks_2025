@@ -1692,12 +1692,20 @@ test('ESC TV Button Row keeps all button styles on a 48px painted Outlook layout
         assert.equal(parseInt(button.style.borderSpacing), 0);
         assert.equal(button.getAttribute('cellspacing'), '0');
         const border = parseInt(button.style.border);
-        assert.equal(border, style === 'outline' ? 2 : 0);
+        assert.equal(border, 0);
+        const cellBorder = parseInt(cell.style.border);
+        assert.equal(cellBorder, style === 'outline' ? 2 : 0);
+        if (style === 'outline') {
+          assert.match(cell.getAttribute('style'), /border: 2px solid #ffffff/);
+          assert.match(cell.getAttribute('style'), /mso-border-alt: solid #ffffff 1.5pt/);
+        }
         assert.equal(
-          parseInt(cell.style.lineHeight) + 2 * parseInt(cell.style.paddingTop) + 2 * border,
+          parseInt(cell.style.lineHeight) +
+            2 * parseInt(cell.style.paddingTop) +
+            2 * (border + cellBorder),
           48,
         );
-        assert.equal(parseInt(cell.style.paddingLeft) + border, 24);
+        assert.equal(parseInt(cell.style.paddingLeft) + border + cellBorder, 24);
         assert.equal(
           cell.getAttribute('bgcolor'),
           { primary: '%%=v(@ButtonBgColour)=%%', white: '#ffffff', outline: '#011933' }[style],
@@ -1784,7 +1792,13 @@ test('all ESC button variants use painted cells, zero spacing and whole-point to
             const border = Number(style.match(/(?:^|;)\s*border:\s*(\d+)/)?.[1]);
             assert.equal(
               border,
-              table.classList.contains('esc-btn-outline') ? (m.slug === 'hero-story' ? 1 : 2) : 0,
+              table.classList.contains('esc-btn-outline')
+                ? m.slug === 'hero-story'
+                  ? 1
+                  : m.slug === 'esc-tv-button-row'
+                    ? 0
+                    : 2
+                : 0,
               m.slug,
             );
             assert.ok(cell.getAttribute('bgcolor'), m.slug);
@@ -1794,13 +1808,18 @@ test('all ESC button variants use painted cells, zero spacing and whole-point to
                 .includes('background-color: ' + cell.getAttribute('bgcolor') + ';'),
               m.slug,
             );
-            assert.equal(parseInt(cell.style.border), 0, m.slug);
+            const cellBorder = parseInt(cell.style.border);
+            assert.equal(
+              cellBorder,
+              m.slug === 'esc-tv-button-row' && table.classList.contains('esc-btn-outline') ? 2 : 0,
+              m.slug,
+            );
             assert.match(cell.getAttribute('style'), /mso-line-height-rule: exactly/);
             const total =
               parseInt(cell.style.lineHeight) +
               parseInt(cell.style.paddingTop) +
               parseInt(cell.style.paddingBottom) +
-              2 * border;
+              2 * (border + cellBorder);
             assert.ok(total > 0 && total % 4 === 0, m.slug + ': ' + total);
             assert.doesNotMatch(cell.innerHTML, /mso-(?:font-width|text-raise):\s*\d+%/);
             assert.equal(cell.querySelector('a').getAttribute('conversion'), 'true', m.slug);
@@ -1819,6 +1838,23 @@ test('all ESC button variants use painted cells, zero spacing and whole-point to
       /\.esc-btn-outline,a\.esc-btn-outline\{[^}]*border-color:#ffffff !important/,
     );
     assert.doesNotMatch(shared, /\.esc-btn,\.esc-btn-white\{[^}]*border:1px/);
+    for (const css of [
+      shared,
+      fs.readFileSync(
+        path.join(root, 'integrations/esc/email-settings/ESC-Email-Example.html'),
+        'utf8',
+      ),
+    ]) {
+      assert.match(
+        css,
+        /\[data-ogsc\] \.esc-btn,\[data-ogsc\] \.esc-btn-white\{[^}]*border:0 !important/,
+      );
+      assert.match(
+        css,
+        /\[data-ogsc\] \.esc-btn-outline,\[data-ogsc\] a\.esc-btn-outline\{[^}]*border-color:#ffffff !important/,
+      );
+      assert.doesNotMatch(css, /border:1px solid #(?:f0ebe4|ffffff) !important/);
+    }
   } finally {
     await dom.happyDOM.close();
   }
