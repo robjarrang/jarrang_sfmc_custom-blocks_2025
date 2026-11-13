@@ -638,7 +638,7 @@ test('every ESC conditional expression has a supported guided editor model', asy
           count++;
         }
       }
-    assert.equal(count, 355);
+    assert.equal(count, 363);
   } finally {
     await dom.happyDOM.close();
   }
@@ -1039,7 +1039,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      45,
+      47,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');
@@ -1411,6 +1411,135 @@ test('ESC TV 2 Col keeps a white rounded card on navy with two independent cards
     assert.equal(description.linkStyle.decoration, 'underline');
     assert.equal(description.linkStyle.weight, 'bold');
     assert.ok(m.iconAssets.icon && m.iconAssets.dragIcon && m.exportedDefinition);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC TV Button Row defaults to three styled buttons and preserves saved visibility', async () => {
+  const { BlockCore: C, BlockExport: E, BlockMaintenance: M, dom } = await environment();
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    const m = p.modules.find((m) => m.slug === 'esc-tv-button-row');
+    C.assertProject(p);
+    assert.deepEqual(Array.from(E.problems(m)), []);
+    assert.deepEqual(Array.from(M.problems(m)), []);
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(m);
+    assert.deepEqual(
+      Array.from(host.querySelectorAll('a'), (a) => a.textContent.trim()),
+      ['Get reminders', 'Previous episodes', 'Become a member'],
+    );
+    assert.equal(host.querySelector('.content-outer').getAttribute('bgcolor'), '#011933');
+    assert.equal(host.querySelectorAll('.esc-button-row__cell').length, 3);
+    assert.equal(host.querySelectorAll('.esc-btn').length, 1);
+    assert.equal(host.querySelectorAll('.esc-btn-white').length, 1);
+    assert.equal(host.querySelectorAll('.esc-btn-outline').length, 1);
+    assert.match(C.render(m), /%%=v\(@ButtonBgColour\)=%%/);
+    const field = (key) => m.fields.find((f) => f.key === key);
+    for (const second of ['shown', 'hidden'])
+      for (const third of ['shown', 'hidden']) {
+        const output = C.render(m, {
+          [field('button2_show').id]: second,
+          [field('button3_show').id]: third,
+        });
+        host.innerHTML = output;
+        assert.equal(
+          host.querySelectorAll('a').length,
+          1 + (second === 'shown') + (third === 'shown'),
+        );
+        assert.equal(JSON.stringify(C.parse(output).issues), '[]');
+      }
+    for (let button = 1; button <= 3; button++)
+      for (const style of ['primary', 'white', 'outline']) {
+        host.innerHTML = C.render(m, { [field('button' + button + '_style').id]: style });
+        const cell = host.querySelectorAll('.esc-button-row__cell')[button - 1];
+        assert.ok(
+          cell.querySelector(
+            '.' + { primary: 'esc-btn', white: 'esc-btn-white', outline: 'esc-btn-outline' }[style],
+          ),
+        );
+      }
+    const folder = path.join(root, 'docs/clients/esc/esc-tv/modules', m.slug);
+    const page = fs.readFileSync(path.join(folder, 'index.html'), 'utf8');
+    const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
+    assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);
+    assert.deepEqual(definition, m.exportedDefinition);
+    for (const [key, name] of [
+      ['icon', 'icon.png'],
+      ['dragIcon', 'dragIcon.png'],
+    ])
+      assert.deepEqual(
+        Buffer.from(m.iconAssets[key], 'base64'),
+        fs.readFileSync(path.join(folder, name)),
+      );
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC TV Disclaimer renders approved wording safely and matches its generated editor', async () => {
+  const { BlockCore: C, BlockExport: E, BlockMaintenance: M, dom } = await environment();
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+    const m = p.modules.find((m) => m.slug === 'esc-tv-disclaimer');
+    C.assertProject(p);
+    assert.deepEqual(Array.from(E.problems(m)), []);
+    assert.deepEqual(Array.from(M.problems(m)), []);
+    const host = dom.document.createElement('div');
+    const output = C.render(m);
+    host.innerHTML = output;
+    assert.deepEqual(
+      Array.from(host.querySelectorAll('p'), (p) => p.textContent),
+      [
+        'ESC TV Today is supported by Novartis through an independent funding.',
+        'The programme has not been influenced in any way by its funding partner.',
+      ],
+    );
+    for (const el of host.querySelectorAll('.content-outer, .content-inner, .side')) {
+      assert.equal(el.getAttribute('bgcolor'), '#011933');
+      assert.equal(el.style.backgroundColor, '#011933');
+    }
+    for (const el of host.querySelectorAll('p')) {
+      assert.equal(el.style.color, '#ffffff');
+      assert.equal(el.style.textAlign, 'center');
+      assert.equal(el.style.fontSize, '12px');
+      assert.equal(el.style.lineHeight, '16px');
+    }
+    assert.equal(JSON.stringify(C.parse(output).issues), '[]');
+    for (const field of m.fields) {
+      assert.ok(C.validate(field, ''), 'Both disclaimer statements are required');
+      const edited = C.render(m, { [field.id]: 'Approved <strong>copy</strong> & details' });
+      host.innerHTML = edited;
+      assert.equal(host.querySelector('strong'), null);
+      assert.ok(
+        Array.from(host.querySelectorAll('p')).some(
+          (p) => p.textContent === 'Approved <strong>copy</strong> & details',
+        ),
+      );
+    }
+    const folder = path.join(root, 'docs/clients/esc/esc-tv/modules', m.slug);
+    const page = fs.readFileSync(path.join(folder, 'index.html'), 'utf8');
+    const definition = JSON.parse(page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1]);
+    assert.deepEqual(JSON.parse(JSON.stringify(E.definition(E.themedModule(p, m)))), definition);
+    assert.deepEqual(definition, m.exportedDefinition);
+    assert.equal(definition.minifyOutput, true);
+    for (const [key, name, size] of [
+      ['icon', 'icon.png', 60],
+      ['dragIcon', 'dragIcon.png', 120],
+    ]) {
+      const bytes = fs.readFileSync(path.join(folder, name));
+      assert.deepEqual(Buffer.from(m.iconAssets[key], 'base64'), bytes);
+      assert.equal(bytes.subarray(1, 4).toString(), 'PNG');
+      assert.equal(bytes.readUInt32BE(16), size);
+      assert.equal(bytes.readUInt32BE(20), size);
+    }
+    const catalogue = fs.readFileSync(
+      path.join(root, 'docs/clients/esc/esc-tv/index.html'),
+      'utf8',
+    );
+    assert.match(catalogue, /modules\/esc-tv-disclaimer\//);
+    for (const module of p.modules) assert.ok(catalogue.includes('modules/' + module.slug + '/'));
   } finally {
     await dom.happyDOM.close();
   }

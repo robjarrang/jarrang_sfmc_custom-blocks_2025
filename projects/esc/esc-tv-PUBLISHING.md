@@ -19,7 +19,7 @@ If folder writing is unavailable, use Clients & templates > Manage templates to 
 Template destination: docs/clients/esc/esc-tv/
 Editable source: projects/esc/esc-tv.jarrang.json
 
-This full-template save/package refreshes the catalogue. Removed modules disappear from the catalogue; retain their previously published folders for existing SFMC content.
+This module save refreshes the catalogue using this module and the last generated definitions of other modules. Other module drafts remain in the editable project without updating their generated pages. Use Save template to update the whole suite.
 
 ## Module endpoints
 
@@ -27,6 +27,7 @@ This full-template save/package refreshes the catalogue. Removed modules disappe
 - ESC TV Story Card: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-story-card/
 - ESC TV 2 Col: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-2-col/
 - ESC TV Button Row: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-button-row/
+- ESC TV Disclaimer: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/esc-tv/modules/esc-tv-disclaimer/
 
 ## Keep existing blocks working
 
