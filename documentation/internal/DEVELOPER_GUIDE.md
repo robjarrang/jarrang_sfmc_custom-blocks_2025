@@ -281,7 +281,7 @@ The Jarrang styling follows the website reviewed on 16 September 2026:
 
 ## Client editor appearance
 
-Template-level `editorTheme` controls the block form palette. `showEditorHeader` controls the Jarrang header and defaults on when absent. Both ESC templates disable it. Apply these settings through the exporter's theme/definition functions; do not hard-code branding by copying page wrappers. These settings do not alter the email's design or the wider SFMC application.
+Template-level `editorTheme` controls the block form palette. `showEditorHeader` controls the Jarrang header and defaults on when absent. The ESC templates disable it. Apply these settings through the exporter's theme/definition functions; do not hard-code branding by copying page wrappers. These settings do not alter the email's design or the wider SFMC application.
 
 ## Assets and licensing
 

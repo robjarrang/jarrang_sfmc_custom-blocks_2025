@@ -2,6 +2,8 @@
 
 For Jarrang colleagues creating and maintaining SFMC custom blocks. Reviewed against Studio 1.28.0 on 14 October 2026.
 
+For ESC users composing emails in Content Builder, see the [ESC Email Module User Guide (PDF)](../clients/esc/ESC_Email_Module_User_Guide.pdf).
+
 Studio turns one coded email module into one draggable SFMC block. You choose the content clients can edit, test their controls and save the files into your local repository. Tower commits and pushes those files; GitHub Pages hosts them.
 
 You do not need to understand the code to adjust an existing field's label, starting content or controls. Importing unfamiliar HTML, changing layout rules and repairing markup may need a developer.

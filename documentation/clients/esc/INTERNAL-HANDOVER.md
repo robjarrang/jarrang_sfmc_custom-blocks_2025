@@ -2,7 +2,7 @@
 
 **Audience: Jarrang developers. Not for client distribution.**
 
-For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 against Studio 1.28.0. This is an internal supplement to the [user guide](../../internal/USER_GUIDE.md), not a client-facing manual.
+For Jarrang colleagues maintaining the ESC suite. Documentation updated 14 November 2026 for Studio 1.28.0. This is an internal supplement to the [user guide](../../internal/USER_GUIDE.md), not a client-facing manual. For people composing emails in Content Builder, use the [ESC Email Module User Guide (PDF)](ESC_Email_Module_User_Guide.pdf).
 
 ## Open and make a change
 
@@ -12,13 +12,13 @@ For Jarrang colleagues maintaining the ESC suite. Reviewed 14 October 2026 again
 4. Apply the edit, test the affected behaviour and choose **Save**. Use **Save template** for shared editor appearance changes.
 5. Review, commit and push in Tower. Check the hosted editor and new/existing instances in SFMC.
 
-If the repository import reports a project/page mismatch, reconcile that pair before editing. Do not load a stale bundled snapshot over a newer project. Current endpoints are listed in [Newsletter publishing notes](../../../projects/esc/newsletter-PUBLISHING.md) and [Congress publishing notes](../../../projects/esc/congress-PUBLISHING.md).
+If the repository import reports a project/page mismatch, reconcile that pair before editing. Do not load a stale bundled snapshot over a newer project. Current endpoints are listed in [Newsletter publishing notes](../../../projects/esc/newsletter-PUBLISHING.md), [Congress publishing notes](../../../projects/esc/congress-PUBLISHING.md) and [ESC TV publishing notes](../../../projects/esc/esc-tv-PUBLISHING.md).
 
 ## Preserve existing content
 
 Maintain existing module IDs, folders, releases, field IDs/types and item keys for compatible fixes. Use **Module actions → Duplicate** and a new endpoint for incompatible field changes; retain the original block. Preserve supplied `icon.png` and `dragIcon.png` bytes using **Module settings → Custom block icon → Keep supplied PNGs**.
 
-Both ESC templates disable **Show Jarrang Block Studio header** under **Template settings → Editor appearance for all modules**. This is form branding, not email styling. Save the whole template when changing it.
+The ESC templates disable **Show Jarrang Block Studio header** under **Template settings → Editor appearance for all modules**. This is form branding, not email styling. Save the whole template when changing it.
 
 Existing SFMC instances retain their saved values. New defaults, images and corrected punctuation do not replace them automatically. Plain-text fields use actual characters, for example `28 Aug – 31 Aug 2026`, rather than `&ndash;`.
 
@@ -30,7 +30,7 @@ A repeated group can become a single item through its field settings, including 
 
 ## Minified output
 
-The Newsletter and Congress templates set `minifyOutput`, so the email HTML each block saves into SFMC has its indentation, tabs and line breaks removed (about 4–5% smaller). Source in Studio and in the project files stays formatted. AMPscript and comments are never changed. Write source for readability and do not add `white-space: pre` styling that relies on line breaks. The Email settings block does not use it. See [Output minification](../../internal/DEVELOPER_GUIDE.md#output-minification) for the rules.
+The Newsletter, Congress and ESC TV templates set `minifyOutput`, so the email HTML each block saves into SFMC has its indentation, tabs and line breaks removed (about 4–5% smaller). Source in Studio and in the project files stays formatted. AMPscript and comments are never changed. Write source for readability and do not add `white-space: pre` styling that relies on line breaks. The Email settings block does not use it. See [Output minification](../../internal/DEVELOPER_GUIDE.md#output-minification) for the rules.
 
 ## Vertical spacing
 
@@ -68,6 +68,10 @@ All ESC modules follow ActionRocket's [white-lines guidance](https://www.actionr
 All maintained ESC buttons use table/cell fills, zero table spacing and explicit exact text line heights. Solid buttons have no decorative table border. Outline borders remain, with padding chosen so the total height is divisible by 4. The Newsletter CTA Banner and Journal Section now use the same table-button structure rather than fractional `em` padding and percentage-based Outlook text-raise shims. Field IDs, link metadata, saved values, supplied icons and module endpoints are retained.
 
 The shared dark-mode CSS in `integrations/esc/email-settings/Brand-Dependent-Styles.html` no longer adds a 1px border to filled buttons or overrides outline widths. Apply these two CSS rule changes to the live starter/master email too; updating module endpoints alone cannot change an email's head CSS. The populated `ESC-Email-Example.html` carries the same fixes. After deployment, reopen/save affected existing blocks and validate new sends in Windows Outlook at 100% and 125% scaling, plus the usual mobile and dark-mode proofs.
+
+## Journal Section on mobile
+
+Newsletter Journal Section includes a 12px mobile-only hair-space spacer before the text cell content. It reuses the existing `stack-gap` rule, so it appears when the columns stack at 640px and below and stays hidden on desktop and classic Windows Outlook. No master-head CSS addition is needed for this module update. Keep the spacer rather than adding vertical margin/padding to the image cell.
 
 ## Images and the Congress lead
 
@@ -145,7 +149,7 @@ For recovery and deployment rollback, follow the [user guide](../../internal/USE
 
 ## Shared email settings (1.28.0)
 
-The additional **ESC / Email settings** suite contains one settings-only block for both Newsletter and Congress. It exposes Brand and Footer logo, with no category or header-prefix control. All 31 supported brand keys are listed, with Council and Working Group labels. The original 40 modules remain unchanged. Follow [the integration guide](../../../integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
+The additional **ESC / Email settings** suite contains one settings-only block shared by Newsletter, Congress and ESC TV. It exposes Brand and Footer logo, with no category or header-prefix control. All 31 supported brand keys are listed, with Council and Working Group labels. The current inventory is 47 content modules (29 Newsletter, 13 Congress and 5 ESC TV), plus this settings block. Follow [the integration guide](../../../integrations/esc/email-settings/README.md) to update the setup snippet and initialisation/CSS ordering; publishing the editor alone does not install these SFMC changes.
 
 ## Supplied module inventory
 
