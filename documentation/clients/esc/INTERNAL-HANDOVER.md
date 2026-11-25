@@ -56,8 +56,8 @@ A text field left blank but still shown leaves an empty paragraph. Spacers aroun
 
 All ESC modules follow ActionRocket's [white-lines guidance](https://www.actionrocket.co/blog/white-lines-in-outlook). Keep these rules when editing or adding a module:
 
-- Font sizes, line-heights, heights and padding are multiples of 4px. Exceptions: 1px hairline dividers, the hero outline buttons (11px padding plus a 1px border), `mso-text-raise`, letter-spacing and border-radius.
-- Every px `line-height` carries `mso-line-height-rule: exactly`.
+- Body copy previously set at 16px uses 13px. Use explicit line heights in 4px increments. Body copy typically uses 20px or 24px. Use a fixed height or a border to draw a 1px divider, with a 0px line height for its empty content.
+- Every positive inline `line-height` carries `mso-line-height-rule: exactly`. Keep the mobile rules in the live master email aligned with the repository example. Story Card mobile title and body line heights are 24px and 20px, respectively, and Lead Poster mobile title line height is 36px.
 - Every block that holds text (`p`, `td`, `div`, headings), including one that only wraps a styled `<a>` or `<span>`, has its own px `line-height` with `mso-line-height-rule: exactly`. Windows Outlook sets line spacing per block and ignores the inline child's line-height, so a block without one gets the font's fractional natural height. Use the value it already inherits in browsers (the body's 24px unless an ancestor sets another), so other clients are unchanged. Never set an exact line-height on a block holding an image, because Outlook would crop the image to it.
 - Every image has `border="0"` and `display: block` (or `display: none` for swapped images), with no whitespace before its closing `</a>`.
 - Tables use `border-collapse: collapse` and zero `mso-table-lspace`/`mso-table-rspace`, except rounded buttons and cards, which need `separate` for their corners.

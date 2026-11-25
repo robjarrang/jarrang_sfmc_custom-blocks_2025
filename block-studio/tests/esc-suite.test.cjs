@@ -415,6 +415,47 @@ test('ESC text CTAs use fixed red in both layout themes while brand buttons reta
     await dom.happyDOM.close();
   }
 });
+test('ESC body copy uses 13px and authored line heights use exact four-pixel increments', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+  try {
+    for (const project of [...projects, escTv]) {
+      for (const module of project.modules) {
+        for (const [, style] of module.source.matchAll(/\bstyle="([^"]*)"/g)) {
+          for (const [, height] of style.matchAll(/(?:^|;)\s*line-height:\s*([^;]+)/g)) {
+            assert.match(height.trim(), /^(?:0|\d+px)(?:\s*!important)?$/, module.slug);
+            const pixels = Number.parseInt(height, 10);
+            assert.equal(pixels % 4, 0, module.slug);
+            if (pixels > 0) assert.match(style, /mso-line-height-rule:\s*exactly/, module.slug);
+          }
+        }
+      }
+    }
+
+    const output = dom.document.createElement('div');
+    for (const [project, slug, selector] of [
+      [projects[0], 'text-block', 'p.dark-body'],
+      [projects[1], 'story-1col', 'p.story-excerpt'],
+      [escTv, 'esc-tv-story-card', 'p.news-card-text'],
+    ]) {
+      const module = project.modules.find((item) => item.slug === slug);
+      output.innerHTML = C.render(module.exportedDefinition);
+      assert.equal(output.querySelector(selector).style.fontSize, '13px', slug);
+    }
+
+    const textBlock = projects[0].modules.find((module) => module.slug === 'text-block');
+    const paragraph = textBlock.fields.find((field) => field.key === 'paragraph_1');
+    output.innerHTML = C.render(textBlock.exportedDefinition, {
+      [paragraph.id]: '<ul><li>List item</li></ul>',
+    });
+    const item = output.querySelector('li');
+    assert.equal(item.style.fontSize, '13px');
+    assert.equal(item.style.lineHeight, '24px');
+    assert.match(item.getAttribute('style'), /mso-line-height-rule:exactly/);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('landscape images give Windows Outlook an editable height divisible by 4', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
@@ -1783,9 +1824,12 @@ test('ESC TV Lead CTA avoids fractional border height and unpainted Outlook cell
       assert.ok(td.style.lineHeight, 'Every text-containing cell has an explicit line height');
       assert.match(td.getAttribute('style'), /mso-line-height-rule: exactly/);
     }
-    for (const match of m.source.matchAll(/(?:font-size|line-height|height|padding):\s*([^;]+);/g))
-      for (const value of match[1].matchAll(/(\d+)px/g))
+    for (const match of m.source.matchAll(/(font-size|line-height|height|padding):\s*([^;]+);/g)) {
+      for (const value of match[2].matchAll(/(\d+)px/g)) {
+        if (match[1] === 'font-size' && value[1] === '13') continue;
         assert.equal(Number(value[1]) % 4, 0, match[0]);
+      }
+    }
     assert.deepEqual(Array.from(E.problems(m)), []);
     assert.equal(JSON.stringify(C.parse(C.render(m)).issues), '[]');
     const page = fs.readFileSync(
