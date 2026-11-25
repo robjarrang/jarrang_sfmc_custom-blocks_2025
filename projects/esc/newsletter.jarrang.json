@@ -22,7 +22,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the hero image links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -123,7 +123,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Hero headline.",
+          "help": "",
           "targets": [
             {
               "start": 3442,
@@ -158,7 +158,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Short intro copy shown below the headline.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -187,7 +187,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the first button.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -202,7 +202,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the first button links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -222,7 +222,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "First call-to-action button label.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -237,7 +237,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -261,7 +261,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "help": "Brand uses the email’s selected brand colour.",
           "targets": [],
           "options": [
             {
@@ -289,7 +289,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the second button.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -304,7 +304,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the second button links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -324,7 +324,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Second call-to-action button label.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -339,7 +339,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -363,7 +363,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "help": "Brand uses the email’s selected brand colour.",
           "targets": [],
           "options": [
             {
@@ -391,7 +391,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to add a third button.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -406,7 +406,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the third button links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -426,7 +426,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Third call-to-action button label.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -441,7 +441,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -465,7 +465,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "help": "Brand uses the email’s selected brand colour.",
           "targets": [],
           "options": [
             {
@@ -493,7 +493,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to remove the 32px space above the hero image, for example when the module follows another that already ends with spacing.",
+          "help": "Remove the 32px gap when the preceding block already provides spacing.",
           "targets": [],
           "style": "switch"
         },
@@ -508,7 +508,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to remove the 32px space below the buttons, for example when the next module starts with its own spacing.",
+          "help": "Remove the 32px gap when the next block already provides spacing.",
           "targets": [],
           "style": "switch"
         }
@@ -537,7 +537,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the hero image links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -638,7 +638,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Hero headline.",
+            "help": "",
             "targets": [
               {
                 "start": 3442,
@@ -673,7 +673,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short intro copy shown below the headline.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -702,7 +702,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the first button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -717,7 +717,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the first button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -737,7 +737,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "First call-to-action button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -752,7 +752,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -776,7 +776,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -804,7 +804,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the second button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -819,7 +819,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the second button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -839,7 +839,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Second call-to-action button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -854,7 +854,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -878,7 +878,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -906,7 +906,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to add a third button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -921,7 +921,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the third button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -941,7 +941,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Third call-to-action button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -956,7 +956,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -980,7 +980,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -1008,7 +1008,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to remove the 32px space above the hero image, for example when the module follows another that already ends with spacing.",
+            "help": "Remove the 32px gap when the preceding block already provides spacing.",
             "targets": [],
             "style": "switch"
           },
@@ -1023,7 +1023,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to remove the 32px space below the buttons, for example when the next module starts with its own spacing.",
+            "help": "Remove the 32px gap when the next block already provides spacing.",
             "targets": [],
             "style": "switch"
           }
@@ -1048,7 +1048,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the hero image links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -1149,7 +1149,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Hero headline.",
+            "help": "",
             "targets": [
               {
                 "start": 3442,
@@ -1184,7 +1184,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short intro copy shown below the headline.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -1213,7 +1213,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the first button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1228,7 +1228,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the first button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -1248,7 +1248,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "First call-to-action button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -1263,7 +1263,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -1287,7 +1287,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -1315,7 +1315,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the second button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1330,7 +1330,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the second button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -1350,7 +1350,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Second call-to-action button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -1365,7 +1365,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -1389,7 +1389,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -1417,7 +1417,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to add a third button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1432,7 +1432,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the third button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -1452,7 +1452,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Third call-to-action button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -1467,7 +1467,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -1491,7 +1491,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -1519,7 +1519,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to remove the 32px space above the hero image, for example when the module follows another that already ends with spacing.",
+            "help": "Remove the 32px gap when the preceding block already provides spacing.",
             "targets": [],
             "style": "switch"
           },
@@ -1534,7 +1534,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to remove the 32px space below the buttons, for example when the next module starts with its own spacing.",
+            "help": "Remove the 32px gap when the next block already provides spacing.",
             "targets": [],
             "style": "switch"
           }
@@ -1576,7 +1576,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Section heading.",
+          "help": "",
           "targets": [
             {
               "start": 1536,
@@ -1611,7 +1611,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Short introduction shown above the checklist.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -1637,7 +1637,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Each item shows a checkmark and its text.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -1660,7 +1660,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "One learning objective / checklist item.",
+              "help": "",
               "targets": [],
               "id": "check_text",
               "key": "check_text",
@@ -1710,7 +1710,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Section heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1536,
@@ -1745,7 +1745,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short introduction shown above the checklist.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -1771,7 +1771,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Each item shows a checkmark and its text.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -1794,7 +1794,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "One learning objective / checklist item.",
+                "help": "",
                 "targets": [],
                 "id": "check_text",
                 "key": "check_text",
@@ -1840,7 +1840,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Section heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1536,
@@ -1875,7 +1875,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short introduction shown above the checklist.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -1901,7 +1901,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Each item shows a checkmark and its text.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -1924,7 +1924,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "One learning objective / checklist item.",
+                "help": "",
                 "targets": [],
                 "id": "check_text",
                 "key": "check_text",
@@ -1957,7 +1957,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "The row of top navigation links. Add, remove or reorder links.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -1993,7 +1993,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Short label shown in the navigation bar.",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -2007,7 +2007,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Where this link goes.",
+              "help": "",
               "targets": [],
               "binding": "template",
               "allowConversionTracking": true,
@@ -2044,7 +2044,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "The row of top navigation links. Add, remove or reorder links.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2080,7 +2080,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Short label shown in the navigation bar.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -2094,7 +2094,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -2128,7 +2128,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "The row of top navigation links. Add, remove or reorder links.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2164,7 +2164,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Short label shown in the navigation bar.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -2178,7 +2178,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -2215,7 +2215,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Table of contents links shown in this column.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -2243,7 +2243,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Shown after the arrow.",
+              "help": "The arrow is added automatically.",
               "targets": [],
               "binding": "template"
             },
@@ -2257,7 +2257,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Where this link goes.",
+              "help": "",
               "targets": [],
               "binding": "template",
               "allowConversionTracking": true,
@@ -2279,7 +2279,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Table of contents links shown in this column.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -2307,7 +2307,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Shown after the arrow.",
+              "help": "The arrow is added automatically.",
               "targets": [],
               "binding": "template"
             },
@@ -2321,7 +2321,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Where this link goes.",
+              "help": "",
               "targets": [],
               "binding": "template",
               "allowConversionTracking": true,
@@ -2358,7 +2358,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Table of contents links shown in this column.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2386,7 +2386,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Shown after the arrow.",
+                "help": "The arrow is added automatically.",
                 "targets": [],
                 "binding": "template"
               },
@@ -2400,7 +2400,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -2422,7 +2422,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Table of contents links shown in this column.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2450,7 +2450,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Shown after the arrow.",
+                "help": "The arrow is added automatically.",
                 "targets": [],
                 "binding": "template"
               },
@@ -2464,7 +2464,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -2498,7 +2498,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Table of contents links shown in this column.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2526,7 +2526,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Shown after the arrow.",
+                "help": "The arrow is added automatically.",
                 "targets": [],
                 "binding": "template"
               },
@@ -2540,7 +2540,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -2562,7 +2562,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Table of contents links shown in this column.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2590,7 +2590,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Shown after the arrow.",
+                "help": "The arrow is added automatically.",
                 "targets": [],
                 "binding": "template"
               },
@@ -2604,7 +2604,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -2700,7 +2700,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the card image links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -2728,7 +2728,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the small label above the headline.",
+          "help": "",
           "style": "switch",
           "targets": [
             {
@@ -2763,7 +2763,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Card headline.",
+          "help": "",
           "targets": [
             {
               "start": 2419,
@@ -2798,7 +2798,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "style": "switch",
           "targets": [
             {
@@ -2818,7 +2818,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Short summary copy shown below the headline.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -2845,7 +2845,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the call-to-action link.",
+          "help": "",
           "style": "switch",
           "targets": [],
           "binding": "template",
@@ -2860,7 +2860,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the CTA button links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -2888,7 +2888,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Call-to-action button label.",
+          "help": "",
           "targets": [
             {
               "start": 3780,
@@ -2981,7 +2981,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the card image links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -3009,7 +3009,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the small label above the headline.",
+            "help": "",
             "style": "switch",
             "targets": [
               {
@@ -3044,7 +3044,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Card headline.",
+            "help": "",
             "targets": [
               {
                 "start": 2419,
@@ -3079,7 +3079,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "style": "switch",
             "targets": [
               {
@@ -3099,7 +3099,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short summary copy shown below the headline.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -3126,7 +3126,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the call-to-action link.",
+            "help": "",
             "style": "switch",
             "targets": [],
             "binding": "template",
@@ -3141,7 +3141,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the CTA button links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -3169,7 +3169,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action button label.",
+            "help": "",
             "targets": [
               {
                 "start": 3780,
@@ -3259,7 +3259,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the card image links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -3287,7 +3287,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the small label above the headline.",
+            "help": "",
             "style": "switch",
             "targets": [
               {
@@ -3322,7 +3322,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Card headline.",
+            "help": "",
             "targets": [
               {
                 "start": 2419,
@@ -3357,7 +3357,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "style": "switch",
             "targets": [
               {
@@ -3377,7 +3377,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short summary copy shown below the headline.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -3404,7 +3404,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the call-to-action link.",
+            "help": "",
             "style": "switch",
             "targets": [],
             "binding": "template",
@@ -3419,7 +3419,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the CTA button links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -3447,7 +3447,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action button label.",
+            "help": "",
             "targets": [
               {
                 "start": 3780,
@@ -3484,7 +3484,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose the light or dark background style for this card pair.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -3570,7 +3570,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the category label above the headline.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3628,7 +3628,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3670,7 +3670,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the \"Read more\" link.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3781,7 +3781,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the category label above the headline.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3839,7 +3839,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3881,7 +3881,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the \"Read more\" link.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -3945,7 +3945,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for this card pair.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -4031,7 +4031,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the category label above the headline.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4089,7 +4089,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4131,7 +4131,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4242,7 +4242,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the category label above the headline.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4300,7 +4300,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4342,7 +4342,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4403,7 +4403,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for this card pair.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -4489,7 +4489,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the category label above the headline.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4547,7 +4547,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4589,7 +4589,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4700,7 +4700,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the category label above the headline.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4758,7 +4758,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4800,7 +4800,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4864,7 +4864,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose the light or dark background style for this row of cards.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -4979,7 +4979,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5021,7 +5021,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the \"Read more\" link.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5161,7 +5161,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5203,7 +5203,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the \"Read more\" link.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5343,7 +5343,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5385,7 +5385,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the \"Read more\" link.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -5449,7 +5449,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for this row of cards.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -5564,7 +5564,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5606,7 +5606,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5746,7 +5746,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5788,7 +5788,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5928,7 +5928,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -5970,7 +5970,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6031,7 +6031,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for this row of cards.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -6146,7 +6146,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6188,7 +6188,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6328,7 +6328,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6370,7 +6370,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6510,7 +6510,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6552,7 +6552,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the \"Read more\" link.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -6616,7 +6616,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose the light or dark background style for this feature card.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -6637,7 +6637,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the feature image links to.",
+          "help": "",
           "targets": [
             {
               "start": 2217,
@@ -6723,7 +6723,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Feature card headline.",
+          "help": "",
           "targets": [
             {
               "start": 4050,
@@ -6757,7 +6757,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the summary copy.",
+          "help": "",
           "style": "switch",
           "targets": [
             {
@@ -6778,7 +6778,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Short summary copy shown below the headline.",
+          "help": "",
           "targets": [
             {
               "start": 4699,
@@ -6810,7 +6810,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the call-to-action link.",
+          "help": "",
           "style": "switch",
           "targets": [],
           "id": "field7",
@@ -6826,7 +6826,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the link goes.",
+          "help": "",
           "targets": [
             {
               "start": 5065,
@@ -6854,7 +6854,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Call-to-action link label.",
+          "help": "",
           "targets": [
             {
               "start": 5479,
@@ -6893,7 +6893,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for this feature card.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -6914,7 +6914,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the feature image links to.",
+            "help": "",
             "targets": [
               {
                 "start": 2217,
@@ -7000,7 +7000,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Feature card headline.",
+            "help": "",
             "targets": [
               {
                 "start": 4050,
@@ -7034,7 +7034,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "style": "switch",
             "targets": [
               {
@@ -7055,7 +7055,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short summary copy shown below the headline.",
+            "help": "",
             "targets": [
               {
                 "start": 4699,
@@ -7087,7 +7087,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the call-to-action link.",
+            "help": "",
             "style": "switch",
             "targets": [],
             "id": "field7",
@@ -7103,7 +7103,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the link goes.",
+            "help": "",
             "targets": [
               {
                 "start": 5065,
@@ -7131,7 +7131,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action link label.",
+            "help": "",
             "targets": [
               {
                 "start": 5479,
@@ -7167,7 +7167,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for this feature card.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -7188,7 +7188,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the feature image links to.",
+            "help": "",
             "targets": [
               {
                 "start": 2217,
@@ -7274,7 +7274,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Feature card headline.",
+            "help": "",
             "targets": [
               {
                 "start": 4050,
@@ -7308,7 +7308,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the summary copy.",
+            "help": "",
             "style": "switch",
             "targets": [
               {
@@ -7329,7 +7329,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short summary copy shown below the headline.",
+            "help": "",
             "targets": [
               {
                 "start": 4699,
@@ -7361,7 +7361,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the call-to-action link.",
+            "help": "",
             "style": "switch",
             "targets": [],
             "id": "field7",
@@ -7377,7 +7377,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the link goes.",
+            "help": "",
             "targets": [
               {
                 "start": 5065,
@@ -7405,7 +7405,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action link label.",
+            "help": "",
             "targets": [
               {
                 "start": 5479,
@@ -7442,7 +7442,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Call-to-action heading.",
+          "help": "",
           "targets": [
             {
               "start": 1475,
@@ -7477,7 +7477,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Supporting copy for the call to action.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -7498,7 +7498,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the button links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -7526,7 +7526,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Call-to-action button label.",
+          "help": "",
           "targets": [
             {
               "start": 3400,
@@ -7561,7 +7561,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1475,
@@ -7596,7 +7596,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Supporting copy for the call to action.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -7617,7 +7617,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the button links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -7645,7 +7645,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action button label.",
+            "help": "",
             "targets": [
               {
                 "start": 3400,
@@ -7677,7 +7677,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1475,
@@ -7712,7 +7712,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Supporting copy for the call to action.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -7733,7 +7733,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the button links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -7761,7 +7761,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action button label.",
+            "help": "",
             "targets": [
               {
                 "start": 3400,
@@ -7796,7 +7796,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the banner links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -7897,7 +7897,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the banner links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -7995,7 +7995,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the banner links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -8096,7 +8096,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the journal cover links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -8183,7 +8183,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Name of the journal.",
+          "help": "",
           "targets": [
             {
               "start": 2393,
@@ -8218,7 +8218,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the button links to.",
+          "help": "",
           "targets": [
             {
               "name": "href",
@@ -8246,7 +8246,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Call-to-action button label.",
+          "help": "",
           "targets": [
             {
               "start": 4081,
@@ -8281,7 +8281,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the journal cover links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -8368,7 +8368,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Name of the journal.",
+            "help": "",
             "targets": [
               {
                 "start": 2393,
@@ -8403,7 +8403,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the button links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -8431,7 +8431,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action button label.",
+            "help": "",
             "targets": [
               {
                 "start": 4081,
@@ -8463,7 +8463,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the journal cover links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -8550,7 +8550,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Name of the journal.",
+            "help": "",
             "targets": [
               {
                 "start": 2393,
@@ -8585,7 +8585,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the button links to.",
+            "help": "",
             "targets": [
               {
                 "name": "href",
@@ -8613,7 +8613,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Call-to-action button label.",
+            "help": "",
             "targets": [
               {
                 "start": 4081,
@@ -8663,7 +8663,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Section heading.",
+          "help": "",
           "targets": [
             {
               "start": 1741,
@@ -8697,7 +8697,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Add, remove or reorder the links shown in this section.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -8727,7 +8727,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Where this link goes.",
+              "help": "",
               "targets": [],
               "key": "link_url",
               "binding": "template",
@@ -8747,7 +8747,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Headline shown for this link.",
+              "help": "",
               "targets": [],
               "allowLinks": false,
               "key": "link_text",
@@ -8762,7 +8762,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Optional short supporting copy shown under the link.",
+              "help": "",
               "targets": [],
               "allowLinks": true,
               "key": "description",
@@ -8811,7 +8811,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Section heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1741,
@@ -8845,7 +8845,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Add, remove or reorder the links shown in this section.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -8875,7 +8875,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "key": "link_url",
                 "binding": "template",
@@ -8895,7 +8895,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Headline shown for this link.",
+                "help": "",
                 "targets": [],
                 "allowLinks": false,
                 "key": "link_text",
@@ -8910,7 +8910,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Optional short supporting copy shown under the link.",
+                "help": "",
                 "targets": [],
                 "allowLinks": true,
                 "key": "description",
@@ -8956,7 +8956,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Section heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1741,
@@ -8990,7 +8990,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Add, remove or reorder the links shown in this section.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -9020,7 +9020,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Where this link goes.",
+                "help": "",
                 "targets": [],
                 "key": "link_url",
                 "binding": "template",
@@ -9040,7 +9040,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Headline shown for this link.",
+                "help": "",
                 "targets": [],
                 "allowLinks": false,
                 "key": "link_text",
@@ -9055,7 +9055,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Optional short supporting copy shown under the link.",
+                "help": "",
                 "targets": [],
                 "allowLinks": true,
                 "key": "description",
@@ -9102,7 +9102,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Main heading text.",
+          "help": "",
           "targets": [
             {
               "start": 3434,
@@ -9137,7 +9137,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Supporting body copy.",
+          "help": "",
           "targets": [
             {
               "start": 4043,
@@ -9170,7 +9170,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Label above the list of benefits.",
+          "help": "",
           "targets": [],
           "id": "field4",
           "binding": "template",
@@ -9184,7 +9184,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Text shown on the button.",
+          "help": "",
           "targets": [
             {
               "start": 8683,
@@ -9204,7 +9204,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Destination URL for the button.",
+          "help": "",
           "targets": [
             {
               "start": 8276,
@@ -9231,7 +9231,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Hide to remove the \"Join today\" button and its spacing entirely.",
+          "help": "",
           "style": "switch",
           "targets": [],
           "id": "field8",
@@ -9246,7 +9246,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Checkmark list of membership benefits.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -9272,7 +9272,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Benefit copy.",
+              "help": "",
               "targets": [],
               "id": "benefit_text",
               "key": "benefit_text",
@@ -9319,7 +9319,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Main heading text.",
+            "help": "",
             "targets": [
               {
                 "start": 3434,
@@ -9354,7 +9354,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Supporting body copy.",
+            "help": "",
             "targets": [
               {
                 "start": 4043,
@@ -9387,7 +9387,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Label above the list of benefits.",
+            "help": "",
             "targets": [],
             "id": "field4",
             "binding": "template",
@@ -9401,7 +9401,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Text shown on the button.",
+            "help": "",
             "targets": [
               {
                 "start": 8683,
@@ -9421,7 +9421,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Destination URL for the button.",
+            "help": "",
             "targets": [
               {
                 "start": 8276,
@@ -9448,7 +9448,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Hide to remove the \"Join today\" button and its spacing entirely.",
+            "help": "",
             "style": "switch",
             "targets": [],
             "id": "field8",
@@ -9463,7 +9463,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Checkmark list of membership benefits.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -9489,7 +9489,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Benefit copy.",
+                "help": "",
                 "targets": [],
                 "id": "benefit_text",
                 "key": "benefit_text",
@@ -9533,7 +9533,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Main heading text.",
+            "help": "",
             "targets": [
               {
                 "start": 3434,
@@ -9568,7 +9568,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Supporting body copy.",
+            "help": "",
             "targets": [
               {
                 "start": 4043,
@@ -9601,7 +9601,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Label above the list of benefits.",
+            "help": "",
             "targets": [],
             "id": "field4",
             "binding": "template",
@@ -9615,7 +9615,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Text shown on the button.",
+            "help": "",
             "targets": [
               {
                 "start": 8683,
@@ -9635,7 +9635,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Destination URL for the button.",
+            "help": "",
             "targets": [
               {
                 "start": 8276,
@@ -9662,7 +9662,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Hide to remove the \"Join today\" button and its spacing entirely.",
+            "help": "",
             "style": "switch",
             "targets": [],
             "id": "field8",
@@ -9677,7 +9677,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Checkmark list of membership benefits.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -9703,7 +9703,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Benefit copy.",
+                "help": "",
                 "targets": [],
                 "id": "benefit_text",
                 "key": "benefit_text",
@@ -9736,7 +9736,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Shown above the member’s name.",
+          "help": "",
           "targets": [
             {
               "start": 5279,
@@ -9777,7 +9777,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Shown above the ESC ID. The badge only appears when the member has an ESC ID.",
+          "help": "The badge appears only for members with an ESC ID.",
           "targets": [
             {
               "start": 8450,
@@ -9812,7 +9812,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown above the member’s name.",
+            "help": "",
             "targets": [
               {
                 "start": 5279,
@@ -9853,7 +9853,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Shown above the ESC ID. The badge only appears when the member has an ESC ID.",
+            "help": "The badge appears only for members with an ESC ID.",
             "targets": [
               {
                 "start": 8450,
@@ -9885,7 +9885,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown above the member’s name.",
+            "help": "",
             "targets": [
               {
                 "start": 5279,
@@ -9926,7 +9926,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Shown above the ESC ID. The badge only appears when the member has an ESC ID.",
+            "help": "The badge appears only for members with an ESC ID.",
             "targets": [
               {
                 "start": 8450,
@@ -9962,7 +9962,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "The quote or editorial callout.",
+          "help": "",
           "targets": [
             {
               "start": 1230,
@@ -9982,7 +9982,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Name of the person quoted.",
+          "help": "",
           "targets": [
             {
               "start": 1677,
@@ -10032,7 +10032,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "The quote or editorial callout.",
+            "help": "",
             "targets": [
               {
                 "start": 1230,
@@ -10052,7 +10052,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Name of the person quoted.",
+            "help": "",
             "targets": [
               {
                 "start": 1677,
@@ -10099,7 +10099,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "The quote or editorial callout.",
+            "help": "",
             "targets": [
               {
                 "start": 1230,
@@ -10119,7 +10119,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Name of the person quoted.",
+            "help": "",
             "targets": [
               {
                 "start": 1677,
@@ -10171,7 +10171,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose the light or dark background style.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -10195,7 +10195,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Small label above the title.",
+          "help": "",
           "targets": []
         },
         {
@@ -10209,7 +10209,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Main heading for this section.",
+          "help": "",
           "targets": []
         },
         {
@@ -10253,7 +10253,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -10277,7 +10277,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label above the title.",
+            "help": "",
             "targets": []
           },
           {
@@ -10291,7 +10291,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Main heading for this section.",
+            "help": "",
             "targets": []
           },
           {
@@ -10332,7 +10332,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -10356,7 +10356,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label above the title.",
+            "help": "",
             "targets": []
           },
           {
@@ -10370,7 +10370,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Main heading for this section.",
+            "help": "",
             "targets": []
           },
           {
@@ -10427,7 +10427,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Logo shown in light-mode email clients (and Outlook/MSO, which never render dark mode).",
+          "help": "Classic Outlook for Windows also uses this logo.",
           "targets": [
             {
               "name": "src",
@@ -10448,7 +10448,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Logo shown to recipients using an email client dark mode (e.g. Apple Mail, iOS Mail). Usually a light/reversed version of the main logo.",
+          "help": "Usually a light or reversed version of the main logo.",
           "targets": [
             {
               "start": 2506,
@@ -10499,7 +10499,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Logo shown in light-mode email clients (and Outlook/MSO, which never render dark mode).",
+            "help": "Classic Outlook for Windows also uses this logo.",
             "targets": [
               {
                 "name": "src",
@@ -10520,7 +10520,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Logo shown to recipients using an email client dark mode (e.g. Apple Mail, iOS Mail). Usually a light/reversed version of the main logo.",
+            "help": "Usually a light or reversed version of the main logo.",
             "targets": [
               {
                 "start": 2506,
@@ -10568,7 +10568,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Logo shown in light-mode email clients (and Outlook/MSO, which never render dark mode).",
+            "help": "Classic Outlook for Windows also uses this logo.",
             "targets": [
               {
                 "name": "src",
@@ -10589,7 +10589,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Logo shown to recipients using an email client dark mode (e.g. Apple Mail, iOS Mail). Usually a light/reversed version of the main logo.",
+            "help": "Usually a light or reversed version of the main logo.",
             "targets": [
               {
                 "start": 2506,
@@ -10625,7 +10625,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Small label above the post link, e.g. \"Social highlight\".",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -10640,7 +10640,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Destination for the \"View post\" link and both images (all point to the same social post).",
+          "help": "Used by the “View post” link and both images.",
           "targets": [
             {
               "name": "href",
@@ -10686,7 +10686,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Text of the “View post” link, including its arrow.",
+          "help": "Include the arrow in the link text if you want one.",
           "targets": [
             {
               "start": 2340,
@@ -10837,7 +10837,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label above the post link, e.g. \"Social highlight\".",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -10852,7 +10852,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Destination for the \"View post\" link and both images (all point to the same social post).",
+            "help": "Used by the “View post” link and both images.",
             "targets": [
               {
                 "name": "href",
@@ -10898,7 +10898,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Text of the “View post” link, including its arrow.",
+            "help": "Include the arrow in the link text if you want one.",
             "targets": [
               {
                 "start": 2340,
@@ -11046,7 +11046,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label above the post link, e.g. \"Social highlight\".",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -11061,7 +11061,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Destination for the \"View post\" link and both images (all point to the same social post).",
+            "help": "Used by the “View post” link and both images.",
             "targets": [
               {
                 "name": "href",
@@ -11107,7 +11107,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Text of the “View post” link, including its arrow.",
+            "help": "Include the arrow in the link text if you want one.",
             "targets": [
               {
                 "start": 2340,
@@ -11260,7 +11260,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose how many speaker cards to show.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -11585,7 +11585,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose how many speaker cards to show.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -11907,7 +11907,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose how many speaker cards to show.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -12245,7 +12245,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Where the sponsor logo links to. Not used when there is no logo.",
+          "help": "Used only when a sponsor logo is supplied.",
           "targets": [],
           "key": "sponsor_link",
           "binding": "template",
@@ -12265,7 +12265,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Leave blank to leave the logo out.",
+          "help": "",
           "targets": [],
           "key": "sponsor_logo",
           "binding": "template"
@@ -12293,7 +12293,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Optional supporting text shown under the logo.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -12338,7 +12338,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Where the sponsor logo links to. Not used when there is no logo.",
+            "help": "Used only when a sponsor logo is supplied.",
             "targets": [],
             "key": "sponsor_link",
             "binding": "template",
@@ -12358,7 +12358,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to leave the logo out.",
+            "help": "",
             "targets": [],
             "key": "sponsor_logo",
             "binding": "template"
@@ -12386,7 +12386,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Optional supporting text shown under the logo.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -12428,7 +12428,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Where the sponsor logo links to. Not used when there is no logo.",
+            "help": "Used only when a sponsor logo is supplied.",
             "targets": [],
             "key": "sponsor_link",
             "binding": "template",
@@ -12448,7 +12448,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to leave the logo out.",
+            "help": "",
             "targets": [],
             "key": "sponsor_logo",
             "binding": "template"
@@ -12476,7 +12476,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Optional supporting text shown under the logo.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -12556,7 +12556,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the thumbnail and the button both link to.",
+          "help": "Used by both the thumbnail and the button.",
           "targets": [
             {
               "name": "href",
@@ -12763,7 +12763,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the thumbnail and the button both link to.",
+            "help": "Used by both the thumbnail and the button.",
             "targets": [
               {
                 "name": "href",
@@ -12967,7 +12967,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the thumbnail and the button both link to.",
+            "help": "Used by both the thumbnail and the button.",
             "targets": [
               {
                 "name": "href",
@@ -13195,7 +13195,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the image and the button both link to.",
+          "help": "Used by both the image and the button.",
           "targets": [
             {
               "name": "href",
@@ -13396,7 +13396,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the button both link to.",
+            "help": "Used by both the image and the button.",
             "targets": [
               {
                 "name": "href",
@@ -13594,7 +13594,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the button both link to.",
+            "help": "Used by both the image and the button.",
             "targets": [
               {
                 "name": "href",
@@ -14068,7 +14068,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose a solid or dashed line.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -14107,7 +14107,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose a solid or dashed line.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -14143,7 +14143,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose a solid or dashed line.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -14196,7 +14196,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Main heading text, shown after the highlighted prefix.",
+          "help": "",
           "targets": [],
           "allowLinks": false,
           "binding": "template"
@@ -14226,7 +14226,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Short line shown below the heading.",
+          "help": "",
           "targets": [],
           "allowLinks": false,
           "binding": "template"
@@ -14286,7 +14286,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Main heading text, shown after the highlighted prefix.",
+            "help": "",
             "targets": [],
             "allowLinks": false,
             "binding": "template"
@@ -14316,7 +14316,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short line shown below the heading.",
+            "help": "",
             "targets": [],
             "allowLinks": false,
             "binding": "template"
@@ -14373,7 +14373,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Main heading text, shown after the highlighted prefix.",
+            "help": "",
             "targets": [],
             "allowLinks": false,
             "binding": "template"
@@ -14403,7 +14403,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Short line shown below the heading.",
+            "help": "",
             "targets": [],
             "allowLinks": false,
             "binding": "template"
@@ -14448,7 +14448,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Small label above the intro heading. Leave blank to hide this line.",
+          "help": "Small label above the intro heading.",
           "targets": [],
           "binding": "template"
         },
@@ -14491,7 +14491,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Supporting line below the intro heading. Leave blank to hide this line.",
+          "help": "",
           "targets": [],
           "binding": "template"
         },
@@ -14529,7 +14529,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Each event becomes its own highlighted card.",
+          "help": "",
           "targets": [],
           "binding": "template",
           "itemFields": [
@@ -14557,7 +14557,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Day of the month, e.g. 24.",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -14681,7 +14681,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label above the intro heading. Leave blank to hide this line.",
+            "help": "Small label above the intro heading.",
             "targets": [],
             "binding": "template"
           },
@@ -14724,7 +14724,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Supporting line below the intro heading. Leave blank to hide this line.",
+            "help": "",
             "targets": [],
             "binding": "template"
           },
@@ -14762,7 +14762,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Each event becomes its own highlighted card.",
+            "help": "",
             "targets": [],
             "binding": "template",
             "itemFields": [
@@ -14790,7 +14790,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Day of the month, e.g. 24.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -14911,7 +14911,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label above the intro heading. Leave blank to hide this line.",
+            "help": "Small label above the intro heading.",
             "targets": [],
             "binding": "template"
           },
@@ -14954,7 +14954,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Supporting line below the intro heading. Leave blank to hide this line.",
+            "help": "",
             "targets": [],
             "binding": "template"
           },
@@ -14992,7 +14992,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Each event becomes its own highlighted card.",
+            "help": "",
             "targets": [],
             "binding": "template",
             "itemFields": [
@@ -15020,7 +15020,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Day of the month, e.g. 24.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -15200,7 +15200,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Each editorial. Add an image to show it with a thumbnail, or leave it blank for a plain text entry.",
+          "help": "",
           "targets": [],
           "binding": "template",
           "itemFields": [
@@ -15243,7 +15243,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Leave blank to omit the author line.",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -15257,7 +15257,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Where the title/image/DOI link go.",
+              "help": "Used by the DOI link and the image when one is supplied.",
               "targets": [],
               "binding": "template",
               "allowConversionTracking": true,
@@ -15408,7 +15408,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Each editorial. Add an image to show it with a thumbnail, or leave it blank for a plain text entry.",
+            "help": "",
             "targets": [],
             "binding": "template",
             "itemFields": [
@@ -15451,7 +15451,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Leave blank to omit the author line.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -15465,7 +15465,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Where the title/image/DOI link go.",
+                "help": "Used by the DOI link and the image when one is supplied.",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -15613,7 +15613,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Each editorial. Add an image to show it with a thumbnail, or leave it blank for a plain text entry.",
+            "help": "",
             "targets": [],
             "binding": "template",
             "itemFields": [
@@ -15656,7 +15656,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Leave blank to omit the author line.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -15670,7 +15670,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Where the title/image/DOI link go.",
+                "help": "Used by the DOI link and the image when one is supplied.",
                 "targets": [],
                 "binding": "template",
                 "allowConversionTracking": true,
@@ -15765,7 +15765,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Leave blank to omit the heading.",
+          "help": "",
           "targets": [],
           "binding": "template"
         },
@@ -15794,7 +15794,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Leave blank to omit this paragraph.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -15821,7 +15821,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Leave blank to omit this paragraph.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -15863,7 +15863,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to omit the heading.",
+            "help": "",
             "targets": [],
             "binding": "template"
           },
@@ -15892,7 +15892,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to omit this paragraph.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -15919,7 +15919,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to omit this paragraph.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -15958,7 +15958,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to omit the heading.",
+            "help": "",
             "targets": [],
             "binding": "template"
           },
@@ -15987,7 +15987,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to omit this paragraph.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -16014,7 +16014,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave blank to omit this paragraph.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -16086,7 +16086,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Where the full-width image links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -16162,7 +16162,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Where the full-width image links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -16236,7 +16236,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Where the full-width image links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,

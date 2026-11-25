@@ -112,7 +112,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Choose the light or dark background style for the button row.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -136,7 +136,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the first button links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -156,7 +156,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Button label.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -171,7 +171,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -195,7 +195,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "help": "Brand uses the email’s selected brand colour.",
           "targets": [],
           "options": [
             {
@@ -227,7 +227,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the second button.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -242,7 +242,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the second button links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -262,7 +262,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Button label.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -277,7 +277,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -301,7 +301,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "help": "Brand uses the email’s selected brand colour.",
           "targets": [],
           "options": [
             {
@@ -333,7 +333,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to add a third button.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -348,7 +348,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the third button links to.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -368,7 +368,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Button label.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -383,7 +383,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Solid is filled with the button colour; outline has a coloured border.",
+          "help": "",
           "targets": [],
           "options": [
             {
@@ -407,7 +407,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+          "help": "Brand uses the email’s selected brand colour.",
           "targets": [],
           "options": [
             {
@@ -454,7 +454,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for the button row.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -478,7 +478,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the first button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -498,7 +498,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -513,7 +513,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -537,7 +537,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -569,7 +569,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the second button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -584,7 +584,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the second button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -604,7 +604,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -619,7 +619,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -643,7 +643,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -675,7 +675,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to add a third button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -690,7 +690,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the third button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -710,7 +710,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -725,7 +725,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -749,7 +749,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -793,7 +793,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Choose the light or dark background style for the button row.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -817,7 +817,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the first button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -837,7 +837,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -852,7 +852,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -876,7 +876,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -908,7 +908,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the second button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -923,7 +923,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the second button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -943,7 +943,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -958,7 +958,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -982,7 +982,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -1014,7 +1014,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to add a third button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1029,7 +1029,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the third button links to.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -1049,7 +1049,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Button label.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -1064,7 +1064,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Solid is filled with the button colour; outline has a coloured border.",
+            "help": "",
             "targets": [],
             "options": [
               {
@@ -1088,7 +1088,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Brand colour follows the email’s brand settings. The other choices are fixed colours.",
+            "help": "Brand uses the email’s selected brand colour.",
             "targets": [],
             "options": [
               {
@@ -1148,7 +1148,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Section heading.",
+          "help": "",
           "targets": [
             {
               "start": 1579,
@@ -1182,7 +1182,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Each item shows a checkmark and its text.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -1205,7 +1205,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "One benefit / checklist item.",
+              "help": "",
               "targets": [],
               "id": "check_text",
               "key": "check_text",
@@ -1254,7 +1254,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Section heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1579,
@@ -1288,7 +1288,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Each item shows a checkmark and its text.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -1311,7 +1311,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "One benefit / checklist item.",
+                "help": "",
                 "targets": [],
                 "id": "check_text",
                 "key": "check_text",
@@ -1357,7 +1357,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Section heading.",
+            "help": "",
             "targets": [
               {
                 "start": 1579,
@@ -1391,7 +1391,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Each item shows a checkmark and its text.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -1414,7 +1414,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "One benefit / checklist item.",
+                "help": "",
                 "targets": [],
                 "id": "check_text",
                 "key": "check_text",
@@ -1959,7 +1959,7 @@
           "binding": "template",
           "enabled": true,
           "required": false,
-          "help": "Each row shows a date, description and link.",
+          "help": "",
           "maxLength": 0,
           "targets": [],
           "defaultValue": [
@@ -2122,7 +2122,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Each row shows a date, description and link.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2282,7 +2282,7 @@
             "binding": "template",
             "enabled": true,
             "required": false,
-            "help": "Each row shows a date, description and link.",
+            "help": "",
             "maxLength": 0,
             "targets": [],
             "defaultValue": [
@@ -2398,7 +2398,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn on to show a pill above the title.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -2495,7 +2495,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Small label shown before the organiser logo.",
+          "help": "",
           "targets": [],
           "id": "field4",
           "binding": "template",
@@ -2509,7 +2509,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Shown next to \"Organised by:\".",
+          "help": "",
           "targets": [
             {
               "start": 5387,
@@ -2570,7 +2570,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Optional. Leave blank for no link.",
+          "help": "",
           "targets": [],
           "allowConversionTracking": true,
           "defaultConversionTracking": false,
@@ -2587,7 +2587,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the visual image links to.",
+          "help": "",
           "targets": [
             {
               "start": 6428,
@@ -2719,7 +2719,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show a pill above the title.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -2816,7 +2816,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label shown before the organiser logo.",
+            "help": "",
             "targets": [],
             "id": "field4",
             "binding": "template",
@@ -2830,7 +2830,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown next to \"Organised by:\".",
+            "help": "",
             "targets": [
               {
                 "start": 5387,
@@ -2891,7 +2891,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Optional. Leave blank for no link.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -2908,7 +2908,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the visual image links to.",
+            "help": "",
             "targets": [
               {
                 "start": 6428,
@@ -3037,7 +3037,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn on to show a pill above the title.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -3134,7 +3134,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label shown before the organiser logo.",
+            "help": "",
             "targets": [],
             "id": "field4",
             "binding": "template",
@@ -3148,7 +3148,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown next to \"Organised by:\".",
+            "help": "",
             "targets": [
               {
                 "start": 5387,
@@ -3209,7 +3209,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Optional. Leave blank for no link.",
+            "help": "",
             "targets": [],
             "allowConversionTracking": true,
             "defaultConversionTracking": false,
@@ -3226,7 +3226,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the visual image links to.",
+            "help": "",
             "targets": [
               {
                 "start": 6428,
@@ -3370,7 +3370,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Small label next to the organiser logo.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -3565,7 +3565,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label next to the organiser logo.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -3757,7 +3757,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Small label next to the organiser logo.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -3968,7 +3968,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Use the formatting toolbar to add a line break between paragraphs.",
+          "help": "",
           "targets": [
             {
               "start": 2149,
@@ -4061,7 +4061,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Use the formatting toolbar to add a line break between paragraphs.",
+            "help": "",
             "targets": [
               {
                 "start": 2149,
@@ -4151,7 +4151,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Use the formatting toolbar to add a line break between paragraphs.",
+            "help": "",
             "targets": [
               {
                 "start": 2149,
@@ -4440,7 +4440,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Turn off to hide the button.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -4595,7 +4595,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4747,7 +4747,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Turn off to hide the button.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -4823,7 +4823,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the image and the button both link to.",
+          "help": "Used by both the image and the button.",
           "targets": [
             {
               "name": "href",
@@ -4985,7 +4985,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the button both link to.",
+            "help": "Used by both the image and the button.",
             "targets": [
               {
                 "name": "href",
@@ -5144,7 +5144,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the button both link to.",
+            "help": "Used by both the image and the button.",
             "targets": [
               {
                 "name": "href",
@@ -5306,7 +5306,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the image and the \"Read more\" link both link to.",
+          "help": "Used by both the image and the “Read more” link.",
           "targets": [
             {
               "name": "href",
@@ -5498,7 +5498,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Where the image and the \"Read more\" link both link to.",
+          "help": "Used by both the image and the “Read more” link.",
           "targets": [
             {
               "name": "href",
@@ -5705,7 +5705,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the \"Read more\" link both link to.",
+            "help": "Used by both the image and the “Read more” link.",
             "targets": [
               {
                 "name": "href",
@@ -5897,7 +5897,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the \"Read more\" link both link to.",
+            "help": "Used by both the image and the “Read more” link.",
             "targets": [
               {
                 "name": "href",
@@ -6101,7 +6101,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the \"Read more\" link both link to.",
+            "help": "Used by both the image and the “Read more” link.",
             "targets": [
               {
                 "name": "href",
@@ -6293,7 +6293,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Where the image and the \"Read more\" link both link to.",
+            "help": "Used by both the image and the “Read more” link.",
             "targets": [
               {
                 "name": "href",
