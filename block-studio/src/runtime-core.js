@@ -176,9 +176,12 @@
   }
   function linkStyleCSS(field = {}) {
     const s = linkStyle(field);
-    return (
-      'color:' + s.colour + ';text-decoration:' + s.decoration + ';font-weight:' + s.weight + ';'
-    );
+    // Email templates can override link colour or pass down a WebKit text fill in dark mode.
+    const colour =
+      field.linkStyle?.forceColour === true && s.colour !== 'inherit'
+        ? `color:${s.colour} !important;-webkit-text-fill-color:${s.colour} !important;`
+        : `color:${s.colour};`;
+    return `${colour}text-decoration:${s.decoration};font-weight:${s.weight};`;
   }
   // URL values remain strings. Optional conversion choices live beside them, including in list rows.
   const conversionKey = '__studioConversions';

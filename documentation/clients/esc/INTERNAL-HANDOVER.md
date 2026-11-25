@@ -108,7 +108,9 @@ The user confirmed the Outlook centring and Apple Mail seam fixes on their proof
 
 ## Link options and conversion tracking
 
-Expand **Link options** below a destination, or inside a formatted-text link dialogue. **Title** and **Tracking Alias** are optional and start blank in the ESC suite. Title adds advisory text where supported; Tracking Alias names the link in SFMC reporting. Each repeated item stores its own options. Use field **Set up → Link options** to configure defaults or hide either input. Existing saved URLs and link styling remain unchanged.
+All ESC formatted-text fields support links within their text. These links use fixed `#AE1022` across all brands. The runtime applies the colour directly to the link so the master template's dark-mode styles do not replace it. Existing email HTML picks up the colour after the block is edited and saved in SFMC.
+
+Expand **Link options** below a destination, or inside a formatted-text link dialogue where these options are enabled. **Title** and **Tracking Alias** are optional and start blank in the ESC suite. Title adds advisory text where supported, and Tracking Alias names the link in SFMC reporting. Each repeated item stores its own options. Use field **Set up → Link options** to configure defaults or hide either input.
 
 
 URL controls and supported formatted-text link dialogues include **Conversion Tracking Link** under **Link options**. It starts unchecked for all ESC defaults and can be chosen separately for links within repeating items. Ticking it adds `conversion="true"` to the relevant generated web-link anchor; it does not change the destination or fixed link styling. Existing field IDs and saved URL strings remain compatible.

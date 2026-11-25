@@ -803,6 +803,58 @@ test('repeated item guidance and validation can be edited through the field edit
     await dom.happyDOM.close();
   }
 });
+test('every ESC rich-text field offers links and renders them in the fixed ESC red', async () => {
+  const { BlockControls, BlockCore, dom } = await environment();
+  const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+  const url = 'https://example.com/esc-rich-text';
+  const copy = `<a href="${url}" style="color: #0000ff"><span style="color: #008000">Link text</span></a>`;
+  try {
+    for (const project of [...projects, escTv]) {
+      for (const module of project.modules) {
+        const fields = module.fields.filter((field) => field.type === 'richtext');
+        if (!fields.length) continue;
+        const page = fs.readFileSync(
+          path.join(
+            root,
+            'docs/clients/esc',
+            project.settings.templateSlug,
+            'modules',
+            module.slug,
+            'index.html',
+          ),
+          'utf8',
+        );
+        const definition = JSON.parse(
+          page.match(/id="block-definition"[^>]*>([\s\S]*?)<\/script>/)[1],
+        );
+        for (const field of fields) {
+          const label = `${module.slug}: ${field.label}`;
+          const exported = definition.fields.find((candidate) => candidate.id === field.id);
+          const editor = dom.document.createElement('div');
+          BlockControls.mount(editor, [exported], { [field.id]: copy }, () => {});
+          const button = editor.querySelector('button[aria-label="Add or edit link"]');
+          assert.ok(button && !button.disabled, label);
+
+          const output = dom.document.createElement('div');
+          output.innerHTML = BlockCore.render(definition, { [field.id]: copy });
+          const links = output.querySelectorAll(`a[href="${url}"]`);
+          assert.ok(links.length, label);
+          for (const link of links) {
+            assert.match(
+              link.getAttribute('style'),
+              /^color:#ae1022 !important;-webkit-text-fill-color:#ae1022 !important;/,
+              label,
+            );
+            assert.equal(link.innerHTML, 'Link text', label);
+          }
+        }
+      }
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('all 42 ESC modules retain their exported definition and supplied PNG pair', async () => {
   const { BlockCore: C, BlockExport: E, BlockMaintenance: M, dom } = await environment();
   try {

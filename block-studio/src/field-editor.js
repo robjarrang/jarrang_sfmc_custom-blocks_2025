@@ -609,7 +609,7 @@
         const sample = el('div', undefined, 'link-style-sample');
         styles.append(sample);
         function update() {
-          f.linkStyle = { ...appearance };
+          f.linkStyle = { ...f.linkStyle, ...appearance };
           sample.replaceChildren();
           const a = el('a', 'Example link');
           a.setAttribute('style', C.linkStyleCSS(f));

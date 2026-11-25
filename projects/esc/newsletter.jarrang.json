@@ -168,7 +168,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field7",
@@ -677,7 +683,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field7",
@@ -1182,7 +1194,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field7",
@@ -1603,7 +1621,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "control_trkbp3xry6s",
@@ -1731,7 +1755,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "control_trkbp3xry6s",
@@ -1855,7 +1885,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "control_trkbp3xry6s",
@@ -2792,7 +2828,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field9",
@@ -3072,7 +3114,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field9",
@@ -3349,7 +3397,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field9",
@@ -3611,7 +3665,14 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field10",
@@ -3815,7 +3876,14 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field21",
@@ -4058,7 +4126,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field10",
@@ -4262,7 +4337,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field21",
@@ -4502,7 +4584,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field10",
@@ -4706,7 +4795,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field21",
@@ -4920,7 +5016,14 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field8",
@@ -5095,7 +5198,14 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field17",
@@ -5270,7 +5380,14 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field26",
@@ -5484,7 +5601,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field8",
@@ -5659,7 +5783,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field17",
@@ -5834,7 +5965,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field26",
@@ -6045,7 +6183,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field8",
@@ -6220,7 +6365,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field17",
@@ -6395,7 +6547,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field26",
@@ -6651,7 +6810,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "label": "Show link",
@@ -6927,7 +7092,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "label": "Show link",
@@ -7200,7 +7371,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "label": "Show link",
@@ -7332,9 +7509,15 @@
           "maxLength": 0,
           "help": "Supporting copy for the call to action.",
           "targets": [],
-          "allowLinks": false,
+          "allowLinks": true,
           "binding": "template",
-          "key": "description"
+          "key": "description",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field3",
@@ -7445,9 +7628,15 @@
             "maxLength": 0,
             "help": "Supporting copy for the call to action.",
             "targets": [],
-            "allowLinks": false,
+            "allowLinks": true,
             "binding": "template",
-            "key": "description"
+            "key": "description",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field3",
@@ -7555,9 +7744,15 @@
             "maxLength": 0,
             "help": "Supporting copy for the call to action.",
             "targets": [],
-            "allowLinks": false,
+            "allowLinks": true,
             "binding": "template",
-            "key": "description"
+            "key": "description",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field3",
@@ -8988,7 +9183,14 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "label": "Benefits label",
@@ -9209,7 +9411,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "label": "Benefits label",
@@ -9427,7 +9636,14 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "label": "Benefits label",
@@ -12508,7 +12724,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field7",
@@ -12709,7 +12931,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field7",
@@ -12907,7 +13135,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field7",
@@ -13005,9 +13239,15 @@
           "maxLength": 0,
           "help": "Keep the date in bold; edit the rest as plain text.",
           "targets": [],
-          "allowLinks": false,
+          "allowLinks": true,
           "binding": "template",
-          "key": "date_and_time"
+          "key": "date_and_time",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field4",
@@ -13200,9 +13440,15 @@
             "maxLength": 0,
             "help": "Keep the date in bold; edit the rest as plain text.",
             "targets": [],
-            "allowLinks": false,
+            "allowLinks": true,
             "binding": "template",
-            "key": "date_and_time"
+            "key": "date_and_time",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field4",
@@ -13392,9 +13638,15 @@
             "maxLength": 0,
             "help": "Keep the date in bold; edit the rest as plain text.",
             "targets": [],
-            "allowLinks": false,
+            "allowLinks": true,
             "binding": "template",
-            "key": "date_and_time"
+            "key": "date_and_time",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field4",
@@ -15614,7 +15866,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field3",
@@ -15635,7 +15893,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         }
       ],
       "analysed": true,
@@ -15700,7 +15964,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field3",
@@ -15721,7 +15991,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           }
         ]
       },
@@ -15783,7 +16059,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field3",
@@ -15804,7 +16086,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           }
         ],
         "showEditorHeader": false

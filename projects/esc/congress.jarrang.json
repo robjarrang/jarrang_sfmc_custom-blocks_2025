@@ -1508,7 +1508,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field4",
@@ -1657,7 +1663,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field4",
@@ -1803,7 +1815,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field4",
@@ -2458,10 +2476,16 @@
           "maxLength": 0,
           "help": "Keep the city name bold; edit the rest as plain text.",
           "targets": [],
-          "allowLinks": false,
+          "allowLinks": true,
           "id": "field3",
           "binding": "template",
-          "key": "location"
+          "key": "location",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "label": "Organiser label",
@@ -2773,10 +2797,16 @@
             "maxLength": 0,
             "help": "Keep the city name bold; edit the rest as plain text.",
             "targets": [],
-            "allowLinks": false,
+            "allowLinks": true,
             "id": "field3",
             "binding": "template",
-            "key": "location"
+            "key": "location",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "label": "Organiser label",
@@ -3085,10 +3115,16 @@
             "maxLength": 0,
             "help": "Keep the city name bold; edit the rest as plain text.",
             "targets": [],
-            "allowLinks": false,
+            "allowLinks": true,
             "id": "field3",
             "binding": "template",
-            "key": "location"
+            "key": "location",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "label": "Organiser label",
@@ -3948,7 +3984,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field5",
@@ -4035,7 +4077,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field5",
@@ -4119,7 +4167,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field5",
@@ -4367,7 +4421,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field6",
@@ -4516,7 +4576,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field6",
@@ -4662,7 +4728,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field6",
@@ -4861,7 +4933,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field5",
@@ -5017,7 +5095,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field5",
@@ -5170,7 +5254,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field5",
@@ -5371,7 +5461,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field7",
@@ -5557,7 +5653,13 @@
           "allowLinkTitle": true,
           "allowTrackingAlias": true,
           "defaultLinkTitle": "",
-          "defaultTrackingAlias": ""
+          "defaultTrackingAlias": "",
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
         },
         {
           "id": "field14",
@@ -5758,7 +5860,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field7",
@@ -5944,7 +6052,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field14",
@@ -6142,7 +6256,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field7",
@@ -6328,7 +6448,13 @@
             "allowLinkTitle": true,
             "allowTrackingAlias": true,
             "defaultLinkTitle": "",
-            "defaultTrackingAlias": ""
+            "defaultTrackingAlias": "",
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
           },
           {
             "id": "field14",

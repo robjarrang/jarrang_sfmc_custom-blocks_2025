@@ -381,6 +381,8 @@
       const s = field.linkStyle;
       if (s.colour !== 'inherit' && !normaliseColour(s.colour))
         errors.push('Choose a valid hex colour for links.');
+      if (s.forceColour !== undefined && typeof s.forceColour !== 'boolean')
+        errors.push('Choose whether the link colour overrides email template styles.');
       if (!['underline', 'none'].includes(s.decoration))
         errors.push('Choose the link underline setting.');
       if (!['inherit', 'normal', 'bold'].includes(s.weight)) errors.push('Choose the link weight.');
