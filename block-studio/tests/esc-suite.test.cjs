@@ -355,7 +355,6 @@ test('ESC text CTAs use fixed red in both layout themes while brand buttons reta
         'link-list',
         'social-block',
         'editorials',
-        'membership-card',
       ],
     ],
     [projects[1], ['conversation', 'deadlines-list', 'story-2col']],
@@ -395,12 +394,17 @@ test('ESC text CTAs use fixed red in both layout themes while brand buttons reta
             assert.match(style, /(?:^|;\s*)color: #AE1022 !important;/, label);
             assert.match(style, /-webkit-text-fill-color: #AE1022 !important;/, label);
             assert.match(style, /text-decoration-color: #AE1022 !important;/, label);
-            if (slug === 'membership-card')
-              assert.equal(link.querySelector('font').getAttribute('color'), '#AE1022');
           }
         }
       }
     }
+    const membership = projects[0].modules.find((module) => module.slug === 'membership-card');
+    output.innerHTML = C.render(membership.exportedDefinition);
+    const profile = output.querySelector('a[href*="MemberProfileURL"]');
+    assert.match(profile.getAttribute('style'), /(?:^|;\s*)color: #ffffff !important;/);
+    assert.match(profile.getAttribute('style'), /text-decoration-color: #ffffff !important;/);
+    assert.equal(profile.querySelector('font').getAttribute('color'), '#ffffff');
+
     const button = projects[1].modules.find((module) => module.slug === 'story-1col');
     output.innerHTML = C.render(button.exportedDefinition);
     assert.match(

@@ -110,7 +110,7 @@ The user confirmed the Outlook centring and Apple Mail seam fixes on their proof
 
 All ESC formatted-text fields support links within their text. These links use fixed `#AE1022` across all brands. The runtime applies the colour directly to the link so the master template's dark-mode styles do not replace it. Existing email HTML picks up the colour after the block is edited and saved in SFMC.
 
-Standalone text CTAs also use fixed `#AE1022` in both layout themes. Their module HTML sets the colour inline, including for the personalised Membership Card profile link. Buttons keep their existing colour settings.
+Standalone text CTAs use fixed `#AE1022` in both layout themes. The personalised Membership Card profile link uses white on its orange background. Buttons keep their existing colour settings.
 
 Expand **Link options** below a destination, or inside a formatted-text link dialogue where these options are enabled. **Title** and **Tracking Alias** are optional and start blank in the ESC suite. Title adds advisory text where supported, and Tracking Alias names the link in SFMC reporting. Each repeated item stores its own options. Use field **Set up → Link options** to configure defaults or hide either input.
 
