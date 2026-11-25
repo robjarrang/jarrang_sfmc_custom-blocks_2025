@@ -342,6 +342,75 @@ test('newsletter story cards use proportional images in every light and dark var
     await dom.happyDOM.close();
   }
 });
+test('ESC text CTAs use fixed red in both layout themes while brand buttons retain their colours', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const suites = [
+    [
+      projects[0],
+      [
+        'story-card-1col',
+        'story-card-2col',
+        'story-card-3col',
+        'feature-card',
+        'link-list',
+        'social-block',
+        'editorials',
+        'membership-card',
+      ],
+    ],
+    [projects[1], ['conversation', 'deadlines-list', 'story-2col']],
+    [
+      JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json'))),
+      ['esc-tv-2-col'],
+    ],
+  ];
+  try {
+    const output = dom.document.createElement('div');
+    for (const [project, slugs] of suites) {
+      for (const slug of slugs) {
+        const module = project.modules.find((candidate) => candidate.slug === slug);
+        const theme = module.fields.find((field) => field.key === 'theme');
+        const deadlines = module.fields.find((field) => field.key === 'deadlines');
+        const values = deadlines
+          ? {
+              [deadlines.id]: [
+                {
+                  ...deadlines.defaultValue[0],
+                  link_text: 'Submit',
+                  link_url: 'https://example.com/',
+                },
+              ],
+            }
+          : {};
+        for (const option of theme ? theme.options : [{ value: 'default' }]) {
+          if (theme) values[theme.id] = option.value;
+          output.innerHTML = C.render(module.exportedDefinition, values);
+          const links = output.querySelectorAll(
+            'a.news-card-link, a.text-link, a[style*="text-decoration: underline"]',
+          );
+          const label = `${slug} (${option.value})`;
+          assert.ok(links.length, label);
+          for (const link of links) {
+            const style = link.getAttribute('style');
+            assert.match(style, /(?:^|;\s*)color: #AE1022 !important;/, label);
+            assert.match(style, /-webkit-text-fill-color: #AE1022 !important;/, label);
+            assert.match(style, /text-decoration-color: #AE1022 !important;/, label);
+            if (slug === 'membership-card')
+              assert.equal(link.querySelector('font').getAttribute('color'), '#AE1022');
+          }
+        }
+      }
+    }
+    const button = projects[1].modules.find((module) => module.slug === 'story-1col');
+    output.innerHTML = C.render(button.exportedDefinition);
+    assert.match(
+      output.querySelector('.esc-btn a').getAttribute('style'),
+      /color: %%=v\(@ButtonTextColour\)=%%;/,
+    );
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('landscape images give Windows Outlook an editable height divisible by 4', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
