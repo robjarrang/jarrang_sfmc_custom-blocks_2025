@@ -395,7 +395,7 @@ test('ESC headings and CTAs can be left blank without rendering empty headings o
     await dom.happyDOM.close();
   }
 });
-test('Congress Attribution preserves saved body text and takes a manual heading and logo', async () => {
+test('Congress Attribution supports a brand logo, custom logo and text-only layout', async () => {
   const { BlockCore: C, dom } = await environment();
   const { exportedDefinition: definition } = projects[1].modules.find(
     (module) => module.slug === 'attribution',
@@ -409,7 +409,10 @@ test('Congress Attribution preserves saved body text and takes a manual heading 
     assert.equal(body.style.fontSize, '13px');
     assert.equal(body.style.lineHeight, '20px');
     assert.match(body.getAttribute('style'), /mso-line-height-rule: exactly/);
-    assert.ok(!output.querySelector('img'));
+    const brandLogo = output.querySelector('a > img');
+    assert.equal(brandLogo.getAttribute('src'), '%%=v(@LogoURL)=%%');
+    assert.equal(brandLogo.getAttribute('alt'), '%%=v(@BrandName)=%%');
+    assert.equal(brandLogo.parentElement.getAttribute('href'), '%%=RedirectTo(@BrandURL)=%%');
 
     const values = {
       attribution_heading: 'Supported by Heart & Science',
@@ -430,7 +433,28 @@ test('Congress Attribution preserves saved body text and takes a manual heading 
     output.innerHTML = C.render(definition, { ...values, attribution_logo_link: href });
     assert.equal(output.querySelector('a > img').parentElement.getAttribute('href'), href);
     assert.doesNotMatch(output.innerHTML, /%%=/);
-    assert.equal(C.render(definition, { attribution_heading: '', field1: '' }), '');
+    const textOnly = C.render(definition, {
+      ...values,
+      field1: 'Body copy',
+      attribution_logo_link: href,
+      show_attribution_logo: 'hidden',
+    });
+    output.innerHTML = textOnly;
+    assert.equal(output.querySelector('.attribution-text').textContent.trim(), 'Body copy');
+    assert.ok(!output.querySelector('img, a'));
+    assert.doesNotMatch(textOnly, /height:16px/);
+    assert.doesNotMatch(
+      C.render(definition, { field1: '', show_attribution_logo: 'hidden' }),
+      /height:8px/,
+    );
+    assert.equal(
+      C.render(definition, {
+        attribution_heading: '',
+        field1: '',
+        show_attribution_logo: 'hidden',
+      }),
+      '',
+    );
   } finally {
     await dom.happyDOM.close();
   }
