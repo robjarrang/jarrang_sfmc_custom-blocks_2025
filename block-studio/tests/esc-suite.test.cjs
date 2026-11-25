@@ -395,6 +395,46 @@ test('ESC headings and CTAs can be left blank without rendering empty headings o
     await dom.happyDOM.close();
   }
 });
+test('Congress Attribution preserves saved body text and takes a manual heading and logo', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[1].modules.find(
+    (module) => module.slug === 'attribution',
+  );
+  const output = dom.document.createElement('div');
+  try {
+    output.innerHTML = C.render(definition, { field1: 'Previously saved body text' });
+    assert.equal(output.querySelector('.attribution-title').textContent.trim(), 'Organised by');
+    const body = output.querySelector('.attribution-text');
+    assert.equal(body.textContent.trim(), 'Previously saved body text');
+    assert.equal(body.style.fontSize, '13px');
+    assert.equal(body.style.lineHeight, '20px');
+    assert.match(body.getAttribute('style'), /mso-line-height-rule: exactly/);
+    assert.ok(!output.querySelector('img'));
+
+    const values = {
+      attribution_heading: 'Supported by Heart & Science',
+      field1: '',
+      attribution_logo: 'https://example.com/logo.png',
+      attribution_logo_alt: 'Heart & Science logo',
+    };
+    output.innerHTML = C.render(definition, values);
+    assert.equal(
+      output.querySelector('.attribution-title').textContent.trim(),
+      values.attribution_heading,
+    );
+    assert.ok(!output.querySelector('.attribution-text, a'));
+    assert.equal(output.querySelector('img').getAttribute('src'), values.attribution_logo);
+    assert.equal(output.querySelector('img').getAttribute('alt'), values.attribution_logo_alt);
+
+    const href = 'https://example.com/organiser';
+    output.innerHTML = C.render(definition, { ...values, attribution_logo_link: href });
+    assert.equal(output.querySelector('a > img').parentElement.getAttribute('href'), href);
+    assert.doesNotMatch(output.innerHTML, /%%=/);
+    assert.equal(C.render(definition, { attribution_heading: '', field1: '' }), '');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('ESC text links and button styles preserve the entered casing', async () => {
   const { BlockCore: C, dom } = await environment();
   const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
