@@ -606,6 +606,33 @@ test('ESC body copy uses 13px and authored line heights use exact four-pixel inc
     await dom.happyDOM.close();
   }
 });
+test('Journal Section pairs the cover with the copy and keeps the action compact', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (module) => module.slug === 'journal-section',
+  );
+  try {
+    const output = dom.document.createElement('div');
+    const issueUrl = 'https://example.com/current-issue';
+    output.innerHTML = C.render(definition, {
+      field5: 'A different journal title',
+      field7: issueUrl,
+      field8: 'Read the current issue',
+    });
+    const cover = output.querySelector('.journal-cover');
+    const copy = output.querySelector('.journal-copy');
+    assert.equal(cover.nextElementSibling, copy);
+    assert.ok(!output.querySelector('.block, .stack-gap'));
+    assert.equal(cover.querySelector('img').getAttribute('width'), '110');
+    assert.equal(copy.querySelector('.journal-title').textContent, 'A different journal title');
+    const button = copy.querySelector('.esc-btn');
+    assert.match(button.getAttribute('style'), /width: auto !important/);
+    assert.equal(button.querySelector('a').getAttribute('href'), issueUrl);
+    assert.equal(button.querySelector('a').textContent.trim(), 'Read the current issue');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('Speaker Grid centres each portrait without a ring or background fill', async () => {
   const { BlockCore: C, dom } = await environment();
   const module = projects[0].modules.find((item) => item.slug === 'speaker-grid');

@@ -75,7 +75,7 @@ The shared dark-mode CSS in `integrations/esc/email-settings/Brand-Dependent-Sty
 
 ## Journal Section on mobile
 
-Newsletter Journal Section includes a 12px mobile-only hair-space spacer before the text cell content. It reuses the existing `stack-gap` rule, so it appears when the columns stack at 640px and below and stays hidden on desktop and classic Windows Outlook. No master-head CSS addition is needed for this module update. Keep the spacer rather than adding vertical margin/padding to the image cell.
+Newsletter Journal Section keeps the cover beside the copy and sizes the button to its label. Copy the **Journal Section on phones** style block from `integrations/esc/email-settings/ESC-Email-Example.html` into the live master email’s head. At widths of 640px and below, it reduces the cover to 84px, aligns the copy to its top and makes the button’s link at least 44px tall. The module’s table provides the desktop and classic Outlook layout.
 
 ## Images and the Congress lead
 
