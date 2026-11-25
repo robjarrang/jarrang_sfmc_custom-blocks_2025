@@ -1610,6 +1610,33 @@ test('congress deadline links are optional per row and need both a title and a U
   }
 });
 
+test('Editorials renders an optional description between the heading and articles', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (module) => module.slug === 'editorials',
+  );
+  const output = dom.document.createElement('div');
+  try {
+    output.innerHTML = C.render(definition);
+    assert.ok(!output.querySelector('p.dark-body'));
+    output.innerHTML = C.render(definition, {
+      description: 'Enjoy free access to these articles.',
+    });
+    const intro = output.querySelector('p.dark-body');
+    assert.equal(intro.textContent, 'Enjoy free access to these articles.');
+    assert.equal(intro.style.fontSize, '13px');
+    assert.equal(intro.style.lineHeight, '20px');
+    assert.match(intro.getAttribute('style'), /mso-line-height-rule: exactly/);
+    assert.ok(intro.parentElement.querySelector('h3'));
+    assert.ok(intro.closest('tr').nextElementSibling.querySelector('a.text-link'));
+
+    output.innerHTML = C.render(definition, { field1: '', description: 'Research & updates' });
+    assert.ok(!output.querySelector('h3'));
+    assert.equal(output.querySelector('p.dark-body').textContent, 'Research & updates');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('editorials items can italicise their title without changing existing output', async () => {
   const { BlockCore: C, BlockControls, dom } = await environment();
   try {
