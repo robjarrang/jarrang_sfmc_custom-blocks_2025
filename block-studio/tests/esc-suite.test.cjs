@@ -625,6 +625,10 @@ test('Journal Section pairs the cover with the copy and keeps the action compact
     assert.ok(!output.querySelector('.block, .stack-gap'));
     assert.equal(cover.querySelector('img').getAttribute('width'), '110');
     assert.equal(copy.querySelector('.journal-title').textContent, 'A different journal title');
+    const details = copy.querySelector('p.dark-muted');
+    assert.equal(details.style.fontSize, '13px');
+    assert.equal(details.style.lineHeight, '20px');
+    assert.match(details.getAttribute('style'), /mso-line-height-rule: exactly/);
     const button = copy.querySelector('.esc-btn');
     assert.match(button.getAttribute('style'), /width: auto !important/);
     assert.equal(button.querySelector('a').getAttribute('href'), issueUrl);
