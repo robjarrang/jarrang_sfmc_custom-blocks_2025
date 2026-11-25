@@ -1610,7 +1610,7 @@ test('congress deadline links are optional per row and need both a title and a U
   }
 });
 
-test('ESC Checklist items accept optional links with the fixed ESC red', async () => {
+test('ESC Checklist items support checkmarks or bullets and optional red links', async () => {
   const { BlockCore: C, dom } = await environment();
   const output = dom.document.createElement('div');
   const destination = 'https://example.com/checklist?a=1&b=2';
@@ -1626,6 +1626,7 @@ test('ESC Checklist items accept optional links with the fixed ESC red', async (
       assert.equal(C.validate(items, rows), '');
       output.innerHTML = C.render(module.exportedDefinition, { [items.id]: rows });
       const [plain, linked, empty] = output.querySelectorAll('.check-text');
+      assert.equal(plain.closest('tr').cells[0].textContent.trim(), '✓');
       assert.equal(plain.textContent, 'Saved checklist item');
       assert.ok(!plain.querySelector('a'));
       const link = linked.querySelector('a');
@@ -1633,6 +1634,18 @@ test('ESC Checklist items accept optional links with the fixed ESC red', async (
       assert.equal(link.getAttribute('href'), destination);
       assert.match(link.getAttribute('style'), /(?:^|;\s*)color: #AE1022 !important;/);
       assert.ok(!empty.querySelector('a'));
+
+      output.innerHTML = C.render(module.exportedDefinition, {
+        [items.id]: rows,
+        item_marker: 'bullet',
+      });
+      for (const text of output.querySelectorAll('.check-text')) {
+        const mark = text.closest('tr').cells[0].firstElementChild;
+        assert.equal(mark.textContent.trim(), '•');
+        assert.equal(mark.style.lineHeight, '24px');
+        assert.equal(mark.style.backgroundColor, '');
+      }
+      assert.equal(output.querySelector('.check-text a').getAttribute('href'), destination);
     }
   } finally {
     await dom.happyDOM.close();
