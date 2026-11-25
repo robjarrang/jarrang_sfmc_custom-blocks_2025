@@ -456,6 +456,40 @@ test('ESC body copy uses 13px and authored line heights use exact four-pixel inc
     await dom.happyDOM.close();
   }
 });
+test('Speaker Grid centres each portrait without a ring or background fill', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const module = projects[0].modules.find((item) => item.slug === 'speaker-grid');
+  const count = module.fields.find((field) => field.key === 'speaker_count');
+  const image = module.fields.find((field) => field.key === 'speaker1_image');
+  const alt = module.fields.find((field) => field.key === 'speaker1_image_alt');
+  const portraitUrl = 'https://example.com/speaker.jpg';
+  try {
+    const output = dom.document.createElement('div');
+    for (const option of count.options) {
+      output.innerHTML = C.render(module.exportedDefinition, {
+        [count.id]: option.value,
+        [image.id]: portraitUrl,
+        [alt.id]: 'Saved speaker name',
+      });
+      assert.equal(output.querySelector('.speaker-image-wrapper'), null);
+      const portraits = [...output.querySelectorAll('img.speaker-image')];
+      assert.equal(portraits.length, Number(option.value));
+      assert.equal(portraits[0].getAttribute('src'), portraitUrl);
+      assert.equal(portraits[0].getAttribute('alt'), 'Saved speaker name');
+      for (const portrait of portraits) {
+        const holder = portrait.closest('table');
+        assert.equal(holder.getAttribute('align'), 'center');
+        assert.equal(holder.getAttribute('width'), '100');
+        assert.equal(holder.hasAttribute('bgcolor'), false);
+        assert.equal(holder.style.backgroundColor, '');
+        assert.match(portrait.getAttribute('style'), /(?:^|;\s*)border: 0;/);
+        assert.equal(portrait.style.borderRadius, '50%');
+      }
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('landscape images give Windows Outlook an editable height divisible by 4', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
