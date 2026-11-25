@@ -395,6 +395,39 @@ test('ESC headings and CTAs can be left blank without rendering empty headings o
     await dom.happyDOM.close();
   }
 });
+test('ESC text links and button styles preserve the entered casing', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+  try {
+    for (const project of [...projects, escTv]) {
+      for (const module of project.modules) {
+        const source = module.exportedDefinition.source;
+        const nodes = C.parse(source).nodes;
+        const textLinks = nodes.filter(
+          (node) =>
+            node.tag === 'a' && !/<img\b/i.test(source.slice(node.innerStart, node.innerEnd)),
+        );
+        for (const node of nodes) {
+          if (!textLinks.some((link) => node.start <= link.start && node.end >= link.end)) continue;
+          assert.doesNotMatch(
+            source.slice(node.start, node.innerStart),
+            /text-transform:\s*(?:uppercase|lowercase|capitalize)\b/i,
+            module.slug,
+          );
+        }
+      }
+    }
+
+    const hero = projects[0].modules.find((module) => module.slug === 'hero-story');
+    const buttonText = hero.fields.find((field) => field.key === 'button1_text');
+    const label = 'Join ESC today';
+    const output = dom.document.createElement('div');
+    output.innerHTML = C.render(hero.exportedDefinition, { [buttonText.id]: label });
+    assert.equal(output.querySelector('.esc-btn a, .esc-btn-outline a').textContent, label);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('ESC text CTAs use fixed red in both layout themes while brand buttons retain their colours', async () => {
   const { BlockCore: C, dom } = await environment();
   const suites = [
