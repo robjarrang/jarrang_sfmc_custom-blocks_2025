@@ -26,6 +26,8 @@ Existing SFMC instances retain their saved values. New defaults, images and corr
 
 The suite uses optional sections, colour/theme choices, conditional layouts, repeating lists, item-position rules and formatted-text lists. Use **Where it applies → Layout rules** to edit supported existing conditions. Test each affected choice because several rules may work together on one layout. New/restructured logic belongs in **More tools → Advanced template logic** with developer review.
 
+Headings and subheadings can be cleared. A CTA with editable text and destination appears when both values are supplied and its visibility switch, where present, is on. If the destination also links an image, clearing it leaves the image visible without the link.
+
 A repeated group can become a single item through its field settings, including supported item-position rules. The retained item becomes both first and last. This still changes an existing published field schema, so release that change as a duplicated module rather than replacing the live endpoint.
 
 ## Minified output
