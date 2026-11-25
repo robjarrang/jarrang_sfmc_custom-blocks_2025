@@ -1963,23 +1963,23 @@
           "defaultValue": [
             {
               "title": "Events",
-              "url": "#events"
+              "url": "https://www.escardio.org/events/"
             },
             {
               "title": "Journals",
-              "url": "#journals"
+              "url": "https://www.escardio.org/publications/"
             },
             {
               "title": "Guidelines",
-              "url": "#guidelines"
+              "url": "https://www.escardio.org/guidelines/"
             },
             {
               "title": "Education",
-              "url": "#education"
+              "url": "https://www.escardio.org/education/"
             },
             {
               "title": "Research",
-              "url": "#research"
+              "url": "https://www.escardio.org/data-science/"
             }
           ],
           "itemFields": [
@@ -2002,8 +2002,8 @@
               "key": "url",
               "label": "Link URL",
               "type": "url",
-              "defaultValue": "#events",
-              "originalValue": "#events",
+              "defaultValue": "https://www.escardio.org/events/",
+              "originalValue": "https://www.escardio.org/events/",
               "enabled": true,
               "required": true,
               "maxLength": 0,
@@ -2050,23 +2050,23 @@
             "defaultValue": [
               {
                 "title": "Events",
-                "url": "#events"
+                "url": "https://www.escardio.org/events/"
               },
               {
                 "title": "Journals",
-                "url": "#journals"
+                "url": "https://www.escardio.org/publications/"
               },
               {
                 "title": "Guidelines",
-                "url": "#guidelines"
+                "url": "https://www.escardio.org/guidelines/"
               },
               {
                 "title": "Education",
-                "url": "#education"
+                "url": "https://www.escardio.org/education/"
               },
               {
                 "title": "Research",
-                "url": "#research"
+                "url": "https://www.escardio.org/data-science/"
               }
             ],
             "itemFields": [
@@ -2089,8 +2089,8 @@
                 "key": "url",
                 "label": "Link URL",
                 "type": "url",
-                "defaultValue": "#events",
-                "originalValue": "#events",
+                "defaultValue": "https://www.escardio.org/events/",
+                "originalValue": "https://www.escardio.org/events/",
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
@@ -2134,23 +2134,23 @@
             "defaultValue": [
               {
                 "title": "Events",
-                "url": "#events"
+                "url": "https://www.escardio.org/events/"
               },
               {
                 "title": "Journals",
-                "url": "#journals"
+                "url": "https://www.escardio.org/publications/"
               },
               {
                 "title": "Guidelines",
-                "url": "#guidelines"
+                "url": "https://www.escardio.org/guidelines/"
               },
               {
                 "title": "Education",
-                "url": "#education"
+                "url": "https://www.escardio.org/education/"
               },
               {
                 "title": "Research",
-                "url": "#research"
+                "url": "https://www.escardio.org/data-science/"
               }
             ],
             "itemFields": [
@@ -2173,8 +2173,8 @@
                 "key": "url",
                 "label": "Link URL",
                 "type": "url",
-                "defaultValue": "#events",
-                "originalValue": "#events",
+                "defaultValue": "https://www.escardio.org/events/",
+                "originalValue": "https://www.escardio.org/events/",
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
