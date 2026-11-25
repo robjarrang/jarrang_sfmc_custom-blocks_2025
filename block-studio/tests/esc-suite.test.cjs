@@ -1610,6 +1610,34 @@ test('congress deadline links are optional per row and need both a title and a U
   }
 });
 
+test('ESC Checklist items accept optional links with the fixed ESC red', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const output = dom.document.createElement('div');
+  const destination = 'https://example.com/checklist?a=1&b=2';
+  try {
+    for (const project of projects) {
+      const module = project.modules.find((item) => item.slug === 'checklist');
+      const items = module.fields.find((field) => field.key === 'items');
+      const rows = [
+        { check_text: 'Saved checklist item' },
+        { check_text: 'Read the terms & conditions', check_link: destination },
+        { check_text: '', check_link: destination },
+      ];
+      assert.equal(C.validate(items, rows), '');
+      output.innerHTML = C.render(module.exportedDefinition, { [items.id]: rows });
+      const [plain, linked, empty] = output.querySelectorAll('.check-text');
+      assert.equal(plain.textContent, 'Saved checklist item');
+      assert.ok(!plain.querySelector('a'));
+      const link = linked.querySelector('a');
+      assert.equal(link.textContent, 'Read the terms & conditions');
+      assert.equal(link.getAttribute('href'), destination);
+      assert.match(link.getAttribute('style'), /(?:^|;\s*)color: #AE1022 !important;/);
+      assert.ok(!empty.querySelector('a'));
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('Editorials renders an optional description between the heading and articles', async () => {
   const { BlockCore: C, dom } = await environment();
   const { exportedDefinition: definition } = projects[0].modules.find(
