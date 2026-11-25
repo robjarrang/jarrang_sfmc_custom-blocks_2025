@@ -75,7 +75,7 @@ The shared dark-mode CSS in `integrations/esc/email-settings/Brand-Dependent-Sty
 
 ## Journal Section on mobile
 
-Newsletter Journal Section keeps the cover beside the copy and sizes the button to its label. Copy the **Journal Section on phones** style block from `integrations/esc/email-settings/ESC-Email-Example.html` into the live master email’s head. At widths of 640px and below, it reduces the cover to 84px, aligns the copy to its top and makes the button’s link at least 44px tall. The module’s table provides the desktop and classic Outlook layout.
+Newsletter Journal Section uses the master email’s shared `.block`, `.fluid` and `.stack-gap` rules. At widths of 640px and below, the cover fills the content column and the copy stacks underneath with a 12px gap. The table places the 110px cover beside the copy on desktop and classic Windows Outlook. Remove the earlier **Journal Section on phones** style block from the live master email if it was added.
 
 ## Images and the Congress lead
 

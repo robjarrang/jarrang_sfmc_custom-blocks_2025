@@ -606,7 +606,7 @@ test('ESC body copy uses 13px and authored line heights use exact four-pixel inc
     await dom.happyDOM.close();
   }
 });
-test('Journal Section pairs the cover with the copy and keeps the action compact', async () => {
+test('Journal Section uses the shared mobile stacking and fluid image classes', async () => {
   const { BlockCore: C, dom } = await environment();
   const { exportedDefinition: definition } = projects[0].modules.find(
     (module) => module.slug === 'journal-section',
@@ -619,12 +619,12 @@ test('Journal Section pairs the cover with the copy and keeps the action compact
       field7: issueUrl,
       field8: 'Read the current issue',
     });
-    const cover = output.querySelector('.journal-cover');
-    const copy = output.querySelector('.journal-copy');
-    assert.equal(cover.nextElementSibling, copy);
-    assert.ok(!output.querySelector('.block, .stack-gap'));
-    assert.equal(cover.querySelector('img').getAttribute('width'), '110');
-    assert.equal(copy.querySelector('.journal-title').textContent, 'A different journal title');
+    const cover = output.querySelector('td.block');
+    const copy = cover.nextElementSibling;
+    assert.ok(copy.classList.contains('block'));
+    assert.ok(copy.firstElementChild.classList.contains('stack-gap'));
+    assert.equal(cover.querySelector('img.fluid').getAttribute('width'), '110');
+    assert.equal(copy.querySelector('h3').textContent, 'A different journal title');
     const details = copy.querySelector('p.dark-muted');
     assert.equal(details.style.fontSize, '13px');
     assert.equal(details.style.lineHeight, '20px');
