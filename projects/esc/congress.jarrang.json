@@ -1504,16 +1504,9 @@
               "allowLinks": true,
               "allowLists": false,
               "toolbar": {
-                "bold": false,
-                "italic": false,
-                "underline": false,
-                "superscript": false,
-                "subscript": false,
-                "colour": false,
                 "bulletList": false,
                 "numberList": false,
-                "listStyle": false,
-                "clear": false
+                "listStyle": false
               },
               "linkStyle": {
                 "colour": "#AE1022",
@@ -1697,16 +1690,9 @@
                 "allowLinks": true,
                 "allowLists": false,
                 "toolbar": {
-                  "bold": false,
-                  "italic": false,
-                  "underline": false,
-                  "superscript": false,
-                  "subscript": false,
-                  "colour": false,
                   "bulletList": false,
                   "numberList": false,
-                  "listStyle": false,
-                  "clear": false
+                  "listStyle": false
                 },
                 "linkStyle": {
                   "colour": "#AE1022",
@@ -1887,16 +1873,9 @@
                 "allowLinks": true,
                 "allowLists": false,
                 "toolbar": {
-                  "bold": false,
-                  "italic": false,
-                  "underline": false,
-                  "superscript": false,
-                  "subscript": false,
-                  "colour": false,
                   "bulletList": false,
                   "numberList": false,
-                  "listStyle": false,
-                  "clear": false
+                  "listStyle": false
                 },
                 "linkStyle": {
                   "colour": "#AE1022",
