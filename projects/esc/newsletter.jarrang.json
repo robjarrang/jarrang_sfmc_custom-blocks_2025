@@ -8216,8 +8216,8 @@
       "name": "Journal Section",
       "slug": "journal-section",
       "release": "1.0.0",
-      "source": "<!-- START .esc-journal-section --><table align=\"center\" bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-journal-section\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f8f8f8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"content-inner\" style=\"background-color: #f8f8f8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 150px;\" valign=\"top\" width=\"150\">\n        <a href=\"https://academic.oup.com/cardiovascres\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" class=\"fluid\" alt=\"Cardiovascular Research journal cover\" src=\"https://placehold.co/110x140/999999/ffffff/png?text=Journal\" style=\"border: none; border-radius: 4px; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></a></td><td class=\"block\" valign=\"middle\" style=\"line-height: 24px; mso-line-height-rule: exactly; font-size: 16px;\"><div class=\"stack-gap\" style=\"display: none; mso-hide: all; height: 0; max-height: 0; overflow: hidden;\"><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></div>\n        {% if category_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ category_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-style: italic; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         Cardiovascular Research</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if issue_info %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ issue_info }}</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field8 and field7 %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 50px; width: auto !important;\"><tr><td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; padding: 8px 16px;\"><a href=\"https://academic.oup.com/cardiovascres\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%% !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; text-underline-color: %%=v(@ButtonBgColour)=%%; display: block; line-height: 20px; mso-line-height-rule: exactly;\" target=\"_blank\"> <span style=\"color: %%=v(@ButtonTextColour)=%%;\">Read this issue</span>  </a></td></tr></table>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-journal-section -->",
-      "draftSource": "<!-- START .esc-journal-section --><table align=\"center\" bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-journal-section\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f8f8f8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"content-inner\" style=\"background-color: #f8f8f8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 150px;\" valign=\"top\" width=\"150\">\n        <a href=\"https://academic.oup.com/cardiovascres\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" class=\"fluid\" alt=\"Cardiovascular Research journal cover\" src=\"https://placehold.co/110x140/999999/ffffff/png?text=Journal\" style=\"border: none; border-radius: 4px; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></a></td><td class=\"block\" valign=\"middle\" style=\"line-height: 24px; mso-line-height-rule: exactly; font-size: 16px;\"><div class=\"stack-gap\" style=\"display: none; mso-hide: all; height: 0; max-height: 0; overflow: hidden;\"><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></div>\n        {% if category_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ category_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-style: italic; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         Cardiovascular Research</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if issue_info %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ issue_info }}</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field8 and field7 %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 50px; width: auto !important;\"><tr><td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; padding: 8px 16px;\"><a href=\"https://academic.oup.com/cardiovascres\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%% !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; text-underline-color: %%=v(@ButtonBgColour)=%%; display: block; line-height: 20px; mso-line-height-rule: exactly;\" target=\"_blank\"> <span style=\"color: %%=v(@ButtonTextColour)=%%;\">Read this issue</span>  </a></td></tr></table>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-journal-section -->",
+      "source": "<!-- START .esc-journal-section --><table align=\"center\" bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-journal-section\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f8f8f8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"content-inner\" style=\"background-color: #f8f8f8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 150px;\" valign=\"top\" width=\"150\">\n        <a href=\"https://academic.oup.com/cardiovascres\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" class=\"fluid\" alt=\"Cardiovascular Research journal cover\" src=\"https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png\" style=\"border: none; border-radius: 4px; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></a></td><td class=\"block\" valign=\"middle\" style=\"line-height: 24px; mso-line-height-rule: exactly; font-size: 16px;\"><div class=\"stack-gap\" style=\"display: none; mso-hide: all; height: 0; max-height: 0; overflow: hidden;\"><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></div>\n        {% if category_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ category_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-style: italic; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         Cardiovascular Research</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if issue_info %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ issue_info }}</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field8 and field7 %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 50px; width: auto !important;\"><tr><td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; padding: 8px 16px;\"><a href=\"https://academic.oup.com/cardiovascres\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%% !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; text-underline-color: %%=v(@ButtonBgColour)=%%; display: block; line-height: 20px; mso-line-height-rule: exactly;\" target=\"_blank\"> <span style=\"color: %%=v(@ButtonTextColour)=%%;\">Read this issue</span>  </a></td></tr></table>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-journal-section -->",
+      "draftSource": "<!-- START .esc-journal-section --><table align=\"center\" bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-journal-section\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f8f8f8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"content-inner\" style=\"background-color: #f8f8f8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 150px;\" valign=\"top\" width=\"150\">\n        <a href=\"https://academic.oup.com/cardiovascres\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" class=\"fluid\" alt=\"Cardiovascular Research journal cover\" src=\"https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png\" style=\"border: none; border-radius: 4px; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></a></td><td class=\"block\" valign=\"middle\" style=\"line-height: 24px; mso-line-height-rule: exactly; font-size: 16px;\"><div class=\"stack-gap\" style=\"display: none; mso-hide: all; height: 0; max-height: 0; overflow: hidden;\"><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></div>\n        {% if category_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ category_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-style: italic; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         Cardiovascular Research</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if issue_info %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ issue_info }}</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field8 and field7 %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 50px; width: auto !important;\"><tr><td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; padding: 8px 16px;\"><a href=\"https://academic.oup.com/cardiovascres\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%% !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; text-underline-color: %%=v(@ButtonBgColour)=%%; display: block; line-height: 20px; mso-line-height-rule: exactly;\" target=\"_blank\"> <span style=\"color: %%=v(@ButtonTextColour)=%%;\">Read this issue</span>  </a></td></tr></table>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-journal-section -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -8254,18 +8254,18 @@
           "id": "field2",
           "label": "Cover image",
           "type": "image",
-          "defaultValue": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
-          "originalValue": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
+          "defaultValue": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
+          "originalValue": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Journal cover image, 110px wide.",
+          "help": "Displays at 110px wide on desktop and full width on mobile.",
           "targets": [
             {
               "name": "src",
               "start": 1159,
-              "end": 1218,
-              "value": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
+              "end": 1290,
+              "value": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
               "quoted": true,
               "nodeId": "n9",
               "kind": "attribute"
@@ -8321,8 +8321,8 @@
           "help": "",
           "targets": [
             {
-              "start": 2384,
-              "end": 2417,
+              "start": 2456,
+              "end": 2489,
               "nodeId": "n15",
               "kind": "content"
             }
@@ -8357,8 +8357,8 @@
           "targets": [
             {
               "name": "href",
-              "start": 3517,
-              "end": 3555,
+              "start": 3589,
+              "end": 3627,
               "value": "https://academic.oup.com/cardiovascres",
               "quoted": true,
               "nodeId": "n22",
@@ -8384,8 +8384,8 @@
           "help": "",
           "targets": [
             {
-              "start": 4069,
-              "end": 4084,
+              "start": 4141,
+              "end": 4156,
               "nodeId": "n23",
               "kind": "content"
             }
@@ -8439,18 +8439,18 @@
             "id": "field2",
             "label": "Cover image",
             "type": "image",
-            "defaultValue": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
-            "originalValue": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
+            "defaultValue": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
+            "originalValue": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Journal cover image, 110px wide.",
+            "help": "Displays at 110px wide on desktop and full width on mobile.",
             "targets": [
               {
                 "name": "src",
                 "start": 1159,
-                "end": 1218,
-                "value": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
+                "end": 1290,
+                "value": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
                 "quoted": true,
                 "nodeId": "n9",
                 "kind": "attribute"
@@ -8506,8 +8506,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2384,
-                "end": 2417,
+                "start": 2456,
+                "end": 2489,
                 "nodeId": "n15",
                 "kind": "content"
               }
@@ -8542,8 +8542,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 3517,
-                "end": 3555,
+                "start": 3589,
+                "end": 3627,
                 "value": "https://academic.oup.com/cardiovascres",
                 "quoted": true,
                 "nodeId": "n22",
@@ -8569,8 +8569,8 @@
             "help": "",
             "targets": [
               {
-                "start": 4069,
-                "end": 4084,
+                "start": 4141,
+                "end": 4156,
                 "nodeId": "n23",
                 "kind": "content"
               }
@@ -8584,7 +8584,7 @@
         "name": "Journal Section",
         "slug": "journal-section",
         "release": "1.0.0",
-        "source": "<!-- START .esc-journal-section --><table align=\"center\" bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-journal-section\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f8f8f8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"content-inner\" style=\"background-color: #f8f8f8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 150px;\" valign=\"top\" width=\"150\">\n        <a href=\"https://academic.oup.com/cardiovascres\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" class=\"fluid\" alt=\"Cardiovascular Research journal cover\" src=\"https://placehold.co/110x140/999999/ffffff/png?text=Journal\" style=\"border: none; border-radius: 4px; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></a></td><td class=\"block\" valign=\"middle\" style=\"line-height: 24px; mso-line-height-rule: exactly; font-size: 16px;\"><div class=\"stack-gap\" style=\"display: none; mso-hide: all; height: 0; max-height: 0; overflow: hidden;\"><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></div>\n        {% if category_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ category_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-style: italic; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         Cardiovascular Research</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if issue_info %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ issue_info }}</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field8 and field7 %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 50px; width: auto !important;\"><tr><td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; padding: 8px 16px;\"><a href=\"https://academic.oup.com/cardiovascres\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%% !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; text-underline-color: %%=v(@ButtonBgColour)=%%; display: block; line-height: 20px; mso-line-height-rule: exactly;\" target=\"_blank\"> <span style=\"color: %%=v(@ButtonTextColour)=%%;\">Read this issue</span>  </a></td></tr></table>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-journal-section -->",
+        "source": "<!-- START .esc-journal-section --><table align=\"center\" bgcolor=\"#f8f8f8\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-journal-section\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f8f8f8; width: 620px;\">\n \n  <tr>\n   <td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td><td bgcolor=\"#f8f8f8\" class=\"content-inner\" style=\"background-color: #f8f8f8; padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:32px;height:32px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"width: 150px;\" valign=\"top\" width=\"150\">\n        <a href=\"https://academic.oup.com/cardiovascres\" style=\"display: block; line-height: 0;\" target=\"_blank\"><img border=\"0\" class=\"fluid\" alt=\"Cardiovascular Research journal cover\" src=\"https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png\" style=\"border: none; border-radius: 4px; display: block; height: auto; outline: none; text-decoration: none;\" width=\"110\"></a></td><td class=\"block\" valign=\"middle\" style=\"line-height: 24px; mso-line-height-rule: exactly; font-size: 16px;\"><div class=\"stack-gap\" style=\"display: none; mso-hide: all; height: 0; max-height: 0; overflow: hidden;\"><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div></div>\n        {% if category_label %}<p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ category_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-style: italic; font-weight: 700; line-height: 28px; mso-line-height-rule: exactly; margin: 0; \">\n         Cardiovascular Research</h3><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if issue_info %}<p class=\"dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ issue_info }}</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field8 and field7 %}<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 50px; width: auto !important;\"><tr><td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; padding: 8px 16px;\"><a href=\"https://academic.oup.com/cardiovascres\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border-radius: 50px; color: %%=v(@ButtonTextColour)=%% !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; text-underline-color: %%=v(@ButtonBgColour)=%%; display: block; line-height: 20px; mso-line-height-rule: exactly;\" target=\"_blank\"> <span style=\"color: %%=v(@ButtonTextColour)=%%;\">Read this issue</span>  </a></td></tr></table>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td bgcolor=\"#f8f8f8\" class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; background-color: #f8f8f8; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-journal-section -->",
         "templateMode": true,
         "minifyOutput": true,
         "contextCss": "",
@@ -8621,18 +8621,18 @@
             "id": "field2",
             "label": "Cover image",
             "type": "image",
-            "defaultValue": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
-            "originalValue": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
+            "defaultValue": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
+            "originalValue": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Journal cover image, 110px wide.",
+            "help": "Displays at 110px wide on desktop and full width on mobile.",
             "targets": [
               {
                 "name": "src",
                 "start": 1159,
-                "end": 1218,
-                "value": "https://placehold.co/110x140/999999/ffffff/png?text=Journal",
+                "end": 1290,
+                "value": "https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/journal-placeholder.png",
                 "quoted": true,
                 "nodeId": "n9",
                 "kind": "attribute"
@@ -8688,8 +8688,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2384,
-                "end": 2417,
+                "start": 2456,
+                "end": 2489,
                 "nodeId": "n15",
                 "kind": "content"
               }
@@ -8724,8 +8724,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 3517,
-                "end": 3555,
+                "start": 3589,
+                "end": 3627,
                 "value": "https://academic.oup.com/cardiovascres",
                 "quoted": true,
                 "nodeId": "n22",
@@ -8751,8 +8751,8 @@
             "help": "",
             "targets": [
               {
-                "start": 4069,
-                "end": 4084,
+                "start": 4141,
+                "end": 4156,
                 "nodeId": "n23",
                 "kind": "content"
               }
