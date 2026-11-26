@@ -200,7 +200,7 @@ test('ESC punctuation remains readable after editing mapped fields and adding re
     };
     for (const [template, slug, fieldId, expected] of [
       [0, 'journal-section', 'field6', 'Volume 121 Issue 15 • 9 December 2025'],
-      [0, 'quote', 'field1', '“Add a short quote or editorial callout here.”'],
+      [0, 'quote', 'field1', '“Add a quotation or editorial callout here.”'],
       [0, 'social-block', 'field3', 'View post →'],
       [1, 'deadlines-list', 'field2', 'Don’t miss these deadlines'],
       [1, 'lead-editorial', 'field2', '28 Aug – 31 Aug 2026'],
@@ -1831,6 +1831,46 @@ test('ESC headings can be italicised per field without changing existing output'
     assert.ok(host.querySelector('h2[style*="font-style: italic"]'));
     host.innerHTML = C.render(m, { [list.id]: rows(false) });
     assert.equal(host.querySelector('h2[style*="font-style: italic"]'), null);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC Quote supports long quotations and an optional heading and speaker photo', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const { exportedDefinition: definition } = projects[0].modules.find((m) => m.slug === 'quote');
+    const quoteField = definition.fields.find((field) => field.label === 'Quote text');
+    const quote = 'A longer quotation can give a speaker enough space to make a complete point. '
+      .repeat(8)
+      .trim();
+    const output = dom.document.createElement('div');
+    assert.equal(C.validate(quoteField, quote), '');
+    output.innerHTML = C.render(definition, {
+      [quoteField.id]: quote,
+      heading: 'Research in cardiology',
+      field2: 'Dr Morgan Lee',
+      speaker_photo: 'https://example.org/speaker.png',
+    });
+    const text = output.querySelector('.quote-text');
+    assert.equal(text.textContent, quote);
+    assert.equal(text.style.fontSize, '13px');
+    assert.equal(text.style.fontStyle, 'italic');
+    assert.equal(text.style.lineHeight, '24px');
+    assert.match(text.getAttribute('style'), /mso-line-height-rule: exactly/);
+    const heading = output.querySelector('h2');
+    assert.equal(heading.textContent, 'Research in cardiology');
+    assert.equal(heading.nextElementSibling.nextElementSibling, text);
+    const attribution = output.querySelector('.quote-attribution');
+    assert.equal(attribution.querySelector('.quote-author').textContent.trim(), 'Dr Morgan Lee');
+    const photo = attribution.querySelector('img');
+    assert.equal(photo.getAttribute('width'), '56');
+    assert.equal(photo.getAttribute('height'), '56');
+    assert.equal(photo.getAttribute('alt'), '');
+
+    output.innerHTML = C.render(definition, { [quoteField.id]: quote });
+    assert.equal(output.querySelector('h2, .quote-photo, .quote-attribution'), null);
+    assert.ok(output.querySelector('.quote-author'));
   } finally {
     await dom.happyDOM.close();
   }

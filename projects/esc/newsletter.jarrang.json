@@ -10160,27 +10160,41 @@
       "name": "Quote",
       "slug": "quote",
       "release": "1.0.0",
-      "source": "<!-- START .esc-quote --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-quote\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"quote-box\" style=\"border-left: 4px solid %%=v(@AccentColour)=%%; padding: 0 0 0 20px; width: 100%;\"><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>\n        <p class=\"quote-text dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 32px; mso-line-height-rule: exactly; margin: 0; \">\n         &ldquo;Add a short quote or editorial callout here.&rdquo;</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-author dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0;\">\n         Name Surname</p>{% if author_role %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-role dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ author_role }}</p>{% endif %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-quote -->",
-      "draftSource": "<!-- START .esc-quote --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-quote\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"quote-box\" style=\"border-left: 4px solid %%=v(@AccentColour)=%%; padding: 0 0 0 20px; width: 100%;\"><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>\n        <p class=\"quote-text dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 32px; mso-line-height-rule: exactly; margin: 0; \">\n         &ldquo;Add a short quote or editorial callout here.&rdquo;</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-author dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0;\">\n         Name Surname</p>{% if author_role %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-role dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ author_role }}</p>{% endif %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-quote -->",
+      "source": "<!-- START .esc-quote --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-quote\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"quote-box\" style=\"border-left: 4px solid %%=v(@AccentColour)=%%; padding: 0 0 0 20px; width: 100%;\"><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>\n        {% if heading %}<h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">{{ heading }}</h2><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<p class=\"quote-text dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-style: italic; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         &ldquo;Add a quotation or editorial callout here.&rdquo;</p><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>{% if speaker_photo %}<table class=\"quote-attribution\" role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"width: 100%; table-layout: fixed; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\"><tr><td width=\"76\" style=\"width: 76px;\" valign=\"middle\"><img class=\"quote-photo\" src=\"{{ speaker_photo }}\" alt=\"\" border=\"0\" width=\"56\" height=\"56\" style=\"width: 56px !important; height: 56px !important; display: block; border: 0; border-radius: 50%; object-fit: cover;\"></td><td style=\"line-height: 20px; mso-line-height-rule: exactly;\" valign=\"middle\">{% endif %}<p class=\"quote-author dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;\">\n         Name Surname</p>{% if author_role %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-role dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ author_role }}</p>{% endif %}{% if speaker_photo %}</td></tr></table>{% endif %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-quote -->",
+      "draftSource": "<!-- START .esc-quote --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-quote\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"quote-box\" style=\"border-left: 4px solid %%=v(@AccentColour)=%%; padding: 0 0 0 20px; width: 100%;\"><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>\n        {% if heading %}<h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">{{ heading }}</h2><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<p class=\"quote-text dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-style: italic; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         &ldquo;Add a quotation or editorial callout here.&rdquo;</p><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>{% if speaker_photo %}<table class=\"quote-attribution\" role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"width: 100%; table-layout: fixed; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\"><tr><td width=\"76\" style=\"width: 76px;\" valign=\"middle\"><img class=\"quote-photo\" src=\"{{ speaker_photo }}\" alt=\"\" border=\"0\" width=\"56\" height=\"56\" style=\"width: 56px !important; height: 56px !important; display: block; border: 0; border-radius: 50%; object-fit: cover;\"></td><td style=\"line-height: 20px; mso-line-height-rule: exactly;\" valign=\"middle\">{% endif %}<p class=\"quote-author dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;\">\n         Name Surname</p>{% if author_role %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-role dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ author_role }}</p>{% endif %}{% if speaker_photo %}</td></tr></table>{% endif %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-quote -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
       "fields": [
         {
+          "id": "heading",
+          "key": "heading",
+          "label": "Heading",
+          "type": "text",
+          "defaultValue": "",
+          "originalValue": "",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "binding": "template"
+        },
+        {
           "id": "field1",
           "label": "Quote text",
           "type": "text",
-          "defaultValue": "“Add a short quote or editorial callout here.”",
-          "originalValue": "“Add a short quote or editorial callout here.”",
+          "defaultValue": "“Add a quotation or editorial callout here.”",
+          "originalValue": "“Add a quotation or editorial callout here.”",
           "enabled": true,
           "required": true,
           "maxLength": 0,
           "help": "",
           "targets": [
             {
-              "start": 1230,
-              "end": 1298,
-              "nodeId": "n9",
+              "start": 1652,
+              "end": 1718,
+              "nodeId": "n11",
               "kind": "content"
             }
           ],
@@ -10198,9 +10212,9 @@
           "help": "",
           "targets": [
             {
-              "start": 1677,
-              "end": 1699,
-              "nodeId": "n11",
+              "start": 2690,
+              "end": 2712,
+              "nodeId": "n18",
               "kind": "content"
             }
           ],
@@ -10220,6 +10234,20 @@
           "allowLinks": true,
           "key": "author_role",
           "binding": "template"
+        },
+        {
+          "id": "speaker_photo",
+          "key": "speaker_photo",
+          "label": "Speaker photo",
+          "type": "image",
+          "defaultValue": "",
+          "originalValue": "",
+          "enabled": true,
+          "required": false,
+          "help": "Use a square photo.",
+          "maxLength": 0,
+          "targets": [],
+          "binding": "template"
         }
       ],
       "analysed": true,
@@ -10237,20 +10265,34 @@
         "release": "1.0.0",
         "fields": [
           {
+            "id": "heading",
+            "key": "heading",
+            "label": "Heading",
+            "type": "text",
+            "defaultValue": "",
+            "originalValue": "",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "binding": "template"
+          },
+          {
             "id": "field1",
             "label": "Quote text",
             "type": "text",
-            "defaultValue": "“Add a short quote or editorial callout here.”",
-            "originalValue": "“Add a short quote or editorial callout here.”",
+            "defaultValue": "“Add a quotation or editorial callout here.”",
+            "originalValue": "“Add a quotation or editorial callout here.”",
             "enabled": true,
             "required": true,
             "maxLength": 0,
             "help": "",
             "targets": [
               {
-                "start": 1230,
-                "end": 1298,
-                "nodeId": "n9",
+                "start": 1652,
+                "end": 1718,
+                "nodeId": "n11",
                 "kind": "content"
               }
             ],
@@ -10268,9 +10310,9 @@
             "help": "",
             "targets": [
               {
-                "start": 1677,
-                "end": 1699,
-                "nodeId": "n11",
+                "start": 2690,
+                "end": 2712,
+                "nodeId": "n18",
                 "kind": "content"
               }
             ],
@@ -10290,6 +10332,20 @@
             "allowLinks": true,
             "key": "author_role",
             "binding": "template"
+          },
+          {
+            "id": "speaker_photo",
+            "key": "speaker_photo",
+            "label": "Speaker photo",
+            "type": "image",
+            "defaultValue": "",
+            "originalValue": "",
+            "enabled": true,
+            "required": false,
+            "help": "Use a square photo.",
+            "maxLength": 0,
+            "targets": [],
+            "binding": "template"
           }
         ]
       },
@@ -10298,26 +10354,40 @@
         "name": "Quote",
         "slug": "quote",
         "release": "1.0.0",
-        "source": "<!-- START .esc-quote --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-quote\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"quote-box\" style=\"border-left: 4px solid %%=v(@AccentColour)=%%; padding: 0 0 0 20px; width: 100%;\"><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>\n        <p class=\"quote-text dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 24px; font-weight: 700; line-height: 32px; mso-line-height-rule: exactly; margin: 0; \">\n         &ldquo;Add a short quote or editorial callout here.&rdquo;</p><div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-author dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; margin: 0;\">\n         Name Surname</p>{% if author_role %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-role dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ author_role }}</p>{% endif %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-quote -->",
+        "source": "<!-- START .esc-quote --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-quote\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"quote-box\" style=\"border-left: 4px solid %%=v(@AccentColour)=%%; padding: 0 0 0 20px; width: 100%;\"><div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div>\n        {% if heading %}<h2 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 20px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;\">{{ heading }}</h2><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}<p class=\"quote-text dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-style: italic; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         &ldquo;Add a quotation or editorial callout here.&rdquo;</p><div style=\"line-height:20px;height:20px;mso-line-height-rule:exactly\">&#8202;</div>{% if speaker_photo %}<table class=\"quote-attribution\" role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"width: 100%; table-layout: fixed; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\"><tr><td width=\"76\" style=\"width: 76px;\" valign=\"middle\"><img class=\"quote-photo\" src=\"{{ speaker_photo }}\" alt=\"\" border=\"0\" width=\"56\" height=\"56\" style=\"width: 56px !important; height: 56px !important; display: block; border: 0; border-radius: 50%; object-fit: cover;\"></td><td style=\"line-height: 20px; mso-line-height-rule: exactly;\" valign=\"middle\">{% endif %}<p class=\"quote-author dark-invert\" style=\"color: #1a1a1a; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 16px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;\">\n         Name Surname</p>{% if author_role %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div><p class=\"quote-role dark-muted\" style=\"color: #666666; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ author_role }}</p>{% endif %}{% if speaker_photo %}</td></tr></table>{% endif %}<div style=\"line-height:4px;height:4px;font-size:4px;mso-line-height-rule:exactly\">&#8202;</div></td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-quote -->",
         "templateMode": true,
         "minifyOutput": true,
         "contextCss": "",
         "fields": [
           {
+            "id": "heading",
+            "key": "heading",
+            "label": "Heading",
+            "type": "text",
+            "defaultValue": "",
+            "originalValue": "",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "binding": "template"
+          },
+          {
             "id": "field1",
             "label": "Quote text",
             "type": "text",
-            "defaultValue": "“Add a short quote or editorial callout here.”",
-            "originalValue": "“Add a short quote or editorial callout here.”",
+            "defaultValue": "“Add a quotation or editorial callout here.”",
+            "originalValue": "“Add a quotation or editorial callout here.”",
             "enabled": true,
             "required": true,
             "maxLength": 0,
             "help": "",
             "targets": [
               {
-                "start": 1230,
-                "end": 1298,
-                "nodeId": "n9",
+                "start": 1652,
+                "end": 1718,
+                "nodeId": "n11",
                 "kind": "content"
               }
             ],
@@ -10335,9 +10405,9 @@
             "help": "",
             "targets": [
               {
-                "start": 1677,
-                "end": 1699,
-                "nodeId": "n11",
+                "start": 2690,
+                "end": 2712,
+                "nodeId": "n18",
                 "kind": "content"
               }
             ],
@@ -10356,6 +10426,20 @@
             "targets": [],
             "allowLinks": true,
             "key": "author_role",
+            "binding": "template"
+          },
+          {
+            "id": "speaker_photo",
+            "key": "speaker_photo",
+            "label": "Speaker photo",
+            "type": "image",
+            "defaultValue": "",
+            "originalValue": "",
+            "enabled": true,
+            "required": false,
+            "help": "Use a square photo.",
+            "maxLength": 0,
+            "targets": [],
             "binding": "template"
           }
         ],
