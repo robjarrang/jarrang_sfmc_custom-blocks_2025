@@ -679,7 +679,7 @@ test('landscape images give Windows Outlook an editable height divisible by 4', 
       for (const m of p.modules) {
         const fields = m.fields.flatMap((f) => [f, ...(f.itemFields || [])]);
         for (const [tag, ref, auto] of m.source.matchAll(
-          /<img\b[^>]*\sheight="\{% if ([\w.]+) > 0 %\}\{\{ \1 \}\}\{% else %\}(\d+)\{% endif %\}"[^>]*>/g,
+          /<img\b[^>]*\sheight="(?:\{% if [^%]+%\}\d+)?\{% (?:if|elsif) ([\w.]+) > 0 %\}\{\{ \1 \}\}\{% else %\}(\d+)\{% endif %\}"[^>]*>/g,
         )) {
           const width = Number(tag.match(/\swidth="(\d+)"/)[1]);
           assert.equal(Number(auto) % 4, 0, m.slug + ': ' + auto);
@@ -2273,6 +2273,21 @@ test('Newsletter Full Width Image supports image proportions and the shared link
     assert.equal(host.querySelector('img').getAttribute('height'), '348');
     assert.equal(host.querySelector('img').style.height, 'auto');
     assert.equal(host.querySelector('img').style.borderRadius, '');
+    const editor = dom.document.createElement('div');
+    const formatValues = { image_height: '620' };
+    Controls.mount(editor, m.fields, formatValues, () => {});
+    const format = editor.querySelector('#image_format');
+    const advanced = editor.querySelector('#image_height').closest('details');
+    assert.equal(format.value, 'landscape');
+    assert.equal(format.options[0].textContent, 'Promotional banner (600 × 150)');
+    assert.equal(advanced.querySelector('summary').textContent, 'Advanced Outlook settings');
+    assert.equal(advanced.open, false);
+    format.value = 'promotional';
+    format.dispatchEvent(new dom.Event('change'));
+    host.innerHTML = C.render(m, formatValues);
+    assert.equal(host.querySelector('img').getAttribute('height'), '156');
+    assert.equal(host.querySelector('img').style.height, 'auto');
+    assert.equal(formatValues.image_height, '620');
     const tv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
     assert.equal(
       tv.modules.some((module) => module.slug.includes('full-width-image')),

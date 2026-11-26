@@ -147,7 +147,9 @@ For recovery and deployment rollback, follow the [user guide](../../internal/USE
 
 ## Full Width Image
 
-**Full Width Image** (`full-width-image`) lives in **ESC / Newsletter** and can be used across ESC emails. It is a single linked image spanning the full 620px email width, with square edges and no side margins or extra spacers. Supply an image URL, alt text and destination; the link includes the shared conversion tracking, title and alias controls (conversion tracking off by default). A 1920 × 1080px image is recommended; other proportions scale naturally. **Image height in Outlook (px)** defaults to 0, which supplies a 348px height for Windows Outlook. For a different shape, enter its displayed height at 620px wide (source height × 620 ÷ source width), ideally rounded to a multiple of 4. Other clients use proportional `height: auto`. The surrounding table uses the standard white Newsletter background. The former ESC TV endpoint is retained for installed blocks, but is omitted from Studio and the ESC TV catalogue; register the Newsletter endpoint for new installations.
+**Full Width Image** (`full-width-image`) lives in **ESC / Newsletter** and can be used across ESC emails. It is a linked image spanning the full 620px email width, with square edges and no side margins or extra spacers. For existing 600 × 150 artwork, choose **Image format → Promotional banner (600 × 150)**, then supply the image URL, alt text and destination. The banner scales to 620 × 155px in clients that respect proportional sizing. Windows Outlook uses a 156px fallback to keep the height on the 4px grid.
+
+The **Landscape image (16:9) or custom size** option is the default for compatibility. A 16:9 image uses the usual 348px Windows Outlook height. For other proportions, open **Advanced Outlook settings** and enter the displayed height at 620px wide, rounded to the nearest multiple of 4px. Existing custom heights still apply in this mode. The link includes conversion tracking, title and alias controls. The former ESC TV endpoint is retained for installed blocks. Use the Newsletter endpoint for new installations.
 
 ## ESC TV
 

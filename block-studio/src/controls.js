@@ -337,6 +337,13 @@
         help.textContent = field.help;
         group.append(help);
       }
+      if (field.disclosure) {
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        summary.textContent = field.disclosure;
+        details.append(summary, ...group.children);
+        group.append(details);
+      }
       group.append(error);
       container.append(group);
       refs.set(field.id, { input, error, group });
