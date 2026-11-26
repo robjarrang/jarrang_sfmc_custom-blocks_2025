@@ -2196,6 +2196,37 @@ test('ESC rich text preserves highlight, strikethrough, and nested list styling 
   }
 });
 
+test('ESC multi-column stories keep overflow wrapping on headlines and descriptions', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const tv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+  const cases = [
+    [projects[0], 'story-card-2col', 2],
+    [projects[0], 'story-card-3col', 3],
+    [projects[1], 'story-2col', 2],
+    [tv, 'esc-tv-2-col', 2],
+  ];
+  try {
+    const output = dom.document.createElement('div');
+    for (const [project, slug, count] of cases) {
+      const { exportedDefinition } = project.modules.find((module) => module.slug === slug);
+      for (const values of [{}, ...(slug.startsWith('story-card') ? [{ field1: 'dark' }] : [])]) {
+        output.innerHTML = C.render(exportedDefinition, values);
+        const text = output.querySelectorAll('.news-card-title, .news-card-text, .story-excerpt');
+        assert.equal(text.length, count * 2, slug);
+        for (const node of text) {
+          assert.match(
+            node.getAttribute('style'),
+            /word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;/,
+          );
+          assert.equal(node.closest('table').style.tableLayout, 'fixed');
+        }
+      }
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC card descriptions hide when blank while CTA switches remain independent', async () => {
   const { BlockCore: C, BlockControls, dom } = await environment();
   const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));

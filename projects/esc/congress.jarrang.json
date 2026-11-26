@@ -5804,8 +5804,8 @@
       "name": "Story 2 Col",
       "slug": "story-2col",
       "release": "1.0.0",
-      "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field1 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_height > 0 %}{{ story_image_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field1 %}</a>{% endif %}{% if eyebrow_label %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         First congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ body_copy | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field7 and field1 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td><td class=\"gap block\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field8 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_2_height > 0 %}{{ story_image_2_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field8 %}</a>{% endif %}{% if eyebrow_label_2 %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field12 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_2_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         Second congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ body_copy_2 | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field14 and field8 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
-      "draftSource": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field1 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_height > 0 %}{{ story_image_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field1 %}</a>{% endif %}{% if eyebrow_label %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         First congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ body_copy | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field7 and field1 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td><td class=\"gap block\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field8 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_2_height > 0 %}{{ story_image_2_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field8 %}</a>{% endif %}{% if eyebrow_label_2 %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field12 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_2_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         Second congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ body_copy_2 | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field14 and field8 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+      "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"table-layout: fixed; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field1 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_height > 0 %}{{ story_image_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field1 %}</a>{% endif %}{% if eyebrow_label %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         First congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         {{ body_copy | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field7 and field1 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td><td class=\"gap block\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field8 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_2_height > 0 %}{{ story_image_2_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field8 %}</a>{% endif %}{% if eyebrow_label_2 %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field12 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_2_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         Second congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         {{ body_copy_2 | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field14 and field8 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+      "draftSource": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"table-layout: fixed; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field1 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_height > 0 %}{{ story_image_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field1 %}</a>{% endif %}{% if eyebrow_label %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         First congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         {{ body_copy | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field7 and field1 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td><td class=\"gap block\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field8 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_2_height > 0 %}{{ story_image_2_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field8 %}</a>{% endif %}{% if eyebrow_label_2 %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field12 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_2_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         Second congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         {{ body_copy_2 | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field14 and field8 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
       "templateMode": true,
       "contextCss": "",
       "width": 620,
@@ -5823,8 +5823,8 @@
           "targets": [
             {
               "name": "href",
-              "start": 941,
-              "end": 966,
+              "start": 962,
+              "end": 987,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n8",
@@ -5832,8 +5832,8 @@
             },
             {
               "name": "href",
-              "start": 2948,
-              "end": 2973,
+              "start": 3141,
+              "end": 3166,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n17",
@@ -5860,8 +5860,8 @@
           "targets": [
             {
               "name": "src",
-              "start": 1192,
-              "end": 1291,
+              "start": 1213,
+              "end": 1312,
               "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
               "quoted": true,
               "nodeId": "n9",
@@ -5882,8 +5882,8 @@
           "targets": [
             {
               "name": "alt",
-              "start": 1056,
-              "end": 1082,
+              "start": 1077,
+              "end": 1103,
               "value": "Congress image description",
               "quoted": true,
               "nodeId": "n9",
@@ -5932,8 +5932,8 @@
           "help": "",
           "targets": [
             {
-              "start": 2294,
-              "end": 2333,
+              "start": 2401,
+              "end": 2440,
               "nodeId": "n13",
               "kind": "content"
             }
@@ -5994,8 +5994,8 @@
           "help": "",
           "targets": [
             {
-              "start": 3362,
-              "end": 3373,
+              "start": 3555,
+              "end": 3566,
               "nodeId": "n17",
               "kind": "content"
             }
@@ -6015,8 +6015,8 @@
           "targets": [
             {
               "name": "href",
-              "start": 3680,
-              "end": 3705,
+              "start": 3873,
+              "end": 3898,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n20",
@@ -6024,8 +6024,8 @@
             },
             {
               "name": "href",
-              "start": 5704,
-              "end": 5729,
+              "start": 6069,
+              "end": 6094,
               "value": "https://www.escardio.org/",
               "quoted": true,
               "nodeId": "n29",
@@ -6052,8 +6052,8 @@
           "targets": [
             {
               "name": "src",
-              "start": 3935,
-              "end": 4034,
+              "start": 4128,
+              "end": 4227,
               "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
               "quoted": true,
               "nodeId": "n21",
@@ -6074,8 +6074,8 @@
           "targets": [
             {
               "name": "alt",
-              "start": 3795,
-              "end": 3821,
+              "start": 3988,
+              "end": 4014,
               "value": "Congress image description",
               "quoted": true,
               "nodeId": "n21",
@@ -6124,8 +6124,8 @@
           "help": "",
           "targets": [
             {
-              "start": 5044,
-              "end": 5084,
+              "start": 5323,
+              "end": 5363,
               "nodeId": "n25",
               "kind": "content"
             }
@@ -6186,8 +6186,8 @@
           "help": "",
           "targets": [
             {
-              "start": 6118,
-              "end": 6129,
+              "start": 6483,
+              "end": 6494,
               "nodeId": "n29",
               "kind": "content"
             }
@@ -6222,8 +6222,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 941,
-                "end": 966,
+                "start": 962,
+                "end": 987,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n8",
@@ -6231,8 +6231,8 @@
               },
               {
                 "name": "href",
-                "start": 2948,
-                "end": 2973,
+                "start": 3141,
+                "end": 3166,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n17",
@@ -6259,8 +6259,8 @@
             "targets": [
               {
                 "name": "src",
-                "start": 1192,
-                "end": 1291,
+                "start": 1213,
+                "end": 1312,
                 "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n9",
@@ -6281,8 +6281,8 @@
             "targets": [
               {
                 "name": "alt",
-                "start": 1056,
-                "end": 1082,
+                "start": 1077,
+                "end": 1103,
                 "value": "Congress image description",
                 "quoted": true,
                 "nodeId": "n9",
@@ -6331,8 +6331,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2294,
-                "end": 2333,
+                "start": 2401,
+                "end": 2440,
                 "nodeId": "n13",
                 "kind": "content"
               }
@@ -6393,8 +6393,8 @@
             "help": "",
             "targets": [
               {
-                "start": 3362,
-                "end": 3373,
+                "start": 3555,
+                "end": 3566,
                 "nodeId": "n17",
                 "kind": "content"
               }
@@ -6414,8 +6414,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 3680,
-                "end": 3705,
+                "start": 3873,
+                "end": 3898,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n20",
@@ -6423,8 +6423,8 @@
               },
               {
                 "name": "href",
-                "start": 5704,
-                "end": 5729,
+                "start": 6069,
+                "end": 6094,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n29",
@@ -6451,8 +6451,8 @@
             "targets": [
               {
                 "name": "src",
-                "start": 3935,
-                "end": 4034,
+                "start": 4128,
+                "end": 4227,
                 "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n21",
@@ -6473,8 +6473,8 @@
             "targets": [
               {
                 "name": "alt",
-                "start": 3795,
-                "end": 3821,
+                "start": 3988,
+                "end": 4014,
                 "value": "Congress image description",
                 "quoted": true,
                 "nodeId": "n21",
@@ -6523,8 +6523,8 @@
             "help": "",
             "targets": [
               {
-                "start": 5044,
-                "end": 5084,
+                "start": 5323,
+                "end": 5363,
                 "nodeId": "n25",
                 "kind": "content"
               }
@@ -6585,8 +6585,8 @@
             "help": "",
             "targets": [
               {
-                "start": 6118,
-                "end": 6129,
+                "start": 6483,
+                "end": 6494,
                 "nodeId": "n29",
                 "kind": "content"
               }
@@ -6600,7 +6600,7 @@
         "name": "Story 2 Col",
         "slug": "story-2col",
         "release": "1.0.0",
-        "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field1 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_height > 0 %}{{ story_image_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field1 %}</a>{% endif %}{% if eyebrow_label %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         First congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ body_copy | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field7 and field1 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td><td class=\"gap block\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field8 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_2_height > 0 %}{{ story_image_2_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field8 %}</a>{% endif %}{% if eyebrow_label_2 %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field12 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_2_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0; \">\n         Second congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0; \">\n         {{ body_copy_2 | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field14 and field8 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
+        "source": "<!-- START .esc-story-2col --><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-story-2col\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 620px;\">\n \n  <tr>\n   <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td><td class=\"content-inner esc-story\" style=\"padding: 0; width: 580px;\" valign=\"top\"><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div>\n    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" role=\"presentation\" style=\"table-layout: fixed; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;\" width=\"100%\">\n     \n      <tr>\n       <td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field1 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_height > 0 %}{{ story_image_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field1 %}</a>{% endif %}{% if eyebrow_label %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field5 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         First congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         {{ body_copy | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field7 and field1 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td><td class=\"gap block\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">\n        &nbsp;</td><td class=\"block\" style=\"line-height: 20px; mso-line-height-rule: exactly; width: 280px;\" valign=\"top\" width=\"280\">\n        {% if field8 %}<a href=\"https://www.escardio.org/\" style=\"display: block; line-height: 0;\" target=\"_blank\">{% endif %}<img border=\"0\" alt=\"Congress image description\" class=\"fluid\" height=\"{% if story_image_2_height > 0 %}{{ story_image_2_height }}{% else %}156{% endif %}\" src=\"https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg\" style=\"border: none; border-radius: 12px; display: block; height: auto; outline: none; text-decoration: none; width: 100%;\" width=\"280\">{% if field8 %}</a>{% endif %}{% if eyebrow_label_2 %}<div style=\"line-height:16px;height:16px;mso-line-height-rule:exactly\">&#8202;</div><p style=\"color: %%=v(@PrimaryColour)=%%; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 12px; font-weight: 700; letter-spacing: 1px; line-height: 16px; mso-line-height-rule: exactly; margin: 0; text-transform: uppercase;\">\n         {{ eyebrow_label_2 }}</p><div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if field12 %}<h3 class=\"news-card-title dark-invert\" style=\"{% if heading_2_italic %}font-style: italic; {% endif %}color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         Second congress story headline</h3><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}{% if body_copy_2 %}<p class=\"story-excerpt dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; mso-line-height-rule: exactly; margin: 0;  word-wrap: break-word; overflow-wrap: break-word; overflow-wrap: anywhere !important;\">\n         {{ body_copy_2 | richtext }}</p><div style=\"line-height:12px;height:12px;font-size:12px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %} {% if field14 and field8 %}<a class=\"news-card-link\" href=\"https://www.escardio.org/\" style=\"color: #AE1022 !important; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 12px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; text-decoration: underline; -webkit-text-fill-color: #AE1022 !important; text-decoration-color: #AE1022 !important;\" target=\"_blank\"> Read more </a>{% endif %}</td></tr></table><div style=\"line-height:24px;height:24px;mso-line-height-rule:exactly\">&#8202;</div></td><td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\">\n    &nbsp;</td></tr></table><!-- END .esc-story-2col -->",
         "templateMode": true,
         "minifyOutput": true,
         "contextCss": "",
@@ -6618,8 +6618,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 941,
-                "end": 966,
+                "start": 962,
+                "end": 987,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n8",
@@ -6627,8 +6627,8 @@
               },
               {
                 "name": "href",
-                "start": 2948,
-                "end": 2973,
+                "start": 3141,
+                "end": 3166,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n17",
@@ -6655,8 +6655,8 @@
             "targets": [
               {
                 "name": "src",
-                "start": 1192,
-                "end": 1291,
+                "start": 1213,
+                "end": 1312,
                 "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n9",
@@ -6677,8 +6677,8 @@
             "targets": [
               {
                 "name": "alt",
-                "start": 1056,
-                "end": 1082,
+                "start": 1077,
+                "end": 1103,
                 "value": "Congress image description",
                 "quoted": true,
                 "nodeId": "n9",
@@ -6727,8 +6727,8 @@
             "help": "",
             "targets": [
               {
-                "start": 2294,
-                "end": 2333,
+                "start": 2401,
+                "end": 2440,
                 "nodeId": "n13",
                 "kind": "content"
               }
@@ -6789,8 +6789,8 @@
             "help": "",
             "targets": [
               {
-                "start": 3362,
-                "end": 3373,
+                "start": 3555,
+                "end": 3566,
                 "nodeId": "n17",
                 "kind": "content"
               }
@@ -6810,8 +6810,8 @@
             "targets": [
               {
                 "name": "href",
-                "start": 3680,
-                "end": 3705,
+                "start": 3873,
+                "end": 3898,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n20",
@@ -6819,8 +6819,8 @@
               },
               {
                 "name": "href",
-                "start": 5704,
-                "end": 5729,
+                "start": 6069,
+                "end": 6094,
                 "value": "https://www.escardio.org/",
                 "quoted": true,
                 "nodeId": "n29",
@@ -6847,8 +6847,8 @@
             "targets": [
               {
                 "name": "src",
-                "start": 3935,
-                "end": 4034,
+                "start": 4128,
+                "end": 4227,
                 "value": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
                 "quoted": true,
                 "nodeId": "n21",
@@ -6869,8 +6869,8 @@
             "targets": [
               {
                 "name": "alt",
-                "start": 3795,
-                "end": 3821,
+                "start": 3988,
+                "end": 4014,
                 "value": "Congress image description",
                 "quoted": true,
                 "nodeId": "n21",
@@ -6919,8 +6919,8 @@
             "help": "",
             "targets": [
               {
-                "start": 5044,
-                "end": 5084,
+                "start": 5323,
+                "end": 5363,
                 "nodeId": "n25",
                 "kind": "content"
               }
@@ -6981,8 +6981,8 @@
             "help": "",
             "targets": [
               {
-                "start": 6118,
-                "end": 6129,
+                "start": 6483,
+                "end": 6494,
                 "nodeId": "n29",
                 "kind": "content"
               }
