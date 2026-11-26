@@ -106,7 +106,10 @@
       prefix = options.prefix || '';
     container.replaceChildren();
     for (const field of C.editableFields(fields)) {
-      if (!Object.hasOwn(values, field.id)) values[field.id] = clone(field.defaultValue);
+      if (!Object.hasOwn(values, field.id))
+        values[field.id] = clone(
+          field.legacyItem ? C.fieldValue(field, values) : field.defaultValue,
+        );
       const group = document.createElement('div');
       group.className = 'field trial-field' + (field.type === 'toggle' ? ' inline-toggle' : '');
       const label = document.createElement('label');

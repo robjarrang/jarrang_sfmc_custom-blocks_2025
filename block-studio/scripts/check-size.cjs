@@ -15,8 +15,9 @@ const limits = {
   // Alignment and email-safe font sizes add about 3 KB to rendering and 5 KB to the rich editor.
   // Strikethrough, highlighting and list indentation add about 1 KB and 4 KB respectively.
   // Optional field disclosures add about 0.3 KB.
-  'runtime.bundle.js': 89900,
-  'runtime.rich.bundle.js': 117000,
+  // Moving saved single sponsors into a repeatable list adds about 0.8 KB.
+  'runtime.bundle.js': 90800,
+  'runtime.rich.bundle.js': 117900,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

@@ -547,13 +547,27 @@
     );
   }
   function editableFields(fields) {
-    const retired = new Set(fields.map((f) => f.legacyVisibilityId).filter(Boolean));
+    const retired = new Set(
+      fields.flatMap((f) => [f.legacyVisibilityId, ...Object.values(f.legacyItem?.fields || {})]),
+    );
     return fields.filter((f) => !retired.has(f.id));
   }
   // Keep previously hidden copy out of the email until the description is edited.
   function fieldValue(field, values) {
     if (field.legacyVisibilityId && ['hidden', false].includes(values[field.legacyVisibilityId]))
       return '';
+    // Convert an older single entry to a repeatable row when no list has been saved yet.
+    const legacy = field.legacyItem;
+    if (legacy && !Object.hasOwn(values, field.id) && values[legacy.when]) {
+      const row = {};
+      for (const [key, id] of Object.entries(legacy.fields)) {
+        if (Object.hasOwn(values, id)) row[key] = values[id];
+        for (const settings of [conversionKey, linkOptionsKey])
+          if (Object.hasOwn(values[settings] || {}, id))
+            (row[settings] ||= {})[key] = values[settings][id];
+      }
+      return [row];
+    }
     const value = Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
     return field.useDefaultWhenBlank === true && value === '' ? field.defaultValue : value;
   }

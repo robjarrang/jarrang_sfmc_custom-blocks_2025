@@ -288,7 +288,11 @@
     });
     const index = draft.fields.findIndex((f) => f.id === fieldId);
     draft.fields = draft.fields.filter((f) => !promoted.includes(f));
-    C.rebase(draft, [{ start: loop.start, end: loop.end, value: replacement }], [fieldId]);
+    C.rebase(
+      draft,
+      [{ start: loop.start, end: loop.end, value: replacement }],
+      [fieldId, ...Object.values(field.legacyItem?.fields || {})],
+    );
     draft.fields.splice(index, 0, ...promoted);
     C.render(draft);
     return { draft, fields: promoted };

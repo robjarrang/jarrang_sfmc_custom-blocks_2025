@@ -1803,7 +1803,7 @@ test('editorials items can italicise their title without changing existing outpu
   }
 });
 
-test('ESC headings can be italicised per field without changing existing output', async () => {
+test('ESC text can be italicised per field with the default style preserved', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
     let toggles = 0;
@@ -1821,7 +1821,7 @@ test('ESC headings can be italicised per field without changing existing output'
         }
         if (italic.length) assert.doesNotMatch(base, /\{%|\{\{/);
       }
-    assert.equal(toggles, 33);
+    assert.equal(toggles, 34);
     const m = projects[0].modules.find((m) => m.slug === 'events');
     const list = m.fields.find((f) => f.key === 'events');
     assert.equal(list.itemFields.find((f) => f.key === 'title_italic').defaultValue, 'hidden');
@@ -1891,6 +1891,69 @@ test('ESC Quote supports long quotations and an optional heading and speaker pho
     });
     assert.ok(output.querySelector('.quote-photo'));
     assert.equal(output.querySelector('.quote-author, .quote-role'), null);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
+test('ESC Sponsor supports multiple optional logos and links and preserves legacy entries', async () => {
+  const { BlockCore: C, BlockControls: Controls, dom } = await environment();
+  try {
+    const { exportedDefinition: definition } = projects[0].modules.find(
+      (m) => m.slug === 'sponsor',
+    );
+    const list = definition.fields.find((field) => field.key === 'sponsors');
+    const disclaimer = definition.fields.find((field) => field.key === 'disclaimer_text');
+    const output = dom.document.createElement('div');
+    output.innerHTML = C.render(definition);
+    assert.equal(output.querySelector('img, a'), null);
+    const longText = 'Supporting organisations and specialist networks '.repeat(7).trim();
+    assert.equal(C.validate(disclaimer, longText), '');
+    const rows = [
+      { name: longText },
+      { name: 'Second sponsor', logo: 'https://example.org/logo2.png' },
+      { logo: 'https://example.org/logo3.png', link: 'https://example.org/partners' },
+    ];
+    assert.equal(C.validate(list, rows), '');
+    output.innerHTML = C.render(definition, {
+      sponsors: rows,
+      [disclaimer.id]: longText,
+      sponsor_text_italic: 'shown',
+    });
+    assert.deepEqual(
+      Array.from(output.querySelectorAll('.esc-sponsor-name'), (p) => p.textContent),
+      [longText, 'Second sponsor'],
+    );
+    assert.equal(output.querySelectorAll('img').length, 2);
+    assert.equal(output.querySelectorAll('a').length, 1);
+    assert.equal(output.querySelector('a img').getAttribute('src'), rows[2].logo);
+    for (const p of output.querySelectorAll('.esc-sponsor-name, .esc-sponsor-text')) {
+      assert.equal(p.style.fontStyle, 'italic');
+      assert.equal(p.style.fontSize, '13px');
+      assert.equal(p.style.lineHeight, '20px');
+    }
+
+    const legacy = {
+      field2: 'https://example.org/legacy',
+      field3: 'https://example.org/logo.png',
+      field4: 'Legacy sponsor',
+      [C.linkOptionsKey]: { field2: { title: 'Legacy title', alias: 'legacy-link' } },
+      [C.conversionKey]: { field2: true },
+    };
+    output.innerHTML = C.render(definition, legacy);
+    const link = output.querySelector('a');
+    assert.equal(link.querySelector('img').getAttribute('alt'), legacy.field4);
+    assert.equal(link.getAttribute('href'), legacy.field2);
+    assert.equal(link.getAttribute('alias'), 'legacy-link');
+    assert.equal(link.getAttribute('title'), 'Legacy title');
+    assert.equal(link.getAttribute('conversion'), 'true');
+    const editor = dom.document.createElement('div');
+    Controls.mount(editor, definition.fields, legacy, () => {});
+    assert.equal(editor.querySelectorAll('.repeat-card').length, 1);
+    assert.equal(editor.querySelector('#sponsors-0-link').value, legacy.field2);
+    assert.equal(editor.querySelector('#field2'), null);
+    output.innerHTML = C.render(definition, { ...legacy, sponsors: [] });
+    assert.equal(output.querySelector('img, a'), null);
   } finally {
     await dom.happyDOM.close();
   }

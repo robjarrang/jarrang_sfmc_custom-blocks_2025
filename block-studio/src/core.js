@@ -561,7 +561,7 @@
           ),
         );
     }
-    fields.forEach((field) => check(field));
+    editableFields(fields).forEach((field) => check(field));
     return [...new Set(errors)];
   }
   function uniqueKey(module, label) {

@@ -249,7 +249,11 @@
       next = Object.fromEntries(
         fields.map((f) => {
           const saved = metadata.studio?.values;
-          const value = saved && Object.hasOwn(saved, f.id) ? saved[f.id] : f.defaultValue;
+          const value = f.legacyItem
+            ? C.fieldValue(f, saved || {})
+            : saved && Object.hasOwn(saved, f.id)
+              ? saved[f.id]
+              : f.defaultValue;
           const error = C.valueShape(f, value);
           if (error) throw Error(f.label + ': ' + error);
           return [f.id, JSON.parse(JSON.stringify(value))];
