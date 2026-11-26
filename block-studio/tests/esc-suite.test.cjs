@@ -1622,6 +1622,11 @@ test('ESC Checklists can import clipboard lists without changing saved rows unti
       dom.document.body.append(editor);
       let changes = 0;
       BlockControls.mount(editor, [field], values, () => changes++);
+      const savedLink = editor.querySelector('.repeat-card [contenteditable] a');
+      assert.equal(savedLink.textContent, 'Current item');
+      assert.equal(savedLink.getAttribute('href'), 'https://example.com/current');
+      assert.equal(editor.querySelectorAll('.repeat-card [contenteditable]').length, 1);
+      assert.ok(!editor.querySelector('.repeat-card textarea'));
       const input = editor.querySelector('.paste-list textarea');
       const replace = editor.querySelector('.paste-list button');
       const paste = new dom.Event('paste', { cancelable: true });
@@ -1641,10 +1646,13 @@ test('ESC Checklists can import clipboard lists without changing saved rows unti
       assert.equal(changes, 1);
       assert.equal(editor.querySelectorAll('.repeat-card').length, 2);
       assert.deepEqual(
-        Array.from(values[field.id], ({ check_text, check_link }) => ({ check_text, check_link })),
+        Array.from(values[field.id], ({ check_content, check_link }) => ({
+          check_content,
+          check_link,
+        })),
         [
-          { check_text: 'Understand the key messages;', check_link: '' },
-          { check_text: 'Analyse evidence & examples.', check_link: '' },
+          { check_content: 'Understand the key messages;', check_link: '' },
+          { check_content: 'Analyse evidence &amp; examples.', check_link: '' },
         ],
       );
 
@@ -1660,13 +1668,13 @@ test('ESC Checklists can import clipboard lists without changing saved rows unti
       input.value = 'Introduction\r\n• Red\r\n2. Blue\r\nUnrelated paragraph';
       replace.click();
       assert.deepEqual(
-        Array.from(values[field.id], (row) => row.check_text),
+        Array.from(values[field.id], (row) => row.check_content),
         ['Red', 'Blue'],
       );
       input.value = 'First item\n\nSecond item';
       replace.click();
       assert.deepEqual(
-        Array.from(values[field.id], (row) => row.check_text),
+        Array.from(values[field.id], (row) => row.check_content),
         ['First item', 'Second item'],
       );
       assert.equal(changes, 3);
@@ -1675,7 +1683,7 @@ test('ESC Checklists can import clipboard lists without changing saved rows unti
     await dom.happyDOM.close();
   }
 });
-test('ESC Checklist items support checkmarks or bullets and optional red links', async () => {
+test('ESC Checklist items support inline red links, legacy row links and both markers', async () => {
   const { BlockCore: C, dom } = await environment();
   const output = dom.document.createElement('div');
   const destination = 'https://example.com/checklist?a=1&b=2';
@@ -1684,21 +1692,43 @@ test('ESC Checklist items support checkmarks or bullets and optional red links',
       const module = project.modules.find((item) => item.slug === 'checklist');
       const items = module.fields.find((field) => field.key === 'items');
       const rows = [
-        { check_text: 'Saved checklist item' },
-        { check_text: 'Read the terms & conditions', check_link: destination },
+        { check_text: 'Saved <checklist> item & notes' },
+        {
+          check_text: 'Read the terms & conditions',
+          check_link: destination,
+          [C.conversionKey]: { check_link: true },
+          [C.linkOptionsKey]: { check_link: { title: 'Terms', alias: 'terms-cta' } },
+        },
         { check_text: '', check_link: destination },
+        {
+          check_text: 'Old text',
+          check_link: destination,
+          check_content:
+            'Read the <a href="https://example.com/terms">terms</a> and <a href="https://example.com/guide">guide</a> today.',
+        },
+        { check_text: 'Old text', check_link: destination, check_content: '' },
       ];
       assert.equal(C.validate(items, rows), '');
       output.innerHTML = C.render(module.exportedDefinition, { [items.id]: rows });
-      const [plain, linked, empty] = output.querySelectorAll('.check-text');
+      const [plain, linked, empty, inline, cleared] = output.querySelectorAll('.check-text');
       assert.equal(plain.closest('tr').cells[0].textContent.trim(), '✓');
-      assert.equal(plain.textContent, 'Saved checklist item');
+      assert.equal(plain.textContent, 'Saved <checklist> item & notes');
       assert.ok(!plain.querySelector('a'));
       const link = linked.querySelector('a');
       assert.equal(link.textContent, 'Read the terms & conditions');
       assert.equal(link.getAttribute('href'), destination);
-      assert.match(link.getAttribute('style'), /(?:^|;\s*)color: #AE1022 !important;/);
+      assert.equal(link.getAttribute('title'), 'Terms');
+      assert.equal(link.getAttribute('alias'), 'terms-cta');
+      assert.equal(link.getAttribute('conversion'), 'true');
       assert.ok(!empty.querySelector('a'));
+      assert.equal(inline.textContent, 'Read the terms and guide today.');
+      assert.deepEqual(
+        Array.from(inline.querySelectorAll('a'), (anchor) => anchor.textContent),
+        ['terms', 'guide'],
+      );
+      assert.equal(cleared.textContent, '');
+      for (const anchor of output.querySelectorAll('.check-text a'))
+        assert.match(anchor.getAttribute('style'), /(?:^|;)color:\s*#AE1022 !important;/i);
 
       output.innerHTML = C.render(module.exportedDefinition, {
         [items.id]: rows,

@@ -9,9 +9,10 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'src/export-assets.js'), 'utf
 const assets = context.window.EXPORT_ASSETS;
 const limits = {
   // Settings-only preview adds about 2.8 KB, output minification about 6 KB,
-  // and checklist paste about 3 KB. No extra requests or dependencies.
-  'runtime.bundle.js': 83100,
-  'runtime.rich.bundle.js': 104600,
+  // and checklist paste about 3 KB. Inline checklist links and legacy row migration
+  // add about 2 KB without extra requests or dependencies.
+  'runtime.bundle.js': 84900,
+  'runtime.rich.bundle.js': 106100,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

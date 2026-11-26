@@ -242,7 +242,7 @@
       rows[itemIndex] || Object.fromEntries(field.itemFields.map((f) => [f.key, f.defaultValue]));
     const replacements = new Map(),
       promoted = [];
-    for (const child of field.itemFields) {
+    for (const child of C.editableItemFields(field)) {
       const identity = C.templateField(draft, child.type, child.label);
       const next = {
         ...JSON.parse(JSON.stringify(child)),
@@ -250,8 +250,10 @@
         key: identity.key,
         targets: [],
         binding: 'template',
-        defaultValue: JSON.parse(JSON.stringify(values[child.key] ?? child.defaultValue)),
+        defaultValue: JSON.parse(JSON.stringify(C.listItemValue(field, child, values))),
       };
+      delete next.legacyTextKey;
+      delete next.legacyLinkKey;
       if (child.type === 'url' && child.allowConversionTracking)
         next.defaultConversionTracking = C.conversionChoice(child, values, child.key);
       if (child.type === 'url') {

@@ -44,6 +44,8 @@
       .filter(Boolean);
   }
   function pasteList(parent, field, onReplace) {
+    const C = root.BlockCore;
+    const textField = field.itemFields.find((item) => item.key === field.pasteTextKey);
     const details = document.createElement('details'),
       summary = document.createElement('summary'),
       input = document.createElement('textarea'),
@@ -85,8 +87,11 @@
       const defaults = Object.fromEntries(
         field.itemFields.map((item) => [item.key, item.defaultValue]),
       );
-      const rows = items.map((text) => ({ ...clone(defaults), [field.pasteTextKey]: text.trim() }));
-      error.textContent = root.BlockCore.validate(field, rows);
+      const rows = items.map((text) => ({
+        ...clone(defaults),
+        [textField.key]: textField.type === 'richtext' ? C.escape(text.trim()) : text.trim(),
+      }));
+      error.textContent = C.validate(field, rows);
       if (error.textContent) return;
       input.value = '';
       details.open = false;
@@ -123,6 +128,7 @@
       if (field.type === 'list') {
         input = document.createElement('div');
         input.className = 'repeat-items';
+        const itemFields = C.editableItemFields(field).map((f) => ({ ...f, id: f.key }));
         function focusItem(index, action) {
           const card = input.querySelectorAll('.repeat-card')[index];
           const sameAction =
@@ -195,13 +201,12 @@
             card.append(head);
             const body = document.createElement('div');
             card.append(body);
-            mount(
-              body,
-              field.itemFields.map((f) => ({ ...f, id: f.key })),
-              row,
-              () => changed(clone(rows)),
-              { prefix: prefix + field.id + '-' + index + '-' },
-            );
+            for (const item of itemFields)
+              if (item.legacyTextKey && !Object.hasOwn(row, item.key))
+                row[item.key] = C.listItemValue(field, item, row);
+            mount(body, itemFields, row, () => changed(clone(rows)), {
+              prefix: prefix + field.id + '-' + index + '-',
+            });
             input.append(card);
           });
           const add = document.createElement('button');

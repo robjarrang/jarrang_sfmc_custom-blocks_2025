@@ -27,6 +27,8 @@
     validate,
     hiddenRanges,
     fieldActive,
+    editableItemFields,
+    listItemValue,
     settingsSummary,
     render,
   } = R;
@@ -396,7 +398,7 @@
       field.pasteTextKey !== undefined &&
       (field.type !== 'list' ||
         !field.itemFields?.some(
-          (child) => child.key === field.pasteTextKey && child.type === 'text',
+          (child) => child.key === field.pasteTextKey && ['text', 'richtext'].includes(child.type),
         ))
     )
       errors.push('Pasted items need a text field in the list.');
@@ -407,6 +409,18 @@
         if (keys.has(child.key)) errors.push('Item field keys must be unique.');
         keys.add(child.key);
         errors.push(...fieldProblems({ ...child, binding: 'template', targets: [] }));
+        if (
+          (child.legacyTextKey !== undefined || child.legacyLinkKey !== undefined) &&
+          (child.type !== 'richtext' ||
+            !field.itemFields.some(
+              (item) => item.key === child.legacyTextKey && item.type === 'text',
+            ) ||
+            (child.legacyLinkKey !== undefined &&
+              !field.itemFields.some(
+                (item) => item.key === child.legacyLinkKey && item.type === 'url',
+              )))
+        )
+          errors.push('A replacement rich-text field needs valid legacy text and link field keys.');
       }
       if (
         !Number.isInteger(field.minItems) ||
@@ -523,19 +537,26 @@
         errors.push(e.message);
       }
     }
-    function check(field) {
+    function check(field, usesLegacyLink = false) {
       if (
         field.type === 'url' &&
         (field.allowConversionTracking || field.allowLinkTitle || field.allowTrackingAlias) &&
-        !connected.has(field)
+        !connected.has(field) &&
+        !usesLegacyLink
       )
         errors.push(
           field.label +
             ': Connect this link field to a complete anchor href before allowing link options.',
         );
-      for (const child of field.itemFields || []) check(child);
+      for (const child of field.itemFields || [])
+        check(
+          child,
+          field.itemFields.some(
+            (item) => item.type === 'richtext' && item.legacyLinkKey === child.key,
+          ),
+        );
     }
-    fields.forEach(check);
+    fields.forEach((field) => check(field));
     return [...new Set(errors)];
   }
   function uniqueKey(module, label) {
@@ -947,6 +968,8 @@
     conversionProblems,
     hiddenRanges,
     fieldActive,
+    editableItemFields,
+    listItemValue,
     uniqueKey,
     templateField,
     repeatSelection,

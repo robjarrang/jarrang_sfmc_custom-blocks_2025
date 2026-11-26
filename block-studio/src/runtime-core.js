@@ -339,7 +339,7 @@
         return [a];
       }
       // Lists nested more than three deep, or inside a link, collapse to plain lines.
-      if (['UL', 'OL'].includes(node.tagName) && !inLink && depth < 3)
+      if (['UL', 'OL'].includes(node.tagName) && field.allowLists !== false && !inLink && depth < 3)
         return [list(node, inLink, depth)];
       const children = [...node.childNodes].flatMap((n) => visit(n, inLink, depth));
       if (!allowed.has(node.tagName)) return children;
@@ -501,6 +501,32 @@
       )
     );
   }
+  function editableItemFields(list) {
+    const replaced = new Set(list.itemFields.flatMap((f) => [f.legacyTextKey, f.legacyLinkKey]));
+    return list.itemFields.filter((f) => !replaced.has(f.key));
+  }
+  // Materialise the old text and optional whole-item link when a saved row predates its rich field.
+  function listItemValue(list, field, row) {
+    if (!field.legacyTextKey || Object.hasOwn(row, field.key))
+      return row[field.key] ?? field.defaultValue;
+    const legacyText = list.itemFields.find((child) => child.key === field.legacyTextKey);
+    const text = escape(row[legacyText.key] ?? legacyText.defaultValue);
+    const legacyLink = list.itemFields.find((child) => child.key === field.legacyLinkKey);
+    const url = row[legacyLink?.key] ?? legacyLink?.defaultValue;
+    if (!text || !url || !validUrl(url, 'url')) return text;
+    const choices = linkOptionsChoice(legacyLink, row, legacyLink.key);
+    const attributes = linkAttributes
+      .filter(([name, allow]) => legacyLink[allow] && choices[name])
+      .map(([name]) => ' ' + name + '="' + escape(choices[name]) + '"')
+      .join('');
+    const conversion =
+      legacyLink.allowConversionTracking &&
+      webLink(url) &&
+      conversionChoice(legacyLink, row, legacyLink.key)
+        ? ' conversion="true"'
+        : '';
+    return '<a href="' + escape(url) + '"' + attributes + conversion + '>' + text + '</a>';
+  }
   function scopeValue(field, value, owners, choices) {
     if (field.type === 'toggle') return value === true || value === 'shown';
     if (field.type === 'number') return Number(value);
@@ -509,7 +535,7 @@
         const item = Object.fromEntries(
           field.itemFields.map((child) => [
             child.key,
-            scopeValue(child, row[child.key] ?? child.defaultValue, owners, choices),
+            scopeValue(child, listItemValue(field, child, row), owners, choices),
           ]),
         );
         owners.set(item, Object.fromEntries(field.itemFields.map((f) => [f.key, f])));
@@ -1052,6 +1078,8 @@
     validate,
     hiddenRanges,
     fieldActive,
+    editableItemFields,
+    listItemValue,
     settingsSummary,
     render,
   };
