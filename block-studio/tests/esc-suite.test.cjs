@@ -1871,6 +1871,26 @@ test('ESC Quote supports long quotations and an optional heading and speaker pho
     output.innerHTML = C.render(definition, { [quoteField.id]: quote });
     assert.equal(output.querySelector('h2, .quote-photo, .quote-attribution'), null);
     assert.ok(output.querySelector('.quote-author'));
+
+    const author = definition.fields.find((field) => field.label === 'Author name');
+    const role = definition.fields.find((field) => field.key === 'author_role');
+    assert.equal(C.validate(author, ''), '');
+    output.innerHTML = C.render(definition, { [author.id]: '' });
+    assert.equal(output.querySelector('.quote-author'), null);
+    assert.equal(output.querySelector('.quote-role').textContent.trim(), role.defaultValue);
+    assert.equal(output.querySelector('.quote-role').previousElementSibling.style.height, '20px');
+
+    output.innerHTML = C.render(definition, { [author.id]: '', [role.id]: '' });
+    assert.equal(output.querySelector('.quote-author, .quote-role, .quote-attribution'), null);
+    assert.equal(output.querySelector('.quote-text').nextElementSibling.style.height, '4px');
+
+    output.innerHTML = C.render(definition, {
+      [author.id]: '',
+      [role.id]: '',
+      speaker_photo: 'https://example.org/speaker.png',
+    });
+    assert.ok(output.querySelector('.quote-photo'));
+    assert.equal(output.querySelector('.quote-author, .quote-role'), null);
   } finally {
     await dom.happyDOM.close();
   }
