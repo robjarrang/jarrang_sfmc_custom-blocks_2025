@@ -1866,6 +1866,19 @@ test('ESC Events show optional same-month and cross-month date ranges per card',
       badges.map((badge) => badge.getAttribute('width')),
       ['60', '84', '84', '60'],
     );
+    const columnWidths = badges.map((badge) => {
+      const badgeCell = badge.parentElement;
+      const rowTable = badgeCell.closest('table');
+      assert.equal(rowTable.getAttribute('width'), '532');
+      assert.equal(rowTable.style.tableLayout, 'fixed');
+      return [...badgeCell.parentElement.children].map((cell) => cell.getAttribute('width'));
+    });
+    assert.deepEqual(columnWidths, [
+      ['90', '442'],
+      ['104', '428'],
+      ['104', '428'],
+      ['90', '442'],
+    ]);
     for (const line of host.querySelectorAll('.date-month, .date-day')) {
       assert.equal(parseInt(line.style.lineHeight, 10) % 4, 0);
       assert.match(line.getAttribute('style'), /mso-line-height-rule: exactly/);
