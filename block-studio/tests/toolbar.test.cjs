@@ -8,6 +8,7 @@ function mount(toolbar, allowLinks = true) {
       tag,
       children: [],
       attrs: {},
+      style: {},
       append(...nodes) {
         this.children.push(...nodes);
       },
@@ -17,7 +18,9 @@ function mount(toolbar, allowLinks = true) {
     };
   }
   const context = {
-    window: { BlockCore: { cleanRich: (v) => v } },
+    window: {
+      BlockCore: { cleanRich: (v) => v, richContent: (html) => ({ html, alignment: '' }) },
+    },
     document: { createElement: el },
   };
   vm.createContext(context);
@@ -36,16 +39,21 @@ function mount(toolbar, allowLinks = true) {
     buttons: parent.children[0].children.flatMap((g) => g.children),
   };
 }
-test('legacy fields retain all twelve tools', () => assert.equal(mount().buttons.length, 12));
+test('legacy fields get the additional size and alignment tools', () => {
+  const { buttons } = mount();
+  assert.equal(buttons.length, 14);
+  for (const label of ['Font size', 'Text alignment'])
+    assert.ok(buttons.some((button) => button.attrs['aria-label'] === label));
+});
 test('each toolbar option can be hidden independently', () => {
   for (const key of mount().keys) {
     const view = mount({ [key]: false });
-    assert.equal(view.buttons.length, 11);
+    assert.equal(view.buttons.length, 13);
   }
 });
-test('link controls and bold can be disabled while retaining the other nine tools', () => {
+test('link controls and bold can be disabled while retaining other tools', () => {
   const view = mount({ bold: false, link: false, unlink: false });
-  assert.equal(view.buttons.length, 9);
+  assert.equal(view.buttons.length, 11);
   assert(
     !view.buttons.some((b) =>
       ['Bold', 'Add or edit link', 'Remove link'].includes(b.attrs['aria-label']),
@@ -86,7 +94,7 @@ test('disabled bold blocks keyboard and beforeinput routes; enabled italic remai
 });
 test('a surrounding link overrides client toolbar settings', () => {
   const view = mount({ link: true, unlink: true }, false);
-  assert.equal(view.buttons.length, 10);
+  assert.equal(view.buttons.length, 12);
 });
 test('list tools are grouped together and each can be blocked at the input level', () => {
   const view = mount();

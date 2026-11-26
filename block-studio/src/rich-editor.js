@@ -8,6 +8,8 @@
     ['superscript', 'Superscript'],
     ['subscript', 'Subscript'],
     ['colour', 'Text colour'],
+    ['fontSize', 'Font size'],
+    ['alignment', 'Text alignment'],
     ['bulletList', 'Bulleted list'],
     ['numberList', 'Numbered list'],
     ['listStyle', 'List style'],
@@ -26,7 +28,9 @@
     input.setAttribute('role', 'textbox');
     input.setAttribute('aria-multiline', 'true');
     input.setAttribute('aria-label', field.label);
-    input.innerHTML = C.cleanRich(value, field);
+    const initial = C.richContent(value);
+    input.innerHTML = C.cleanRich(initial.html, field);
+    input.style.textAlign = initial.alignment;
     toolbar.className = 'rich-toolbar';
     toolbar.setAttribute('role', 'group');
     toolbar.setAttribute('aria-label', 'Formatting for ' + field.label);
@@ -138,7 +142,10 @@
         input.innerHTML = html;
         restoreBookmark(mark);
       }
-      onChange(html);
+      const alignment = input.style.textAlign;
+      onChange(
+        alignment && html ? '<div data-rich-align="' + alignment + '">' + html + '</div>' : html,
+      );
       group.dispatchEvent(new CustomEvent('richchange', { bubbles: true }));
     }
     function selected() {
@@ -173,6 +180,8 @@
       Subscript: '<path d="m4 4 8 11m0-11L4 15M16 16a2.5 2.5 0 0 1 5 0c0 2-5 3-5 6h5"/>',
       'Text colour':
         '<path d="m6 16 6-12 6 12M8 12h8"/><path d="M4 21h16" stroke="#59dbca" stroke-width="3"/>',
+      'Font size': '<path d="m3 17 4-10 4 10m-6.5-3h5m2.5 3 4-12 5 12m-7.5-4h5.5"/>',
+      'Text alignment': '<path d="M4 5h16M7 10h10M4 15h16M7 20h10"/>',
       'Add or edit link':
         '<path d="m10 13 4-4m-5 7-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2-1 2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/>',
       'Remove link':
@@ -195,7 +204,7 @@
       }
       const category = ['Bold', 'Italic', 'Underline'].includes(label)
         ? 'Text style'
-        : ['Superscript', 'Subscript', 'Text colour'].includes(label)
+        : ['Superscript', 'Subscript', 'Text colour', 'Font size', 'Text alignment'].includes(label)
           ? 'Text appearance'
           : ['Bulleted list', 'Numbered list', 'List style'].includes(label)
             ? 'Lists'
@@ -291,6 +300,55 @@
       );
       panel.append(row);
     }
+    function selectOption(label, options, value) {
+      const fieldLabel = document.createElement('label'),
+        select = document.createElement('select');
+      select.id = 'rich-action-' + ++serial;
+      fieldLabel.htmlFor = select.id;
+      fieldLabel.textContent = label;
+      options.forEach(([value, text]) => select.add(new Option(text, value)));
+      select.value = value;
+      panel.append(fieldLabel, select);
+      return select;
+    }
+    tool('Font size', () => {
+      if (!selected()) return;
+      closePanel();
+      panel.hidden = false;
+      const choice = selectOption(
+        'Size in pixels',
+        C.richFontSizes.map((px, i) => [i + 1, px + ' px']),
+        '2',
+      );
+      buttons('Apply size', () => {
+        if (!selected()) return;
+        document.execCommand('fontSize', false, choice.value);
+        closePanel();
+        commit();
+      });
+      choice.focus();
+    });
+    tool('Text alignment', () => {
+      closePanel();
+      panel.hidden = false;
+      const choice = selectOption(
+        'Align this field',
+        [
+          ['', 'Template default'],
+          ['left', 'Left'],
+          ['center', 'Centre'],
+          ['right', 'Right'],
+        ],
+        input.style.textAlign,
+      );
+      buttons('Apply alignment', () => {
+        input.style.textAlign = choice.value;
+        closePanel();
+        restore();
+        commit();
+      });
+      choice.focus();
+    });
     tool('Text colour', () => {
       const r = selected();
       if (!r) return;
@@ -543,6 +601,7 @@
         formatSuperscript: 'superscript',
         formatSubscript: 'subscript',
         formatFontColor: 'colour',
+        formatFontSize: 'fontSize',
         formatRemove: 'clear',
         insertLink: 'link',
         insertUnorderedList: 'bulletList',

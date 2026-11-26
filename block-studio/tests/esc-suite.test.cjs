@@ -1879,6 +1879,47 @@ test('ESC TV Lead keeps its background, optional list and optional button', asyn
   }
 });
 
+test('ESC rich text can centre the field and size selected text on the 4px line-height grid', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const hero = projects[0].modules.find((module) => module.slug === 'hero-story');
+    const intro = hero.fields.find((field) => field.key === 'intro_copy');
+    const output = dom.document.createElement('div');
+    for (const [size, lineHeight] of [
+      [13, 24],
+      [20, 32],
+      [24, 36],
+      [32, 48],
+    ]) {
+      output.innerHTML = C.render(hero.exportedDefinition, {
+        [intro.id]:
+          '<div data-rich-align="center">Intro <span style="font-size:' +
+          size +
+          'px;line-height:19px;"><a href="https://example.org/">read more</a></span></div>',
+      });
+      const link = output.querySelector('a[href="https://example.org/"]');
+      assert.equal(link.closest('span').style.fontSize, size + 'px');
+      assert.match(link.getAttribute('style'), /color:#ae1022 !important;/i);
+      const paragraph = link.closest('p');
+      assert.equal(paragraph.style.textAlign, 'center');
+      assert.equal(paragraph.style.lineHeight, lineHeight + 'px');
+      assert.match(paragraph.getAttribute('style'), /mso-line-height-rule:exactly/);
+      assert.ok(!output.innerHTML.includes('19px'));
+      assert.ok(!output.querySelector('[data-rich-align]'));
+    }
+    output.innerHTML = C.render(hero.exportedDefinition, {
+      [intro.id]: '<div data-rich-align="right"><ul><li><font size="5">Item</font></li></ul></div>',
+    });
+    const item = output.querySelector('li');
+    assert.equal(item.style.textAlign, 'right');
+    assert.equal(item.style.lineHeight, '36px');
+    assert.equal(item.querySelector('span').style.fontSize, '24px');
+    assert.equal(C.cleanRich('<span style="font-size:900px;line-height:19px">Text</span>'), 'Text');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC card descriptions hide when blank while CTA switches remain independent', async () => {
   const { BlockCore: C, BlockControls, dom } = await environment();
   const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));

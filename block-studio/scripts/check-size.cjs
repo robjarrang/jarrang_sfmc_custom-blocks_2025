@@ -12,8 +12,9 @@ const limits = {
   // and checklist paste about 3 KB. Inline checklist links and legacy row migration
   // add about 2 KB, and automatic descriptions with saved visibility add about 1 KB.
   // Handling Enter in rich text adds about 0.5 KB without extra requests or dependencies.
-  'runtime.bundle.js': 85800,
-  'runtime.rich.bundle.js': 107500,
+  // Alignment and email-safe font sizes add about 3 KB to rendering and 5 KB to the rich editor.
+  'runtime.bundle.js': 88700,
+  'runtime.rich.bundle.js': 112400,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

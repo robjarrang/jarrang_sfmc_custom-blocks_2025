@@ -241,10 +241,20 @@
   }
   // Rendered lists are fenced by private-use markers until placeLists() has fitted them to their paragraph.
   const LIST_OPEN = '\uE000',
-    LIST_CLOSE = '\uE001';
+    LIST_CLOSE = '\uE001',
+    RICH_OPEN = '\uE002',
+    RICH_CLOSE = '\uE003';
+  const richFontSizes = [12, 13, 16, 20, 24, 28, 32];
+  function richContent(value) {
+    const html = String(value ?? '');
+    const aligned = /^<div data-rich-align="(left|center|right)">([\s\S]*)<\/div>$/.exec(html);
+    return aligned ? { alignment: aligned[1], html: aligned[2] } : { alignment: '', html };
+  }
   function cleanRich(value, field = {}, options = {}) {
     if (typeof document === 'undefined') throw Error('Rich text requires a browser.');
-    const doc = new DOMParser().parseFromString(String(value), 'text/html');
+    const { html, alignment } = richContent(value);
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    let largestSize = 0;
     const allowed = new Set([
       'B',
       'STRONG',
@@ -266,11 +276,11 @@
     const types = { UL: ['disc', 'circle', 'square'], OL: ['1', 'A', 'a', 'I', 'i'] };
     // Keep anchors outside surrounding formatting so ancestor colours, bold and
     // propagated underlines cannot override the field's link appearance.
-    function wrap(tag, style, children) {
+    function wrap(tag, style, children, includeLinks = false) {
       const out = [];
       let current;
       for (const child of children) {
-        if (['A', 'UL', 'OL'].includes(child.nodeName)) {
+        if (['UL', 'OL'].includes(child.nodeName) || (!includeLinks && child.nodeName === 'A')) {
           out.push(child);
           current = null;
           continue;
@@ -311,7 +321,7 @@
     }
     function visit(node, inLink = false, depth = 0) {
       if (node.nodeType === 3)
-        return [doc.createTextNode(node.nodeValue.replace(/[\uE000\uE001]/g, ''))];
+        return [doc.createTextNode(node.nodeValue.replace(/[\uE000-\uE003]/g, ''))];
       if (
         node.nodeType !== 1 ||
         ['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'SVG', 'MATH'].includes(node.tagName)
@@ -350,7 +360,13 @@
       if (['P', 'DIV'].includes(node.tagName)) return [...children, doc.createElement('br')];
       if (['SPAN', 'FONT'].includes(node.tagName)) {
         const colour = normaliseColour(node.style.color || node.getAttribute('color'));
-        return !inLink && colour ? wrap('span', 'color:' + colour + ';', children) : children;
+        const px = /^(\d+)px$/.exec(node.style.fontSize)?.[1];
+        const size = px ? Number(px) : richFontSizes[Number(node.getAttribute('size')) - 1];
+        const coloured =
+          !inLink && colour ? wrap('span', 'color:' + colour + ';', children) : children;
+        if (!richFontSizes.includes(size) || !coloured.length) return coloured;
+        largestSize = Math.max(largestSize, size);
+        return wrap('span', 'font-size:' + size + 'px;', coloured, true);
       }
       if (inLink && ['B', 'STRONG', 'U'].includes(node.tagName)) return children;
       const style =
@@ -374,7 +390,11 @@
         el.before(doc.createTextNode(LIST_OPEN));
         el.after(doc.createTextNode(LIST_CLOSE));
       }
-    return out.innerHTML.replace(/<br>$/, '');
+    const cleaned = out.innerHTML.replace(/<br>$/, '');
+    if (!cleaned) return '';
+    if (options.mark && (alignment || largestSize))
+      return RICH_OPEN + alignment + ':' + largestSize + ':' + cleaned + RICH_CLOSE;
+    return alignment ? '<div data-rich-align="' + alignment + '">' + cleaned + '</div>' : cleaned;
   }
   function validUrl(value, type) {
     if (!value) return true;
@@ -621,6 +641,39 @@
     const parts = all ? all[1].split(/\s+/) : [];
     return parts.length > 2 ? parts[2] : parts[0] || '0';
   }
+  // Outlook uses the containing text block's line height, even when part of the text is larger.
+  function placeRichFormatting(html) {
+    let formatted;
+    while ((formatted = /\uE002(left|center|right|):(\d+):([^\uE002\uE003]*)\uE003/.exec(html))) {
+      const [marked, alignment, size, copy] = formatted;
+      const at = formatted.index;
+      const before = html.slice(0, at);
+      const after = html.slice(at + marked.length);
+      const stack = openElements(before);
+      const host = stack.findLast(({ tag }) => /^(?:p|h[1-6]|div|td|th|li)$/.test(tag));
+      const existing = stack
+        .map(({ open }) => new Map(declarations(open)).get('line-height'))
+        .filter(Boolean)
+        .pop();
+      const pixels = /^(\d+(?:\.\d+)?)px(?:\s*!important)?$/i.exec(existing)?.[1];
+      const height = Math.ceil(Math.max(Number(pixels) || 0, Number(size) * 1.5) / 4) * 4;
+      const style =
+        (alignment ? 'text-align:' + alignment + ' !important;' : '') +
+        (size !== '0'
+          ? 'line-height:' + height + 'px !important;mso-line-height-rule:exactly;'
+          : '');
+      if (host) {
+        const open = /\sstyle\s*=\s*(['"])([\s\S]*?)\1/i.test(host.open)
+          ? host.open.replace(
+              /(\sstyle\s*=\s*)(['"])([\s\S]*?)\2/i,
+              (_, name, quote, value) => name + quote + value + ';' + style + quote,
+            )
+          : host.open.slice(0, -1) + ' style="' + style + '">';
+        html = before.slice(0, host.start) + open + before.slice(host.end) + copy + after;
+      } else html = before + '<div style="' + style + '">' + copy + '</div>' + after;
+    }
+    return html;
+  }
   // Rows take the paragraph's own text styling, found the way CSS inheritance would find it.
   function fitList(list, stack, host) {
     const inherited = new Map();
@@ -657,6 +710,7 @@
   }
   // A list cannot sit inside a <p>, so the paragraph is split around it and its open tag repeated.
   function placeLists(html) {
+    html = placeRichFormatting(html);
     let at;
     while ((at = html.indexOf(LIST_OPEN)) >= 0) {
       const end = html.indexOf(LIST_CLOSE, at);
@@ -1090,6 +1144,8 @@
     webLink,
     richLinksAllowed,
     cleanRich,
+    richContent,
+    richFontSizes,
     placeLists,
     minify,
     validUrl,

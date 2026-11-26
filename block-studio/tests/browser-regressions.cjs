@@ -47,6 +47,29 @@ async function checkRichTextEnter(page) {
   console.log(
     'PASS: Enter splits rich text, preserves the caret and formatting, and splits list items',
   );
+
+  await start('Small Large', '', 6);
+  await editor.evaluate((node) => window.getSelection().extend(node.firstChild, 11));
+  await page.getByRole('button', { name: 'Font size' }).click();
+  await page.getByLabel('Size in pixels').selectOption({ label: '24 px' });
+  await page.getByRole('button', { name: 'Apply size' }).click();
+  assert.equal(await saved(), 'Small <span style="font-size:24px;">Large</span>');
+  await page.getByRole('button', { name: 'Text alignment' }).click();
+  await page.getByLabel('Align this field').selectOption('center');
+  await page.getByRole('button', { name: 'Apply alignment' }).click();
+  const aligned =
+    '<div data-rich-align="center">Small <span style="font-size:24px;">Large</span></div>';
+  assert.equal(await saved(), aligned);
+  assert.equal(await editor.evaluate((node) => getComputedStyle(node).textAlign), 'center');
+  await start(aligned, '', 0);
+  assert.equal(await editor.evaluate((node) => getComputedStyle(node).textAlign), 'center');
+  await page.getByRole('button', { name: 'Text alignment' }).click();
+  await page.getByLabel('Align this field').selectOption('');
+  await page.getByRole('button', { name: 'Apply alignment' }).click();
+  assert.equal(await saved(), 'Small <span style="font-size:24px;">Large</span>');
+  console.log(
+    'PASS: font size applies to selected text and field alignment can be saved and reset',
+  );
 }
 
 async function main() {
