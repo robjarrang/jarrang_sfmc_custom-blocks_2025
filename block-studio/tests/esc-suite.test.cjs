@@ -1836,6 +1836,45 @@ test('ESC headings can be italicised per field without changing existing output'
   }
 });
 
+test('ESC Events show optional same-month and cross-month date ranges per card', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const { exportedDefinition: definition } = projects[0].modules.find((m) => m.slug === 'events');
+    const list = definition.fields.find((f) => f.key === 'events');
+    const [legacy] = list.defaultValue;
+    const host = dom.document.createElement('div');
+    const rows = [
+      legacy,
+      { ...legacy, date_end_day: '25' },
+      { ...legacy, date_day: '30', date_end_day: '2', date_end_month: 'MAY' },
+      { ...legacy, date_end_day: '', date_end_month: 'MAY' },
+    ];
+    assert.equal(C.validate(list, rows), '');
+    host.innerHTML = C.render(definition, { [list.id]: rows });
+    const badges = [...host.querySelectorAll('.event-date-badge')];
+    const lines = (badge) =>
+      [...badge.querySelectorAll('.date-month, .date-day')].map((p) =>
+        p.textContent.replace(/\s+/g, ' ').trim(),
+      );
+    assert.deepEqual(badges.map(lines), [
+      ['APR', '24'],
+      ['APR', '24–25'],
+      ['30 APR', '– 2 MAY'],
+      ['APR', '24'],
+    ]);
+    assert.deepEqual(
+      badges.map((badge) => badge.getAttribute('width')),
+      ['60', '84', '84', '60'],
+    );
+    for (const line of host.querySelectorAll('.date-month, .date-day')) {
+      assert.equal(parseInt(line.style.lineHeight, 10) % 4, 0);
+      assert.match(line.getAttribute('style'), /mso-line-height-rule: exactly/);
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC TV Lead keeps its background, optional list and optional button', async () => {
   const { BlockCore: C, BlockExport: E, dom } = await environment();
   try {
