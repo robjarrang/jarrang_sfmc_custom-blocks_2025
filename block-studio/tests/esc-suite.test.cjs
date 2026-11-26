@@ -1896,8 +1896,8 @@ test('ESC Quote supports long quotations and an optional heading and speaker pho
   }
 });
 
-test('ESC Signature accepts specialist team text with a dynamic fallback', async () => {
-  const { BlockCore: C, dom } = await environment();
+test('ESC Signature lets editors change the prefilled dynamic team line directly', async () => {
+  const { BlockCore: C, BlockControls: Controls, dom } = await environment();
   try {
     const { exportedDefinition: definition } = projects[0].modules.find(
       (module) => module.slug === 'signature',
@@ -1905,13 +1905,20 @@ test('ESC Signature accepts specialist team text with a dynamic fallback', async
     const field = definition.fields.find((field) => field.key === 'signature_text');
     const fallback = 'The %%=v(@BrandShortName)=%% Team';
     const defaultHtml = C.render(definition);
+    assert.equal(field.defaultValue, fallback);
+    assert.match(definition.source, /{{ signature_text }}/);
+    assert.doesNotMatch(definition.source, /{% if signature_text %}/);
     assert.equal(C.validate(field, ''), '');
     assert.match(defaultHtml, /The %%=v\(@BrandShortName\)=%% Team/);
     assert.equal(C.render(definition, { [field.id]: '' }), defaultHtml);
+    const editor = dom.document.createElement('div');
+    Controls.mount(editor, [field], { [field.id]: '' }, () => {});
+    assert.equal(editor.querySelector('textarea').value, fallback);
     for (const team of [
       'The ESC Publications Team',
       'The ESC TV Today Team',
       'Industry & Partners',
+      'The %%=v(@BrandShortName)=%% Publications Team',
     ]) {
       assert.equal(
         C.render(definition, { [field.id]: team }),

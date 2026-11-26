@@ -554,7 +554,8 @@
   function fieldValue(field, values) {
     if (field.legacyVisibilityId && ['hidden', false].includes(values[field.legacyVisibilityId]))
       return '';
-    return Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
+    const value = Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
+    return field.useDefaultWhenBlank === true && value === '' ? field.defaultValue : value;
   }
   function editableItemFields(list) {
     const replaced = new Set(list.itemFields.flatMap((f) => [f.legacyTextKey, f.legacyLinkKey]));

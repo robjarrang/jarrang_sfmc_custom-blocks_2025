@@ -258,7 +258,7 @@
         input = document.createElement(field.type === 'text' ? 'textarea' : 'input');
         if (input.tagName === 'TEXTAREA') input.rows = 2;
         else input.type = field.type === 'number' ? 'number' : 'text';
-        input.value = values[field.id];
+        input.value = C.fieldValue(field, values);
         if (field.type === 'colour') {
           const picker = document.createElement('input');
           picker.type = 'color';
