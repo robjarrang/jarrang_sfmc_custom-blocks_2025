@@ -1836,6 +1836,41 @@ test('ESC headings can be italicised per field without changing existing output'
   }
 });
 
+test('ESC Personal Letter supports a team, a named signatory or no signature', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const { exportedDefinition: definition } = projects[1].modules.find(
+      (module) => module.slug === 'personal-letter',
+    );
+    const signature = definition.fields.find((field) => field.key === 'signature');
+    const host = dom.document.createElement('div');
+    host.innerHTML = C.render(definition);
+    assert.match(host.querySelector('.letter-signature').textContent, /Congress Team/);
+    assert.equal(host.querySelector('.letter-signatory-role'), null);
+
+    host.innerHTML = C.render(definition, {
+      [signature.id]: 'Dr Morgan Lee',
+      signatory_role: 'ESC Council Chair',
+    });
+    const name = host.querySelector('.letter-signature');
+    assert.equal(name.textContent.trim(), 'Dr Morgan Lee');
+    const role = name.nextElementSibling;
+    assert.equal(role.textContent, 'ESC Council Chair');
+    assert.equal(role.style.fontSize, '13px');
+    assert.equal(role.style.lineHeight, '20px');
+
+    assert.equal(C.validate(signature, ''), '');
+    host.innerHTML = C.render(definition, {
+      [signature.id]: '',
+      signatory_role: 'ESC Council Chair',
+    });
+    assert.equal(host.querySelector('.letter-signature, .letter-signatory-role'), null);
+    assert.equal(host.querySelector('.letter-body').nextElementSibling, null);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC Events show optional same-month and cross-month date ranges per card', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
