@@ -32,6 +32,8 @@ In the Newsletter Story Cards and Feature Card, and the ESC TV Story Card and 2 
 
 In rich-text fields, use **Text alignment** to align the whole field or return to the template alignment. Select text before using **Font size**. The email keeps the template line height as a minimum and increases it in 4px increments for larger text.
 
+Select text to apply **Strikethrough** or **Text highlight**. In a bulleted or numbered list, place the cursor in an item or select items at the same level to use **Indent list item** and **Outdent list item**. Lists support up to three levels.
+
 For Newsletter and Congress Checklist blocks, copy the objectives list from the ESC 365 event’s **About** tab and paste it into **Paste list**. Choose **Replace items** to make each pasted bullet a checklist item. Plain text works with one item per line. The block imports text and uses its selected marker style. To add an inline link, select the words in **Check text** and choose **Add or edit link**. Links use #AE1022, and previously saved whole-item links appear in the same editor. The editor shows an error if the pasted list exceeds the block’s item limit.
 
 Congress Attribution has editable Heading and Body text fields. **Show logo** is on by default. With **Logo image URL** blank, the send uses the selected email brand’s logo, alt text and link. Enter an image URL to use the custom logo controls. Turn off **Show logo** for a text-only block. Subscriber Preview resolves the dynamic logo.

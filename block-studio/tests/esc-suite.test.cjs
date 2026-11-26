@@ -1920,6 +1920,38 @@ test('ESC rich text can centre the field and size selected text on the 4px line-
   }
 });
 
+test('ESC rich text preserves highlight, strikethrough, and nested list styling in email HTML', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const hero = projects[0].modules.find((module) => module.slug === 'hero-story');
+    const intro = hero.fields.find((field) => field.key === 'intro_copy');
+    const output = dom.document.createElement('div');
+    output.innerHTML = C.render(hero.exportedDefinition, {
+      [intro.id]:
+        '<ol><li>Parent</li><ol><li><a href="https://example.org/">' +
+        '<strike style="background-color: #fff29a;line-height:19px;">Child</strike>' +
+        '</a></li></ol><li>Sibling</li></ol>',
+    });
+    const list = [...output.querySelectorAll('ol')].find((node) =>
+      node.textContent.includes('Parent'),
+    );
+    assert.deepEqual(
+      [...list.children].map((item) => item.tagName),
+      ['LI', 'LI'],
+    );
+    const child = list.querySelector('li > ol > li');
+    assert.equal(child.textContent, 'Child');
+    assert.equal(child.style.lineHeight, '24px');
+    assert.match(child.getAttribute('style'), /mso-line-height-rule:exactly/);
+    assert.ok(!child.innerHTML.includes('19px'));
+    assert.match(child.querySelector('a').getAttribute('style'), /color:#ae1022 !important;/i);
+    assert.equal(child.querySelector('span').getAttribute('style'), 'background-color:#fff29a;');
+    assert.equal(child.querySelector('s').getAttribute('style'), 'text-decoration:line-through;');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC card descriptions hide when blank while CTA switches remain independent', async () => {
   const { BlockCore: C, BlockControls, dom } = await environment();
   const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));

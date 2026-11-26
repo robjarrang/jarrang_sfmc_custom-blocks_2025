@@ -13,8 +13,9 @@ const limits = {
   // add about 2 KB, and automatic descriptions with saved visibility add about 1 KB.
   // Handling Enter in rich text adds about 0.5 KB without extra requests or dependencies.
   // Alignment and email-safe font sizes add about 3 KB to rendering and 5 KB to the rich editor.
-  'runtime.bundle.js': 88700,
-  'runtime.rich.bundle.js': 112400,
+  // Strikethrough, highlighting and list indentation add about 1 KB and 4 KB respectively.
+  'runtime.bundle.js': 89600,
+  'runtime.rich.bundle.js': 116600,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

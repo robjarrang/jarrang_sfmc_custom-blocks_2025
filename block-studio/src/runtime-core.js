@@ -245,6 +245,7 @@
     RICH_OPEN = '\uE002',
     RICH_CLOSE = '\uE003';
   const richFontSizes = [12, 13, 16, 20, 24, 28, 32];
+  const richListMaxDepth = 3;
   function richContent(value) {
     const html = String(value ?? '');
     const aligned = /^<div data-rich-align="(left|center|right)">([\s\S]*)<\/div>$/.exec(html);
@@ -261,6 +262,9 @@
       'I',
       'EM',
       'U',
+      'S',
+      'STRIKE',
+      'DEL',
       'SUP',
       'SUB',
       'BR',
@@ -294,6 +298,10 @@
       }
       return out;
     }
+    function highlight(node, children) {
+      const colour = normaliseColour(node.style.backgroundColor);
+      return colour ? wrap('span', 'background-color:' + colour + ';', children, true) : children;
+    }
     // Rows keep their own text formatting; spacing and inherited paragraph styles are added at render time.
     function listItem(node, inLink, depth) {
       const li = doc.createElement('li');
@@ -311,6 +319,9 @@
       for (const child of node.childNodes) {
         if (child.nodeName === 'LI') el.append(listItem(child, inLink, depth + 1));
         else if (child.nodeType === 3 && !child.nodeValue.trim()) continue;
+        // Some browsers indent by placing the sublist beside its parent item.
+        else if (['UL', 'OL'].includes(child.nodeName) && el.lastElementChild)
+          el.lastElementChild.append(...visit(child, inLink, depth + 1));
         else {
           const li = doc.createElement('li');
           li.append(...visit(child, inLink, depth + 1));
@@ -344,12 +355,22 @@
           webLink(href)
         )
           a.setAttribute('conversion', 'true');
-        a.append(...[...node.childNodes].flatMap((n) => visit(n, true, depth)));
+        a.append(
+          ...highlight(
+            node,
+            [...node.childNodes].flatMap((n) => visit(n, true, depth)),
+          ),
+        );
         while (a.lastChild?.nodeName === 'BR') a.lastChild.remove();
         return [a];
       }
       // Lists nested more than three deep, or inside a link, collapse to plain lines.
-      if (['UL', 'OL'].includes(node.tagName) && field.allowLists !== false && !inLink && depth < 3)
+      if (
+        ['UL', 'OL'].includes(node.tagName) &&
+        field.allowLists !== false &&
+        !inLink &&
+        depth < richListMaxDepth
+      )
         return [list(node, inLink, depth)];
       const children = [...node.childNodes].flatMap((n) => visit(n, inLink, depth));
       if (!allowed.has(node.tagName)) return children;
@@ -362,20 +383,24 @@
         const colour = normaliseColour(node.style.color || node.getAttribute('color'));
         const px = /^(\d+)px$/.exec(node.style.fontSize)?.[1];
         const size = px ? Number(px) : richFontSizes[Number(node.getAttribute('size')) - 1];
-        const coloured =
-          !inLink && colour ? wrap('span', 'color:' + colour + ';', children) : children;
-        if (!richFontSizes.includes(size) || !coloured.length) return coloured;
+        const formatted = highlight(
+          node,
+          !inLink && colour ? wrap('span', 'color:' + colour + ';', children) : children,
+        );
+        if (!richFontSizes.includes(size) || !formatted.length) return formatted;
         largestSize = Math.max(largestSize, size);
-        return wrap('span', 'font-size:' + size + 'px;', coloured, true);
+        return wrap('span', 'font-size:' + size + 'px;', formatted, true);
       }
-      if (inLink && ['B', 'STRONG', 'U'].includes(node.tagName)) return children;
+      if (['S', 'STRIKE', 'DEL'].includes(node.tagName))
+        return highlight(node, wrap('s', 'text-decoration:line-through;', children, true));
+      if (inLink && ['B', 'STRONG', 'U'].includes(node.tagName)) return highlight(node, children);
       const style =
         node.tagName === 'SUP'
           ? 'font-size:75%;line-height:0;vertical-align:super;'
           : node.tagName === 'SUB'
             ? 'font-size:75%;line-height:0;vertical-align:sub;'
             : '';
-      return wrap(node.tagName.toLowerCase(), style, children);
+      return highlight(node, wrap(node.tagName.toLowerCase(), style, children));
     }
     const out = doc.createElement('div');
     out.append(...[...doc.body.childNodes].flatMap((n) => visit(n)));
@@ -1146,6 +1171,7 @@
     cleanRich,
     richContent,
     richFontSizes,
+    richListMaxDepth,
     placeLists,
     minify,
     validUrl,

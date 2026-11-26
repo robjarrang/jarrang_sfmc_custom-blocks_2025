@@ -70,6 +70,43 @@ async function checkRichTextEnter(page) {
   console.log(
     'PASS: font size applies to selected text and field alignment can be saved and reset',
   );
+
+  await start('Plain Highlighted', '', 6);
+  await editor.evaluate((node) => window.getSelection().extend(node.firstChild, 17));
+  await page.getByRole('button', { name: 'Strikethrough' }).click();
+  assert.equal(await saved(), 'Plain <s style="text-decoration:line-through;">Highlighted</s>');
+  await page.getByRole('button', { name: 'Text highlight' }).click();
+  await page.getByLabel('Highlight colour hex').fill('#aaff99');
+  await page.getByRole('button', { name: 'Apply highlight' }).click();
+  const paint = editor.locator('s span, span:has(s)');
+  assert.equal(await paint.evaluate((node) => node.style.backgroundColor), 'rgb(170, 255, 153)');
+  await page.getByRole('button', { name: 'Strikethrough' }).click();
+  assert.equal(await saved(), 'Plain <span style="background-color:#aaff99;">Highlighted</span>');
+  await page.getByRole('button', { name: 'Clear formatting' }).click();
+  assert.equal(await saved(), 'Plain Highlighted');
+
+  for (const list of ['ul', 'ol']) {
+    const initial = '<' + list + '><li>One</li><li>Two</li><li>Three</li></' + list + '>';
+    await start(initial, 'li:nth-child(2)', 0);
+    await page.getByRole('button', { name: 'Indent list item' }).click();
+    assert.equal(
+      await saved(),
+      '<' +
+        list +
+        '><li>One<' +
+        list +
+        '><li>Two</li></' +
+        list +
+        '></li><li>Three</li></' +
+        list +
+        '>',
+    );
+    await page.getByRole('button', { name: 'Outdent list item' }).click();
+    assert.equal(await saved(), initial);
+  }
+  console.log(
+    'PASS: selected text can be struck or highlighted and list items can nest and return',
+  );
 }
 
 async function main() {

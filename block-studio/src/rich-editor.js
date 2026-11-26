@@ -5,14 +5,18 @@
     ['bold', 'Bold'],
     ['italic', 'Italic'],
     ['underline', 'Underline'],
+    ['strikethrough', 'Strikethrough'],
     ['superscript', 'Superscript'],
     ['subscript', 'Subscript'],
     ['colour', 'Text colour'],
+    ['highlight', 'Text highlight'],
     ['fontSize', 'Font size'],
     ['alignment', 'Text alignment'],
     ['bulletList', 'Bulleted list'],
     ['numberList', 'Numbered list'],
     ['listStyle', 'List style'],
+    ['indent', 'Indent list item'],
+    ['outdent', 'Outdent list item'],
     ['link', 'Add or edit link'],
     ['unlink', 'Remove link'],
     ['clear', 'Clear formatting'],
@@ -40,7 +44,8 @@
     message.setAttribute('role', 'status');
     const enabled = (key) =>
       field.toolbar?.[key] !== false &&
-      (!['link', 'unlink'].includes(key) || field.allowLinks !== false);
+      (!['link', 'unlink'].includes(key) || field.allowLinks !== false) &&
+      (!['indent', 'outdent'].includes(key) || field.allowLists !== false);
     let savedRange = null,
       composing = false;
     const inEditor = (n) => n === input || input.contains(n);
@@ -76,7 +81,14 @@
       // A caret on an empty line after the last text (below a list, say) has no text offset to return to.
       const trailing =
         r.collapsed && start === input.textContent.length && r.startContainer !== last;
-      return { start, end: start + r.toString().length, trailing };
+      return {
+        start,
+        end: start + r.toString().length,
+        trailing,
+        // At a boundary between text nodes, retain the original side of the caret.
+        startForward: r.startContainer.nodeType === 3 && r.startOffset === 0,
+        endForward: r.endContainer.nodeType === 3 && r.endOffset === 0,
+      };
     }
     function restoreBookmark(mark) {
       if (!mark) return;
@@ -116,8 +128,9 @@
         nodes.push({ node: n, start: total, end: total + n.length });
         total += n.length;
       }
-      const point = (offset) => {
-        const hit = nodes.find((n) => n.end >= offset) || nodes.at(-1);
+      const point = (offset, preferNext) => {
+        const hit =
+          nodes.find((n) => (preferNext ? n.end > offset : n.end >= offset)) || nodes.at(-1);
         return hit
           ? {
               node: hit.node,
@@ -125,8 +138,8 @@
             }
           : { node: input, offset: 0 };
       };
-      const a = point(mark.start),
-        b = point(mark.end),
+      const a = point(mark.start, mark.startForward),
+        b = point(mark.end, mark.endForward),
         range = document.createRange();
       range.setStart(a.node, a.offset);
       range.setEnd(b.node, b.offset);
@@ -176,10 +189,13 @@
       Bold: '<path d="M6 4h7a4 4 0 0 1 0 8H6zm0 8h8a4 4 0 0 1 0 8H6z"/>',
       Italic: '<path d="M10 4h9M5 20h9M15 4 9 20"/>',
       Underline: '<path d="M6 3v7a6 6 0 0 0 12 0V3M4 21h16"/>',
+      Strikethrough:
+        '<path d="M18 6c-1-4-12-4-12 2 0 2 3 3 6 4 4 1 6 2 6 5 0 5-10 6-13 2M3 12h18"/>',
       Superscript: '<path d="m4 9 8 11m0-11L4 20M16 5a2.5 2.5 0 0 1 5 0c0 2-5 3-5 6h5"/>',
       Subscript: '<path d="m4 4 8 11m0-11L4 15M16 16a2.5 2.5 0 0 1 5 0c0 2-5 3-5 6h5"/>',
       'Text colour':
         '<path d="m6 16 6-12 6 12M8 12h8"/><path d="M4 21h16" stroke="#59dbca" stroke-width="3"/>',
+      'Text highlight': '<path d="m8 15 9-9 3 3-9 9H8zm0 3-3 2h5M3 22h18"/>',
       'Font size': '<path d="m3 17 4-10 4 10m-6.5-3h5m2.5 3 4-12 5 12m-7.5-4h5.5"/>',
       'Text alignment': '<path d="M4 5h16M7 10h10M4 15h16M7 20h10"/>',
       'Add or edit link':
@@ -193,6 +209,8 @@
         '<path d="M10 6h10M10 12h10M10 18h10M4 5l1.5-1v4M3.5 14.5c0-1 2.5-1 2.5 0 0 1-2.5 2-2.5 3h2.5M3.5 20.5h2.5l-1 1.5a1.2 1.2 0 1 1-1.5.5"/>',
       'List style':
         '<path d="M9 6h11M9 12h11M9 18h11"/><rect x="3" y="4.5" width="3" height="3" fill="currentColor"/><circle cx="4.5" cy="12" r="1.6"/><path d="m3 18 1.5-2.5L6 18z" fill="currentColor"/>',
+      'Indent list item': '<path d="M3 5h18M11 10h10m-10 5h10M3 20h18M3 9l4 3.5L3 16"/>',
+      'Outdent list item': '<path d="M3 5h18M11 10h10m-10 5h10M3 20h18m4-11-4 3.5L7 16"/>',
     };
     const toolGroups = {};
     function tool(label, run) {
@@ -202,11 +220,24 @@
         hidden.disabled = true;
         return hidden;
       }
-      const category = ['Bold', 'Italic', 'Underline'].includes(label)
+      const category = ['Bold', 'Italic', 'Underline', 'Strikethrough'].includes(label)
         ? 'Text style'
-        : ['Superscript', 'Subscript', 'Text colour', 'Font size', 'Text alignment'].includes(label)
+        : [
+              'Superscript',
+              'Subscript',
+              'Text colour',
+              'Text highlight',
+              'Font size',
+              'Text alignment',
+            ].includes(label)
           ? 'Text appearance'
-          : ['Bulleted list', 'Numbered list', 'List style'].includes(label)
+          : [
+                'Bulleted list',
+                'Numbered list',
+                'List style',
+                'Indent list item',
+                'Outdent list item',
+              ].includes(label)
             ? 'Lists'
             : ['Add or edit link', 'Remove link'].includes(label)
               ? 'Links'
@@ -265,9 +296,50 @@
       restoreBookmark(mark);
       commit();
     }
+    function adjustList(name) {
+      const range = restore(),
+        list = closestList(range);
+      const first = nodeElement(range?.startContainer)?.closest('li');
+      const last = nodeElement(range?.endContainer)?.closest('li');
+      if (!list || first?.parentElement !== list || last?.parentElement !== list) {
+        message.textContent = 'Place the cursor in a list item or select items at the same level.';
+        return;
+      }
+      const depth = (list) => {
+        let count = 0;
+        for (
+          let node = list;
+          node && input.contains(node);
+          node = node.parentElement.closest('ul,ol')
+        )
+          count++;
+        return count;
+      };
+      if (name === 'indent') {
+        if (!first.previousElementSibling) {
+          message.textContent = 'Indent an item beneath the one before it.';
+          return;
+        }
+        const items = [...list.children];
+        const selectedItems = items.slice(items.indexOf(first), items.indexOf(last) + 1);
+        const lists = [
+          list,
+          ...selectedItems.flatMap((item) => [...item.querySelectorAll('ul,ol')]),
+        ];
+        if (lists.some((item) => depth(item) >= C.richListMaxDepth)) {
+          message.textContent = 'Lists can be nested up to ' + C.richListMaxDepth + ' levels.';
+          return;
+        }
+      } else if (depth(list) === 1) {
+        message.textContent = 'This list item is already at the top level.';
+        return;
+      }
+      listCommand(name);
+    }
     tool('Bold', () => command('bold', true));
     tool('Italic', () => command('italic', false));
     tool('Underline', () => command('underline', true));
+    tool('Strikethrough', () => command('strikeThrough', false));
     tool('Superscript', () => command('superscript', false));
     tool('Subscript', () => command('subscript', false));
     function formInput(label, type, value) {
@@ -349,18 +421,23 @@
       });
       choice.focus();
     });
-    tool('Text colour', () => {
+    function colourTool(highlight) {
       const r = selected();
       if (!r) return;
-      if (overlapsLink(r)) {
+      if (!highlight && overlapsLink(r)) {
         message.textContent =
           'Link colour is fixed by the module developer. Select text outside the link.';
         return;
       }
       closePanel();
       panel.hidden = false;
-      const picker = formInput('Choose text colour', 'color', '#000000'),
-        hex = formInput('Text colour hex', 'text', '#000000');
+      const initial = highlight ? '#fff29a' : '#000000';
+      const picker = formInput(
+          highlight ? 'Choose highlight colour' : 'Choose text colour',
+          'color',
+          initial,
+        ),
+        hex = formInput(highlight ? 'Highlight colour hex' : 'Text colour hex', 'text', initial);
       picker.oninput = () => (hex.value = picker.value);
       hex.oninput = () => {
         const v = C.normaliseColour(hex.value);
@@ -370,7 +447,7 @@
       issue.className = 'field-error';
       issue.setAttribute('role', 'alert');
       panel.append(issue);
-      buttons('Apply colour', () => {
+      buttons(highlight ? 'Apply highlight' : 'Apply colour', () => {
         const colour = C.normaliseColour(hex.value);
         if (!colour) {
           issue.textContent = 'Enter a hex colour, such as #0055aa.';
@@ -380,15 +457,19 @@
           issue.textContent = 'Select the text again.';
           return;
         }
-        document.execCommand('foreColor', false, colour);
+        document.execCommand(highlight ? 'hiliteColor' : 'foreColor', false, colour);
         closePanel();
         commit();
       });
       hex.focus();
       hex.select();
-    });
+    }
+    tool('Text colour', () => colourTool(false));
+    tool('Text highlight', () => colourTool(true));
     tool('Bulleted list', () => listCommand('insertUnorderedList'));
     tool('Numbered list', () => listCommand('insertOrderedList'));
+    tool('Indent list item', () => adjustList('indent'));
+    tool('Outdent list item', () => adjustList('outdent'));
     const markers = {
       UL: [
         ['disc', 'Solid circles'],
@@ -601,6 +682,10 @@
         formatSuperscript: 'superscript',
         formatSubscript: 'subscript',
         formatFontColor: 'colour',
+        formatBackColor: 'highlight',
+        formatStrikeThrough: 'strikethrough',
+        formatIndent: 'indent',
+        formatOutdent: 'outdent',
         formatFontSize: 'fontSize',
         formatRemove: 'clear',
         insertLink: 'link',
