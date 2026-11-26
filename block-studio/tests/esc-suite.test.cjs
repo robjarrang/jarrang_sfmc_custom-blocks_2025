@@ -1610,6 +1610,71 @@ test('congress deadline links are optional per row and need both a title and a U
   }
 });
 
+test('ESC Checklists can import clipboard lists without changing saved rows until replacement', async () => {
+  const { BlockControls, dom } = await environment();
+  try {
+    for (const project of projects) {
+      const module = project.modules.find((item) => item.slug === 'checklist');
+      const field = module.exportedDefinition.fields.find((item) => item.key === 'items');
+      const saved = [{ check_text: 'Current item', check_link: 'https://example.com/current' }];
+      const values = { [field.id]: saved };
+      const editor = dom.document.createElement('div');
+      dom.document.body.append(editor);
+      let changes = 0;
+      BlockControls.mount(editor, [field], values, () => changes++);
+      const input = editor.querySelector('.paste-list textarea');
+      const replace = editor.querySelector('.paste-list button');
+      const paste = new dom.Event('paste', { cancelable: true });
+      Object.defineProperty(paste, 'clipboardData', {
+        value: {
+          getData: (type) =>
+            type === 'text/html'
+              ? '<p>Learning objectives</p><p>After watching:</p><ul><li><strong>Understand</strong> the key messages;</li><li>Analyse<br>evidence &amp; examples.</li></ul><p>Needs assessment</p><p>Other content.</p>'
+              : 'Unformatted fallback',
+        },
+      });
+      input.dispatchEvent(paste);
+      assert.equal(input.value, '• Understand the key messages;\n• Analyse evidence & examples.');
+      assert.equal(changes, 0);
+      assert.equal(values[field.id], saved);
+      replace.click();
+      assert.equal(changes, 1);
+      assert.equal(editor.querySelectorAll('.repeat-card').length, 2);
+      assert.deepEqual(
+        Array.from(values[field.id], ({ check_text, check_link }) => ({ check_text, check_link })),
+        [
+          { check_text: 'Understand the key messages;', check_link: '' },
+          { check_text: 'Analyse evidence & examples.', check_link: '' },
+        ],
+      );
+
+      const previous = values[field.id];
+      input.value = Array(field.maxItems + 1)
+        .fill('• Another item')
+        .join('\n');
+      replace.click();
+      assert.match(editor.querySelector('.paste-list .field-error').textContent, /items/);
+      assert.equal(values[field.id], previous);
+      assert.equal(changes, 1);
+
+      input.value = 'Introduction\r\n• Red\r\n2. Blue\r\nUnrelated paragraph';
+      replace.click();
+      assert.deepEqual(
+        Array.from(values[field.id], (row) => row.check_text),
+        ['Red', 'Blue'],
+      );
+      input.value = 'First item\n\nSecond item';
+      replace.click();
+      assert.deepEqual(
+        Array.from(values[field.id], (row) => row.check_text),
+        ['First item', 'Second item'],
+      );
+      assert.equal(changes, 3);
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('ESC Checklist items support checkmarks or bullets and optional red links', async () => {
   const { BlockCore: C, dom } = await environment();
   const output = dom.document.createElement('div');

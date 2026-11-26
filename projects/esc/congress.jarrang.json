@@ -1488,7 +1488,8 @@
             }
           ],
           "minItems": 1,
-          "maxItems": 8
+          "maxItems": 8,
+          "pasteTextKey": "check_text"
         }
       ],
       "analysed": true,
@@ -1638,7 +1639,8 @@
               }
             ],
             "minItems": 1,
-            "maxItems": 8
+            "maxItems": 8,
+            "pasteTextKey": "check_text"
           }
         ]
       },
@@ -1785,7 +1787,8 @@
               }
             ],
             "minItems": 1,
-            "maxItems": 8
+            "maxItems": 8,
+            "pasteTextKey": "check_text"
           }
         ],
         "showEditorHeader": false

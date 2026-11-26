@@ -392,6 +392,14 @@
       errors.push('Map at least one source location.');
     if (field.binding === 'template' && !/^[a-zA-Z_]\w*$/.test(field.key || ''))
       errors.push('Use a template key made of letters, numbers and underscores.');
+    if (
+      field.pasteTextKey !== undefined &&
+      (field.type !== 'list' ||
+        !field.itemFields?.some(
+          (child) => child.key === field.pasteTextKey && child.type === 'text',
+        ))
+    )
+      errors.push('Pasted items need a text field in the list.');
     if (field.type === 'list') {
       if (!field.itemFields?.length) errors.push('Add at least one item field.');
       const keys = new Set();

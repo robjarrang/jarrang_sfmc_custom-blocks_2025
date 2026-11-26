@@ -27,6 +27,74 @@
     parent.append(details);
     return details;
   }
+  function pastedListItems(html) {
+    if (!/<li[\s>]/i.test(html)) return [];
+    // Parse clipboard markup in inert template contents. Only item text is imported.
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    for (const node of template.content.querySelectorAll('script, style, template, noscript'))
+      node.remove();
+    return [...template.content.querySelectorAll('li')]
+      .map((item) => {
+        const ownText = item.cloneNode(true);
+        for (const list of ownText.querySelectorAll('ul, ol')) list.remove();
+        for (const br of ownText.querySelectorAll('br')) br.replaceWith(' ');
+        return ownText.textContent.replace(/\s+/g, ' ').trim();
+      })
+      .filter(Boolean);
+  }
+  function pasteList(parent, field, onReplace) {
+    const details = document.createElement('details'),
+      summary = document.createElement('summary'),
+      input = document.createElement('textarea'),
+      replace = document.createElement('button'),
+      error = document.createElement('p');
+    details.className = 'paste-list';
+    summary.textContent = 'Paste list';
+    input.className = 'control';
+    input.rows = 4;
+    input.setAttribute('aria-label', field.label + ' to paste');
+    input.placeholder = 'Paste bullets or one item per line';
+    replace.type = 'button';
+    replace.className = 'add-repeat-item';
+    replace.textContent = 'Replace items';
+    error.className = 'field-error';
+    error.setAttribute('aria-live', 'polite');
+    input.oninput = () => (error.textContent = '');
+    input.onpaste = (event) => {
+      const items = pastedListItems(event.clipboardData?.getData('text/html') || '');
+      if (!items.length) return;
+      event.preventDefault();
+      input.value = items.map((text) => '• ' + text).join('\n');
+      error.textContent = '';
+    };
+    replace.onclick = () => {
+      const htmlItems = pastedListItems(input.value);
+      const lines = input.value
+        .split(/\r?\n|\r/)
+        .map((line) => line.trim())
+        .filter(Boolean);
+      const marked = lines
+        .map((line) => /^(?:[•◦▪‣●○·✓]\s*|(?:[-–—*]|\d+[.)])\s+)(.+)$/.exec(line)?.[1])
+        .filter(Boolean);
+      const items = htmlItems.length ? htmlItems : marked.length ? marked : lines;
+      if (!items.length) {
+        error.textContent = 'Paste at least one item.';
+        return;
+      }
+      const defaults = Object.fromEntries(
+        field.itemFields.map((item) => [item.key, item.defaultValue]),
+      );
+      const rows = items.map((text) => ({ ...clone(defaults), [field.pasteTextKey]: text.trim() }));
+      error.textContent = root.BlockCore.validate(field, rows);
+      if (error.textContent) return;
+      input.value = '';
+      details.open = false;
+      onReplace(rows);
+    };
+    details.append(summary, input, replace, error);
+    parent.append(details);
+  }
   function mount(container, fields, values, onChange, options = {}) {
     const C = root.BlockCore,
       refs = new Map(),
@@ -155,6 +223,12 @@
           note.textContent = rows.length + ' of ' + (field.maxItems ?? 50) + ' items';
           input.append(note);
         }
+        if (field.pasteTextKey)
+          pasteList(group, field, (rows) => {
+            changed(rows);
+            draw();
+            focusItem(0);
+          });
         draw();
       } else if (field.type === 'toggle') {
         input = document.createElement('input');

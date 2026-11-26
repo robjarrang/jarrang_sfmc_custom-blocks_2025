@@ -28,6 +28,8 @@ The suite uses optional sections, colour/theme choices, conditional layouts, rep
 
 Headings and subheadings can be cleared. A CTA with editable text and destination appears when both values are supplied and its visibility switch, where present, is on. If the destination also links an image, clearing it leaves the image visible without the link.
 
+For Newsletter and Congress Checklist blocks, copy the objectives list from the ESC 365 event’s **About** tab and paste it into **Paste list**. Choose **Replace items** to make each pasted bullet a checklist item. Plain text works with one item per line. The block imports text and uses its selected marker style. Add any item links in **Link URL**. The editor shows an error if the pasted list exceeds the block’s item limit.
+
 Congress Attribution has editable Heading and Body text fields. **Show logo** is on by default. With **Logo image URL** blank, the send uses the selected email brand’s logo, alt text and link. Enter an image URL to use the custom logo controls. Turn off **Show logo** for a text-only block. Subscriber Preview resolves the dynamic logo.
 
 A repeated group can become a single item through its field settings, including supported item-position rules. The retained item becomes both first and last. This still changes an existing published field schema, so release that change as a duplicated module rather than replacing the live endpoint.

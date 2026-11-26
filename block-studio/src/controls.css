@@ -290,10 +290,12 @@ input.toggle-switch:checked:after {
   margin: 14px 0 8px;
 }
 
-.link-options {
+.link-options,
+.paste-list {
   margin-top: 8px;
 }
-.link-options > summary {
+.link-options > summary,
+.paste-list > summary {
   cursor: pointer;
   font-size: 13px;
 }
@@ -302,6 +304,7 @@ input.toggle-switch:checked:after {
   margin: 10px 0 5px;
   font-size: 13px;
 }
-.link-options > .control {
+.link-options > .control,
+.paste-list > .control {
   width: 100%;
 }

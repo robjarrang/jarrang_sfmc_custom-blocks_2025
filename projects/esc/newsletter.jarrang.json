@@ -1712,7 +1712,8 @@
             }
           ],
           "minItems": 1,
-          "maxItems": 10
+          "maxItems": 10,
+          "pasteTextKey": "check_text"
         }
       ],
       "analysed": true,
@@ -1890,7 +1891,8 @@
               }
             ],
             "minItems": 1,
-            "maxItems": 10
+            "maxItems": 10,
+            "pasteTextKey": "check_text"
           }
         ]
       },
@@ -2064,7 +2066,8 @@
               }
             ],
             "minItems": 1,
-            "maxItems": 10
+            "maxItems": 10,
+            "pasteTextKey": "check_text"
           }
         ],
         "showEditorHeader": false
