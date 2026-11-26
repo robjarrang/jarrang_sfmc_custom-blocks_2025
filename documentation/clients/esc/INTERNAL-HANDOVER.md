@@ -38,6 +38,8 @@ For Newsletter and Congress Checklist blocks, copy the objectives list from the 
 
 Congress Attribution has editable Heading and Body text fields. **Show logo** is on by default. With **Logo image URL** blank, the send uses the selected email brand’s logo, alt text and link. Enter an image URL to use the custom logo controls. Turn off **Show logo** for a text-only block. Subscriber Preview resolves the dynamic logo.
 
+The Congress **Together List** also accepts website bullets in **Paste list**. Choose **Replace items** to import them as plain-text statements. The block numbers each statement automatically.
+
 A repeated group can become a single item through its field settings, including supported item-position rules. The retained item becomes both first and last. This still changes an existing published field schema, so release that change as a duplicated module rather than replacing the live endpoint.
 
 ## Minified output

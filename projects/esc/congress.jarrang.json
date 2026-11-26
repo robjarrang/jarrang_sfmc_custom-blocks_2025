@@ -7093,7 +7093,8 @@
             }
           ],
           "minItems": 1,
-          "maxItems": 6
+          "maxItems": 6,
+          "pasteTextKey": "text"
         }
       ],
       "analysed": true,
@@ -7199,7 +7200,8 @@
               }
             ],
             "minItems": 1,
-            "maxItems": 6
+            "maxItems": 6,
+            "pasteTextKey": "text"
           }
         ]
       },
@@ -7302,7 +7304,8 @@
               }
             ],
             "minItems": 1,
-            "maxItems": 6
+            "maxItems": 6,
+            "pasteTextKey": "text"
           }
         ],
         "showEditorHeader": false

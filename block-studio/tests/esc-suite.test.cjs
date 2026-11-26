@@ -1610,6 +1610,44 @@ test('congress deadline links are optional per row and need both a title and a U
   }
 });
 
+test('ESC Together List turns pasted website bullets into numbered statements', async () => {
+  const { BlockCore: C, BlockControls: Controls, dom } = await environment();
+  try {
+    const { exportedDefinition: definition } = projects[1].modules.find(
+      (module) => module.slug === 'together-list',
+    );
+    const field = definition.fields.find((field) => field.key === 'rows');
+    const editor = dom.document.createElement('div');
+    const values = { [field.id]: [{ text: 'Existing statement' }] };
+    Controls.mount(editor, [field], values, () => {});
+    const paste = new dom.Event('paste', { cancelable: true });
+    Object.defineProperty(paste, 'clipboardData', {
+      value: {
+        getData: (type) =>
+          type === 'text/html'
+            ? '<ul><li><strong>Discuss new findings</strong> with experts.</li><li>Build lasting relationships.</li></ul>'
+            : '',
+      },
+    });
+    editor.querySelector('.paste-list textarea').dispatchEvent(paste);
+    assert.equal(values[field.id][0].text, 'Existing statement');
+    editor.querySelector('.paste-list button').click();
+    const output = dom.document.createElement('div');
+    output.innerHTML = C.render(definition, values);
+    const statements = [...output.querySelectorAll('.together-text')];
+    assert.deepEqual(
+      statements.map((text) => text.textContent.trim()),
+      ['Discuss new findings with experts.', 'Build lasting relationships.'],
+    );
+    assert.deepEqual(
+      statements.map((text) => text.previousElementSibling.textContent.trim()),
+      ['1.', '2.'],
+    );
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC Checklists can import clipboard lists without changing saved rows until replacement', async () => {
   const { BlockControls, dom } = await environment();
   try {
