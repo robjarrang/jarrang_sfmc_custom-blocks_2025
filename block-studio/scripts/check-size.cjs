@@ -11,9 +11,9 @@ const limits = {
   // Settings-only preview adds about 2.8 KB, output minification about 6 KB,
   // and checklist paste about 3 KB. Inline checklist links and legacy row migration
   // add about 2 KB, and automatic descriptions with saved visibility add about 1 KB.
-  // Neither adds requests or dependencies.
+  // Handling Enter in rich text adds about 0.5 KB without extra requests or dependencies.
   'runtime.bundle.js': 85800,
-  'runtime.rich.bundle.js': 107000,
+  'runtime.rich.bundle.js': 107500,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

@@ -527,6 +527,15 @@
       }
     };
     input.onbeforeinput = (e) => {
+      // Outside lists, insert the same <br> as Shift+Enter. A browser-created paragraph wrapper
+      // puts the split at its opening tag, but the email sanitiser flattens it at its closing tag.
+      if (e.inputType === 'insertParagraph' && e.cancelable && !e.isComposing && !composing) {
+        const range = capture();
+        if (range && !closestList(range) && document.execCommand('insertLineBreak')) {
+          e.preventDefault();
+          return;
+        }
+      }
       const key = {
         formatBold: 'bold',
         formatItalic: 'italic',

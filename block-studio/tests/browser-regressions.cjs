@@ -4,6 +4,51 @@ const assert = require('node:assert/strict');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+
+async function checkRichTextEnter(page) {
+  for (const file of ['logic', 'runtime-core', 'rich-editor'])
+    await page.addScriptTag({ path: path.resolve(__dirname, '../src', file + '.js') });
+  const editor = page.getByRole('textbox', { name: 'Body' });
+  const saved = () => page.locator('body').getAttribute('data-saved');
+  const start = (html, selector, offset) =>
+    page.evaluate(
+      ({ html, selector, offset }) => {
+        const field = document.createElement('div');
+        document.body.replaceChildren(field);
+        const input = window.BlockRichText.mount(field, { label: 'Body' }, html, (value) => {
+          document.body.dataset.saved = value;
+        });
+        field.append(input);
+        input.focus();
+        const selection = window.getSelection();
+        selection.collapse((selector ? input.querySelector(selector) : input).firstChild, offset);
+      },
+      { html, selector, offset },
+    );
+
+  await start('Firstsecond', '', 5);
+  await editor.press('Enter');
+  assert.equal(await saved(), 'First<br>second');
+  await page.keyboard.insertText('new ');
+  assert.equal(await saved(), 'First<br>new second');
+
+  await start('<b>Firstsecond</b>', 'b', 5);
+  await editor.press('Enter');
+  assert.equal(await saved(), '<b>First<br>second</b>');
+
+  await start('First', '', 5);
+  await editor.press('Enter');
+  await page.keyboard.insertText('second');
+  assert.equal(await saved(), 'First<br>second');
+
+  await start('<ul><li>Firstsecond</li></ul>', 'li', 5);
+  await editor.press('Enter');
+  assert.equal(await saved(), '<ul><li>First</li><li>second</li></ul>');
+  console.log(
+    'PASS: Enter splits rich text, preserves the caret and formatting, and splits list items',
+  );
+}
+
 async function main() {
   const browser = await chromium.launch({
     headless: true,
@@ -13,6 +58,11 @@ async function main() {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } }),
       errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
+    await checkRichTextEnter(page);
+    if (process.argv.includes('--rich-text-only')) {
+      assert.deepEqual(errors, []);
+      return;
+    }
     await page.goto(pathToFileURL(path.resolve(__dirname, '../Open-Block-Studio.html')).href);
     await page.locator('#source-html').fill('<h1>Heading</h1><p>Body text</p>');
     await page.locator('#analyse').click();
