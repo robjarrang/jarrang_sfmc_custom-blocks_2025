@@ -1896,6 +1896,33 @@ test('ESC Quote supports long quotations and an optional heading and speaker pho
   }
 });
 
+test('ESC Signature accepts specialist team text with a dynamic fallback', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const { exportedDefinition: definition } = projects[0].modules.find(
+      (module) => module.slug === 'signature',
+    );
+    const field = definition.fields.find((field) => field.key === 'signature_text');
+    const fallback = 'The %%=v(@BrandShortName)=%% Team';
+    const defaultHtml = C.render(definition);
+    assert.equal(C.validate(field, ''), '');
+    assert.match(defaultHtml, /The %%=v\(@BrandShortName\)=%% Team/);
+    assert.equal(C.render(definition, { [field.id]: '' }), defaultHtml);
+    for (const team of [
+      'The ESC Publications Team',
+      'The ESC TV Today Team',
+      'Industry & Partners',
+    ]) {
+      assert.equal(
+        C.render(definition, { [field.id]: team }),
+        defaultHtml.replace(fallback, () => C.escape(team)),
+      );
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC Personal Letter supports a team, a named signatory or no signature', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
