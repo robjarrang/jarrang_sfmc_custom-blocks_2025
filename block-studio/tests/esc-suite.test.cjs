@@ -1879,6 +1879,49 @@ test('ESC TV Lead keeps its background, optional list and optional button', asyn
   }
 });
 
+test('ESC card descriptions hide when blank while CTA switches remain independent', async () => {
+  const { BlockCore: C, BlockControls, dom } = await environment();
+  const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+  const affected = [...projects[0].modules, ...escTv.modules].filter((module) =>
+    module.fields.some((field) => field.legacyVisibilityId),
+  );
+  try {
+    assert.equal(affected.length, 6);
+    for (const { exportedDefinition: definition } of affected) {
+      const descriptions = definition.fields.filter((field) => field.legacyVisibilityId);
+      const ctas = definition.fields.filter(
+        (field) => field.type === 'toggle' && /show (?:CTA button|button|link)$/i.test(field.label),
+      );
+      assert.equal(ctas.length, descriptions.length);
+      for (const field of descriptions) {
+        const values = {
+          [field.id]: 'Previously hidden copy',
+          [field.legacyVisibilityId]: 'hidden',
+        };
+        const hidden = C.render(definition, values);
+        for (const blank of ['', '   ', '<div>&nbsp;<br></div>', '<p>\u200b</p>'])
+          assert.equal(C.render(definition, { [field.id]: blank }), hidden);
+        const editor = dom.document.createElement('div');
+        BlockControls.mount(editor, definition.fields, values, () => {});
+        const input = editor.querySelector('#' + field.id);
+        assert.equal(input.textContent, '');
+        assert.equal(values[field.id], 'Previously hidden copy');
+        assert.ok(!editor.querySelector('#' + field.legacyVisibilityId));
+        for (const cta of ctas) assert.ok(editor.querySelector('#' + cta.id));
+
+        input.innerHTML = 'New visible <a href="https://example.org/">description</a>';
+        input.dispatchEvent(new dom.Event('input'));
+        const output = C.render(definition, values);
+        assert.match(output, /New visible <a href="https:\/\/example.org\/"[^>]*>description<\/a>/);
+        for (const cta of ctas)
+          assert.notEqual(output, C.render(definition, { ...values, [cta.id]: 'hidden' }));
+      }
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+
 test('ESC TV Story Card rounds the image and card corners and keeps description and button optional', async () => {
   const { BlockCore: C, BlockExport: E, dom } = await environment();
   try {

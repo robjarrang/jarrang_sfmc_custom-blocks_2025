@@ -105,7 +105,7 @@
       refs = new Map(),
       prefix = options.prefix || '';
     container.replaceChildren();
-    for (const field of fields) {
+    for (const field of C.editableFields(fields)) {
       if (!Object.hasOwn(values, field.id)) values[field.id] = clone(field.defaultValue);
       const group = document.createElement('div');
       group.className = 'field trial-field' + (field.type === 'toggle' ? ' inline-toggle' : '');
@@ -120,6 +120,7 @@
       let input;
       const changed = (value) => {
         values[field.id] = value;
+        if (field.legacyVisibilityId) values[field.legacyVisibilityId] = 'shown';
         const issue = C.validate(field, value);
         error.textContent = issue;
         input.setAttribute('aria-invalid', String(!!issue));
@@ -252,7 +253,7 @@
         input.value = values[field.id];
         input.onchange = () => changed(input.value);
       } else if (field.type === 'richtext') {
-        input = root.BlockRichText.mount(group, field, values[field.id], changed);
+        input = root.BlockRichText.mount(group, field, C.fieldValue(field, values), changed);
       } else {
         input = document.createElement(field.type === 'text' ? 'textarea' : 'input');
         if (input.tagName === 'TEXTAREA') input.rows = 2;

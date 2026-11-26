@@ -501,6 +501,16 @@
       )
     );
   }
+  function editableFields(fields) {
+    const retired = new Set(fields.map((f) => f.legacyVisibilityId).filter(Boolean));
+    return fields.filter((f) => !retired.has(f.id));
+  }
+  // Keep previously hidden copy out of the email until the description is edited.
+  function fieldValue(field, values) {
+    if (field.legacyVisibilityId && ['hidden', false].includes(values[field.legacyVisibilityId]))
+      return '';
+    return Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
+  }
   function editableItemFields(list) {
     const replaced = new Set(list.itemFields.flatMap((f) => [f.legacyTextKey, f.legacyLinkKey]));
     return list.itemFields.filter((f) => !replaced.has(f.key));
@@ -889,9 +899,18 @@
     conversionData(values[conversionKey]);
     linkOptionsData(values[linkOptionsKey]);
     scope.block_id = options.blockId || 'bs_preview';
-    for (const field of module.fields.filter((f) => f.enabled)) {
-      const value = Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
+    for (const field of editableFields(module.fields.filter((f) => f.enabled))) {
       if (!fieldActive(module, field, values)) continue;
+      let value = fieldValue(field, values);
+      if (
+        field.legacyVisibilityId &&
+        value &&
+        !decode(cleanRich(value, field).replace(/<[^>]*>/g, '')).replace(
+          /[\s\u200b-\u200d\u2060]/g,
+          '',
+        )
+      )
+        value = '';
       const checked = () => {
         const error = validate(field, value);
         if (error) throw Error(field.label + ': ' + error);
@@ -1078,6 +1097,8 @@
     validate,
     hiddenRanges,
     fieldActive,
+    editableFields,
+    fieldValue,
     editableItemFields,
     listItemValue,
     settingsSummary,
