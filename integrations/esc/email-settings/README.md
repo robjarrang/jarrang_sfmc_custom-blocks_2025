@@ -24,7 +24,7 @@ The example is the supplied populated email with revised settings/CSS ordering, 
 - **Brand** selects the row in the existing `BrandSettings` Data Extension. All 31 supported keys are included, preserving the spelling of `C-Gen`. Council and Working Group choices are labelled accordingly. No brand records or API credentials are embedded.
 - **Footer logo → Selected brand** uses the selected brand's footer logo and the existing URL/alternative-text defaults.
 - **Footer logo → ESC** uses the main ESC footer logo, ESC homepage and ESC alternative text. Footer colours still follow the selected brand.
-- **Campaign label → ESC Industry Team** adds a small label below the header and above the main content. **None** is the default.
+- **Campaign label → ESC Industry Team** adds a small eyebrow above the title in the Decorative Header, Congress Lead Editorial and Congress Lead Poster blocks. **None** is the default.
 
 There is no automatic Data Extension synchronisation. To add confirmed brands, open **ESC / Email settings** in Studio, edit the **Brand** field, and add each display label and exact `BrandSettings.BrandKey` as a dropdown option. Values support letters, numbers, underscores and hyphens, up to 80 characters. Save the template and commit/push with Tower. Existing dropdown choices must be retained for saved emails. Both email suites use this same shared endpoint.
 
@@ -76,6 +76,8 @@ Edit and save existing custom blocks in SFMC to regenerate their HTML with the n
 
 ## Industry campaign label
 
-Add the contents of `Industry-Team-Label.html` immediately before the main content slot in the shared master template, below the header and outside the editable slots. The template should include it once. The conditional reads the value from the Email settings block. Emails with **None** selected or without a saved campaign label produce no label or spacing. An existing Email settings block needs to be saved with **ESC Industry Team** selected for the label to appear in Subscriber Preview.
+**Campaign label → ESC Industry Team** is rendered by the header block itself. Use Decorative Header, Congress Lead Editorial or Congress Lead Poster. The Congress variants place it above the entered congress title. **None** is the default.
 
-The settings card in the Content Builder **Default** canvas shows the selected value. View the actual label in **Preview and Test** with a subscriber selected. If it is missing there, open the email’s **Code View** and look for `IF @CampaignLabel == "INDUSTRY"`. An email created before the master changed may still use its original template HTML. For a test draft with that older layout, update its master HTML or start a fresh email from the updated master. Save **ESC Industry Team** in its Email settings block and run Subscriber Preview again.
+For an existing starter template, remove the earlier label section immediately before the main content slot. It starts with `%%[ IF @CampaignLabel == "INDUSTRY" THEN ]%%`, contains a table with the text “ESC Industry Team”, and ends with its matching `%%[ ENDIF ]%%`. Keep the settings, header and main content slot declarations. If the draft uses a separate HTML block for the old label, remove that block too.
+
+Edit and save the header block to regenerate its HTML. The settings card in the **Default** canvas shows the chosen label. Check the masthead in **Preview and Test** with a subscriber selected.

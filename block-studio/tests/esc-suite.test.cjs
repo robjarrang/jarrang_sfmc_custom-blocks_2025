@@ -640,6 +640,41 @@ test('ESC default typography follows the shared scale and keeps exact four-pixel
     await dom.happyDOM.close();
   }
 });
+test('ESC Industry Team is conditional and shares the masthead title cell', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const output = dom.document.createElement('div');
+    // Model this AMPscript branch locally. SFMC resolves the campaign variable when it renders.
+    const branch =
+      /%%\[ IF @CampaignLabel == "INDUSTRY" THEN \]%%([\s\S]*?)(?:%%\[ ELSE \]%%([\s\S]*?))?%%\[ ENDIF \]%%/g;
+    for (const [project, slug, count] of [
+      [projects[0], 'decorative-header', 2],
+      [projects[1], 'lead-editorial', 1],
+      [projects[1], 'lead-poster', 1],
+    ]) {
+      const module = project.modules.find((item) => item.slug === slug);
+      const html = C.render(module.exportedDefinition);
+      output.innerHTML = html.replace(branch, (_, label) => label);
+      const labels = [...output.querySelectorAll('.esc-industry-eyebrow')];
+      assert.equal(labels.length, count, slug);
+      for (const label of labels) {
+        assert.equal(label.textContent, 'ESC Industry Team');
+        assert.equal(label.style.fontSize, '12px');
+        assert.equal(label.style.lineHeight, '16px');
+        const gap = label.nextElementSibling;
+        assert.equal(gap.style.lineHeight, '4px');
+        assert.equal(gap.nextElementSibling.tagName, 'H1');
+      }
+      output.innerHTML = html.replace(branch, (_, label, fallback) => fallback || '');
+      assert.equal(output.querySelector('.esc-industry-eyebrow'), null, slug);
+      assert.equal(output.querySelectorAll('h1').length, count, slug);
+      if (slug === 'decorative-header')
+        assert.equal(output.querySelector('.header-copy td[height="20"]').style.lineHeight, '20px');
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('Newsletter text and section headings can centre and omit unused internal spacing', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
