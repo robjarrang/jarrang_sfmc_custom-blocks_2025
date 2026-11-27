@@ -1,6 +1,6 @@
 # ESC email settings
 
-One shared custom block for all ESC starter emails. Users choose **Brand** and **Footer logo**. There is no email-category or header-prefix control.
+One shared custom block for all ESC starter emails. Users choose **Brand**, **Footer logo** and an optional **Campaign label**.
 
 ## Install once
 
@@ -24,6 +24,7 @@ The example is the supplied populated email with revised settings/CSS ordering, 
 - **Brand** selects the row in the existing `BrandSettings` Data Extension. All 31 supported keys are included, preserving the spelling of `C-Gen`. Council and Working Group choices are labelled accordingly. No brand records or API credentials are embedded.
 - **Footer logo → Selected brand** uses the selected brand's footer logo and the existing URL/alternative-text defaults.
 - **Footer logo → ESC** uses the main ESC footer logo, ESC homepage and ESC alternative text. Footer colours still follow the selected brand.
+- **Campaign label → ESC Industry Team** adds a small label below the header and above the main content. **None** is the default.
 
 There is no automatic Data Extension synchronisation. To add confirmed brands, open **ESC / Email settings** in Studio, edit the **Brand** field, and add each display label and exact `BrandSettings.BrandKey` as a dropdown option. Values support letters, numbers, underscores and hyphens, up to 80 characters. Save the template and commit/push with Tower. Existing dropdown choices must be retained for saved emails. Both email suites use this same shared endpoint.
 
@@ -72,3 +73,7 @@ Update the live master/starter email's matching dark-mode rules from `Brand-Depe
 Apply the updated static responsive styles from `ESC-Email-Example.html` and the trailing `Brand-Dependent-Styles.html` group to the live starter/master email. Both contain changes for the shared type scale. The trailing group includes the 24px masthead and hero sizes on mobile and 12px footer text with a 16px line height.
 
 Edit and save existing custom blocks in SFMC to regenerate their HTML with the new inline sizes. For the live `ESC_GLOBAL_Footer` Content Block, set its legal text and text links inline to 12px with a 16px exact line height for classic Windows Outlook. Run a controlled send before using the updated template for a campaign.
+
+## Industry campaign label
+
+Add the contents of `Industry-Team-Label.html` immediately before the main content slot in the shared master template, below the header and outside the editable slots. The template should include it once. The conditional reads the value from the Email settings block. Emails with **None** selected or without a saved campaign label produce no label or spacing. An existing Email settings block needs to be saved with **ESC Industry Team** selected for the label to appear in Subscriber Preview.

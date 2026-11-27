@@ -640,6 +640,49 @@ test('ESC default typography follows the shared scale and keeps exact four-pixel
     await dom.happyDOM.close();
   }
 });
+test('Newsletter text and section headings can centre and omit unused internal spacing', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const output = dom.document.createElement('div');
+    const definition = (slug) =>
+      projects[0].modules.find((module) => module.slug === slug).exportedDefinition;
+    const text = definition('text-block');
+    const single = {
+      field1: '',
+      field2: 'One paragraph',
+      field3: '',
+      top_spacing: '0',
+      bottom_spacing: '0',
+    };
+    output.innerHTML = C.render(text, single);
+    assert.equal(output.querySelector('p').closest('td').style.textAlign, 'left');
+    assert.equal(output.querySelectorAll('div').length, 0);
+    output.innerHTML = C.render(text, {
+      ...single,
+      field1: 'Heading',
+      field3: '<div data-rich-align="right">Second paragraph</div>',
+      text_alignment: 'center',
+    });
+    assert.equal(output.querySelector('h2').closest('td').getAttribute('align'), 'center');
+    assert.equal(output.querySelectorAll('p')[1].style.textAlign, 'right');
+    assert.deepEqual(
+      [...output.querySelectorAll('div')].map((divider) => divider.style.lineHeight),
+      ['16px', '16px'],
+    );
+    for (const theme of ['light', 'dark']) {
+      output.innerHTML = C.render(definition('section-header'), {
+        field1: theme,
+        field2: '',
+        text_alignment: 'center',
+      });
+      assert.equal(output.querySelector('h2').closest('td').style.textAlign, 'center');
+      assert.equal(output.querySelector('.section-label'), null);
+      assert.equal(output.querySelector('h2').previousElementSibling, null);
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('Journal Section uses the shared mobile stacking and fluid image classes', async () => {
   const { BlockCore: C, dom } = await environment();
   const { exportedDefinition: definition } = projects[0].modules.find(

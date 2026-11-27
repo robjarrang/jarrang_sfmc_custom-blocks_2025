@@ -17,8 +17,8 @@
       "name": "Email settings",
       "slug": "email-settings",
       "release": "1.0.0",
-      "source": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\n]%%",
-      "draftSource": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\n]%%",
+      "source": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\nSET @CampaignLabel = \"{{ CampaignLabel }}\"\n]%%",
+      "draftSource": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\nSET @CampaignLabel = \"{{ CampaignLabel }}\"\n]%%",
       "templateMode": true,
       "settingsOnly": true,
       "contextCss": "",
@@ -190,6 +190,29 @@
               "value": "ESC"
             }
           ]
+        },
+        {
+          "id": "campaign-label",
+          "key": "CampaignLabel",
+          "label": "Campaign label",
+          "type": "select",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "NONE",
+          "options": [
+            {
+              "label": "None",
+              "value": "NONE"
+            },
+            {
+              "label": "ESC Industry Team",
+              "value": "INDUSTRY"
+            }
+          ]
         }
       ],
       "published": {
@@ -355,6 +378,29 @@
                 "value": "ESC"
               }
             ]
+          },
+          {
+            "id": "campaign-label",
+            "key": "CampaignLabel",
+            "label": "Campaign label",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "NONE",
+            "options": [
+              {
+                "label": "None",
+                "value": "NONE"
+              },
+              {
+                "label": "ESC Industry Team",
+                "value": "INDUSTRY"
+              }
+            ]
           }
         ]
       },
@@ -363,7 +409,7 @@
         "name": "Email settings",
         "slug": "email-settings",
         "release": "1.0.0",
-        "source": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\n]%%",
+        "source": "%%[\nSET @BrandKey = \"{{ BrandKey }}\"\nSET @FooterLogoMode = \"{{ FooterLogoMode }}\"\nSET @CampaignLabel = \"{{ CampaignLabel }}\"\n]%%",
         "templateMode": true,
         "settingsOnly": true,
         "contextCss": "",
@@ -523,6 +569,29 @@
               {
                 "label": "ESC",
                 "value": "ESC"
+              }
+            ]
+          },
+          {
+            "id": "campaign-label",
+            "key": "CampaignLabel",
+            "label": "Campaign label",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "NONE",
+            "options": [
+              {
+                "label": "None",
+                "value": "NONE"
+              },
+              {
+                "label": "ESC Industry Team",
+                "value": "INDUSTRY"
               }
             ]
           }

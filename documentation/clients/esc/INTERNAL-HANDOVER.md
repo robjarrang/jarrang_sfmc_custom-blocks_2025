@@ -40,6 +40,8 @@ Headings and subheadings can be cleared. A CTA with editable text and destinatio
 
 In the Newsletter Story Cards and Feature Card, and the ESC TV Story Card and 2 Col blocks, clear **Description** to omit its text and spacing. A previously hidden description opens with an empty editor and stays hidden until an editor enters new text. Use the separate CTA switch to control the button or link.
 
+Newsletter **Text Block** and **Section Header** have a **Text alignment** setting for the whole block. In Text Block, explicit rich-text alignment overrides the block setting for that paragraph.
+
 In rich-text fields, use **Text alignment** to align the whole field or return to the template alignment. Select text before using **Font size**. The email keeps the template line height as a minimum and increases it in 4px increments for larger text.
 
 Select text to apply **Strikethrough** or **Text highlight**. In a bulleted or numbered list, place the cursor in an item or select items at the same level to use **Indent list item** and **Outdent list item**. Lists support up to three levels.
@@ -74,7 +76,7 @@ The Newsletter **Decorative Header** draws its desktop artwork with a VML box fo
 
 Newsletter **Speaker Grid** supports up to 30 speakers in rows of three on desktop, with one speaker per row on mobile. Clear the **Eyebrow label**, **Heading** and **Subtitle** to omit the heading area. Each appears only when it has text. Blocks saved with **Show heading** off reopen with these fields blank.
 
-**Top spacing** and **Bottom spacing** adjust the gap at either edge of most Newsletter, Congress and ESC TV blocks. **Default** keeps the original height, **Compact** reduces it, and **None** removes that spacer. Blocks with spacing on only one edge offer the control for that edge. To tighten a gap between blocks, check the bottom setting on the first block and the top setting on the next. Spacing inside cards, between list items and within buttons follows the template layout.
+**Top spacing** and **Bottom spacing** adjust the gap at either edge of most Newsletter, Congress and ESC TV blocks. **Default** keeps the original height, **Compact** reduces it, and **None** removes that spacer. Blocks with spacing on only one edge offer the control for that edge. To tighten a gap between blocks, check the bottom setting on the first block and the top setting on the next. Spacing inside cards, between list items and within buttons follows the template layout. A Text Block has 16px between populated text fields. For a 16px gap before a separate Congress Button Row, set the Text Block’s **Bottom spacing** to **None** and the Button Row’s **Top spacing** to **Compact**.
 
 Newsletter **Hero Story** has **Show top spacing** and **Show bottom spacing** switches (both on by default) that remove its 32px outer spacer rows, for placing it directly against a neighbouring module that already supplies spacing. Existing emails keep both rows.
 

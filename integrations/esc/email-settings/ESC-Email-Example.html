@@ -61,6 +61,7 @@ a{
 %%[
 SET @BrandKey = "ESC"
 SET @FooterLogoMode = "BRAND"
+SET @CampaignLabel = "NONE"
 ]%%
 
 %%=ContentBlockByKey("ESC_SNIP_Master_Setup")=%%
@@ -183,6 +184,18 @@ font-family: Arial, Helvetica, sans-serif !important;
   <tr>
    <td height="20" style="font-size: 0; height: 20px; line-height: 20px; mso-line-height-rule: exactly;">
     &nbsp;</td></tr></table><!-- END .esc-congress-lead.esc-lead-editorial --></td></tr></table>
+
+        %%[ IF @CampaignLabel == "INDUSTRY" THEN ]%%
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+          <tr>
+            <td aria-hidden="true" class="side" width="20" style="width: 20px; font-size: 4px; line-height: 4px; mso-line-height-rule: exactly;">&nbsp;</td>
+            <td align="left" class="dark-muted" style="padding: 12px 0 0; color: #666666; font-family: 'mulish-variable', Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; mso-line-height-rule: exactly; text-align: left;">
+              ESC Industry Team
+            </td>
+            <td aria-hidden="true" class="side" width="20" style="width: 20px; font-size: 4px; line-height: 4px; mso-line-height-rule: exactly;">&nbsp;</td>
+          </tr>
+        </table>
+        %%[ ENDIF ]%%
 
         <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- START .esc-nav --><table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-outer esc-nav" role="presentation" style="background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;">
  

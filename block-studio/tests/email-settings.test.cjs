@@ -14,9 +14,14 @@ test('settings output contains only the selected assignments; existing AMPscript
   assert.doesNotThrow(() => C.assertProject(project));
   assert.equal(
     C.render(original),
-    '%%[\nSET @BrandKey = "ESC"\nSET @FooterLogoMode = "BRAND"\n]%%',
+    '%%[\nSET @BrandKey = "ESC"\nSET @FooterLogoMode = "BRAND"\nSET @CampaignLabel = "NONE"\n]%%',
   );
   assert.match(C.render(original, { 'footer-logo': 'ESC' }), /SET @FooterLogoMode = "ESC"/);
+  assert.match(
+    C.render(original, { 'campaign-label': 'INDUSTRY' }),
+    /SET @CampaignLabel = "INDUSTRY"/,
+  );
+  assert.throws(() => C.render(original, { 'campaign-label': 'OTHER' }), /configured dropdown/);
   const existing = { ...clone(original), settingsOnly: false };
   assert.equal(C.render(existing), existing.source);
   assert.deepEqual(C.htmlProblems(original), []);
@@ -77,7 +82,7 @@ test('new footer choice overrides categories while preserving the legacy fallbac
   assert.ok(email.indexOf('%%=v(@PrimaryColour)=%%') > init);
   assert.doesNotMatch(email.slice(0, email.indexOf('</head>')), /%%/);
 });
-test('exported settings editor saves through the real SDK and restores both selections', async () => {
+test('exported settings editor saves through the real SDK and restores all selections', async () => {
   const { Window } = await import('happy-dom');
   const page = path.join(root, 'docs/clients/esc/email-settings/modules/email-settings/index.html');
   const html = fs.readFileSync(page, 'utf8');
@@ -145,7 +150,8 @@ test('exported settings editor saves through the real SDK and restores both sele
       };
       pump();
       const controls = dom.document.querySelectorAll('select');
-      assert.equal(controls.length, 2);
+      assert.equal(controls.length, 3);
+      assert.equal(controls[2].value, edit ? 'NONE' : 'INDUSTRY');
       assert.equal(controls[0].value, edit ? 'ESC' : 'WG-CP');
       assert.equal(
         controls[0].querySelector('option[value="WG-CP"]').textContent,
@@ -156,6 +162,8 @@ test('exported settings editor saves through the real SDK and restores both sele
         controls[0].dispatchEvent(new dom.Event('change'));
         controls[1].value = 'ESC';
         controls[1].dispatchEvent(new dom.Event('change'));
+        controls[2].value = 'INDUSTRY';
+        controls[2].dispatchEvent(new dom.Event('change'));
       } else assert.equal(controls[1].value, 'ESC');
       for (const [id, t] of [...timers])
         if (t.ms === 200) {
@@ -163,12 +171,16 @@ test('exported settings editor saves through the real SDK and restores both sele
           t.fn();
           pump();
         }
-      assert.equal(content, '%%[\nSET @BrandKey = "WG-CP"\nSET @FooterLogoMode = "ESC"\n]%%');
+      assert.equal(
+        content,
+        '%%[\nSET @BrandKey = "WG-CP"\nSET @FooterLogoMode = "ESC"\nSET @CampaignLabel = "INDUSTRY"\n]%%',
+      );
       assert.match(summary, /Working group: Cardiovascular pharmacotherapy/);
       assert.equal(stored.studio.values.brand, 'WG-CP');
       assert.match(summary, /Editor only/);
       assert.match(summary, /Footer logo: <strong>ESC/);
       assert.equal(stored.studio.values['footer-logo'], 'ESC');
+      assert.equal(stored.studio.values['campaign-label'], 'INDUSTRY');
       assert.equal(
         dom.document.getElementById('status').textContent,
         edit ? 'Saved in Content Builder' : 'Ready to edit',
@@ -192,7 +204,11 @@ test('all 31 supported brand keys render exactly with either explicit footer cho
       const html = C.render(original, { brand, 'footer-logo': footer });
       assert.equal(
         html,
-        '%%[\nSET @BrandKey = "' + brand + '"\nSET @FooterLogoMode = "' + footer + '"\n]%%',
+        '%%[\nSET @BrandKey = "' +
+          brand +
+          '"\nSET @FooterLogoMode = "' +
+          footer +
+          '"\nSET @CampaignLabel = "NONE"\n]%%',
       );
     }
 });
