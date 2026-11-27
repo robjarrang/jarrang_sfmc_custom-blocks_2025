@@ -546,30 +546,47 @@
       )
     );
   }
+  function legacyFieldIds(field) {
+    return [
+      ...Object.values(field.legacyItem?.fields || {}),
+      ...(field.legacyRows
+        ? [field.legacyRows.count, ...field.legacyRows.rows.flatMap(Object.values)]
+        : []),
+    ];
+  }
   function editableFields(fields) {
-    const retired = new Set(
-      fields.flatMap((f) => [f.legacyVisibilityId, ...Object.values(f.legacyItem?.fields || {})]),
-    );
+    const retired = new Set(fields.flatMap((f) => [f.legacyVisibilityId, ...legacyFieldIds(f)]));
     return fields.filter((f) => !retired.has(f.id));
   }
   // Keep previously hidden copy out of the email until the description is edited.
   function fieldValue(field, values) {
     if (field.legacyVisibilityId && ['hidden', false].includes(values[field.legacyVisibilityId]))
       return '';
-    // Convert an older single entry to a repeatable row when no list has been saved yet.
-    const legacy = field.legacyItem;
-    if (legacy && !Object.hasOwn(values, field.id) && values[legacy.when]) {
-      const row = {};
-      for (const [key, id] of Object.entries(legacy.fields)) {
-        if (Object.hasOwn(values, id)) row[key] = values[id];
-        for (const settings of [conversionKey, linkOptionsKey])
-          if (Object.hasOwn(values[settings] || {}, id))
-            (row[settings] ||= {})[key] = values[settings][id];
-      }
-      return [row];
-    }
     const value = Object.hasOwn(values, field.id) ? values[field.id] : field.defaultValue;
-    return field.useDefaultWhenBlank === true && value === '' ? field.defaultValue : value;
+    if (Object.hasOwn(values, field.id))
+      return field.useDefaultWhenBlank === true && value === '' ? field.defaultValue : value;
+    // Convert separately saved fields to repeatable rows when the list has never been saved.
+    const single = field.legacyItem;
+    const multiple = field.legacyRows;
+    if (single && values[single.when]) return [legacyRow(single.fields, values)];
+    if (multiple && legacyFieldIds(field).some((id) => Object.hasOwn(values, id))) {
+      const count = Number(values[multiple.count]);
+      const length = count >= 1 && count <= multiple.rows.length ? count : multiple.rows.length;
+      return multiple.rows
+        .slice(0, length)
+        .map((fields, index) => legacyRow(fields, values, field.defaultValue[index]));
+    }
+    return value;
+  }
+  function legacyRow(fields, values, defaults = {}) {
+    const row = { ...defaults };
+    for (const [key, id] of Object.entries(fields)) {
+      if (Object.hasOwn(values, id)) row[key] = values[id];
+      for (const settings of [conversionKey, linkOptionsKey])
+        if (Object.hasOwn(values[settings] || {}, id))
+          (row[settings] ||= {})[key] = values[settings][id];
+    }
+    return row;
   }
   function editableItemFields(list) {
     const replaced = new Set(list.itemFields.flatMap((f) => [f.legacyTextKey, f.legacyLinkKey]));
@@ -1143,6 +1160,7 @@
       return placeLists(
         L.render(module.source, scope, patches, hidden, {
           escape,
+          columns: (key) => definitions[key]?.columns,
           richtext: (value, path, context) => {
             const parts = path.split('.'),
               key = parts.pop();
@@ -1195,6 +1213,7 @@
     hiddenRanges,
     fieldActive,
     editableFields,
+    legacyFieldIds,
     fieldValue,
     editableItemFields,
     listItemValue,

@@ -31,6 +31,7 @@
     hiddenRanges,
     fieldActive,
     editableFields,
+    legacyFieldIds,
     fieldValue,
     editableItemFields,
     listItemValue,
@@ -846,7 +847,15 @@
             walk(node.children, {
               ...context,
               [node.variable]: list[0],
-              forloop: { index: 1, index0: 0, first: true, last: true, length: 1 },
+              forloop: {
+                index: 1,
+                index0: 0,
+                first: true,
+                last: true,
+                length: 1,
+                column: 1,
+                row_length: 1,
+              },
             });
             walk(node.otherwise, context);
           }
@@ -977,6 +986,7 @@
     hiddenRanges,
     fieldActive,
     editableFields,
+    legacyFieldIds,
     fieldValue,
     editableItemFields,
     listItemValue,

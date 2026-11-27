@@ -104,6 +104,8 @@
           ['first', 'First item', 'boolean'],
           ['last', 'Last item', 'boolean'],
           ['length', 'Number of items', 'number'],
+          ['column', 'Column position in row', 'number'],
+          ['row_length', 'Number of items in row', 'number'],
         ]) {
           const keyPath = 'forloop.' + key;
           operands.set(keyPath, {

@@ -671,6 +671,40 @@ test('Speaker Grid centres each portrait without a ring or background fill', asy
     await dom.happyDOM.close();
   }
 });
+test('Speaker Grid renders additional rows and an optional heading', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (item) => item.slug === 'speaker-grid',
+  );
+  try {
+    const output = dom.document.createElement('div');
+    for (const count of [15, 16, 17]) {
+      const speakers = Array.from({ length: count }, (_, index) => ({
+        name: 'Speaker ' + (index + 1),
+      }));
+      output.innerHTML = C.render(definition, { speakers, show_heading: 'hidden' });
+      const rows = [...output.querySelectorAll('.speaker-grid-row')];
+      assert.deepEqual(
+        rows.map((row) => row.querySelectorAll('.speaker-card').length),
+        count === 15 ? [3, 3, 3, 3, 3] : [3, 3, 3, 3, 3, count - 15],
+      );
+      assert.doesNotMatch(output.textContent, /faculty|Expert speakers sharing their insights/i);
+      assert.match(rows.at(-1).textContent.trim(), new RegExp('Speaker ' + count + '$'));
+      assert.equal(output.querySelector('img.speaker-image'), null);
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('ESC vertical spacers share their enclosing background in Outlook dark mode', () => {
+  for (const project of projects) {
+    for (const module of project.modules) {
+      for (const [, spacer] of module.source.matchAll(/<div\b([^>]*)>\s*&#8202;\s*<\/div>/gi)) {
+        assert.doesNotMatch(spacer, /\bbackground(?:-color)?\s*:/i, module.slug);
+      }
+    }
+  }
+});
 test('landscape images give Windows Outlook an editable height divisible by 4', async () => {
   const { BlockCore: C, dom } = await environment();
   try {

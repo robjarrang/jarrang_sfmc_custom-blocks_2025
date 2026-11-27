@@ -265,7 +265,15 @@
       promoted.push(next);
       draft.fields.push(next);
     }
-    const singleLoop = { index: 1, index0: 0, first: true, last: true, length: 1 };
+    const singleLoop = {
+      index: 1,
+      index0: 0,
+      first: true,
+      last: true,
+      length: 1,
+      column: 1,
+      row_length: 1,
+    };
     const replacement = body.replace(/%%[\s\S]*?%%|{{[\s\S]*?}}|{%[\s\S]*?%}/g, (token) => {
       if (token.startsWith('%%')) return token;
       const output = token.match(/^{{\s*forloop\.(\w+)(?:\s*\|\s*escape)?\s*}}$/);
@@ -291,7 +299,7 @@
     C.rebase(
       draft,
       [{ start: loop.start, end: loop.end, value: replacement }],
-      [fieldId, ...Object.values(field.legacyItem?.fields || {})],
+      [fieldId, ...C.legacyFieldIds(field)],
     );
     draft.fields.splice(index, 0, ...promoted);
     C.render(draft);

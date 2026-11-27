@@ -217,10 +217,12 @@
           const list = lookup(node.collection, context);
           if (!Array.isArray(list)) throw Error(node.collection + ' must be a repeatable list.');
           if (!list.length) return walk(node.otherwise, context);
+          const columns = helpers.columns?.(node.collection) || list.length;
           return list
             .map((item, index) => {
               if (++iterations > 1000)
                 throw Error('A template can render at most 1,000 repeated items.');
+              const column = (index % columns) + 1;
               const child = Object.defineProperties(Object.create(null), {
                 ...Object.getOwnPropertyDescriptors(context),
                 [node.variable]: {
@@ -235,6 +237,8 @@
                     first: index === 0,
                     last: index === list.length - 1,
                     length: list.length,
+                    column,
+                    row_length: Math.min(columns, list.length - index + column - 1),
                   },
                   enumerable: true,
                   configurable: true,
