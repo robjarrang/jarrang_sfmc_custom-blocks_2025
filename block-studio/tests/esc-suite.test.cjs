@@ -696,13 +696,64 @@ test('Speaker Grid renders additional rows and an optional heading', async () =>
     await dom.happyDOM.close();
   }
 });
-test('ESC vertical spacers share their enclosing background in Outlook dark mode', () => {
-  for (const project of projects) {
+test('ESC vertical spacer divs leave their background to the enclosing cell', () => {
+  const remainingProjects = ['esc-tv', 'email-settings'].map((suite) =>
+    JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/' + suite + '.jarrang.json'))),
+  );
+  for (const project of [...projects, ...remainingProjects]) {
     for (const module of project.modules) {
       for (const [, spacer] of module.source.matchAll(/<div\b([^>]*)>\s*&#8202;\s*<\/div>/gi)) {
-        assert.doesNotMatch(spacer, /\bbackground(?:-color)?\s*:/i, module.slug);
+        assert.doesNotMatch(
+          spacer,
+          /\bbgcolor\s*=|\bbackground(?:-color|-image)?\s*:/i,
+          module.slug,
+        );
       }
     }
+  }
+});
+test('ESC structural spacer rows keep their Outlook heights and use the enclosing background', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const cases = [
+    [projects[0], 'hero-story', 32, 2, '#ffffff', 3],
+    [projects[0], 'hero-story', 24, 1, '#ffffff', 1],
+    [projects[0], 'spacer', 24, 1, '#ffffff', 3],
+    [projects[0], 'decorative-header', 24, 1, '#ffffff', 1],
+    [projects[1], 'lead-editorial', 28, 1, '#ae1022', 1],
+    [projects[1], 'lead-poster', 20, 1, '#ffffff', 1],
+  ];
+  try {
+    const output = dom.document.createElement('div');
+    for (const [project, slug, height, count, colour, cells] of cases) {
+      const module = project.modules.find((candidate) => candidate.slug === slug);
+      output.innerHTML = C.render(module.exportedDefinition).replaceAll(
+        '%%=v(@PrimaryColour)=%%',
+        '#ae1022',
+      );
+      const selector = slug === 'decorative-header' ? 'td.header-spacer' : 'td';
+      const spacers = [...output.querySelectorAll(selector + '[height="' + height + '"]')].filter(
+        (cell) => cell.children.length === 0 && !cell.textContent.trim(),
+      );
+      assert.equal(spacers.length, count, slug);
+      for (const spacer of spacers) {
+        assert.match(spacer.getAttribute('style'), /mso-line-height-rule:\s*exactly/);
+        assert.equal(spacer.style.height, height + 'px');
+        assert.equal(spacer.style.lineHeight, height + 'px');
+        const row = spacer.parentElement;
+        assert.equal(row.cells.length, cells, slug);
+        for (const cell of row.cells) {
+          assert.equal(cell.hasAttribute('bgcolor'), false, slug);
+          assert.equal(cell.style.backgroundColor, '', slug);
+        }
+        let surface = row.closest('table');
+        while (surface && !surface.style.backgroundColor) {
+          surface = surface.parentElement.closest('td, table');
+        }
+        assert.equal(surface?.getAttribute('bgcolor'), colour, slug);
+      }
+    }
+  } finally {
+    await dom.happyDOM.close();
   }
 });
 test('landscape images give Windows Outlook an editable height divisible by 4', async () => {
