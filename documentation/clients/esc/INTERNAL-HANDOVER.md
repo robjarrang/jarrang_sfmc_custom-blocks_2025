@@ -26,7 +26,7 @@ Existing SFMC instances retain their saved values. New defaults, images and corr
 
 The suite uses optional sections, colour/theme choices, conditional layouts, repeating lists, item-position rules and formatted-text lists. Use **Where it applies → Layout rules** to edit supported existing conditions. Test each affected choice because several rules may work together on one layout. New/restructured logic belongs in **More tools → Advanced template logic** with developer review.
 
-Newsletter **Webinar List** has its own SFMC endpoint. Under **Webinars**, use **Add item** to add cards and the arrows to reorder them. The date and time are separate text fields. Each card can include a description, a 16:9 thumbnail and a registration button. A blank thumbnail gives the copy the full card width. Images stack above the copy on mobile. The existing **Webinar Card** remains available.
+Newsletter **Webinar List** uses alternating rows with an optional **List heading** above. Under **Webinars**, use **Add item** and the arrows to add and reorder rows. The left column takes an optional 48px-wide association logo, the middle column holds the title and description, and the right column holds the date, time and registration button. On mobile the three columns stack in that order. Replace the example logo images with the organisation’s approved assets.
 
 Headings and subheadings can be cleared. A CTA with editable text and destination appears when both values are supplied and its visibility switch, where present, is on. If the destination also links an image, clearing it leaves the image visible without the link.
 

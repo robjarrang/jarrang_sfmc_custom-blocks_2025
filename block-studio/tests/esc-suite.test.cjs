@@ -637,18 +637,19 @@ test('Journal Section uses the shared mobile stacking and fluid image classes', 
     await dom.happyDOM.close();
   }
 });
-test('Webinar List renders independent cards with optional media, copy and registration', async () => {
+test('Webinar List alternates row backgrounds and preserves independent webinar details', async () => {
   const { BlockCore: C, dom } = await environment();
   const { exportedDefinition: definition } = projects[0].modules.find(
     (item) => item.slug === 'webinar-list',
   );
-  const [list] = definition.fields;
+  const list = definition.fields.find((field) => field.id === 'webinars');
   const row = list.defaultValue[0];
   try {
     const output = dom.document.createElement('div');
     output.innerHTML = C.render(definition, {
+      list_heading: 'November webinars',
       webinars: [
-        { ...row, title: 'First webinar', image_height: '92', link: 'https://example.com/first' },
+        { ...row, title: 'First webinar', image_height: '52', link: 'https://example.com/first' },
         {
           ...row,
           label: '',
@@ -659,13 +660,23 @@ test('Webinar List renders independent cards with optional media, copy and regis
           description: '<a href="https://example.com/details">More details</a>',
           link: '',
         },
+        { ...row, title: 'Third webinar', image_height: '0', date: '', time: '', link: '' },
       ],
     });
-    const [first, second] = [...output.querySelectorAll('.esc-webinar-card')];
-    assert.equal(output.querySelectorAll('.esc-webinar-card').length, 2);
+    const rows = [...output.querySelectorAll('.webinar-row')];
+    const [first, second, third] = rows;
+    assert.equal(rows.length, 3);
+    assert.deepEqual(
+      rows.map((row) => row.firstElementChild.getAttribute('bgcolor')),
+      ['#f2f2f2', null, '#f2f2f2'],
+    );
+    assert.equal(output.querySelector('.webinar-list-heading').textContent, 'November webinars');
     assert.equal(first.querySelector('h3').textContent, 'First webinar');
     assert.equal(second.querySelector('h3').textContent, 'Second webinar');
-    assert.equal(first.querySelector('img.fluid').getAttribute('height'), '92');
+    assert.equal(first.querySelector('img').getAttribute('width'), '48');
+    assert.equal(first.querySelector('img').getAttribute('height'), '52');
+    assert.equal(third.querySelector('img').getAttribute('height'), '48');
+    assert.equal(third.querySelector('.webinar-schedule'), null);
     assert.equal(
       first.querySelector('.webinar-image a').getAttribute('href'),
       'https://example.com/first',
@@ -674,9 +685,10 @@ test('Webinar List renders independent cards with optional media, copy and regis
       first.querySelector('.esc-btn a').getAttribute('href'),
       'https://example.com/first',
     );
-    assert.match(first.querySelector('.webinar-schedule').textContent, /2025.*•.*CET/);
-    assert.equal(second.querySelector('img, .gap, .esc-btn'), null);
-    assert.equal(second.querySelector('.webinar-schedule').textContent, '12:00 CET');
+    assert.equal(first.querySelector('.webinar-date').textContent, row.date);
+    assert.equal(first.querySelector('.webinar-time').textContent, row.time);
+    assert.equal(second.querySelector('img, .esc-btn, .webinar-date'), null);
+    assert.equal(second.querySelector('.webinar-time').textContent, '12:00 CET');
     const copy = second.querySelector('.webinar-description');
     assert.equal(copy.style.fontSize, '13px');
     assert.equal(copy.style.lineHeight, '20px');
@@ -850,6 +862,7 @@ test('landscape images give Windows Outlook an editable height divisible by 4', 
         for (const [tag, ref, auto] of m.source.matchAll(
           /<img\b[^>]*\sheight="(?:\{% if [^%]+%\}\d+)?\{% (?:if|elsif) ([\w.]+) > 0 %\}\{\{ \1 \}\}\{% else %\}(\d+)\{% endif %\}"[^>]*>/g,
         )) {
+          if (/class="webinar-logo-image"/.test(tag)) continue;
           const width = Number(tag.match(/\swidth="(\d+)"/)[1]);
           assert.equal(Number(auto) % 4, 0, m.slug + ': ' + auto);
           assert.ok(Math.abs(Number(auto) - (width * 9) / 16) <= 2, m.slug + ': ' + auto);
@@ -860,7 +873,7 @@ test('landscape images give Windows Outlook an editable height divisible by 4', 
           images++;
         }
       }
-    assert.equal(images, 26);
+    assert.equal(images, 25);
     const heights = (html) => [...html.matchAll(/<img\b[^>]*\sheight="(\d+)"/g)].map((m) => m[1]);
     const hero = projects[0].modules.find((m) => m.slug === 'hero-story');
     // Blocks saved before the height field existed fall back to the automatic height.
