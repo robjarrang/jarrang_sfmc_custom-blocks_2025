@@ -670,7 +670,11 @@ test('Webinar List alternates row backgrounds and preserves independent webinar 
       rows.map((row) => row.firstElementChild.getAttribute('bgcolor')),
       ['#f2f2f2', null, '#f2f2f2'],
     );
-    assert.equal(output.querySelector('.webinar-list-heading').textContent, 'November webinars');
+    const heading = output.querySelector('.webinar-list-heading');
+    assert.equal(heading.textContent, 'November webinars');
+    assert.match(heading.style.fontFamily, /enra-slab-variable/);
+    assert.equal(heading.style.lineHeight, '28px');
+    assert.doesNotMatch(heading.parentElement.getAttribute('style'), /border-(top|bottom)/);
     assert.equal(first.querySelector('h3').textContent, 'First webinar');
     assert.equal(second.querySelector('h3').textContent, 'Second webinar');
     assert.equal(first.querySelector('img').getAttribute('width'), '48');
