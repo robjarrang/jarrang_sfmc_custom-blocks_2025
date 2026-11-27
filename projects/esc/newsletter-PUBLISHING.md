@@ -31,6 +31,7 @@ This module save refreshes the catalogue using this module and the last generate
 - Story Card 2 Col: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/story-card-2col/
 - Story Card 3 Col: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/story-card-3col/
 - Feature Card: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/feature-card/
+- Image and Text: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/image-and-text/
 - CTA Banner: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/cta/
 - Image Banner: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/image-banner/
 - Journal Section: https://robjarrang.github.io/jarrang_sfmc_custom-blocks_2025/clients/esc/newsletter/modules/journal-section/

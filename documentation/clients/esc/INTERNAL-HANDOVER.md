@@ -36,6 +36,8 @@ The suite uses optional sections, colour/theme choices, conditional layouts, rep
 
 Newsletter **Webinar List** uses alternating rows with an optional **List heading** above. Under **Webinars**, use **Add item** and the arrows to add and reorder rows. The left column takes an optional 48px-wide association logo, the middle column holds the title and description, and the right column holds the date, time and registration button. On mobile the three columns stack in that order. Replace the example logo images with the organisation’s approved assets.
 
+Newsletter **Image and Text** places an image beside a title, formatted body text and an optional button. **Image position** switches sides on desktop. Both choices stack the image above the copy on mobile using the shared template styles. The standard 1920 × 1080 artwork displays at 276 px wide on desktop. The image keeps its proportions in modern clients. For other aspect ratios, use **Image height in Outlook** to enter the displayed height at 276 px wide, rounded to a multiple of 4.
+
 Headings and subheadings can be cleared. A CTA with editable text and destination appears when both values are supplied and its visibility switch, where present, is on. If the destination also links an image, clearing it leaves the image visible without the link.
 
 In the Newsletter Story Cards and Feature Card, and the ESC TV Story Card and 2 Col blocks, clear **Description** to omit its text and spacing. A previously hidden description opens with an empty editor and stays hidden until an editor enters new text. Use the separate CTA switch to control the button or link.

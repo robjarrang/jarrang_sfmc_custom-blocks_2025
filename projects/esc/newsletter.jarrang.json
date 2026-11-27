@@ -8766,6 +8766,689 @@
       "blankStart": {}
     },
     {
+      "id": "esc-newsletter-image-and-text",
+      "name": "Image and Text",
+      "slug": "image-and-text",
+      "release": "1.0.0",
+      "source": "<!-- START .esc-image-text -->\n{% if image or title or body_copy or (show_cta and cta_text and cta_link) %}\n<table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-image-text\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n  <tr>\n    <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">&nbsp;</td>\n    <td class=\"content-inner\" valign=\"top\" style=\"width: 580px;\" width=\"580\">\n      {% if top_spacing != '0' %}<div style=\"line-height:{{ top_spacing }}px;height:{{ top_spacing }}px;font-size:{{ top_spacing }}px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" dir=\"{% if image_position == 'right' %}rtl{% else %}ltr{% endif %}\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; table-layout: fixed; width: {% if title or body_copy or (show_cta and cta_text and cta_link) %}580{% else %}276{% endif %}px;\" width=\"{% if title or body_copy or (show_cta and cta_text and cta_link) %}580{% else %}276{% endif %}\">\n        <tr>\n          {% if image %}\n          <td align=\"left\" class=\"block esc-image-text__image\" dir=\"ltr\" valign=\"top\" style=\"width: 276px;\" width=\"276\">\n            <img alt=\"{{ image_alt }}\" border=\"0\" class=\"fluid\" height=\"{% if image_height > 0 %}{{ image_height }}{% else %}156{% endif %}\" src=\"{{ image }}\" style=\"border: 0; border-radius: 8px; display: block; height: auto; max-width: 100%; outline: none; width: 100%;\" width=\"276\">\n          </td>\n          {% endif %}\n          {% if title or body_copy or (show_cta and cta_text and cta_link) %}\n          {% if image %}\n          <td class=\"block\" style=\"font-size: 0; line-height: 0; width: 24px;\" width=\"24\">\n            <div class=\"stack-gap\" style=\"display: none; font-size: 0; height: 0; line-height: 0; max-height: 0; mso-line-height-rule: exactly; overflow: hidden;\">&#8202;</div>\n          </td>\n          {% endif %}\n          <td align=\"left\" class=\"block esc-image-text__copy\" dir=\"ltr\" valign=\"middle\" style=\"text-align: left; width: {% if image %}280{% else %}580{% endif %}px;\" width=\"{% if image %}280{% else %}580{% endif %}\">\n            {% if title %}\n            <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly; overflow-wrap: anywhere; word-wrap: break-word;\">{{ title }}</h3>\n            {% if body_copy %}<div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n            {% endif %}\n            {% if body_copy %}\n            <p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0; mso-line-height-rule: exactly; overflow-wrap: anywhere; word-wrap: break-word;\">{{ body_copy | richtext }}</p>\n            {% endif %}\n            {% if show_cta and cta_text and cta_link %}\n            {% if title or body_copy %}<div style=\"line-height:16px;height:16px;font-size:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-radius: 50px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n              <tr>\n                <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 24px; text-align: center; overflow-wrap: anywhere; word-wrap: break-word;\">\n                  <a href=\"{{ cta_link }}\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">{{ cta_text }}</a>\n                </td>\n              </tr>\n            </table>\n            {% endif %}\n          </td>\n          {% endif %}\n        </tr>\n      </table>\n      {% if bottom_spacing != '0' %}<div style=\"line-height:{{ bottom_spacing }}px;height:{{ bottom_spacing }}px;font-size:{{ bottom_spacing }}px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n    </td>\n    <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">&nbsp;</td>\n  </tr>\n</table>\n{% endif %}\n<!-- END .esc-image-text -->",
+      "draftSource": "<!-- START .esc-image-text -->\n{% if image or title or body_copy or (show_cta and cta_text and cta_link) %}\n<table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-image-text\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n  <tr>\n    <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">&nbsp;</td>\n    <td class=\"content-inner\" valign=\"top\" style=\"width: 580px;\" width=\"580\">\n      {% if top_spacing != '0' %}<div style=\"line-height:{{ top_spacing }}px;height:{{ top_spacing }}px;font-size:{{ top_spacing }}px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" dir=\"{% if image_position == 'right' %}rtl{% else %}ltr{% endif %}\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; table-layout: fixed; width: {% if title or body_copy or (show_cta and cta_text and cta_link) %}580{% else %}276{% endif %}px;\" width=\"{% if title or body_copy or (show_cta and cta_text and cta_link) %}580{% else %}276{% endif %}\">\n        <tr>\n          {% if image %}\n          <td align=\"left\" class=\"block esc-image-text__image\" dir=\"ltr\" valign=\"top\" style=\"width: 276px;\" width=\"276\">\n            <img alt=\"{{ image_alt }}\" border=\"0\" class=\"fluid\" height=\"{% if image_height > 0 %}{{ image_height }}{% else %}156{% endif %}\" src=\"{{ image }}\" style=\"border: 0; border-radius: 8px; display: block; height: auto; max-width: 100%; outline: none; width: 100%;\" width=\"276\">\n          </td>\n          {% endif %}\n          {% if title or body_copy or (show_cta and cta_text and cta_link) %}\n          {% if image %}\n          <td class=\"block\" style=\"font-size: 0; line-height: 0; width: 24px;\" width=\"24\">\n            <div class=\"stack-gap\" style=\"display: none; font-size: 0; height: 0; line-height: 0; max-height: 0; mso-line-height-rule: exactly; overflow: hidden;\">&#8202;</div>\n          </td>\n          {% endif %}\n          <td align=\"left\" class=\"block esc-image-text__copy\" dir=\"ltr\" valign=\"middle\" style=\"text-align: left; width: {% if image %}280{% else %}580{% endif %}px;\" width=\"{% if image %}280{% else %}580{% endif %}\">\n            {% if title %}\n            <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly; overflow-wrap: anywhere; word-wrap: break-word;\">{{ title }}</h3>\n            {% if body_copy %}<div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n            {% endif %}\n            {% if body_copy %}\n            <p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0; mso-line-height-rule: exactly; overflow-wrap: anywhere; word-wrap: break-word;\">{{ body_copy | richtext }}</p>\n            {% endif %}\n            {% if show_cta and cta_text and cta_link %}\n            {% if title or body_copy %}<div style=\"line-height:16px;height:16px;font-size:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-radius: 50px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n              <tr>\n                <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 24px; text-align: center; overflow-wrap: anywhere; word-wrap: break-word;\">\n                  <a href=\"{{ cta_link }}\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">{{ cta_text }}</a>\n                </td>\n              </tr>\n            </table>\n            {% endif %}\n          </td>\n          {% endif %}\n        </tr>\n      </table>\n      {% if bottom_spacing != '0' %}<div style=\"line-height:{{ bottom_spacing }}px;height:{{ bottom_spacing }}px;font-size:{{ bottom_spacing }}px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n    </td>\n    <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">&nbsp;</td>\n  </tr>\n</table>\n{% endif %}\n<!-- END .esc-image-text -->",
+      "templateMode": true,
+      "contextCss": "",
+      "width": 620,
+      "fields": [
+        {
+          "id": "image_position",
+          "key": "image_position",
+          "label": "Image position",
+          "type": "select",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Image left"
+            },
+            {
+              "value": "right",
+              "label": "Image right"
+            }
+          ],
+          "originalValue": "left"
+        },
+        {
+          "id": "image",
+          "key": "image",
+          "label": "Image URL",
+          "type": "image",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+          "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg"
+        },
+        {
+          "id": "image_alt",
+          "key": "image_alt",
+          "label": "Image alt text",
+          "type": "text",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "Landscape image placeholder",
+          "originalValue": "Landscape image placeholder"
+        },
+        {
+          "id": "image_height",
+          "key": "image_height",
+          "label": "Image height in Outlook (px)",
+          "type": "number",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "0 uses 156 px for 16:9 images. For another aspect ratio, use its height at 276 px wide, rounded to a multiple of 4.",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "0",
+          "originalValue": "0",
+          "disclosure": "Image height in Outlook"
+        },
+        {
+          "id": "title",
+          "key": "title",
+          "label": "Title",
+          "type": "text",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "Image and text",
+          "originalValue": "Image and text"
+        },
+        {
+          "id": "body_copy",
+          "key": "body_copy",
+          "label": "Body text",
+          "type": "richtext",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "Add a short description to accompany the image.",
+          "originalValue": "Add a short description to accompany the image.",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false,
+          "allowLinkTitle": true,
+          "defaultLinkTitle": "",
+          "allowTrackingAlias": true,
+          "defaultTrackingAlias": "",
+          "allowLinks": true,
+          "linkStyle": {
+            "colour": "#ae1022",
+            "decoration": "underline",
+            "weight": "inherit",
+            "forceColour": true
+          }
+        },
+        {
+          "id": "show_cta",
+          "key": "show_cta",
+          "label": "Show CTA button",
+          "type": "toggle",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "style": "switch",
+          "defaultValue": "shown",
+          "originalValue": "shown"
+        },
+        {
+          "id": "cta_text",
+          "key": "cta_text",
+          "label": "Button text",
+          "type": "text",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "Read more",
+          "originalValue": "Read more"
+        },
+        {
+          "id": "cta_link",
+          "key": "cta_link",
+          "label": "Button link",
+          "type": "url",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "help": "",
+          "maxLength": 0,
+          "targets": [],
+          "defaultValue": "https://www.escardio.org/",
+          "originalValue": "https://www.escardio.org/",
+          "allowConversionTracking": true,
+          "defaultConversionTracking": false,
+          "allowLinkTitle": true,
+          "defaultLinkTitle": "",
+          "allowTrackingAlias": true,
+          "defaultTrackingAlias": ""
+        },
+        {
+          "id": "top_spacing",
+          "key": "top_spacing",
+          "label": "Top spacing",
+          "type": "select",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "defaultValue": "20",
+          "originalValue": "20",
+          "help": "",
+          "targets": [],
+          "options": [
+            {
+              "value": "20",
+              "label": "Default (20 px)"
+            },
+            {
+              "value": "12",
+              "label": "Compact (12 px)"
+            },
+            {
+              "value": "0",
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "id": "bottom_spacing",
+          "key": "bottom_spacing",
+          "label": "Bottom spacing",
+          "type": "select",
+          "binding": "template",
+          "enabled": true,
+          "required": false,
+          "maxLength": 0,
+          "defaultValue": "20",
+          "originalValue": "20",
+          "help": "",
+          "targets": [],
+          "options": [
+            {
+              "value": "20",
+              "label": "Default (20 px)"
+            },
+            {
+              "value": "12",
+              "label": "Compact (12 px)"
+            },
+            {
+              "value": "0",
+              "label": "None"
+            }
+          ]
+        }
+      ],
+      "analysed": true,
+      "reviewed": true,
+      "acknowledged": true,
+      "iconColour": "#ae1022",
+      "iconSymbol": "image",
+      "iconAssets": {
+        "icon": "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",
+        "dragIcon": "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"
+      },
+      "blankStart": {},
+      "published": {
+        "id": "esc-newsletter-image-and-text",
+        "slug": "image-and-text",
+        "release": "1.0.0",
+        "fields": [
+          {
+            "id": "image_position",
+            "key": "image_position",
+            "label": "Image position",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Image left"
+              },
+              {
+                "value": "right",
+                "label": "Image right"
+              }
+            ],
+            "originalValue": "left"
+          },
+          {
+            "id": "image",
+            "key": "image",
+            "label": "Image URL",
+            "type": "image",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg"
+          },
+          {
+            "id": "image_alt",
+            "key": "image_alt",
+            "label": "Image alt text",
+            "type": "text",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Landscape image placeholder",
+            "originalValue": "Landscape image placeholder"
+          },
+          {
+            "id": "image_height",
+            "key": "image_height",
+            "label": "Image height in Outlook (px)",
+            "type": "number",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "0 uses 156 px for 16:9 images. For another aspect ratio, use its height at 276 px wide, rounded to a multiple of 4.",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "0",
+            "originalValue": "0",
+            "disclosure": "Image height in Outlook"
+          },
+          {
+            "id": "title",
+            "key": "title",
+            "label": "Title",
+            "type": "text",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Image and text",
+            "originalValue": "Image and text"
+          },
+          {
+            "id": "body_copy",
+            "key": "body_copy",
+            "label": "Body text",
+            "type": "richtext",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Add a short description to accompany the image.",
+            "originalValue": "Add a short description to accompany the image.",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false,
+            "allowLinkTitle": true,
+            "defaultLinkTitle": "",
+            "allowTrackingAlias": true,
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
+          },
+          {
+            "id": "show_cta",
+            "key": "show_cta",
+            "label": "Show CTA button",
+            "type": "toggle",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "style": "switch",
+            "defaultValue": "shown",
+            "originalValue": "shown"
+          },
+          {
+            "id": "cta_text",
+            "key": "cta_text",
+            "label": "Button text",
+            "type": "text",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Read more",
+            "originalValue": "Read more"
+          },
+          {
+            "id": "cta_link",
+            "key": "cta_link",
+            "label": "Button link",
+            "type": "url",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "https://www.escardio.org/",
+            "originalValue": "https://www.escardio.org/",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false,
+            "allowLinkTitle": true,
+            "defaultLinkTitle": "",
+            "allowTrackingAlias": true,
+            "defaultTrackingAlias": ""
+          },
+          {
+            "id": "top_spacing",
+            "key": "top_spacing",
+            "label": "Top spacing",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "maxLength": 0,
+            "defaultValue": "20",
+            "originalValue": "20",
+            "help": "",
+            "targets": [],
+            "options": [
+              {
+                "value": "20",
+                "label": "Default (20 px)"
+              },
+              {
+                "value": "12",
+                "label": "Compact (12 px)"
+              },
+              {
+                "value": "0",
+                "label": "None"
+              }
+            ]
+          },
+          {
+            "id": "bottom_spacing",
+            "key": "bottom_spacing",
+            "label": "Bottom spacing",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "maxLength": 0,
+            "defaultValue": "20",
+            "originalValue": "20",
+            "help": "",
+            "targets": [],
+            "options": [
+              {
+                "value": "20",
+                "label": "Default (20 px)"
+              },
+              {
+                "value": "12",
+                "label": "Compact (12 px)"
+              },
+              {
+                "value": "0",
+                "label": "None"
+              }
+            ]
+          }
+        ]
+      },
+      "exportedDefinition": {
+        "id": "esc-newsletter-image-and-text",
+        "name": "Image and Text",
+        "slug": "image-and-text",
+        "release": "1.0.0",
+        "source": "<!-- START .esc-image-text -->\n{% if image or title or body_copy or (show_cta and cta_text and cta_link) %}\n<table align=\"center\" bgcolor=\"#ffffff\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"content-outer esc-image-text\" role=\"presentation\" style=\"background-color: #ffffff; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 620px;\" width=\"620\">\n  <tr>\n    <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">&nbsp;</td>\n    <td class=\"content-inner\" valign=\"top\" style=\"width: 580px;\" width=\"580\">\n      {% if top_spacing != '0' %}<div style=\"line-height:{{ top_spacing }}px;height:{{ top_spacing }}px;font-size:{{ top_spacing }}px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"sect\" dir=\"{% if image_position == 'right' %}rtl{% else %}ltr{% endif %}\" role=\"presentation\" style=\"border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; table-layout: fixed; width: {% if title or body_copy or (show_cta and cta_text and cta_link) %}580{% else %}276{% endif %}px;\" width=\"{% if title or body_copy or (show_cta and cta_text and cta_link) %}580{% else %}276{% endif %}\">\n        <tr>\n          {% if image %}\n          <td align=\"left\" class=\"block esc-image-text__image\" dir=\"ltr\" valign=\"top\" style=\"width: 276px;\" width=\"276\">\n            <img alt=\"{{ image_alt }}\" border=\"0\" class=\"fluid\" height=\"{% if image_height > 0 %}{{ image_height }}{% else %}156{% endif %}\" src=\"{{ image }}\" style=\"border: 0; border-radius: 8px; display: block; height: auto; max-width: 100%; outline: none; width: 100%;\" width=\"276\">\n          </td>\n          {% endif %}\n          {% if title or body_copy or (show_cta and cta_text and cta_link) %}\n          {% if image %}\n          <td class=\"block\" style=\"font-size: 0; line-height: 0; width: 24px;\" width=\"24\">\n            <div class=\"stack-gap\" style=\"display: none; font-size: 0; height: 0; line-height: 0; max-height: 0; mso-line-height-rule: exactly; overflow: hidden;\">&#8202;</div>\n          </td>\n          {% endif %}\n          <td align=\"left\" class=\"block esc-image-text__copy\" dir=\"ltr\" valign=\"middle\" style=\"text-align: left; width: {% if image %}280{% else %}580{% endif %}px;\" width=\"{% if image %}280{% else %}580{% endif %}\">\n            {% if title %}\n            <h3 class=\"dark-invert\" style=\"color: #1a1a1a; font-family: 'enra-slab-variable', Rockwell, Arial, Helvetica, sans-serif !important; font-size: 16px; font-weight: 700; line-height: 24px; margin: 0; mso-line-height-rule: exactly; overflow-wrap: anywhere; word-wrap: break-word;\">{{ title }}</h3>\n            {% if body_copy %}<div style=\"line-height:8px;height:8px;font-size:8px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n            {% endif %}\n            {% if body_copy %}\n            <p class=\"dark-body\" style=\"color: #333333; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; line-height: 20px; margin: 0; mso-line-height-rule: exactly; overflow-wrap: anywhere; word-wrap: break-word;\">{{ body_copy | richtext }}</p>\n            {% endif %}\n            {% if show_cta and cta_text and cta_link %}\n            {% if title or body_copy %}<div style=\"line-height:16px;height:16px;font-size:16px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n            <table bgcolor=\"%%=v(@ButtonBgColour)=%%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"esc-btn\" role=\"presentation\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-collapse: separate; border-radius: 50px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;\">\n              <tr>\n                <td align=\"center\" bgcolor=\"%%=v(@ButtonBgColour)=%%\" style=\"background-color: %%=v(@ButtonBgColour)=%%; border: 0; border-radius: 50px; color: %%=v(@ButtonTextColour)=%%; font-family: 'mulish-variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important; font-size: 13px; font-weight: 700; line-height: 20px; mso-line-height-rule: exactly; mso-text-raise: 2px; padding: 12px 24px; text-align: center; overflow-wrap: anywhere; word-wrap: break-word;\">\n                  <a href=\"{{ cta_link }}\" style=\"color: %%=v(@ButtonTextColour)=%%; text-decoration: none;\" target=\"_blank\">{{ cta_text }}</a>\n                </td>\n              </tr>\n            </table>\n            {% endif %}\n          </td>\n          {% endif %}\n        </tr>\n      </table>\n      {% if bottom_spacing != '0' %}<div style=\"line-height:{{ bottom_spacing }}px;height:{{ bottom_spacing }}px;font-size:{{ bottom_spacing }}px;mso-line-height-rule:exactly\">&#8202;</div>{% endif %}\n    </td>\n    <td class=\"side\" style=\"font-size: 4px; line-height: 4px; mso-line-height-rule: exactly; width: 20px;\" width=\"20\">&nbsp;</td>\n  </tr>\n</table>\n{% endif %}\n<!-- END .esc-image-text -->",
+        "templateMode": true,
+        "blankStart": {},
+        "minifyOutput": true,
+        "contextCss": "",
+        "fields": [
+          {
+            "id": "image_position",
+            "key": "image_position",
+            "label": "Image position",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Image left"
+              },
+              {
+                "value": "right",
+                "label": "Image right"
+              }
+            ],
+            "originalValue": "left"
+          },
+          {
+            "id": "image",
+            "key": "image",
+            "label": "Image URL",
+            "type": "image",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg",
+            "originalValue": "https://image.info.escardio.org/lib/fe89127277620d7570/m/1/4fcce3d7-6f50-466b-a889-68d38120a9f9.jpg"
+          },
+          {
+            "id": "image_alt",
+            "key": "image_alt",
+            "label": "Image alt text",
+            "type": "text",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Landscape image placeholder",
+            "originalValue": "Landscape image placeholder"
+          },
+          {
+            "id": "image_height",
+            "key": "image_height",
+            "label": "Image height in Outlook (px)",
+            "type": "number",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "0 uses 156 px for 16:9 images. For another aspect ratio, use its height at 276 px wide, rounded to a multiple of 4.",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "0",
+            "originalValue": "0",
+            "disclosure": "Image height in Outlook"
+          },
+          {
+            "id": "title",
+            "key": "title",
+            "label": "Title",
+            "type": "text",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Image and text",
+            "originalValue": "Image and text"
+          },
+          {
+            "id": "body_copy",
+            "key": "body_copy",
+            "label": "Body text",
+            "type": "richtext",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Add a short description to accompany the image.",
+            "originalValue": "Add a short description to accompany the image.",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false,
+            "allowLinkTitle": true,
+            "defaultLinkTitle": "",
+            "allowTrackingAlias": true,
+            "defaultTrackingAlias": "",
+            "allowLinks": true,
+            "linkStyle": {
+              "colour": "#ae1022",
+              "decoration": "underline",
+              "weight": "inherit",
+              "forceColour": true
+            }
+          },
+          {
+            "id": "show_cta",
+            "key": "show_cta",
+            "label": "Show CTA button",
+            "type": "toggle",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "style": "switch",
+            "defaultValue": "shown",
+            "originalValue": "shown"
+          },
+          {
+            "id": "cta_text",
+            "key": "cta_text",
+            "label": "Button text",
+            "type": "text",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "Read more",
+            "originalValue": "Read more"
+          },
+          {
+            "id": "cta_link",
+            "key": "cta_link",
+            "label": "Button link",
+            "type": "url",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "help": "",
+            "maxLength": 0,
+            "targets": [],
+            "defaultValue": "https://www.escardio.org/",
+            "originalValue": "https://www.escardio.org/",
+            "allowConversionTracking": true,
+            "defaultConversionTracking": false,
+            "allowLinkTitle": true,
+            "defaultLinkTitle": "",
+            "allowTrackingAlias": true,
+            "defaultTrackingAlias": ""
+          },
+          {
+            "id": "top_spacing",
+            "key": "top_spacing",
+            "label": "Top spacing",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "maxLength": 0,
+            "defaultValue": "20",
+            "originalValue": "20",
+            "help": "",
+            "targets": [],
+            "options": [
+              {
+                "value": "20",
+                "label": "Default (20 px)"
+              },
+              {
+                "value": "12",
+                "label": "Compact (12 px)"
+              },
+              {
+                "value": "0",
+                "label": "None"
+              }
+            ]
+          },
+          {
+            "id": "bottom_spacing",
+            "key": "bottom_spacing",
+            "label": "Bottom spacing",
+            "type": "select",
+            "binding": "template",
+            "enabled": true,
+            "required": false,
+            "maxLength": 0,
+            "defaultValue": "20",
+            "originalValue": "20",
+            "help": "",
+            "targets": [],
+            "options": [
+              {
+                "value": "20",
+                "label": "Default (20 px)"
+              },
+              {
+                "value": "12",
+                "label": "Compact (12 px)"
+              },
+              {
+                "value": "0",
+                "label": "None"
+              }
+            ]
+          }
+        ],
+        "showEditorHeader": false
+      }
+    },
+    {
       "id": "f3b8d6a1-5e2c-4a90-8b7d-2c6e9a1f4d80",
       "name": "CTA Banner",
       "slug": "cta",

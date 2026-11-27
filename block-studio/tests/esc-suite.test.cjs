@@ -139,7 +139,7 @@ test('ESC landscape defaults use the supplied placeholder without changing optio
     assert.equal(list.defaultValue[1].image, '');
     assert.equal(list.defaultValue[2].image, '');
     assert.equal(list.itemFields.find((f) => f.key === 'image').defaultValue, '');
-    assert.equal(defaults, 20);
+    assert.equal(defaults, 21);
     const lead = projects[1].modules.find((m) => m.slug === 'lead-editorial');
     assert.equal(lead.fields.find((f) => f.id === 'field10').defaultValue, '');
     const host = dom.document.createElement('div');
@@ -739,6 +739,56 @@ test('Newsletter text and section headings can centre and omit unused internal s
     await dom.happyDOM.close();
   }
 });
+test('Image and Text reverses the desktop columns and keeps one image before the copy', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (module) => module.slug === 'image-and-text',
+  );
+  try {
+    const output = dom.document.createElement('div');
+    const values = {
+      title: 'ESC Congress research highlights',
+      body_copy: 'Find the <a href="https://www.escardio.org/">latest research</a>.',
+      cta_text: 'Explore the programme',
+      cta_link: 'industry@example.org',
+      image_height: '200',
+    };
+    for (const [position, direction] of [
+      ['left', 'ltr'],
+      ['right', 'rtl'],
+    ]) {
+      output.innerHTML = C.render(definition, { ...values, image_position: position });
+      const table = output.querySelector('.sect');
+      assert.equal(table.getAttribute('dir'), direction);
+      const cells = table.querySelector('tr').children;
+      assert.equal(cells.length, 3);
+      assert.ok([...cells].every((cell) => cell.classList.contains('block')));
+      assert.ok(cells[1].querySelector('.stack-gap'));
+      const image = cells[0].querySelector('img.fluid');
+      assert.equal(image.getAttribute('width'), '276');
+      assert.equal(image.getAttribute('height'), '200');
+      assert.equal(image.style.height, 'auto');
+      const copy = cells[2];
+      assert.equal(copy.getAttribute('dir'), 'ltr');
+      assert.equal(copy.querySelector('h3').textContent, values.title);
+      assert.equal(copy.querySelector('p').style.fontSize, '13px');
+      assert.equal(copy.querySelector('p').style.lineHeight, '20px');
+      assert.match(copy.querySelector('p a').getAttribute('style'), /color:#ae1022 !important/i);
+      const cta = copy.querySelector('.esc-btn a');
+      assert.equal(cta.textContent, values.cta_text);
+      assert.equal(cta.getAttribute('href'), 'mailto:industry@example.org');
+    }
+    output.innerHTML = C.render(definition, { ...values, image: '', show_cta: 'hidden' });
+    assert.equal(output.querySelector('.sect tr').children.length, 1);
+    assert.equal(output.querySelector('.esc-image-text__copy').getAttribute('width'), '580');
+    assert.equal(output.querySelector('.esc-btn'), null);
+    output.innerHTML = C.render(definition, { title: '', body_copy: '', cta_link: '' });
+    assert.equal(output.querySelector('.sect tr').children.length, 1);
+    assert.equal(output.querySelector('img').getAttribute('height'), '156');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('Journal Section uses the shared mobile stacking and fluid image classes', async () => {
   const { BlockCore: C, dom } = await environment();
   const { exportedDefinition: definition } = projects[0].modules.find(
@@ -1136,7 +1186,7 @@ test('landscape images give Windows Outlook an editable height divisible by 4', 
           images++;
         }
       }
-    assert.equal(images, 25);
+    assert.equal(images, 26);
     const heights = (html) => [...html.matchAll(/<img\b[^>]*\sheight="(\d+)"/g)].map((m) => m[1]);
     const hero = projects[0].modules.find((m) => m.slug === 'hero-story');
     // Blocks saved before the height field existed fall back to the automatic height.
@@ -1392,7 +1442,7 @@ test('repeater actions retain focus on the new, moved or neighbouring item', asy
     await dom.happyDOM.close();
   }
 });
-test('every ESC conditional expression has a supported guided editor model', async () => {
+test('ESC conditions are editable through the guided or advanced editor', async () => {
   const { BlockTemplateRules: R, BlockLogic: L, dom } = await environment();
   try {
     let count = 0;
@@ -1403,7 +1453,15 @@ test('every ESC conditional expression has a supported guided editor model', asy
         const conditions = [...m.source.matchAll(/{%\s*(?:if|elsif|elseif)\s+([\s\S]*?)%}/g)];
         assert.equal(rules.size, conditions.length, m.slug);
         for (const rule of rules.values()) {
-          assert.ok(rule.model, m.slug + ': ' + rule.condition);
+          if (!rule.model) {
+            // The reversible block can also render a complete CTA on its own.
+            assert.equal(m.slug, 'image-and-text');
+            assert.match(
+              rule.condition,
+              /^(?:image or )?title or body_copy or \(show_cta and cta_text and cta_link\)$/,
+            );
+            continue;
+          }
           const scope = Object.fromEntries(
             m.fields.map((f) => [
               f.key || f.id,
@@ -1651,7 +1709,7 @@ test('ESC Newsletter and Congress modules retain their exported definition and s
   try {
     assert.equal(
       projects.reduce((n, p) => n + p.modules.length, 0),
-      43,
+      44,
     );
     for (const p of projects) {
       C.assertProject(p);
@@ -1883,7 +1941,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      49,
+      50,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');
