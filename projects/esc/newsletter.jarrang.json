@@ -50,7 +50,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -96,8 +96,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Hero image height in Outlook"
         },
         {
           "id": "field4",
@@ -493,7 +494,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Remove the 32px gap when the preceding block already provides spacing.",
+          "help": "",
           "targets": [],
           "style": "switch"
         },
@@ -508,7 +509,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Remove the 32px gap when the next block already provides spacing.",
+          "help": "",
           "targets": [],
           "style": "switch"
         }
@@ -565,7 +566,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -611,8 +612,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Hero image height in Outlook"
           },
           {
             "id": "field4",
@@ -1008,7 +1010,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Remove the 32px gap when the preceding block already provides spacing.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1023,7 +1025,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Remove the 32px gap when the next block already provides spacing.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -1077,7 +1079,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -1123,8 +1125,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Hero image height in Outlook"
           },
           {
             "id": "field4",
@@ -1520,7 +1523,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Remove the 32px gap when the preceding block already provides spacing.",
+            "help": "",
             "targets": [],
             "style": "switch"
           },
@@ -1535,7 +1538,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Remove the 32px gap when the next block already provides spacing.",
+            "help": "",
             "targets": [],
             "style": "switch"
           }
@@ -3308,7 +3311,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -3354,8 +3357,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Card image height in Outlook"
         },
         {
           "id": "field3",
@@ -3641,7 +3645,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -3687,8 +3691,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card image height in Outlook"
           },
           {
             "id": "field3",
@@ -3972,7 +3977,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -4018,8 +4023,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card image height in Outlook"
           },
           {
             "id": "field3",
@@ -4332,7 +4338,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": []
         },
         {
@@ -4360,8 +4366,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (156px on a light background or 148px on a dark one, to suit a 1920 × 1080px image). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 156 px on a light background or 148px on a dark one for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Card 1 image height in Outlook"
         },
         {
           "id": "field4",
@@ -4544,7 +4551,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": []
         },
         {
@@ -4572,8 +4579,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (156px on a light background or 148px on a dark one, to suit a 1920 × 1080px image). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 156 px on a light background or 148px on a dark one for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Card 2 image height in Outlook"
         },
         {
           "id": "field15",
@@ -4851,7 +4859,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -4879,8 +4887,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px on a light background or 148px on a dark one, to suit a 1920 × 1080px image). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px on a light background or 148px on a dark one for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 1 image height in Outlook"
           },
           {
             "id": "field4",
@@ -5063,7 +5072,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -5091,8 +5100,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px on a light background or 148px on a dark one, to suit a 1920 × 1080px image). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px on a light background or 148px on a dark one for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 2 image height in Outlook"
           },
           {
             "id": "field15",
@@ -5368,7 +5378,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -5396,8 +5406,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px on a light background or 148px on a dark one, to suit a 1920 × 1080px image). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px on a light background or 148px on a dark one for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 1 image height in Outlook"
           },
           {
             "id": "field4",
@@ -5580,7 +5591,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -5608,8 +5619,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px on a light background or 148px on a dark one, to suit a 1920 × 1080px image). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px on a light background or 148px on a dark one for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 2 image height in Outlook"
           },
           {
             "id": "field15",
@@ -5888,7 +5900,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": []
         },
         {
@@ -5916,8 +5928,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Card 1 image height in Outlook"
         },
         {
           "id": "field4",
@@ -6071,7 +6084,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": []
         },
         {
@@ -6099,8 +6112,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Card 2 image height in Outlook"
         },
         {
           "id": "field13",
@@ -6254,7 +6268,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": []
         },
         {
@@ -6282,8 +6296,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Card 3 image height in Outlook"
         },
         {
           "id": "field22",
@@ -6532,7 +6547,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -6560,8 +6575,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 1 image height in Outlook"
           },
           {
             "id": "field4",
@@ -6715,7 +6731,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -6743,8 +6759,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 2 image height in Outlook"
           },
           {
             "id": "field13",
@@ -6898,7 +6915,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -6926,8 +6943,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 3 image height in Outlook"
           },
           {
             "id": "field22",
@@ -7174,7 +7192,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -7202,8 +7220,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 1 image height in Outlook"
           },
           {
             "id": "field4",
@@ -7357,7 +7376,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -7385,8 +7404,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 2 image height in Outlook"
           },
           {
             "id": "field13",
@@ -7540,7 +7560,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": []
           },
           {
@@ -7568,8 +7588,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (96px, to suit a 1920 × 1080px image at 172px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 96 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Card 3 image height in Outlook"
           },
           {
             "id": "field22",
@@ -7844,7 +7865,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "start": 2528,
@@ -7891,8 +7912,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (112px, to suit a 1920 × 1080px image at 200px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 112 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Image height in Outlook"
         },
         {
           "label": "Headline",
@@ -8167,7 +8189,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "start": 2528,
@@ -8214,8 +8236,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (112px, to suit a 1920 × 1080px image at 200px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 112 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Image height in Outlook"
           },
           {
             "label": "Headline",
@@ -8488,7 +8511,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "start": 2528,
@@ -8535,8 +8558,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (112px, to suit a 1920 × 1080px image at 200px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 112 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Image height in Outlook"
           },
           {
             "label": "Headline",
@@ -9313,7 +9337,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -9359,8 +9383,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Banner image height in Outlook"
         },
         {
           "id": "top_spacing",
@@ -9470,7 +9495,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -9516,8 +9541,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Banner image height in Outlook"
           },
           {
             "id": "top_spacing",
@@ -9625,7 +9651,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -9671,8 +9697,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Banner image height in Outlook"
           },
           {
             "id": "top_spacing",
@@ -9783,7 +9810,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Displays at 110px wide on desktop and full width on mobile.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -9862,7 +9889,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Volume, issue and date line shown below the journal name.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -10024,7 +10051,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Displays at 110px wide on desktop and full width on mobile.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -10103,7 +10130,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Volume, issue and date line shown below the journal name.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -10263,7 +10290,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Displays at 110px wide on desktop and full width on mobile.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -10342,7 +10369,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Volume, issue and date line shown below the journal name.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -11925,7 +11952,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Links to the member’s MyESC profile.",
+          "help": "",
           "targets": [
             {
               "start": 7329,
@@ -12057,7 +12084,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Links to the member’s MyESC profile.",
+            "help": "",
             "targets": [
               {
                 "start": 7329,
@@ -12186,7 +12213,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Links to the member’s MyESC profile.",
+            "help": "",
             "targets": [
               {
                 "start": 7329,
@@ -13173,7 +13200,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "The line above the signature block, e.g. \"Best regards,\".",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -13224,7 +13251,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Usually a light or reversed version of the main logo.",
+          "help": "",
           "targets": [
             {
               "start": 2574,
@@ -13316,7 +13343,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "The line above the signature block, e.g. \"Best regards,\".",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -13367,7 +13394,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Usually a light or reversed version of the main logo.",
+            "help": "",
             "targets": [
               {
                 "start": 2574,
@@ -13456,7 +13483,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "The line above the signature block, e.g. \"Best regards,\".",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -13507,7 +13534,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Usually a light or reversed version of the main logo.",
+            "help": "",
             "targets": [
               {
                 "start": 2574,
@@ -13614,7 +13641,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Used by the “View post” link and both images.",
+          "help": "Links both images and the “View post” text.",
           "targets": [
             {
               "name": "href",
@@ -13660,7 +13687,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Include the arrow in the link text if you want one.",
+          "help": "",
           "targets": [
             {
               "start": 2408,
@@ -13680,7 +13707,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -13726,8 +13753,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (100px, to suit a 1920 × 1080px image at 180px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 100 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Left image height in Outlook"
         },
         {
           "id": "field6",
@@ -13738,7 +13766,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -13784,8 +13812,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (196px, to suit a 1920 × 1080px image at 348px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 196 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Right image height in Outlook"
         },
         {
           "id": "top_spacing",
@@ -13882,7 +13911,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by the “View post” link and both images.",
+            "help": "Links both images and the “View post” text.",
             "targets": [
               {
                 "name": "href",
@@ -13928,7 +13957,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Include the arrow in the link text if you want one.",
+            "help": "",
             "targets": [
               {
                 "start": 2408,
@@ -13948,7 +13977,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -13994,8 +14023,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (100px, to suit a 1920 × 1080px image at 180px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 100 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Left image height in Outlook"
           },
           {
             "id": "field6",
@@ -14006,7 +14036,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -14052,8 +14082,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (196px, to suit a 1920 × 1080px image at 348px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 196 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Right image height in Outlook"
           },
           {
             "id": "top_spacing",
@@ -14148,7 +14179,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by the “View post” link and both images.",
+            "help": "Links both images and the “View post” text.",
             "targets": [
               {
                 "name": "href",
@@ -14194,7 +14225,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Include the arrow in the link text if you want one.",
+            "help": "",
             "targets": [
               {
                 "start": 2408,
@@ -14214,7 +14245,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -14260,8 +14291,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (100px, to suit a 1920 × 1080px image at 180px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 100 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Left image height in Outlook"
           },
           {
             "id": "field6",
@@ -14272,7 +14304,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -14318,8 +14350,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (196px, to suit a 1920 × 1080px image at 348px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 196 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Right image height in Outlook"
           },
           {
             "id": "top_spacing",
@@ -14620,7 +14653,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Only shown when 2 or 3 speakers are selected.",
+          "help": "",
           "targets": []
         },
         {
@@ -14690,7 +14723,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Only shown when 3 speakers are selected.",
+          "help": "",
           "targets": []
         },
         {
@@ -15178,7 +15211,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Only shown when 2 or 3 speakers are selected.",
+            "help": "",
             "targets": []
           },
           {
@@ -15248,7 +15281,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Only shown when 3 speakers are selected.",
+            "help": "",
             "targets": []
           },
           {
@@ -15734,7 +15767,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Only shown when 2 or 3 speakers are selected.",
+            "help": "",
             "targets": []
           },
           {
@@ -15804,7 +15837,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Only shown when 3 speakers are selected.",
+            "help": "",
             "targets": []
           },
           {
@@ -16892,7 +16925,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Used by both the thumbnail and the button.",
+          "help": "Links the thumbnail and button.",
           "targets": [
             {
               "name": "href",
@@ -16929,7 +16962,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -16975,8 +17008,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (304px, to suit a 1920 × 1080px image at 540px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 304 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Video thumbnail image height in Outlook"
         },
         {
           "id": "field6",
@@ -17155,7 +17189,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the thumbnail and the button.",
+            "help": "Links the thumbnail and button.",
             "targets": [
               {
                 "name": "href",
@@ -17192,7 +17226,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -17238,8 +17272,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (304px, to suit a 1920 × 1080px image at 540px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 304 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Video thumbnail image height in Outlook"
           },
           {
             "id": "field6",
@@ -17416,7 +17451,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the thumbnail and the button.",
+            "help": "Links the thumbnail and button.",
             "targets": [
               {
                 "name": "href",
@@ -17453,7 +17488,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -17499,8 +17534,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (304px, to suit a 1920 × 1080px image at 540px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 304 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Video thumbnail image height in Outlook"
           },
           {
             "id": "field6",
@@ -17701,7 +17737,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Used by both the image and the button.",
+          "help": "Links the image and button.",
           "targets": [
             {
               "name": "href",
@@ -17738,7 +17774,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -17784,8 +17820,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (84px, to suit a 1920 × 1080px image at 150px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 84 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Webinar image height in Outlook"
         },
         {
           "id": "field7",
@@ -17958,7 +17995,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the button.",
+            "help": "Links the image and button.",
             "targets": [
               {
                 "name": "href",
@@ -17995,7 +18032,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -18041,8 +18078,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (84px, to suit a 1920 × 1080px image at 150px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 84 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Webinar image height in Outlook"
           },
           {
             "id": "field7",
@@ -18213,7 +18251,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the button.",
+            "help": "Links the image and button.",
             "targets": [
               {
                 "name": "href",
@@ -18250,7 +18288,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -18296,8 +18334,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (84px, to suit a 1920 × 1080px image at 150px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 84 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Webinar image height in Outlook"
           },
           {
             "id": "field7",
@@ -18615,7 +18654,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Displays 48px wide. Use a square image for the automatic Outlook height.",
+              "help": "",
               "targets": []
             },
             {
@@ -18672,7 +18711,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "This opens from the logo and the button.",
+              "help": "Links the logo and button.",
               "targets": [],
               "allowConversionTracking": true,
               "defaultConversionTracking": false,
@@ -18923,7 +18962,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Displays 48px wide. Use a square image for the automatic Outlook height.",
+                "help": "",
                 "targets": []
               },
               {
@@ -18980,7 +19019,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "This opens from the logo and the button.",
+                "help": "Links the logo and button.",
                 "targets": [],
                 "allowConversionTracking": true,
                 "defaultConversionTracking": false,
@@ -19229,7 +19268,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Displays 48px wide. Use a square image for the automatic Outlook height.",
+                "help": "",
                 "targets": []
               },
               {
@@ -19286,7 +19325,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "This opens from the logo and the button.",
+                "help": "Links the logo and button.",
                 "targets": [],
                 "allowConversionTracking": true,
                 "defaultConversionTracking": false,
@@ -19322,7 +19361,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "Restricted to multiples of 4px to avoid 1px rendering lines in Outlook.",
+          "help": "",
           "targets": [
             {
               "start": 450,
@@ -19437,7 +19476,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Restricted to multiples of 4px to avoid 1px rendering lines in Outlook.",
+            "help": "",
             "targets": [
               {
                 "start": 450,
@@ -19549,7 +19588,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "Restricted to multiples of 4px to avoid 1px rendering lines in Outlook.",
+            "help": "",
             "targets": [
               {
                 "start": 450,
@@ -19948,7 +19987,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Shown in the brand colour before the main heading. Leave blank to omit.",
+          "help": "",
           "targets": [],
           "allowLinks": false,
           "binding": "template"
@@ -20066,7 +20105,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown in the brand colour before the main heading. Leave blank to omit.",
+            "help": "",
             "targets": [],
             "allowLinks": false,
             "binding": "template"
@@ -20184,7 +20223,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown in the brand colour before the main heading. Leave blank to omit.",
+            "help": "",
             "targets": [],
             "allowLinks": false,
             "binding": "template"
@@ -20456,7 +20495,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "Short month abbreviation, e.g. APR.",
+              "help": "Use a three-letter month.",
               "targets": [],
               "binding": "template"
             },
@@ -20484,7 +20523,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 2,
-              "help": "Use the day number, for example 25.",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -20498,7 +20537,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 3,
-              "help": "Use a three-letter month if it differs from the start month.",
+              "help": "Leave blank for the start month.",
               "targets": [],
               "binding": "template"
             },
@@ -20555,7 +20594,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Date, location, deadline or short summary.",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -20773,7 +20812,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Short month abbreviation, e.g. APR.",
+                "help": "Use a three-letter month.",
                 "targets": [],
                 "binding": "template"
               },
@@ -20801,7 +20840,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 2,
-                "help": "Use the day number, for example 25.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -20815,7 +20854,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 3,
-                "help": "Use a three-letter month if it differs from the start month.",
+                "help": "Leave blank for the start month.",
                 "targets": [],
                 "binding": "template"
               },
@@ -20872,7 +20911,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Date, location, deadline or short summary.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -21088,7 +21127,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "Short month abbreviation, e.g. APR.",
+                "help": "Use a three-letter month.",
                 "targets": [],
                 "binding": "template"
               },
@@ -21116,7 +21155,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 2,
-                "help": "Use the day number, for example 25.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -21130,7 +21169,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 3,
-                "help": "Use a three-letter month if it differs from the start month.",
+                "help": "Leave blank for the start month.",
                 "targets": [],
                 "binding": "template"
               },
@@ -21187,7 +21226,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Date, location, deadline or short summary.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -21472,7 +21511,7 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "Optional 1920 × 1080px image. Leave blank for a plain text entry.",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -21501,8 +21540,9 @@
               "enabled": true,
               "required": false,
               "maxLength": 0,
-              "help": "0 = automatic (84px, to suit a 1920 × 1080px image at 150px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-              "targets": []
+              "help": "0 uses 84 px for 16:9 images. Use multiples of 4 px for custom heights.",
+              "targets": [],
+              "disclosure": "Image height in Outlook"
             }
           ],
           "minItems": 1,
@@ -21750,7 +21790,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Optional 1920 × 1080px image. Leave blank for a plain text entry.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -21779,8 +21819,9 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "0 = automatic (84px, to suit a 1920 × 1080px image at 150px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-                "targets": []
+                "help": "0 uses 84 px for 16:9 images. Use multiples of 4 px for custom heights.",
+                "targets": [],
+                "disclosure": "Image height in Outlook"
               }
             ],
             "minItems": 1,
@@ -22026,7 +22067,7 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "Optional 1920 × 1080px image. Leave blank for a plain text entry.",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -22055,8 +22096,9 @@
                 "enabled": true,
                 "required": false,
                 "maxLength": 0,
-                "help": "0 = automatic (84px, to suit a 1920 × 1080px image at 150px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-                "targets": []
+                "help": "0 uses 84 px for 16:9 images. Use multiples of 4 px for custom heights.",
+                "targets": [],
+                "disclosure": "Image height in Outlook"
               }
             ],
             "minItems": 1,

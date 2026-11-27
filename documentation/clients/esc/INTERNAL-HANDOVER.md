@@ -89,6 +89,8 @@ All ESC modules follow ActionRocket's [white-lines guidance](https://www.actionr
 - Tables use `border-collapse: collapse` and zero `mso-table-lspace`/`mso-table-rspace`, except rounded buttons and cards, which need `separate` for their corners.
 - `side` cells holding only `&nbsp;` use `font-size: 4px; line-height: 4px; mso-line-height-rule: exactly`. Leave `gap` cells between stacking columns alone: on screens from 581px to 640px their text line forms the gap between stacked cards.
 
+Image height guidance for classic Windows Outlook is available inside the relevant height control’s disclosure. Use the module’s image dimensions and height defaults when preparing the artwork.
+
 ### Button audit
 
 All maintained ESC buttons use table/cell fills, zero table spacing and explicit exact text line heights. Solid buttons have no decorative table border. Outline borders remain, with padding chosen so the total height is divisible by 4. The Newsletter CTA Banner and Journal Section now use the same table-button structure rather than fractional `em` padding and percentage-based Outlook text-raise shims. Field IDs, link metadata, saved values, supplied icons and module endpoints are retained.

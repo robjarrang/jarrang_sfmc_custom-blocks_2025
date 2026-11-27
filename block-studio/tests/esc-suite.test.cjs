@@ -1892,10 +1892,22 @@ test('congress image frame remains in normal flow within its middle-aligned cell
 });
 
 test('hero story top and bottom spacing can be hidden independently and default to shown', async () => {
-  const { BlockCore: C, dom } = await environment();
+  const { BlockCore: C, BlockControls, dom } = await environment();
   try {
     const m = projects[0].modules.find((m) => m.slug === 'hero-story');
     const id = (key) => m.fields.find((f) => f.key === key).id;
+    const editor = dom.document.createElement('div');
+    const controls = BlockControls.mount(editor, m.exportedDefinition.fields, {}, () => {});
+    for (const key of ['show_top_spacing', 'show_bottom_spacing']) {
+      const { input, group } = controls.get(id(key));
+      assert.equal(input.checked, true);
+      assert.equal(group.querySelector('.help'), null);
+    }
+    const height = controls.get(id('hero_image_height')).input;
+    const disclosure = height.closest('details');
+    assert.ok(disclosure);
+    assert.equal(disclosure.open, false);
+    assert.match(disclosure.querySelector('summary').textContent, /height in Outlook/);
     const rows = (values) => {
       const host = dom.document.createElement('div');
       host.innerHTML = C.render(m, values);

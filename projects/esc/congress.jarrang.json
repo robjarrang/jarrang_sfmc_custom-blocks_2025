@@ -2510,7 +2510,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Shown large next to the link, e.g. \"#ESC26\".",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "binding": "template",
@@ -2721,7 +2721,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown large next to the link, e.g. \"#ESC26\".",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -2930,7 +2930,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown large next to the link, e.g. \"#ESC26\".",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "binding": "template",
@@ -3204,7 +3204,7 @@
               "enabled": true,
               "required": true,
               "maxLength": 0,
-              "help": "e.g. \"09 Dec 2025\".",
+              "help": "",
               "targets": [],
               "binding": "template"
             },
@@ -3423,7 +3423,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "e.g. \"09 Dec 2025\".",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -3640,7 +3640,7 @@
                 "enabled": true,
                 "required": true,
                 "maxLength": 0,
-                "help": "e.g. \"09 Dec 2025\".",
+                "help": "",
                 "targets": [],
                 "binding": "template"
               },
@@ -3738,7 +3738,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "For example \"Onsite\" or \"Online\".",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -3785,7 +3785,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "e.g. \"28 Aug – 31 Aug 2026\".",
+          "help": "",
           "targets": [],
           "id": "field2",
           "binding": "template",
@@ -3799,7 +3799,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Keep the city name bold; edit the rest as plain text.",
+          "help": "",
           "targets": [],
           "allowLinks": true,
           "id": "field3",
@@ -3881,7 +3881,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Maximum 160px. Height adjusts automatically.",
+          "help": "Maximum width is 160 px.",
           "targets": []
         },
         {
@@ -3940,7 +3940,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Fits beside the congress details without cropping; also used on mobile unless an alternative is supplied.",
+          "help": "",
           "targets": [
             {
               "start": 6696,
@@ -3987,8 +3987,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 274px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Visual image height in Outlook"
         },
         {
           "label": "Mobile image (optional)",
@@ -3998,7 +3999,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Leave empty to use the main image. Supply an alternative only when needed; 1920 × 1080px is supported.",
+          "help": "Uses the main image when blank.",
           "targets": [],
           "id": "field10",
           "binding": "template",
@@ -4012,7 +4013,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Describes the optional mobile image. When the main image is used, its alt text is used too.",
+          "help": "",
           "targets": [],
           "id": "field11",
           "binding": "template",
@@ -4087,7 +4088,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "For example \"Onsite\" or \"Online\".",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -4134,7 +4135,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "e.g. \"28 Aug – 31 Aug 2026\".",
+            "help": "",
             "targets": [],
             "id": "field2",
             "binding": "template",
@@ -4148,7 +4149,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Keep the city name bold; edit the rest as plain text.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "id": "field3",
@@ -4230,7 +4231,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Maximum 160px. Height adjusts automatically.",
+            "help": "Maximum width is 160 px.",
             "targets": []
           },
           {
@@ -4289,7 +4290,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Fits beside the congress details without cropping; also used on mobile unless an alternative is supplied.",
+            "help": "",
             "targets": [
               {
                 "start": 6696,
@@ -4336,8 +4337,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 274px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Visual image height in Outlook"
           },
           {
             "label": "Mobile image (optional)",
@@ -4347,7 +4349,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave empty to use the main image. Supply an alternative only when needed; 1920 × 1080px is supported.",
+            "help": "Uses the main image when blank.",
             "targets": [],
             "id": "field10",
             "binding": "template",
@@ -4361,7 +4363,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Describes the optional mobile image. When the main image is used, its alt text is used too.",
+            "help": "",
             "targets": [],
             "id": "field11",
             "binding": "template",
@@ -4434,7 +4436,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "For example \"Onsite\" or \"Online\".",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -4481,7 +4483,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "e.g. \"28 Aug – 31 Aug 2026\".",
+            "help": "",
             "targets": [],
             "id": "field2",
             "binding": "template",
@@ -4495,7 +4497,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Keep the city name bold; edit the rest as plain text.",
+            "help": "",
             "targets": [],
             "allowLinks": true,
             "id": "field3",
@@ -4577,7 +4579,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Maximum 160px. Height adjusts automatically.",
+            "help": "Maximum width is 160 px.",
             "targets": []
           },
           {
@@ -4636,7 +4638,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Fits beside the congress details without cropping; also used on mobile unless an alternative is supplied.",
+            "help": "",
             "targets": [
               {
                 "start": 6696,
@@ -4683,8 +4685,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 274px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Visual image height in Outlook"
           },
           {
             "label": "Mobile image (optional)",
@@ -4694,7 +4697,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Leave empty to use the main image. Supply an alternative only when needed; 1920 × 1080px is supported.",
+            "help": "Uses the main image when blank.",
             "targets": [],
             "id": "field10",
             "binding": "template",
@@ -4708,7 +4711,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Describes the optional mobile image. When the main image is used, its alt text is used too.",
+            "help": "",
             "targets": [],
             "id": "field11",
             "binding": "template",
@@ -4766,7 +4769,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
+          "help": "",
           "targets": [],
           "id": "field1",
           "binding": "template",
@@ -4889,7 +4892,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -4935,8 +4938,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (304px, to suit a 1920 × 1080px image at 540px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 304 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Poster image height in Outlook"
         },
         {
           "id": "bottom_spacing",
@@ -4989,7 +4993,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
+            "help": "",
             "targets": [],
             "id": "field1",
             "binding": "template",
@@ -5112,7 +5116,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -5158,8 +5162,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (304px, to suit a 1920 × 1080px image at 540px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 304 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Poster image height in Outlook"
           },
           {
             "id": "bottom_spacing",
@@ -5210,7 +5215,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "e.g. \"Onsite\", \"Virtual\", \"Hybrid\".",
+            "help": "",
             "targets": [],
             "id": "field1",
             "binding": "template",
@@ -5333,7 +5338,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -5379,8 +5384,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (304px, to suit a 1920 × 1080px image at 540px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 304 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Poster image height in Outlook"
           },
           {
             "id": "bottom_spacing",
@@ -5437,7 +5443,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Shown when the last name is known. Keep the %%…%% personalisation, without quote marks.",
+          "help": "Keep the %%…%% personalisation for the last name.",
           "targets": [],
           "allowLinks": false
         },
@@ -5452,7 +5458,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Shown when the last name is unknown.",
+          "help": "",
           "targets": [],
           "allowLinks": false
         },
@@ -5500,7 +5506,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Enter a person or team name. Leave blank to omit the signature.",
+          "help": "Leave blank to omit the signature.",
           "targets": [],
           "allowLinks": false
         },
@@ -5600,7 +5606,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown when the last name is known. Keep the %%…%% personalisation, without quote marks.",
+            "help": "Keep the %%…%% personalisation for the last name.",
             "targets": [],
             "allowLinks": false
           },
@@ -5615,7 +5621,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown when the last name is unknown.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -5663,7 +5669,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Enter a person or team name. Leave blank to omit the signature.",
+            "help": "Leave blank to omit the signature.",
             "targets": [],
             "allowLinks": false
           },
@@ -5767,7 +5773,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown when the last name is known. Keep the %%…%% personalisation, without quote marks.",
+            "help": "Keep the %%…%% personalisation for the last name.",
             "targets": [],
             "allowLinks": false
           },
@@ -5782,7 +5788,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Shown when the last name is unknown.",
+            "help": "",
             "targets": [],
             "allowLinks": false
           },
@@ -5830,7 +5836,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Enter a person or team name. Leave blank to omit the signature.",
+            "help": "Leave blank to omit the signature.",
             "targets": [],
             "allowLinks": false
           },
@@ -6800,7 +6806,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Used by both the image and the button.",
+          "help": "Links the image and button.",
           "targets": [
             {
               "name": "href",
@@ -6837,7 +6843,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -6883,8 +6889,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Story image height in Outlook"
         },
         {
           "id": "field4",
@@ -7018,7 +7025,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the button.",
+            "help": "Links the image and button.",
             "targets": [
               {
                 "name": "href",
@@ -7055,7 +7062,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -7101,8 +7108,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Story image height in Outlook"
           },
           {
             "id": "field4",
@@ -7234,7 +7242,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the button.",
+            "help": "Links the image and button.",
             "targets": [
               {
                 "name": "href",
@@ -7271,7 +7279,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -7317,8 +7325,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (328px, to suit a 1920 × 1080px image at 580px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 328 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Story image height in Outlook"
           },
           {
             "id": "field4",
@@ -7453,7 +7462,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Used by both the image and the “Read more” link.",
+          "help": "Links the image and “Read more” text.",
           "targets": [
             {
               "name": "href",
@@ -7490,7 +7499,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -7536,8 +7545,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 280px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Story image height in Outlook"
         },
         {
           "id": "field4",
@@ -7645,7 +7655,7 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "Used by both the image and the “Read more” link.",
+          "help": "Links the image and “Read more” text.",
           "targets": [
             {
               "name": "href",
@@ -7682,7 +7692,7 @@
           "enabled": true,
           "required": true,
           "maxLength": 0,
-          "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+          "help": "",
           "targets": [
             {
               "name": "src",
@@ -7728,8 +7738,9 @@
           "enabled": true,
           "required": false,
           "maxLength": 0,
-          "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 280px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-          "targets": []
+          "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+          "targets": [],
+          "disclosure": "Story image 2 height in Outlook"
         },
         {
           "id": "field11",
@@ -7908,7 +7919,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the “Read more” link.",
+            "help": "Links the image and “Read more” text.",
             "targets": [
               {
                 "name": "href",
@@ -7945,7 +7956,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -7991,8 +8002,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 280px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Story image height in Outlook"
           },
           {
             "id": "field4",
@@ -8100,7 +8112,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the “Read more” link.",
+            "help": "Links the image and “Read more” text.",
             "targets": [
               {
                 "name": "href",
@@ -8137,7 +8149,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -8183,8 +8195,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 280px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Story image 2 height in Outlook"
           },
           {
             "id": "field11",
@@ -8361,7 +8374,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the “Read more” link.",
+            "help": "Links the image and “Read more” text.",
             "targets": [
               {
                 "name": "href",
@@ -8398,7 +8411,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -8444,8 +8457,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 280px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Story image height in Outlook"
           },
           {
             "id": "field4",
@@ -8553,7 +8567,7 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "Used by both the image and the “Read more” link.",
+            "help": "Links the image and “Read more” text.",
             "targets": [
               {
                 "name": "href",
@@ -8590,7 +8604,7 @@
             "enabled": true,
             "required": true,
             "maxLength": 0,
-            "help": "1920 × 1080px recommended. Scales proportionally to fit.",
+            "help": "",
             "targets": [
               {
                 "name": "src",
@@ -8636,8 +8650,9 @@
             "enabled": true,
             "required": false,
             "maxLength": 0,
-            "help": "0 = automatic (156px, to suit a 1920 × 1080px image at 280px wide). For another image shape, enter its displayed height in whole pixels, ideally a multiple of 4 to avoid thin lines. Only Outlook for Windows uses this.",
-            "targets": []
+            "help": "0 uses 156 px for 16:9 images. Use multiples of 4 px for custom heights.",
+            "targets": [],
+            "disclosure": "Story image 2 height in Outlook"
           },
           {
             "id": "field11",
