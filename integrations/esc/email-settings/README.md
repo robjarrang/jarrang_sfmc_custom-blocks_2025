@@ -37,7 +37,7 @@ Changing a settings block does not execute AMPscript in the editing canvas or in
 - `ESC-Email-Example.html`: revised supplied email example. Its existing module content is unchanged.
 - `Brand-Dependent-Styles.html`: exact relocated CSS group for integration.
 
-Existing Newsletter/Congress modules and their runtime dependencies are unchanged. Existing emails without `@FooterLogoMode` retain their category-based footer rules. The master setup still handles legacy `@EmailType` header defaults. The separate `ESC_GLOBAL_Footer` source was not supplied, so any further category-dependent behaviour inside it has not been changed or certified.
+Existing emails without `@FooterLogoMode` retain their category-based footer rules. The master setup still handles legacy `@EmailType` header defaults. The separate `ESC_GLOBAL_Footer` source was not supplied, so any further category-dependent behaviour inside it has not been changed or certified.
 
 No live SFMC assets are changed by downloading this package. Complete the installation and live checks above before client rollout.
 
@@ -66,3 +66,9 @@ The example's CSS was consolidated without changing any computed style: the two 
 The maintained modules and populated example now paint button cells as well as tables, reset table spacing, remove filled-button borders and keep total text/padding/border heights divisible by 4. Newsletter CTA Banner and Journal Section use table-based buttons in place of fractional `em` padding and percentage text-raise shims. Existing field IDs and tracking controls remain unchanged.
 
 Update the live master/starter email's matching dark-mode rules from `Brand-Dependent-Styles.html`: filled buttons use `border:0 !important`; outline rules set `border-color:#ffffff !important` without replacing their border width. The example includes these same rule changes. Publish affected module pages, reopen/save existing blocks and run fresh Windows Outlook tests; browser checks cannot certify Word rendering.
+
+## Shared typography
+
+Apply the updated static responsive styles from `ESC-Email-Example.html` and the trailing `Brand-Dependent-Styles.html` group to the live starter/master email. Both contain changes for the shared type scale. The trailing group includes the 24px masthead and hero sizes on mobile and 12px footer text with a 16px line height.
+
+Edit and save existing custom blocks in SFMC to regenerate their HTML with the new inline sizes. For the live `ESC_GLOBAL_Footer` Content Block, set its legal text and text links inline to 12px with a 16px exact line height for classic Windows Outlook. Run a controlled send before using the updated template for a campaign.

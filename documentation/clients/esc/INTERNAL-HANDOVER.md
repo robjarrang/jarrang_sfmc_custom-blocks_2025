@@ -78,13 +78,27 @@ Newsletter **Hero Story** has **Show top spacing** and **Show bottom spacing** s
 
 A text field left blank but still shown leaves an empty paragraph. Spacers around it add up in every client; the old margins collapsed in browsers but not in Outlook. Use the show/hide switch to remove a section.
 
+## Email typography
+
+Use these default sizes throughout the Newsletter, Congress and ESC TV blocks and their shared email template. Longer scientific titles use the same size as other item titles and wrap onto additional lines.
+
+| Text role | Font size | Line height |
+| --- | ---: | ---: |
+| Masthead and hero titles | 28px desktop / 24px mobile | 36px desktop / 32px mobile |
+| Section headings | 20px | 28px |
+| Article, story, webinar and other item titles | 16px | 24px |
+| Body copy, dates, bylines and CTAs | 13px | 20px |
+| Short labels and footer copy | 12px | 16px |
+
+Rich-text fields retain the author's explicit size choices and round the corresponding line height up to a multiple of 4px. Keep the mobile rules in the live master email aligned with the repository example.
+
 ## Outlook 1px lines
 
 All ESC modules follow ActionRocket's [white-lines guidance](https://www.actionrocket.co/blog/white-lines-in-outlook). Keep these rules when editing or adding a module:
 
-- Body copy previously set at 16px uses 13px. Use explicit line heights in 4px increments. Body copy typically uses 20px or 24px. Use a fixed height or a border to draw a 1px divider, with a 0px line height for its empty content.
-- Every positive inline `line-height` carries `mso-line-height-rule: exactly`. Keep the mobile rules in the live master email aligned with the repository example. Story Card mobile title and body line heights are 24px and 20px, respectively, and Lead Poster mobile title line height is 36px.
-- Every block that holds text (`p`, `td`, `div`, headings), including one that only wraps a styled `<a>` or `<span>`, has its own px `line-height` with `mso-line-height-rule: exactly`. Windows Outlook sets line spacing per block and ignores the inline child's line-height, so a block without one gets the font's fractional natural height. Use the value it already inherits in browsers (the body's 24px unless an ancestor sets another), so other clients are unchanged. Never set an exact line-height on a block holding an image, because Outlook would crop the image to it.
+- Use the explicit line heights in the typography scale. Use a fixed height or a border to draw a 1px divider, with a 0px line height for its empty content.
+- Every positive inline `line-height` carries `mso-line-height-rule: exactly`.
+- Every block that holds text (`p`, `td`, `div`, headings), including one that only wraps a styled `<a>` or `<span>`, has its own px `line-height` with `mso-line-height-rule: exactly`. Windows Outlook sets line spacing per block and ignores the inline child's line-height, so a block without one gets the font's fractional natural height. Match the line height to the text role, such as 20px for a cell wrapping a CTA link. Never set an exact line-height on a block holding an image, because Outlook would crop the image to it.
 - Every image has `border="0"` and `display: block` (or `display: none` for swapped images), with no whitespace before its closing `</a>`.
 - Tables use `border-collapse: collapse` and zero `mso-table-lspace`/`mso-table-rspace`, except rounded buttons and cards, which need `separate` for their corners.
 - `side` cells holding only `&nbsp;` use `font-size: 4px; line-height: 4px; mso-line-height-rule: exactly`. Leave `gap` cells between stacking columns alone: on screens from 581px to 640px their text line forms the gap between stacked cards.
@@ -173,7 +187,7 @@ The **Landscape image (16:9) or custom size** option is the default for compatib
 
 **ESC / ESC TV** is a third template whose modules are interchangeable in one email, like Congress. Every ESC TV module sits on a `#011933` background: set `bgcolor` and `background-color` on the outer table, both side cells and the content cell, so the master template's dark-mode `.content-outer` rule cannot expose a grey frame. Text is white and carries no `dark-*` classes. Buttons use the shared `esc-btn` class and the brand button colours, and list bullets use the brand primary colour; check both on a brand whose primary colour is dark. Its endpoints are in [ESC TV publishing notes](../../../projects/esc/esc-tv-PUBLISHING.md).
 
-**ESC TV Lead** (`esc-tv-lead`) has a personalised greeting with fallback, body copy, an optional topic list with `▸` bullets and an optional button. **Show topic list** and **Show button** are both on by default; with both off only the greeting and copy remain. No master-template CSS was added for it; run the usual Subscriber Preview, Outlook and dark-mode proofs before client use. Its solid CTA uses no border, zero table spacing and the brand fill on both table and cell. The 24px text line plus 12px padding above and below gives a 48px button height, avoiding the previous 50px height from two 1px borders. Text wrapper cells also carry explicit 24px exact line heights. Verify a fresh send in Windows Outlook, including 100% and 125% scaling; these mitigations do not certify Word rendering.
+**ESC TV Lead** (`esc-tv-lead`) has a personalised greeting with fallback, body copy, an optional topic list with `▸` bullets and an optional button. **Show topic list** and **Show button** are both on by default; with both off only the greeting and copy remain. No master-template CSS was added for it; run the usual Subscriber Preview, Outlook and dark-mode proofs before client use. Its solid CTA uses no border, zero table spacing and the brand fill on both table and cell. The 20px text line plus 14px padding above and below keeps the button height at 48px. Text wrapper cells use explicit exact line heights. Verify a fresh send in Windows Outlook, including 100% and 125% scaling; these mitigations do not certify Word rendering.
 
 **ESC TV Story Card** (`esc-tv-story-card`) has the same 20px side margins on the navy background, with a white card holding a linked image (top corners rounded), headline, optional description and optional button. The card table has `overflow: hidden` and a 12px radius like Newsletter Story Card, with the radius repeated on the image and the text cell for clients that ignore `overflow`. The image uses the same **Card image height in Outlook (px)** field: 0 means 328px for a 1920 × 1080px image, so enter the displayed height for any other shape. It uses the `dark-bg-card`, `dark-invert` and `dark-body` classes, so in dark mode the card follows the shared dark card colours while the navy stays.
 

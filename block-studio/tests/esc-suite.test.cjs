@@ -565,7 +565,7 @@ test('ESC text CTAs use fixed red in both layout themes while brand buttons reta
     await dom.happyDOM.close();
   }
 });
-test('ESC body copy uses 13px and authored line heights use exact four-pixel increments', async () => {
+test('ESC default typography follows the shared scale and keeps exact four-pixel line heights', async () => {
   const { BlockCore: C, dom } = await environment();
   const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
   try {
@@ -591,14 +591,40 @@ test('ESC body copy uses 13px and authored line heights use exact four-pixel inc
     }
 
     const output = dom.document.createElement('div');
-    for (const [project, slug, selector] of [
-      [projects[0], 'text-block', 'p.dark-body'],
-      [projects[1], 'story-1col', 'p.story-excerpt'],
-      [escTv, 'esc-tv-story-card', 'p.news-card-text'],
+    for (const [project, slug, selector, size, height] of [
+      [projects[0], 'hero-story', 'h1.hero-title', 28, 36],
+      [projects[1], 'lead-poster', 'h1.esc-lead-title', 28, 36],
+      [projects[0], 'decorative-header', '.masthead-title', 28, 36],
+      [projects[0], 'decorative-header', '.masthead-title[style*="24px"]', 24, 32],
+      [projects[0], 'checklist', 'h2', 20, 28],
+      [projects[1], 'attribution', 'p.attribution-title', 20, 28],
+      [projects[0], 'webinar-list', 'h3', 16, 24],
+      [projects[0], 'editorials', 'p.dark-invert', 16, 24],
+      [projects[0], 'story-card-3col', 'h3.news-card-title', 16, 24],
+      [projects[0], 'text-block', 'p.dark-body', 13, 20],
+      [projects[1], 'story-1col', 'p.story-excerpt', 13, 20],
+      [escTv, 'esc-tv-story-card', 'p.news-card-text', 13, 20],
+      [escTv, 'esc-tv-lead', '.esc-btn td', 13, 20],
+      [projects[0], 'navigation', 'a.nav-link', 12, 16],
+      [escTv, 'esc-tv-disclaimer', 'p', 12, 16],
     ]) {
       const module = project.modules.find((item) => item.slug === slug);
       output.innerHTML = C.render(module.exportedDefinition);
-      assert.equal(output.querySelector(selector).style.fontSize, '13px', slug);
+      const element = output.querySelector(selector);
+      assert.ok(element, slug + ' ' + selector);
+      assert.equal(element.style.fontSize, size + 'px', slug);
+      assert.equal(element.style.lineHeight, height + 'px', slug);
+    }
+
+    for (const name of ['ESC-Email-Example', 'Brand-Dependent-Styles']) {
+      const integration = fs.readFileSync(
+        path.join(root, 'integrations/esc/email-settings/' + name + '.html'),
+        'utf8',
+      );
+      assert.match(
+        integration,
+        /@media only screen and \(max-width:640px\)[^\n]*\.hero-title,\.masthead-title,\.esc-congress-lead \.esc-lead-title,\.esc-lead-poster \.esc-lead-title\{font-size:24px !important;line-height:32px !important\}/,
+      );
     }
 
     const textBlock = projects[0].modules.find((module) => module.slug === 'text-block');
@@ -608,7 +634,7 @@ test('ESC body copy uses 13px and authored line heights use exact four-pixel inc
     });
     const item = output.querySelector('li');
     assert.equal(item.style.fontSize, '13px');
-    assert.equal(item.style.lineHeight, '24px');
+    assert.equal(item.style.lineHeight, '20px');
     assert.match(item.getAttribute('style'), /mso-line-height-rule:exactly/);
   } finally {
     await dom.happyDOM.close();
@@ -2125,7 +2151,7 @@ test('ESC Checklist items support inline red links, legacy row links and both ma
       for (const text of output.querySelectorAll('.check-text')) {
         const mark = text.closest('tr').cells[0].firstElementChild;
         assert.equal(mark.textContent.trim(), '•');
-        assert.equal(mark.style.lineHeight, '24px');
+        assert.equal(mark.style.lineHeight, text.style.lineHeight);
         assert.equal(mark.style.backgroundColor, '');
       }
       assert.equal(output.querySelector('.check-text a').getAttribute('href'), destination);
@@ -2244,7 +2270,7 @@ test('ESC Quote supports long quotations and an optional heading and speaker pho
     assert.equal(text.textContent, quote);
     assert.equal(text.style.fontSize, '13px');
     assert.equal(text.style.fontStyle, 'italic');
-    assert.equal(text.style.lineHeight, '24px');
+    assert.equal(text.style.lineHeight, '20px');
     assert.match(text.getAttribute('style'), /mso-line-height-rule: exactly/);
     const heading = output.querySelector('h2');
     assert.equal(heading.textContent, 'Research in cardiology');
@@ -2518,7 +2544,7 @@ test('ESC rich text can centre the field and size selected text on the 4px line-
     const intro = hero.fields.find((field) => field.key === 'intro_copy');
     const output = dom.document.createElement('div');
     for (const [size, lineHeight] of [
-      [13, 24],
+      [13, 20],
       [20, 32],
       [24, 36],
       [32, 48],
@@ -2573,7 +2599,7 @@ test('ESC rich text preserves highlight, strikethrough, and nested list styling 
     );
     const child = list.querySelector('li > ol > li');
     assert.equal(child.textContent, 'Child');
-    assert.equal(child.style.lineHeight, '24px');
+    assert.equal(child.style.lineHeight, '20px');
     assert.match(child.getAttribute('style'), /mso-line-height-rule:exactly/);
     assert.ok(!child.innerHTML.includes('19px'));
     assert.match(child.querySelector('a').getAttribute('style'), /color:#ae1022 !important;/i);
@@ -2989,8 +3015,9 @@ test('ESC TV Lead CTA avoids fractional border height and unpainted Outlook cell
     assert.equal(cell.getAttribute('bgcolor'), button.getAttribute('bgcolor'));
     assert.ok(cell.getAttribute('style').includes('background-color: %%=v(@ButtonBgColour)=%%;'));
     assert.equal(parseInt(cell.style.border), 0);
-    assert.equal(cell.style.lineHeight, '24px');
-    assert.equal(cell.style.padding, '12px 28px');
+    assert.equal(cell.style.fontSize, '13px');
+    assert.equal(cell.style.lineHeight, '20px');
+    assert.equal(cell.style.padding, '14px 28px');
     assert.equal(parseInt(cell.style.lineHeight) + 2 * parseInt(cell.style.paddingTop), 48);
     for (const td of host.querySelectorAll('td')) {
       assert.ok(td.style.lineHeight, 'Every text-containing cell has an explicit line height');
@@ -2999,6 +3026,7 @@ test('ESC TV Lead CTA avoids fractional border height and unpainted Outlook cell
     for (const match of m.source.matchAll(/(font-size|line-height|height|padding):\s*([^;]+);/g)) {
       for (const value of match[2].matchAll(/(\d+)px/g)) {
         if (match[1] === 'font-size' && value[1] === '13') continue;
+        if (match[1] === 'padding' && match[2] === cell.style.padding) continue;
         assert.equal(Number(value[1]) % 4, 0, match[0]);
       }
     }
