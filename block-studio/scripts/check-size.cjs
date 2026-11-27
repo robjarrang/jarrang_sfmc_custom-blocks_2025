@@ -19,8 +19,9 @@ const limits = {
   // Repeatable speaker rows and migration of saved speakers add about 0.9 KB.
   // Detecting email addresses and giving destination feedback adds about 1.6 KB.
   // Optional email subjects and round-tripping pasted mailto parameters add about 2.7 KB.
-  'runtime.bundle.js': 96200,
-  'runtime.rich.bundle.js': 123300,
+  // Migrating heading fields that shared an old visibility switch adds about 0.3 KB.
+  'runtime.bundle.js': 96500,
+  'runtime.rich.bundle.js': 123600,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

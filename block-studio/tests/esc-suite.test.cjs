@@ -754,7 +754,7 @@ test('Speaker Grid renders additional rows and an optional heading', async () =>
       const speakers = Array.from({ length: count }, (_, index) => ({
         name: 'Speaker ' + (index + 1),
       }));
-      output.innerHTML = C.render(definition, { speakers, show_heading: 'hidden' });
+      output.innerHTML = C.render(definition, { speakers, field2: '', field3: '', field4: '' });
       const rows = [...output.querySelectorAll('.speaker-grid-row')];
       assert.deepEqual(
         rows.map((row) => row.querySelectorAll('.speaker-card').length),
@@ -764,6 +764,39 @@ test('Speaker Grid renders additional rows and an optional heading', async () =>
       assert.match(rows.at(-1).textContent.trim(), new RegExp('Speaker ' + count + '$'));
       assert.equal(output.querySelector('img.speaker-image'), null);
     }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('Speaker Grid shows only populated header fields and honours the retired heading switch', async () => {
+  const { BlockCore: C, BlockControls, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (item) => item.slug === 'speaker-grid',
+  );
+  try {
+    const blank = { field2: '', field3: '  ', field4: '' };
+    const values = {
+      field2: 'Old eyebrow',
+      field3: 'Old title',
+      field4: 'Old subtitle',
+      show_heading: 'hidden',
+    };
+    const hidden = C.render(definition, blank);
+    assert.equal(C.render(definition, values), hidden);
+    const editor = dom.document.createElement('div');
+    BlockControls.mount(editor, definition.fields, values, () => {});
+    assert.equal(editor.querySelector('#show_heading'), null);
+    for (const id of ['field2', 'field3', 'field4'])
+      assert.equal(editor.querySelector('#' + id).value, '');
+    const heading = editor.querySelector('#field3');
+    heading.value = 'Faculty <2026>';
+    heading.dispatchEvent(new dom.Event('input'));
+    const updated = C.render(definition, values);
+    assert.match(updated, /Faculty &lt;2026&gt;/);
+    assert.doesNotMatch(updated, /Old eyebrow|Old subtitle/);
+    assert.equal(values.field2, '');
+    assert.equal(values.field4, '');
+    assert.equal(C.render(definition, { ...values, field3: '' }), hidden);
   } finally {
     await dom.happyDOM.close();
   }
@@ -2509,7 +2542,7 @@ test('ESC card descriptions hide when blank while CTA switches remain independen
   const { BlockCore: C, BlockControls, dom } = await environment();
   const escTv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
   const affected = [...projects[0].modules, ...escTv.modules].filter((module) =>
-    module.fields.some((field) => field.legacyVisibilityId),
+    module.fields.some((field) => field.type === 'richtext' && field.legacyVisibilityId),
   );
   try {
     assert.equal(affected.length, 6);

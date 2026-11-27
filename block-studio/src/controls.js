@@ -215,8 +215,15 @@
       error.setAttribute('aria-live', 'polite');
       let input;
       const changed = (value) => {
+        const legacy = field.legacyVisibilityId;
+        if (legacy) {
+          // Editing one field should not bring back sibling copy hidden by the old switch.
+          if (['hidden', false].includes(values[legacy]))
+            for (const other of fields)
+              if (other.legacyVisibilityId === legacy) values[other.id] = '';
+          values[legacy] = 'shown';
+        }
         values[field.id] = value;
-        if (field.legacyVisibilityId) values[field.legacyVisibilityId] = 'shown';
         const issue = C.validate(field, value);
         error.textContent = issue;
         input.setAttribute('aria-invalid', String(!!issue));

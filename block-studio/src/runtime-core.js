@@ -570,7 +570,7 @@
     const retired = new Set(fields.flatMap((f) => [f.legacyVisibilityId, ...legacyFieldIds(f)]));
     return fields.filter((f) => !retired.has(f.id));
   }
-  // Keep previously hidden copy out of the email until the description is edited.
+  // Keep previously hidden copy out of the email until it is edited.
   function fieldValue(field, values) {
     if (field.legacyVisibilityId && ['hidden', false].includes(values[field.legacyVisibilityId]))
       return '';
@@ -1026,15 +1026,13 @@
     for (const field of editableFields(module.fields.filter((f) => f.enabled))) {
       if (!fieldActive(module, field, values)) continue;
       let value = fieldValue(field, values);
-      if (
-        field.legacyVisibilityId &&
-        value &&
-        !decode(cleanRich(value, field).replace(/<[^>]*>/g, '')).replace(
-          /[\s\u200b-\u200d\u2060]/g,
-          '',
-        )
-      )
-        value = '';
+      if (field.legacyVisibilityId && value) {
+        const copy =
+          field.type === 'richtext'
+            ? decode(cleanRich(value, field).replace(/<[^>]*>/g, ''))
+            : value;
+        if (!String(copy).replace(/[\s\u200b-\u200d\u2060]/g, '')) value = '';
+      }
       const checked = () => {
         const error = validate(field, value);
         if (error) throw Error(field.label + ': ' + error);
