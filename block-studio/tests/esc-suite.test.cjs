@@ -696,6 +696,42 @@ test('Speaker Grid renders additional rows and an optional heading', async () =>
     await dom.happyDOM.close();
   }
 });
+test('Speaker Grid allows long speaker details to wrap within fixed desktop columns', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (item) => item.slug === 'speaker-grid',
+  );
+  try {
+    const output = dom.document.createElement('div');
+    const speaker = {
+      name: 'Schnabel'.repeat(12),
+      role: 'CardiologyLead'.repeat(12),
+      org: 'CardiovascularCentre'.repeat(12),
+    };
+    output.innerHTML = C.render(definition, {
+      speakers: Array.from({ length: 5 }, () => speaker),
+    });
+    const rows = [...output.querySelectorAll('.speaker-grid-row')];
+    assert.deepEqual(
+      rows.map((row) =>
+        [...row.querySelectorAll('.speaker-card')].map((cell) => cell.getAttribute('width')),
+      ),
+      [
+        ['180', '180', '180'],
+        ['280', '280'],
+      ],
+    );
+    for (const row of rows) assert.equal(row.style.tableLayout, 'fixed');
+    for (const text of output.querySelectorAll('.speaker-name, .speaker-role, .speaker-org')) {
+      assert.match(text.getAttribute('style'), /word-wrap: break-word;/);
+      assert.match(text.getAttribute('style'), /overflow-wrap: anywhere !important;/);
+    }
+    assert.equal(output.querySelector('.speaker-name').textContent, speaker.name);
+    assert.equal(output.querySelector('.speaker-org').textContent, speaker.org);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('ESC vertical spacer divs leave their background to the enclosing cell', () => {
   const remainingProjects = ['esc-tv', 'email-settings'].map((suite) =>
     JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/' + suite + '.jarrang.json'))),
