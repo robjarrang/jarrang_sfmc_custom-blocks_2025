@@ -311,7 +311,7 @@ test('congress image fallback honours saved mobile values and keeps URLs and alt
       'https://example.com/mobile.jpg',
       '',
     );
-    assert.equal(definition.fields.length, 17);
+    assert.equal(definition.fields.length, 18);
     assert.equal(definition.id, 'c5a8e174-6d3b-4f92-8a5c-1e7d9b4f2a86');
     assert.equal(definition.slug, 'lead-editorial');
     assert.equal(definition.release, '1.0.0');
@@ -573,10 +573,18 @@ test('ESC body copy uses 13px and authored line heights use exact four-pixel inc
       for (const module of project.modules) {
         for (const [, style] of module.source.matchAll(/\bstyle="([^"]*)"/g)) {
           for (const [, height] of style.matchAll(/(?:^|;)\s*line-height:\s*([^;]+)/g)) {
-            assert.match(height.trim(), /^(?:0|\d+px)(?:\s*!important)?$/, module.slug);
-            const pixels = Number.parseInt(height, 10);
-            assert.equal(pixels % 4, 0, module.slug);
-            if (pixels > 0) assert.match(style, /mso-line-height-rule:\s*exactly/, module.slug);
+            const spacing = /^\{\{ ((?:top|bottom)_spacing) \}\}px$/.exec(height.trim());
+            const heights = spacing
+              ? module.fields
+                  .find((field) => field.key === spacing[1])
+                  .options.map((option) => option.value + 'px')
+              : [height.trim()];
+            for (const value of heights) {
+              assert.match(value, /^(?:0|\d+px)(?:\s*!important)?$/, module.slug);
+              const pixels = Number.parseInt(value, 10);
+              assert.equal(pixels % 4, 0, module.slug);
+              if (pixels > 0) assert.match(style, /mso-line-height-rule:\s*exactly/, module.slug);
+            }
           }
         }
       }
@@ -796,6 +804,34 @@ test('Speaker Grid allows long speaker details to wrap within fixed desktop colu
     await dom.happyDOM.close();
   }
 });
+test('Checklist, CTA and Speaker Grid can tighten either adjoining edge independently', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const output = dom.document.createElement('div');
+    const spacing = (definition, values) => {
+      output.innerHTML = C.render(definition, values);
+      const content = output.querySelector('.content-inner');
+      const height = (el) => (el.tagName === 'DIV' ? el.style.height : '');
+      return [height(content.firstElementChild), height(content.lastElementChild)];
+    };
+    for (const [slug, original, compact] of [
+      ['checklist', ['32px', '32px'], ['16px', '16px']],
+      ['cta', ['32px', '32px'], ['16px', '16px']],
+      ['speaker-grid', ['40px', '24px'], ['20px', '12px']],
+    ]) {
+      const { exportedDefinition: definition } = projects[0].modules.find((m) => m.slug === slug);
+      assert.deepEqual(spacing(definition, {}), original, slug);
+      const top = definition.fields.find((field) => field.id === 'top_spacing').options[1].value;
+      const bottom = definition.fields.find((field) => field.id === 'bottom_spacing').options[1]
+        .value;
+      assert.deepEqual(spacing(definition, { top_spacing: top }), [compact[0], original[1]]);
+      assert.deepEqual(spacing(definition, { bottom_spacing: bottom }), [original[0], compact[1]]);
+      assert.deepEqual(spacing(definition, { top_spacing: '0', bottom_spacing: '0' }), ['', '']);
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('ESC vertical spacer divs leave their background to the enclosing cell', () => {
   const remainingProjects = ['esc-tv', 'email-settings'].map((suite) =>
     JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/' + suite + '.jarrang.json'))),
@@ -995,7 +1031,7 @@ test('text-to-rich-text conversion updates repeated values and expressions toget
     const m = clone(projects[0].modules.find((m) => m.slug === 'navigation'));
     delete m.published;
     delete m.exportedDefinition;
-    const list = m.fields[0],
+    const list = m.fields.find((field) => field.type === 'list'),
       child = list.itemFields[0];
     list.defaultValue[0][child.key] = '<b>literal</b>';
     const before = C.render(m);
@@ -1009,21 +1045,25 @@ test('text-to-rich-text conversion updates repeated values and expressions toget
     assert.ok(saved, dialog.querySelector('[role=alert]').textContent);
     assert.equal(C.render(saved), before);
     assert.match(saved.source, new RegExp('item\\.' + child.key + ' \\| richtext'));
-    const rows = clone(saved.fields[0].defaultValue);
+    const rows = clone(saved.fields.find((field) => field.id === list.id).defaultValue);
     rows[0][child.key] = '<strong>Bold</strong>';
     assert.match(C.render(saved, { [list.id]: rows }), /<strong>Bold<\/strong>/);
     assert.equal(list.defaultValue[0][child.key], '<b>literal</b>');
     dialog.remove();
     const rich = saved;
-    rich.fields[0].defaultValue[0][child.key] = '<strong>Bold</strong><br>Next';
-    F.open(rich, rich.fields[0], (f, result) => (saved = result?.draft));
+    const richList = rich.fields.find((field) => field.id === list.id);
+    richList.defaultValue[0][child.key] = '<strong>Bold</strong><br>Next';
+    F.open(rich, richList, (f, result) => (saved = result?.draft));
     const plainDialog = dom.document.querySelector('dialog');
     const plainType = labelled(plainDialog.querySelector('.item-field-card'), 'Item field type');
     plainType.value = 'text';
     plainType.dispatchEvent(new dom.Event('change', { bubbles: true }));
     assert.match(plainDialog.textContent, /removes formatting/);
     click(plainDialog, 'Save field');
-    assert.equal(saved.fields[0].defaultValue[0][child.key], 'Bold\nNext');
+    assert.equal(
+      saved.fields.find((field) => field.id === list.id).defaultValue[0][child.key],
+      'Bold\nNext',
+    );
     assert.ok(!saved.source.includes('item.' + child.key + ' | richtext'));
   } finally {
     await dom.happyDOM.close();
@@ -1033,7 +1073,11 @@ test('item-key renames update references and rows atomically while published key
   const { BlockFieldEditor: F, BlockCore: C, dom } = await environment();
   try {
     const m = clone(projects[0].modules.find((m) => m.slug === 'navigation'));
-    F.open(m, m.fields[0], () => {});
+    F.open(
+      m,
+      m.fields.find((field) => field.type === 'list'),
+      () => {},
+    );
     let dialog = dom.document.querySelector('dialog');
     assert.equal(
       labelled(dialog.querySelector('.item-field-card'), 'Item template key').disabled,
@@ -1044,7 +1088,11 @@ test('item-key renames update references and rows atomically while published key
     delete m.exportedDefinition;
     const before = C.render(m);
     let saved;
-    F.open(m, m.fields[0], (f, result) => (saved = result?.draft));
+    F.open(
+      m,
+      m.fields.find((field) => field.type === 'list'),
+      (f, result) => (saved = result?.draft),
+    );
     dialog = dom.document.querySelector('dialog');
     const key = labelled(dialog.querySelector('.item-field-card'), 'Item template key');
     key.value = 'renamed_title';
@@ -1062,7 +1110,7 @@ test('field-reference changes respect loop scope, literal strings and AMPscript'
   const { BlockFieldTransforms: T, BlockCore: C, dom } = await environment();
   try {
     const m = clone(projects[0].modules.find((m) => m.slug === 'navigation'));
-    const f = m.fields[0],
+    const f = m.fields.find((field) => field.type === 'list'),
       next = clone(f);
     next.key = 'links';
     m.source =
@@ -1096,7 +1144,8 @@ test('formatted-text conversion cannot insert markup into an attribute connectio
 test('repeater actions retain focus on the new, moved or neighbouring item', async () => {
   const { BlockControls: B, dom } = await environment();
   try {
-    const f = clone(projects[0].modules.find((m) => m.slug === 'navigation').fields[0]);
+    const nav = projects[0].modules.find((m) => m.slug === 'navigation');
+    const f = clone(nav.fields.find((field) => field.type === 'list'));
     f.minItems = 0;
     f.maxItems = 10;
     f.defaultValue = f.defaultValue.slice(0, 1);
@@ -1275,9 +1324,13 @@ test('guided combined, toggle and item-position rules save valid typed expressio
     assert.equal(JSON.stringify(C.templateProblems(saved)), '[]');
     dialog.remove();
     const nav = clone(projects[0].modules.find((m) => m.slug === 'navigation'));
-    F.open(nav, nav.fields[0], (f, result) => {
-      saved = result.draft;
-    });
+    F.open(
+      nav,
+      nav.fields.find((field) => field.type === 'list'),
+      (f, result) => {
+        saved = result.draft;
+      },
+    );
     dialog = dom.document.querySelector('dialog');
     click(dialog, 'Where it applies');
     const numeric = labelled(dialog.querySelector('.template-rule-card'), 'Compare with');
@@ -1295,7 +1348,7 @@ test('repeated item guidance and validation can be edited through the field edit
   const { BlockFieldEditor: F, BlockCore: C, dom } = await environment();
   try {
     const m = clone(projects[0].modules.find((m) => m.slug === 'navigation'));
-    const field = m.fields[0];
+    const field = m.fields.find((field) => field.type === 'list');
     let saved;
     F.open(m, field, (f) => {
       saved = f;
@@ -1486,9 +1539,10 @@ test('maintenance permits copy and layout changes but blocks incompatible saved-
     const m = clone(projects[0].modules.find((m) => m.slug === 'navigation'));
     m.source = '<!-- CSS fix -->' + m.source;
     m.name = 'New display name';
-    m.fields[0].label = 'New label';
+    const list = m.fields.find((field) => field.type === 'list');
+    list.label = 'New label';
     assert.equal(JSON.stringify(M.problems(m)), '[]');
-    m.fields[0].itemFields[0].key = 'renamed';
+    list.itemFields[0].key = 'renamed';
     assert.match(M.problems(m).join(' '), /saved values/);
     const other = clone(projects[0].modules[0]);
     other.release = '99.0.0';
@@ -2666,7 +2720,7 @@ test('ESC TV Disclaimer renders approved wording safely and matches its generate
       assert.equal(el.style.lineHeight, '16px');
     }
     assert.equal(JSON.stringify(C.parse(output).issues), '[]');
-    for (const field of m.fields) {
+    for (const field of m.fields.filter((field) => field.type === 'text')) {
       assert.ok(C.validate(field, ''), 'Both disclaimer statements are required');
       const edited = C.render(m, { [field.id]: 'Approved <strong>copy</strong> & details' });
       host.innerHTML = edited;

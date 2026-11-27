@@ -66,6 +66,8 @@ The Newsletter **Decorative Header** draws its desktop artwork with a VML box fo
 
 Newsletter **Speaker Grid** supports up to 30 speakers in rows of three on desktop, with one speaker per row on mobile. Turn off **Show heading** to hide the section heading, eyebrow and subtitle.
 
+**Top spacing** and **Bottom spacing** adjust the gap at either edge of most Newsletter, Congress and ESC TV blocks. **Default** keeps the original height, **Compact** reduces it, and **None** removes that spacer. Blocks with spacing on only one edge offer the control for that edge. To tighten a gap between blocks, check the bottom setting on the first block and the top setting on the next. Spacing inside cards, between list items and within buttons follows the template layout.
+
 Newsletter **Hero Story** has **Show top spacing** and **Show bottom spacing** switches (both on by default) that remove its 32px outer spacer rows, for placing it directly against a neighbouring module that already supplies spacing. Existing emails keep both rows.
 
 A text field left blank but still shown leaves an empty paragraph. Spacers around it add up in every client; the old margins collapsed in browsers but not in Outlook. Use the show/hide switch to remove a section.
