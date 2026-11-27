@@ -545,7 +545,7 @@
         'text',
         existing?.getAttribute('href') || '',
       );
-      root.BlockControls.linkDestination(destination);
+      const destinationValue = root.BlockControls.linkDestination(destination);
       const options = Object.fromEntries(
         C.linkAttributes.map(([attr, , setting]) => [
           attr,
@@ -591,7 +591,7 @@
       issue.setAttribute('role', 'alert');
       panel.append(issue);
       buttons(existing ? 'Update link' : 'Insert link', () => {
-        const href = C.normaliseLink(destination.value);
+        const href = C.normaliseLink(destinationValue());
         if (!href || !C.validUrl(href, 'url')) {
           issue.textContent = 'Enter a full web URL, email address or telephone link.';
           destination.setAttribute('aria-invalid', 'true');

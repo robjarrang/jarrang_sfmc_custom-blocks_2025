@@ -124,7 +124,7 @@ The user confirmed the Outlook centring and Apple Mail seam fixes on their proof
 
 ## Link options and conversion tracking
 
-Paste an email address directly into a button or text link destination, including **Add or edit link** in a formatted-text field. The block supplies `mailto:` in the email HTML. For a prefilled subject, paste a complete link such as `mailto:events@example.com?subject=Congress%20enquiry`. Conversion Tracking Link is available for web destinations.
+Paste an email address directly into a button or text link destination, including **Add or edit link** in a formatted-text field. The block supplies `mailto:` in the email HTML. When the address is recognised, **Email subject (optional)** appears below it. Type the subject as plain text. Pasting a complete `mailto:` link also fills the subject field if the link includes one. Conversion Tracking Link is available for web destinations.
 
 All ESC formatted-text fields support links within their text. These links use fixed `#AE1022` across all brands. The runtime applies the colour directly to the link so the master template's dark-mode styles do not replace it. Existing email HTML picks up the colour after the block is edited and saved in SFMC.
 

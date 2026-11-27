@@ -18,8 +18,9 @@ const limits = {
   // Moving saved single sponsors into a repeatable list adds about 0.8 KB.
   // Repeatable speaker rows and migration of saved speakers add about 0.9 KB.
   // Detecting email addresses and giving destination feedback adds about 1.6 KB.
-  'runtime.bundle.js': 93500,
-  'runtime.rich.bundle.js': 120600,
+  // Optional email subjects and round-tripping pasted mailto parameters add about 2.7 KB.
+  'runtime.bundle.js': 96200,
+  'runtime.rich.bundle.js': 123300,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

@@ -216,6 +216,60 @@ test('URL checkbox is labelled, preserves its destination and works per repeated
     await dom.happyDOM.close();
   }
 });
+test('email subjects are editable separately and preserve other mailto headers', async () => {
+  const dom = await environment();
+  try {
+    const field = url('link');
+    const parent = dom.document.createElement('div');
+    const values = { link: 'https://example.com/' };
+    const change = (input, value) => {
+      input.value = value;
+      input.dispatchEvent(new dom.Event('input'));
+    };
+    const mount = () => {
+      const refs = dom.BlockControls.mount(parent, [field], values, () => {});
+      const label = [...parent.querySelectorAll('label')].find(
+        (label) => label.textContent === 'Email subject (optional)',
+      );
+      return [refs.get(field.id).input, label.nextElementSibling];
+    };
+    let [destination, subject] = mount();
+    assert.equal(subject.parentElement.hidden, true);
+    change(destination, 'events+esc@example.com');
+    assert.equal(subject.parentElement.hidden, false);
+    change(subject, 'Congress & media? café + 2026');
+    assert.equal(destination.value, 'events+esc@example.com');
+    assert.equal(
+      values.link,
+      'mailto:events+esc@example.com?subject=Congress%20%26%20media%3F%20caf%C3%A9%20%2B%202026',
+    );
+    [destination, subject] = mount();
+    assert.equal(destination.value, 'events+esc@example.com');
+    assert.equal(subject.value, 'Congress & media? café + 2026');
+    const complete =
+      'mailto:media@example.com?cc=events@example.com&%53ubject=Media%20%2B%20news&body=Hi%20there';
+    change(destination, complete);
+    assert.equal(values.link, complete);
+    destination.dispatchEvent(new dom.Event('blur'));
+    assert.equal(subject.value, 'Media + news');
+    assert.equal(
+      destination.value,
+      'mailto:media@example.com?cc=events@example.com&body=Hi%20there',
+    );
+    change(subject, 'New subject');
+    assert.equal(
+      values.link,
+      'mailto:media@example.com?cc=events@example.com&subject=New%20subject&body=Hi%20there',
+    );
+    change(subject, '');
+    assert.equal(values.link, destination.value);
+    change(destination, 'https://example.com/');
+    assert.equal(subject.parentElement.hidden, true);
+    assert.equal(values.link, 'https://example.com/');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('rich-text conversion attributes survive sanitisation only for permitted web links', async () => {
   const dom = await environment();
   try {
@@ -292,9 +346,10 @@ test('rich-text link dialogue adds, reopens and removes tracking without changin
     dom.getSelection().addRange(range);
     editor.dispatchEvent(new dom.Event('mouseup'));
     parent.querySelector('[aria-label="Add or edit link"]').click();
-    const destination =
-      parent.querySelector('.rich-link-panel input[type=text]') ||
-      [...parent.querySelectorAll('input[type=text]')].at(-1);
+    const destinationLabel = [...parent.querySelectorAll('label')].find(
+      (label) => label.textContent === 'Link destination',
+    );
+    const destination = dom.document.getElementById(destinationLabel.htmlFor);
     assert.ok(destination);
     destination.value = 'https://example.com/register';
     destination.dispatchEvent(new dom.Event('input'));

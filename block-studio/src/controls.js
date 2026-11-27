@@ -2,23 +2,98 @@
   'use strict';
   const clone = (value) => JSON.parse(JSON.stringify(value));
   let linkSerial = 0;
-  function linkDestination(input) {
+  // Keep the address and subject separate in the editor and save one destination string.
+  function linkDestination(input, onChange, onBlur) {
+    const C = root.BlockCore;
     input.placeholder = 'Web URL or email address';
     input.autocapitalize = 'none';
     input.spellcheck = false;
-    const status = document.createElement('p');
+    const options = document.createElement('div'),
+      status = document.createElement('p'),
+      label = document.createElement('label'),
+      subject = document.createElement('input');
     status.className = 'help';
     status.setAttribute('role', 'status');
-    const update = () => {
-      const href = root.BlockCore.normaliseLink(input.value);
-      const message =
-        /^mailto:/i.test(href) && root.BlockCore.validUrl(href, 'url') ? 'Opens a new email.' : '';
-      if (status.textContent !== message) status.textContent = message;
-      status.hidden = !message;
+    status.textContent = 'Opens a new email.';
+    subject.type = 'text';
+    subject.className = 'control';
+    subject.id = 'email-subject-' + ++linkSerial;
+    label.htmlFor = subject.id;
+    label.textContent = 'Email subject (optional)';
+    options.append(status, label, subject);
+    input.after(options);
+
+    let displayed, raw, email;
+    const decode = (part) => {
+      try {
+        return decodeURIComponent(part);
+      } catch {
+        return part;
+      }
     };
-    input.after(status);
-    input.addEventListener('input', update);
-    update();
+    const isSubject = (header) => decode(header.split('=', 1)[0]).toLowerCase() === 'subject';
+    const assemble = (recipient, headers) =>
+      recipient + (headers.length ? '?' + headers.join('&') : '');
+    function read() {
+      displayed = raw = input.value;
+      const href = C.normaliseLink(raw);
+      const valid = !!href && C.validUrl(href, 'url');
+      options.hidden = !valid || !/^mailto:/i.test(href);
+      email = null;
+      if (options.hidden) {
+        if (valid) subject.value = '';
+        return;
+      }
+      const split = href.indexOf('?');
+      const recipient = split < 0 ? href : href.slice(0, split);
+      const headers =
+        split < 0
+          ? []
+          : href
+              .slice(split + 1)
+              .split('&')
+              .filter(Boolean);
+      const index = headers.findIndex(isSubject);
+      if (index >= 0) {
+        subject.value = decode(headers[index].replace(/^[^=]*=?/, ''));
+      } else if (split >= 0) subject.value = '';
+      email = { recipient, headers, index, originalSubject: index >= 0 ? subject.value : '' };
+    }
+    function tidy() {
+      if (email?.index >= 0) {
+        const { recipient, headers } = email;
+        const address = recipient.slice(7);
+        const rest = headers.filter((header) => !isSubject(header));
+        displayed = input.value =
+          !rest.length && C.normaliseLink(address) === recipient
+            ? address
+            : assemble(recipient, rest);
+      }
+      if (!input.value.trim()) subject.value = '';
+    }
+    function value() {
+      if (displayed !== input.value) read();
+      if (!email || subject.value === email.originalSubject) return raw;
+      const { recipient, headers, index } = email;
+      const remaining = headers.filter((header) => !isSubject(header));
+      if (subject.value.trim())
+        remaining.splice(
+          index < 0 ? remaining.length : index,
+          0,
+          'subject=' + encodeURIComponent(subject.value),
+        );
+      return assemble(recipient, remaining);
+    }
+    input.addEventListener('input', () => {
+      read();
+      onChange?.(value());
+    });
+    input.addEventListener('blur', tidy);
+    subject.addEventListener('input', () => onChange?.(value()));
+    if (onBlur) subject.addEventListener('focusout', onBlur);
+    read();
+    tidy();
+    return value;
   }
   // Shared by URL fields and the formatted-text link dialogue.
   function linkOptions(parent, field, initial, onChange) {
@@ -295,7 +370,7 @@
             if (/^#[0-9a-f]{6}$/i.test(input.value)) picker.value = input.value;
             changed(input.value);
           };
-        } else input.oninput = () => changed(input.value);
+        } else if (field.type !== 'url') input.oninput = () => changed(input.value);
       }
       input.id = prefix + field.id;
       if (field.type !== 'toggle' && field.type !== 'list') input.classList.add('control');
@@ -309,7 +384,7 @@
       } else group.append(input);
       let linkParent = group;
       if (field.type === 'url') {
-        linkDestination(input);
+        linkDestination(input, changed, options.onBlur);
         const choice = C.linkOptionsChoice(field, values);
         linkParent = linkOptions(group, field, choice, (name, text) => {
           values[C.linkOptionsKey] = {
