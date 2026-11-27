@@ -77,3 +77,5 @@ Edit and save existing custom blocks in SFMC to regenerate their HTML with the n
 ## Industry campaign label
 
 Add the contents of `Industry-Team-Label.html` immediately before the main content slot in the shared master template, below the header and outside the editable slots. The template should include it once. The conditional reads the value from the Email settings block. Emails with **None** selected or without a saved campaign label produce no label or spacing. An existing Email settings block needs to be saved with **ESC Industry Team** selected for the label to appear in Subscriber Preview.
+
+The settings card in the Content Builder **Default** canvas shows the selected value. View the actual label in **Preview and Test** with a subscriber selected. If it is missing there, open the email’s **Code View** and look for `IF @CampaignLabel == "INDUSTRY"`. An email created before the master changed may still use its original template HTML. For a test draft with that older layout, update its master HTML or start a fresh email from the updated master. Save **ESC Industry Team** in its Email settings block and run Subscriber Preview again.
