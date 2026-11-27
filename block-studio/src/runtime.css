@@ -19,6 +19,25 @@ h1 {
   margin: 0 0 8px;
   letter-spacing: -0.4px;
 }
+.editor-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+#load-sample {
+  margin-inline-start: auto;
+  min-height: 28px;
+  padding: 3px 8px;
+  border: 1px solid #d6d9e6;
+  border-radius: 4px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
 .status {
   font-size: 14px;
   color: #5c6076;

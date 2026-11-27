@@ -3,7 +3,7 @@ const test = require('node:test'),
   fs = require('node:fs'),
   vm = require('node:vm');
 const C = require('../src/core.js');
-function host(saved = {}, { deferData = false } = {}) {
+function host(saved = {}, { deferData = false, blankStart = false } = {}) {
   const source = '{% for item in items %}<p>{{ item.text }}</p>{% endfor %}';
   const list = C.templateField({ fields: [] }, 'list', 'Items');
   list.id = 'items';
@@ -16,6 +16,7 @@ function host(saved = {}, { deferData = false } = {}) {
     source,
     templateMode: true,
     fields: [list],
+    ...(blankStart ? { blankStart: {} } : {}),
   };
   const form = { disabled: true, inert: false, replaceChildren() {} },
     status = {},
@@ -23,14 +24,16 @@ function host(saved = {}, { deferData = false } = {}) {
       'block-definition': { textContent: JSON.stringify(definition) },
       fields: form,
       status,
-      'block-name': {},
+      'block-name': { focus() {} },
     };
+  if (blankStart) nodes['load-sample'] = { hidden: true, addEventListener: (_, fn) => (load = fn) };
   const calls = [],
     pending = [],
     dataCallbacks = [];
   let options,
     mounted,
     change,
+    load,
     mountCount = 0;
   const sdk = {
     getData(cb) {
@@ -93,6 +96,12 @@ function host(saved = {}, { deferData = false } = {}) {
     get mountCount() {
       return mountCount;
     },
+    get sampleButton() {
+      return nodes['load-sample'];
+    },
+    loadSample() {
+      load();
+    },
     resolveData(data = saved) {
       dataCallbacks.forEach((cb) => cb(data));
     },
@@ -142,6 +151,46 @@ test('new empty blocks initialise only after the content check', () => {
   h.pending[0]('');
   assert.equal(h.form.disabled, false);
   assert.equal(h.calls[0].value, '<p>Initial</p>');
+});
+test('blank-start blocks save their former defaults only when Load test sample is used', () => {
+  const h = host({}, { blankStart: true });
+  assert.equal(h.sampleButton.hidden, true);
+  h.pending[0]('');
+  assert.equal(h.sampleButton.hidden, false);
+  assert.equal(h.calls[0].value, '');
+  h.loadSample();
+  assert.equal(h.sampleButton.hidden, true);
+  h.calls[0].cb('');
+  assert.equal(h.calls[1].value.studio.blankStart, true);
+  h.calls[1].cb();
+  assert.equal(h.calls[2].value, '<p>Initial</p>');
+  h.calls[2].cb('<p>Initial</p>');
+  const saved = h.calls[3].value;
+  assert.deepEqual(JSON.parse(JSON.stringify(saved.studio.values.items)), [{ text: 'Initial' }]);
+  assert.equal(host(saved, { blankStart: true }).sampleButton.hidden, true);
+});
+test('test sample cannot overwrite authored repeater rows', () => {
+  const data = metadata();
+  data.studio.blankStart = true;
+  data.studio.values.items = [{ text: 'Saved' }];
+  const h = host(data, { blankStart: true });
+  assert.equal(h.sampleButton.hidden, true);
+  h.loadSample();
+  assert.equal(h.mounted.items[0].text, 'Saved');
+  assert.equal(h.calls.length, 0);
+});
+test('test sample preserves link settings already attached to blank repeater rows', () => {
+  const data = metadata();
+  data.studio.blankStart = true;
+  const linkSettings = { [C.linkOptionsKey]: { link: { alias: 'test-alias' } } };
+  data.studio.values.items = [{ text: '', ...linkSettings }];
+  const h = host(data, { blankStart: true });
+  assert.equal(h.sampleButton.hidden, false);
+  h.loadSample();
+  h.calls[0].cb('<p>Initial</p>');
+  assert.deepEqual(JSON.parse(JSON.stringify(h.calls[1].value.studio.values.items)), [
+    { text: 'Initial', ...linkSettings },
+  ]);
 });
 test('controls are drawn from defaults and stay inert until SFMC responds', () => {
   const h = host(metadata(), { deferData: true });

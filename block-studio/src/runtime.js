@@ -5,7 +5,24 @@
     definition = JSON.parse(document.getElementById('block-definition').textContent);
   const fields = definition.fields.filter((f) => f.enabled),
     form = document.getElementById('fields'),
-    status = document.getElementById('status');
+    status = document.getElementById('status'),
+    sampleButton = document.getElementById('load-sample');
+  const sampleFields = sampleButton
+    ? C.editableFields(fields).filter((f) =>
+        ['text', 'richtext', 'image', 'url', 'list'].includes(f.type),
+      )
+    : [];
+  const sampleContent = (value) =>
+    JSON.stringify(value, (key, item) =>
+      key === C.linkOptionsKey || key === C.conversionKey ? undefined : item,
+    );
+  const blankFields = sampleFields.map((field) => ({
+    field,
+    blank: sampleContent(C.starterField(field, definition.blankStart)),
+  }));
+  const sampleFieldsToFill = blankFields.filter(
+    ({ field, blank }) => sampleContent(field.defaultValue) !== blank,
+  );
   let metadata = {},
     values = {},
     blankStart = definition.blankStart,
@@ -22,9 +39,18 @@
     status.textContent = message;
     status.className = error ? 'status error' : 'status';
   };
+  function updateSampleButton() {
+    if (!sampleButton) return;
+    sampleButton.hidden =
+      !ready ||
+      !blankStart ||
+      !sampleFieldsToFill.length ||
+      !blankFields.every(({ field, blank }) => sampleContent(values[field.id]) === blank);
+  }
   // Blocking errors leave nothing editable on screen.
   const fail = (message) => {
     ready = false;
+    updateSampleButton();
     busy = false;
     form.replaceChildren();
     form.inert = true;
@@ -161,6 +187,7 @@
     const timeout = setTimeout(() => {
       busy = false;
       ready = false;
+      updateSampleButton();
       form.disabled = true;
       form.inert = true;
       say('SFMC did not confirm the save. Reopen the block before continuing.', true);
@@ -209,6 +236,7 @@
       (field, value) => {
         if (!ready) return;
         values[field.id] = value;
+        updateSampleButton();
         dirty = true;
         say('Unsaved changes');
         clearTimeout(timer);
@@ -222,6 +250,7 @@
     form.inert = false;
     form.disabled = false;
     ready = true;
+    updateSampleButton();
     if (!sdk) {
       dirty = true;
       save();
@@ -323,6 +352,7 @@
       if (!result) return;
       const { html } = result;
       ready = false;
+      updateSampleButton();
       dirty = false;
       sdk.setContent(html);
       if (definition.settingsOnly) sdk.setSuperContent(C.settingsSummary(definition, html));
@@ -331,6 +361,26 @@
       say(e.message, true);
     }
   }
+  sampleButton?.addEventListener('click', () => {
+    if (sampleButton.hidden) return;
+    for (const { field } of sampleFieldsToFill) {
+      const sample = JSON.parse(JSON.stringify(field.defaultValue));
+      if (field.type === 'list') {
+        // Keep the link settings of the existing empty rows.
+        values[field.id].forEach((row, index) => {
+          if (!sample[index]) return;
+          for (const key of [C.linkOptionsKey, C.conversionKey])
+            if (Object.hasOwn(row, key)) sample[index][key] = row[key];
+        });
+      }
+      values[field.id] = sample;
+    }
+    mount();
+    updateSampleButton();
+    document.getElementById('block-name').focus();
+    dirty = true;
+    save();
+  });
   document.getElementById('block-name').textContent = definition.name;
   if (window.parent === window) {
     document.body.classList.add('standalone');

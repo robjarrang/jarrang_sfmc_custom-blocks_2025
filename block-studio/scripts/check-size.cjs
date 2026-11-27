@@ -21,9 +21,10 @@ const limits = {
   // Optional email subjects and round-tripping pasted mailto parameters add about 2.7 KB.
   // Migrating heading fields that shared an old visibility switch adds about 0.3 KB.
   // Empty starting values and separate draft and email output add about 3.9 KB.
-  'runtime.bundle.js': 100500,
-  'runtime.rich.bundle.js': 127600,
-  'runtime.bundle.css': 11100,
+  // Loading sample content on request adds 1.8 KB of JavaScript and 0.3 KB of CSS.
+  'runtime.bundle.js': 102300,
+  'runtime.rich.bundle.js': 129400,
+  'runtime.bundle.css': 11400,
 };
 let failed = false;
 for (const [name, limit] of Object.entries(limits)) {
