@@ -640,23 +640,46 @@ test('ESC default typography follows the shared scale and keeps exact four-pixel
     await dom.happyDOM.close();
   }
 });
-test('ESC Industry Team is conditional and shares the masthead title cell', async () => {
+test('ESC Industry Team is conditional and sits by the Decorative Header logo', async () => {
+  const { BlockCore: C, dom } = await environment();
+  try {
+    const module = projects[0].modules.find((item) => item.slug === 'decorative-header');
+    const output = dom.document.createElement('div');
+    const branch = /%%\[ IF @CampaignLabel == "INDUSTRY" THEN \]%%([\s\S]*?)%%\[ ENDIF \]%%/g;
+    const html = C.render(module.exportedDefinition);
+    output.innerHTML = html.replace(branch, (_, markup) => markup);
+    const pills = [...output.querySelectorAll('.esc-industry-pill')];
+    assert.equal(pills.length, 2);
+    for (const pill of pills) {
+      assert.equal(pill.textContent, 'ESC Industry Team');
+      assert.equal(pill.style.fontSize, '12px');
+      assert.equal(pill.style.lineHeight, '16px');
+      const placement = pill.closest('table').parentElement;
+      assert.equal(placement.getAttribute('align'), 'right');
+      assert.equal(placement.getAttribute('valign'), 'top');
+      assert.ok(placement.previousElementSibling.querySelector('.header-light-logo'));
+    }
+    output.innerHTML = html.replace(branch, '');
+    assert.equal(output.querySelector('.esc-industry-pill'), null);
+    assert.equal(output.querySelectorAll('h1').length, 2);
+    assert.equal(output.querySelector('.header-copy td[height="20"]').style.lineHeight, '20px');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('ESC Industry Team is conditional and shares the Congress title cell', async () => {
   const { BlockCore: C, dom } = await environment();
   try {
     const output = dom.document.createElement('div');
     // Model this AMPscript branch locally. SFMC resolves the campaign variable when it renders.
     const branch =
       /%%\[ IF @CampaignLabel == "INDUSTRY" THEN \]%%([\s\S]*?)(?:%%\[ ELSE \]%%([\s\S]*?))?%%\[ ENDIF \]%%/g;
-    for (const [project, slug, count] of [
-      [projects[0], 'decorative-header', 2],
-      [projects[1], 'lead-editorial', 1],
-      [projects[1], 'lead-poster', 1],
-    ]) {
-      const module = project.modules.find((item) => item.slug === slug);
+    for (const slug of ['lead-editorial', 'lead-poster']) {
+      const module = projects[1].modules.find((item) => item.slug === slug);
       const html = C.render(module.exportedDefinition);
       output.innerHTML = html.replace(branch, (_, label) => label);
       const labels = [...output.querySelectorAll('.esc-industry-eyebrow')];
-      assert.equal(labels.length, count, slug);
+      assert.equal(labels.length, 1, slug);
       for (const label of labels) {
         assert.equal(label.textContent, 'ESC Industry Team');
         assert.equal(label.style.fontSize, '12px');
@@ -667,9 +690,7 @@ test('ESC Industry Team is conditional and shares the masthead title cell', asyn
       }
       output.innerHTML = html.replace(branch, (_, label, fallback) => fallback || '');
       assert.equal(output.querySelector('.esc-industry-eyebrow'), null, slug);
-      assert.equal(output.querySelectorAll('h1').length, count, slug);
-      if (slug === 'decorative-header')
-        assert.equal(output.querySelector('.header-copy td[height="20"]').style.lineHeight, '20px');
+      assert.equal(output.querySelectorAll('h1').length, 1, slug);
     }
   } finally {
     await dom.happyDOM.close();

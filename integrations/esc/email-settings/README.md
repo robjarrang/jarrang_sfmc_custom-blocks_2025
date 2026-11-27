@@ -24,7 +24,7 @@ The example is the supplied populated email with revised settings/CSS ordering, 
 - **Brand** selects the row in the existing `BrandSettings` Data Extension. All 31 supported keys are included, preserving the spelling of `C-Gen`. Council and Working Group choices are labelled accordingly. No brand records or API credentials are embedded.
 - **Footer logo → Selected brand** uses the selected brand's footer logo and the existing URL/alternative-text defaults.
 - **Footer logo → ESC** uses the main ESC footer logo, ESC homepage and ESC alternative text. Footer colours still follow the selected brand.
-- **Campaign label → ESC Industry Team** adds a small eyebrow above the title in the Decorative Header, Congress Lead Editorial and Congress Lead Poster blocks. **None** is the default.
+- **Campaign label → ESC Industry Team** adds a top-right pill to the Decorative Header or an eyebrow above the title in Congress Lead Editorial and Congress Lead Poster. **None** is the default.
 
 There is no automatic Data Extension synchronisation. To add confirmed brands, open **ESC / Email settings** in Studio, edit the **Brand** field, and add each display label and exact `BrandSettings.BrandKey` as a dropdown option. Values support letters, numbers, underscores and hyphens, up to 80 characters. Save the template and commit/push with Tower. Existing dropdown choices must be retained for saved emails. Both email suites use this same shared endpoint.
 
