@@ -26,6 +26,8 @@ Existing SFMC instances retain their saved values. New defaults, images and corr
 
 The suite uses optional sections, colour/theme choices, conditional layouts, repeating lists, item-position rules and formatted-text lists. Use **Where it applies → Layout rules** to edit supported existing conditions. Test each affected choice because several rules may work together on one layout. New/restructured logic belongs in **More tools → Advanced template logic** with developer review.
 
+Newsletter **Webinar List** has its own SFMC endpoint. Under **Webinars**, use **Add item** to add cards and the arrows to reorder them. The date and time are separate text fields. Each card can include a description, a 16:9 thumbnail and a registration button. A blank thumbnail gives the copy the full card width. Images stack above the copy on mobile. The existing **Webinar Card** remains available.
+
 Headings and subheadings can be cleared. A CTA with editable text and destination appears when both values are supplied and its visibility switch, where present, is on. If the destination also links an image, clearing it leaves the image visible without the link.
 
 In the Newsletter Story Cards and Feature Card, and the ESC TV Story Card and 2 Col blocks, clear **Description** to omit its text and spacing. A previously hidden description opens with an empty editor and stays hidden until an editor enters new text. Use the separate CTA switch to control the button or link.

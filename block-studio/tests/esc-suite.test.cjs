@@ -637,6 +637,54 @@ test('Journal Section uses the shared mobile stacking and fluid image classes', 
     await dom.happyDOM.close();
   }
 });
+test('Webinar List renders independent cards with optional media, copy and registration', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const { exportedDefinition: definition } = projects[0].modules.find(
+    (item) => item.slug === 'webinar-list',
+  );
+  const [list] = definition.fields;
+  const row = list.defaultValue[0];
+  try {
+    const output = dom.document.createElement('div');
+    output.innerHTML = C.render(definition, {
+      webinars: [
+        { ...row, title: 'First webinar', image_height: '92', link: 'https://example.com/first' },
+        {
+          ...row,
+          label: '',
+          title: 'Second webinar',
+          date: '',
+          time: '12:00 CET',
+          image: '',
+          description: '<a href="https://example.com/details">More details</a>',
+          link: '',
+        },
+      ],
+    });
+    const [first, second] = [...output.querySelectorAll('.esc-webinar-card')];
+    assert.equal(output.querySelectorAll('.esc-webinar-card').length, 2);
+    assert.equal(first.querySelector('h3').textContent, 'First webinar');
+    assert.equal(second.querySelector('h3').textContent, 'Second webinar');
+    assert.equal(first.querySelector('img.fluid').getAttribute('height'), '92');
+    assert.equal(
+      first.querySelector('.webinar-image a').getAttribute('href'),
+      'https://example.com/first',
+    );
+    assert.equal(
+      first.querySelector('.esc-btn a').getAttribute('href'),
+      'https://example.com/first',
+    );
+    assert.match(first.querySelector('.webinar-schedule').textContent, /2025.*•.*CET/);
+    assert.equal(second.querySelector('img, .gap, .esc-btn'), null);
+    assert.equal(second.querySelector('.webinar-schedule').textContent, '12:00 CET');
+    const copy = second.querySelector('.webinar-description');
+    assert.equal(copy.style.fontSize, '13px');
+    assert.equal(copy.style.lineHeight, '20px');
+    assert.match(copy.querySelector('a').getAttribute('style'), /color:#ae1022 !important/i);
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('Speaker Grid centres each portrait without a ring or background fill', async () => {
   const { BlockCore: C, dom } = await environment();
   const module = projects[0].modules.find((item) => item.slug === 'speaker-grid');
@@ -812,7 +860,7 @@ test('landscape images give Windows Outlook an editable height divisible by 4', 
           images++;
         }
       }
-    assert.equal(images, 25);
+    assert.equal(images, 26);
     const heights = (html) => [...html.matchAll(/<img\b[^>]*\sheight="(\d+)"/g)].map((m) => m[1]);
     const hero = projects[0].modules.find((m) => m.slug === 'hero-story');
     // Blocks saved before the height field existed fall back to the automatic height.
@@ -1305,12 +1353,12 @@ test('every ESC rich-text field offers links and renders them in the fixed ESC r
   }
 });
 
-test('all 42 ESC modules retain their exported definition and supplied PNG pair', async () => {
+test('ESC Newsletter and Congress modules retain their exported definition and supplied PNG pair', async () => {
   const { BlockCore: C, BlockExport: E, BlockMaintenance: M, dom } = await environment();
   try {
     assert.equal(
       projects.reduce((n, p) => n + p.modules.length, 0),
-      42,
+      43,
     );
     for (const p of projects) {
       C.assertProject(p);
@@ -1541,7 +1589,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
     assert.equal(d.getElementById('step-map').hidden, false);
     assert.equal(
       saved.projects.reduce((n, p) => n + p.modules.length, 0),
-      48,
+      49,
     );
     d.getElementById('task-export').click();
     assert.equal(d.getElementById('icon-symbol').value, '__supplied');
@@ -1558,7 +1606,7 @@ test('standalone UI boots with the ESC content and settings templates and previe
   }
 });
 
-test('all 42 ESC modules retain exact output, fields, references and PNGs through undo and exported-content recovery', async () => {
+test('ESC Newsletter and Congress modules retain exact output, fields, references and PNGs through undo and exported-content recovery', async () => {
   const { BlockCore: C, dom } = await environment();
   const H = require('../src/history.js');
   try {
