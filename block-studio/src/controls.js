@@ -2,6 +2,24 @@
   'use strict';
   const clone = (value) => JSON.parse(JSON.stringify(value));
   let linkSerial = 0;
+  function linkDestination(input) {
+    input.placeholder = 'Web URL or email address';
+    input.autocapitalize = 'none';
+    input.spellcheck = false;
+    const status = document.createElement('p');
+    status.className = 'help';
+    status.setAttribute('role', 'status');
+    const update = () => {
+      const href = root.BlockCore.normaliseLink(input.value);
+      const message =
+        /^mailto:/i.test(href) && root.BlockCore.validUrl(href, 'url') ? 'Opens a new email.' : '';
+      if (status.textContent !== message) status.textContent = message;
+      status.hidden = !message;
+    };
+    input.after(status);
+    input.addEventListener('input', update);
+    update();
+  }
   // Shared by URL fields and the formatted-text link dialogue.
   function linkOptions(parent, field, initial, onChange) {
     const C = root.BlockCore;
@@ -291,6 +309,7 @@
       } else group.append(input);
       let linkParent = group;
       if (field.type === 'url') {
+        linkDestination(input);
         const choice = C.linkOptionsChoice(field, values);
         linkParent = linkOptions(group, field, choice, (name, text) => {
           values[C.linkOptionsKey] = {
@@ -353,5 +372,5 @@
     }
     return refs;
   }
-  root.BlockControls = { mount, linkOptions };
+  root.BlockControls = { mount, linkOptions, linkDestination };
 })(window);

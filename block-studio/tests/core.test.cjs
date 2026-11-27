@@ -69,6 +69,23 @@ test('required, maximum length and URL scheme rules', () => {
   assert.equal(C.validUrl('tel:+441234567890', 'url'), true);
   assert.equal(C.validUrl('data:text/html,x', 'image'), false);
 });
+test('email addresses become mailto destinations on HTML buttons and Outlook fallbacks', () => {
+  const m = make(
+    '<a href="https://example.com/">Email us</a><!--[if mso]><v:roundrect href="https://example.com/">Email us</v:roundrect><![endif]-->',
+  );
+  const link = m.fields.find((field) => field.type === 'url');
+  const render = (value) => C.render(m, { [link.id]: value });
+  const address = '   help+events@example.com   ';
+  assert.equal((render(address).match(/href="mailto:help\+events@example.com"/g) || []).length, 2);
+  assert.match(render('help?events@example.com'), /href="mailto:help%3Fevents@example.com"/);
+  assert.match(
+    render('mailto:help@example.com?subject=ESC%20Congress&body=Hello'),
+    /href="mailto:help@example.com\?subject=ESC%20Congress&amp;body=Hello"/,
+  );
+  assert.equal(C.validUrl(address, 'image'), false);
+  for (const malformed of ['help@', 'help@example', 'help..desk@example.com', 'help@example..com'])
+    assert.throws(() => render(malformed), /email address/);
+});
 test('manual source selection creates a content field', () => {
   const html = '<table><tr><td><p>Manual copy</p></td></tr></table>',
     start = html.indexOf('Manual copy'),

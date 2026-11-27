@@ -17,8 +17,9 @@ const limits = {
   // Optional field disclosures add about 0.3 KB.
   // Moving saved single sponsors into a repeatable list adds about 0.8 KB.
   // Repeatable speaker rows and migration of saved speakers add about 0.9 KB.
-  'runtime.bundle.js': 91900,
-  'runtime.rich.bundle.js': 119000,
+  // Detecting email addresses and giving destination feedback adds about 1.6 KB.
+  'runtime.bundle.js': 93500,
+  'runtime.rich.bundle.js': 120600,
   'runtime.bundle.css': 11100,
 };
 let failed = false;

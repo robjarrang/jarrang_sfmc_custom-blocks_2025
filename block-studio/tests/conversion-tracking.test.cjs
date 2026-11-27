@@ -147,8 +147,15 @@ test('repeated and nested links use the matching item choice with scoped aliases
 });
 test('conversion stays restricted to web links and explicitly supported fields', () => {
   const m = moduleFor('<a href="{{ link }}">A</a>', [url('link')]);
-  for (const link of ['mailto:hello@example.com', 'tel:+4412345', '#section', ''])
+  for (const link of [
+    'hello@example.com',
+    'mailto:hello@example.com',
+    'tel:+4412345',
+    '#section',
+    '',
+  ])
     assert.ok(!C.render(m, { link, ...flags({ link: true }) }).includes('conversion='));
+  assert.match(C.render(m, { link: 'hello@example.com' }), /href="mailto:hello@example.com"/);
   m.fields[0].allowConversionTracking = false;
   assert.ok(!C.render(m, flags({ link: true })).includes('conversion='));
   assert.throws(() => C.render(m, flags({ link: 'true' })), /on or off/);
@@ -180,9 +187,12 @@ test('URL checkbox is labelled, preserves its destination and works per repeated
     assert.equal(values.link, f.defaultValue);
     assert.deepEqual(changes, [['link', f.defaultValue]]);
     const input = parent.querySelector('input[type=text]');
-    input.value = 'mailto:a@example.com';
+    assert.equal(input.placeholder, 'Web URL or email address');
+    input.value = 'a@example.com';
     input.dispatchEvent(new dom.Event('input'));
     assert.equal(check.disabled, true);
+    assert.equal(values.link, 'a@example.com');
+    assert.equal(parent.querySelector('[role=status]').textContent, 'Opens a new email.');
     const list = {
       id: 'items',
       label: 'Items',
@@ -211,8 +221,9 @@ test('rich-text conversion attributes survive sanitisation only for permitted we
   try {
     const f = { allowConversionTracking: true };
     const input =
-      '<a href="https://example.com/" conversion="true" onclick="bad()" style="color:red">Web</a><a href="mailto:a@example.com" conversion="true">Mail</a>';
+      '<a href="https://example.com/" conversion="true" onclick="bad()" style="color:red">Web</a><a href="a@example.com" conversion="true">Mail</a>';
     const out = dom.BlockCore.cleanRich(input, f);
+    assert.match(out, /href="mailto:a@example.com"/);
     assert.equal((out.match(/conversion="true"/g) || []).length, 1);
     assert.ok(!out.includes('onclick'));
     assert.ok(out.includes('font-weight:inherit'));

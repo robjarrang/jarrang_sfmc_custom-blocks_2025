@@ -339,7 +339,7 @@
       )
         return [];
       if (node.tagName === 'A') {
-        const href = (node.getAttribute('href') || '').trim();
+        const href = normaliseLink(node.getAttribute('href') || '');
         if (inLink || field.allowLinks === false || !href || !validUrl(href, 'url'))
           return [...node.childNodes].flatMap((n) => visit(n, inLink, depth));
         const a = doc.createElement('a');
@@ -421,7 +421,19 @@
       return RICH_OPEN + alignment + ':' + largestSize + ':' + cleaned + RICH_CLOSE;
     return alignment ? '<div data-rich-align="' + alignment + '">' + cleaned + '</div>' : cleaned;
   }
+  // Keep the editor value as entered and encode bare mailbox addresses for the href.
+  function normaliseLink(value) {
+    const address = String(value ?? '').trim();
+    const mailbox =
+      /^(?![.])(?![^@]*[.]{2})([\w.!#$%&'*+/=?^`{|}~-]+)@((?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/i.exec(
+        address,
+      );
+    if (!mailbox || mailbox[1].endsWith('.') || dynamic(address)) return address;
+    const localPart = encodeURIComponent(mailbox[1]).replaceAll('%2B', '+');
+    return 'mailto:' + localPart + '@' + mailbox[2];
+  }
   function validUrl(value, type) {
+    if (type === 'url') value = normaliseLink(value);
     if (!value) return true;
     if (dynamic(value)) return false;
     if (
@@ -492,7 +504,7 @@
     if (['url', 'image'].includes(field.type) && !validUrl(text, field.type))
       return field.type === 'image'
         ? 'Use a complete http or https image URL.'
-        : 'Use a complete web, mailto or tel link.';
+        : 'Enter a full web URL, email address or telephone link.';
     if (field.type === 'colour' && !/^#[0-9a-f]{6}$/i.test(text))
       return 'Use a six-digit hex colour.';
     if (field.type === 'number' && (!Number.isFinite(Number(text)) || text.trim() === ''))
@@ -599,7 +611,7 @@
     const legacyText = list.itemFields.find((child) => child.key === field.legacyTextKey);
     const text = escape(row[legacyText.key] ?? legacyText.defaultValue);
     const legacyLink = list.itemFields.find((child) => child.key === field.legacyLinkKey);
-    const url = row[legacyLink?.key] ?? legacyLink?.defaultValue;
+    const url = normaliseLink(row[legacyLink?.key] ?? legacyLink?.defaultValue);
     if (!text || !url || !validUrl(url, 'url')) return text;
     const choices = linkOptionsChoice(legacyLink, row, legacyLink.key);
     const attributes = linkAttributes
@@ -615,6 +627,7 @@
     return '<a href="' + escape(url) + '"' + attributes + conversion + '>' + text + '</a>';
   }
   function scopeValue(field, value, owners, choices) {
+    if (field.type === 'url') return normaliseLink(value);
     if (field.type === 'toggle') return value === true || value === 'shown';
     if (field.type === 'number') return Number(value);
     if (field.type === 'list')
@@ -1041,9 +1054,10 @@
         if (hidden.some((h) => target.start >= h.start && target.end <= h.end)) continue;
         const replacement = () => {
           checked();
+          const rendered = target.name === 'href' ? normaliseLink(value) : value;
           if (
             !(field.type === 'richtext' && field.linkStyle) &&
-            String(value) ===
+            String(rendered) ===
               String(target.originalValue ?? field.originalValue ?? field.defaultValue)
           )
             return module.source.slice(target.start, target.end);
@@ -1060,7 +1074,7 @@
                     },
                     { mark: true },
                   )
-                : escape(value);
+                : escape(rendered);
           if (field.type === 'text' && target.kind === 'content')
             output = output.replace(/\r?\n/g, '<br>');
           if (target.kind === 'attribute' && target.quoted === false) output = '"' + output + '"';
@@ -1207,6 +1221,7 @@
     richListMaxDepth,
     placeLists,
     minify,
+    normaliseLink,
     validUrl,
     valueShape,
     validate,

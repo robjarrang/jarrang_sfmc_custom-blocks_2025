@@ -71,7 +71,7 @@ async function selectText(editor, text) {
     await group.getByRole('button', { name: 'Insert link', exact: true }).click();
     assert.ok(
       (await group.locator('.rich-action-panel .field-error').textContent()).includes(
-        'complete web',
+        'full web URL',
       ),
     );
     await group.getByLabel('Link destination').fill('https://example.com/start?x=1&y=2');
