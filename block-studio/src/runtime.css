@@ -29,14 +29,16 @@ h1 {
 #load-sample {
   margin-inline-start: auto;
   min-height: 28px;
-  padding: 3px 8px;
-  border: 1px solid #d6d9e6;
-  border-radius: 4px;
-  background: #fff;
-  color: inherit;
+  padding: 3px 4px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
   font: inherit;
   font-size: 12px;
   cursor: pointer;
+}
+#load-sample:hover {
+  text-decoration: underline;
 }
 .status {
   font-size: 14px;
