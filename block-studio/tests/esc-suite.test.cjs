@@ -865,6 +865,71 @@ test('Checklist, CTA and Speaker Grid can tighten either adjoining edge independ
     await dom.happyDOM.close();
   }
 });
+test('new ESC campaign blocks start with empty editor values and no sample email output', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const tv = JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/esc-tv.jarrang.json')));
+  try {
+    const exceptions = new Set([
+      'navigation',
+      'membership-card',
+      'signature',
+      'spacer',
+      'divider',
+      'esc-tv-disclaimer',
+    ]);
+    const brandChrome = new Set(['decorative-header', 'attribution']);
+    for (const project of [...projects, tv]) {
+      for (const { exportedDefinition: definition } of project.modules) {
+        const { blankStart, slug, fields } = definition;
+        assert.equal(!!blankStart, !exceptions.has(slug), slug);
+        if (!blankStart) continue;
+        const values = Object.fromEntries(
+          fields.map((field) => [field.id, C.starterField(field, blankStart)]),
+        );
+        const { html, issue } = C.renderDraft(definition, values);
+        assert.equal(issue, '', slug);
+        if (brandChrome.has(slug)) {
+          assert.match(html, /%%=v\(@/);
+          assert.doesNotMatch(
+            html,
+            /Your essential cardiology update|In collaboration with|https?:\/\//,
+          );
+        } else assert.equal(html, '', slug);
+      }
+    }
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
+test('ESC draft output omits incomplete rows and buttons while keeping the editor values', async () => {
+  const { BlockCore: C, dom } = await environment();
+  const draft = (project, slug) => {
+    const { exportedDefinition: definition } = project.modules.find((item) => item.slug === slug);
+    const values = Object.fromEntries(
+      definition.fields.map((field) => [field.id, C.starterField(field, definition.blankStart)]),
+    );
+    return { definition, values };
+  };
+  try {
+    const cta = draft(projects[0], 'cta');
+    cta.values.field4 = 'Register for this webinar';
+    assert.equal(C.renderDraft(cta.definition, cta.values).html, '');
+    cta.values.field3 = 'editorial@example.com';
+    assert.match(C.renderDraft(cta.definition, cta.values).html, /mailto:editorial@example.com/);
+    const deadlines = draft(projects[1], 'deadlines-list');
+    const list = deadlines.definition.fields.find((field) => field.type === 'list');
+    const rows = deadlines.values[list.id];
+    rows[0].date = '9 December';
+    rows.push({ ...rows[0], date: '10 December', text: 'Registration closes' });
+    const output = C.renderDraft(deadlines.definition, deadlines.values);
+    assert.match(output.issue, /Item 1, Deadline text/);
+    assert.match(output.html, /10 December/);
+    assert.doesNotMatch(output.html, /9 December|Abstract submission/);
+    assert.equal(rows[0].date, '9 December');
+  } finally {
+    await dom.happyDOM.close();
+  }
+});
 test('ESC vertical spacer divs leave their background to the enclosing cell', () => {
   const remainingProjects = ['esc-tv', 'email-settings'].map((suite) =>
     JSON.parse(fs.readFileSync(path.join(root, 'projects/esc/' + suite + '.jarrang.json'))),

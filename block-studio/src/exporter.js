@@ -172,6 +172,7 @@
       source: module.source,
       templateMode: !!module.templateMode,
       ...(module.settingsOnly ? { settingsOnly: true } : {}),
+      ...(module.blankStart ? { blankStart: module.blankStart } : {}),
       ...(module.minifyOutput === true ? { minifyOutput: true } : {}),
       contextCss: module.contextCss || '',
       fields: module.fields,

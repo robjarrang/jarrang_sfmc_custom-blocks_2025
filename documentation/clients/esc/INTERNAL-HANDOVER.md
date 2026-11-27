@@ -22,6 +22,12 @@ The ESC templates disable **Show Jarrang Block Studio header** under **Template 
 
 Existing SFMC instances retain their saved values. New defaults, images and corrected punctuation do not replace them automatically. Plain-text fields use actual characters, for example `28 Aug – 31 Aug 2026`, rather than `&ndash;`.
 
+## Starting content in Content Builder
+
+New campaign blocks have empty copy, image and link fields. Use the field labels and enter campaign content directly. The form shows feedback when a started entry needs attention. Blank entries and incomplete required rows stay out of the email while their inputs are saved in the editor. The Studio authoring project retains examples for checking the layouts.
+
+The approved navigation, ESC TV disclaimer, personalised membership card, and signature retain their starting content. Brand artwork can appear in the Decorative Header and Congress Attribution. Review already saved emails for older sample values before sending.
+
 ## ESC controls and layouts
 
 The suite uses optional sections, colour/theme choices, conditional layouts, repeating lists, item-position rules and formatted-text lists. Use **Where it applies → Layout rules** to edit supported existing conditions. Test each affected choice because several rules may work together on one layout. New/restructured logic belongs in **More tools → Advanced template logic** with developer review.

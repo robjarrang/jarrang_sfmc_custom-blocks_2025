@@ -1008,6 +1008,77 @@
     });
     return tokens.map((t) => t.value).join('');
   }
+  function starterField(field, settings) {
+    if (!settings || settings.keep?.includes(field.id)) return field.defaultValue;
+    if (field.type === 'list') {
+      const row = Object.fromEntries(
+        field.itemFields.map((child) => [child.key, starterField(child, settings)]),
+      );
+      return Array.from({ length: Math.max(field.minItems || 0, 1) }, () => ({ ...row }));
+    }
+    return starterContent.has(field.type) ? '' : field.defaultValue;
+  }
+  const starterContent = new Set(['text', 'richtext', 'image', 'url']);
+  function hasDraftContent(field, value) {
+    if (!starterContent.has(field.type)) return false;
+    const text =
+      field.type === 'richtext' ? decode(cleanRich(value, field).replace(/<[^>]*>/g, '')) : value;
+    return /[^\s\u200b-\u200d\u2060]/.test(String(text ?? ''));
+  }
+  // Patch only empty links and image tags, preserving conditional markup and AMPscript.
+  function removeEmptyMedia(html) {
+    if (!/\b(?:href|src)=(?:""|'')/i.test(html)) return html;
+    const edits = [];
+    for (const node of parse(html).nodes) {
+      if (node.tag === 'img' && node.attrs.some((a) => a.name === 'src' && !a.value))
+        edits.push([node.start, node.end]);
+      if (node.tag === 'a' && node.attrs.some((a) => a.name === 'href' && !a.value)) {
+        edits.push([node.start, node.startEnd], [node.innerEnd, node.end]);
+      }
+    }
+    for (const [start, end] of edits.sort((a, b) => b[0] - a[0]))
+      html = html.slice(0, start) + html.slice(end);
+    return html;
+  }
+  function renderDraft(module, values, options) {
+    const draft = { ...values };
+    let issue = '';
+    let active = module.blankStart.showWhenEmpty === true;
+    const editable = new Set(editableFields(module.fields).map((field) => field.id));
+    const fields = module.fields.map((field) => {
+      if (!field.enabled || !editable.has(field.id) || !fieldActive(module, field, values))
+        return field;
+      if (field.type !== 'list') {
+        if (!module.blankStart.keep?.includes(field.id))
+          active ||= field.type !== 'url' && hasDraftContent(field, fieldValue(field, values));
+        return field;
+      }
+      const items = editableItemFields(field);
+      draft[field.id] = fieldValue(field, values).filter((row, index) => {
+        const present = items.filter((child) =>
+          hasDraftContent(child, listItemValue(field, child, row)),
+        );
+        if (!present.length) return false;
+        const error = validate({ ...field, minItems: 0 }, [row]);
+        if (error)
+          issue ||= field.label + ': ' + error.replace(/^Item 1, /, 'Item ' + (index + 1) + ', ');
+        return !error && present.some((child) => child.type !== 'url');
+      });
+      active ||= draft[field.id].length > 0;
+      return { ...field, minItems: 0 };
+    });
+    if (!active) return { html: '', issue };
+    try {
+      const html = removeEmptyMedia(render({ ...module, fields }, draft, options));
+      const visible = html.replace(/<!--[\s\S]*?-->|<[^>]*>|&(?:nbsp|#8202|#160);/gi, '').trim();
+      return {
+        html: visible || /<img\b/i.test(html) || module.blankStart.showWhenEmpty ? html : '',
+        issue,
+      };
+    } catch (error) {
+      return { html: '', issue: error.message };
+    }
+  }
   function render(module, values = {}, options = {}) {
     const html = renderSource(module, values, options);
     return module.minifyOutput === true && !module.settingsOnly ? minify(html) : html;
@@ -1232,6 +1303,8 @@
     listItemValue,
     settingsSummary,
     render,
+    renderDraft,
+    starterField,
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.BlockRuntimeCore = api;

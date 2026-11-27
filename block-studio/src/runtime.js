@@ -8,6 +8,7 @@
     status = document.getElementById('status');
   let metadata = {},
     values = {},
+    blankStart = definition.blankStart,
     sdk = null,
     timer,
     busy = false,
@@ -103,39 +104,52 @@
       sendLocalPreview();
     });
   }
-  function check() {
+  function check(snapshot) {
     controls.forEach((ref) => {
       ref.error.textContent = '';
       ref.input.setAttribute('aria-invalid', 'false');
     });
-    try {
-      C.render(definition, values, { blockId });
-      return true;
-    } catch (error) {
-      const field = fields.find((f) => error.message.startsWith(f.label + ':'));
-      if (field) {
-        controls.get(field.id).error.textContent = error.message;
-        controls.get(field.id).input.setAttribute('aria-invalid', 'true');
+    const annotate = (message) => {
+      const field = fields.find((f) => message.startsWith(f.label + ':'));
+      const ref = field && controls.get(field.id);
+      if (ref) {
+        ref.error.textContent = message.slice(field.label.length + 2);
+        ref.input.setAttribute('aria-invalid', 'true');
       }
-      say(error.message, true);
-      return false;
+    };
+    try {
+      if (blankStart) {
+        const output = C.renderDraft(definition, snapshot, { blockId });
+        if (output.issue) annotate(output.issue);
+        return output;
+      }
+      return { html: C.render(definition, snapshot, { blockId }) };
+    } catch (error) {
+      annotate(error.message);
+      say('Check the highlighted fields. The last valid content is unchanged.', true);
+      return null;
     }
+  }
+  function savedValues(snapshot) {
+    return {
+      ...metadata,
+      studio: {
+        schemaVersion: 1,
+        blockId,
+        moduleId: definition.id,
+        moduleVersion: definition.release,
+        ...(blankStart ? { blankStart: true } : {}),
+        values: snapshot,
+      },
+    };
   }
   function save() {
     clearTimeout(timer);
     if (!ready || busy || !dirty) return;
-    if (!check()) {
-      say('Check the highlighted fields. The last valid content is unchanged.', true);
-      return;
-    }
-    let html;
     const snapshot = JSON.parse(JSON.stringify(values));
-    try {
-      html = C.render(definition, snapshot, { blockId });
-    } catch (e) {
-      say(e.message, true);
-      return;
-    }
+    const result = check(snapshot);
+    if (!result) return;
+    const { html, issue } = result;
     dirty = false;
     if (!sdk) {
       localPreview(C.settingsSummary(definition, html));
@@ -153,16 +167,7 @@
     }, 10000);
     sdk.setContent(html, (accepted) => {
       if (!ready) return;
-      const next = {
-        ...metadata,
-        studio: {
-          schemaVersion: 1,
-          blockId,
-          moduleId: definition.id,
-          moduleVersion: definition.release,
-          values: snapshot,
-        },
-      };
+      const next = savedValues(snapshot);
       sdk.setData(next, (saved) => {
         if (!ready) return;
         clearTimeout(timeout);
@@ -170,9 +175,13 @@
         if (definition.settingsOnly) sdk.setSuperContent(C.settingsSummary(definition, html));
         busy = false;
         say(
-          typeof accepted === 'string' && accepted !== html
-            ? 'Saved. Content Builder adjusted the HTML; verify the SFMC preview.'
-            : 'Saved in Content Builder',
+          issue
+            ? 'Draft saved. Check the highlighted fields.'
+            : blankStart && !html
+              ? 'Add content to show this block.'
+              : typeof accepted === 'string' && accepted !== html
+                ? 'Saved. Content Builder adjusted the HTML; verify the SFMC preview.'
+                : 'Saved in Content Builder',
         );
         if (dirty) save();
       });
@@ -205,7 +214,7 @@
         clearTimeout(timer);
         timer = setTimeout(save, 200);
       },
-      { onBlur: save },
+      { onBlur: save, blankStart: definition.blankStart },
     );
     mounted = true;
   }
@@ -222,7 +231,7 @@
   function showDefaults() {
     try {
       values = Object.fromEntries(
-        fields.map((f) => [f.id, JSON.parse(JSON.stringify(f.defaultValue))]),
+        fields.map((f) => [f.id, JSON.parse(JSON.stringify(C.starterField(f, blankStart)))]),
       );
       form.inert = true;
       mount();
@@ -232,6 +241,7 @@
   }
   function load(data) {
     metadata = data || {};
+    blankStart = !metadata.studio || metadata.studio.blankStart ? definition.blankStart : null;
     if (metadata.studio?.blockId) blockId = metadata.studio.blockId;
     if (
       metadata.studio &&
@@ -250,11 +260,11 @@
         fields.map((f) => {
           const saved = metadata.studio?.values;
           const value =
-            f.legacyItem || f.legacyRows
+            (f.legacyItem || f.legacyRows) && (saved || !blankStart)
               ? C.fieldValue(f, saved || {})
               : saved && Object.hasOwn(saved, f.id)
                 ? saved[f.id]
-                : f.defaultValue;
+                : C.starterField(f, blankStart);
           const error = C.valueShape(f, value);
           if (error) throw Error(f.label + ': ' + error);
           return [f.id, JSON.parse(JSON.stringify(value))];
@@ -306,24 +316,17 @@
     // The SDK posts blockReadyToClose after this hook. Post the latest state
     // first, without depending on callbacks after the editor iframe closes.
     clearTimeout(timer);
-    if (!ready || (!dirty && !busy) || !check()) return;
+    if (!ready || (!dirty && !busy)) return;
     try {
-      const snapshot = JSON.parse(JSON.stringify(values)),
-        html = C.render(definition, snapshot, { blockId });
+      const snapshot = JSON.parse(JSON.stringify(values));
+      const result = check(snapshot);
+      if (!result) return;
+      const { html } = result;
       ready = false;
       dirty = false;
       sdk.setContent(html);
       if (definition.settingsOnly) sdk.setSuperContent(C.settingsSummary(definition, html));
-      sdk.setData({
-        ...metadata,
-        studio: {
-          schemaVersion: 1,
-          blockId,
-          moduleId: definition.id,
-          moduleVersion: definition.release,
-          values: snapshot,
-        },
-      });
+      sdk.setData(savedValues(snapshot));
     } catch (e) {
       say(e.message, true);
     }

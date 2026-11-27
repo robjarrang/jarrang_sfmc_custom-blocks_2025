@@ -136,7 +136,7 @@
       })
       .filter(Boolean);
   }
-  function pasteList(parent, field, onReplace) {
+  function pasteList(parent, field, onReplace, blankStart) {
     const C = root.BlockCore;
     const textField = field.itemFields.find((item) => item.key === field.pasteTextKey);
     const details = document.createElement('details'),
@@ -178,7 +178,7 @@
         return;
       }
       const defaults = Object.fromEntries(
-        field.itemFields.map((item) => [item.key, item.defaultValue]),
+        field.itemFields.map((item) => [item.key, C.starterField(item, blankStart)]),
       );
       const rows = items.map((text) => ({
         ...clone(defaults),
@@ -224,7 +224,7 @@
           values[legacy] = 'shown';
         }
         values[field.id] = value;
-        const issue = C.validate(field, value);
+        const issue = options.blankStart && field.type === 'list' ? '' : C.validate(field, value);
         error.textContent = issue;
         input.setAttribute('aria-invalid', String(!!issue));
         onChange(field, value);
@@ -310,6 +310,7 @@
                 row[item.key] = C.listItemValue(field, item, row);
             mount(body, itemFields, row, () => changed(clone(rows)), {
               prefix: prefix + field.id + '-' + index + '-',
+              blankStart: options.blankStart,
             });
             input.append(card);
           });
@@ -320,7 +321,9 @@
           add.disabled = rows.length >= (field.maxItems ?? 50);
           add.onclick = () => {
             rows.push(
-              Object.fromEntries(field.itemFields.map((f) => [f.key, clone(f.defaultValue)])),
+              Object.fromEntries(
+                field.itemFields.map((f) => [f.key, clone(C.starterField(f, options.blankStart))]),
+              ),
             );
             changed(clone(rows));
             draw();
@@ -330,14 +333,19 @@
           const note = document.createElement('p');
           note.className = 'help';
           note.textContent = rows.length + ' of ' + (field.maxItems ?? 50) + ' items';
-          input.append(note);
+          if (!options.blankStart || add.disabled) input.append(note);
         }
         if (field.pasteTextKey)
-          pasteList(group, field, (rows) => {
-            changed(rows);
-            draw();
-            focusItem(0);
-          });
+          pasteList(
+            group,
+            field,
+            (rows) => {
+              changed(rows);
+              draw();
+              focusItem(0);
+            },
+            options.blankStart,
+          );
         draw();
       } else if (field.type === 'toggle') {
         input = document.createElement('input');

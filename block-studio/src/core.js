@@ -38,6 +38,8 @@
     listItemValue,
     settingsSummary,
     render,
+    renderDraft,
+    starterField,
   } = R;
   const H =
     root.BlockHTMLValidation ||
@@ -954,6 +956,8 @@
     manualField,
     settingsSummary,
     render,
+    renderDraft,
+    starterField,
     inspect,
     validate,
     valueShape,
